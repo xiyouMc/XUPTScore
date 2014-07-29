@@ -759,12 +759,12 @@ public class MainActivity extends Activity {
 				// 头像
 				if (bitmap != null) {
 					file = new File(StaticVarUtil.PATH + "/headPhoto.JPEG");
-				}*/
+				}
 				String account = StaticVarUtil.student.getAccount() + "";
 				// 修改
-				//alertStudent(account, password, file);
+				//alertStudent(account, password, file);*/
 				ChangePwAsyntask changePwAsyntask = new ChangePwAsyntask();
-				changePwAsyntask.execute();
+				changePwAsyntask.execute(new String[]{password1,password2});
 				
 			}
 		});
@@ -1279,10 +1279,10 @@ public class MainActivity extends Activity {
 	}
 	
 	// 异步加载登录
-		class ChangePwAsyntask extends AsyncTask<Object, String, String> {
+		class ChangePwAsyntask extends AsyncTask<String, String, String> {
 
 			@Override
-			protected String doInBackground(Object... params) {
+			protected String doInBackground(String... params) {
 				// TODO Auto-generated method stub
 				String url = "";
 				String canshu = Util.getURL(StaticVarUtil.CHANGE_PW);
@@ -1290,10 +1290,10 @@ public class MainActivity extends Activity {
 				String url_str = can[0];
 				String gnmkdm = can[1];*/
 				url = HttpUtilMc.BASE_URL
-						+ "xscjcx.aspx?session="
+						+ "changepw.jsp?session="
 						+ StaticVarUtil.session
 						+ "&url="
-						+ canshu;
+						+ canshu+"&old_password="+params[0]+"&new_password="+params[1];
 				System.out.println("url" + url);
 				// 查询返回结果
 				String result = HttpUtilMc.queryStringForPost(url);

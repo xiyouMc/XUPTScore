@@ -76,8 +76,9 @@ public class WelcomeActivity extends Activity {
 
 				} else {
 					Toast.makeText(getApplicationContext(),
-							HttpUtilMc.CONNECT_EXCEPTION, 1).show();
+							HttpUtilMc.CONNECT_EXCEPTION, 1000).show();
 					// progress.cancel();
+					finish();
 				}
 			} catch (Exception e) {
 				// TODO: handle exception

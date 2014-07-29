@@ -287,6 +287,7 @@ public class LoginActivity extends Activity {
     					intent.setClass(LoginActivity.this, MainActivity.class);
     					startActivity(intent);
     					StaticVarUtil.student.setAccount(Integer.valueOf(account.getText().toString().trim()));
+    					StaticVarUtil.student.setPassword( password.getText().toString().trim());
     					finish();
 					} else {
 						Toast.makeText(getApplicationContext(), "µÇÂ¼Ê§°Ü", 1)
