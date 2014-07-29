@@ -722,7 +722,7 @@ public class MainActivity extends Activity {
 
 		final EditText etPassword1 = (EditText) findViewById(R.id.etPassword1);
 		final EditText etPassword2 = (EditText) findViewById(R.id.etPassword2);
-
+        final EditText cofPassword2 = (EditText)findViewById(R.id.corfimPassword2);//确认密码
 		// 修改
 		Button butAlter = (Button) findViewById(R.id.butAlter);
 		butAlter.setOnClickListener(new OnClickListener() {
@@ -732,10 +732,10 @@ public class MainActivity extends Activity {
 				String password = null;
 				// 控件值
 				String password1 = etPassword1.getText().toString();
-				String password2 = etPassword2.getText().toString();
-
+				String password2 = etPassword2.getText().toString().trim();
+                String password3 = cofPassword2.getText().toString().trim();
 				if (password1.equals("") && password2.equals("")
-						&& bitmap == null) {
+						&& bitmap == null && password3.equals("")) {
 					ViewUtil.toastShort("您没有信息需要修改", MainActivity.this);
 					return;
 				}
@@ -745,7 +745,7 @@ public class MainActivity extends Activity {
 					password = StaticVarUtil.student.getPassword();
 				} else {
 					if (password1.equals(StaticVarUtil.student.getPassword())
-							&& password2.equals("") == false) {
+							&& password2.equals("") == false && password2.equals(password3)) {
 						// 如果旧密码正确，新密码不为空,那么就是新密码
 						password = password2;
 					} else {
@@ -754,15 +754,18 @@ public class MainActivity extends Activity {
 						return;
 					}
 				}
-
+/*
 				File file = null;
 				// 头像
 				if (bitmap != null) {
 					file = new File(StaticVarUtil.PATH + "/headPhoto.JPEG");
-				}
+				}*/
 				String account = StaticVarUtil.student.getAccount() + "";
 				// 修改
-				alertStudent(account, password, file);
+				//alertStudent(account, password, file);
+				ChangePwAsyntask changePwAsyntask = new ChangePwAsyntask();
+				changePwAsyntask.execute();
+				
 			}
 		});
 	}
@@ -776,7 +779,7 @@ public class MainActivity extends Activity {
 	 *            密码
 	 * @param file
 	 *            头像文件
-	 */
+	 *//*
 	protected void alertStudent(final String account, final String password,
 			final File file) {
 		new Thread() {
@@ -816,9 +819,9 @@ public class MainActivity extends Activity {
 		}.start();
 	}
 
-	/**
+	*//**
 	 * 修改信息的handler
-	 */
+	 *//*
 	private Handler handlerAlter = new Handler() {
 		public void handleMessage(android.os.Message msg) {
 			switch (msg.what) {
@@ -841,7 +844,7 @@ public class MainActivity extends Activity {
 				break;
 			}
 		};
-	};
+	};*/
 
 	/**
 	 * 选择头像
@@ -1274,4 +1277,65 @@ public class MainActivity extends Activity {
 		}
 
 	}
+	
+	// 异步加载登录
+		class ChangePwAsyntask extends AsyncTask<Object, String, String> {
+
+			@Override
+			protected String doInBackground(Object... params) {
+				// TODO Auto-generated method stub
+				String url = "";
+				String canshu = Util.getURL(StaticVarUtil.CHANGE_PW);
+				/*String[] can = canshu.split("&");
+				String url_str = can[0];
+				String gnmkdm = can[1];*/
+				url = HttpUtilMc.BASE_URL
+						+ "xscjcx.aspx?session="
+						+ StaticVarUtil.session
+						+ "&url="
+						+ canshu;
+				System.out.println("url" + url);
+				// 查询返回结果
+				String result = HttpUtilMc.queryStringForPost(url);
+				System.out.println("=========================  " + result);
+				return result;
+
+			}
+
+			@Override
+			protected void onPostExecute(String result) {
+				// TODO Auto-generated method stub
+				super.onPostExecute(result);
+				// progress.cancel();
+				// 显示用户名
+				nickname.setText(name);
+				try {
+					if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
+						if (!result.equals("error")) {
+							/**
+							 * 将字符串 写入xml文件中
+							 */
+							if (!result.equals("error")) {
+								Toast.makeText(getApplicationContext(), "修改成功", 1000).show();
+							}
+							menu1();
+						} else {
+							Toast.makeText(getApplicationContext(), "修改不成功", 1)
+									.show();
+						}
+
+					} else {
+						Toast.makeText(getApplicationContext(),
+								HttpUtilMc.CONNECT_EXCEPTION, 1).show();
+						// progress.cancel();
+					}
+				} catch (Exception e) {
+					// TODO: handle exception
+					e.printStackTrace();
+					Log.i("LoginActivity", e.toString());
+				}
+
+			}
+
+		}
 }
