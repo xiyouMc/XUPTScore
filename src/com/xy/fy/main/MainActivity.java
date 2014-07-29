@@ -122,7 +122,7 @@ public class MainActivity extends Activity {
 		GetScoreAsyntask getScoreAsyntask = new GetScoreAsyntask();
 		dialog.show();
 		getScoreAsyntask.execute();
-		
+
 		setMenuItemListener();
 
 		// 当前Activity进栈
@@ -215,7 +215,14 @@ public class MainActivity extends Activity {
 	 */
 	private void menu1() {
 		page = 0;// 点击过来重置
-
+		// 菜单按钮
+		Button menu = (Button) findViewById(R.id.butMenu);
+		menu.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				slidingMenu.toggle();
+			}
+		});
 		// init CardView
 		mCardView = (CardUI) findViewById(R.id.cardsview);
 		mCardView.setSwipeable(true);
@@ -281,8 +288,7 @@ public class MainActivity extends Activity {
 					"#33b6ea", "#33b6ea", true, false);
 			String[][] first_score_array = getScoreToArray(first_score);
 			_myPlayCard.setOnClickListener(new ScoreClass(
-					first_score_array.length, first_score_array,
-					xn+" 第一学期"));
+					first_score_array.length, first_score_array, xn + " 第一学期"));
 			mCardView.addCard(_myPlayCard);
 			// mCardView.addCardToLastStack(new
 			// MyCard("By Androguide & GadgetCheck"));
@@ -295,7 +301,7 @@ public class MainActivity extends Activity {
 					"#e00707", false, true);
 			String[][] second_score_array = getScoreToArray(second_score);
 			myCard.setOnClickListener(new ScoreClass(second_score_array.length,
-					second_score_array, xn+" 第二学期"));
+					second_score_array, xn + " 第二学期"));
 			mCardView.addCardToLastStack(myCard);
 		}
 
@@ -1183,7 +1189,7 @@ public class MainActivity extends Activity {
 		protected void onPostExecute(String result) {
 			// TODO Auto-generated method stub
 			super.onPostExecute(result);
-			 dialog.cancel();
+			dialog.cancel();
 			// 显示用户名
 			nickname.setText(name);
 			try {
@@ -1274,10 +1280,10 @@ public class MainActivity extends Activity {
 			try {
 				if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
 					if (!result.equals("error")) {
-						Toast.makeText(getApplicationContext(), "修改成功,请重新登录", 1000)
-								.show();
-						//menu1();
-						quit(true);//注销重新登录
+						Toast.makeText(getApplicationContext(), "修改成功,请重新登录",
+								1000).show();
+						// menu1();
+						quit(true);// 注销重新登录
 					} else {
 						Toast.makeText(getApplicationContext(), "修改不成功", 1)
 								.show();
