@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 下拉刷新ListView头部 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/grey"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <!-- 箭头图像、进度条 -->
+
+        <ImageView
+            android:id="@+id/imageHeadArrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:minHeight="70dp"
+            android:minWidth="50dp"
+            android:src="@drawable/pull_down_refresh_arrow" />
+
+        <ProgressBar
+            android:id="@+id/progressBarHead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+</LinearLayout>

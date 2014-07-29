@@ -1,0 +1,53 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FAEBD7"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/main_title_bar"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/butCollege"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/transparent"
+            android:gravity="center_vertical"
+            android:text="西安邮电大学"
+            android:textColor="@drawable/change_button_text_color"
+            android:textSize="20dp" />
+        <!-- 菜单 -->
+
+        <Button
+            android:id="@+id/butMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/button_menu"
+            android:gravity="center_vertical"
+            android:textColor="#FF8C00"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#00000000"
+         >
+
+        <com.fima.cardsui.views.CardUI
+            android:id="@+id/cardsview"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:fastScrollEnabled="true" />
+    </LinearLayout>
+
+</LinearLayout>

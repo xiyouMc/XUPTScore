@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#FAEBD7"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/main_title_bar"
+            android:text="用户注册"
+            android:textColor="@color/white"
+            android:textSize="28sp" />
+
+        <!-- 返回按钮 -->
+
+        <Button
+            android:id="@+id/butBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/button_back" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="50dp" >
+
+        <!-- 注册账号 -->
+
+        <EditText
+            android:id="@+id/etAccount"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="账号(9位以内数字)"
+            android:inputType="numberDecimal" >
+        </EditText>
+
+        <!-- 注册邮箱 -->
+
+        <EditText
+            android:id="@+id/etEmail"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="请输入邮箱"
+            android:inputType="textEmailAddress" >
+        </EditText>
+        <!-- 注册昵称 -->
+
+        <EditText
+            android:id="@+id/etNickname"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="请输入昵称" >
+        </EditText>
+        <!-- 注册密码 -->
+
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="请输入密码"
+            android:inputType="textPassword" >
+        </EditText>
+        <!-- 注册大学 -->
+
+        <Button
+            android:id="@+id/butChooseSchool"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_big"
+            android:text="请选择大学"
+            android:textColor="@color/red"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp" >
+
+        <!-- 注册按钮 -->
+
+        <Button
+            android:id="@+id/butRegister"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_big"
+            android:text="注册"
+            android:textColor="@color/red"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+</LinearLayout>
