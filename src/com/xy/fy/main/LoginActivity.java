@@ -42,7 +42,6 @@ public class LoginActivity extends Activity {
 	private CheckBox rememberPassword;// 记住密码
 	private Button login;// 登陆
 	private ProgressDialog progressDialog;
-	private String session;// session
     //保存所有herf
 	private List<HashMap<String, String>> listHerf;
 	@Override
@@ -50,9 +49,11 @@ public class LoginActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		super.setContentView(R.layout.activity_login);
 
-		Intent i = getIntent();
-		session = i.getStringExtra("session");
-		StaticVarUtil.session =session;
+		
+		GetPicAsyntask getPicAsyntask = new GetPicAsyntask();
+		getPicAsyntask.execute();
+		
+		
 		this.findViewById();
 
 		if (!this.initData()) {// 初始化一些必须的数据
@@ -103,6 +104,7 @@ public class LoginActivity extends Activity {
 		});
 	}
 
+	
 	/**
 	 * 初始化一些必须的数据
 	 */
@@ -253,7 +255,7 @@ public class LoginActivity extends Activity {
 			String url;
 			url = HttpUtilMc.BASE_URL + "login.jsp?username="
 					+ account.getText().toString().trim() + "&password="
-					+ password.getText().toString().trim() + "&session=" + session;
+					+ password.getText().toString().trim() + "&session=" + StaticVarUtil.session;
 			System.out.println("url" + url);
 			// 查询返回结果
 			String result = HttpUtilMc.queryStringForPost(url);
@@ -307,4 +309,68 @@ public class LoginActivity extends Activity {
 		}
 
 	}
+	
+	// 异步加载登录
+		class GetPicAsyntask extends AsyncTask<Object, String, String> {
+
+			@Override
+			protected String doInBackground(Object... params) {
+				// TODO Auto-generated method stub
+				String url;
+				url = HttpUtilMc.BASE_URL
+						+ "GetPic.jsp";
+				System.out.println("url"+url);
+				// 查询返回结果
+				String result = HttpUtilMc.queryStringForPost(url);
+				System.out.println("=========================  " + result);
+				return result;
+
+			}
+
+			@Override
+			protected void onPostExecute(String result) {
+				// TODO Auto-generated method stub
+				super.onPostExecute(result);
+//				progress.cancel();
+				try {
+					if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
+
+						if (!result.equals("error")) {
+
+							JSONObject json = new JSONObject(result);
+							String session = json.getString("cookieSessionID");//session
+							System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@");
+							/*Declare declare = (Declare) getApplicationContext();
+							declare.setId(Integer.parseInt(result));
+							declare.setUserName(userEditText.getText().toString());*/
+							Toast.makeText(getApplicationContext(), "登录成功", 1)
+									.show();
+							StaticVarUtil.session =session;
+						/*	Intent intent = new Intent();
+							intent.setClass(WelcomeActivity.this, LoginActivity.class);
+							Bundle b = new Bundle();
+							b.putString("session", session);
+							intent.putExtras(b);
+							startActivity(intent);*/
+							finish();
+
+						}
+						else {
+							Toast.makeText(getApplicationContext(), "登录失败", 1)
+									.show();
+						}
+
+					} else {
+						Toast.makeText(getApplicationContext(),
+								HttpUtilMc.CONNECT_EXCEPTION, 1000).show();
+						// progress.cancel();
+						finish();
+					}
+				} catch (Exception e) {
+					// TODO: handle exception
+					Log.i("LoginActivity", e.toString());
+				}
+
+			}
+}
 }

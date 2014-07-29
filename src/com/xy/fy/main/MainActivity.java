@@ -207,29 +207,6 @@ public class MainActivity extends Activity {
 			}
 		});
 
-		/*
-		 * listView = (CustomListView) findViewById(R.id.listView);
-		 * 
-		 * FileCache fileCache = new FileCache(); String dataResource =
-		 * fileCache.readHistoryJsonData(fileName); if (dataResource == null ||
-		 * dataResource.equals("")) {// 如果为空，自动刷新 page = 0;
-		 * downLoadThread.setPageAndHanlder(page, handler);
-		 * StaticVarUtil.executorService.submit(downLoadThread); } else {//
-		 * 否则将缓存中的数据提取出来 listViewAdapter = new ListViewAdapter(dataResource,
-		 * MainActivity.this); listView.setAdapter(listViewAdapter);
-		 * listViewAdapter.notifyDataSetChanged();// 数据更改 } // 下拉刷新
-		 * listView.setOnRefreshListener(new OnRefreshListener() {
-		 * 
-		 * @Override public void onRefresh() { page = 0;
-		 * downLoadThread.setPageAndHanlder(page, handler);
-		 * StaticVarUtil.executorService.submit(downLoadThread); } });
-		 * 
-		 * // 查看更多按钮 listView.setOnMoreListener(new OnMoreButtonListener() {
-		 * 
-		 * @Override public void onClick(View v) { page++;
-		 * downLoadThread.setPageAndHanlder(page, handlerMore);
-		 * StaticVarUtil.executorService.submit(downLoadThread); } });
-		 */
 	}
 
 	/**
@@ -291,7 +268,6 @@ public class MainActivity extends Activity {
 	 * 显示卡片
 	 */
 	private void showCard(String xn) {
-		
 
 		// add one card, and then add another one to the last stack.
 		String first_score = getScore(xn, "1") == null ? "" : getScore(xn, "1")
@@ -664,6 +640,7 @@ public class MainActivity extends Activity {
 
 				slidingMenu.setContent(R.layout.activity_setting);
 				menuSetting();
+
 			}
 		});
 
@@ -692,7 +669,7 @@ public class MainActivity extends Activity {
 		menuQuit.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				quit();
+				quit(true);
 			}
 		});
 
@@ -717,12 +694,12 @@ public class MainActivity extends Activity {
 		}
 
 		EditText etAccount = (EditText) findViewById(R.id.etAccount);
-		etAccount.setText("0"+StaticVarUtil.student.getAccount() + "");
+		etAccount.setText("0" + StaticVarUtil.student.getAccount() + "");
 		etAccount.setEnabled(false);// 不可用
 
 		final EditText etPassword1 = (EditText) findViewById(R.id.etPassword1);
 		final EditText etPassword2 = (EditText) findViewById(R.id.etPassword2);
-        final EditText cofPassword2 = (EditText)findViewById(R.id.corfimPassword2);//确认密码
+		final EditText cofPassword2 = (EditText) findViewById(R.id.corfimPassword2);// 确认密码
 		// 修改
 		Button butAlter = (Button) findViewById(R.id.butAlter);
 		butAlter.setOnClickListener(new OnClickListener() {
@@ -733,7 +710,7 @@ public class MainActivity extends Activity {
 				// 控件值
 				String password1 = etPassword1.getText().toString();
 				String password2 = etPassword2.getText().toString().trim();
-                String password3 = cofPassword2.getText().toString().trim();
+				String password3 = cofPassword2.getText().toString().trim();
 				if (password1.equals("") && password2.equals("")
 						&& bitmap == null && password3.equals("")) {
 					ViewUtil.toastShort("您没有信息需要修改", MainActivity.this);
@@ -745,7 +722,7 @@ public class MainActivity extends Activity {
 					password = StaticVarUtil.student.getPassword();
 				} else {
 					if (password1.equals(StaticVarUtil.student.getPassword())
-							&& password2.equals("") == false && password2.equals(password3)) {
+							&& password2.equals("") == false) {
 						// 如果旧密码正确，新密码不为空,那么就是新密码
 						password = password2;
 					} else {
@@ -754,18 +731,21 @@ public class MainActivity extends Activity {
 						return;
 					}
 				}
-/*
-				File file = null;
-				// 头像
-				if (bitmap != null) {
-					file = new File(StaticVarUtil.PATH + "/headPhoto.JPEG");
+				/*
+				 * File file = null; // 头像 if (bitmap != null) { file = new
+				 * File(StaticVarUtil.PATH + "/headPhoto.JPEG"); } String
+				 * account = StaticVarUtil.student.getAccount() + ""; // 修改
+				 * //alertStudent(account, password, file);
+				 */
+				if (password2.equals(password3)) {
+					ChangePwAsyntask changePwAsyntask = new ChangePwAsyntask();
+					changePwAsyntask.execute(new String[] { password1,
+							password2 });
+				} else {
+					ViewUtil.toastShort("新密码不正确", MainActivity.this);
+					return;
 				}
-				String account = StaticVarUtil.student.getAccount() + "";
-				// 修改
-				//alertStudent(account, password, file);*/
-				ChangePwAsyntask changePwAsyntask = new ChangePwAsyntask();
-				changePwAsyntask.execute(new String[]{password1,password2});
-				
+
 			}
 		});
 	}
@@ -779,72 +759,40 @@ public class MainActivity extends Activity {
 	 *            密码
 	 * @param file
 	 *            头像文件
-	 *//*
-	protected void alertStudent(final String account, final String password,
-			final File file) {
-		new Thread() {
-			public void run() {
-				Message msg = new Message();
-				msg.what = StaticVarUtil.START;
-				handlerAlter.sendMessage(msg);
-
-				String url = "/fengyun06_alter_judge.jsp";
-				HashMap<String, String> allParams = new HashMap<String, String>();
-				allParams.put(HttpUtil.ACCOUNT, account);
-				allParams.put(HttpUtil.PASSWORD, password);
-				// 这个很奇怪，不知道为啥非得传递五个参数，所以fileParam不能为null,但是可以不包含任何值
-				HashMap<String, File> fileParam = new HashMap<String, File>();
-				if (file != null) {
-					fileParam.put(HttpUtil.HEAD_PHOTO, file);
-				}
-				HttpUtil http = new HttpUtil();
-				try {
-					if (http.submitFormAlter(url, allParams, fileParam).equals(
-							HttpUtil.SUCCESS)) {
-						msg = new Message();
-						msg.what = StaticVarUtil.END_SUCCESS;
-						handlerAlter.sendMessage(msg);
-					} else {
-						msg = new Message();
-						msg.what = StaticVarUtil.END_FAIL;
-						handlerAlter.sendMessage(msg);
-					}
-				} catch (Exception e) {
-					msg = new Message();
-					msg.what = StaticVarUtil.INTERNET_ERROR;
-					handlerAlter.sendMessage(msg);
-					e.printStackTrace();
-				}
-			};
-		}.start();
-	}
-
-	*//**
+	 */
+	/*
+	 * protected void alertStudent(final String account, final String password,
+	 * final File file) { new Thread() { public void run() { Message msg = new
+	 * Message(); msg.what = StaticVarUtil.START; handlerAlter.sendMessage(msg);
+	 * 
+	 * String url = "/fengyun06_alter_judge.jsp"; HashMap<String, String>
+	 * allParams = new HashMap<String, String>();
+	 * allParams.put(HttpUtil.ACCOUNT, account);
+	 * allParams.put(HttpUtil.PASSWORD, password); //
+	 * 这个很奇怪，不知道为啥非得传递五个参数，所以fileParam不能为null,但是可以不包含任何值 HashMap<String, File>
+	 * fileParam = new HashMap<String, File>(); if (file != null) {
+	 * fileParam.put(HttpUtil.HEAD_PHOTO, file); } HttpUtil http = new
+	 * HttpUtil(); try { if (http.submitFormAlter(url, allParams,
+	 * fileParam).equals( HttpUtil.SUCCESS)) { msg = new Message(); msg.what =
+	 * StaticVarUtil.END_SUCCESS; handlerAlter.sendMessage(msg); } else { msg =
+	 * new Message(); msg.what = StaticVarUtil.END_FAIL;
+	 * handlerAlter.sendMessage(msg); } } catch (Exception e) { msg = new
+	 * Message(); msg.what = StaticVarUtil.INTERNET_ERROR;
+	 * handlerAlter.sendMessage(msg); e.printStackTrace(); } }; }.start(); }
+	 *//**
 	 * 修改信息的handler
-	 *//*
-	private Handler handlerAlter = new Handler() {
-		public void handleMessage(android.os.Message msg) {
-			switch (msg.what) {
-			case StaticVarUtil.START:
-				dialog.show();
-				break;
-			case StaticVarUtil.END_FAIL:
-				dialog.cancel();
-				ViewUtil.toastLength("修改失败，请稍后重试...", MainActivity.this);
-				break;
-			case StaticVarUtil.END_SUCCESS:
-				dialog.cancel();
-				ViewUtil.toastLength("修改成功", MainActivity.this);
-				break;
-			case StaticVarUtil.INTERNET_ERROR:
-				dialog.cancel();
-				ViewUtil.toastLength("网络异常，请稍后重试...", MainActivity.this);
-				break;
-			default:
-				break;
-			}
-		};
-	};*/
+	 */
+	/*
+	 * private Handler handlerAlter = new Handler() { public void
+	 * handleMessage(android.os.Message msg) { switch (msg.what) { case
+	 * StaticVarUtil.START: dialog.show(); break; case StaticVarUtil.END_FAIL:
+	 * dialog.cancel(); ViewUtil.toastLength("修改失败，请稍后重试...",
+	 * MainActivity.this); break; case StaticVarUtil.END_SUCCESS:
+	 * dialog.cancel(); ViewUtil.toastLength("修改成功", MainActivity.this); break;
+	 * case StaticVarUtil.INTERNET_ERROR: dialog.cancel();
+	 * ViewUtil.toastLength("网络异常，请稍后重试...", MainActivity.this); break; default:
+	 * break; } }; };
+	 */
 
 	/**
 	 * 选择头像
@@ -1122,7 +1070,7 @@ public class MainActivity extends Activity {
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		switch (keyCode) {
 		case KeyEvent.KEYCODE_BACK:// 如果是返回按钮,退出
-			quit();
+			quit(false);
 			break;
 		case KeyEvent.KEYCODE_MENU:// 如果是菜单按钮
 			slidingMenu.toggle();
@@ -1135,8 +1083,11 @@ public class MainActivity extends Activity {
 
 	/**
 	 * 退出模块
+	 * 
+	 * @param logout
+	 *            是否注销
 	 */
-	private void quit() {
+	private void quit(final boolean logout) {
 		Builder builder = new AlertDialog.Builder(MainActivity.this);
 		builder.setMessage("你确定要退出吗？");
 		builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
@@ -1144,6 +1095,11 @@ public class MainActivity extends Activity {
 			public void onClick(DialogInterface dialog, int which) {
 				dialog.cancel();
 				StaticVarUtil.quit();
+				if (logout) {
+					Intent i = new Intent();
+					i.setClass(getApplicationContext(), LoginActivity.class);
+					startActivity(i);
+				}
 			}
 		});
 		builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -1277,65 +1233,61 @@ public class MainActivity extends Activity {
 		}
 
 	}
-	
+
 	// 异步加载登录
-		class ChangePwAsyntask extends AsyncTask<String, String, String> {
+	class ChangePwAsyntask extends AsyncTask<String, String, String> {
 
-			@Override
-			protected String doInBackground(String... params) {
-				// TODO Auto-generated method stub
-				String url = "";
-				String canshu = Util.getURL(StaticVarUtil.CHANGE_PW);
-				/*String[] can = canshu.split("&");
-				String url_str = can[0];
-				String gnmkdm = can[1];*/
-				url = HttpUtilMc.BASE_URL
-						+ "changepw.jsp?session="
-						+ StaticVarUtil.session
-						+ "&url="
-						+ canshu+"&old_password="+params[0]+"&new_password="+params[1];
-				System.out.println("url" + url);
-				// 查询返回结果
-				String result = HttpUtilMc.queryStringForPost(url);
-				System.out.println("=========================  " + result);
-				return result;
+		@Override
+		protected String doInBackground(String... params) {
+			// TODO Auto-generated method stub
+			String url = "";
+			String canshu = Util.getURL(StaticVarUtil.CHANGE_PW);
+			/*
+			 * String[] can = canshu.split("&"); String url_str = can[0]; String
+			 * gnmkdm = can[1];
+			 */
+			url = HttpUtilMc.BASE_URL + "changepw.jsp?session="
+					+ StaticVarUtil.session + "&url=" + canshu
+					+ "&old_password=" + params[0] + "&new_password="
+					+ params[1];
+			System.out.println("url" + url);
+			// 查询返回结果
+			String result = HttpUtilMc.queryStringForPost(url);
+			System.out.println("=========================  " + result);
+			return result;
 
-			}
+		}
 
-			@Override
-			protected void onPostExecute(String result) {
-				// TODO Auto-generated method stub
-				super.onPostExecute(result);
-				// progress.cancel();
-				// 显示用户名
-				nickname.setText(name);
-				try {
-					if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
-						if (!result.equals("error")) {
-							/**
-							 * 将字符串 写入xml文件中
-							 */
-							if (!result.equals("error")) {
-								Toast.makeText(getApplicationContext(), "修改成功", 1000).show();
-							}
-							menu1();
-						} else {
-							Toast.makeText(getApplicationContext(), "修改不成功", 1)
-									.show();
-						}
-
+		@Override
+		protected void onPostExecute(String result) {
+			// TODO Auto-generated method stub
+			super.onPostExecute(result);
+			// progress.cancel();
+			// 显示用户名
+			nickname.setText(name);
+			try {
+				if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
+					if (!result.equals("error")) {
+						Toast.makeText(getApplicationContext(), "修改成功", 1000)
+								.show();
+						menu1();
 					} else {
-						Toast.makeText(getApplicationContext(),
-								HttpUtilMc.CONNECT_EXCEPTION, 1).show();
-						// progress.cancel();
+						Toast.makeText(getApplicationContext(), "修改不成功", 1)
+								.show();
 					}
-				} catch (Exception e) {
-					// TODO: handle exception
-					e.printStackTrace();
-					Log.i("LoginActivity", e.toString());
-				}
 
+				} else {
+					Toast.makeText(getApplicationContext(),
+							HttpUtilMc.CONNECT_EXCEPTION, 1).show();
+					// progress.cancel();
+				}
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+				Log.i("LoginActivity", e.toString());
 			}
 
 		}
+
+	}
 }
