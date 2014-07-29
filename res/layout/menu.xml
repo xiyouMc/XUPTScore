@@ -284,7 +284,7 @@
                 android:layout_height="fill_parent"
                 android:gravity="center_vertical"
                 android:paddingLeft="15dp"
-                android:text="退出"
+                android:text="注销"
                 android:textColor="@drawable/change_menu_text_color"
                 android:textSize="18dp" />
 

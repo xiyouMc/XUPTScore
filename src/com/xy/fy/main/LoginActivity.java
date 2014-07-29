@@ -21,6 +21,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -117,8 +119,9 @@ public class LoginActivity extends Activity {
 	 * 初始化一些必须的数据
 	 */
 	private boolean initData() {
+		this.progressDialog = ViewUtil.getProgressDialog(LoginActivity.this,
+				"正在登录");
 		// 获取数据库
-
 		boolean isSDcardExist = Environment.getExternalStorageState().equals(
 				android.os.Environment.MEDIA_MOUNTED); // 判断sd卡是否存在
 		if (isSDcardExist) {
@@ -220,14 +223,20 @@ public class LoginActivity extends Activity {
 			ContentValues values = new ContentValues();
 			values.put(com.mc.db.DBConnection.UserSchema.USERNAME, account);
 			values.put(com.mc.db.DBConnection.UserSchema.PASSWORD, password);
-
-			sqLiteDatabase.insert(UserSchema.TABLE_NAME, null, values);// 插入
+            int i = sqLiteDatabase
+    				.update(UserSchema.TABLE_NAME, values, "username='"+account+"'", null);
+            if (i==0) {//说明没有这个用户，所以得插入
+            	sqLiteDatabase.insert(UserSchema.TABLE_NAME, null, values);// 插入
+			}
+		
 
 			editor.putString(StaticVarUtil.PASSWORD, password);
 			editor.putBoolean(StaticVarUtil.IS_REMEMBER, true);// 记住密码
 		} else {
 			editor.putString(StaticVarUtil.PASSWORD, "");
 			editor.putBoolean(StaticVarUtil.IS_REMEMBER, false);// 不记住密码
+			//删除数据库中的该用户
+			DBConnection.updateUser(account, LoginActivity.this);
 		}
 		editor.commit();
 	}
@@ -238,6 +247,7 @@ public class LoginActivity extends Activity {
 	private void login() {
 
 		LoginAsyntask loginAsyntask = new LoginAsyntask();
+		progressDialog.show();
 		loginAsyntask.execute();
 	}
 
@@ -265,23 +275,32 @@ public class LoginActivity extends Activity {
 		// 账号 自动提示
 		account = (AutoCompleteTextView) findViewById(R.id.etAccount);
 		account.setAdapter(av);
-		account.setOnFocusChangeListener(new android.view.View.OnFocusChangeListener() {//焦点事件
+		account.addTextChangedListener(new TextWatcher() {
+			
 			@Override
-			public void onFocusChange(View v, boolean hasFocus) {
-				if (hasFocus) {
-					// 此处为得到焦点时的处理内容
-					if (account.getText().toString().length() < 8) {
-						password.setText("");// 密码置空
-					}
-					if (account.getText().toString().length() == 8) {
-						password.setText(DBConnection.getPassword(account.getText().toString(), LoginActivity.this));
-					}
-				} else {
-					// 此处为失去焦点时的处理内容
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void afterTextChanged(Editable s) {
+				// TODO Auto-generated method stub
+				if (account.getText().toString().length() < 8) {
+					password.setText("");// 密码置空
+				}
+				if (account.getText().toString().length() == 8) {
+					password.setText(DBConnection.getPassword(account.getText().toString(), LoginActivity.this));
 				}
 			}
 		});
-
 		this.forgetPassWord = (Button) findViewById(R.id.butForgetPassword);
 		this.rememberPassword = (CheckBox) findViewById(R.id.butRememberPassword);
 		this.login = (Button) findViewById(R.id.butLogin);
@@ -322,6 +341,7 @@ public class LoginActivity extends Activity {
 			// TODO Auto-generated method stub
 			super.onPostExecute(result);
 			// progress.cancel();
+			progressDialog.cancel();
 			try {
 				if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
 

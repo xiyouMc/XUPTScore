@@ -116,12 +116,13 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		super.setContentView(R.layout.activity_main);
+		dialog = ViewUtil.getProgressDialog(MainActivity.this, "正在查询");
 
 		// 请求 获取 成绩
 		GetScoreAsyntask getScoreAsyntask = new GetScoreAsyntask();
+		dialog.show();
 		getScoreAsyntask.execute();
-		dialog = ViewUtil.getProgressDialog(MainActivity.this, "正在修改");
-
+		
 		setMenuItemListener();
 
 		// 当前Activity进栈
@@ -281,7 +282,7 @@ public class MainActivity extends Activity {
 			String[][] first_score_array = getScoreToArray(first_score);
 			_myPlayCard.setOnClickListener(new ScoreClass(
 					first_score_array.length, first_score_array,
-					"2013-2014 第一学期"));
+					xn+" 第一学期"));
 			mCardView.addCard(_myPlayCard);
 			// mCardView.addCardToLastStack(new
 			// MyCard("By Androguide & GadgetCheck"));
@@ -294,7 +295,7 @@ public class MainActivity extends Activity {
 					"#e00707", false, true);
 			String[][] second_score_array = getScoreToArray(second_score);
 			myCard.setOnClickListener(new ScoreClass(second_score_array.length,
-					second_score_array, "2013-2014 第二学期"));
+					second_score_array, xn+" 第二学期"));
 			mCardView.addCardToLastStack(myCard);
 		}
 
@@ -1182,7 +1183,7 @@ public class MainActivity extends Activity {
 		protected void onPostExecute(String result) {
 			// TODO Auto-generated method stub
 			super.onPostExecute(result);
-			// progress.cancel();
+			 dialog.cancel();
 			// 显示用户名
 			nickname.setText(name);
 			try {

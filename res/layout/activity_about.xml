@@ -54,7 +54,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="10dp"
-                android:text="项目名称：高校风云榜\n\n负责人：王玉超\n\n负责单位：西安邮电3G手机实验室\n\n指导老师：曹小鹏，张荣\n\n需求分析人员：白永丽，刘玥\n\n原型设计人员：郭旭，康盼盼，\n\n布局人员：周浩，马超，金航\n\n美工人员：戴亚楠\n\n编码人员：朱亚楠，白爱洁，雷华\n\n宣传人员：张腾元\n\n测试人员：3G实验室所有人\n\n版本号：1.0\n\n反馈方式：电话：18710829870\n邮箱：1154786190@qq.com"
+                android:text="项目名称：高校风云榜\n\n负责人：西邮Mc\n\n负责单位：西安邮电3G手机实验室\n\n版本号：1.0\n\n反馈方式：电话：18291994584\n邮箱：694449212@qq.com"
                 android:textColor="@color/black"
                 android:textSize="18dp" />
         </LinearLayout>

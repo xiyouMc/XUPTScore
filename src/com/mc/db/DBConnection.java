@@ -1,5 +1,6 @@
 package com.mc.db;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -52,7 +53,12 @@ public class DBConnection extends SQLiteOpenHelper {
 		// TODO Auto-generated method stub
 
 	}
-	
+	/**
+	 * 获取密码
+	 * @param username
+	 * @param context
+	 * @return
+	 */
 	public static String getPassword(String username,Context context){
 		String password = "";
 		sqLiteDatabase = new DBConnection(context).getWritableDatabase();
@@ -63,12 +69,41 @@ public class DBConnection extends SQLiteOpenHelper {
 				.query(UserSchema.TABLE_NAME, USERSFROM,
 						"username='"+username+"'", null, null,
 						null, null);
-		c.moveToFirst();
-		if (c!=null) {
+		if (c.moveToFirst()!=false) {
 			password = c.getString(2);//获取密码
 		}
 		
 		return password;
 	}
-
+	/**
+	 * 删除用户
+	 * @param username
+	 * @param context
+	 */
+	public static void deleteUser(String username,Context context){
+		String password = "";
+		sqLiteDatabase = new DBConnection(context).getWritableDatabase();
+		String[] USERSFROM = { UserSchema.ID,
+				UserSchema.USERNAME, UserSchema.PASSWORD,
+		};
+		sqLiteDatabase
+				.delete(UserSchema.TABLE_NAME, "username='"+username+"'", null);
+	}
+	
+	/**
+	 * 更新用户密码为空
+	 * @param username
+	 * @param context
+	 */
+	public static void updateUser(String username,Context context){
+		String password = "";
+		sqLiteDatabase = new DBConnection(context).getWritableDatabase();
+		String[] USERSFROM = { UserSchema.ID,
+				UserSchema.USERNAME, UserSchema.PASSWORD,
+		};
+		ContentValues values= new ContentValues();
+		values.put("password", "");
+		sqLiteDatabase
+				.update(UserSchema.TABLE_NAME, values, "username='"+username+"'", null);
+	}
 }
