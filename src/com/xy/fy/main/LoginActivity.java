@@ -48,7 +48,6 @@ public class LoginActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		super.setContentView(R.layout.activity_login);
-
 		
 		GetPicAsyntask getPicAsyntask = new GetPicAsyntask();
 		getPicAsyntask.execute();
@@ -340,19 +339,9 @@ public class LoginActivity extends Activity {
 							JSONObject json = new JSONObject(result);
 							String session = json.getString("cookieSessionID");//session
 							System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@");
-							/*Declare declare = (Declare) getApplicationContext();
-							declare.setId(Integer.parseInt(result));
-							declare.setUserName(userEditText.getText().toString());*/
 							Toast.makeText(getApplicationContext(), "µÇÂ¼³É¹¦", 1)
 									.show();
 							StaticVarUtil.session =session;
-						/*	Intent intent = new Intent();
-							intent.setClass(WelcomeActivity.this, LoginActivity.class);
-							Bundle b = new Bundle();
-							b.putString("session", session);
-							intent.putExtras(b);
-							startActivity(intent);*/
-							finish();
 
 						}
 						else {

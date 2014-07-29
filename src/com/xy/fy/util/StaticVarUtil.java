@@ -32,7 +32,7 @@ public class StaticVarUtil {
 	 * listHerf中tittle
 	 */
 	public static final String QUERY_SCORE= "成绩查询";
-	public static final String CHANGE_PW = "修改密码";
+	public static final String CHANGE_PW = "密码修改";
 	/**
 	 * handler中的值
 	 */
