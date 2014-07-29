@@ -1089,7 +1089,12 @@ public class MainActivity extends Activity {
 	 */
 	private void quit(final boolean logout) {
 		Builder builder = new AlertDialog.Builder(MainActivity.this);
-		builder.setMessage("你确定要退出吗？");
+
+		if (logout) {
+			builder.setMessage("你确定要注销吗？");
+		} else {
+			builder.setMessage("你确定要退出吗？");
+		}
 		builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
@@ -1268,9 +1273,10 @@ public class MainActivity extends Activity {
 			try {
 				if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
 					if (!result.equals("error")) {
-						Toast.makeText(getApplicationContext(), "修改成功", 1000)
+						Toast.makeText(getApplicationContext(), "修改成功,请重新登录", 1000)
 								.show();
-						menu1();
+						//menu1();
+						quit(true);//注销重新登录
 					} else {
 						Toast.makeText(getApplicationContext(), "修改不成功", 1)
 								.show();

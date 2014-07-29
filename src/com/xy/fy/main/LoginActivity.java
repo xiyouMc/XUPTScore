@@ -3,8 +3,8 @@ package com.xy.fy.main;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -12,20 +12,27 @@ import org.json.JSONObject;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.mc.db.DBConnection;
+import com.mc.db.DBConnection.UserSchema;
 import com.mc.util.HttpUtilMc;
 import com.xy.fy.util.ConnectionUtil;
 import com.xy.fy.util.HttpUtil;
@@ -36,25 +43,28 @@ import com.xy.fy.view.ToolClass;
 @SuppressLint("HandlerLeak")
 public class LoginActivity extends Activity {
 
-	private EditText account;// 账号
+	private AutoCompleteTextView account;// 账号
 	private EditText password;// 密码
 	private Button forgetPassWord;// 忘记密码
 	private CheckBox rememberPassword;// 记住密码
 	private Button login;// 登陆
 	private ProgressDialog progressDialog;
-    //保存所有herf
+	// 保存所有herf
 	private List<HashMap<String, String>> listHerf;
+	private DBConnection helper;// 数据库
+	SQLiteDatabase sqLiteDatabase;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		super.setContentView(R.layout.activity_login);
-		
+
 		GetPicAsyntask getPicAsyntask = new GetPicAsyntask();
 		getPicAsyntask.execute();
-		
-		
+		// **创建数据库
+		helper = new DBConnection(LoginActivity.this);
+		sqLiteDatabase = helper.getWritableDatabase();
 		this.findViewById();
-
 		if (!this.initData()) {// 初始化一些必须的数据
 			ViewUtil.toastLength("内存卡有问题", LoginActivity.this);
 		}
@@ -103,11 +113,12 @@ public class LoginActivity extends Activity {
 		});
 	}
 
-	
 	/**
 	 * 初始化一些必须的数据
 	 */
 	private boolean initData() {
+		// 获取数据库
+
 		boolean isSDcardExist = Environment.getExternalStorageState().equals(
 				android.os.Environment.MEDIA_MOUNTED); // 判断sd卡是否存在
 		if (isSDcardExist) {
@@ -205,6 +216,13 @@ public class LoginActivity extends Activity {
 		Editor editor = preferences.edit();
 		editor.putString(StaticVarUtil.ACCOUNT, account);
 		if (rememberPassword.isChecked() == true) {
+			// 插入数据库
+			ContentValues values = new ContentValues();
+			values.put(com.mc.db.DBConnection.UserSchema.USERNAME, account);
+			values.put(com.mc.db.DBConnection.UserSchema.PASSWORD, password);
+
+			sqLiteDatabase.insert(UserSchema.TABLE_NAME, null, values);// 插入
+
 			editor.putString(StaticVarUtil.PASSWORD, password);
 			editor.putBoolean(StaticVarUtil.IS_REMEMBER, true);// 记住密码
 		} else {
@@ -227,8 +245,43 @@ public class LoginActivity extends Activity {
 	 * 找到控件ID
 	 */
 	private void findViewById() {
-		this.account = (EditText) findViewById(R.id.etAccount);
+		// this.account = (EditText) findViewById(R.id.etAccount);
 		this.password = (EditText) findViewById(R.id.etPassword);
+		String[] USERSFROM = { UserSchema.ID, UserSchema.USERNAME,
+				UserSchema.PASSWORD, };
+		Cursor c = sqLiteDatabase.query(UserSchema.TABLE_NAME, USERSFROM, null,
+				null, null, null, null);
+		HashSet<String> set = new HashSet<String>();
+		while (c.moveToNext()) {
+			set.add(c.getString(1));// 获取用户名
+		}
+		// 读取所有用户
+		String[] users = new String[set.size()];
+		set.toArray(users);
+		c.close();
+		// 创建一个ArrayAdapter封装数组
+		ArrayAdapter<String> av = new ArrayAdapter<String>(this,
+				android.R.layout.simple_dropdown_item_1line, users);
+		// 账号 自动提示
+		account = (AutoCompleteTextView) findViewById(R.id.etAccount);
+		account.setAdapter(av);
+		account.setOnFocusChangeListener(new android.view.View.OnFocusChangeListener() {//焦点事件
+			@Override
+			public void onFocusChange(View v, boolean hasFocus) {
+				if (hasFocus) {
+					// 此处为得到焦点时的处理内容
+					if (account.getText().toString().length() < 8) {
+						password.setText("");// 密码置空
+					}
+					if (account.getText().toString().length() == 8) {
+						password.setText(DBConnection.getPassword(account.getText().toString(), LoginActivity.this));
+					}
+				} else {
+					// 此处为失去焦点时的处理内容
+				}
+			}
+		});
+
 		this.forgetPassWord = (Button) findViewById(R.id.butForgetPassword);
 		this.rememberPassword = (CheckBox) findViewById(R.id.butRememberPassword);
 		this.login = (Button) findViewById(R.id.butLogin);
@@ -254,7 +307,8 @@ public class LoginActivity extends Activity {
 			String url;
 			url = HttpUtilMc.BASE_URL + "login.jsp?username="
 					+ account.getText().toString().trim() + "&password="
-					+ password.getText().toString().trim() + "&session=" + StaticVarUtil.session;
+					+ password.getText().toString().trim() + "&session="
+					+ StaticVarUtil.session;
 			System.out.println("url" + url);
 			// 查询返回结果
 			String result = HttpUtilMc.queryStringForPost(url);
@@ -273,23 +327,25 @@ public class LoginActivity extends Activity {
 
 					if (!result.equals("error")) {
 
-						listHerf = new ArrayList<HashMap<String,String>>();
+						listHerf = new ArrayList<HashMap<String, String>>();
 						JSONObject json = new JSONObject(result);
 						JSONArray jsonArray = (JSONArray) json.get("listHerf");
-                        for (int i = 0; i < jsonArray.length(); i++) {
+						for (int i = 0; i < jsonArray.length(); i++) {
 							JSONObject o = (JSONObject) jsonArray.get(i);
-							HashMap<String,String> map = new HashMap<String, String>();
+							HashMap<String, String> map = new HashMap<String, String>();
 							map.put("herf", o.getString("herf"));
 							map.put("tittle", o.getString("tittle"));
 							listHerf.add(map);
 						}
-                        StaticVarUtil.listHerf  = listHerf;//设置为静态
-                        Intent intent = new Intent();
-    					intent.setClass(LoginActivity.this, MainActivity.class);
-    					startActivity(intent);
-    					StaticVarUtil.student.setAccount(Integer.valueOf(account.getText().toString().trim()));
-    					StaticVarUtil.student.setPassword( password.getText().toString().trim());
-    					finish();
+						StaticVarUtil.listHerf = listHerf;// 设置为静态
+						Intent intent = new Intent();
+						intent.setClass(LoginActivity.this, MainActivity.class);
+						startActivity(intent);
+						StaticVarUtil.student.setAccount(Integer
+								.valueOf(account.getText().toString().trim()));
+						StaticVarUtil.student.setPassword(password.getText()
+								.toString().trim());
+						finish();
 					} else {
 						Toast.makeText(getApplicationContext(), "登录失败", 1)
 								.show();
@@ -308,58 +364,56 @@ public class LoginActivity extends Activity {
 		}
 
 	}
-	
+
 	// 异步加载登录
-		class GetPicAsyntask extends AsyncTask<Object, String, String> {
+	class GetPicAsyntask extends AsyncTask<Object, String, String> {
 
-			@Override
-			protected String doInBackground(Object... params) {
-				// TODO Auto-generated method stub
-				String url;
-				url = HttpUtilMc.BASE_URL
-						+ "GetPic.jsp";
-				System.out.println("url"+url);
-				// 查询返回结果
-				String result = HttpUtilMc.queryStringForPost(url);
-				System.out.println("=========================  " + result);
-				return result;
+		@Override
+		protected String doInBackground(Object... params) {
+			// TODO Auto-generated method stub
+			String url;
+			url = HttpUtilMc.BASE_URL + "GetPic.jsp";
+			System.out.println("url" + url);
+			// 查询返回结果
+			String result = HttpUtilMc.queryStringForPost(url);
+			System.out.println("=========================  " + result);
+			return result;
 
-			}
+		}
 
-			@Override
-			protected void onPostExecute(String result) {
-				// TODO Auto-generated method stub
-				super.onPostExecute(result);
-//				progress.cancel();
-				try {
-					if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
+		@Override
+		protected void onPostExecute(String result) {
+			// TODO Auto-generated method stub
+			super.onPostExecute(result);
+			// progress.cancel();
+			try {
+				if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
 
-						if (!result.equals("error")) {
+					if (!result.equals("error")) {
 
-							JSONObject json = new JSONObject(result);
-							String session = json.getString("cookieSessionID");//session
-							System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@");
-							Toast.makeText(getApplicationContext(), "登录成功", 1)
-									.show();
-							StaticVarUtil.session =session;
-
-						}
-						else {
-							Toast.makeText(getApplicationContext(), "登录失败", 1)
-									.show();
-						}
+						JSONObject json = new JSONObject(result);
+						String session = json.getString("cookieSessionID");// session
+						System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@");
+						Toast.makeText(getApplicationContext(), "登录成功", 1)
+								.show();
+						StaticVarUtil.session = session;
 
 					} else {
-						Toast.makeText(getApplicationContext(),
-								HttpUtilMc.CONNECT_EXCEPTION, 1000).show();
-						// progress.cancel();
-						finish();
+						Toast.makeText(getApplicationContext(), "登录失败", 1)
+								.show();
 					}
-				} catch (Exception e) {
-					// TODO: handle exception
-					Log.i("LoginActivity", e.toString());
-				}
 
+				} else {
+					Toast.makeText(getApplicationContext(),
+							HttpUtilMc.CONNECT_EXCEPTION, 1000).show();
+					// progress.cancel();
+					finish();
+				}
+			} catch (Exception e) {
+				// TODO: handle exception
+				Log.i("LoginActivity", e.toString());
 			}
-}
+
+		}
+	}
 }

@@ -21,13 +21,19 @@
 
         <!-- 输入账号 -->
 
-        <EditText
+      <!--   <EditText
             android:id="@+id/etAccount"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="请输入账号" >
-        </EditText>
+        </EditText> -->
+        <AutoCompleteTextView 
+            android:id="@+id/etAccount"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="请输入账号"/>
         <!-- 输入密码 -->
 
         <EditText
