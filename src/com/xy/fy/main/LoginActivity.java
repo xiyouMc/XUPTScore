@@ -369,6 +369,7 @@ public class LoginActivity extends Activity {
 					} else {
 						Toast.makeText(getApplicationContext(), "µÇÂ¼Ê§°Ü", 1)
 								.show();
+						password.setText("");
 					}
 
 				} else {
@@ -414,12 +415,10 @@ public class LoginActivity extends Activity {
 						JSONObject json = new JSONObject(result);
 						String session = json.getString("cookieSessionID");// session
 						System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@");
-						Toast.makeText(getApplicationContext(), "µÇÂ¼³É¹¦", 1)
-								.show();
 						StaticVarUtil.session = session;
 
 					} else {
-						Toast.makeText(getApplicationContext(), "µÇÂ¼Ê§°Ü", 1)
+						Toast.makeText(getApplicationContext(), "ÍøÂçÒì³£", 1)
 								.show();
 					}
 

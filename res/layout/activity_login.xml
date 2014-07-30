@@ -33,7 +33,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="请输入账号"/>
+            android:hint="请输入学号"/>
         <!-- 输入密码 -->
 
         <EditText
