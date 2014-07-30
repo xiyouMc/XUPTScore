@@ -53,7 +53,8 @@
             <LinearLayout 
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingTop="70dp">
                 <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -91,7 +92,7 @@
                 android:id="@+id/checkversion"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/button_big"
+                android:background="#00000000"
                 android:drawableLeft="@drawable/emotionstore_newtips"
                 android:gravity="left|center_vertical"
                 android:text="检测新版本"

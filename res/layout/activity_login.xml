@@ -17,7 +17,8 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical"
-        android:padding="50dp" >
+        android:padding="50dp" 
+        >
 
         <!-- 输入账号 -->
 
@@ -29,10 +30,12 @@
             android:hint="请输入账号" >
         </EditText> -->
         <AutoCompleteTextView 
+            android:layout_marginTop="70dp"
             android:id="@+id/etAccount"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
+            android:ems="8"
+            android:textColor="@color/darkgoldenrod"
             android:hint="请输入学号"/>
         <!-- 输入密码 -->
 
@@ -42,6 +45,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="请输入密码"
+            android:textColor="@color/darkgoldenrod"
             android:inputType="textPassword" >
         </EditText>
 

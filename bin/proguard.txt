@@ -61,14 +61,14 @@
 # view res/layout/abs__search_view.xml #generated:84
 -keep class com.actionbarsherlock.widget.SearchView$SearchAutoComplete { <init>(...); }
 
-# view res/layout/card_main.xml #generated:46
+# view res/layout/card_main.xml #generated:44
 -keep class com.fima.cardsui.views.CardUI { <init>(...); }
 
 # view res/layout/cards_view.xml #generated:5
 # view res/layout/footer_fragment.xml #generated:7
 -keep class com.fima.cardsui.views.QuickReturnListView { <init>(...); }
 
-# view res/layout/activity_main.xml #generated:7
+# view res/layout/activity_main.xml #generated:8
 # view res/layout/slidingmenumain.xml #generated:2
 -keep class com.slidingmenu.lib.SlidingMenu { <init>(...); }
 

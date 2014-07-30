@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -17,11 +18,12 @@ public class ShowScoreActivity extends Activity {
 	/** Called when the activity is first created. */
 	private final int WC = ViewGroup.LayoutParams.WRAP_CONTENT;
 	private final int FP = ViewGroup.LayoutParams.FILL_PARENT;
-    private Button back;
+//    private Button back;
     private TextView XNandXQ;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.card_score);
 
 		init();
@@ -59,15 +61,15 @@ public class ShowScoreActivity extends Activity {
 	}
 	private void init() {
 		// TODO Auto-generated method stub
-		back = (Button)findViewById(R.id.butBack);
+//		back = (Button)findViewById(R.id.butBack);
 		XNandXQ = (TextView)findViewById(R.id.XNandXQ);
-		back.setOnClickListener(new OnClickListener() {
+		/*back.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				finish();
 			}
-		});
+		});*/
 	}
 }
