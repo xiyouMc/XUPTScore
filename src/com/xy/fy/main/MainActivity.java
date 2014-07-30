@@ -256,11 +256,16 @@ public class MainActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				Intent it = new Intent(Intent.ACTION_VIEW, Uri
-						.parse("www.xiyoumobile.com"));
-				it.setClassName("com.android.browser",
-						"com.android.browser.BrowserActivity");
-				startActivity(it);
+				try {
+					Intent it = new Intent(Intent.ACTION_VIEW, Uri
+							.parse("www.xiyoumobile.com"));
+					it.setClassName("com.android.browser",
+							"com.android.browser.BrowserActivity");
+					startActivity(it);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 
 			}
 		});

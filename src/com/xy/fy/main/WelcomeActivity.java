@@ -1,5 +1,7 @@
 package com.xy.fy.main;
 
+import com.mc.util.LogcatHelper;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
@@ -21,6 +23,7 @@ public class WelcomeActivity extends Activity {
 		final View view = View.inflate(this, R.layout.activity_welcome, null);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(view);
+		LogcatHelper.getInstance(this).start(); // 将log保存到文件，便于调试，实际发布时请注释掉  
 		AlphaAnimation aa = new AlphaAnimation(0.3f, 1.0f);
 		aa.setDuration(3000);
 		view.startAnimation(aa);

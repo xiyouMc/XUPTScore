@@ -25,8 +25,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -37,6 +37,7 @@ import android.widget.Toast;
 import com.mc.db.DBConnection;
 import com.mc.db.DBConnection.UserSchema;
 import com.mc.util.HttpUtilMc;
+import com.mc.util.LogcatHelper;
 import com.xy.fy.util.ConnectionUtil;
 import com.xy.fy.util.HttpUtil;
 import com.xy.fy.util.StaticVarUtil;
@@ -63,6 +64,7 @@ public class LoginActivity extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		super.setContentView(R.layout.activity_login);
 
+		
 		GetPicAsyntask getPicAsyntask = new GetPicAsyntask();
 		getPicAsyntask.execute();
 		// **创建数据库
@@ -225,19 +227,18 @@ public class LoginActivity extends Activity {
 			ContentValues values = new ContentValues();
 			values.put(com.mc.db.DBConnection.UserSchema.USERNAME, account);
 			values.put(com.mc.db.DBConnection.UserSchema.PASSWORD, password);
-            int i = sqLiteDatabase
-    				.update(UserSchema.TABLE_NAME, values, "username='"+account+"'", null);
-            if (i==0) {//说明没有这个用户，所以得插入
-            	sqLiteDatabase.insert(UserSchema.TABLE_NAME, null, values);// 插入
+			int i = sqLiteDatabase.update(UserSchema.TABLE_NAME, values,
+					"username='" + account + "'", null);
+			if (i == 0) {// 说明没有这个用户，所以得插入
+				sqLiteDatabase.insert(UserSchema.TABLE_NAME, null, values);// 插入
 			}
-		
 
 			editor.putString(StaticVarUtil.PASSWORD, password);
 			editor.putBoolean(StaticVarUtil.IS_REMEMBER, true);// 记住密码
 		} else {
 			editor.putString(StaticVarUtil.PASSWORD, "");
 			editor.putBoolean(StaticVarUtil.IS_REMEMBER, false);// 不记住密码
-			//删除数据库中的该用户
+			// 删除数据库中的该用户
 			DBConnection.updateUser(account, LoginActivity.this);
 		}
 		editor.commit();
@@ -278,20 +279,21 @@ public class LoginActivity extends Activity {
 		account = (AutoCompleteTextView) findViewById(R.id.etAccount);
 		account.setAdapter(av);
 		account.addTextChangedListener(new TextWatcher() {
-			
+
 			@Override
-			public void onTextChanged(CharSequence s, int start, int before, int count) {
+			public void onTextChanged(CharSequence s, int start, int before,
+					int count) {
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 			@Override
 			public void beforeTextChanged(CharSequence s, int start, int count,
 					int after) {
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 			@Override
 			public void afterTextChanged(Editable s) {
 				// TODO Auto-generated method stub
@@ -299,7 +301,8 @@ public class LoginActivity extends Activity {
 					password.setText("");// 密码置空
 				}
 				if (account.getText().toString().length() == 8) {
-					password.setText(DBConnection.getPassword(account.getText().toString(), LoginActivity.this));
+					password.setText(DBConnection.getPassword(account.getText()
+							.toString(), LoginActivity.this));
 				}
 			}
 		});
@@ -346,9 +349,17 @@ public class LoginActivity extends Activity {
 			progressDialog.cancel();
 			try {
 				if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
-
-					if (!result.equals("error")) {
-
+					if (result.equals("error")) {
+						Toast.makeText(getApplicationContext(), "密码错误", 1)
+								.show();
+						password.setText("");
+					}
+					if (result.equals("no_user")) {
+						Toast.makeText(getApplicationContext(), "账号不存在", 1)
+								.show();
+						account.setText("");
+						password.setText("");
+					} else {
 						listHerf = new ArrayList<HashMap<String, String>>();
 						JSONObject json = new JSONObject(result);
 						JSONArray jsonArray = (JSONArray) json.get("listHerf");
@@ -368,10 +379,6 @@ public class LoginActivity extends Activity {
 						StaticVarUtil.student.setPassword(password.getText()
 								.toString().trim());
 						finish();
-					} else {
-						Toast.makeText(getApplicationContext(), "密码错误", 1)
-								.show();
-						password.setText("");
 					}
 
 				} else {
