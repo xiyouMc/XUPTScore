@@ -132,6 +132,8 @@ public class MainActivity extends Activity {
 		super.setContentView(R.layout.activity_main);
 		dialog = ViewUtil.getProgressDialog(MainActivity.this, "正在查询");
 
+		/*CheckVersionAsyntask checkVersionAsyntask = new CheckVersionAsyntask();
+		checkVersionAsyntask.execute();*/
 		// 请求 获取 成绩
 		GetScoreAsyntask getScoreAsyntask = new GetScoreAsyntask();
 		dialog.show();
@@ -1231,7 +1233,7 @@ public class MainActivity extends Activity {
 */
 						VersionUpdate versionUpdate = new VersionUpdate(
 								MainActivity.this);
-						versionUpdate.apkUrl = apk_url;
+						versionUpdate.apkUrl = HttpUtilMc.IP+apk_url;
 						versionUpdate.updateMsg = new_version+"\n\n"+update_content;
 						versionUpdate.checkUpdateInfo();
 					}

@@ -369,7 +369,7 @@ public class LoginActivity extends Activity {
 								.toString().trim());
 						finish();
 					} else {
-						Toast.makeText(getApplicationContext(), "µÇÂ¼Ê§°Ü", 1)
+						Toast.makeText(getApplicationContext(), "ÃÜÂë´íÎó", 1)
 								.show();
 						password.setText("");
 					}

@@ -79,6 +79,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="输入旧密码"
+            android:textColor="@color/darkgoldenrod"
             android:inputType="textPassword" >
         </EditText>
 
@@ -90,6 +91,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="输入新密码："
+            android:textColor="@color/darkgoldenrod"
             android:inputType="textPassword" >
         </EditText>
          <!-- 确认新密码 -->
@@ -100,6 +102,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="确认新密码："
+            android:textColor="@color/darkgoldenrod"
             android:inputType="textPassword" >
         </EditText>
     </LinearLayout>

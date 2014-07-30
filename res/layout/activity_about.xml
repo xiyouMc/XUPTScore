@@ -84,7 +84,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="10dp"
-                android:text="\n负责人：西邮Mc\n\n负责单位：西安邮电3G手机实验室"
+                android:text="\n开发者：Mc and Abel\n\n负责单位：西安邮电3G手机实验室\n\n反馈方式：18291994584\n\n联系方式：694449212@qq.com"
                 android:textColor="@color/black"
                 android:textSize="18dp" />
 
@@ -96,7 +96,8 @@
                 android:drawableLeft="@drawable/emotionstore_newtips"
                 android:gravity="left|center_vertical"
                 android:text="检测新版本"
-                android:textSize="18dp" />
+                android:textSize="18dp"
+                 android:textColor="@color/darkgoldenrod" />
 
            <!--  <TextView
                 android:layout_width="fill_parent"
