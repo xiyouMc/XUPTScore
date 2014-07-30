@@ -1,9 +1,11 @@
 package com.mc.util;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.util.HashMap;
+
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 
 import com.xy.fy.util.StaticVarUtil;
 
@@ -26,5 +28,20 @@ public class Util {
 		result = result.replace("%26", "&");
 		result = result.replace("%3f", "?");
 		return result;
+	}
+	/**
+	 * 获取软件版本号
+	 */
+	public static String getVersion(Context context){
+		String version = "";
+		PackageManager pm = context.getPackageManager();
+		try {
+			PackageInfo pt = pm.getPackageInfo(context.getPackageName(), 0);
+			version = pt.versionName;
+		} catch (NameNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return version;
 	}
 }

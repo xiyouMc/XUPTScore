@@ -19,6 +19,7 @@ import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -26,6 +27,7 @@ import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -39,6 +41,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.widget.AbsListView;
@@ -48,6 +51,7 @@ import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -58,6 +62,7 @@ import com.fima.cardsui.objects.CardStack;
 import com.fima.cardsui.views.CardUI;
 import com.mc.util.HttpUtilMc;
 import com.mc.util.Util;
+import com.mc.util.VersionUpdate;
 import com.slidingmenu.lib.SlidingMenu;
 import com.slidingmenu.lib.SlidingMenu.OnOpenListener;
 import com.xy.fy.adapter.ChooseHistorySchoolExpandAdapter;
@@ -79,6 +84,12 @@ import com.xy.fy.view.ToolClass;
  */
 public class MainActivity extends Activity {
 
+	// 检测版本
+	private static PopupWindow popupWindow;
+	private static PopupWindow version_popupWindow;
+	private View view;
+	private TextView update_content_textview;
+
 	public static SlidingMenu slidingMenu;// 侧滑组件
 	private Button refresh;// 刷新按钮
 	private Button chooseCollege;// 选择学校按钮
@@ -95,6 +106,7 @@ public class MainActivity extends Activity {
 	private LinearLayout menuMyCollect = null;// 我收藏的
 	private LinearLayout menuSetting = null;// 设置
 	private LinearLayout menuAbout = null;// 关于
+	private Button check_version = null;
 	ArrayList<HashMap<String, Object>> listItem;// json解析之后的列表
 	private String score_json;// json数据
 	private ListViewAdapter listViewAdapter = null;
@@ -128,6 +140,7 @@ public class MainActivity extends Activity {
 		// 当前Activity进栈
 		StaticVarUtil.activities.add(MainActivity.this);
 
+		
 		// 找到ID
 		slidingMenu = (SlidingMenu) findViewById(R.id.slidingMenu);
 
@@ -425,71 +438,10 @@ public class MainActivity extends Activity {
 				e.printStackTrace();
 			}
 
-			/*
-			 * for (HashMap<String, Object> score : listItem) { if
-			 * (score.get("xn").equals(xn)) {//某个学年 String s = (String)
-			 * score.get("list_xueKeScore");
-			 * 
-			 * 
-			 * 
-			 * 
-			 * result.append(hashMap.getKcmc()==null?"":"课程:"+hashMap.getKcmc());
-			 * result
-			 * .append(hashMap.getKcxz()==null?"":" 性质:"+hashMap.getKcxz());
-			 * result.append(hashMap.getCj()==null?"":" 成绩:"+hashMap.getCj());
-			 * result.append(hashMap.getXf()==null?"":" 学分:"+hashMap.getXf());
-			 * result
-			 * .append(hashMap.getPscj()==null?"":" 平时成绩:"+hashMap.getPscj());
-			 * result
-			 * .append(hashMap.getQmcj()==null?"":" 期末成绩"+hashMap.getQmcj());
-			 * result
-			 * .append(hashMap.getXymc()==null?"":" 学院:"+hashMap.getXymc());
-			 * 
-			 * } } }
-			 */
 		}
 		return result;
 	}
 
-	/**
-	 * 更多信息的handler
-	 */
-	/*
-	 * private Handler handlerMore = new Handler() { public void
-	 * handleMessage(Message msg) { switch (msg.what) { case
-	 * StaticVarUtil.START: listView.start(); break; case
-	 * StaticVarUtil.END_SUCCESS: listView.finish();
-	 * listViewAdapter.addData(StaticVarUtil.response);// 添加数据
-	 * listView.setAdapter(listViewAdapter); adapter.notifyDataSetChanged();
-	 * System.out.println("page:" + page); listView.setSelection(page * 20);
-	 * break; case StaticVarUtil.END_FAIL: listView.finish();
-	 * ViewUtil.toastShort("返回消息失败", MainActivity.this); break; case
-	 * StaticVarUtil.INTERNET_ERROR: listView.finish();
-	 * ViewUtil.toastShort("网络异常", MainActivity.this); break; default: break; }
-	 * }; };
-	 */
-	/**
-	 * 刷新的handler
-	 */
-	/*
-	 * Handler handler = new Handler() { public void handleMessage(Message msg)
-	 * { switch (msg.what) { case StaticVarUtil.START:
-	 * progress.setVisibility(View.VISIBLE); refresh.setVisibility(View.GONE);
-	 * break; case StaticVarUtil.END_SUCCESS: progress.setVisibility(View.GONE);
-	 * refresh.setVisibility(View.VISIBLE); listView.refreshComplete(); String
-	 * dataResource = StaticVarUtil.response; // 另开线程更新本地jsonCache文件,不追加数据
-	 * FileCache fileCache = new FileCache();
-	 * fileCache.updateJsonCache(dataResource, false, StaticVarUtil.fileName);
-	 * // 设置adapter listViewAdapter = new ListViewAdapter(dataResource,
-	 * MainActivity.this); listView.setAdapter(listViewAdapter); break; case
-	 * StaticVarUtil.END_FAIL: progress.setVisibility(View.GONE);
-	 * refresh.setVisibility(View.VISIBLE);
-	 * ViewUtil.toastLength("客户端错误,请反馈王玉超：QQ：1154786190", MainActivity.this);
-	 * break; case StaticVarUtil.INTERNET_ERROR:
-	 * progress.setVisibility(View.GONE); refresh.setVisibility(View.VISIBLE);
-	 * ViewUtil.toastLength("网络错误,请稍后重试...", MainActivity.this); break; default:
-	 * break; } }; };
-	 */
 
 	/**
 	 * 设置当前MenuItem的状态
@@ -545,30 +497,6 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				Toast.makeText(getApplicationContext(), "程序猿们正在努力开发中，请持续关注...",
 						2000).show();
-				/*
-				 * setMenuItemState(menuBang, false, menuMyBukao, true,
-				 * menuMyPaiming, false, menuMyCollect, false, menuSetting,
-				 * false, menuAbout, false); setCurrentMenuItem(2);//
-				 * 记录当前选项位置，并且跳转 slidingMenu.toggle();// 页面跳转
-				 * 
-				 * slidingMenu.setContent(R.layout.activity_my);
-				 * StaticVarUtil.fileName = "jsonCacheMyPublish.txt";
-				 * 
-				 * progress = (ProgressBar) findViewById(R.id.proRefresh); //
-				 * 菜单按钮 Button menu = (Button) findViewById(R.id.butMenu);
-				 * menu.setOnClickListener(new OnClickListener() {
-				 * 
-				 * @Override public void onClick(View v) { slidingMenu.toggle();
-				 * } });
-				 * 
-				 * // 不能是游客 if (StaticVarUtil.student == null) {
-				 * ViewUtil.toastShort("请先登录，然后再查看...", MainActivity.this);
-				 * return; }
-				 * 
-				 * menuMy("补考查询", StaticVarUtil.fileName, new DownLoadThread(
-				 * StaticVarUtil.student.getAccount(),
-				 * HttpUtil.MY_PUBLISH_MESSAGE));
-				 */
 			}
 		});
 
@@ -577,30 +505,6 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				Toast.makeText(getApplicationContext(), "程序猿们正在努力开发中，请持续关注...",
 						2000).show();
-				/*
-				 * setMenuItemState(menuBang, false, menuMyBukao, false,
-				 * menuMyPaiming, true, menuMyCollect, false, menuSetting,
-				 * false, menuAbout, false); setCurrentMenuItem(3);//
-				 * 记录当前选项位置，并且跳转 slidingMenu.toggle();// 页面跳转
-				 * 
-				 * slidingMenu.setContent(R.layout.activity_my);
-				 * StaticVarUtil.fileName = "jsonCacheMyComment.txt";
-				 * 
-				 * progress = (ProgressBar) findViewById(R.id.proRefresh); //
-				 * 菜单按钮 Button menu = (Button) findViewById(R.id.butMenu);
-				 * menu.setOnClickListener(new OnClickListener() {
-				 * 
-				 * @Override public void onClick(View v) { slidingMenu.toggle();
-				 * } });
-				 * 
-				 * // 不能是游客 if (StaticVarUtil.student == null) {
-				 * ViewUtil.toastShort("请先登录，然后再查看...", MainActivity.this);
-				 * return; }
-				 * 
-				 * menuMy("我的排名", StaticVarUtil.fileName, new DownLoadThread(
-				 * StaticVarUtil.student.getAccount(),
-				 * HttpUtil.MY_COMMENT_MESSAGE));
-				 */
 			}
 		});
 
@@ -670,6 +574,21 @@ public class MainActivity extends Activity {
 						slidingMenu.toggle();
 					}
 				});
+				
+				check_version = (Button)findViewById(R.id.checkversion);//检测新版本按钮
+				TextView version = (TextView) findViewById(R.id.version);
+				version.setText(Util.getVersion(getApplicationContext()));
+				check_version.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+
+						CheckVersionAsyntask checkVersionAsyntask = new CheckVersionAsyntask();
+						dialog.show();
+						checkVersionAsyntask.execute();
+					}
+				});
 			}
 		});
 
@@ -686,6 +605,7 @@ public class MainActivity extends Activity {
 	 * 修改个人信息，只能修改昵称，密码，头像
 	 */
 	protected void menuSetting() {
+		
 		// 菜单按钮
 		Button menu = (Button) findViewById(R.id.butMenu);
 		menu.setOnClickListener(new OnClickListener() {
@@ -700,10 +620,10 @@ public class MainActivity extends Activity {
 			return;
 		}
 
+	
 		EditText etAccount = (EditText) findViewById(R.id.etAccount);
 		etAccount.setText("0" + StaticVarUtil.student.getAccount() + "");
 		etAccount.setEnabled(false);// 不可用
-
 		final EditText etPassword1 = (EditText) findViewById(R.id.etPassword1);
 		final EditText etPassword2 = (EditText) findViewById(R.id.etPassword2);
 		final EditText cofPassword2 = (EditText) findViewById(R.id.corfimPassword2);// 确认密码
@@ -755,51 +675,8 @@ public class MainActivity extends Activity {
 
 			}
 		});
+		
 	}
-
-	/**
-	 * 修改信息
-	 * 
-	 * @param account
-	 *            账号
-	 * @param password
-	 *            密码
-	 * @param file
-	 *            头像文件
-	 */
-	/*
-	 * protected void alertStudent(final String account, final String password,
-	 * final File file) { new Thread() { public void run() { Message msg = new
-	 * Message(); msg.what = StaticVarUtil.START; handlerAlter.sendMessage(msg);
-	 * 
-	 * String url = "/fengyun06_alter_judge.jsp"; HashMap<String, String>
-	 * allParams = new HashMap<String, String>();
-	 * allParams.put(HttpUtil.ACCOUNT, account);
-	 * allParams.put(HttpUtil.PASSWORD, password); //
-	 * 这个很奇怪，不知道为啥非得传递五个参数，所以fileParam不能为null,但是可以不包含任何值 HashMap<String, File>
-	 * fileParam = new HashMap<String, File>(); if (file != null) {
-	 * fileParam.put(HttpUtil.HEAD_PHOTO, file); } HttpUtil http = new
-	 * HttpUtil(); try { if (http.submitFormAlter(url, allParams,
-	 * fileParam).equals( HttpUtil.SUCCESS)) { msg = new Message(); msg.what =
-	 * StaticVarUtil.END_SUCCESS; handlerAlter.sendMessage(msg); } else { msg =
-	 * new Message(); msg.what = StaticVarUtil.END_FAIL;
-	 * handlerAlter.sendMessage(msg); } } catch (Exception e) { msg = new
-	 * Message(); msg.what = StaticVarUtil.INTERNET_ERROR;
-	 * handlerAlter.sendMessage(msg); e.printStackTrace(); } }; }.start(); }
-	 *//**
-	 * 修改信息的handler
-	 */
-	/*
-	 * private Handler handlerAlter = new Handler() { public void
-	 * handleMessage(android.os.Message msg) { switch (msg.what) { case
-	 * StaticVarUtil.START: dialog.show(); break; case StaticVarUtil.END_FAIL:
-	 * dialog.cancel(); ViewUtil.toastLength("修改失败，请稍后重试...",
-	 * MainActivity.this); break; case StaticVarUtil.END_SUCCESS:
-	 * dialog.cancel(); ViewUtil.toastLength("修改成功", MainActivity.this); break;
-	 * case StaticVarUtil.INTERNET_ERROR: dialog.cancel();
-	 * ViewUtil.toastLength("网络异常，请稍后重试...", MainActivity.this); break; default:
-	 * break; } }; };
-	 */
 
 	/**
 	 * 选择头像
@@ -997,6 +874,11 @@ public class MainActivity extends Activity {
 
 		}
 	};
+	private String new_version;// 最新版本
+	private String update_content;// 更新内容
+	private String apk_url;// 下载地址
+	private Button download_version;// 下载版本
+	private Button cancle_check;// 取消
 
 	/**
 	 * 刷新
@@ -1302,5 +1184,133 @@ public class MainActivity extends Activity {
 
 		}
 
+	}
+
+	// 异步检测版本
+	class CheckVersionAsyntask extends AsyncTask<String, String, String> {
+
+		@Override
+		protected String doInBackground(String... params) {
+			// TODO Auto-generated method stub
+			String url = "";
+			/*
+			 * String[] can = canshu.split("&"); String url_str = can[0]; String
+			 * gnmkdm = can[1];
+			 */
+			url = HttpUtilMc.BASE_URL + "checkversion.jsp?version="
+					+ Util.getVersion(getApplicationContext());
+			System.out.println("url" + url);
+			// 查询返回结果
+			String result = HttpUtilMc.queryStringForPost(url);
+			System.out.println("=========================  " + result);
+			return result;
+
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			// TODO Auto-generated method stub
+			super.onPostExecute(result);
+			dialog.cancel();
+			// 显示用户名
+			try {
+				if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
+					if (result.equals("no")) {// 已经是最新版本
+						Toast.makeText(getApplicationContext(), "已经是最新版本", 1000)
+								.show();
+
+					} else {// 有新版本
+						String[] str = result.split("\\|");
+						apk_url = str[0];
+						new_version = str[1];
+						update_content = str[2];
+						/*check_version_showWindow(new View(
+								getApplicationContext()));// 弹出窗口
+*/
+						VersionUpdate versionUpdate = new VersionUpdate(
+								MainActivity.this);
+						versionUpdate.apkUrl = apk_url;
+						versionUpdate.updateMsg = new_version+"\n\n"+update_content;
+						versionUpdate.checkUpdateInfo();
+					}
+				}
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+				Log.i("LoginActivity", e.toString());
+			}
+
+		}
+
+	}
+
+	// 检测版本
+	private void check_version_showWindow(View parent) {
+
+		if (version_popupWindow == null) {
+			LayoutInflater layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+			view = layoutInflater.inflate(R.layout.check_apk_version, null);
+			update_content_textview = (TextView) view
+					.findViewById(R.id.update_content);
+			download_version = (Button) view
+					.findViewById(R.id.download_version);
+			cancle_check = (Button) view.findViewById(R.id.cancle_check);
+			// 创建一个PopuWidow对象
+			version_popupWindow = new PopupWindow(view, getWindowManager()
+					.getDefaultDisplay().getWidth(), 330);
+		}
+		// 使其聚集
+		version_popupWindow.setFocusable(true);
+		// 设置允许在外点击消失
+		version_popupWindow.setOutsideTouchable(true);
+		// 这个是为了点击“返回Back”也能使其消失，并且并不会影响你的背景
+		version_popupWindow.setBackgroundDrawable(new BitmapDrawable());
+		// 设置弹出动画
+		// popupWindow.setAnimationStyle(R.anim.push_bottom_out);
+		version_popupWindow.setAnimationStyle(R.style.mystyle);
+		WindowManager windowManager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
+		// 显示的位置为:屏幕的宽度的一半-PopupWindow的高度的一半
+		/*
+		 * int xPos = windowManager.getDefaultDisplay().getWidth() / 2 -
+		 * popupWindow.getWidth() / 2;
+		 */
+		int xPos = windowManager.getDefaultDisplay().getHeight() / 2
+				- version_popupWindow.getHeight() / 2;
+		Log.i("coder", "xPos:" + xPos);
+
+		version_popupWindow.showAsDropDown(parent,
+				windowManager.getDefaultDisplay().getHeight()
+						- version_popupWindow.getHeight(),
+				windowManager.getDefaultDisplay().getHeight()
+						- version_popupWindow.getHeight() - 74);
+		update_content_textview.setText("最近版本:" + new_version + "\n"
+				+ update_content);
+		// 检测更新，下载软件
+		download_version.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+
+				version_popupWindow.dismiss();
+				// version_popupWindow = null;
+				Toast.makeText(getApplicationContext(), apk_url, 1000).show();
+				// 更新版本
+				VersionUpdate versionUpdate = new VersionUpdate(
+						MainActivity.this);
+				versionUpdate.apkUrl = apk_url;
+				versionUpdate.checkUpdateInfo();
+			}
+		});
+		cancle_check.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				version_popupWindow.dismiss();
+				// version_popupWindow = null;
+			}
+		});
 	}
 }

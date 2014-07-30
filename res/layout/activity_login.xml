@@ -9,7 +9,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/main_title_bar"
-        android:text="高校风云榜"
+        android:text="高校成绩榜"
         android:textColor="@color/white"
         android:textSize="28sp" />
 

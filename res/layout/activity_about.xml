@@ -50,14 +50,82 @@
             android:paddingRight="20dp"
             android:paddingTop="20dp" >
 
+            <LinearLayout 
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:text="高校成绩榜    "
+                android:textColor="@color/black"
+                android:textSize="19dp" />
+                <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:text="V"
+                android:textColor="@color/grey"
+                android:textSize="18dp" />
+                  <TextView
+                android:id="@+id/version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:text="1.1"
+                android:textColor="@color/grey"
+                android:textSize="16dp" />
+            </LinearLayout>
+            
+
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="10dp"
-                android:text="项目名称：高校风云榜\n\n负责人：西邮Mc\n\n负责单位：西安邮电3G手机实验室\n\n版本号：1.0\n\n反馈方式：电话：18291994584\n邮箱：694449212@qq.com"
+                android:text="\n负责人：西邮Mc\n\n负责单位：西安邮电3G手机实验室"
                 android:textColor="@color/black"
                 android:textSize="18dp" />
+
+            <Button
+                android:id="@+id/checkversion"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_big"
+                android:drawableLeft="@drawable/emotionstore_newtips"
+                android:gravity="left|center_vertical"
+                android:text="检测新版本"
+                android:textSize="18dp" />
+
+           <!--  <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:text="\n意见反馈"
+                android:textColor="@color/black"
+                android:textSize="18dp" /> -->
         </LinearLayout>
+
+       <!--  <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="#FDF5E6"
+            android:orientation="vertical" >
+
+            <EditText
+                android:id="@+id/idea"
+                android:layout_width="fill_parent"
+                android:layout_height="200dp"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:layout_marginTop="5dip"
+                android:background="@drawable/chatfrom_bg_new_fmessage_normal"
+                android:gravity="top"
+                android:paddingLeft="15dp"
+                android:paddingTop="6dp"
+                android:singleLine="false"
+                android:textSize="10pt" />
+        </LinearLayout> -->
     </LinearLayout>
 
 </ScrollView>
