@@ -62,6 +62,7 @@ import com.cardsui.example.MyPlayCard;
 import com.fima.cardsui.objects.CardStack;
 import com.fima.cardsui.views.CardUI;
 import com.mc.util.HttpUtilMc;
+import com.mc.util.LogcatHelper;
 import com.mc.util.Util;
 import com.mc.util.VersionUpdate;
 import com.slidingmenu.lib.SlidingMenu;
@@ -998,10 +999,13 @@ public class MainActivity extends Activity {
 			public void onClick(DialogInterface dialog, int which) {
 				dialog.cancel();
 				StaticVarUtil.quit();
+				
 				if (logout) {
 					Intent i = new Intent();
 					i.setClass(getApplicationContext(), LoginActivity.class);
 					startActivity(i);
+				}else {
+					LogcatHelper.getInstance(MainActivity.this).stop();
 				}
 			}
 		});

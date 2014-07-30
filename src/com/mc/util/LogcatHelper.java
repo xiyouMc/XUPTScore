@@ -81,7 +81,7 @@ import android.os.Environment;
 	        public LogDumper(String pid, String dir) {  
             mPID = pid;  
 	            try {  
-	                out = new FileOutputStream(new File(dir, "leader-"  
+	                out = new FileOutputStream(new File(dir, "score-"  
 	                        + getFileName() + ".log"));  
 	            } catch (FileNotFoundException e) {  
 	                // TODO Auto-generated catch block  
@@ -99,7 +99,7 @@ import android.os.Environment;
 	            // cmds = "logcat *:e *:w | grep \"(" + mPID + ")\"";  
 	            // cmds = "logcat  | grep \"(" + mPID + ")\"";//打印所有日志信息  
 	            // cmds = "logcat -s way";//打印标签过滤信息  
-	            cmds = "logcat *:e *:i | grep \"(" + mPID + ")\"";  
+	            cmds = "logcat *:e  \"(" + mPID + ")\"";  
 	  
 	        }  
 	  
