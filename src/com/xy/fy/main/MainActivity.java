@@ -133,8 +133,8 @@ public class MainActivity extends Activity {
 		super.setContentView(R.layout.activity_main);
 		dialog = ViewUtil.getProgressDialog(MainActivity.this, "正在查询");
 
-		/*CheckVersionAsyntask checkVersionAsyntask = new CheckVersionAsyntask();
-		checkVersionAsyntask.execute();*/
+		CheckVersionAsyntask checkVersionAsyntask = new CheckVersionAsyntask();
+		checkVersionAsyntask.execute();
 		// 请求 获取 成绩
 		GetScoreAsyntask getScoreAsyntask = new GetScoreAsyntask();
 		dialog.show();
@@ -1139,7 +1139,7 @@ public class MainActivity extends Activity {
 
 	}
 
-	// 异步加载登录
+	// 异步改变密码
 	class ChangePwAsyntask extends AsyncTask<String, String, String> {
 
 		@Override
