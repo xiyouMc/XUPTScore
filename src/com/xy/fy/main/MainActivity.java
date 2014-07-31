@@ -999,13 +999,11 @@ public class MainActivity extends Activity {
 			public void onClick(DialogInterface dialog, int which) {
 				dialog.cancel();
 				StaticVarUtil.quit();
-				
+				LogcatHelper.getInstance(MainActivity.this).stop();
 				if (logout) {
 					Intent i = new Intent();
 					i.setClass(getApplicationContext(), LoginActivity.class);
 					startActivity(i);
-				}else {
-					LogcatHelper.getInstance(MainActivity.this).stop();
 				}
 			}
 		});

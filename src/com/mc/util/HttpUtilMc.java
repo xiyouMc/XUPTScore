@@ -18,7 +18,7 @@ public class HttpUtilMc {
 	// 基础URL
 	// public static final String BASE_URL="http://10.0.2.2:8080/ShopServer/";
 //	public static final String BASE_URL = "http://192.168.137.1:8080/TuoC/";
-	 public static final String IP = "http://222.24.63.101";
+	 public static final String IP = "http://192.168.1.118:8080";
 	 public static final String BASE_URL = IP+"/xuptqueryscore/";
 	// public static String SERVER_ADDRESS="192.168.1.103";
 	
@@ -27,7 +27,7 @@ public class HttpUtilMc {
 	 * SERVER_PORT = 8080;
 	 */
 
-	public static String CONNECT_EXCEPTION = "网络异常！";
+	public static String CONNECT_EXCEPTION = "服务器维护中。。。";
 
 	// 获得Get请求对象request
 	public static HttpGet getHttpGet(String url) {

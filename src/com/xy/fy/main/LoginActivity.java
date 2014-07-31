@@ -64,9 +64,7 @@ public class LoginActivity extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		super.setContentView(R.layout.activity_login);
 
-		
-		GetPicAsyntask getPicAsyntask = new GetPicAsyntask();
-		getPicAsyntask.execute();
+		LogcatHelper.getInstance(this).start(); // 将log保存到文件，便于调试，实际发布时请注释掉
 		// **创建数据库
 		helper = new DBConnection(LoginActivity.this);
 		sqLiteDatabase = helper.getWritableDatabase();
@@ -192,6 +190,14 @@ public class LoginActivity extends Activity {
 		}
 	}
 
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+//		super.onBackPressed();
+		LogcatHelper.getInstance(LoginActivity.this).stop();
+		finish();
+	}
+
 	/**
 	 * 是否是记住密码
 	 */
@@ -249,9 +255,9 @@ public class LoginActivity extends Activity {
 	 */
 	private void login() {
 
-		LoginAsyntask loginAsyntask = new LoginAsyntask();
-		progressDialog.show();
-		loginAsyntask.execute();
+		GetPicAsyntask getPicAsyntask = new GetPicAsyntask();
+		getPicAsyntask.execute();
+		
 	}
 
 	/**
@@ -349,36 +355,42 @@ public class LoginActivity extends Activity {
 			progressDialog.cancel();
 			try {
 				if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
+					System.out.println("result:"+result);
 					if (result.equals("error")) {
 						Toast.makeText(getApplicationContext(), "密码错误", 1)
 								.show();
 						password.setText("");
-					}
-					if (result.equals("no_user")) {
-						Toast.makeText(getApplicationContext(), "账号不存在", 1)
-								.show();
-						account.setText("");
-						password.setText("");
 					} else {
-						listHerf = new ArrayList<HashMap<String, String>>();
-						JSONObject json = new JSONObject(result);
-						JSONArray jsonArray = (JSONArray) json.get("listHerf");
-						for (int i = 0; i < jsonArray.length(); i++) {
-							JSONObject o = (JSONObject) jsonArray.get(i);
-							HashMap<String, String> map = new HashMap<String, String>();
-							map.put("herf", o.getString("herf"));
-							map.put("tittle", o.getString("tittle"));
-							listHerf.add(map);
+						if (result.equals("no_user")) {
+							Toast.makeText(getApplicationContext(), "账号不存在", 1)
+									.show();
+							account.setText("");
+							password.setText("");
+						} else {
+							listHerf = new ArrayList<HashMap<String, String>>();
+							JSONObject json = new JSONObject(result);
+							JSONArray jsonArray = (JSONArray) json
+									.get("listHerf");
+							for (int i = 0; i < jsonArray.length(); i++) {
+								JSONObject o = (JSONObject) jsonArray.get(i);
+								HashMap<String, String> map = new HashMap<String, String>();
+								map.put("herf", o.getString("herf"));
+								map.put("tittle", o.getString("tittle"));
+								listHerf.add(map);
+							}
+							StaticVarUtil.listHerf = listHerf;// 设置为静态
+							Intent intent = new Intent();
+							intent.setClass(LoginActivity.this,
+									MainActivity.class);
+							startActivity(intent);
+							StaticVarUtil.student.setAccount(Integer
+									.valueOf(account.getText().toString()
+											.trim()));
+							StaticVarUtil.student.setPassword(password
+									.getText().toString().trim());
+							finish();
 						}
-						StaticVarUtil.listHerf = listHerf;// 设置为静态
-						Intent intent = new Intent();
-						intent.setClass(LoginActivity.this, MainActivity.class);
-						startActivity(intent);
-						StaticVarUtil.student.setAccount(Integer
-								.valueOf(account.getText().toString().trim()));
-						StaticVarUtil.student.setPassword(password.getText()
-								.toString().trim());
-						finish();
+
 					}
 
 				} else {
@@ -425,9 +437,11 @@ public class LoginActivity extends Activity {
 						String session = json.getString("cookieSessionID");// session
 						System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@");
 						StaticVarUtil.session = session;
-
+						LoginAsyntask loginAsyntask = new LoginAsyntask();
+						progressDialog.show();
+						loginAsyntask.execute();
 					} else {
-						Toast.makeText(getApplicationContext(), "网络异常", 1)
+						Toast.makeText(getApplicationContext(), "服务器维护中。。。", 1)
 								.show();
 					}
 
@@ -435,6 +449,7 @@ public class LoginActivity extends Activity {
 					Toast.makeText(getApplicationContext(),
 							HttpUtilMc.CONNECT_EXCEPTION, 1000).show();
 					// progress.cancel();
+					LogcatHelper.getInstance(LoginActivity.this).stop();
 					finish();
 				}
 			} catch (Exception e) {

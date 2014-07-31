@@ -23,7 +23,7 @@ public class WelcomeActivity extends Activity {
 		final View view = View.inflate(this, R.layout.activity_welcome, null);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(view);
-		LogcatHelper.getInstance(this).start(); // 将log保存到文件，便于调试，实际发布时请注释掉  
+	
 		AlphaAnimation aa = new AlphaAnimation(0.3f, 1.0f);
 		aa.setDuration(3000);
 		view.startAnimation(aa);
@@ -47,7 +47,7 @@ public class WelcomeActivity extends Activity {
 			
 				//i = System.currentTimeMillis();
 				// 动画开始的时候进行发送广播，进行数据的更新
-					Toast.makeText(getApplicationContext(), "欢迎", 1000).show();
+//					Toast.makeText(getApplicationContext(), "欢迎", 1000).show();
 					
 				
 			}
