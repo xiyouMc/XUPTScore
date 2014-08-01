@@ -59,7 +59,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingBottom="10dp"
-                android:text="高校成绩榜    "
+                android:text="西邮成绩榜    "
                 android:textColor="@color/black"
                 android:textSize="19dp" />
                 <TextView

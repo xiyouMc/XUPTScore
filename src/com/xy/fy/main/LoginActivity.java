@@ -38,6 +38,7 @@ import com.mc.db.DBConnection;
 import com.mc.db.DBConnection.UserSchema;
 import com.mc.util.HttpUtilMc;
 import com.mc.util.LogcatHelper;
+import com.mc.util.Util;
 import com.xy.fy.util.ConnectionUtil;
 import com.xy.fy.util.HttpUtil;
 import com.xy.fy.util.StaticVarUtil;
@@ -256,6 +257,7 @@ public class LoginActivity extends Activity {
 	private void login() {
 
 		GetPicAsyntask getPicAsyntask = new GetPicAsyntask();
+		progressDialog.show();
 		getPicAsyntask.execute();
 		
 	}
@@ -366,7 +368,7 @@ public class LoginActivity extends Activity {
 									.show();
 							account.setText("");
 							password.setText("");
-						} else {
+						} else {//登录成功
 							listHerf = new ArrayList<HashMap<String, String>>();
 							JSONObject json = new JSONObject(result);
 							JSONArray jsonArray = (JSONArray) json
@@ -388,6 +390,7 @@ public class LoginActivity extends Activity {
 											.trim()));
 							StaticVarUtil.student.setPassword(password
 									.getText().toString().trim());
+						
 							finish();
 						}
 
@@ -396,7 +399,7 @@ public class LoginActivity extends Activity {
 				} else {
 					Toast.makeText(getApplicationContext(),
 							HttpUtilMc.CONNECT_EXCEPTION, 1).show();
-					// progress.cancel();
+					progressDialog.cancel();
 				}
 			} catch (Exception e) {
 				// TODO: handle exception
@@ -438,7 +441,6 @@ public class LoginActivity extends Activity {
 						System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@");
 						StaticVarUtil.session = session;
 						LoginAsyntask loginAsyntask = new LoginAsyntask();
-						progressDialog.show();
 						loginAsyntask.execute();
 					} else {
 						Toast.makeText(getApplicationContext(), "服务器维护中。。。", 1)
@@ -450,7 +452,7 @@ public class LoginActivity extends Activity {
 							HttpUtilMc.CONNECT_EXCEPTION, 1000).show();
 					// progress.cancel();
 					LogcatHelper.getInstance(LoginActivity.this).stop();
-					finish();
+//					finish();
 				}
 			} catch (Exception e) {
 				// TODO: handle exception

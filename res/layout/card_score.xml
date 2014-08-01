@@ -47,26 +47,26 @@
                 android:background="#aa0000"
                 android:padding="3dip"
                 android:gravity="center_horizontal"
-                android:text="课程名称" />
+                android:text="课程名称 " />
 
             <TextView
                 android:background="#00aa00"
                 android:gravity="center_horizontal"
                 android:padding="3dip"
-                android:text="最终成绩" >
+                android:text="最终成绩  " >
             </TextView>
 
             <TextView
                 android:background="#0000aa"
                 android:gravity="center_horizontal"
                 android:padding="3dip"
-                android:text="平时成绩" />
+                android:text="平时成绩  " />
 
             <TextView
                 android:background="#8B1A1A"
                 android:gravity="center_horizontal"
                 android:padding="3dip"
-                android:text="卷面成绩" />
+                android:text="卷面成绩   " />
         </TableRow>
     </TableLayout>
 

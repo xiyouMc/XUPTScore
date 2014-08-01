@@ -1,6 +1,8 @@
 package com.mc.util;
 
 import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;
@@ -11,6 +13,38 @@ import com.xy.fy.util.StaticVarUtil;
 
 public class Util {
 
+	private static boolean haveChar(String str) {
+		try {
+			int num = Integer.valueOf(str);// 把字符串强制转换为数字
+			return false;// 如果是数字，返回True
+		} catch (Exception e) {
+			return true;// 如果抛出异常，返回False
+		}
+
+	}
+	private static boolean hasDigit(String content) {
+
+		boolean flag = false;
+
+		Pattern p = Pattern.compile(".*\\d+.*");
+
+		Matcher m = p.matcher(content);
+
+		if (m.matches())
+
+		flag = true;
+
+		return flag;
+
+		}
+	public static boolean hasDigitAndNum(String str){
+		if (haveChar(str)&hasDigit(str)) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
 	/**
 	 * 从listHerf中获取具体 tittle中的herf
 	 * @param tittle

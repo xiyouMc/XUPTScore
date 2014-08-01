@@ -33,12 +33,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/commentNumber"
                 android:text="昵称"
                 android:textColor="#FF8C00"
                 android:textSize="18dp" />
 
-            <!-- 时间 -->
 
             <TextView
                 android:id="@+id/time"

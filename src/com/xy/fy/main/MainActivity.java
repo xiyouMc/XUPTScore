@@ -135,17 +135,14 @@ public class MainActivity extends Activity {
 
 		CheckVersionAsyntask checkVersionAsyntask = new CheckVersionAsyntask();
 		checkVersionAsyntask.execute();
-		// 请求 获取 成绩
-		GetScoreAsyntask getScoreAsyntask = new GetScoreAsyntask();
-		dialog.show();
-		getScoreAsyntask.execute();
+		
+		
 
 		setMenuItemListener();
 
 		// 当前Activity进栈
 		StaticVarUtil.activities.add(MainActivity.this);
 
-		
 		// 找到ID
 		slidingMenu = (SlidingMenu) findViewById(R.id.slidingMenu);
 
@@ -182,6 +179,23 @@ public class MainActivity extends Activity {
 				}
 			}
 		});
+		
+		if (!Util.hasDigitAndNum(StaticVarUtil.student.getPassword())) {
+			Toast.makeText(getApplicationContext(), "密码不安全，请重新设置密码", 1000).show();
+			setMenuItemState(menuBang, false, menuMyBukao, false,
+					menuMyPaiming, false, menuMyCollect, false,
+					menuSetting, true, menuAbout, false);
+			setCurrentMenuItem(5);// 记录当前选项位置，并且跳转
+			slidingMenu.toggle();// 页面跳转
+
+			slidingMenu.setContent(R.layout.activity_setting);
+			menuSetting();
+		}else {
+			// 请求 获取 成绩
+			GetScoreAsyntask getScoreAsyntask = new GetScoreAsyntask();
+			dialog.show();
+			getScoreAsyntask.execute();
+		}
 
 		// slidingMenu.setOnClosedListener(new OnClosedListener() {
 		// @Override
@@ -253,23 +267,32 @@ public class MainActivity extends Activity {
 		mCardView.addCard(new MyCard("By Mc"));// 定义卡片 在这块可以设置 学期
 		mCardView.addCardToLastStack(new MyCard("for Xiyou"));
 		MyCard androidViewsCard = new MyCard("www.xiyoumobile.com");
-		androidViewsCard.setOnClickListener(new OnClickListener() {
+		try {
+			androidViewsCard.setOnClickListener(new OnClickListener() {
 
-			@Override
-			public void onClick(View v) {
-				try {
-					Intent it = new Intent(Intent.ACTION_VIEW, Uri
-							.parse("www.xiyoumobile.com"));
-					it.setClassName("com.android.browser",
-							"com.android.browser.BrowserActivity");
-					startActivity(it);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+				@Override
+				public void onClick(View v) {
+
+					try {
+						Intent intent = new Intent();
+						intent.setAction("android.intent.action.VIEW");
+						Uri content_url = Uri
+								.parse("http://www.xiyoumobile.com/");
+						intent.setData(content_url);
+						startActivity(intent);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+						Log.e("Main", e.toString());
+					}
+
 				}
-
-			}
-		});
+			});
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			Log.e("Main", e.toString());
+		}
 		androidViewsCard.setOnLongClickListener(new OnLongClickListener() {
 
 			@Override
@@ -452,7 +475,6 @@ public class MainActivity extends Activity {
 		return result;
 	}
 
-
 	/**
 	 * 设置当前MenuItem的状态
 	 * 
@@ -584,8 +606,8 @@ public class MainActivity extends Activity {
 						slidingMenu.toggle();
 					}
 				});
-				
-				check_version = (Button)findViewById(R.id.checkversion);//检测新版本按钮
+
+				check_version = (Button) findViewById(R.id.checkversion);// 检测新版本按钮
 				TextView version = (TextView) findViewById(R.id.version);
 				version.setText(Util.getVersion(getApplicationContext()));
 				check_version.setOnClickListener(new OnClickListener() {
@@ -615,7 +637,7 @@ public class MainActivity extends Activity {
 	 * 修改个人信息，只能修改昵称，密码，头像
 	 */
 	protected void menuSetting() {
-		
+
 		// 菜单按钮
 		Button menu = (Button) findViewById(R.id.butMenu);
 		menu.setOnClickListener(new OnClickListener() {
@@ -630,7 +652,6 @@ public class MainActivity extends Activity {
 			return;
 		}
 
-	
 		EditText etAccount = (EditText) findViewById(R.id.etAccount);
 		etAccount.setText("0" + StaticVarUtil.student.getAccount() + "");
 		etAccount.setEnabled(false);// 不可用
@@ -674,10 +695,16 @@ public class MainActivity extends Activity {
 				 * account = StaticVarUtil.student.getAccount() + ""; // 修改
 				 * //alertStudent(account, password, file);
 				 */
+				
 				if (password2.equals(password3)) {
-					ChangePwAsyntask changePwAsyntask = new ChangePwAsyntask();
-					changePwAsyntask.execute(new String[] { password1,
-							password2 });
+					if (!Util.hasDigitAndNum(password2)) {
+						Toast.makeText(getApplicationContext(), "密码中必须包含数字和字母", 1000).show();
+					}else {
+						ChangePwAsyntask changePwAsyntask = new ChangePwAsyntask();
+						changePwAsyntask.execute(new String[] { password1,
+								password2 });
+					}
+					
 				} else {
 					ViewUtil.toastShort("新密码不正确", MainActivity.this);
 					return;
@@ -685,7 +712,7 @@ public class MainActivity extends Activity {
 
 			}
 		});
-		
+
 	}
 
 	/**
@@ -1082,7 +1109,6 @@ public class MainActivity extends Activity {
 		protected void onPostExecute(String result) {
 			// TODO Auto-generated method stub
 			super.onPostExecute(result);
-			dialog.cancel();
 			// 显示用户名
 			nickname.setText(name);
 			try {
@@ -1119,6 +1145,7 @@ public class MainActivity extends Activity {
 							 */
 						}
 						menu1();
+						dialog.cancel();
 					} else {
 						Toast.makeText(getApplicationContext(), "登录失败", 1)
 								.show();
@@ -1222,7 +1249,7 @@ public class MainActivity extends Activity {
 		protected void onPostExecute(String result) {
 			// TODO Auto-generated method stub
 			super.onPostExecute(result);
-			dialog.cancel();
+//			dialog.cancel();
 			// 显示用户名
 			try {
 				if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
@@ -1235,13 +1262,15 @@ public class MainActivity extends Activity {
 						apk_url = str[0];
 						new_version = str[1];
 						update_content = str[2];
-						/*check_version_showWindow(new View(
-								getApplicationContext()));// 弹出窗口
-*/
+						/*
+						 * check_version_showWindow(new View(
+						 * getApplicationContext()));// 弹出窗口
+						 */
 						VersionUpdate versionUpdate = new VersionUpdate(
 								MainActivity.this);
-						versionUpdate.apkUrl = HttpUtilMc.IP+apk_url;
-						versionUpdate.updateMsg = new_version+"\n\n"+update_content;
+						versionUpdate.apkUrl = HttpUtilMc.IP + apk_url;
+						versionUpdate.updateMsg = new_version + "\n\n"
+								+ update_content;
 						versionUpdate.checkUpdateInfo();
 					}
 				}

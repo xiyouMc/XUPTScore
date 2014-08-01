@@ -901,7 +901,7 @@ int id butGetPassword2 0x7f08003e
 int id butLocalpic 0x7f08005a
 int id butLogin 0x7f080042
 int id butMenu 0x7f080037
-int id butMore 0x7f080092
+int id butMore 0x7f080091
 int id butMsgKind 0x7f08007e
 int id butMsgSort 0x7f08007f
 int id butMy 0x7f080054
@@ -919,8 +919,7 @@ int id choose 0x7f080060
 int id collect 0x7f08004a
 int id comment 0x7f08004b
 int id commentListView 0x7f08004e
-int id commentNumber 0x7f08008e
-int id content 0x7f08008f
+int id content 0x7f08008e
 int id contentLayout 0x7f08006f
 int id content_frame 0x7f080051
 int id corfimPassword2 0x7f080067
@@ -943,15 +942,15 @@ int id expandListView 0x7f08007c
 int id floor 0x7f08008d
 int id footer 0x7f080080
 int id fullscreen 0x7f080013
-int id gridView 0x7f080095
+int id gridView 0x7f080094
 int id headPhoto 0x7f080044
 int id homeAsUp 0x7f080006
 int id image 0x7f08007a
-int id imageHeadArrow 0x7f080090
+int id imageHeadArrow 0x7f08008f
 int id imageLargePic 0x7f080056
 int id imagePublish 0x7f08005d
 int id imageView1 0x7f08006d
-int id item_image 0x7f080096
+int id item_image 0x7f080095
 int id left 0x7f080010
 int id linearLayoutBang 0x7f08007d
 int id listMode 0x7f080002
@@ -972,8 +971,8 @@ int id placeholder 0x7f080081
 int id praise 0x7f08004c
 int id proRefresh 0x7f080053
 int id progress 0x7f08004d
-int id progressBarFoot 0x7f080093
-int id progressBarHead 0x7f080091
+int id progressBarFoot 0x7f080092
+int id progressBarHead 0x7f080090
 int id right 0x7f080011
 int id score 0x7f080072
 int id selected_view 0x7f080014
@@ -981,7 +980,7 @@ int id showCustom 0x7f080008
 int id showHome 0x7f080005
 int id showTitle 0x7f080007
 int id slidingMenu 0x7f080043
-int id slidingmenumain 0x7f080094
+int id slidingmenumain 0x7f080093
 int id smallFaceWindow 0x7f08005e
 int id stackContainer 0x7f080085
 int id stackRoot 0x7f080083
