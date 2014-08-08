@@ -1,10 +1,10 @@
 <resources>
 
-    <string name="app_name">西邮成绩榜</string>
+    <string name="app_name">西邮成绩</string>
     <string name="history">历史</string>
     <string name="title_activity_main">CardsUI</string>
     <string name="title">Title</string>
-    <string name="score_title">课程----成绩----平时----期末</string>
+    <string name="score_title">课程--------成绩-------平时-------期末</string>
     <string name="desc">Description</string>
     <string name="overflow">Menu Overflow</string>
     <string name="color_stripe">Color Stripe</string>

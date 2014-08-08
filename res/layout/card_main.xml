@@ -1,13 +1,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#FAEBD7"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#F8F8FF"
     android:orientation="vertical" >
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="50dp"
+        android:layout_height="48dp"
         android:background="@drawable/main_title_bar"
         android:orientation="horizontal" >
 
@@ -21,8 +21,7 @@
             android:gravity="center_vertical"
             android:text="西安邮电大学"
             android:textColor="@drawable/change_button_text_color"
-            android:textSize="20dp" />
-        <!-- 菜单 -->
+            android:textSize="19dp" />
 
         <Button
             android:id="@+id/butMenu"
@@ -30,23 +29,61 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="5dp"
             android:background="@drawable/button_menu"
-            android:gravity="center_vertical"
+            android:gravity="left"
             android:textColor="#FF8C00"
             android:textSize="14sp" />
     </RelativeLayout>
 
     <LinearLayout
+        android:id="@+id/layout"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/tittle_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/by"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dip"
+                android:fontFamily="sans-serif-thin"
+                android:text="By "
+                android:textColor="#33B6EA"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/mc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dip"
+                android:fontFamily="sans-serif-thin"
+                android:text="MC"
+                android:textColor="#33B6EA"
+                android:layout_toRightOf="@id/by"
+                android:textSize="19sp" />
+            <TextView
+                android:id="@+id/forxiyou"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/by"
+                android:layout_marginLeft="8dip"
+                android:layout_toRightOf="@id/by"
+                android:fontFamily="sans-serif-thin"
+                android:text="For Xiyou"
+                android:textColor="#33B6EA"
+                android:textSize="22sp" />
+        </RelativeLayout>
 
         <com.fima.cardsui.views.CardUI
             android:id="@+id/cardsview"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:background="#FAEBD7"
-            android:fastScrollEnabled="true" />
+            android:background="#F8F8FF"
+            android:fastScrollEnabled="false" />
     </LinearLayout>
 
 </LinearLayout>

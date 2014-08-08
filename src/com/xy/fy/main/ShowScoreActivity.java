@@ -1,5 +1,7 @@
 package com.xy.fy.main;
 
+import com.xy.fy.main.R;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -9,6 +11,7 @@ import android.view.Window;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -20,6 +23,7 @@ public class ShowScoreActivity extends Activity {
 	private final int FP = ViewGroup.LayoutParams.FILL_PARENT;
 //    private Button back;
     private TextView XNandXQ;
+    private LinearLayout layout;//为了实现点击就取消
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -62,6 +66,15 @@ public class ShowScoreActivity extends Activity {
 	private void init() {
 		// TODO Auto-generated method stub
 //		back = (Button)findViewById(R.id.butBack);
+		layout = (LinearLayout)findViewById(R.id.layout);
+		layout.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				finish();
+			}
+		});
 		XNandXQ = (TextView)findViewById(R.id.XNandXQ);
 		/*back.setOnClickListener(new OnClickListener() {
 			

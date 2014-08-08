@@ -12,6 +12,11 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.UUID;
 
+/**
+ * 上传头像
+ * @author Administrator
+ * 2014-8-6
+ */
 public class HttpAssist {  
     private static final String TAG = "uploadFile";  
     private static final int TIME_OUT = 10 * 10000000; // 超时时间  
@@ -19,18 +24,16 @@ public class HttpAssist {
     public static final String SUCCESS = "1";  
     public static final String FAILURE = "0";  
   
-    public static String uploadFile(File file,String username,String content,String filename) {  
+    public static String uploadFile(File file,String username) {  
         String BOUNDARY = UUID.randomUUID().toString(); // 边界标识 随机生成  
         String PREFIX = "--", LINE_END = "\r\n";  
         String CONTENT_TYPE = "multipart/form-data"; // 内容类型  
          
         try {  
         	 String RequestURL = HttpUtilMc.BASE_URL
-     				+ "PublishServlet?username="
-     				+ URLEncoder.encode(URLEncoder.encode(username, "UTF-8"), "UTF-8")
-     				+ "&content="
-     				+ URLEncoder.encode(URLEncoder.encode(content.trim(), "UTF-8"), "UTF-8")
-     				+"&filename="+filename+"&is_pic="+String.valueOf(1);
+     				+ "changeuserphoto.jsp?username="
+     				+ username
+     				;
             URL url = new URL(RequestURL);  
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();  
             conn.setReadTimeout(TIME_OUT);  

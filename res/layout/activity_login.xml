@@ -2,134 +2,150 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#FAEBD7"
+    android:background="#F5F5F5"
     android:orientation="vertical" >
 
-    <Button
+
+    <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/main_title_bar"
-        android:text="西邮成绩榜"
-        android:textColor="@color/white"
-        android:textSize="28sp" />
+        android:layout_height="157dp"
+        android:background="#48D1CC" >
+
+        <TextView
+            android:id="@+id/t"
+            android:layout_width="fill_parent"
+            android:layout_height="60dp" />
+
+        <com.mc.util.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/profile_image"
+            android:layout_width="88dp"
+            android:layout_height="88dp"
+            android:layout_below="@id/t"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/person"
+            app:border_color="#BFEFFF"
+            app:border_width="2dp" />
+    </RelativeLayout>
 
     <LinearLayout
+        android:id="@+id/layout"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:orientation="vertical"
-        android:padding="50dp" 
-        >
-
-        <!-- 输入账号 -->
-
-      <!--   <EditText
-            android:id="@+id/etAccount"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="请输入账号" >
-        </EditText> -->
-        <AutoCompleteTextView 
-            android:layout_marginTop="70dp"
-            android:id="@+id/etAccount"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:ems="8"
-            android:textColor="@color/darkgoldenrod"
-            android:hint="请输入学号"/>
-        <!-- 输入密码 -->
-
-        <EditText
-            android:id="@+id/etPassword"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="请输入密码"
-            android:textColor="@color/darkgoldenrod"
-            android:inputType="textPassword" >
-        </EditText>
+        android:orientation="vertical" >
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="85dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical" >
+
+            <!-- 输入账号 -->
+
+            <AutoCompleteTextView
+                android:id="@+id/etAccount"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#00000000"
+                android:ems="8"
+                android:gravity="center_vertical"
+                android:hint="学号"
+                android:paddingLeft="17dp"
+                android:text="213123"
+                android:textColor="#050505"
+                android:textCursorDrawable="@null"
+                android:textSize="7pt" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
+                android:background="#E6E6FA" />
+            <!-- 输入密码 -->
+
+            <EditText
+                android:id="@+id/etPassword"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#00000000"
+                android:ems="14"
+                android:gravity="center_vertical"
+                android:hint="密码"
+                android:inputType="textPassword"
+                android:paddingLeft="17dp"
+                android:textColor="#050505"
+                android:textCursorDrawable="@null"
+                android:textSize="7pt" >
+            </EditText>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
             android:layout_gravity="center_horizontal"
-            android:orientation="horizontal" >
+            android:background="@drawable/login_jb"
+            android:gravity="right"
+            android:orientation="vertical"
+            android:paddingRight="17dp" >
 
             <!-- 忘记密码 -->
 
-            <Button
-                android:id="@+id/butForgetPassword"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:background="#00000000"
-                android:gravity="left|center_vertical"
-                android:text="忘记密码"
-                android:textColor="#FF8C00" />
+
+            <!--  -->
             <!-- 记住密码 -->
 
             <CheckBox
                 android:id="@+id/butRememberPassword"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
                 android:layout_gravity="right"
-                android:layout_weight="1"
                 android:text="记住密码"
-                android:textColor="#FF8C00" />
+                android:textColor="#7EC0EE"
+                android:textSize="6pt" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="5dp" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="17dp"
+                android:paddingRight="17dp" >
+
+                <Button
+                    android:id="@+id/butLogin"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/button_big"
+                    android:fontFamily="sans-serif-thin"
+                    android:text="登 录"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/butForgetPassword"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="6dp"
+                    android:background="#00000000"
+                    android:gravity="left|center_vertical"
+                    android:text="无法登录?"
+                    android:textColor="#7EC0EE"
+                    android:textSize="6pt" />
+            </RelativeLayout>
         </LinearLayout>
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="5dp" />
-
-        <Button
-            android:id="@+id/butLogin"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_big"
-            android:text="登录"
-            android:textColor="@color/red"
-            android:textSize="20sp" />
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="25dp" />
-
-       <!--  <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
-
-            注册
-
-            <Button
-                android:id="@+id/butRegister"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/button_small"
-                android:text="注册"
-                android:textColor="@color/red"
-                android:textSize="20sp" />
-
-            <Button
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/button_small"
-                android:enabled="false" />
-            游客登陆
-
-            <Button
-                android:id="@+id/butVistor"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/button_small"
-                android:text="游客"
-                android:textColor="@color/red"
-                android:textSize="20sp" />
-        </LinearLayout> -->
     </LinearLayout>
 
 </LinearLayout>

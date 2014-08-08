@@ -1,6 +1,7 @@
 package com.xy.fy.main;
 
 import java.io.File;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -18,6 +19,9 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
@@ -27,27 +31,30 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.mc.db.DBConnection;
 import com.mc.db.DBConnection.UserSchema;
+import com.mc.util.CircleImageView;
 import com.mc.util.HttpUtilMc;
 import com.mc.util.LogcatHelper;
 import com.mc.util.Util;
 import com.xy.fy.util.ConnectionUtil;
-import com.xy.fy.util.HttpUtil;
 import com.xy.fy.util.StaticVarUtil;
 import com.xy.fy.util.ViewUtil;
 import com.xy.fy.view.ToolClass;
 
 @SuppressLint("HandlerLeak")
 public class LoginActivity extends Activity {
-
+	private CircleImageView photo;// 登录界面的头像
 	private AutoCompleteTextView account;// 账号
 	private EditText password;// 密码
 	private Button forgetPassWord;// 忘记密码
@@ -127,74 +134,13 @@ public class LoginActivity extends Activity {
 		// 获取数据库
 		boolean isSDcardExist = Environment.getExternalStorageState().equals(
 				android.os.Environment.MEDIA_MOUNTED); // 判断sd卡是否存在
-		if (isSDcardExist) {
-			File sdDir = Environment.getExternalStorageDirectory();// 获取根路径
-			StaticVarUtil.PATH = sdDir.toString() + HttpUtil.FENGYUN;
-			// 创建应用专用路径
-			File file = new File(StaticVarUtil.PATH);
-			if (!file.exists()) {
-				try {
-					file.mkdirs();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-			// 创建fileCache文件夹
-			file = new File(StaticVarUtil.PATH + "/fileCache");
-			if (!file.exists()) {
-				try {
-					file.mkdirs();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-
-			// 创建save文件夹
-			file = new File(StaticVarUtil.PATH + "/save");
-			if (!file.exists()) {
-				try {
-					file.mkdirs();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-			// 创建jsonCache文件夹
-			file = new File(StaticVarUtil.PATH + "/jsonCache");
-			if (!file.exists()) {
-				try {
-					file.mkdirs();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-			// 创建temp.png文件
-			file = new File(StaticVarUtil.PATH + "/temp.JPEG");
-			if (!file.exists()) {
-				try {
-					file.createNewFile();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-			// 存放上传图片
-			file = new File(StaticVarUtil.PATH + "/upload.JPEG");
-			if (!file.exists()) {
-				try {
-					file.createNewFile();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-			return true;
-		} else {
-			return false;
-		}
+		return isSDcardExist;
 	}
 
 	@Override
 	public void onBackPressed() {
 		// TODO Auto-generated method stub
-//		super.onBackPressed();
+		// super.onBackPressed();
 		LogcatHelper.getInstance(LoginActivity.this).stop();
 		finish();
 	}
@@ -259,14 +205,16 @@ public class LoginActivity extends Activity {
 		GetPicAsyntask getPicAsyntask = new GetPicAsyntask();
 		progressDialog.show();
 		getPicAsyntask.execute();
-		
+
 	}
 
 	/**
 	 * 找到控件ID
 	 */
 	private void findViewById() {
+		StaticVarUtil.PATH = "/sdcard/xuptscore";//设置文件目录
 		// this.account = (EditText) findViewById(R.id.etAccount);
+		this.photo = (CircleImageView) findViewById(R.id.profile_image);
 		this.password = (EditText) findViewById(R.id.etPassword);
 		String[] USERSFROM = { UserSchema.ID, UserSchema.USERNAME,
 				UserSchema.PASSWORD, };
@@ -307,10 +255,26 @@ public class LoginActivity extends Activity {
 				// TODO Auto-generated method stub
 				if (account.getText().toString().length() < 8) {
 					password.setText("");// 密码置空
+					// 设置默认头像
+					Drawable drawable = LoginActivity.this.getResources()
+							.getDrawable(R.drawable.person);
+					photo.setImageDrawable(drawable);
 				}
 				if (account.getText().toString().length() == 8) {
 					password.setText(DBConnection.getPassword(account.getText()
 							.toString(), LoginActivity.this));
+					// 判断 头像文件夹中是否包含 该用户的头像
+					File file = new File(StaticVarUtil.PATH + "/" + account.getText()
+							.toString()
+							+ ".JPEG");
+					if (file.exists()) {// 如果存在
+						Bitmap bitmap = Util.convertToBitmap(StaticVarUtil.PATH
+								+ "/" + account.getText()
+								.toString() + ".JPEG", 240, 240);
+						photo.setImageBitmap(bitmap);
+					} else {
+
+					}
 				}
 			}
 		});
@@ -319,6 +283,11 @@ public class LoginActivity extends Activity {
 		this.login = (Button) findViewById(R.id.butLogin);
 		this.progressDialog = ViewUtil.getProgressDialog(LoginActivity.this,
 				"正在登录");
+
+		Animation animation = AnimationUtils.loadAnimation(LoginActivity.this,
+				R.anim.translate);
+		LinearLayout layout = (LinearLayout) findViewById(R.id.layout);
+		layout.setAnimation(animation);
 	}
 
 	@Override
@@ -357,7 +326,7 @@ public class LoginActivity extends Activity {
 			progressDialog.cancel();
 			try {
 				if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
-					System.out.println("result:"+result);
+					System.out.println("result:" + result);
 					if (result.equals("error")) {
 						Toast.makeText(getApplicationContext(), "密码错误", 1)
 								.show();
@@ -368,7 +337,7 @@ public class LoginActivity extends Activity {
 									.show();
 							account.setText("");
 							password.setText("");
-						} else {//登录成功
+						} else {// 登录成功
 							listHerf = new ArrayList<HashMap<String, String>>();
 							JSONObject json = new JSONObject(result);
 							JSONArray jsonArray = (JSONArray) json
@@ -385,12 +354,11 @@ public class LoginActivity extends Activity {
 							intent.setClass(LoginActivity.this,
 									MainActivity.class);
 							startActivity(intent);
-							StaticVarUtil.student.setAccount(Integer
-									.valueOf(account.getText().toString()
-											.trim()));
+							StaticVarUtil.student.setAccount(account.getText().toString()
+											.trim());
 							StaticVarUtil.student.setPassword(password
 									.getText().toString().trim());
-						
+
 							finish();
 						}
 
@@ -435,24 +403,27 @@ public class LoginActivity extends Activity {
 				if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
 
 					if (!result.equals("error")) {
-
-						JSONObject json = new JSONObject(result);
-						String session = json.getString("cookieSessionID");// session
-						System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@");
-						StaticVarUtil.session = session;
-						LoginAsyntask loginAsyntask = new LoginAsyntask();
-						loginAsyntask.execute();
+						if (!result.equals("ip warning!!!")) {
+							JSONObject json = new JSONObject(result);
+							String session = json.getString("cookieSessionID");// session
+							System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@");
+							StaticVarUtil.session = session;
+							LoginAsyntask loginAsyntask = new LoginAsyntask();
+							loginAsyntask.execute();
+						}
 					} else {
 						Toast.makeText(getApplicationContext(), "服务器维护中。。。", 1)
 								.show();
+						progressDialog.cancel();
 					}
 
 				} else {
 					Toast.makeText(getApplicationContext(),
 							HttpUtilMc.CONNECT_EXCEPTION, 1000).show();
 					// progress.cancel();
+					progressDialog.cancel();
 					LogcatHelper.getInstance(LoginActivity.this).stop();
-//					finish();
+					// finish();
 				}
 			} catch (Exception e) {
 				// TODO: handle exception

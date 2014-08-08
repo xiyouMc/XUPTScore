@@ -189,7 +189,7 @@ public class BitmapUtil {
 		try {
 			fileOutputStream = new FileOutputStream(photoFile);
 			if (photoBitmap != null) {
-				if (photoBitmap.compress(Bitmap.CompressFormat.JPEG, 50,
+				if (photoBitmap.compress(Bitmap.CompressFormat.JPEG, 100,
 						fileOutputStream)) {
 					fileOutputStream.flush();
 				}

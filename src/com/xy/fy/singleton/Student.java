@@ -1,15 +1,15 @@
 package com.xy.fy.singleton;
 
 public class Student {
-	private Integer account;// 账号，主键,最长十位
+	private String account;// 账号，主键,最长十位
 	private String password;// 密码
 
 
-	public Integer getAccount() {
+	public String getAccount() {
 		return account;
 	}
 
-	public void setAccount(Integer account) {
+	public void setAccount(String account) {
 		this.account = account;
 	}
 

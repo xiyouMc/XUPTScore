@@ -18,7 +18,7 @@ public class HttpUtilMc {
 	// »ù´¡URL
 	// public static final String BASE_URL="http://10.0.2.2:8080/ShopServer/";
 //	public static final String BASE_URL = "http://192.168.137.1:8080/TuoC/";
-	 public static final String IP = "http://222.24.63.101";
+	 public static final String IP = "http://192.168.1.105:8080";
 	 public static final String BASE_URL = IP+"/xuptqueryscore/";
 	// public static String SERVER_ADDRESS="192.168.1.103";
 	

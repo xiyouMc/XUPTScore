@@ -31,8 +31,6 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.provider.MediaStore;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
@@ -44,23 +42,22 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.cardsui.example.MyCard;
 import com.cardsui.example.MyPlayCard;
 import com.fima.cardsui.objects.CardStack;
 import com.fima.cardsui.views.CardUI;
+import com.mc.util.CircleImageView;
+import com.mc.util.HttpAssist;
 import com.mc.util.HttpUtilMc;
 import com.mc.util.LogcatHelper;
 import com.mc.util.Util;
@@ -69,10 +66,9 @@ import com.slidingmenu.lib.SlidingMenu;
 import com.slidingmenu.lib.SlidingMenu.OnOpenListener;
 import com.xy.fy.adapter.ChooseHistorySchoolExpandAdapter;
 import com.xy.fy.adapter.ChooseSchoolExpandAdapter;
-import com.xy.fy.adapter.ListViewAdapter;
+import com.xy.fy.main.LoginActivity.GetPicAsyntask;
+import com.xy.fy.main.R;
 import com.xy.fy.util.BitmapUtil;
-import com.xy.fy.util.DownLoadThread;
-import com.xy.fy.util.HttpUtil;
 import com.xy.fy.util.StaticVarUtil;
 import com.xy.fy.util.ViewUtil;
 import com.xy.fy.view.HistoryCollege;
@@ -89,10 +85,12 @@ public class MainActivity extends Activity {
 	// 检测版本
 	private static PopupWindow popupWindow;
 	private static PopupWindow version_popupWindow;
+	private static boolean is_show = false;
 	private View view;
 	private TextView update_content_textview;
 
 	public static SlidingMenu slidingMenu;// 侧滑组件
+	private static Context context;
 	private Button refresh;// 刷新按钮
 	private Button chooseCollege;// 选择学校按钮
 	private Button chooseMsgKind;// 选择说说种类
@@ -102,6 +100,7 @@ public class MainActivity extends Activity {
 	private CardUI mCardView;
 	private TextView nickname;// 用户名
 	private String name;
+	private CircleImageView headPhoto;// 头像
 	private LinearLayout menuBang = null;// 成绩查询
 	private LinearLayout menuMyBukao = null;// 补考查询
 	private LinearLayout menuMyPaiming = null;// 我的排名
@@ -109,9 +108,8 @@ public class MainActivity extends Activity {
 	private LinearLayout menuSetting = null;// 设置
 	private LinearLayout menuAbout = null;// 关于
 	private Button check_version = null;
-	ArrayList<HashMap<String, Object>> listItem;// json解析之后的列表
+	ArrayList<HashMap<String, Object>> listItem;// json解析之后的列表,保存了所有的成绩数据
 	private String score_json;// json数据
-	private ListViewAdapter listViewAdapter = null;
 
 	private ProgressDialog dialog = null;
 
@@ -132,11 +130,10 @@ public class MainActivity extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		super.setContentView(R.layout.activity_main);
 		dialog = ViewUtil.getProgressDialog(MainActivity.this, "正在查询");
-
+		context = getApplicationContext();
 		CheckVersionAsyntask checkVersionAsyntask = new CheckVersionAsyntask();
+		is_show = false;
 		checkVersionAsyntask.execute();
-		
-		
 
 		setMenuItemListener();
 
@@ -145,7 +142,6 @@ public class MainActivity extends Activity {
 
 		// 找到ID
 		slidingMenu = (SlidingMenu) findViewById(R.id.slidingMenu);
-
 		// 打开sliding组件监听
 		slidingMenu.setOnOpenListener(new OnOpenListener() {
 			@Override
@@ -179,18 +175,19 @@ public class MainActivity extends Activity {
 				}
 			}
 		});
-		
+
 		if (!Util.hasDigitAndNum(StaticVarUtil.student.getPassword())) {
-			Toast.makeText(getApplicationContext(), "密码不安全，请重新设置密码", 1000).show();
+			Toast.makeText(getApplicationContext(), "密码不安全，请重新设置密码", 1000)
+					.show();
 			setMenuItemState(menuBang, false, menuMyBukao, false,
-					menuMyPaiming, false, menuMyCollect, false,
-					menuSetting, true, menuAbout, false);
+					menuMyPaiming, false, menuMyCollect, false, menuSetting,
+					true, menuAbout, false);
 			setCurrentMenuItem(5);// 记录当前选项位置，并且跳转
 			slidingMenu.toggle();// 页面跳转
 
 			slidingMenu.setContent(R.layout.activity_setting);
 			menuSetting();
-		}else {
+		} else {
 			// 请求 获取 成绩
 			GetScoreAsyntask getScoreAsyntask = new GetScoreAsyntask();
 			dialog.show();
@@ -204,42 +201,6 @@ public class MainActivity extends Activity {
 		// menu2();
 		// }
 		// });
-	}
-
-	/**
-	 * 第二个菜单项
-	 * 
-	 * @param title
-	 *            题目
-	 * @param fileName
-	 *            要保存的文件缓存名字
-	 */
-	private void menuMy(String title, final String fileName,
-			final DownLoadThread downLoadThread) {
-		// 标题
-		Button butMy = (Button) findViewById(R.id.butMy);
-		butMy.setText(title);
-
-		// 放在这里，后面的功能不能用
-		if (StaticVarUtil.student == null) {
-			ViewUtil.toastShort("对不起，请先登录..", MainActivity.this);
-			return;
-		}
-
-		page = 0;
-		// 刷新按钮
-		refresh = (Button) findViewById(R.id.butRefresh);
-		refresh.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				// 刷新的时候
-				page = 0;
-				// downLoadThread.setPageAndHanlder(page, handler);
-				StaticVarUtil.fileName = fileName;
-				StaticVarUtil.executorService.submit(downLoadThread);
-			}
-		});
-
 	}
 
 	/**
@@ -258,55 +219,6 @@ public class MainActivity extends Activity {
 		// init CardView
 		mCardView = (CardUI) findViewById(R.id.cardsview);
 		mCardView.setSwipeable(true);
-
-		CardStack stack2 = new CardStack();
-		stack2.setTitle("REGULAR CARDS");
-		mCardView.addStack(stack2);
-
-		// add AndroidViews Cards
-		mCardView.addCard(new MyCard("By Mc"));// 定义卡片 在这块可以设置 学期
-		mCardView.addCardToLastStack(new MyCard("for Xiyou"));
-		MyCard androidViewsCard = new MyCard("www.xiyoumobile.com");
-		try {
-			androidViewsCard.setOnClickListener(new OnClickListener() {
-
-				@Override
-				public void onClick(View v) {
-
-					try {
-						Intent intent = new Intent();
-						intent.setAction("android.intent.action.VIEW");
-						Uri content_url = Uri
-								.parse("http://www.xiyoumobile.com/");
-						intent.setData(content_url);
-						startActivity(intent);
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-						Log.e("Main", e.toString());
-					}
-
-				}
-			});
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			Log.e("Main", e.toString());
-		}
-		androidViewsCard.setOnLongClickListener(new OnLongClickListener() {
-
-			@Override
-			public boolean onLongClick(View v) {
-				Toast.makeText(v.getContext(), "This is a long click",
-						Toast.LENGTH_SHORT).show();
-				return true;
-			}
-
-		});
-		Intent intent = new Intent(Intent.ACTION_VIEW);
-		intent.setData(Uri.parse("www.xiyoumobile.com"));
-
-		mCardView.addCardToLastStack(androidViewsCard);
 
 		Resources resources = getResources();
 		String[] xn = resources.getStringArray(R.array.xn);
@@ -498,6 +410,17 @@ public class MainActivity extends Activity {
 	 */
 	private void setMenuItemListener() {
 
+		headPhoto = (CircleImageView) findViewById(R.id.headphoto);// 头像
+		File file = new File(StaticVarUtil.PATH + "/" + StaticVarUtil.student.getAccount()
+				+ ".JPEG");
+		if (file.exists()) {// 如果存在，则直接显示图像
+          Bitmap bitmap = Util.convertToBitmap(StaticVarUtil.PATH + "/" + StaticVarUtil.student.getAccount()
+  				+ ".JPEG", 240, 240);
+          headPhoto.setImageBitmap(bitmap);
+		}else {//如果不存在，则请求服务器，然后将图片保存在本地
+			GetPhotoAsyntask getPhotoAsyntask = new GetPhotoAsyntask();//加载头像
+			getPhotoAsyntask.execute();
+		}
 		nickname = (TextView) findViewById(R.id.nickname);// 用户名
 		menuBang = (LinearLayout) findViewById(R.id.menu_bang);// 1.成绩查询
 		menuMyBukao = (LinearLayout) findViewById(R.id.menu_my_bukao);// 2.补考查询
@@ -510,6 +433,19 @@ public class MainActivity extends Activity {
 		menuBang.setPressed(true);// 初始化默认是风云榜被按下
 		setCurrentMenuItem(1);// 记录当前选项位置
 
+		headPhoto.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+				File file = new File(StaticVarUtil.PATH);
+				if (!file.exists()) {
+					file.mkdirs();// 创建文件
+				}
+				chooseHeadPhoto();// 改变头像
+			}
+		});
 		menuBang.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -617,6 +553,7 @@ public class MainActivity extends Activity {
 						// TODO Auto-generated method stub
 
 						CheckVersionAsyntask checkVersionAsyntask = new CheckVersionAsyntask();
+						is_show = true;
 						dialog.show();
 						checkVersionAsyntask.execute();
 					}
@@ -693,18 +630,19 @@ public class MainActivity extends Activity {
 				 * File file = null; // 头像 if (bitmap != null) { file = new
 				 * File(StaticVarUtil.PATH + "/headPhoto.JPEG"); } String
 				 * account = StaticVarUtil.student.getAccount() + ""; // 修改
-				 * //alertStudent(account, password, file);
+				 * alertStudent(account, password, file);
 				 */
-				
+
 				if (password2.equals(password3)) {
 					if (!Util.hasDigitAndNum(password2)) {
-						Toast.makeText(getApplicationContext(), "密码中必须包含数字和字母", 1000).show();
-					}else {
+						Toast.makeText(getApplicationContext(), "密码中必须包含数字和字母",
+								1000).show();
+					} else {
 						ChangePwAsyntask changePwAsyntask = new ChangePwAsyntask();
 						changePwAsyntask.execute(new String[] { password1,
 								password2 });
 					}
-					
+
 				} else {
 					ViewUtil.toastShort("新密码不正确", MainActivity.this);
 					return;
@@ -776,9 +714,17 @@ public class MainActivity extends Activity {
 					if (extras != null) {
 						bitmap = extras.getParcelable("data");
 					}
-					bitmap = BitmapUtil.resizeBitmapWidth(bitmap, 100);// 把它变为100像素的图片
+					bitmap = BitmapUtil.resizeBitmapWidth(bitmap, 240);// 把它变为240像素的图片
 					BitmapUtil.saveBitmapToFile(bitmap, StaticVarUtil.PATH,
-							"headPhoto.JPEG");
+							StaticVarUtil.student.getAccount() + ".JPEG");
+					headPhoto.setImageBitmap(bitmap);
+					// 上传头像
+					UploadFileAsytask uploadFileAsytask = new UploadFileAsytask();
+					uploadFileAsytask.execute(new String[] { StaticVarUtil.PATH
+						+"/"+ StaticVarUtil.student.getAccount()
+							+ ".JPEG" });
+					Toast.makeText(getApplicationContext(), StaticVarUtil.PATH,
+							1000).show();
 				}
 				break;
 			default:
@@ -883,37 +829,9 @@ public class MainActivity extends Activity {
 		});
 	}
 
-	/**
-	 * 设置什么时候可以加载图片
-	 */
-	OnScrollListener mScrollListener = new OnScrollListener() {
-		@Override
-		public void onScrollStateChanged(AbsListView view, int scrollState) {
-			switch (scrollState) {
-			case OnScrollListener.SCROLL_STATE_FLING:
-				listViewAdapter.lock();
-				break;
-			case OnScrollListener.SCROLL_STATE_IDLE:
-				listViewAdapter.unlock();
-				break;
-			case OnScrollListener.SCROLL_STATE_TOUCH_SCROLL:
-				listViewAdapter.unlock();
-				break;
-			default:
-				break;
-			}
-			listViewAdapter.notifyDataSetChanged();
-		}
-
-		@Override
-		public void onScroll(AbsListView view, int firstVisibleItem,
-				int visibleItemCount, int totalItemCount) {
-
-		}
-	};
 	private String new_version;// 最新版本
 	private String update_content;// 更新内容
-	private String apk_url;// 下载地址
+	private static String apk_url;// 下载地址
 	private Button download_version;// 下载版本
 	private Button cancle_check;// 取消
 
@@ -996,7 +914,14 @@ public class MainActivity extends Activity {
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		switch (keyCode) {
 		case KeyEvent.KEYCODE_BACK:// 如果是返回按钮,退出
-			quit(false);
+			if (getCurrentMeunItem() != 1) {// 不在第一个页面,返回第一个页面
+				menuBang.setPressed(true);// 初始化默认是风云榜被按下
+				setCurrentMenuItem(1);// 记录当前选项位置
+				slidingMenu.setContent(R.layout.card_main);
+				menu1();
+			} else
+				quit(false);
+
 			break;
 		case KeyEvent.KEYCODE_MENU:// 如果是菜单按钮
 			slidingMenu.toggle();
@@ -1070,7 +995,7 @@ public class MainActivity extends Activity {
 		return flag;
 	}
 
-	// 异步加载登录
+	// 异步加载获取成绩
 	class GetScoreAsyntask extends AsyncTask<Object, String, String> {
 
 		@Override
@@ -1132,17 +1057,6 @@ public class MainActivity extends Activity {
 										o.get("list_xueKeScore"));
 								listItem.add(map);
 							}
-							/*
-							 * // 获取sdcard根目录 File sdCardDir = Environment
-							 * .getExternalStorageDirectory(); // 然后就可以进行下面的步骤
-							 * File saveFile = new File(sdCardDir,
-							 * "xuptscore/score.xml"); if (!saveFile.exists()) {
-							 * new File(sdCardDir, "xuptscore").mkdir();
-							 * saveFile.createNewFile(); } FileOutputStream
-							 * outStream = new FileOutputStream( saveFile);
-							 * outStream.write(result.getBytes());
-							 * outStream.close();
-							 */
 						}
 						menu1();
 						dialog.cancel();
@@ -1223,7 +1137,69 @@ public class MainActivity extends Activity {
 		}
 
 	}
+	//从网络获取图片
+	class GetPicture extends AsyncTask<String, Bitmap, Bitmap> {
 
+		@Override
+		protected Bitmap doInBackground(String... params) {
+			// TODO Auto-generated method stub
+			Bitmap bitmap = Util.getBitmap(params[0]);
+			System.out.println("网址"+params[0]);
+			return bitmap;
+		}
+
+		@Override
+		protected void onPostExecute(Bitmap bitmap) {
+			// TODO Auto-generated method stub
+			super.onPostExecute(bitmap);
+			headPhoto.setImageBitmap(bitmap);//显示图片
+			//并保存找到本地
+			Util.saveBitmap2file(bitmap, StaticVarUtil.student.getAccount());
+
+		}
+
+	}
+	
+	// 从网络获取图片
+		class GetPhotoAsyntask extends AsyncTask<String, String, String> {
+
+			@Override
+			protected String doInBackground(String... params) {
+				// TODO Auto-generated method stub
+				String url = HttpUtilMc.BASE_URL + "getuserphoto.jsp?username="
+						+ StaticVarUtil.student.getAccount();
+				System.out.println("url" + url);
+				// 查询返回结果
+				String result = HttpUtilMc.queryStringForPost(url);
+				System.out.println("=========================  " + result);
+				return result;
+
+			}
+
+			@Override
+			protected void onPostExecute(String result) {
+				// TODO Auto-generated method stub
+				super.onPostExecute(result);
+				if (is_show) {
+					dialog.cancel();
+				}
+				// 显示用户名
+				try {
+					if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
+						if (!result.equals("no_photo")) {// 已经是最新版本
+
+							GetPicture getPicture = new GetPicture();
+							getPicture.execute(new String[]{HttpUtilMc.BASE_URL+result});
+						} 
+					}
+				} catch (Exception e) {
+					// TODO: handle exception
+					e.printStackTrace();
+					Log.i("LoginActivity", e.toString());
+				}
+
+			}
+		}
 	// 异步检测版本
 	class CheckVersionAsyntask extends AsyncTask<String, String, String> {
 
@@ -1249,7 +1225,9 @@ public class MainActivity extends Activity {
 		protected void onPostExecute(String result) {
 			// TODO Auto-generated method stub
 			super.onPostExecute(result);
-//			dialog.cancel();
+			if (is_show) {
+				dialog.cancel();
+			}
 			// 显示用户名
 			try {
 				if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
@@ -1272,8 +1250,10 @@ public class MainActivity extends Activity {
 						versionUpdate.updateMsg = new_version + "\n\n"
 								+ update_content;
 						versionUpdate.checkUpdateInfo();
+						// MainActivity.uninstall();//卸载
 					}
 				}
+				
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();
@@ -1352,5 +1332,54 @@ public class MainActivity extends Activity {
 				// version_popupWindow = null;
 			}
 		});
+	}
+
+	/**
+	 * 上传头像
+	 * 
+	 * @author mc 2014-4-28
+	 */
+	class UploadFileAsytask extends AsyncTask<String, String, String> {
+		@Override
+		protected String doInBackground(String... params) {
+			// TODO Auto-generated method stub
+			String username = StaticVarUtil.student.getAccount();
+			String result = HttpAssist
+					.uploadFile(new File(params[0]), username);
+
+			return result;
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			// TODO Auto-generated method stub
+			super.onPostExecute(result);
+			try {
+				if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
+
+					if (!result.equals("error")) {
+
+						System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@");
+						Toast.makeText(getApplicationContext(), "修改成功", 1000)
+								.show();
+						// FileUtils.deleteDir();
+						/*
+						 * Intent i = new Intent();
+						 * i.setClass(getApplicationContext(),
+						 * ZaiXianJiaoLiao.class); startActivity(i); finish();
+						 */
+					} else {
+						Toast.makeText(getApplicationContext(), "修改失败", 1)
+								.show();
+					}
+				} else {
+					Toast.makeText(getApplicationContext(),
+							HttpUtilMc.CONNECT_EXCEPTION, 1).show();
+				}
+			} catch (Exception e) {
+				// TODO: handle exception
+				Log.i("LoginActivity", e.toString());
+			}
+		}
 	}
 }

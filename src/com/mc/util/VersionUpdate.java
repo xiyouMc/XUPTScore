@@ -8,6 +8,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import com.xy.fy.main.MainActivity;
 import com.xy.fy.main.R;
 
 
@@ -47,7 +48,7 @@ public class VersionUpdate {
 	 /* 下载包安装路径 */
     private static final String savePath = "/sdcard/updatedemo/";
     
-    private static final String saveFileName = savePath + "sxdw.apk";//
+    public static final String saveFileName = savePath + "sxdw.apk";//
 
     /* 进度条与通知ui刷新的handler和msg常量 */
     private ProgressBar mProgress;
@@ -97,7 +98,8 @@ public class VersionUpdate {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				dialog.dismiss();
-				showDownloadDialog();			
+				//showDownloadDialog();		
+				//进入浏览器下载
 			}
 		});
 		builder.setNegativeButton("以后再说", new OnClickListener() {			
@@ -200,6 +202,7 @@ public class VersionUpdate {
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setDataAndType(Uri.parse("file://" + apkfile.toString()), "application/vnd.android.package-archive"); 
         mContext.startActivity(i);
+//        MainActivity.uninstall();//卸载
 	
 	}
 }

@@ -1,9 +1,13 @@
 package com.xy.fy.main;
 
 import com.mc.util.LogcatHelper;
+import com.xy.fy.main.R;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,7 +20,11 @@ import android.widget.Toast;
 public class WelcomeActivity extends Activity {
 
 
-	@SuppressLint("ShowToast")
+	/*// 设置状态栏
+		NotificationManager notificationManager = null;
+		Notification notification = null;
+		PendingIntent pendingIntent = null;// 即将发送的事件
+*/	@SuppressLint("ShowToast")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -25,7 +33,7 @@ public class WelcomeActivity extends Activity {
 		setContentView(view);
 	
 		AlphaAnimation aa = new AlphaAnimation(0.3f, 1.0f);
-		aa.setDuration(3000);
+		aa.setDuration(1000);
 		view.startAnimation(aa);
 
 		aa.setAnimationListener(new AnimationListener() {

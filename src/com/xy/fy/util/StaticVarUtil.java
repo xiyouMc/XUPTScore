@@ -92,7 +92,7 @@ public class StaticVarUtil {
 		try {
 			JSONObject jsonObject = new JSONObject(strJson);
 			student = new Student();
-			student.setAccount(jsonObject.optInt("account"));
+			student.setAccount(jsonObject.optString("account"));
 			student.setPassword(jsonObject.optString("password"));
 		} catch (JSONException e) {
 			e.printStackTrace();

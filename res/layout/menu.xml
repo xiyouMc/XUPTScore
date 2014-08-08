@@ -11,11 +11,14 @@
         android:orientation="horizontal"
         android:padding="10dp" >
 
-        <ImageView
-            android:id="@+id/headPhoto"
+        <com.mc.util.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/headphoto"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:src="@drawable/default_head_photo" />
+            android:src="@drawable/person"
+            app:border_color="#BFEFFF"
+            app:border_width="2dp" />
 
         <TextView
             android:id="@+id/nickname"
@@ -24,7 +27,7 @@
             android:gravity="center_vertical"
             android:paddingLeft="15dp"
             android:text="游客"
-            android:textColor="#FF8C00"
+            android:textColor="#D1EEEE"
             android:textSize="20dp" />
     </LinearLayout>
 
@@ -37,13 +40,13 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingLeft="40dp" >
+        android:paddingLeft="11dp" >
 
         <!-- 高校风云榜 -->
 
         <LinearLayout
             android:id="@+id/menu_bang"
-            android:layout_width="fill_parent"
+            android:layout_width="318dp"
             android:layout_height="wrap_content"
             android:background="@drawable/menu_list"
             android:clickable="true"
@@ -73,10 +76,10 @@
                 android:src="@drawable/menu_arrow" />
         </LinearLayout>
 
-        <ImageView
+        <!-- <ImageView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/expand_divider" />
+            android:background="@drawable/expand_divider" /> -->
         <!-- 我发表的说说 -->
 
         <LinearLayout
@@ -109,11 +112,11 @@
                 android:paddingLeft="20dp"
                 android:src="@drawable/menu_arrow" />
         </LinearLayout>
-
+<!-- 
         <ImageView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/expand_divider" />
+            android:background="@drawable/expand_divider" /> -->
         <!-- 我评论过的说说 -->
 
         <LinearLayout
@@ -147,10 +150,10 @@
                 android:src="@drawable/menu_arrow" />
         </LinearLayout>
 
-        <ImageView
+        <!-- <ImageView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/expand_divider" />
+            android:background="@drawable/expand_divider" /> -->
         <!-- 我收藏过的说说 -->
 
         <LinearLayout
@@ -221,10 +224,10 @@
                 android:src="@drawable/menu_arrow" />
         </LinearLayout>
 
-        <ImageView
+        <!-- <ImageView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/expand_divider" />
+            android:background="@drawable/expand_divider" /> -->
         <!-- 选项设置 -->
 
         <LinearLayout
@@ -258,10 +261,10 @@
                 android:src="@drawable/menu_arrow" />
         </LinearLayout>
 
-        <ImageView
+       <!--  <ImageView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/expand_divider" />
+            android:background="@drawable/expand_divider" /> -->
 
         <!-- 退出 -->
 

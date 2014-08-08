@@ -2,28 +2,37 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="#55000000"
     android:orientation="vertical" >
 
-    <RelativeLayout
+    <LinearLayout
+        android:id="@+id/layout"
         android:layout_width="fill_parent"
-        android:layout_height="50dp"
-        android:background="@drawable/main_title_bar"
-        android:orientation="horizontal" >
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/XNandXQ"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/transparent"
-            android:gravity="center_vertical"
-            android:text="2013-2014 第一学期"
-            android:textColor="@drawable/change_button_text_color"
-            android:textSize="20dp" />
-        <!-- 菜单 -->
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/main_title_bar"
+            android:orientation="horizontal" >
 
-        <!-- <Button
+            <TextView
+                android:id="@+id/XNandXQ"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/transparent"
+                android:gravity="center_vertical"
+                android:text="2013-2014 第一学期"
+                android:textColor="@drawable/change_button_text_color"
+                android:textSize="20dp" />
+            <!-- 菜单 -->
+
+
+            <!--
+             <Button
             android:id="@+id/butBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -33,47 +42,50 @@
             android:background="@drawable/button_back"
             android:gravity="center_vertical"
             android:textColor="#FF8C00"
-            android:textSize="14sp" /> -->
-    </RelativeLayout>
+            android:textSize="14sp" />
+            -->
+        </RelativeLayout>
 
-    <TableLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:stretchColumns="0" >
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="0" >
 
-        <TableRow>
+            <TableRow>
 
-            <TextView
-                android:background="#aa0000"
-                android:padding="3dip"
-                android:gravity="center_horizontal"
-                android:text="课程名称 " />
+                <!-- android:background="#aa0000" -->
 
-            <TextView
-                android:background="#00aa00"
-                android:gravity="center_horizontal"
-                android:padding="3dip"
-                android:text="最终成绩  " >
-            </TextView>
+                <TextView
+                    android:gravity="center_horizontal"
+                    android:padding="3dip"
+                    android:text="课程名称 " />
+                <!-- android:background="#00aa00" -->
 
-            <TextView
-                android:background="#0000aa"
-                android:gravity="center_horizontal"
-                android:padding="3dip"
-                android:text="平时成绩  " />
+                <TextView
+                    android:gravity="center_horizontal"
+                    android:padding="3dip"
+                    android:text="最终成绩  " >
+                </TextView>
+                <!-- android:background="#0000aa" -->
 
-            <TextView
-                android:background="#8B1A1A"
-                android:gravity="center_horizontal"
-                android:padding="3dip"
-                android:text="卷面成绩   " />
-        </TableRow>
-    </TableLayout>
+                <TextView
+                    android:gravity="center_horizontal"
+                    android:padding="3dip"
+                    android:text="平时成绩  " />
+                <!-- android:background="#8B1A1A" -->
 
-    <TableLayout
-        android:id="@+id/score"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
-    </TableLayout>
+                <TextView
+                    android:gravity="center_horizontal"
+                    android:padding="3dip"
+                    android:text="卷面成绩   " />
+            </TableRow>
+        </TableLayout>
+
+        <TableLayout
+            android:id="@+id/score"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+        </TableLayout>
+    </LinearLayout>
 
 </LinearLayout>
