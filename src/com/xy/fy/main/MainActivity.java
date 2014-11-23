@@ -460,11 +460,14 @@ public class MainActivity extends Activity {
 			}
 		});
 
+		//补考助手
 		menuMyBukao.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(getApplicationContext(), "程序猿们正在努力开发中，请持续关注...",
-						2000).show();
+				/*Toast.makeText(getApplicationContext(), "程序猿们正在努力开发中，请持续关注...",
+						2000).show();*/
+				//判断如果没有头像的话，先让选择头像，并填写昵称
+				
 			}
 		});
 
