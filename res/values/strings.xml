@@ -15,5 +15,8 @@
         <item>2013-2014</item>
         <item>2014-2015</item>
     </string-array>
-
+    <string name="add_friend">添加好友</string>
+    <string name="friend_list">好友列表</string>
+    <string name="friend_recommand">好友推荐</string>
+    <string name="friend_apply">好友申请</string>
 </resources>

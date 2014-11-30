@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8F8FF"
+    android:orientation="vertical" >
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="0" >
+
+        <TableRow>
+
+            <TextView
+                android:gravity="left"
+                android:padding="3dip"
+                android:text="补考课程"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:gravity="center_horizontal"
+                android:padding="3dip"
+                android:text="成绩    "
+                android:textColor="@color/black" >
+            </TextView>
+
+            <TextView
+                android:gravity="center_horizontal"
+                android:padding="3dip"
+                android:text="挂科率    "
+                android:textColor="@color/black" />
+
+            <TextView
+                android:gravity="center_horizontal"
+                android:padding="3dip"
+                android:text="        " />
+        </TableRow>
+    </TableLayout>
+    
+    <ListView 
+        android:id="@+id/kecheng"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"></ListView>
+</LinearLayout>
