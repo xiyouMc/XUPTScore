@@ -367,7 +367,8 @@ public class MainActivity extends Activity {
 								result.append(jsonObject2.get("pscj")
 										.equals("") ? "/" : "--"
 										+ change_color(jsonObject2.get("pscj")
-												.toString()));
+												.toString()+"("+jsonObject2.get("bkcj")//增加补考成绩。
+												.toString()+")"));
 								result.append(jsonObject2.get("qmcj")
 										.equals("") ? "/" : "--"
 										+ change_color(jsonObject2.get("qmcj")
@@ -411,14 +412,14 @@ public class MainActivity extends Activity {
 	private void setMenuItemListener() {
 
 		headPhoto = (CircleImageView) findViewById(R.id.headphoto);// 头像
-		File file = new File(StaticVarUtil.PATH + "/" + StaticVarUtil.student.getAccount()
-				+ ".JPEG");
+		File file = new File(StaticVarUtil.PATH + "/"
+				+ StaticVarUtil.student.getAccount() + ".JPEG");
 		if (file.exists()) {// 如果存在，则直接显示图像
-          Bitmap bitmap = Util.convertToBitmap(StaticVarUtil.PATH + "/" + StaticVarUtil.student.getAccount()
-  				+ ".JPEG", 240, 240);
-          headPhoto.setImageBitmap(bitmap);
-		}else {//如果不存在，则请求服务器，然后将图片保存在本地
-			GetPhotoAsyntask getPhotoAsyntask = new GetPhotoAsyntask();//加载头像
+			Bitmap bitmap = Util.convertToBitmap(StaticVarUtil.PATH + "/"
+					+ StaticVarUtil.student.getAccount() + ".JPEG", 240, 240);
+			headPhoto.setImageBitmap(bitmap);
+		} else {// 如果不存在，则请求服务器，然后将图片保存在本地
+			GetPhotoAsyntask getPhotoAsyntask = new GetPhotoAsyntask();// 加载头像
 			getPhotoAsyntask.execute();
 		}
 		nickname = (TextView) findViewById(R.id.nickname);// 用户名
@@ -438,7 +439,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				
+
 				File file = new File(StaticVarUtil.PATH);
 				if (!file.exists()) {
 					file.mkdirs();// 创建文件
@@ -460,14 +461,16 @@ public class MainActivity extends Activity {
 			}
 		});
 
-		//补考助手
+		// 补考助手
 		menuMyBukao.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				/*Toast.makeText(getApplicationContext(), "程序猿们正在努力开发中，请持续关注...",
-						2000).show();*/
-				//判断如果没有头像的话，先让选择头像，并填写昵称
-				
+				/*
+				 * Toast.makeText(getApplicationContext(),
+				 * "程序猿们正在努力开发中，请持续关注...", 2000).show();
+				 */
+				// 判断如果没有头像的话，先让选择头像，并填写昵称
+
 			}
 		});
 
@@ -669,13 +672,13 @@ public class MainActivity extends Activity {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 						switch (which) {
-						case 0:
+						case 0:// 选择本地图片
 							Intent intent = new Intent();
 							intent.setType("image/*");
 							intent.setAction(Intent.ACTION_GET_CONTENT);
 							startActivityForResult(intent, PIC);
 							break;
-						case 1:
+						case 1:// 拍照
 							Intent intent2 = new Intent(
 									MediaStore.ACTION_IMAGE_CAPTURE);
 							Uri imageUri = Uri.fromFile(new File(
@@ -724,7 +727,7 @@ public class MainActivity extends Activity {
 					// 上传头像
 					UploadFileAsytask uploadFileAsytask = new UploadFileAsytask();
 					uploadFileAsytask.execute(new String[] { StaticVarUtil.PATH
-						+"/"+ StaticVarUtil.student.getAccount()
+							+ "/" + StaticVarUtil.student.getAccount()
 							+ ".JPEG" });
 					Toast.makeText(getApplicationContext(), StaticVarUtil.PATH,
 							1000).show();
@@ -746,7 +749,7 @@ public class MainActivity extends Activity {
 	 */
 	public void startPhotoZoom(Uri uri) {
 
-		Intent intent = new Intent("com.android.camera.action.CROP");
+		Intent intent = new Intent("com.android.camera.action.CROP");//调用系统的截图功能。
 		intent.setDataAndType(uri, "image/*");
 		// 设置裁剪
 		intent.putExtra("crop", "true");
@@ -756,6 +759,8 @@ public class MainActivity extends Activity {
 		// outputX outputY 是裁剪图片宽高
 		intent.putExtra("outputX", 320);
 		intent.putExtra("outputY", 320);
+		intent.putExtra("scale", true);//黑边
+        intent.putExtra("scaleUpIfNeeded", true);//黑边
 		intent.putExtra("return-data", true);
 		startActivityForResult(intent, RESULT);
 	}
@@ -1140,14 +1145,15 @@ public class MainActivity extends Activity {
 		}
 
 	}
-	//从网络获取图片
+
+	// 从网络获取图片
 	class GetPicture extends AsyncTask<String, Bitmap, Bitmap> {
 
 		@Override
 		protected Bitmap doInBackground(String... params) {
 			// TODO Auto-generated method stub
 			Bitmap bitmap = Util.getBitmap(params[0]);
-			System.out.println("网址"+params[0]);
+			System.out.println("网址" + params[0]);
 			return bitmap;
 		}
 
@@ -1155,54 +1161,56 @@ public class MainActivity extends Activity {
 		protected void onPostExecute(Bitmap bitmap) {
 			// TODO Auto-generated method stub
 			super.onPostExecute(bitmap);
-			headPhoto.setImageBitmap(bitmap);//显示图片
-			//并保存找到本地
+			headPhoto.setImageBitmap(bitmap);// 显示图片
+			// 并保存找到本地
 			Util.saveBitmap2file(bitmap, StaticVarUtil.student.getAccount());
 
 		}
 
 	}
-	
+
 	// 从网络获取图片
-		class GetPhotoAsyntask extends AsyncTask<String, String, String> {
+	class GetPhotoAsyntask extends AsyncTask<String, String, String> {
 
-			@Override
-			protected String doInBackground(String... params) {
-				// TODO Auto-generated method stub
-				String url = HttpUtilMc.BASE_URL + "getuserphoto.jsp?username="
-						+ StaticVarUtil.student.getAccount();
-				System.out.println("url" + url);
-				// 查询返回结果
-				String result = HttpUtilMc.queryStringForPost(url);
-				System.out.println("=========================  " + result);
-				return result;
+		@Override
+		protected String doInBackground(String... params) {
+			// TODO Auto-generated method stub
+			String url = HttpUtilMc.BASE_URL + "getuserphoto.jsp?username="
+					+ StaticVarUtil.student.getAccount();
+			System.out.println("url" + url);
+			// 查询返回结果
+			String result = HttpUtilMc.queryStringForPost(url);
+			System.out.println("=========================  " + result);
+			return result;
 
-			}
-
-			@Override
-			protected void onPostExecute(String result) {
-				// TODO Auto-generated method stub
-				super.onPostExecute(result);
-				if (is_show) {
-					dialog.cancel();
-				}
-				// 显示用户名
-				try {
-					if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
-						if (!result.equals("no_photo")) {// 已经是最新版本
-
-							GetPicture getPicture = new GetPicture();
-							getPicture.execute(new String[]{HttpUtilMc.BASE_URL+result});
-						} 
-					}
-				} catch (Exception e) {
-					// TODO: handle exception
-					e.printStackTrace();
-					Log.i("LoginActivity", e.toString());
-				}
-
-			}
 		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			// TODO Auto-generated method stub
+			super.onPostExecute(result);
+			if (is_show) {
+				dialog.cancel();
+			}
+			// 显示用户名
+			try {
+				if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
+					if (!result.equals("no_photo")) {// 已经是最新版本
+
+						GetPicture getPicture = new GetPicture();
+						getPicture.execute(new String[] { HttpUtilMc.BASE_URL
+								+ result });
+					}
+				}
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+				Log.i("LoginActivity", e.toString());
+			}
+
+		}
+	}
+
 	// 异步检测版本
 	class CheckVersionAsyntask extends AsyncTask<String, String, String> {
 
@@ -1210,10 +1218,6 @@ public class MainActivity extends Activity {
 		protected String doInBackground(String... params) {
 			// TODO Auto-generated method stub
 			String url = "";
-			/*
-			 * String[] can = canshu.split("&"); String url_str = can[0]; String
-			 * gnmkdm = can[1];
-			 */
 			url = HttpUtilMc.BASE_URL + "checkversion.jsp?version="
 					+ Util.getVersion(getApplicationContext());
 			System.out.println("url" + url);
@@ -1256,7 +1260,7 @@ public class MainActivity extends Activity {
 						// MainActivity.uninstall();//卸载
 					}
 				}
-				
+
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();
