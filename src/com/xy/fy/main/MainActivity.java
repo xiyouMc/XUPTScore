@@ -358,22 +358,25 @@ public class MainActivity extends Activity {
 							if (jsonObject2.get("xq").equals(xq)) {
 								result.append(jsonObject2.get("kcmc") == null ? " "
 										: change_color(jsonObject2.get("kcmc")
-												.toString()));
-								// result.append(jsonObject2.get("kcxz")==null?" ":"--"+change_color(jsonObject2.get("kcxz").toString()));
-								result.append(/* jsonObject2.get("cj")==null?" ": */"--"
-										+ change_color(jsonObject2.get("cj")
-												.toString()));
-								// result.append(jsonObject2.get("xf")==null?" ":"--"+change_color(jsonObject2.get("xf").toString()));
-								result.append(jsonObject2.get("pscj")
+												.toString()));// 课程名称
+								result.append("--"
+										+ change_color(jsonObject2.get("cj")// 最终成绩
+												.toString()
+												+ (jsonObject2.get("bkcj")
+														.equals(" ") ? " "
+														: ("("
+																+ jsonObject2
+																		.get("bkcj")
+																		.toString() + ")"))// 将补考成绩和最终成绩同时显示。
+										));
+								result.append(jsonObject2.get("pscj")// 平时成绩
 										.equals("") ? "/" : "--"
 										+ change_color(jsonObject2.get("pscj")
-												.toString()+"("+jsonObject2.get("bkcj")//增加补考成绩。
-												.toString()+")"));
-								result.append(jsonObject2.get("qmcj")
+												.toString()));
+								result.append(jsonObject2.get("qmcj")// 期末成绩
 										.equals("") ? "/" : "--"
 										+ change_color(jsonObject2.get("qmcj")
 												.toString()));
-								// result.append(jsonObject2.get("xymc")==null?" ":"--"+change_color(jsonObject2.get("xymc").toString()));
 								result.append("\n");
 							}
 						}
@@ -749,7 +752,7 @@ public class MainActivity extends Activity {
 	 */
 	public void startPhotoZoom(Uri uri) {
 
-		Intent intent = new Intent("com.android.camera.action.CROP");//调用系统的截图功能。
+		Intent intent = new Intent("com.android.camera.action.CROP");// 调用系统的截图功能。
 		intent.setDataAndType(uri, "image/*");
 		// 设置裁剪
 		intent.putExtra("crop", "true");
@@ -759,8 +762,8 @@ public class MainActivity extends Activity {
 		// outputX outputY 是裁剪图片宽高
 		intent.putExtra("outputX", 320);
 		intent.putExtra("outputY", 320);
-		intent.putExtra("scale", true);//黑边
-        intent.putExtra("scaleUpIfNeeded", true);//黑边
+		intent.putExtra("scale", true);// 黑边
+		intent.putExtra("scaleUpIfNeeded", true);// 黑边
 		intent.putExtra("return-data", true);
 		startActivityForResult(intent, RESULT);
 	}
