@@ -19,7 +19,7 @@
             android:layout_height="48dp"
             android:background="@color/white"
             android:padding="5dp"
-            android:src="@drawable/default_head_photo_small" />
+            android:src="@drawable/default_head_photo" />
 
         <!-- 昵称 -->
 

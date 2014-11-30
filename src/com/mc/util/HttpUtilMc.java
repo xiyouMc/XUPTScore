@@ -10,19 +10,19 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 
 /**
- * 
  * @author Administrator
  * @description 记得修改代码，当和服务器响应的时候需要 fall back 代码
  */
+
 public class HttpUtilMc {
 	// 基础URL
 	// public static final String BASE_URL="http://10.0.2.2:8080/ShopServer/";
-//	public static final String BASE_URL = "http://192.168.137.1:8080/TuoC/";
-	 public static final String IP = "http://192.168.1.105:8080";
-	 public static final String BASE_URL = IP+"/xuptqueryscore/";
+	// public static final String BASE_URL = "http://192.168.137.1:8080/TuoC/";
+	public static final String IP = "http://172.20.0.116:8080";
+	public static final String BASE_URL = IP + "/xuptqueryscore/";
 	// public static String SERVER_ADDRESS="192.168.1.103";
-	
-	 /*
+
+	/*
 	 * public static String SERVER_ADDRESS="192.168.11.1"; public static int
 	 * SERVER_PORT = 8080;
 	 */
@@ -40,15 +40,16 @@ public class HttpUtilMc {
 		HttpPost request = new HttpPost(url);
 		return request;
 	}
+    
 
-	// 根据请求获得响应对象response
+	//根据请求获得响应对象response
 	public static HttpResponse getHttpResponse(HttpGet request)
 			throws ClientProtocolException, IOException {
 		HttpResponse response = new DefaultHttpClient().execute(request);
 		return response;
 	}
 
-	// 根据请求获得响应对象response
+	//根据请求获得响应对象response
 	public static HttpResponse getHttpResponse(HttpPost request)
 			throws ClientProtocolException, IOException {
 		HttpResponse response = new DefaultHttpClient().execute(request);
@@ -68,7 +69,6 @@ public class HttpUtilMc {
 			HttpResponse response = HttpUtilMc.getHttpResponse(request);
 
 			System.out.println("response==========" + response);
-
 			System.out
 					.println("response.getStatusLine().getStatusCode()=========="
 							+ response.getStatusLine().getStatusCode());

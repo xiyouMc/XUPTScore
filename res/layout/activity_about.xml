@@ -50,35 +50,37 @@
             android:paddingRight="20dp"
             android:paddingTop="20dp" >
 
-            <LinearLayout 
+            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingTop="70dp">
+                android:paddingTop="70dp" >
+
                 <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
-                android:text="西邮成绩榜    "
-                android:textColor="@color/black"
-                android:textSize="19dp" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="10dp"
+                    android:text="西邮成绩榜    "
+                    android:textColor="@color/black"
+                    android:textSize="19dp" />
+
                 <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
-                android:text="V"
-                android:textColor="@color/grey"
-                android:textSize="18dp" />
-                  <TextView
-                android:id="@+id/version"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
-                android:text="1.1"
-                android:textColor="@color/grey"
-                android:textSize="16dp" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="10dp"
+                    android:text="V"
+                    android:textColor="@color/grey"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/version"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="10dp"
+                    android:text="1.1"
+                    android:textColor="@color/grey"
+                    android:textSize="16dp" />
             </LinearLayout>
-            
 
             <TextView
                 android:layout_width="fill_parent"
@@ -96,19 +98,21 @@
                 android:drawableLeft="@drawable/emotionstore_newtips"
                 android:gravity="left|center_vertical"
                 android:text="检测新版本"
-                android:textSize="18dp"
-                 android:textColor="#7EC0EE" />
+                android:textColor="#7EC0EE"
+                android:textSize="18dp" />
 
-           <!--  <TextView
+            <!--
+                 <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="10dp"
                 android:text="\n意见反馈"
                 android:textColor="@color/black"
-                android:textSize="18dp" /> -->
+                android:textSize="18dp" />-->
         </LinearLayout>
 
-       <!--  <LinearLayout
+        <!--
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:background="#FDF5E6"
@@ -127,7 +131,7 @@
                 android:paddingTop="6dp"
                 android:singleLine="false"
                 android:textSize="10pt" />
-        </LinearLayout> -->
+        </LinearLayout>-->
     </LinearLayout>
 
 </ScrollView>

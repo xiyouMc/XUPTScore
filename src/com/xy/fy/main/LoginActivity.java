@@ -255,7 +255,7 @@ public class LoginActivity extends Activity {
 				// TODO Auto-generated method stub
 				if (account.getText().toString().length() < 8) {
 					password.setText("");// 密码置空
-					// 设置默认头像
+					// 设置 默认头像
 					Drawable drawable = LoginActivity.this.getResources()
 							.getDrawable(R.drawable.person);
 					photo.setImageDrawable(drawable);
@@ -272,7 +272,7 @@ public class LoginActivity extends Activity {
 								+ "/" + account.getText()
 								.toString() + ".JPEG", 240, 240);
 						photo.setImageBitmap(bitmap);
-					} else {
+					} else {//如果文件夹中不存在这个头像。
 
 					}
 				}
@@ -408,7 +408,7 @@ public class LoginActivity extends Activity {
 							String session = json.getString("cookieSessionID");// session
 							System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@");
 							StaticVarUtil.session = session;
-							LoginAsyntask loginAsyntask = new LoginAsyntask();
+							LoginAsyntask loginAsyntask = new LoginAsyntask();//获取 session之后 进行登录请求。
 							loginAsyntask.execute();
 						}
 					} else {

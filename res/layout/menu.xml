@@ -101,7 +101,7 @@
                 android:layout_height="fill_parent"
                 android:gravity="center_vertical"
                 android:paddingLeft="15dp"
-                android:text="补考查询"
+                android:text="补考好友"
                 android:textColor="@drawable/change_menu_text_color"
                 android:textSize="18dp" />
 
