@@ -2,6 +2,7 @@ package com.xy.fy.main;
 
 import java.io.File;
 import java.lang.ref.WeakReference;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -308,8 +309,8 @@ public class LoginActivity extends Activity {
 			String url;
 			url = HttpUtilMc.BASE_URL + "login.jsp?username="
 					+ account.getText().toString().trim() + "&password="
-					+ password.getText().toString().trim() + "&session="
-					+ StaticVarUtil.session;
+					+ URLEncoder.encode(password.getText().toString().trim()) + "&session="
+					+ StaticVarUtil.session;//增加urlendcoder编码 防止密码中出现空格而崩掉
 			System.out.println("url" + url);
 			// 查询返回结果
 			String result = HttpUtilMc.queryStringForPost(url);
