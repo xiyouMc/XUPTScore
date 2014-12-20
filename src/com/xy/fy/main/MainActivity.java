@@ -210,6 +210,7 @@ public class MainActivity extends Activity {
 		page = 0;// 点击过来重置
 		// 菜单按钮
 		Button menu = (Button) findViewById(R.id.butMenu);
+
 		menu.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -473,7 +474,15 @@ public class MainActivity extends Activity {
 				 * "程序猿们正在努力开发中，请持续关注...", 2000).show();
 				 */
 				// 判断如果没有头像的话，先让选择头像，并填写昵称
+				// 暂且跳转到好友列表
+				setMenuItemState(menuBang, false, menuMyBukao, true,
+						menuMyPaiming, false, menuMyCollect, false,
+						menuSetting, false, menuAbout, false);
+				setCurrentMenuItem(2);// 记录当前选项位置
+				slidingMenu.toggle();// 页面跳转
 
+				slidingMenu.setContent(R.layout.activity_friend_list);
+				friend_list();
 			}
 		});
 
@@ -490,30 +499,6 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				Toast.makeText(getApplicationContext(), "程序猿们正在努力开发中，请持续关注...",
 						2000).show();
-				/*
-				 * setMenuItemState(menuBang, false, menuMyBukao, false,
-				 * menuMyPaiming, false, menuMyCollect, true, menuSetting,
-				 * false, menuAbout, false); setCurrentMenuItem(4);//
-				 * 记录当前选项位置，并且跳转 slidingMenu.toggle();// 页面跳转
-				 * 
-				 * slidingMenu.setContent(R.layout.activity_my);
-				 * StaticVarUtil.fileName = "jsonCacheMyCollect.txt";
-				 * 
-				 * progress = (ProgressBar) findViewById(R.id.proRefresh); //
-				 * 菜单按钮 Button menu = (Button) findViewById(R.id.butMenu);
-				 * menu.setOnClickListener(new OnClickListener() {
-				 * 
-				 * @Override public void onClick(View v) { slidingMenu.toggle();
-				 * } });
-				 * 
-				 * // 不能是游客 if (StaticVarUtil.student == null) {
-				 * ViewUtil.toastShort("请先登录，然后再查看...", MainActivity.this);
-				 * return; }
-				 * 
-				 * menuMy("我收藏的", StaticVarUtil.fileName, new DownLoadThread(
-				 * StaticVarUtil.student.getAccount(),
-				 * HttpUtil.MY_COLLECT_MESSAGE));
-				 */
 			}
 		});
 
@@ -574,6 +559,45 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				quit(true);
+			}
+		});
+
+	}
+
+	// 好友列表
+	protected void friend_list() {
+		// TODO Auto-generated method stub
+		// 菜单按钮
+		Button menu = (Button) findViewById(R.id.butMenu);
+		menu.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				slidingMenu.toggle();
+			}
+		});
+
+		// 添加好友按钮
+		Button add_friend = (Button) findViewById(R.id.add_friend);
+		add_friend.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent i = new Intent();
+				i.setClass(MainActivity.this, AddFriendListActivity.class);
+				
+				startActivity(i);
+				
+				/**
+				 * 切换activity动画
+				 */
+				/*int version = Integer.valueOf(android.os.Build.VERSION.SDK);
+				if (version > 5) {
+					overridePendingTransition(R.anim.out_to_left, R.anim.in_from_right);
+					//overridePendingTransition(Android.R.anim.slide_in_left,android.R.anim.slide_out_right); 
+					//http://www.cnblogs.com/sunzn/p/3854009.html  activity切换
+				}*/
+				
 			}
 		});
 
@@ -647,9 +671,15 @@ public class MainActivity extends Activity {
 						Toast.makeText(getApplicationContext(), "密码中必须包含数字和字母",
 								1000).show();
 					} else {
-						ChangePwAsyntask changePwAsyntask = new ChangePwAsyntask();
-						changePwAsyntask.execute(new String[] { password1,
-								password2 });
+						if (password2.length() < 6) {// 增加修改密码必须超过6位
+							Toast.makeText(getApplicationContext(), "密码必须超过6位",
+									1000).show();
+						} else {
+							ChangePwAsyntask changePwAsyntask = new ChangePwAsyntask();
+							changePwAsyntask.execute(new String[] { password1,
+									password2 });
+						}
+
 					}
 
 				} else {
