@@ -39,7 +39,7 @@
     </TableLayout>
     
     <ListView 
-        android:id="@+id/kecheng"
+        android:id="@+id/recommond_list"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"></ListView>
 </LinearLayout>
