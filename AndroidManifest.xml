@@ -30,7 +30,7 @@
 		<activity android:name="com.xy.fy.main.PictureActivity" />
 		<activity android:name="com.xy.fy.main.LoginActivity" />
 		
-		<activity android:name="com.xy.fy.main.FriendRecommondAcitivity" />
+		<activity android:name="com.xy.fy.main.FriendRecommondActivity" />
 		<activity android:name="com.xy.fy.main.FriendApplyActivity" />
 		
 		<activity android:name="com.xy.fy.main.AddFriendListActivity"
