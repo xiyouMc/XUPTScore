@@ -95,6 +95,7 @@ public class LoginActivity extends Activity {
 				 * intent.setClass(getApplicationContext(),
 				 * ForgetPasswordActivity.class); startActivity(intent);
 				 */
+				
 				Toast.makeText(getApplicationContext(), "暂不可用，请持续关注。。。", 1000)
 						.show();
 			}

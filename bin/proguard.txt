@@ -76,28 +76,37 @@
 # view res/layout/slidingmenumain.xml #generated:2
 -keep class com.slidingmenu.lib.SlidingMenu { <init>(...); }
 
+# view AndroidManifest.xml #generated:37
+-keep class com.xy.fy.main.AddFriendListActivity { <init>(...); }
+
 # view AndroidManifest.xml #generated:26
 -keep class com.xy.fy.main.ForgetPasswordActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:30
+# view AndroidManifest.xml #generated:35
+-keep class com.xy.fy.main.FriendApplyActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:33
+-keep class com.xy.fy.main.FriendRecommondActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:31
 -keep class com.xy.fy.main.LoginActivity { <init>(...); }
 
 # view AndroidManifest.xml #generated:27
 -keep class com.xy.fy.main.MainActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:34
+# view AndroidManifest.xml #generated:42
 -keep class com.xy.fy.main.MessageDetailActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:29
+# view AndroidManifest.xml #generated:30
 -keep class com.xy.fy.main.PictureActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:28
+# view AndroidManifest.xml #generated:29
 -keep class com.xy.fy.main.PublishMessage { <init>(...); }
 
 # view AndroidManifest.xml #generated:25
 -keep class com.xy.fy.main.RegisterActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:31
+# view AndroidManifest.xml #generated:39
 -keep class com.xy.fy.main.ShowScoreActivity { <init>(...); }
 
 # view AndroidManifest.xml #generated:18

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="com.xy.fy.main" android:versionCode="1" android:versionName="1.0.3">
+	package="com.xy.fy.main" android:versionCode="1" android:versionName="1.1">
 
 	<uses-sdk android:minSdkVersion="11" />
 	<uses-permission android:name="android.permission.INTERNET" />
@@ -30,7 +30,8 @@
 		<activity android:name="com.xy.fy.main.PictureActivity" />
 		<activity android:name="com.xy.fy.main.LoginActivity" />
 		
-		<activity android:name="com.xy.fy.main.FriendRecommondActivity" />
+		<activity android:name="com.xy.fy.main.FriendRecommondActivity" 
+		android:theme="@style/AnimActivityTheme" />
 		<activity android:name="com.xy.fy.main.FriendApplyActivity" />
 		
 		<activity android:name="com.xy.fy.main.AddFriendListActivity"

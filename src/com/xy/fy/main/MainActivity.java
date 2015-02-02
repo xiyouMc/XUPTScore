@@ -623,7 +623,7 @@ public class MainActivity extends Activity {
 		}
 
 		EditText etAccount = (EditText) findViewById(R.id.etAccount);
-		etAccount.setText("0" + StaticVarUtil.student.getAccount() + "");
+		etAccount.setText(StaticVarUtil.student.getAccount() + "");//修改多显示一个0的问题
 		etAccount.setEnabled(false);// 不可用
 		final EditText etPassword1 = (EditText) findViewById(R.id.etPassword1);
 		final EditText etPassword2 = (EditText) findViewById(R.id.etPassword2);

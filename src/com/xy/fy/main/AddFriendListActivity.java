@@ -22,6 +22,7 @@ public class AddFriendListActivity extends ActivityGroup {
 	Button friend_recommand;// 好友推荐
 	Button friend_apply;// 好友申请
 	private LinearLayout add_friend_layout;
+	private int swap = 0;// 控制显示 view 0表示第一个view 1表示 第二个view
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +69,8 @@ public class AddFriendListActivity extends ActivityGroup {
 				// TODO Auto-generated method stub
 				recommand_focus();
 				friend_apply.setFocusable(false);
-				processViews(1);
+				processViews(0);
+				swap = 0;
 			}
 		});
 
@@ -79,14 +81,15 @@ public class AddFriendListActivity extends ActivityGroup {
 				// TODO Auto-generated method stub
 				apply_focus();
 				friend_recommand.setFocusable(false);
-				processViews(2);
+				processViews(1);
+				swap = 1;
 			}
 		});
 	}
 
 	private void init() {
 		// TODO Auto-generated method stub
-		add_friend_layout = (LinearLayout) findViewById(R.id.add_friend_layout);
+		add_friend_layout = (LinearLayout) findViewById(R.id.recommondAndApply);
 		back = (Button) findViewById(R.id.back);
 		friend_recommand = (Button) findViewById(R.id.friend_recommand);
 		friend_apply = (Button) findViewById(R.id.friend_apply);
@@ -102,6 +105,14 @@ public class AddFriendListActivity extends ActivityGroup {
 		friend_recommand.setFocusableInTouchMode(true);
 		friend_recommand.requestFocus();
 		friend_recommand.requestFocusFromTouch();
+		
+		final int index = 0;
+		final View tempView = getLocalActivityManager().startActivity(
+				sActivityIds[index],
+				new Intent(this, sActivityClasses[index])
+						.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
+				.getDecorView();
+		add_friend_layout.addView(tempView);
 	}
 
 	/**
