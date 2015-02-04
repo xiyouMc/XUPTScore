@@ -311,12 +311,6 @@ public class MainActivity extends Activity {
 		// SpannableStringBuilder实现CharSequence接口
 		style.setSpan(new ForegroundColorSpan(Color.RED), 0, str.length(),
 				Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-		/*
-		 * style.setSpan(new ForegroundColorSpan(Color.YELLOW), 2,
-		 * 4,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE ); style.setSpan(new
-		 * ForegroundColorSpan(Color.GREEN), 4,
-		 * 6,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE );
-		 */
 		return style.toString();
 	}
 

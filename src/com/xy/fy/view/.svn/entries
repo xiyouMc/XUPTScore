@@ -1,0 +1,52 @@
+8
+
+dir
+5
+https://mc-pc:8443/svn/xupt_score_android/AndroidQueryScore1.0.3/src/com/xy/fy/view
+https://mc-pc:8443/svn/xupt_score_android
+
+
+
+2014-12-13T04:42:24.280209Z
+2
+mc
+
+
+svn:special svn:externals svn:needs-lock
+
+CustomListView.java
+file
+
+
+
+
+2013-05-28T07:48:16.424000Z
+a3d7d17cc5aba9f3fb7f376ea7d5d80d
+2014-12-13T04:42:24.280209Z
+2
+mc
+
+ToolClass.java
+file
+
+
+
+
+2013-05-05T07:58:35.550000Z
+55eb006f269a16e6f484aef8141686ce
+2014-12-13T04:42:24.280209Z
+2
+mc
+
+HistoryCollege.java
+file
+
+
+
+
+2013-05-05T06:00:59.179000Z
+28227e890728da8d308f6bbc592d856b
+2014-12-13T04:42:24.280209Z
+2
+mc
+

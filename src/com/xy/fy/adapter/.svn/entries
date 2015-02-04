@@ -1,0 +1,64 @@
+8
+
+dir
+5
+https://mc-pc:8443/svn/xupt_score_android/AndroidQueryScore1.0.3/src/com/xy/fy/adapter
+https://mc-pc:8443/svn/xupt_score_android
+
+
+
+2014-12-13T04:42:24.280209Z
+2
+mc
+
+
+svn:special svn:externals svn:needs-lock
+
+CommentAdapter.java
+file
+
+
+
+
+2013-05-28T07:37:58.079000Z
+2abef68108afd61ea9d4b14ca8e9fc0b
+2014-12-13T04:42:24.280209Z
+2
+mc
+
+ChooseKindAdapter.java
+file
+
+
+
+
+2013-05-04T03:52:31.826000Z
+a33df32674c821b91ee847c8fa2f9561
+2014-12-13T04:42:24.280209Z
+2
+mc
+
+ChooseSchoolExpandAdapter.java
+file
+
+
+
+
+2013-05-12T03:51:57.408000Z
+5612cc5257a912865b1dd051409c67db
+2014-12-13T04:42:24.280209Z
+2
+mc
+
+ChooseHistorySchoolExpandAdapter.java
+file
+
+
+
+
+2013-05-16T12:38:01.372000Z
+cd0cc3a26416654570b7be3c6b219b82
+2014-12-13T04:42:24.280209Z
+2
+mc
+

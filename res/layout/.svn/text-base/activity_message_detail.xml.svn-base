@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:paddingBottom="5dp" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/main_title_bar"
+        android:orientation="horizontal" >
+
+        <!-- 返回键 -->
+
+        <Button
+            android:id="@+id/butBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/button_back"
+            android:gravity="center_vertical" />
+        <!-- 说说详情 -->
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/transparent"
+            android:gravity="center_vertical"
+            android:text="说说详情"
+            android:textColor="@drawable/change_button_text_color"
+            android:textSize="20dp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingBottom="5dp"
+        android:paddingTop="3dp" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <!-- 头像 -->
+
+            <ImageView
+                android:id="@+id/headPhoto"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@color/white"
+                android:padding="5dp"
+                android:src="@drawable/default_head_photo" />
+
+            <!-- 昵称 -->
+
+            <TextView
+                android:id="@+id/nickname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/headPhoto"
+                android:text="昵称"
+                android:textColor="#FF8C00"
+                android:textSize="18dp" />
+
+            <!-- 时间 -->
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:paddingRight="5dp"
+                android:text="15:30:30"
+                android:textColor="@color/dimgray"
+                android:textSize="12dp" />
+
+            <!-- 日期 -->
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/time"
+                android:paddingRight="10dp"
+                android:text="1991-05-29"
+                android:textColor="@color/dimgray"
+                android:textSize="12dp" />
+        </RelativeLayout>
+
+        <!-- 说说详细信息 -->
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="50dp"
+            android:paddingRight="5dp" >
+
+            <!-- android:visibility="gone" -->
+
+
+            <!-- 说说详情 -->
+
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="我是帅哥哥王玉超"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <!-- 说说图片 -->
+
+            <ImageView
+                android:id="@+id/pic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:src="@drawable/message_default" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:paddingTop="10dp" >
+
+            <!-- 收藏按钮 -->
+
+            <Button
+                android:id="@+id/collect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/message_collect_no"
+                android:gravity="right|center_vertical"
+                android:paddingRight="5dp"
+                android:text="1111"
+                android:textColor="#FF8C00"
+                android:textSize="12dp" />
+
+            <!-- 评论按钮 -->
+
+            <Button
+                android:id="@+id/comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@+id/collect"
+                android:background="@drawable/message_comment"
+                android:gravity="right|center_vertical"
+                android:paddingRight="5dp"
+                android:text="1111"
+                android:textColor="#FF8C00"
+                android:textSize="12dp" />
+
+            <!-- 赞按钮 -->
+
+            <Button
+                android:id="@+id/praise"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@+id/comment"
+                android:background="@drawable/message_praise_no"
+                android:gravity="right|center_vertical"
+                android:paddingRight="5dp"
+                android:text="1111"
+                android:textColor="#FF8C00"
+                android:textSize="12dp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/expand_divider" />
+
+    <!-- 说说评论的ListView -->
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" >
+
+            <com.xy.fy.view.CustomListView
+                android:id="@+id/commentListView"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:fastScrollEnabled="true" />
+
+            <EditText
+                android:id="@+id/etComment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_toLeftOf="@+id/butConfirm"
+                android:ems="10"
+                android:hint="请输入你的评论" />
+
+            <Button
+                android:id="@+id/butConfirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/etComment"
+                android:layout_alignBottom="@+id/etComment"
+                android:layout_alignParentRight="true"
+                android:text="评论" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

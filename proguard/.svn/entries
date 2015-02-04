@@ -1,0 +1,64 @@
+8
+
+dir
+5
+https://mc-pc:8443/svn/xupt_score_android/AndroidQueryScore1.0.3/proguard
+https://mc-pc:8443/svn/xupt_score_android
+
+
+
+2014-12-13T04:42:24.280209Z
+2
+mc
+
+
+svn:special svn:externals svn:needs-lock
+
+seeds.txt
+file
+
+
+
+
+2014-08-05T11:40:52.872956Z
+913c7a863bbf5085c510837a9ff336a9
+2014-12-13T04:42:24.280209Z
+2
+mc
+
+usage.txt
+file
+
+
+
+
+2014-08-05T11:40:53.076968Z
+f2d506ba21100df269a09e5098432714
+2014-12-13T04:42:24.280209Z
+2
+mc
+
+dump.txt
+file
+
+
+
+
+2014-08-05T11:40:54.415044Z
+dcf8333fd37f46afaaab858dd44c8517
+2014-12-13T04:42:24.280209Z
+2
+mc
+
+mapping.txt
+file
+
+
+
+
+2014-08-05T11:40:53.314981Z
+7524fd25c129f7850c7d6bf8bbeaf57a
+2014-12-13T04:42:24.280209Z
+2
+mc
+

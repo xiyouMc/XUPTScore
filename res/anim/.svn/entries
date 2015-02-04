@@ -1,0 +1,64 @@
+8
+
+dir
+5
+https://mc-pc:8443/svn/xupt_score_android/AndroidQueryScore1.0.3/res/anim
+https://mc-pc:8443/svn/xupt_score_android
+
+
+
+2014-12-13T04:42:24.280209Z
+2
+mc
+
+
+svn:special svn:externals svn:needs-lock
+
+scale.xml
+file
+
+
+
+
+2014-08-03T11:57:52.530000Z
+4c16e9a53a75a34416ad50baa4d9a372
+2014-12-13T04:42:24.280209Z
+2
+mc
+
+dialog_exit_01.xml
+file
+
+
+
+
+2013-09-17T11:54:42.000000Z
+bdaceafe1e3adb516e20a19807c765ce
+2014-12-13T04:42:24.280209Z
+2
+mc
+
+dialog_enter_01.xml
+file
+
+
+
+
+2013-09-17T11:54:42.000000Z
+f181c06c4a6110a696792c13b352d7ec
+2014-12-13T04:42:24.280209Z
+2
+mc
+
+translate.xml
+file
+
+
+
+
+2014-08-04T12:31:34.870000Z
+a19a8dfafab25ccb423466c7cece2878
+2014-12-13T04:42:24.280209Z
+2
+mc
+

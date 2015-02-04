@@ -1,0 +1,52 @@
+8
+
+dir
+5
+https://mc-pc:8443/svn/xupt_score_android/AndroidQueryScore1.0.3/src/com/xy/fy/singleton
+https://mc-pc:8443/svn/xupt_score_android
+
+
+
+2014-12-13T04:42:24.280209Z
+2
+mc
+
+
+svn:special svn:externals svn:needs-lock
+
+Comment.java
+file
+
+
+
+
+2013-04-23T07:57:42.918000Z
+b157d1cfef1fd572ffbe00beff919e39
+2014-12-13T04:42:24.280209Z
+2
+mc
+
+Message.java
+file
+
+
+
+
+2013-05-11T07:22:30.007000Z
+0aebaef9a8627ff05f39b8e78d9878bd
+2014-12-13T04:42:24.280209Z
+2
+mc
+
+Student.java
+file
+
+
+
+
+2014-08-06T07:28:06.676662Z
+e5c0a366b714385307e2a9fc33dca30d
+2014-12-13T04:42:24.280209Z
+2
+mc
+

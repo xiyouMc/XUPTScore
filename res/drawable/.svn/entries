@@ -1,0 +1,88 @@
+8
+
+dir
+5
+https://mc-pc:8443/svn/xupt_score_android/AndroidQueryScore1.0.3/res/drawable
+https://mc-pc:8443/svn/xupt_score_android
+
+
+
+2014-12-13T04:42:24.280209Z
+2
+mc
+
+
+svn:special svn:externals svn:needs-lock
+
+login_jb.xml
+file
+
+
+
+
+2014-08-04T08:36:16.398000Z
+8bfbbe93825f08b93bb38af82ead11e0
+2014-12-13T04:42:24.280209Z
+2
+mc
+
+canceltruncatedata.xml
+file
+
+
+
+
+2013-09-17T11:54:46.000000Z
+ef960d6793be065a3ce9b1bf50cf8627
+2014-12-13T04:42:24.280209Z
+2
+mc
+
+checkbox.xml
+file
+
+
+
+
+2014-08-04T08:26:17.405000Z
+b087d4e20859481e6cad3ae883b6e6f0
+2014-12-13T04:42:24.280209Z
+2
+mc
+
+selectable_background_cardbank.xml
+file
+
+
+
+
+2014-08-04T05:47:29.890000Z
+8b8f8ce6811546407ecd7fb7d82cfd19
+2014-12-13T04:42:24.280209Z
+2
+mc
+
+truncatedata_enter.xml
+file
+
+
+
+
+2013-09-17T11:54:42.000000Z
+aa1690cf0f94ecee0f5f910d3c1e407f
+2014-12-13T04:42:24.280209Z
+2
+mc
+
+add_friend.xml
+file
+
+
+
+
+2014-11-30T07:49:33.164148Z
+64bf9b5e423bc81409355dbc3c730c46
+2014-12-13T04:42:24.280209Z
+2
+mc
+
