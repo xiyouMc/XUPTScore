@@ -1,125 +1,0 @@
-8
-
-dir
-5
-https://mc-pc:8443/svn/xupt_score_android/AndroidQueryScore1.0.3
-https://mc-pc:8443/svn/xupt_score_android
-
-
-
-2014-12-13T07:22:45.385607Z
-5
-mc
-
-
-svn:special svn:externals svn:needs-lock
-
-
-
-
-
-
-
-
-
-
-
-d303a151-3f9c-4846-8511-271386e87761
-
-.classpath
-file
-
-
-
-
-2014-08-03T04:11:24.651000Z
-c64927f41c277f7a4104cceafb518a92
-2014-12-13T04:42:24.280209Z
-2
-mc
-
-project.properties
-file
-
-
-
-
-2014-08-03T03:46:28.916000Z
-d79995a3d9c9fcffea797dd779c258b3
-2014-12-13T04:42:24.280209Z
-2
-mc
-
-assets
-dir
-
-proguard
-dir
-
-.project
-file
-
-
-
-
-2014-08-05T11:36:51.698162Z
-ba45976e750dd3df64d31d48d897a538
-2014-12-13T04:42:24.280209Z
-2
-mc
-
-proguard-project.txt
-file
-
-
-
-
-2014-08-03T03:47:00.644000Z
-eec838c5203581e81badf108b718b47a
-2014-12-13T04:42:24.280209Z
-2
-mc
-
-AndroidManifest.xml
-file
-
-
-
-
-2014-11-30T13:01:58.508385Z
-aebba61b62e6b26412b8aed1d5f911d5
-2014-12-13T04:42:24.280209Z
-2
-mc
-
-src
-dir
-
-bin
-dir
-
-gen
-dir
-
-libs
-dir
-
-res
-dir
-
-ic_launcher-web.png
-file
-
-
-
-
-2013-04-09T00:46:04.640000Z
-335125d39fec8efa2aafc62337e11684
-2014-12-13T04:42:24.280209Z
-2
-mc
-has-props
-
-.settings
-dir
-
