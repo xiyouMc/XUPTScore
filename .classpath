@@ -6,5 +6,7 @@
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry kind="lib" path="E:/java处理二进制/sun.misc.BASE64Decoder.jar"/>
+	<classpathentry kind="lib" path="libs/mframework.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-Core-2.5.8.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

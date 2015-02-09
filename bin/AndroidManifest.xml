@@ -12,6 +12,11 @@
 	<uses-permission android:name="android.permission.CLEAR_APP_CACHE" />
 	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
 	<uses-permission android:name="android.permission.CLEAR_APP_USER_DATA" />
+	<uses-permission android:name="android.permission.GET_TASKS" />
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+	<uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+	<uses-permission android:name="android.permission.GET_ACCOUNTS"/>
 	<application android:label="@string/app_name"
 		android:allowBackup="true" android:icon="@drawable/default_head_photo"
 		android:logo="@drawable/default_head_photo">
@@ -31,7 +36,7 @@
 		<activity android:name="com.xy.fy.main.LoginActivity" />
 		
 		<activity android:name="com.xy.fy.main.FriendRecommondActivity" 
-		android:theme="@style/AnimActivityTheme" />
+			android:theme="@style/AnimActivityTheme" />
 		<activity android:name="com.xy.fy.main.FriendApplyActivity" />
 		
 		<activity android:name="com.xy.fy.main.AddFriendListActivity"
@@ -42,6 +47,25 @@
 		<activity android:name="com.xy.fy.main.MessageDetailActivity"
 			android:configChanges="keyboardHidden|orientation"
 			android:windowSoftInputMode="stateHidden" />
+		<activity
+			android:name="cn.sharesdk.framework.ShareSDKUIShell"
+			android:theme="@android:style/Theme.Translucent.NoTitleBar"
+			android:configChanges="keyboardHidden|orientation|screenSize"
+			android:screenOrientation="portrait"
+			android:windowSoftInputMode="stateHidden|adjustResize" >
+			<intent-filter>
+				<data android:scheme="tencent100371282" />
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.BROWSABLE" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name=".wxapi.WXEntryActivity"
+			android:theme="@android:style/Theme.Translucent.NoTitleBar"
+			android:configChanges="keyboardHidden|orientation|screenSize"
+			android:exported="true"
+			android:screenOrientation="portrait" /> 
 	</application>
 
 </manifest>
