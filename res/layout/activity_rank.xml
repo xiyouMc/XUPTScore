@@ -1,178 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#F8F8FF" >
+    android:background="#F8F8FF"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/main_title_bar"
+        android:orientation="horizontal" >
+
+        <!-- 菜单 -->
+
+        <Button
+            android:id="@+id/butMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/button_menu"
+            android:gravity="center_vertical"
+            android:textColor="#FF8C00"
+            android:textSize="14sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/transparent"
+            android:gravity="center_vertical"
+            android:text="我的排名"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/share"
+            android:gravity="center_vertical"
+            android:textColor="#FF8C00"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+    <!-- android:background="#aa0000" -->
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="3dip"
+            android:text="学年"
+            android:textSize="7pt" />
+        <!-- android:background="#00aa00" -->
+
+        <Spinner
+            android:id="@+id/xnSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="3dip" >
+        </Spinner>
+        <!-- android:background="#0000aa" -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="3dip"
+            android:text="学期  "
+            android:textSize="7pt" />
+        <!-- android:background="#8B1A1A" -->
+
+        <Spinner
+            android:id="@+id/xqSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="3dip" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="#F8F8FF"
         android:orientation="vertical" >
 
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/main_title_bar"
-            android:orientation="horizontal" >
-
-            <!-- 菜单 -->
-
-            <Button
-                android:id="@+id/butMenu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="5dp"
-                android:background="@drawable/button_menu"
-                android:gravity="center_vertical"
-                android:textColor="#FF8C00"
-                android:textSize="14sp" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:background="@drawable/transparent"
-                android:gravity="center_vertical"
-                android:text="我的排名"
-                android:textColor="@color/white"
-                android:textSize="20dp" />
-
-            <Button
-                android:id="@+id/share"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="5dp"
-                android:background="@drawable/share"
-                android:gravity="center_vertical"
-                android:textColor="#FF8C00"
-                android:textSize="14sp" />
-        </RelativeLayout>
-
-        <!-- android:background="#aa0000" -->
-
         <LinearLayout
+            android:id="@+id/rankLayout"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:background="#6ae1ca"
+            android:orientation="vertical"
+            android:paddingLeft="10dp" >
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/rankText"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:padding="3dip"
-                android:text="学年"
-                android:textSize="7pt" />
-            <!-- android:background="#00aa00" -->
-
-            <Spinner
-                android:id="@+id/xnSpinner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:padding="3dip" >
-            </Spinner>
-            <!-- android:background="#0000aa" -->
+                android:text="Hi~"
+                android:textColor="#ffffff"
+                android:textSize="10pt" />
 
             <TextView
+                android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:padding="3dip"
-                android:text="学期  "
-                android:textSize="7pt" />
-            <!-- android:background="#8B1A1A" -->
-
-            <Spinner
-                android:id="@+id/xqSpinner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:padding="3dip" />
-        </LinearLayout>
-
-        <ScrollView
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:background="#F8F8FF" >
+                android:text="马超"
+                android:textColor="#ffffff"
+                android:textSize="11pt" />
 
             <LinearLayout
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:orientation="vertical" >
+                android:layout_height="wrap_content"
+                android:background="#6ae1ca"
+                android:orientation="horizontal" >
 
-                <LinearLayout
-                    android:id="@+id/rankLayout"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:background="#6ae1ca"
-                    android:orientation="vertical"
-                    android:paddingLeft="10dp" >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="你位于本专业"
+                    android:textColor="#ffffff"
+                    android:textSize="10pt" />
 
-                    <TextView
-                        android:id="@+id/rankText"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Hi~"
-                        android:textColor="#ffffff"
-                        android:textSize="10pt" />
+                <TextView
+                    android:id="@+id/rank"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="100"
+                    android:textColor="#ffffff"
+                    android:textSize="17pt" />
 
-                    <TextView
-                        android:id="@+id/name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="马超"
-                        android:textColor="#ffffff"
-                        android:textSize="11pt" />
-
-                    <LinearLayout
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:background="#6ae1ca"
-                        android:orientation="horizontal" >
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="你位于本专业"
-                            android:textColor="#ffffff"
-                            android:textSize="10pt" />
-
-                        <TextView
-                            android:id="@+id/rank"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="100"
-                            android:textColor="#ffffff"
-                            android:textSize="17pt" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="名"
-                            android:textColor="#ffffff"
-                            android:textSize="10pt" />
-                    </LinearLayout>
-                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="名"
+                    android:textColor="#ffffff"
+                    android:textSize="10pt" />
             </LinearLayout>
-        </ScrollView>
+        </LinearLayout>
 
-        <ListView
+        <com.mc.util.CustomRankListView
             android:id="@+id/allRank"
             android:layout_width="fill_parent"
-            android:layout_height="328dp"
+            android:layout_height="498dp"
             android:divider="#ffffff"
-            android:dividerHeight="1px" />
-
+            android:dividerHeight="2px"
+             />
     </LinearLayout>
 
-</ScrollView>
+</LinearLayout>
