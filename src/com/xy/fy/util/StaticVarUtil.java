@@ -2,7 +2,9 @@ package com.xy.fy.util;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.TreeMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -28,6 +30,12 @@ import com.xy.fy.view.ToolClass;
  */
 public class StaticVarUtil {
 
+	
+	/**
+	 * 提供给排名的学期和学年
+	 */
+	public static TreeMap<String, String> list_Rank_xnAndXq = new TreeMap<String,String>();
+	
 	/**
 	 * listHerf中tittle
 	 */
@@ -62,7 +70,6 @@ public class StaticVarUtil {
 	public static final String PASSWORD = "password";
 	public static final String USER_INFO = "userinfo";
 	public static final String IS_REMEMBER = "isRemember";
-
 	public static ArrayList<Activity> activities = new ArrayList<Activity>();
 
 	public static Student student = new Student();
@@ -83,7 +90,8 @@ public class StaticVarUtil {
 	public static String lastMessageTime = null;// 最后一个说说的发表时间
     public static String session = null;//请求中要使用的到的session
 	public static String fileName = null;// 缓存的文件名
-
+    public static String data = null;
+    public static String viewstate = null;
 	// 所有的herf
 	public static List<HashMap<String, String>> listHerf = new ArrayList<HashMap<String, String>>();
 

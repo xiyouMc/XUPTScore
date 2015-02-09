@@ -1,7 +1,6 @@
 package com.xy.fy.main;
 
 import java.io.File;
-import java.lang.ref.WeakReference;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,7 +20,6 @@ import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -113,7 +111,7 @@ public class LoginActivity extends Activity {
 					return;
 				}
 				if (strAccount == null || strAccount.equals("")
-						|| strPassword.equals("") || strPassword == null) {
+						|| strPassword.equals("") || strPassword == null ) {
 					ViewUtil.toastShort("’À∫≈√‹¬Î≤ªƒ‹Œ™ø’", LoginActivity.this);
 					return;
 				}

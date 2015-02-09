@@ -8,12 +8,14 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -30,6 +32,7 @@ import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.Spannable;
@@ -38,7 +41,9 @@ import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.View.OnClickListener;
@@ -46,10 +51,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
-import android.widget.ImageView;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.ProgressBar;
+import android.widget.SimpleAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -60,16 +69,17 @@ import com.mc.util.CircleImageView;
 import com.mc.util.HttpAssist;
 import com.mc.util.HttpUtilMc;
 import com.mc.util.LogcatHelper;
+import com.mc.util.Passport;
 import com.mc.util.Util;
 import com.mc.util.VersionUpdate;
 import com.slidingmenu.lib.SlidingMenu;
 import com.slidingmenu.lib.SlidingMenu.OnOpenListener;
 import com.xy.fy.adapter.ChooseHistorySchoolExpandAdapter;
 import com.xy.fy.adapter.ChooseSchoolExpandAdapter;
-import com.xy.fy.main.LoginActivity.GetPicAsyntask;
 import com.xy.fy.main.R;
 import com.xy.fy.util.BitmapUtil;
 import com.xy.fy.util.StaticVarUtil;
+import com.xy.fy.util.TestArrayAdapter;
 import com.xy.fy.util.ViewUtil;
 import com.xy.fy.view.HistoryCollege;
 import com.xy.fy.view.ToolClass;
@@ -82,6 +92,10 @@ import com.xy.fy.view.ToolClass;
  */
 public class MainActivity extends Activity {
 
+	// 保存成绩的map
+	private static HashMap<String, String> mapScoreOne = null;// xn =1
+	private static HashMap<String, String> mapScoreTwo = null;// xn = 2
+	private static boolean isFirst = true;
 	// 检测版本
 	private static PopupWindow popupWindow;
 	private static PopupWindow version_popupWindow;
@@ -101,6 +115,7 @@ public class MainActivity extends Activity {
 	private TextView nickname;// 用户名
 	private String name;
 	private CircleImageView headPhoto;// 头像
+	// private TextView loading = null;//正在加载
 	private LinearLayout menuBang = null;// 成绩查询
 	private LinearLayout menuMyBukao = null;// 补考查询
 	private LinearLayout menuMyPaiming = null;// 我的排名
@@ -109,7 +124,15 @@ public class MainActivity extends Activity {
 	private LinearLayout menuAbout = null;// 关于
 	private Button check_version = null;
 	ArrayList<HashMap<String, Object>> listItem;// json解析之后的列表,保存了所有的成绩数据
+	// 排名
+	private ListView allRankList;
+	private TextView rankText;
+	private TextView nameText;
+	private HashMap<String, String> allRankMap = new HashMap<String, String>();// 所有学年和学期的成绩
+	private ArrayList<HashMap<String, Object>> rankList;
+	private SimpleAdapter simpleAdapter;
 	private String score_json;// json数据
+	private static boolean isFirstListView = true;
 
 	private ProgressDialog dialog = null;
 
@@ -135,6 +158,9 @@ public class MainActivity extends Activity {
 		is_show = false;
 		checkVersionAsyntask.execute();
 
+		// init map
+		mapScoreOne = new HashMap<String, String>();// tm 指向同一块内存了 。
+		mapScoreTwo = new HashMap<String, String>();
 		setMenuItemListener();
 
 		// 当前Activity进栈
@@ -210,36 +236,94 @@ public class MainActivity extends Activity {
 		page = 0;// 点击过来重置
 		// 菜单按钮
 		Button menu = (Button) findViewById(R.id.butMenu);
-
+		// loading = (TextView)findViewById(R.id.loading);//正在加载
 		menu.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				slidingMenu.toggle();
 			}
 		});
+
+		if (mCardView != null) {
+
+			isFirst = false;
+		}
 		// init CardView
 		mCardView = (CardUI) findViewById(R.id.cardsview);
 		mCardView.setSwipeable(true);
+		ShowCardAsyntask showCardAsyntask = new ShowCardAsyntask();
+		/*
+		 * mCardView.setVisibility(View.INVISIBLE);
+		 * loading.setVisibility(View.VISIBLE);
+		 */
+		showCardAsyntask.execute();
+		System.out.println("");
+	}
 
-		Resources resources = getResources();
-		String[] xn = resources.getStringArray(R.array.xn);
-		for (int i = 0; i < xn.length; i++) {
-			showCard(xn[i]);
+	/**
+	 * 异步加载card 提高显示效率
+	 * 
+	 * @author Administrator 2015-2-6
+	 */
+	class ShowCardAsyntask extends AsyncTask<String, String, Boolean> {
+
+		@Override
+		protected Boolean doInBackground(String... params) {
+			// TODO Auto-generated method stub
+			Resources resources = getResources();
+			String[] xn = resources.getStringArray(R.array.xn);
+			boolean result = false;
+			long currectTime = System.currentTimeMillis();
+			for (int i = 0; i < xn.length; i++) {
+				result = showCard(xn[i], isFirst);// 这里延迟太大，可以考虑直接从内存取 不用每次计算。
+			}
+			System.out.println("时差:"
+					+ Long.toString(System.currentTimeMillis() - currectTime));
+			return result;
 		}
-		// draw cards
-		mCardView.refresh();
+
+		@Override
+		protected void onPostExecute(Boolean result) {
+			// TODO Auto-generated method stub
+			super.onPostExecute(result);
+			if (result) {
+				/*
+				 * mCardView.setVisibility(View.VISIBLE);
+				 * loading.setVisibility(View.INVISIBLE);
+				 */
+				// draw cards
+				mCardView.refresh();
+			}
+		}
 
 	}
 
 	/**
 	 * 显示卡片
 	 */
-	private void showCard(String xn) {
+	private boolean showCard(String xn, boolean isFirst) {
+		String first_score = "";
+		String second_score = "";
+
+		if (isFirst || (mapScoreOne.isEmpty() && mapScoreTwo.isEmpty())) {
+			first_score = getScore(xn, "1") == null ? "" : getScore(xn, "1")
+					.toString();
+			second_score = getScore(xn, "2") == null ? "" : getScore(xn, "2")
+					.toString();
+			mapScoreOne.put(xn, first_score);
+			mapScoreTwo.put(xn, second_score);
+		} else {
+			first_score = mapScoreOne.get(xn) == null ? "" : mapScoreOne
+					.get(xn);
+			second_score = mapScoreTwo.get(xn) == null ? "" : mapScoreTwo
+					.get(xn);
+		}
 
 		// add one card, and then add another one to the last stack.
-		String first_score = getScore(xn, "1") == null ? "" : getScore(xn, "1")
-				.toString();
+
+		String xqs_str = "";
 		if (!first_score.equals("")) {
+			xqs_str += "第一学期,";
 			CardStack stackPlay = new CardStack();
 			stackPlay.setTitle(xn);
 			mCardView.addStack(stackPlay);
@@ -253,9 +337,8 @@ public class MainActivity extends Activity {
 			// MyCard("By Androguide & GadgetCheck"));
 		}
 
-		String second_score = getScore(xn, "2") == null ? ""
-				: getScore(xn, "2").toString();
 		if (!second_score.equals("")) {
+			xqs_str += "第二学期,";
 			MyPlayCard myCard = new MyPlayCard("第二学期", second_score, "#e00707",
 					"#e00707", false, true);
 			String[][] second_score_array = getScoreToArray(second_score);
@@ -263,6 +346,12 @@ public class MainActivity extends Activity {
 					second_score_array, xn + " 第二学期"));
 			mCardView.addCardToLastStack(myCard);
 		}
+		if (xqs_str.length() != 0) {
+			xqs_str = xqs_str.substring(0, xqs_str.length() - 1);
+			StaticVarUtil.list_Rank_xnAndXq.put(xn, xqs_str);
+		}
+
+		return true;
 
 	}
 
@@ -409,17 +498,7 @@ public class MainActivity extends Activity {
 	 */
 	private void setMenuItemListener() {
 
-		headPhoto = (CircleImageView) findViewById(R.id.headphoto);// 头像
-		File file = new File(StaticVarUtil.PATH + "/"
-				+ StaticVarUtil.student.getAccount() + ".JPEG");
-		if (file.exists()) {// 如果存在，则直接显示图像
-			Bitmap bitmap = Util.convertToBitmap(StaticVarUtil.PATH + "/"
-					+ StaticVarUtil.student.getAccount() + ".JPEG", 240, 240);
-			headPhoto.setImageBitmap(bitmap);
-		} else {// 如果不存在，则请求服务器，然后将图片保存在本地
-			GetPhotoAsyntask getPhotoAsyntask = new GetPhotoAsyntask();// 加载头像
-			getPhotoAsyntask.execute();
-		}
+		mCardView = null;
 		nickname = (TextView) findViewById(R.id.nickname);// 用户名
 		menuBang = (LinearLayout) findViewById(R.id.menu_bang);// 1.成绩查询
 		menuMyBukao = (LinearLayout) findViewById(R.id.menu_my_bukao);// 2.补考查询
@@ -432,19 +511,15 @@ public class MainActivity extends Activity {
 		menuBang.setPressed(true);// 初始化默认是风云榜被按下
 		setCurrentMenuItem(1);// 记录当前选项位置
 
-		headPhoto.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-
-				File file = new File(StaticVarUtil.PATH);
-				if (!file.exists()) {
-					file.mkdirs();// 创建文件
-				}
-				chooseHeadPhoto();// 改变头像
-			}
-		});
+		/*
+		 * headPhoto.setOnClickListener(new OnClickListener() {
+		 * 
+		 * @Override public void onClick(View v) { // TODO Auto-generated method
+		 * stub
+		 * 
+		 * File file = new File(StaticVarUtil.PATH); if (!file.exists()) {
+		 * file.mkdirs();// 创建文件 } chooseHeadPhoto();// 改变头像 } });
+		 */
 		menuBang.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -483,9 +558,20 @@ public class MainActivity extends Activity {
 		menuMyPaiming.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(getApplicationContext(), "程序猿们正在努力开发中，请持续关注...",
-						2000).show();
+				/*
+				 * Toast.makeText(getApplicationContext(),
+				 * "程序猿们正在努力开发中，请持续关注...", 2000).show();
+				 */
+				setMenuItemState(menuBang, false, menuMyBukao, false,
+						menuMyPaiming, true, menuMyCollect, false, menuSetting,
+						false, menuAbout, false);
+				setCurrentMenuItem(3);// 记录当前选项位置
+				slidingMenu.toggle();// 页面跳转
+
+				slidingMenu.setContent(R.layout.activity_rank);
+				rank();
 			}
+
 		});
 
 		menuMyCollect.setOnClickListener(new OnClickListener() {
@@ -558,6 +644,198 @@ public class MainActivity extends Activity {
 
 	}
 
+	String selectXn;
+	String selectXq;
+	// TODO Auto-generated method stub
+	Spinner xnSpinner;
+	Spinner xqSpinner;
+	ArrayAdapter<String> xnAdapter;
+	ArrayAdapter<String> xqAdapter;
+
+	@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+	@SuppressLint("NewApi")
+	private void rank() {
+		allRankList = (ListView) findViewById(R.id.allRank);
+		rankText = (TextView) findViewById(R.id.rank);
+		nameText = (TextView) findViewById(R.id.name);
+		nameText.setText(name);
+		WindowManager wm = this.getWindowManager();
+		int width = wm.getDefaultDisplay().getWidth() / 4 + 10;
+		xnSpinner = (Spinner) findViewById(R.id.xnSpinner);
+		xnSpinner.setLayoutParams(new LinearLayout.LayoutParams(width,
+				LinearLayout.LayoutParams.WRAP_CONTENT));
+		xnSpinner.setDropDownWidth(width);
+		xqSpinner = (Spinner) findViewById(R.id.xqSpinner);
+		xqSpinner.setLayoutParams(new LinearLayout.LayoutParams(width,
+				LinearLayout.LayoutParams.WRAP_CONTENT));
+		String[] xns = new String[StaticVarUtil.list_Rank_xnAndXq.size()];
+		int i = 0;
+
+		Iterator<?> it = StaticVarUtil.list_Rank_xnAndXq.entrySet().iterator();
+		while (it.hasNext()) {
+			java.util.Map.Entry entry = (java.util.Map.Entry) it.next();
+			xns[i] = String.valueOf(entry.getKey());// 返回与此项对应的键
+			i++;
+			// entry.getValue() 返回与此项对应的值
+		}
+		// 设置dropDownItem 宽度
+		xnAdapter = new TestArrayAdapter(R.layout.list_item,
+				getApplicationContext(), xns, width);// 配置Adapter
+		String xq = StaticVarUtil.list_Rank_xnAndXq.get(xns[0]);// 默认第一学年的首个学期数组
+		String[] xqs = xq.split("\\,");
+		xqAdapter = new TestArrayAdapter(R.layout.list_item,
+				getApplicationContext(), xqs, width);// 配置Adapter
+		xnAdapter
+				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // 选择下拉菜单样式
+		xqAdapter
+				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // 选择下拉菜单样式
+		xnSpinner.setAdapter(xnAdapter);
+		xnSpinner.setSelection(0, false);// 这两个方法真变态
+		xqSpinner.setAdapter(xqAdapter);
+		xqSpinner.setSelection(0, false);
+		listener(xns, width);
+		String result = "";// 成绩的数据
+
+		if (allRankMap.size() != 0) {
+			for (String xnAndXq : allRankMap.keySet()) {// 由于是 menu触发的所以必须判断
+				if (xnAndXq.equals(selectXn + selectXq)) {// 如果存在则直接 或者value
+					result = allRankMap.get(xnAndXq);
+					refeshRank(result, isFirstListView);
+					break;
+				}
+			}
+		} else {
+			requestRankAsyntask();
+		}
+		System.out.println("");
+	}
+
+	private void requestRankAsyntask() {
+		// 默认
+		selectXn = xnSpinner.getSelectedItem().toString();
+		selectXq = xqSpinner.getSelectedItem().toString();
+		rankRequestParmas(StaticVarUtil.student.getAccount() + "|"
+				+ selectXn.split("\\-")[0] + "|"
+				+ (selectXq.equals("第一学期") ? "1" : "2"));
+		String result = "";
+		// 首先查询内存中是否有该学期成绩
+		for (String xnAndXq : allRankMap.keySet()) {
+			if (xnAndXq.equals(selectXn + selectXq)) {// 如果存在则直接 或者value
+				result = allRankMap.get(xnAndXq);
+				refeshRank(result, isFirstListView);
+				Toast.makeText(getApplicationContext(), "存在", 1000).show();
+				break;
+			}
+		}
+		if (result.equals("")) {// 不存在，则请求
+			GetRankAsyntask getRankAsyntask = new GetRankAsyntask();
+			dialog.show();
+			getRankAsyntask.execute();
+		}
+
+	}
+
+	@SuppressWarnings({ "static-access", "unused" })
+	private void rankRequestParmas(String data) {
+		long time = System.currentTimeMillis();
+		try {
+
+			String time_s = new Passport()
+					.jiami(String.valueOf(time), "248822");
+			data = new Passport().jiami(data, String.valueOf(time));
+
+			data = URLEncoder.encode(data);
+			time_s = URLEncoder.encode(time_s);
+			StaticVarUtil.data = data;
+			StaticVarUtil.viewstate = time_s;
+			System.out.println("data::" + StaticVarUtil.data + " "
+					+ StaticVarUtil.viewstate);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	boolean isTouchXNSpinner = false;
+	boolean isTouchXQSpinner = false;
+
+	private void listener(final String[] xns, final int width) {
+		// TODO Auto-generated method stub
+
+		xnSpinner
+				.setOnItemSelectedListener(new Spinner.OnItemSelectedListener() {
+
+					public void onItemSelected(AdapterView<?> arg0, View arg1,
+							int arg2, long arg3) {
+						// TODO Auto-generated method stub
+						if (isTouchXNSpinner) {
+							// 将spinner上的选择答案显示在TextView上面
+							selectXn = xnAdapter.getItem(arg2);
+							// 自动适配 学期
+							String xq = StaticVarUtil.list_Rank_xnAndXq
+									.get(xns[arg2]);// 默认第一学年的首个学期数组
+							String[] xqs = xq.split("\\,");
+							xqAdapter = new TestArrayAdapter(
+									R.layout.list_item,
+									getApplicationContext(), xqs, width);// 配置Adapter
+							xqSpinner.setAdapter(xqAdapter);
+
+							requestRankAsyntask();
+							Toast.makeText(getApplicationContext(),
+									selectXn + "学年显示成绩", 1000).show();
+							isTouchXNSpinner = false;
+						}
+					}
+
+					public void onNothingSelected(AdapterView<?> arg0) {
+						// TODO Auto-generated method stub
+					}
+				});
+		xnSpinner.setOnTouchListener(new OnTouchListener() {
+
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				// TODO Auto-generated method stub
+
+				isTouchXNSpinner = true;
+
+				return false;
+			}
+		});
+		xqSpinner
+				.setOnItemSelectedListener(new Spinner.OnItemSelectedListener() {
+
+					public void onItemSelected(AdapterView<?> arg0, View arg1,
+							int arg2, long arg3) {
+						// TODO Auto-generated method stub
+						if (isTouchXQSpinner) {
+							// 将spinner上的选择答案显示在TextView上面
+							selectXq = xqAdapter.getItem(arg2);
+							requestRankAsyntask();
+							Toast.makeText(getApplicationContext(),
+									selectXq + "学期显示成绩", 1000).show();
+							isTouchXQSpinner = false;
+						}
+					}
+
+					public void onNothingSelected(AdapterView<?> arg0) {
+						// TODO Auto-generated method stub
+					}
+
+				});
+		xqSpinner.setOnTouchListener(new OnTouchListener() {
+
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				// TODO Auto-generated method stub
+
+				isTouchXQSpinner = true;
+
+				return false;
+			}
+		});
+	}
+
 	// 好友列表
 	protected void friend_list() {
 		// TODO Auto-generated method stub
@@ -579,19 +857,22 @@ public class MainActivity extends Activity {
 				// TODO Auto-generated method stub
 				Intent i = new Intent();
 				i.setClass(MainActivity.this, AddFriendListActivity.class);
-				
+
 				startActivity(i);
-				
+
 				/**
 				 * 切换activity动画
 				 */
-				/*int version = Integer.valueOf(android.os.Build.VERSION.SDK);
-				if (version > 5) {
-					overridePendingTransition(R.anim.out_to_left, R.anim.in_from_right);
-					//overridePendingTransition(Android.R.anim.slide_in_left,android.R.anim.slide_out_right); 
-					//http://www.cnblogs.com/sunzn/p/3854009.html  activity切换
-				}*/
-				
+				/*
+				 * int version = Integer.valueOf(android.os.Build.VERSION.SDK);
+				 * if (version > 5) {
+				 * overridePendingTransition(R.anim.out_to_left,
+				 * R.anim.in_from_right);
+				 * //overridePendingTransition(Android.R.anim
+				 * .slide_in_left,android.R.anim.slide_out_right);
+				 * //http://www.cnblogs.com/sunzn/p/3854009.html activity切换 }
+				 */
+
 			}
 		});
 
@@ -617,7 +898,7 @@ public class MainActivity extends Activity {
 		}
 
 		EditText etAccount = (EditText) findViewById(R.id.etAccount);
-		etAccount.setText(StaticVarUtil.student.getAccount() + "");//修改多显示一个0的问题
+		etAccount.setText(StaticVarUtil.student.getAccount() + "");// 修改多显示一个0的问题
 		etAccount.setEnabled(false);// 不可用
 		final EditText etPassword1 = (EditText) findViewById(R.id.etPassword1);
 		final EditText etPassword2 = (EditText) findViewById(R.id.etPassword2);
@@ -880,13 +1161,6 @@ public class MainActivity extends Activity {
 	private void refresh(int collegeId, int messageKind, int messageSort) {
 		// 保存搜索历史，保存搜索的学校（每次都保存），种类，排序方式（只保存当前这次，为了再次进入时候直接显示）
 		saveHistory();
-		// // 测试读取历史文件
-		// FileCache fileCache = new FileCache();
-		// String dataResource = fileCache.readHistoryJsonData();
-		// // 设置adapter
-		// listViewAdapter = new ListViewAdapter(dataResource,
-		// MainActivity.this);
-		// listView.setAdapter(listViewAdapter);
 		// 开启新线程
 		Calendar calendar = Calendar.getInstance();
 		calendar.set(Calendar.MINUTE, calendar.get(Calendar.MINUTE) + 6);
@@ -894,11 +1168,6 @@ public class MainActivity extends Activity {
 
 		int page = 0;
 		StaticVarUtil.fileName = "jsonCache.txt";// 设置保存文件的名字
-		/*
-		 * StaticVarUtil.executorService.submit(new DownLoadThread(handler,
-		 * collegeId, messageKind, messageSort, page, sdf.format(calendar
-		 * .getTime())));
-		 */
 	}
 
 	/**
@@ -986,6 +1255,9 @@ public class MainActivity extends Activity {
 			public void onClick(DialogInterface dialog, int which) {
 				dialog.cancel();
 				StaticVarUtil.quit();
+				isFirstListView = true;
+				// 清空成绩缓存
+				isFirst = true;
 				LogcatHelper.getInstance(MainActivity.this).stop();
 				if (logout) {
 					Intent i = new Intent();
@@ -1115,6 +1387,134 @@ public class MainActivity extends Activity {
 
 	}
 
+	/**
+	 * 获取 成绩排名
+	 * 
+	 * @author Administrator 2015-2-8
+	 */
+	class GetRankAsyntask extends AsyncTask<String, String, String> {
+
+		@Override
+		protected String doInBackground(String... params) {
+			// TODO Auto-generated method stub
+			String url = "";
+			/*
+			 * String[] can = canshu.split("&"); String url_str = can[0]; String
+			 * gnmkdm = can[1];
+			 */
+			url = HttpUtilMc.BASE_URL + "RankServlet.jsp?data="
+					+ StaticVarUtil.data + "&viewstate="
+					+ StaticVarUtil.viewstate;
+			System.out.println("url:" + url);
+			// 查询返回结果
+			String result = HttpUtilMc.queryStringForPost(url);
+			System.out.println("=========================  " + result);
+			return result;
+
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			// TODO Auto-generated method stub
+			super.onPostExecute(result);
+			dialog.cancel();
+			// progress.cancel();
+			// 显示用户名
+			nickname.setText(name);
+			try {
+				if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
+					if (!result.equals("error")) {
+						/**
+						 * 将字符串 写入xml文件中
+						 */
+						if (!result.equals("")) {
+							refeshRank(result, isFirstListView);
+							allRankMap.put(selectXn + selectXq, result);// 将数据保存到内存中，下次就不用重复获取。
+						}
+					} else {
+						Toast.makeText(getApplicationContext(), "查询失败", 100)
+								.show();
+					}
+
+				} else {
+					Toast.makeText(getApplicationContext(),
+							HttpUtilMc.CONNECT_EXCEPTION, 1).show();
+					// progress.cancel();
+				}
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+				Log.i("LoginActivity", e.toString());
+			}
+
+		}
+
+	}
+
+	/**
+	 * 
+	 * @param result
+	 *            成绩字符串
+	 * @param isFirst
+	 *            是否是第一次
+	 */
+	private void refeshRank(String result, boolean isFirst) {
+		try {
+			if (rankList == null) {
+				Toast.makeText(getApplicationContext(), "rankList 为空", 1000)
+						.show();
+				rankList = new ArrayList<HashMap<String, Object>>();
+			}
+			rankList.clear();
+			JSONObject jsonObject = new JSONObject(result);
+			System.out.println("result::" + result);
+			String rank = String.valueOf(jsonObject.getString("rank"));
+			rankText.setText(rank);
+			JSONArray jsonArray = (JSONArray) jsonObject.get("rankList");
+			int rankId = 0;
+			for (int i = jsonArray.length() - 1; i >= 0; i--) {
+				JSONObject o = (JSONObject) jsonArray.get(i);
+				HashMap<String, Object> map = new HashMap<String, Object>();
+				rankId += 1;
+				map.put("rankId", String.valueOf(rankId));
+				map.put("name", o.get("name"));
+				map.put("xh", o.get("xh"));
+				map.put("score", o.get("score"));
+				rankList.add(map);
+			}
+			if (isFirst) {
+				setListView();
+				isFirstListView = false;
+			} else {
+				SimpleAdapter sa = (SimpleAdapter) allRankList.getAdapter();
+				Toast.makeText(getApplicationContext(), "刷新就行了", 1000).show();
+				if (sa != null) {
+					sa.notifyDataSetChanged();
+				}else {
+					setListView();
+				}
+
+			}
+
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	// 显示 排名的listview
+	private void setListView() {
+		// TODO Auto-generated method stub
+
+		simpleAdapter = new SimpleAdapter(getApplicationContext(), rankList,
+				R.layout.allrank_listitem, new String[] { "rankId", "name",
+						"score" }, new int[] { R.id.rankId, R.id.name,
+						R.id.score });
+		Toast.makeText(getApplicationContext(), "第一次请求" + rankList.size(), 1000)
+				.show();
+		allRankList.setAdapter(simpleAdapter);
+	}
+
 	// 异步改变密码
 	class ChangePwAsyntask extends AsyncTask<String, String, String> {
 
@@ -1194,48 +1594,6 @@ public class MainActivity extends Activity {
 
 		}
 
-	}
-
-	// 从网络获取图片
-	class GetPhotoAsyntask extends AsyncTask<String, String, String> {
-
-		@Override
-		protected String doInBackground(String... params) {
-			// TODO Auto-generated method stub
-			String url = HttpUtilMc.BASE_URL + "getuserphoto.jsp?username="
-					+ StaticVarUtil.student.getAccount();
-			System.out.println("url" + url);
-			// 查询返回结果
-			String result = HttpUtilMc.queryStringForPost(url);
-			System.out.println("=========================  " + result);
-			return result;
-
-		}
-
-		@Override
-		protected void onPostExecute(String result) {
-			// TODO Auto-generated method stub
-			super.onPostExecute(result);
-			if (is_show) {
-				dialog.cancel();
-			}
-			// 显示用户名
-			try {
-				if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
-					if (!result.equals("no_photo")) {// 已经是最新版本
-
-						GetPicture getPicture = new GetPicture();
-						getPicture.execute(new String[] { HttpUtilMc.BASE_URL
-								+ result });
-					}
-				}
-			} catch (Exception e) {
-				// TODO: handle exception
-				e.printStackTrace();
-				Log.i("LoginActivity", e.toString());
-			}
-
-		}
 	}
 
 	// 异步检测版本
@@ -1416,4 +1774,5 @@ public class MainActivity extends Activity {
 			}
 		}
 	}
+
 }

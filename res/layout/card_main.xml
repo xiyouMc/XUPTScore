@@ -78,6 +78,12 @@
                 android:textSize="22sp" />
         </RelativeLayout>
 
+       <!--  <TextView 
+            android:id="@+id/loading"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="正在加载..."
+            android:visibility="gone"/> -->
         <com.fima.cardsui.views.CardUI
             android:id="@+id/cardsview"
             android:layout_width="fill_parent"
