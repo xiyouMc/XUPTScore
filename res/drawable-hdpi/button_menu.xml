@@ -2,8 +2,8 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- 按下去改变状态 -->
-    <item android:drawable="@drawable/button_menu_down" android:state_pressed="true"/>
+    <item android:drawable="@drawable/ic_drawer_home_normal" android:state_pressed="true"/>
     <!-- 抬起来默认状态 -->
-    <item android:drawable="@drawable/button_menu_up" android:state_enabled="true"/>
+    <item android:drawable="@drawable/ic_drawer_home_pressed" android:state_enabled="true"/>
 
 </selector>

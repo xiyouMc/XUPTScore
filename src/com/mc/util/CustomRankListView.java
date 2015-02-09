@@ -81,7 +81,7 @@ public class CustomRankListView extends ListView implements OnScrollListener {
 
 		headView.setPadding(0, -1 * headContentHeight, 0, 0);
 		// 为listView加入顶部View
-		addHeaderView(headView);
+		//addHeaderView(headView);
 
 		setOnScrollListener(this);
 

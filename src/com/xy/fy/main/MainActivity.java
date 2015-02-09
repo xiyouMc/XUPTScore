@@ -47,12 +47,14 @@ import android.view.View.OnTouchListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.View.OnClickListener;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.HeaderViewListAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
@@ -129,11 +131,14 @@ public class MainActivity extends Activity {
 	private Button check_version = null;
 	ArrayList<HashMap<String, Object>> listItem;// json解析之后的列表,保存了所有的成绩数据
 	// 排名
+	private final static int DEFAULTITEMSUM = 60;
+	private static int lsitItemSum = DEFAULTITEMSUM;// 通过计算屏幕高度，求得应该显示多少行数据在listview
 	private CustomRankListView allRankList;
 	private TextView rankText;
 	private TextView nameText;
 	private HashMap<String, String> allRankMap = new HashMap<String, String>();// 所有学年和学期的成绩
-	private ArrayList<HashMap<String, Object>> rankList;
+	private ArrayList<HashMap<String, Object>> allRankArrayList;// 所有的数据
+	private ArrayList<HashMap<String, Object>> showRankArrayList;// 应该显示的数据
 	private SimpleAdapter simpleAdapter;
 	private String score_json;// json数据
 	private static boolean isFirstListView = true;
@@ -659,8 +664,10 @@ public class MainActivity extends Activity {
 	@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
 	@SuppressLint("NewApi")
 	private void rank() {
+		// menu出发 判断为第一次 为了初始化 listview
+		isFirstListView = true;
 		allRankList = (CustomRankListView) findViewById(R.id.allRank);
-		rankListViewListener();
+		//rankListViewListener();
 		rankText = (TextView) findViewById(R.id.rank);
 		nameText = (TextView) findViewById(R.id.name);
 		nameText.setText(name);
@@ -714,58 +721,62 @@ public class MainActivity extends Activity {
 		}
 		System.out.println("");
 	}
+
 	/**
 	 * 下拉刷新
 	 */
 	private void rankListViewListener() {
 		// TODO Auto-generated method stub
-		//创建FootView  
-        final View footer = View.inflate(getApplicationContext(), R.layout.rank_footer, null);  
-        allRankList.setOnAddFootListener(new OnAddFootListener() {  
-            @Override 
-            public void addFoot() {  
-            	allRankList.addFooterView(footer);  
-            }  
-        });  
-        allRankList.setOnFootLoadingListener(new OnFootLoadingListener() {  
-            @Override  
-            public void onFootLoading() {  
-                new AsyncTask<Void, Void, ArrayList<HashMap<String, Object>>>(){  
-                    @Override  
-                    protected ArrayList<HashMap<String, Object>> doInBackground(Void... params) {  
-                        try {  
-                            //模拟从服务器获取数据的过程  
-                            Thread.sleep(2000);  
-                        } catch (InterruptedException e) {  
-                            e.printStackTrace();  
-                        }  
-                        //再次读取10行数据
-                        ArrayList<HashMap<String, Object>> virtualData = new ArrayList<HashMap<String, Object>>();  
-                        /*virtualData.add("Foot刷新后的新数据1");  
-                        virtualData.add("Foot刷新后的新数据2");  
-                        virtualData.add("Foot刷新后的新数据3");  
-                        virtualData.add("Foot刷新后的新数据4");  
-                        virtualData.add("Foot刷新后的新数据5");  
-                        virtualData.add("Foot刷新后的新数据6");  */
-                        return virtualData;  
-                    }  
-  
-                    //在doInBackground后面执行  
-                    @Override  
-                    protected void onPostExecute(ArrayList<HashMap<String, Object>> result) {    
-                    	rankList.addAll(result);//这个是往后添加数据  
-                    	//SimpleAdapter sa = (SimpleAdapter) allRankList.getAdapter();
-        				Toast.makeText(getApplicationContext(), "刷新就行了", 1000).show();
-        				//sa.notifyDataSetChanged(); 
-                        allRankList.onFootLoadingComplete();//完成上拉刷新,就是底部加载完毕,这个方法要调用  
-                        //移除footer,这个动作不能少  
-                        allRankList.removeFooterView(footer);  
-                        super.onPostExecute(result);  
-                    }  
-                }.execute();  
-            }  
-        }); 
+		// 创建FootView
+		final View footer = View.inflate(getApplicationContext(),
+				R.layout.rank_footer, null);
+		allRankList.setOnAddFootListener(new OnAddFootListener() {
+			@Override
+			public void addFoot() {
+				allRankList.addFooterView(footer);
+			}
+		});
+		allRankList.setOnFootLoadingListener(new OnFootLoadingListener() {
+			@Override
+			public void onFootLoading() {
+				new AsyncTask<Void, Void, ArrayList<HashMap<String, Object>>>() {
+					@Override
+					protected ArrayList<HashMap<String, Object>> doInBackground(
+							Void... params) {
+						try {
+							// 模拟从服务器获取数据的过程
+							Thread.sleep(2000);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+						// 再次读取10行数据
+						ArrayList<HashMap<String, Object>> virtualData = new ArrayList<HashMap<String, Object>>();
+						for (int i = lsitItemSum; i < allRankArrayList.size(); i++) {
+							virtualData.add(allRankArrayList.get(i));
+							lsitItemSum += 1;
+						}
+						// 设置新的大小
+						return virtualData;
+					}
+
+					// 在doInBackground后面执行
+					@Override
+					protected void onPostExecute(
+							ArrayList<HashMap<String, Object>> result) {
+						showRankArrayList.addAll(result);// 这个是往后添加数据
+						Toast.makeText(getApplicationContext(), "刷新就行了", 1000)
+								.show();
+						simpleAdapter.notifyDataSetChanged();
+						allRankList.onFootLoadingComplete();// 完成上拉刷新,就是底部加载完毕,这个方法要调用
+						// 移除footer,这个动作不能少
+						allRankList.removeFooterView(footer);
+						super.onPostExecute(result);
+					}
+				}.execute();
+			}
+		});
 	}
+
 	private void requestRankAsyntask() {
 		// 默认
 		selectXn = xnSpinner.getSelectedItem().toString();
@@ -791,21 +802,29 @@ public class MainActivity extends Activity {
 
 	}
 
-	@SuppressWarnings({ "static-access", "unused" })
 	private void rankRequestParmas(String data) {
+		Toast.makeText(getApplicationContext(), data, 1000).show();
 		long time = System.currentTimeMillis();
 		try {
+			String time_s = Passport.jiami(String.valueOf(time),
+					String.valueOf(new char[] { 2, 4, 8, 8, 2, 2 }));
+			String realData = Passport.jiami(data, String.valueOf(time));
 
-			String time_s = new Passport()
-					.jiami(String.valueOf(time), "248822");
-			data = new Passport().jiami(data, String.valueOf(time));
-
-			data = URLEncoder.encode(data);
+			realData = URLEncoder.encode(realData);
 			time_s = URLEncoder.encode(time_s);
-			StaticVarUtil.data = data;
+			StaticVarUtil.data = realData;
 			StaticVarUtil.viewstate = time_s;
 			System.out.println("data::" + StaticVarUtil.data + " "
 					+ StaticVarUtil.viewstate);
+			// 验证data ，因为服务器中出现错误
+			String checkData = Util.checkRankRequestData(realData, time_s);
+			Toast.makeText(getApplicationContext(), checkData + " " + data,
+					1000).show();
+			if (checkData.equals(data)) {
+				;
+			} else {
+				rankRequestParmas(data);// 递归再次计算，直到计算出正确的
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -825,6 +844,7 @@ public class MainActivity extends Activity {
 							int arg2, long arg3) {
 						// TODO Auto-generated method stub
 						if (isTouchXNSpinner) {
+							lsitItemSum = DEFAULTITEMSUM;// 设置为默认
 							// 将spinner上的选择答案显示在TextView上面
 							selectXn = xnAdapter.getItem(arg2);
 							// 自动适配 学期
@@ -865,6 +885,7 @@ public class MainActivity extends Activity {
 							int arg2, long arg3) {
 						// TODO Auto-generated method stub
 						if (isTouchXQSpinner) {
+							lsitItemSum = DEFAULTITEMSUM;// 设置为默认
 							// 将spinner上的选择答案显示在TextView上面
 							selectXq = xqAdapter.getItem(arg2);
 							requestRankAsyntask();
@@ -1516,12 +1537,16 @@ public class MainActivity extends Activity {
 	 */
 	private void refeshRank(String result, boolean isFirst) {
 		try {
-			if (rankList == null) {
+			if (allRankArrayList == null & showRankArrayList == null) {
 				Toast.makeText(getApplicationContext(), "rankList 为空", 1000)
 						.show();
-				rankList = new ArrayList<HashMap<String, Object>>();
+				allRankArrayList = new ArrayList<HashMap<String, Object>>();
+				showRankArrayList = new ArrayList<HashMap<String, Object>>();
+			} else {
+				allRankArrayList.clear();
+				showRankArrayList.clear();
 			}
-			rankList.clear();
+
 			JSONObject jsonObject = new JSONObject(result);
 			System.out.println("result::" + result);
 			String rank = String.valueOf(jsonObject.getString("rank"));
@@ -1536,19 +1561,20 @@ public class MainActivity extends Activity {
 				map.put("name", o.get("name"));
 				map.put("xh", o.get("xh"));
 				map.put("score", o.get("score"));
-				rankList.add(map);
+				allRankArrayList.add(map);
+			}
+			// 获取 之前求得的固定 个数的item。 防止数据量太大，而导致的将所有数据都显示出来。
+			for (int i = 0; i < (lsitItemSum > allRankArrayList.size() ? allRankArrayList
+					.size() : lsitItemSum); i++) {
+				showRankArrayList.add(allRankArrayList.get(i));
 			}
 			if (isFirst) {
 				setListView();
 				isFirstListView = false;
 			} else {
-				SimpleAdapter sa = (SimpleAdapter) allRankList.getAdapter();
-				Toast.makeText(getApplicationContext(), "刷新就行了", 1000).show();
-				if (sa != null) {
-					sa.notifyDataSetChanged();
-				}else {
-					setListView();
-				}
+				Toast.makeText(getApplicationContext(), lsitItemSum + "刷新就行了",
+						1000).show();
+				simpleAdapter.notifyDataSetChanged();
 
 			}
 
@@ -1562,12 +1588,12 @@ public class MainActivity extends Activity {
 	private void setListView() {
 		// TODO Auto-generated method stub
 
-		simpleAdapter = new SimpleAdapter(getApplicationContext(), rankList,
-				R.layout.allrank_listitem, new String[] { "rankId", "name",
-						"score" }, new int[] { R.id.rankId, R.id.name,
-						R.id.score });
-		Toast.makeText(getApplicationContext(), "第一次请求" + rankList.size(), 1000)
-				.show();
+		simpleAdapter = new SimpleAdapter(getApplicationContext(),
+				showRankArrayList, R.layout.allrank_listitem, new String[] {
+						"rankId", "name", "score" }, new int[] { R.id.rankId,
+						R.id.name, R.id.score });
+		Toast.makeText(getApplicationContext(),
+				"第一次请求" + showRankArrayList.size(), 1000).show();
 		allRankList.setAdapter(simpleAdapter);
 	}
 

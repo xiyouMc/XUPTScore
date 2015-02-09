@@ -72,7 +72,7 @@
 # view res/layout/menu.xml #generated:14
 -keep class com.mc.util.CircleImageView { <init>(...); }
 
-# view res/layout/activity_rank.xml #generated:157
+# view res/layout/activity_rank.xml #generated:160
 -keep class com.mc.util.CustomRankListView { <init>(...); }
 
 # view res/layout/activity_main.xml #generated:8

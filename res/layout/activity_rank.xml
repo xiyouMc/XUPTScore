@@ -15,11 +15,10 @@
 
         <Button
             android:id="@+id/butMenu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="5dp"
             android:background="@drawable/button_menu"
             android:gravity="center_vertical"
             android:textColor="#FF8C00"
@@ -38,8 +37,8 @@
 
         <Button
             android:id="@+id/share"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="35dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="5dp"
@@ -54,6 +53,7 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:background="#C3F3EA"
         android:orientation="horizontal" >
 
         <TextView
@@ -63,6 +63,7 @@
             android:gravity="center"
             android:padding="3dip"
             android:text="学年"
+            android:textColor="#818F8D"
             android:textSize="7pt" />
         <!-- android:background="#00aa00" -->
 
@@ -83,6 +84,7 @@
             android:gravity="center"
             android:padding="3dip"
             android:text="学期  "
+            android:textColor="#818F8D"
             android:textSize="7pt" />
         <!-- android:background="#8B1A1A" -->
 
@@ -159,8 +161,7 @@
             android:layout_width="fill_parent"
             android:layout_height="498dp"
             android:divider="#ffffff"
-            android:dividerHeight="2px"
-             />
+            android:dividerHeight="2px" />
     </LinearLayout>
 
 </LinearLayout>
