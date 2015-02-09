@@ -72,6 +72,9 @@
 # view res/layout/menu.xml #generated:14
 -keep class com.mc.util.CircleImageView { <init>(...); }
 
+# view res/layout/activity_rank.xml #generated:157
+-keep class com.mc.util.CustomRankListView { <init>(...); }
+
 # view res/layout/activity_main.xml #generated:8
 # view res/layout/slidingmenumain.xml #generated:2
 -keep class com.slidingmenu.lib.SlidingMenu { <init>(...); }

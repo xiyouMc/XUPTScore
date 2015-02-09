@@ -66,6 +66,9 @@ import com.cardsui.example.MyPlayCard;
 import com.fima.cardsui.objects.CardStack;
 import com.fima.cardsui.views.CardUI;
 import com.mc.util.CircleImageView;
+import com.mc.util.CustomRankListView;
+import com.mc.util.CustomRankListView.OnAddFootListener;
+import com.mc.util.CustomRankListView.OnFootLoadingListener;
 import com.mc.util.HttpAssist;
 import com.mc.util.HttpUtilMc;
 import com.mc.util.LogcatHelper;
@@ -81,6 +84,7 @@ import com.xy.fy.util.BitmapUtil;
 import com.xy.fy.util.StaticVarUtil;
 import com.xy.fy.util.TestArrayAdapter;
 import com.xy.fy.util.ViewUtil;
+import com.xy.fy.view.CustomListView;
 import com.xy.fy.view.HistoryCollege;
 import com.xy.fy.view.ToolClass;
 
@@ -125,7 +129,7 @@ public class MainActivity extends Activity {
 	private Button check_version = null;
 	ArrayList<HashMap<String, Object>> listItem;// json解析之后的列表,保存了所有的成绩数据
 	// 排名
-	private ListView allRankList;
+	private CustomRankListView allRankList;
 	private TextView rankText;
 	private TextView nameText;
 	private HashMap<String, String> allRankMap = new HashMap<String, String>();// 所有学年和学期的成绩
@@ -655,7 +659,8 @@ public class MainActivity extends Activity {
 	@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
 	@SuppressLint("NewApi")
 	private void rank() {
-		allRankList = (ListView) findViewById(R.id.allRank);
+		allRankList = (CustomRankListView) findViewById(R.id.allRank);
+		rankListViewListener();
 		rankText = (TextView) findViewById(R.id.rank);
 		nameText = (TextView) findViewById(R.id.name);
 		nameText.setText(name);
@@ -709,7 +714,58 @@ public class MainActivity extends Activity {
 		}
 		System.out.println("");
 	}
-
+	/**
+	 * 下拉刷新
+	 */
+	private void rankListViewListener() {
+		// TODO Auto-generated method stub
+		//创建FootView  
+        final View footer = View.inflate(getApplicationContext(), R.layout.rank_footer, null);  
+        allRankList.setOnAddFootListener(new OnAddFootListener() {  
+            @Override 
+            public void addFoot() {  
+            	allRankList.addFooterView(footer);  
+            }  
+        });  
+        allRankList.setOnFootLoadingListener(new OnFootLoadingListener() {  
+            @Override  
+            public void onFootLoading() {  
+                new AsyncTask<Void, Void, ArrayList<HashMap<String, Object>>>(){  
+                    @Override  
+                    protected ArrayList<HashMap<String, Object>> doInBackground(Void... params) {  
+                        try {  
+                            //模拟从服务器获取数据的过程  
+                            Thread.sleep(2000);  
+                        } catch (InterruptedException e) {  
+                            e.printStackTrace();  
+                        }  
+                        //再次读取10行数据
+                        ArrayList<HashMap<String, Object>> virtualData = new ArrayList<HashMap<String, Object>>();  
+                        /*virtualData.add("Foot刷新后的新数据1");  
+                        virtualData.add("Foot刷新后的新数据2");  
+                        virtualData.add("Foot刷新后的新数据3");  
+                        virtualData.add("Foot刷新后的新数据4");  
+                        virtualData.add("Foot刷新后的新数据5");  
+                        virtualData.add("Foot刷新后的新数据6");  */
+                        return virtualData;  
+                    }  
+  
+                    //在doInBackground后面执行  
+                    @Override  
+                    protected void onPostExecute(ArrayList<HashMap<String, Object>> result) {    
+                    	rankList.addAll(result);//这个是往后添加数据  
+                    	//SimpleAdapter sa = (SimpleAdapter) allRankList.getAdapter();
+        				Toast.makeText(getApplicationContext(), "刷新就行了", 1000).show();
+        				//sa.notifyDataSetChanged(); 
+                        allRankList.onFootLoadingComplete();//完成上拉刷新,就是底部加载完毕,这个方法要调用  
+                        //移除footer,这个动作不能少  
+                        allRankList.removeFooterView(footer);  
+                        super.onPostExecute(result);  
+                    }  
+                }.execute();  
+            }  
+        }); 
+	}
 	private void requestRankAsyntask() {
 		// 默认
 		selectXn = xnSpinner.getSelectedItem().toString();
