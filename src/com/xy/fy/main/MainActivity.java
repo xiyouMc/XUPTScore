@@ -9,13 +9,13 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Map.Entry;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -32,7 +32,6 @@ import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.Spannable;
@@ -43,26 +42,24 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.View.OnClickListener;
-import android.widget.BaseAdapter;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.HeaderViewListAdapter;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.PopupWindow;
-import android.widget.ProgressBar;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.onekeyshare.OnekeyShare;
 
 import com.cardsui.example.MyPlayCard;
 import com.fima.cardsui.objects.CardStack;
@@ -81,12 +78,10 @@ import com.slidingmenu.lib.SlidingMenu;
 import com.slidingmenu.lib.SlidingMenu.OnOpenListener;
 import com.xy.fy.adapter.ChooseHistorySchoolExpandAdapter;
 import com.xy.fy.adapter.ChooseSchoolExpandAdapter;
-import com.xy.fy.main.R;
 import com.xy.fy.util.BitmapUtil;
 import com.xy.fy.util.StaticVarUtil;
 import com.xy.fy.util.TestArrayAdapter;
 import com.xy.fy.util.ViewUtil;
-import com.xy.fy.view.CustomListView;
 import com.xy.fy.view.HistoryCollege;
 import com.xy.fy.view.ToolClass;
 
@@ -103,19 +98,15 @@ public class MainActivity extends Activity {
 	private static HashMap<String, String> mapScoreTwo = null;// xn = 2
 	private static boolean isFirst = true;
 	// 检测版本
-	private static PopupWindow popupWindow;
 	private static PopupWindow version_popupWindow;
 	private static boolean is_show = false;
 	private View view;
 	private TextView update_content_textview;
 
 	public static SlidingMenu slidingMenu;// 侧滑组件
-	private static Context context;
-	private Button refresh;// 刷新按钮
 	private Button chooseCollege;// 选择学校按钮
 	private Button chooseMsgKind;// 选择说说种类
 	private Button chooseMsgSort;// 选择说说排序方式
-	private ProgressBar progress;// 刷新时候，刷新按钮变为progress
 	// private CustomListView listView;// 说说列表，自己定义的ListView
 	private CardUI mCardView;
 	private TextView nickname;// 用户名
@@ -151,6 +142,7 @@ public class MainActivity extends Activity {
 	private static final int PHO = 22;// 照相
 	private static final int RESULT = 33;// 返回结果
 
+	@SuppressWarnings("unused")
 	private int page = 0;
 
 	private ChooseSchoolExpandAdapter adapter = new ChooseSchoolExpandAdapter(
@@ -162,7 +154,6 @@ public class MainActivity extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		super.setContentView(R.layout.activity_main);
 		dialog = ViewUtil.getProgressDialog(MainActivity.this, "正在查询");
-		context = getApplicationContext();
 		CheckVersionAsyntask checkVersionAsyntask = new CheckVersionAsyntask();
 		is_show = false;
 		checkVersionAsyntask.execute();
@@ -176,7 +167,7 @@ public class MainActivity extends Activity {
 		StaticVarUtil.activities.add(MainActivity.this);
 
 		// 找到ID
-		slidingMenu = (SlidingMenu) findViewById(R.id.slidingMenu);
+		slidingMenu = (SlidingMenu) findViewById(R.id.slidingMenuXyScore);
 		// 打开sliding组件监听
 		slidingMenu.setOnOpenListener(new OnOpenListener() {
 			@Override
@@ -661,13 +652,30 @@ public class MainActivity extends Activity {
 	ArrayAdapter<String> xnAdapter;
 	ArrayAdapter<String> xqAdapter;
 
-	@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
 	@SuppressLint("NewApi")
+	@SuppressWarnings("rawtypes")
 	private void rank() {
 		// menu出发 判断为第一次 为了初始化 listview
 		isFirstListView = true;
 		allRankList = (CustomRankListView) findViewById(R.id.allRank);
-		//rankListViewListener();
+		// 菜单按钮
+		Button menu = (Button) findViewById(R.id.butMenu);
+		menu.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				slidingMenu.toggle();
+			}
+		});
+		// 分享按钮
+		Button share = (Button) findViewById(R.id.share);
+		share.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				showShare();
+			}
+		});
+		// rankListViewListener();
 		rankText = (TextView) findViewById(R.id.rank);
 		nameText = (TextView) findViewById(R.id.name);
 		nameText.setText(name);
@@ -685,7 +693,7 @@ public class MainActivity extends Activity {
 
 		Iterator<?> it = StaticVarUtil.list_Rank_xnAndXq.entrySet().iterator();
 		while (it.hasNext()) {
-			java.util.Map.Entry entry = (java.util.Map.Entry) it.next();
+			Entry entry = (Entry) it.next();
 			xns[i] = String.valueOf(entry.getKey());// 返回与此项对应的键
 			i++;
 			// entry.getValue() 返回与此项对应的值
@@ -720,6 +728,39 @@ public class MainActivity extends Activity {
 			requestRankAsyntask();
 		}
 		System.out.println("");
+	}
+
+	/**
+	 * 分享模块
+	 */
+	private void showShare() {
+		// ShareSDK.initSDK(this);
+		OnekeyShare oks = new OnekeyShare();
+		// 关闭sso授权
+		oks.disableSSOWhenAuthorize();
+
+		// 分享时Notification的图标和文字
+		oks.setNotification(R.drawable.default_head_photo,
+				getString(R.string.app_name));
+		// title标题，印象笔记、邮箱、信息、微信、人人网和QQ空间使用
+		oks.setTitle(getString(R.string.share));
+		// titleUrl是标题的网络链接，仅在人人网和QQ空间使用
+		oks.setTitleUrl("http://blog.csdn.net/m694449212");
+		// text是分享文本，所有平台都需要这个字段
+		oks.setText("测试《西邮成绩》分享功能");
+		// imagePath是图片的本地路径，Linked-In以外的平台都支持此参数
+		// oks.setImagePath("/sdcard/test.jpg");// 确保SDcard下面存在此张图片
+		// url仅在微信（包括好友和朋友圈）中使用
+		oks.setUrl("http://blog.csdn.net/m694449212");
+		// comment是我对这条分享的评论，仅在人人网和QQ空间使用
+		oks.setComment("测试《西邮成绩》分享功能");
+		// site是分享此内容的网站名称，仅在QQ空间使用
+		oks.setSite(getString(R.string.app_name));
+		// siteUrl是分享此内容的网站地址，仅在QQ空间使用
+		oks.setSiteUrl("http://blog.csdn.net/m694449212");
+
+		// 启动分享GUI
+		oks.show(this);
 	}
 
 	/**
@@ -1314,6 +1355,20 @@ public class MainActivity extends Activity {
 	}
 
 	/**
+	 * 清除内存块中的共享数据
+	 */
+	private void deleteCatch() {
+		StaticVarUtil.list_Rank_xnAndXq.clear();
+		allRankArrayList = null;
+		mapScoreOne = null;
+		mapScoreTwo = null;
+		StaticVarUtil.quit();
+		isFirstListView = true;
+		// 清空成绩缓存
+		isFirst = true;
+	}
+
+	/**
 	 * 退出模块
 	 * 
 	 * @param logout
@@ -1331,10 +1386,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				dialog.cancel();
-				StaticVarUtil.quit();
-				isFirstListView = true;
-				// 清空成绩缓存
-				isFirst = true;
+				deleteCatch();
 				LogcatHelper.getInstance(MainActivity.this).stop();
 				if (logout) {
 					Intent i = new Intent();
