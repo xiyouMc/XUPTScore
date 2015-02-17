@@ -7,7 +7,7 @@
 
     <com.slidingmenu.lib.SlidingMenu
         xmlns:sliding="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/slidingMenu"
+        android:id="@+id/slidingMenuXyScore"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         sliding:behindScrollScale="@string/behind_scroll_scale"
