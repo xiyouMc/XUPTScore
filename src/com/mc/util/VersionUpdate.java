@@ -36,10 +36,10 @@ public class VersionUpdate {
 	private Context mContext;
 	
 	//提示语
-	public static String updateMsg = "有最新的软件包哦，亲快下载吧~";
+	public String updateMsg = "有最新的软件包哦，亲快下载吧~";
 	
 	//返回的安装包url
-	public static String apkUrl ;
+	public String apkUrl ;
 	
 	
 	private Dialog noticeDialog;
