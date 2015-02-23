@@ -1,9 +1,11 @@
 package com.xy.fy.main;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -30,12 +32,15 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.Editable;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
+import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -43,22 +48,25 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnKeyListener;
 import android.view.View.OnTouchListener;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.onekeyshare.OnekeyShare;
 
 import com.cardsui.example.MyPlayCard;
@@ -85,7 +93,8 @@ import com.xy.fy.util.ViewUtil;
 import com.xy.fy.view.HistoryCollege;
 import com.xy.fy.view.ToolClass;
 
-@SuppressLint("HandlerLeak")
+@SuppressLint({ "HandlerLeak", "ShowToast", "ClickableViewAccessibility",
+		"InflateParams" })
 /**
  * 第一次启动主界面就请求  查询成绩
  * @author Administrator
@@ -93,6 +102,8 @@ import com.xy.fy.view.ToolClass;
  */
 public class MainActivity extends Activity {
 
+	// 二维码文件
+	private static final String QRCODE_FILENAME = "/西邮成绩.png";
 	// 保存成绩的map
 	private static HashMap<String, String> mapScoreOne = null;// xn =1
 	private static HashMap<String, String> mapScoreTwo = null;// xn = 2
@@ -122,14 +133,16 @@ public class MainActivity extends Activity {
 	private Button check_version = null;
 	ArrayList<HashMap<String, Object>> listItem;// json解析之后的列表,保存了所有的成绩数据
 	// 排名
-	private final static int DEFAULTITEMSUM = 60;
+	private final static int DEFAULTITEMSUM = 50;
 	private static int lsitItemSum = DEFAULTITEMSUM;// 通过计算屏幕高度，求得应该显示多少行数据在listview
 	private CustomRankListView allRankList;
 	private TextView rankText;
 	private TextView nameText;
+	private TextView rankScoreText;
 	private HashMap<String, String> allRankMap = new HashMap<String, String>();// 所有学年和学期的成绩
 	private ArrayList<HashMap<String, Object>> allRankArrayList;// 所有的数据
 	private ArrayList<HashMap<String, Object>> showRankArrayList;// 应该显示的数据
+	private AutoCompleteTextView search_edittext;
 	private SimpleAdapter simpleAdapter;
 	private String score_json;// json数据
 	private static boolean isFirstListView = true;
@@ -148,11 +161,13 @@ public class MainActivity extends Activity {
 	private ChooseSchoolExpandAdapter adapter = new ChooseSchoolExpandAdapter(
 			MainActivity.this);
 
+	@SuppressLint("ShowToast")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		super.setContentView(R.layout.activity_main);
+
 		dialog = ViewUtil.getProgressDialog(MainActivity.this, "正在查询");
 		CheckVersionAsyntask checkVersionAsyntask = new CheckVersionAsyntask();
 		is_show = false;
@@ -219,14 +234,6 @@ public class MainActivity extends Activity {
 			dialog.show();
 			getScoreAsyntask.execute();
 		}
-
-		// slidingMenu.setOnClosedListener(new OnClosedListener() {
-		// @Override
-		// public void onClosed() {
-		// System.out.println("菜单关闭");
-		// menu2();
-		// }
-		// });
 	}
 
 	/**
@@ -257,7 +264,6 @@ public class MainActivity extends Activity {
 		 * loading.setVisibility(View.VISIBLE);
 		 */
 		showCardAsyntask.execute();
-		System.out.println("");
 	}
 
 	/**
@@ -277,8 +283,6 @@ public class MainActivity extends Activity {
 			for (int i = 0; i < xn.length; i++) {
 				result = showCard(xn[i], isFirst);// 这里延迟太大，可以考虑直接从内存取 不用每次计算。
 			}
-			System.out.println("时差:"
-					+ Long.toString(System.currentTimeMillis() - currectTime));
 			return result;
 		}
 
@@ -538,38 +542,38 @@ public class MainActivity extends Activity {
 		menuMyBukao.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				/*
-				 * Toast.makeText(getApplicationContext(),
-				 * "程序猿们正在努力开发中，请持续关注...", 2000).show();
-				 */
 				// 判断如果没有头像的话，先让选择头像，并填写昵称
 				// 暂且跳转到好友列表
-				setMenuItemState(menuBang, false, menuMyBukao, true,
+				showToast("程序猿们正在努力开发中，请持续关注...");
+				/*setMenuItemState(menuBang, false, menuMyBukao, true,
 						menuMyPaiming, false, menuMyCollect, false,
 						menuSetting, false, menuAbout, false);
 				setCurrentMenuItem(2);// 记录当前选项位置
 				slidingMenu.toggle();// 页面跳转
 
 				slidingMenu.setContent(R.layout.activity_friend_list);
-				friend_list();
+				friend_list();*/
 			}
 		});
 
 		menuMyPaiming.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				/*
-				 * Toast.makeText(getApplicationContext(),
-				 * "程序猿们正在努力开发中，请持续关注...", 2000).show();
-				 */
-				setMenuItemState(menuBang, false, menuMyBukao, false,
-						menuMyPaiming, true, menuMyCollect, false, menuSetting,
-						false, menuAbout, false);
-				setCurrentMenuItem(3);// 记录当前选项位置
-				slidingMenu.toggle();// 页面跳转
+				if (StaticVarUtil.list_Rank_xnAndXq.size() != 0) {
+					
+					setMenuItemState(menuBang, false, menuMyBukao, false,
+							menuMyPaiming, true, menuMyCollect, false,
+							menuSetting, false, menuAbout, false);
+					setCurrentMenuItem(3);// 记录当前选项位置
+					slidingMenu.toggle();// 页面跳转
 
-				slidingMenu.setContent(R.layout.activity_rank);
-				rank();
+					slidingMenu.setContent(R.layout.activity_rank);
+					rank();
+				} else {
+					Toast.makeText(getApplicationContext(), "网络不稳定，请稍后查询", 1000)
+							.show();
+				}
+
 			}
 
 		});
@@ -577,8 +581,7 @@ public class MainActivity extends Activity {
 		menuMyCollect.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(getApplicationContext(), "程序猿们正在努力开发中，请持续关注...",
-						2000).show();
+				showToast("程序猿们正在努力开发中，请持续关注...");
 			}
 		});
 
@@ -608,30 +611,7 @@ public class MainActivity extends Activity {
 
 				slidingMenu.setContent(R.layout.activity_about);
 
-				// 菜单按钮
-				Button menu = (Button) findViewById(R.id.butMenu);
-				menu.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						slidingMenu.toggle();
-					}
-				});
-
-				check_version = (Button) findViewById(R.id.checkversion);// 检测新版本按钮
-				TextView version = (TextView) findViewById(R.id.version);
-				version.setText(Util.getVersion(getApplicationContext()));
-				check_version.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						// TODO Auto-generated method stub
-
-						CheckVersionAsyntask checkVersionAsyntask = new CheckVersionAsyntask();
-						is_show = true;
-						dialog.show();
-						checkVersionAsyntask.execute();
-					}
-				});
+				aboutListener();
 			}
 		});
 
@@ -644,6 +624,110 @@ public class MainActivity extends Activity {
 
 	}
 
+	private void aboutListener() {
+		// 菜单按钮
+		Button menu = (Button) findViewById(R.id.butMenu);
+		menu.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				slidingMenu.toggle();
+			}
+		});
+
+		ImageView qrcode_imageview = (ImageView) findViewById(R.id.code);
+		qrcode_imageview.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				showDialogSaveQrcode();
+
+			}
+		});
+		check_version = (Button) findViewById(R.id.checkversion);// 检测新版本按钮
+		TextView version = (TextView) findViewById(R.id.version);
+		version.setText(Util.getVersion(getApplicationContext()));
+		check_version.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+
+				CheckVersionAsyntask checkVersionAsyntask = new CheckVersionAsyntask();
+				is_show = true;
+				dialog.show();
+				checkVersionAsyntask.execute();
+			}
+		});
+	}
+
+	/**
+	 * 保存二维码
+	 */
+	private void showDialogSaveQrcode() {
+		final CharSequence[] items = { "保存二维码" };
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setItems(items, new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int item) {
+				if (!new File(StaticVarUtil.PATH + QRCODE_FILENAME).exists()) {
+					Bitmap bt = ((BitmapDrawable) getApplicationContext()
+							.getResources().getDrawable(R.drawable.qrcode))
+							.getBitmap();
+					try {
+						saveFile(bt, QRCODE_FILENAME);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				} else {
+					showToast("二维码已保存，请将其分享给同学！");
+				}
+
+			}
+		});
+		AlertDialog alert = builder.create();
+		alert.show();
+	}
+
+	/**
+	 * 保存文件
+	 * 
+	 * @param bm
+	 * @param fileName
+	 * @throws IOException
+	 */
+	public void saveFile(Bitmap bm, String fileName) throws IOException {
+		File dirFile = new File(StaticVarUtil.PATH);
+		if (!dirFile.exists()) {
+			dirFile.mkdir();
+		}
+		File myCaptureFile = new File(StaticVarUtil.PATH + fileName);
+		BufferedOutputStream bos = new BufferedOutputStream(
+				new FileOutputStream(myCaptureFile));
+		bm.compress(Bitmap.CompressFormat.JPEG, 80, bos);
+		updateGallery(StaticVarUtil.PATH + fileName);
+		bos.flush();
+		bos.close();
+
+		showToast("二维码已保存，请将其分享给同学！");
+	}
+
+	/**
+	 * 将图片加入数据库
+	 * 
+	 * @param filename
+	 */
+	private void updateGallery(String filename)// filename是我们的文件全名，包括后缀哦
+	{
+		MediaScannerConnection.scanFile(this, new String[] { filename }, null,
+				new MediaScannerConnection.OnScanCompletedListener() {
+					public void onScanCompleted(String path, Uri uri) {
+						Log.i("ExternalStorage", "Scanned " + path + ":");
+						Log.i("ExternalStorage", "-> uri=" + uri);
+					}
+				});
+	}
+
 	String selectXn;
 	String selectXq;
 	// TODO Auto-generated method stub
@@ -653,11 +737,88 @@ public class MainActivity extends Activity {
 	ArrayAdapter<String> xqAdapter;
 
 	@SuppressLint("NewApi")
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes", "deprecation" })
 	private void rank() {
 		// menu出发 判断为第一次 为了初始化 listview
+
 		isFirstListView = true;
 		allRankList = (CustomRankListView) findViewById(R.id.allRank);
+		rankScoreText = (TextView) findViewById(R.id.score);
+		rankScoreText.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				if (!rankText.getText().equals("")) {
+					allRankList.setSelection(Integer.parseInt(rankText
+							.getText().toString()) - 1);
+				}
+			}
+		});
+		// search
+		search_edittext = (AutoCompleteTextView) findViewById(R.id.search);
+
+		search_edittext.addTextChangedListener(new TextWatcher() {
+
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before,
+					int count) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void afterTextChanged(Editable s) {
+				// TODO Auto-generated method stub
+				if (search_edittext.getText().toString().length() > 0) {
+					// 定位
+					for (HashMap<String, Object> map : showRankArrayList) {
+						if ((map.get("name").toString()).equals(search_edittext
+								.getText().toString())) {
+							search_edittext.clearFocus();
+							closeInputMethod();
+							allRankList.setSelection(Integer.parseInt(map.get(
+									"rankId").toString()) - 1);
+
+						}
+					}
+				}
+			}
+		});
+		search_edittext.setOnKeyListener(new OnKeyListener() {
+
+			@Override
+			public boolean onKey(View v, int keyCode, KeyEvent event) {
+				if (KeyEvent.KEYCODE_ENTER == keyCode
+						&& event.getAction() == KeyEvent.ACTION_DOWN) {
+					boolean isSearch = false;
+					for (HashMap<String, Object> map : showRankArrayList) {
+						if ((map.get("name").toString()).equals(search_edittext
+								.getText().toString())) {
+							allRankList.setSelection(Integer.parseInt(map.get(
+									"rankId").toString()) - 1);
+							isSearch = true;
+						}
+					}
+					if (!isSearch) {
+						showToast("没有该学生信息");
+					}
+					search_edittext.clearFocus();
+					closeInputMethod();
+					return true;
+				}
+				return false;
+
+			}
+		});
+
 		// 菜单按钮
 		Button menu = (Button) findViewById(R.id.butMenu);
 		menu.setOnClickListener(new OnClickListener() {
@@ -727,7 +888,46 @@ public class MainActivity extends Activity {
 		} else {
 			requestRankAsyntask();
 		}
-		System.out.println("");
+	}
+
+	/**
+	 * 取消软键盘
+	 */
+	private void closeInputMethod() {
+		InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+		boolean isOpen = imm.isActive();
+		if (isOpen) {
+			imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);// 没有显示则显示
+			// imm.hideSoftInputFromWindow(mobile_topup_num.getWindowToken(),
+			// InputMethodManager.HIDE_NOT_ALWAYS);
+		}
+	}
+
+	/**
+	 * Toast
+	 */
+	private Toast mToast;
+
+	public void showToast(String text) {
+		if (mToast == null) {
+			mToast = Toast
+					.makeText(MainActivity.this, text, Toast.LENGTH_SHORT);
+		} else {
+			mToast.setText(text);
+			mToast.setDuration(Toast.LENGTH_SHORT);
+		}
+		mToast.show();
+	}
+
+	public void cancelToast() {
+		if (mToast != null) {
+			mToast.cancel();
+		}
+	}
+
+	public void onBackPressed() {
+		cancelToast();
+		super.onBackPressed();
 	}
 
 	/**
@@ -737,7 +937,7 @@ public class MainActivity extends Activity {
 		// ShareSDK.initSDK(this);
 		OnekeyShare oks = new OnekeyShare();
 		// 关闭sso授权
-		oks.disableSSOWhenAuthorize();
+		// oks.disableSSOWhenAuthorize();
 
 		// 分享时Notification的图标和文字
 		oks.setNotification(R.drawable.default_head_photo,
@@ -745,7 +945,7 @@ public class MainActivity extends Activity {
 		// title标题，印象笔记、邮箱、信息、微信、人人网和QQ空间使用
 		oks.setTitle(getString(R.string.share));
 		// titleUrl是标题的网络链接，仅在人人网和QQ空间使用
-		oks.setTitleUrl("http://blog.csdn.net/m694449212");
+		oks.setTitleUrl("http://222.24.63.101/manager/publicity.html");
 		// text是分享文本，所有平台都需要这个字段
 		oks.setText("测试《西邮成绩》分享功能");
 		// imagePath是图片的本地路径，Linked-In以外的平台都支持此参数
@@ -753,11 +953,11 @@ public class MainActivity extends Activity {
 		// url仅在微信（包括好友和朋友圈）中使用
 		oks.setUrl("http://blog.csdn.net/m694449212");
 		// comment是我对这条分享的评论，仅在人人网和QQ空间使用
-		oks.setComment("测试《西邮成绩》分享功能");
+		oks.setComment("测试《西邮成绩》分享功能,下载地址:");
 		// site是分享此内容的网站名称，仅在QQ空间使用
 		oks.setSite(getString(R.string.app_name));
 		// siteUrl是分享此内容的网站地址，仅在QQ空间使用
-		oks.setSiteUrl("http://blog.csdn.net/m694449212");
+		oks.setSiteUrl("http://222.24.63.101/manager/publicity.html");
 
 		// 启动分享GUI
 		oks.show(this);
@@ -766,6 +966,7 @@ public class MainActivity extends Activity {
 	/**
 	 * 下拉刷新
 	 */
+	@SuppressWarnings("unused")
 	private void rankListViewListener() {
 		// TODO Auto-generated method stub
 		// 创建FootView
@@ -805,8 +1006,6 @@ public class MainActivity extends Activity {
 					protected void onPostExecute(
 							ArrayList<HashMap<String, Object>> result) {
 						showRankArrayList.addAll(result);// 这个是往后添加数据
-						Toast.makeText(getApplicationContext(), "刷新就行了", 1000)
-								.show();
 						simpleAdapter.notifyDataSetChanged();
 						allRankList.onFootLoadingComplete();// 完成上拉刷新,就是底部加载完毕,这个方法要调用
 						// 移除footer,这个动作不能少
@@ -831,7 +1030,6 @@ public class MainActivity extends Activity {
 			if (xnAndXq.equals(selectXn + selectXq)) {// 如果存在则直接 或者value
 				result = allRankMap.get(xnAndXq);
 				refeshRank(result, isFirstListView);
-				Toast.makeText(getApplicationContext(), "存在", 1000).show();
 				break;
 			}
 		}
@@ -843,8 +1041,8 @@ public class MainActivity extends Activity {
 
 	}
 
+	@SuppressWarnings("deprecation")
 	private void rankRequestParmas(String data) {
-		Toast.makeText(getApplicationContext(), data, 1000).show();
 		long time = System.currentTimeMillis();
 		try {
 			String time_s = Passport.jiami(String.valueOf(time),
@@ -855,12 +1053,8 @@ public class MainActivity extends Activity {
 			time_s = URLEncoder.encode(time_s);
 			StaticVarUtil.data = realData;
 			StaticVarUtil.viewstate = time_s;
-			System.out.println("data::" + StaticVarUtil.data + " "
-					+ StaticVarUtil.viewstate);
 			// 验证data ，因为服务器中出现错误
 			String checkData = Util.checkRankRequestData(realData, time_s);
-			Toast.makeText(getApplicationContext(), checkData + " " + data,
-					1000).show();
 			if (checkData.equals(data)) {
 				;
 			} else {
@@ -898,8 +1092,6 @@ public class MainActivity extends Activity {
 							xqSpinner.setAdapter(xqAdapter);
 
 							requestRankAsyntask();
-							Toast.makeText(getApplicationContext(),
-									selectXn + "学年显示成绩", 1000).show();
 							isTouchXNSpinner = false;
 						}
 					}
@@ -930,8 +1122,6 @@ public class MainActivity extends Activity {
 							// 将spinner上的选择答案显示在TextView上面
 							selectXq = xqAdapter.getItem(arg2);
 							requestRankAsyntask();
-							Toast.makeText(getApplicationContext(),
-									selectXq + "学期显示成绩", 1000).show();
 							isTouchXQSpinner = false;
 						}
 					}
@@ -1026,8 +1216,6 @@ public class MainActivity extends Activity {
 		butAlter.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// 要传递的参数
-				String password = null;
 				// 控件值
 				String password1 = etPassword1.getText().toString();
 				String password2 = etPassword2.getText().toString().trim();
@@ -1040,12 +1228,10 @@ public class MainActivity extends Activity {
 
 				// 密码
 				if (password1.equals("") && password2.equals("")) {// 如果不修改
-					password = StaticVarUtil.student.getPassword();
+
 				} else {
 					if (password1.equals(StaticVarUtil.student.getPassword())
 							&& password2.equals("") == false) {
-						// 如果旧密码正确，新密码不为空,那么就是新密码
-						password = password2;
 					} else {
 						ViewUtil.toastShort("旧密码不正确或者新密码不能为空,请您检查",
 								MainActivity.this);
@@ -1282,9 +1468,6 @@ public class MainActivity extends Activity {
 		// 开启新线程
 		Calendar calendar = Calendar.getInstance();
 		calendar.set(Calendar.MINUTE, calendar.get(Calendar.MINUTE) + 6);
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
-		int page = 0;
 		StaticVarUtil.fileName = "jsonCache.txt";// 设置保存文件的名字
 	}
 
@@ -1478,7 +1661,7 @@ public class MainActivity extends Activity {
 						/**
 						 * 将字符串 写入xml文件中
 						 */
-						if (!result.equals("")) {
+						if (!result.equals("no_evaluation")) {
 							score_json = result;
 							listItem = new ArrayList<HashMap<String, Object>>();
 							System.out.println("rrrr:" + result);
@@ -1493,11 +1676,23 @@ public class MainActivity extends Activity {
 										o.get("list_xueKeScore"));
 								listItem.add(map);
 							}
+						}else {
+							Builder builder = new AlertDialog.Builder(MainActivity.this);
+
+							builder.setMessage("请到官网进行教师评价后查询成绩！");
+
+							builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+								@Override
+								public void onClick(DialogInterface dialog, int which) {
+									quit(true);									
+								}
+							});
+							builder.create().show();
 						}
 						menu1();
 						dialog.cancel();
 					} else {
-						Toast.makeText(getApplicationContext(), "登录失败", 1)
+						Toast.makeText(getApplicationContext(), "查询失败", 1)
 								.show();
 					}
 
@@ -1590,8 +1785,6 @@ public class MainActivity extends Activity {
 	private void refeshRank(String result, boolean isFirst) {
 		try {
 			if (allRankArrayList == null & showRankArrayList == null) {
-				Toast.makeText(getApplicationContext(), "rankList 为空", 1000)
-						.show();
 				allRankArrayList = new ArrayList<HashMap<String, Object>>();
 				showRankArrayList = new ArrayList<HashMap<String, Object>>();
 			} else {
@@ -1603,6 +1796,7 @@ public class MainActivity extends Activity {
 			System.out.println("result::" + result);
 			String rank = String.valueOf(jsonObject.getString("rank"));
 			rankText.setText(rank);
+
 			JSONArray jsonArray = (JSONArray) jsonObject.get("rankList");
 			int rankId = 0;
 			for (int i = jsonArray.length() - 1; i >= 0; i--) {
@@ -1614,6 +1808,9 @@ public class MainActivity extends Activity {
 				map.put("xh", o.get("xh"));
 				map.put("score", o.get("score"));
 				allRankArrayList.add(map);
+				if (String.valueOf(rankId).equals(rank)) {
+					rankScoreText.setText(o.get("score").toString());// 显示成绩
+				}
 			}
 			// 获取 之前求得的固定 个数的item。 防止数据量太大，而导致的将所有数据都显示出来。
 			for (int i = 0; i < (lsitItemSum > allRankArrayList.size() ? allRankArrayList
@@ -1624,8 +1821,6 @@ public class MainActivity extends Activity {
 				setListView();
 				isFirstListView = false;
 			} else {
-				Toast.makeText(getApplicationContext(), lsitItemSum + "刷新就行了",
-						1000).show();
 				simpleAdapter.notifyDataSetChanged();
 
 			}
@@ -1639,14 +1834,33 @@ public class MainActivity extends Activity {
 	// 显示 排名的listview
 	private void setListView() {
 		// TODO Auto-generated method stub
-
+		if (showRankArrayList.size() < DEFAULTITEMSUM) {
+			showShareQrcodeDialog();
+		}
 		simpleAdapter = new SimpleAdapter(getApplicationContext(),
 				showRankArrayList, R.layout.allrank_listitem, new String[] {
 						"rankId", "name", "score" }, new int[] { R.id.rankId,
 						R.id.name, R.id.score });
-		Toast.makeText(getApplicationContext(),
-				"第一次请求" + showRankArrayList.size(), 1000).show();
 		allRankList.setAdapter(simpleAdapter);
+
+	}
+
+	private void showShareQrcodeDialog() {
+		Builder builder = new AlertDialog.Builder(MainActivity.this);
+
+		builder.setMessage("由于本专业使用人数较少,因此排名会有误差。\n若需查询准确排名，请到关于页面保存二维码并分享给同学下载该软件！");
+
+		builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				
+				menuAbout.setPressed(true);
+				setCurrentMenuItem(6);// 记录当前选项位置，并且跳转
+				slidingMenu.setContent(R.layout.activity_about);
+				aboutListener();
+			}
+		});
+		builder.create().show();
 	}
 
 	// 异步改变密码
@@ -1714,7 +1928,6 @@ public class MainActivity extends Activity {
 		protected Bitmap doInBackground(String... params) {
 			// TODO Auto-generated method stub
 			Bitmap bitmap = Util.getBitmap(params[0]);
-			System.out.println("网址" + params[0]);
 			return bitmap;
 		}
 
@@ -1739,10 +1952,8 @@ public class MainActivity extends Activity {
 			String url = "";
 			url = HttpUtilMc.BASE_URL + "checkversion.jsp?version="
 					+ Util.getVersion(getApplicationContext());
-			System.out.println("url" + url);
 			// 查询返回结果
 			String result = HttpUtilMc.queryStringForPost(url);
-			System.out.println("=========================  " + result);
 			return result;
 
 		}
@@ -1791,6 +2002,7 @@ public class MainActivity extends Activity {
 	}
 
 	// 检测版本
+	@SuppressWarnings({ "unused", "deprecation" })
 	private void check_version_showWindow(View parent) {
 
 		if (version_popupWindow == null) {
@@ -1840,8 +2052,6 @@ public class MainActivity extends Activity {
 				// TODO Auto-generated method stub
 
 				version_popupWindow.dismiss();
-				// version_popupWindow = null;
-				Toast.makeText(getApplicationContext(), apk_url, 1000).show();
 				// 更新版本
 				VersionUpdate versionUpdate = new VersionUpdate(
 						MainActivity.this);
@@ -1885,7 +2095,6 @@ public class MainActivity extends Activity {
 
 					if (!result.equals("error")) {
 
-						System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@");
 						Toast.makeText(getApplicationContext(), "修改成功", 1000)
 								.show();
 						// FileUtils.deleteDir();
