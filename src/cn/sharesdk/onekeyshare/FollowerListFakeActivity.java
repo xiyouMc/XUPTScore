@@ -34,6 +34,7 @@ public class FollowerListFakeActivity extends FakeActivity {
 		public String description;
 		public String uid;
 		public String icon;
+		//@Name 用于微博等提示或关联某个人
 		public String atName;
 	}
 
@@ -81,7 +82,7 @@ public class FollowerListFakeActivity extends FakeActivity {
 					Following following = new Following();
 					following.screenName = String.valueOf(info.get("nick"));
 					following.uid = uid;
-//					following.atName = uid;
+					following.atName = uid;
 					@SuppressWarnings("unchecked")
 					ArrayList<HashMap<String, Object>> tweets = (ArrayList<HashMap<String,Object>>) info.get("tweet");
 					for (HashMap<String, Object> tweet : tweets) {
