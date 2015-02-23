@@ -98,7 +98,7 @@ public class VersionUpdate {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				dialog.dismiss();
-				//showDownloadDialog();		
+				showDownloadDialog();		
 				//½øÈëä¯ÀÀÆ÷ÏÂÔØ
 			}
 		});
