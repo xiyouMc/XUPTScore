@@ -33,7 +33,15 @@
 			android:theme="@style/AnimActivityTheme" />
 		<activity android:name="com.xy.fy.main.PublishMessage" />
 		<activity android:name="com.xy.fy.main.PictureActivity" />
-		<activity android:name="com.xy.fy.main.LoginActivity" />
+		<activity android:name="com.xy.fy.main.LoginActivity" 
+			>
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.BROWSABLE" />
+				<data android:scheme="http" android:host="www.xiyoumobile.com" android:port="80" android:path="/download/android/xiyouscoreandroid.apk"/>
+			</intent-filter>
+		</activity>
 		
 		<activity android:name="com.xy.fy.main.FriendRecommondActivity" 
 			android:theme="@style/AnimActivityTheme" />
@@ -61,7 +69,7 @@
 			</intent-filter>
 		</activity>
 		<activity
-			android:name=".wxapi.WXEntryActivity"
+			android:name="com.xy.fy.main.wxapi.WXEntryActivity"
 			android:theme="@android:style/Theme.Translucent.NoTitleBar"
 			android:configChanges="keyboardHidden|orientation|screenSize"
 			android:exported="true"
