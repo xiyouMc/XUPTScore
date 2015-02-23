@@ -51,7 +51,6 @@
                 android:gravity="center_vertical"
                 android:hint="学号"
                 android:paddingLeft="17dp"
-                android:text="213123"
                 android:textColor="#050505"
                 android:textCursorDrawable="@null"
                 android:textSize="7.5pt" />
