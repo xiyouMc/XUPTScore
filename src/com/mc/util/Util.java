@@ -23,6 +23,7 @@ import android.graphics.BitmapFactory;
 import com.xy.fy.util.StaticVarUtil;
 
 public class Util {
+	
 	/**
 	 * 将图片保存到本地
 	 * @param bmp
@@ -115,6 +116,28 @@ public class Util {
 
 	}
 
+	/**
+	 * check url requestData
+	 * @param data
+	 * @param viewstate
+	 * @return
+	 */
+	public static String checkRankRequestData(String data, String viewstate){
+			// TODO Auto-generated method stub
+			String realXh = "";
+			String realTime = Passport.jiemi(viewstate, String.valueOf(new char[]{2,4,8,8,2,2}));
+			HashMap<String, String> xhAndXnMap = new HashMap<String, String>();
+			System.out.println(realTime);
+			try {
+				System.out.println(realTime);
+				realXh = Passport.jiemi(data, realTime);
+				
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return realXh;
+	}
 	private static boolean hasDigit(String content) {
 
 		boolean flag = false;
