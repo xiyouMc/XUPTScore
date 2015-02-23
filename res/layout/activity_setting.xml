@@ -16,11 +16,10 @@
 
         <Button
             android:id="@+id/butMenu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="5dp"
             android:background="@drawable/button_menu"
             android:gravity="center_vertical"
             android:textColor="#FF8C00"
