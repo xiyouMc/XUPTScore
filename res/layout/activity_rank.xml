@@ -31,9 +31,9 @@
             android:layout_centerHorizontal="true"
             android:background="@drawable/transparent"
             android:gravity="center_vertical"
-            android:text="我的排名"
+            android:text="@string/my_rank"
             android:textColor="@color/white"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/share"
@@ -45,7 +45,8 @@
             android:background="@drawable/share"
             android:gravity="center_vertical"
             android:textColor="#FF8C00"
-            android:textSize="14sp" />
+            android:textSize="14sp" 
+            android:visibility="invisible"/>
     </RelativeLayout>
 
     <!-- android:background="#aa0000" -->
@@ -62,7 +63,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:padding="3dip"
-            android:text="学年"
+            android:text="@string/xn"
             android:textColor="#818F8D"
             android:textSize="7pt" />
         <!-- android:background="#00aa00" -->
@@ -83,7 +84,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:padding="3dip"
-            android:text="学期  "
+            android:text="@string/team"
             android:textColor="#818F8D"
             android:textSize="7pt" />
         <!-- android:background="#8B1A1A" -->
@@ -103,65 +104,96 @@
         android:orientation="vertical" >
 
         <LinearLayout
-            android:id="@+id/rankLayout"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="#6ae1ca"
-            android:orientation="vertical"
-            android:paddingLeft="10dp" >
-
-            <TextView
-                android:id="@+id/rankText"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Hi~"
-                android:textColor="#ffffff"
-                android:textSize="10pt" />
-
-            <TextView
-                android:id="@+id/name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="马超"
-                android:textColor="#ffffff"
-                android:textSize="11pt" />
+            android:orientation="horizontal" >
 
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:id="@+id/rankLayout"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#6ae1ca"
-                android:orientation="horizontal" >
+                android:orientation="vertical"
+                android:paddingLeft="10dp" >
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/rankText"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="你位于本专业"
+                    android:text="@string/hi"
                     android:textColor="#ffffff"
                     android:textSize="10pt" />
 
                 <TextView
-                    android:id="@+id/rank"
+                    android:id="@+id/name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="100"
                     android:textColor="#ffffff"
-                    android:textSize="17pt" />
+                    android:textSize="11pt" />
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="名"
-                    android:textColor="#ffffff"
-                    android:textSize="10pt" />
+                    android:background="#6ae1ca"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/rank_message"
+                        android:textColor="#ffffff"
+                        android:textSize="10pt" />
+
+                    <TextView
+                        android:id="@+id/rank"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#ffffff"
+                        android:textSize="17pt" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/times"
+                        android:textColor="#ffffff"
+                        android:textSize="10pt" />
+                </LinearLayout>
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/score"
+                style="@style/AudioFileInfoOverlayText"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:gravity="center"
+                android:textStyle="italic" />
         </LinearLayout>
 
-        <com.mc.util.CustomRankListView
-            android:id="@+id/allRank"
+        <LinearLayout
+            android:id="@+id/rank_layout"
             android:layout_width="fill_parent"
-            android:layout_height="498dp"
-            android:divider="#ffffff"
-            android:dividerHeight="2px" />
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <AutoCompleteTextView
+                android:id="@+id/search"
+                android:layout_width="fill_parent"
+                android:layout_height="35dp"
+                android:background="@drawable/search_item"
+                android:ems="8"
+                android:gravity="center"
+                android:hint="@string/search"
+                android:textColor="#BABABA"
+                android:textColorHint="#BABABA"
+                android:textSize="9pt" />
+
+            <com.mc.util.CustomRankListView
+                android:id="@+id/allRank"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:divider="#CCCCCC"
+                android:dividerHeight="1dp" />
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>
