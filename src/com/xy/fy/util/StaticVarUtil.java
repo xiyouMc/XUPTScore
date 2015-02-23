@@ -2,7 +2,6 @@ package com.xy.fy.util;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.TreeMap;
 import java.util.concurrent.ExecutorService;
@@ -20,7 +19,6 @@ import android.content.SharedPreferences.Editor;
 import com.xy.fy.singleton.Comment;
 import com.xy.fy.singleton.Message;
 import com.xy.fy.singleton.Student;
-import com.xy.fy.view.ToolClass;
 
 /**
  * 客户端静态变量类
@@ -34,7 +32,7 @@ public class StaticVarUtil {
 	/**
 	 * 提供给排名的学期和学年
 	 */
-	public static TreeMap<String, String> list_Rank_xnAndXq = new TreeMap<String,String>();
+	public static TreeMap<String, String> list_Rank_xnAndXq= new TreeMap<String,String>();
 	
 	/**
 	 * listHerf中tittle
