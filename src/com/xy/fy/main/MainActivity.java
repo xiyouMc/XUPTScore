@@ -845,7 +845,8 @@ public class MainActivity extends Activity {
 		xnSpinner = (Spinner) findViewById(R.id.xnSpinner);
 		xnSpinner.setLayoutParams(new LinearLayout.LayoutParams(width,
 				LinearLayout.LayoutParams.WRAP_CONTENT));
-		xnSpinner.setDropDownWidth(width);
+		
+		//xnSpinner.setDropDownWidth(width);
 		xqSpinner = (Spinner) findViewById(R.id.xqSpinner);
 		xqSpinner.setLayoutParams(new LinearLayout.LayoutParams(width,
 				LinearLayout.LayoutParams.WRAP_CONTENT));
