@@ -21,7 +21,7 @@
             <Button
                 android:id="@+id/butMenu"
                 android:layout_width="30dp"
-            android:layout_height="30dp"
+                android:layout_height="30dp"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="5dp"
@@ -42,6 +42,13 @@
                 android:textSize="20dp" />
         </RelativeLayout>
 
+        <ImageView
+            android:id="@+id/code"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/qrcode" />
+
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -53,14 +60,13 @@
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingTop="70dp" >
+                android:orientation="horizontal" >
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingBottom="10dp"
-                    android:text="西邮成绩榜    "
+                    android:text="西邮成绩    "
                     android:textColor="@color/black"
                     android:textSize="19dp" />
 
@@ -86,7 +92,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="10dp"
-                android:text="\n开发者：西邮Mc，Abel\n\n负责单位：西安邮电3G手机实验室\n\n反馈方式：18291994584\n\n联系方式：694449212@qq.com"
+                android:text="\n开发者：Mc\n\n负责单位：西安邮电3G手机实验室\n\n反馈方式：694449212@qq.com\n\nQQ:694449212"
                 android:textColor="@color/black"
                 android:textSize="18dp" />
 
@@ -108,7 +114,7 @@
                 android:paddingBottom="10dp"
                 android:text="\n意见反馈"
                 android:textColor="@color/black"
-                android:textSize="18dp" />-->
+                android:textSize="18dp" />            -->
         </LinearLayout>
 
         <!--
@@ -131,7 +137,7 @@
                 android:paddingTop="6dp"
                 android:singleLine="false"
                 android:textSize="10pt" />
-        </LinearLayout>-->
+        </LinearLayout>   -->
     </LinearLayout>
 
 </ScrollView>
