@@ -8,6 +8,14 @@
     <string name="desc">Description</string>
     <string name="overflow">Menu Overflow</string>
     <string name="color_stripe">Color Stripe</string>
+    <string name="search">搜索</string>
+    <string name="xn">学年</string>
+    <string name="team">学期</string>
+    <string name="first_team">第一学期</string>
+    <string name="second_team">第二学期</string>
+    <string name="hi">Hi~</string>
+    <string name="rank_message">你位于本专业</string>
+    <string name="times">名</string>
     <!-- 学年 -->
     <string-array name="xn">
         <item>2011-2012</item>
@@ -20,6 +28,7 @@
     <string name="friend_list">好友列表</string>
     <string name="friend_recommand">好友推荐</string>
     <string name="friend_apply">好友申请</string>
+    <string name="my_rank">我的排名</string>
     <string name="weibo_oauth_regiseter">应用授权</string>
     <string name="website">http://www.mob.com</string>
     <string name="weibo_upload_content">分享图片</string>
