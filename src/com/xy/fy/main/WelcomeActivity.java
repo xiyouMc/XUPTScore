@@ -1,13 +1,7 @@
 package com.xy.fy.main;
 
-import com.mc.util.LogcatHelper;
-import com.xy.fy.main.R;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,7 +9,8 @@ import android.view.Window;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
-import android.widget.Toast;
+
+import com.mc.util.CrashHandler;
 
 public class WelcomeActivity extends Activity {
 
@@ -28,6 +23,8 @@ public class WelcomeActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		CrashHandler crashHandler = CrashHandler.getInstance();
+		crashHandler.init(this);
 		final View view = View.inflate(this, R.layout.activity_welcome, null);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(view);

@@ -121,7 +121,7 @@ public class MainActivity extends Activity {
 	// private CustomListView listView;// 说说列表，自己定义的ListView
 	private CardUI mCardView;
 	private TextView nickname;// 用户名
-	private String name;
+	private String name;//
 	private CircleImageView headPhoto;// 头像
 	// private TextView loading = null;//正在加载
 	private LinearLayout menuBang = null;// 成绩查询
@@ -133,7 +133,7 @@ public class MainActivity extends Activity {
 	private Button check_version = null;
 	ArrayList<HashMap<String, Object>> listItem;// json解析之后的列表,保存了所有的成绩数据
 	// 排名
-	private final static int DEFAULTITEMSUM = 50;
+	private final static int DEFAULTITEMSUM = 100;
 	private static int lsitItemSum = DEFAULTITEMSUM;// 通过计算屏幕高度，求得应该显示多少行数据在listview
 	private CustomRankListView allRankList;
 	private TextView rankText;
@@ -739,8 +739,8 @@ public class MainActivity extends Activity {
 	@SuppressLint("NewApi")
 	@SuppressWarnings({ "rawtypes", "deprecation" })
 	private void rank() {
+		
 		// menu出发 判断为第一次 为了初始化 listview
-
 		isFirstListView = true;
 		allRankList = (CustomRankListView) findViewById(R.id.allRank);
 		rankScoreText = (TextView) findViewById(R.id.score);
