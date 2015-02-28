@@ -60,7 +60,14 @@ public class LogcatHelper {
 	public void start() {
 		if (mLogDumper == null)
 			mLogDumper = new LogDumper(String.valueOf(mPId), PATH_LOGCAT);
-		mLogDumper.start();
+		/**
+		 * ¸Ä½ø threadµÄstart 
+		 * ·ÀÖ¹ java.lang.IllegalThreadStateException: Thread already started
+		 */
+		if (!mLogDumper.isAlive()) {
+			mLogDumper.start();	
+		}
+		
 	}
 
 	public void stop() {
