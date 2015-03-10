@@ -14,21 +14,25 @@ import com.mc.util.CrashHandler;
 
 public class WelcomeActivity extends Activity {
 
-
-	/*// 设置状态栏
-		NotificationManager notificationManager = null;
-		Notification notification = null;
-		PendingIntent pendingIntent = null;// 即将发送的事件
-*/	@SuppressLint("ShowToast")
+	/*
+	 * // 设置状态栏 NotificationManager notificationManager = null; Notification
+	 * notification = null; PendingIntent pendingIntent = null;// 即将发送的事件
+	 */@SuppressLint("ShowToast")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		CrashHandler crashHandler = CrashHandler.getInstance();
-		crashHandler.init(this);
+		try {
+			CrashHandler crashHandler = CrashHandler.getInstance();
+			//crashHandler.init(this);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+
 		final View view = View.inflate(this, R.layout.activity_welcome, null);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(view);
-	
+
 		AlphaAnimation aa = new AlphaAnimation(0.3f, 1.0f);
 		aa.setDuration(1000);
 		view.startAnimation(aa);
@@ -40,7 +44,7 @@ public class WelcomeActivity extends Activity {
 				i.setClass(getApplicationContext(), LoginActivity.class);
 				startActivity(i);
 				finish();
-				
+
 			}
 
 			@Override
@@ -49,17 +53,13 @@ public class WelcomeActivity extends Activity {
 
 			@Override
 			public void onAnimationStart(Animation animation) {
-			
-				//i = System.currentTimeMillis();
+
+				// i = System.currentTimeMillis();
 				// 动画开始的时候进行发送广播，进行数据的更新
-//					Toast.makeText(getApplicationContext(), "欢迎", 1000).show();
-					
-				
+				// Toast.makeText(getApplicationContext(), "欢迎", 1000).show();
+
 			}
 		});
 	}
-	
-
-	
 
 }
