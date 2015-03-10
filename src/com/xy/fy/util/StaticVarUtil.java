@@ -72,7 +72,7 @@ public class StaticVarUtil {
 
 	public static Student student = new Student();
 
-	public static String PATH = null;// 应用的目录"/sdcard/FengYun"
+	public static String PATH = null;// 应用的目录"/sdcard/xuptscore"
 
 	public static String response = null;// 服务器返回的数据
 
