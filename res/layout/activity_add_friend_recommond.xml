@@ -11,6 +11,7 @@
         android:stretchColumns="0" >
 
         <TableRow>
+
             <TextView
                 android:gravity="left"
                 android:padding="3dip"
@@ -37,16 +38,18 @@
         </TableRow>
     </TableLayout>
 
-    <LinearLayout 
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="#FFFFFF">
-        
-        <ListView 
+        android:background="#FFFFFF" >
+
+        <ListView
             android:id="@+id/recommond_list"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            ></ListView>
+            android:divider="#CCCCCC"
+            android:dividerHeight="1dp" >
+        </ListView>
     </LinearLayout>
 
 </LinearLayout>

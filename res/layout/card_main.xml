@@ -3,7 +3,9 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#F8F8FF"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"  
+    android:clipToPadding="false" >
 
     <RelativeLayout
         android:layout_width="fill_parent"

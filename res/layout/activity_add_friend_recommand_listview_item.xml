@@ -30,6 +30,7 @@
             </TextView>
 
             <TextView
+                android:id="@+id/bili"
                 android:gravity="center_horizontal"
                 android:padding="3dip"
                 android:text="45%    "
