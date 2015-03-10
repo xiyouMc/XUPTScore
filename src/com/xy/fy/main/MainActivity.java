@@ -35,6 +35,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.Editable;
@@ -93,20 +94,19 @@ import com.xy.fy.util.ViewUtil;
 import com.xy.fy.view.HistoryCollege;
 import com.xy.fy.view.ToolClass;
 
-@SuppressLint({ "HandlerLeak", "ShowToast", "ClickableViewAccessibility",
-		"InflateParams" })
 /**
- * 第一次启动主界面就请求  查询成绩
- * @author Administrator
- * 2014-7-21
+ * 第一次启动主界面就请求 查询成绩
+ * 
+ * @author Administrator 2014-7-21
  */
+@SuppressLint({ "ShowToast", "InflateParams" })
 public class MainActivity extends Activity {
 
 	// 二维码文件
 	private static final String QRCODE_FILENAME = "/西邮成绩.png";
 	// 保存成绩的map
-	private static HashMap<String, String> mapScoreOne = null;// xn =1
-	private static HashMap<String, String> mapScoreTwo = null;// xn = 2
+	public static HashMap<String, String> mapScoreOne = null;// xn =1
+	public static HashMap<String, String> mapScoreTwo = null;// xn = 2
 	private static boolean isFirst = true;
 	// 检测版本
 	private static PopupWindow version_popupWindow;
@@ -168,11 +168,8 @@ public class MainActivity extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		super.setContentView(R.layout.activity_main);
 
+		softDeclare();// 将部分 变量 定义为弱引用
 		dialog = ViewUtil.getProgressDialog(MainActivity.this, "正在查询");
-		CheckVersionAsyntask checkVersionAsyntask = new CheckVersionAsyntask();
-		is_show = false;
-		checkVersionAsyntask.execute();
-
 		// init map
 		mapScoreOne = new HashMap<String, String>();// tm 指向同一块内存了 。
 		mapScoreTwo = new HashMap<String, String>();
@@ -236,6 +233,11 @@ public class MainActivity extends Activity {
 		}
 	}
 
+	private void softDeclare() {
+		// TODO Auto-generated method stub
+
+	}
+
 	/**
 	 * 第一个菜单项
 	 */
@@ -279,9 +281,9 @@ public class MainActivity extends Activity {
 			Resources resources = getResources();
 			String[] xn = resources.getStringArray(R.array.xn);
 			boolean result = false;
-			long currectTime = System.currentTimeMillis();
 			for (int i = 0; i < xn.length; i++) {
-				result = showCard(xn[i], isFirst);// 这里延迟太大，可以考虑直接从内存取 不用每次计算。
+				result = showCard(xn[i], isFirst);// 这里延迟太大，可以考虑直接从内存取
+													// 不用每次计算。(已经修改为从内存中取值)
 			}
 			return result;
 		}
@@ -504,6 +506,7 @@ public class MainActivity extends Activity {
 
 		mCardView = null;
 		nickname = (TextView) findViewById(R.id.nickname);// 用户名
+		headPhoto = (CircleImageView) findViewById(R.id.headphoto);// 头像
 		menuBang = (LinearLayout) findViewById(R.id.menu_bang);// 1.成绩查询
 		menuMyBukao = (LinearLayout) findViewById(R.id.menu_my_bukao);// 2.补考查询
 		menuMyPaiming = (LinearLayout) findViewById(R.id.menu_my_paiming);// 3.我的排名
@@ -515,15 +518,33 @@ public class MainActivity extends Activity {
 		menuBang.setPressed(true);// 初始化默认是风云榜被按下
 		setCurrentMenuItem(1);// 记录当前选项位置
 
-		/*
-		 * headPhoto.setOnClickListener(new OnClickListener() {
-		 * 
-		 * @Override public void onClick(View v) { // TODO Auto-generated method
-		 * stub
-		 * 
-		 * File file = new File(StaticVarUtil.PATH); if (!file.exists()) {
-		 * file.mkdirs();// 创建文件 } chooseHeadPhoto();// 改变头像 } });
-		 */
+		// 判断 头像文件夹中是否包含 该用户的头像
+		File file = new File(StaticVarUtil.PATH + "/"
+				+ StaticVarUtil.student.getAccount() + ".JPEG");
+		if (file.exists()) {// 如果存在
+			Bitmap bitmap = Util.convertToBitmap(StaticVarUtil.PATH + "/"
+					+ StaticVarUtil.student.getAccount() + ".JPEG", 240, 240);
+			headPhoto.setImageBitmap(bitmap);
+		} else {// 如果文件夹中不存在这个头像。
+			GetPicture getPicture = new GetPicture();
+			getPicture.execute(new String[] { HttpUtilMc.BASE_URL
+					+ "user_photo/"
+					+ StaticVarUtil.student.getAccount()+".JPEG" });
+		}
+		headPhoto.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated methodstub
+
+				File file = new File(StaticVarUtil.PATH);
+				if (!file.exists()) {
+					file.mkdirs();// 创建文件
+				}
+				chooseHeadPhoto();// 改变头像
+			}
+		});
+
 		menuBang.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -544,15 +565,17 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				// 判断如果没有头像的话，先让选择头像，并填写昵称
 				// 暂且跳转到好友列表
-				showToast("程序猿们正在努力开发中，请持续关注...");
-				/*setMenuItemState(menuBang, false, menuMyBukao, true,
+				// showToast("程序猿们正在努力开发中，请持续关注...");
+
+				setMenuItemState(menuBang, false, menuMyBukao, true,
 						menuMyPaiming, false, menuMyCollect, false,
 						menuSetting, false, menuAbout, false);
 				setCurrentMenuItem(2);// 记录当前选项位置
 				slidingMenu.toggle();// 页面跳转
 
 				slidingMenu.setContent(R.layout.activity_friend_list);
-				friend_list();*/
+				friend_list();
+
 			}
 		});
 
@@ -560,7 +583,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				if (StaticVarUtil.list_Rank_xnAndXq.size() != 0) {
-					
+
 					setMenuItemState(menuBang, false, menuMyBukao, false,
 							menuMyPaiming, true, menuMyCollect, false,
 							menuSetting, false, menuAbout, false);
@@ -736,14 +759,11 @@ public class MainActivity extends Activity {
 	ArrayAdapter<String> xnAdapter;
 	ArrayAdapter<String> xqAdapter;
 
-	@SuppressLint("NewApi")
-	@SuppressWarnings({ "rawtypes", "deprecation" })
 	private void rank() {
-		
+
 		// menu出发 判断为第一次 为了初始化 listview
 		isFirstListView = true;
-		allRankList = (CustomRankListView) findViewById(R.id.allRank);
-		rankScoreText = (TextView) findViewById(R.id.score);
+		findviewById();
 		rankScoreText.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -756,8 +776,6 @@ public class MainActivity extends Activity {
 			}
 		});
 		// search
-		search_edittext = (AutoCompleteTextView) findViewById(R.id.search);
-
 		search_edittext.addTextChangedListener(new TextWatcher() {
 
 			@Override
@@ -837,16 +855,16 @@ public class MainActivity extends Activity {
 			}
 		});
 		// rankListViewListener();
-		rankText = (TextView) findViewById(R.id.rank);
-		nameText = (TextView) findViewById(R.id.name);
+
 		nameText.setText(name);
 		WindowManager wm = this.getWindowManager();
+		@SuppressWarnings("deprecation")
 		int width = wm.getDefaultDisplay().getWidth() / 4 + 10;
 		xnSpinner = (Spinner) findViewById(R.id.xnSpinner);
 		xnSpinner.setLayoutParams(new LinearLayout.LayoutParams(width,
 				LinearLayout.LayoutParams.WRAP_CONTENT));
-		
-		//xnSpinner.setDropDownWidth(width);
+
+		// xnSpinner.setDropDownWidth(width);
 		xqSpinner = (Spinner) findViewById(R.id.xqSpinner);
 		xqSpinner.setLayoutParams(new LinearLayout.LayoutParams(width,
 				LinearLayout.LayoutParams.WRAP_CONTENT));
@@ -855,7 +873,7 @@ public class MainActivity extends Activity {
 
 		Iterator<?> it = StaticVarUtil.list_Rank_xnAndXq.entrySet().iterator();
 		while (it.hasNext()) {
-			Entry entry = (Entry) it.next();
+			Entry<?, ?> entry = (Entry<?, ?>) it.next();
 			xns[i] = String.valueOf(entry.getKey());// 返回与此项对应的键
 			i++;
 			// entry.getValue() 返回与此项对应的值
@@ -889,6 +907,15 @@ public class MainActivity extends Activity {
 		} else {
 			requestRankAsyntask();
 		}
+	}
+
+	private void findviewById() {
+		// TODO Auto-generated method stub
+		allRankList = (CustomRankListView) findViewById(R.id.allRank);
+		rankScoreText = (TextView) findViewById(R.id.score);
+		search_edittext = (AutoCompleteTextView) findViewById(R.id.search);
+		rankText = (TextView) findViewById(R.id.rank);
+		nameText = (TextView) findViewById(R.id.name);
 	}
 
 	/**
@@ -944,22 +971,22 @@ public class MainActivity extends Activity {
 		oks.setNotification(R.drawable.default_head_photo,
 				getString(R.string.app_name));
 		// title标题，印象笔记、邮箱、信息、微信、人人网和QQ空间使用
-		oks.setTitle(getString(R.string.share));
+		oks.setTitle(getString(R.string.app_name));
 		// titleUrl是标题的网络链接，仅在人人网和QQ空间使用
-		oks.setTitleUrl("http://222.24.63.101/manager/publicity.html");
+		// oks.setTitleUrl("http://222.24.63.101/manager/publicity.html");
 		// text是分享文本，所有平台都需要这个字段
-		oks.setText("测试《西邮成绩》分享功能");
+		oks.setText("《西邮成绩》本软件针对西邮学生，实现了查询成绩，排名和个人信息管理。以教务处学号和密码为登录凭证。下载链接:http://www.xiyoumobile.com/wechat_app/xiyouscore/");
 		// imagePath是图片的本地路径，Linked-In以外的平台都支持此参数
 		// oks.setImagePath("/sdcard/test.jpg");// 确保SDcard下面存在此张图片
 		// url仅在微信（包括好友和朋友圈）中使用
-		oks.setUrl("http://blog.csdn.net/m694449212");
+		oks.setImagePath("http://www.xiyoumobile.com/wechat_app/xiyouscore/");
+		oks.setUrl("http://www.xiyoumobile.com/wechat_app/xiyouscore/");
 		// comment是我对这条分享的评论，仅在人人网和QQ空间使用
-		oks.setComment("测试《西邮成绩》分享功能,下载地址:");
+		oks.setComment("《西邮成绩》分享功能,下载地址:");
 		// site是分享此内容的网站名称，仅在QQ空间使用
 		oks.setSite(getString(R.string.app_name));
 		// siteUrl是分享此内容的网站地址，仅在QQ空间使用
-		oks.setSiteUrl("http://222.24.63.101/manager/publicity.html");
-
+		oks.setSiteUrl("http://www.xiyoumobile.com/wechat_app/xiyouscore/");
 		// 启动分享GUI
 		oks.show(this);
 	}
@@ -1166,22 +1193,7 @@ public class MainActivity extends Activity {
 				// TODO Auto-generated method stub
 				Intent i = new Intent();
 				i.setClass(MainActivity.this, AddFriendListActivity.class);
-
 				startActivity(i);
-
-				/**
-				 * 切换activity动画
-				 */
-				/*
-				 * int version = Integer.valueOf(android.os.Build.VERSION.SDK);
-				 * if (version > 5) {
-				 * overridePendingTransition(R.anim.out_to_left,
-				 * R.anim.in_from_right);
-				 * //overridePendingTransition(Android.R.anim
-				 * .slide_in_left,android.R.anim.slide_out_right);
-				 * //http://www.cnblogs.com/sunzn/p/3854009.html activity切换 }
-				 */
-
 			}
 		});
 
@@ -1677,17 +1689,21 @@ public class MainActivity extends Activity {
 										o.get("list_xueKeScore"));
 								listItem.add(map);
 							}
-						}else {
-							Builder builder = new AlertDialog.Builder(MainActivity.this);
+						} else {
+							Builder builder = new AlertDialog.Builder(
+									MainActivity.this);
 
 							builder.setMessage("请到官网进行教师评价后查询成绩！");
 
-							builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
-								@Override
-								public void onClick(DialogInterface dialog, int which) {
-									quit(true);									
-								}
-							});
+							builder.setPositiveButton("确定",
+									new DialogInterface.OnClickListener() {
+										@Override
+										public void onClick(
+												DialogInterface dialog,
+												int which) {
+											quit(true);
+										}
+									});
 							builder.create().show();
 						}
 						menu1();
@@ -1723,19 +1739,12 @@ public class MainActivity extends Activity {
 		protected String doInBackground(String... params) {
 			// TODO Auto-generated method stub
 			String url = "";
-			/*
-			 * String[] can = canshu.split("&"); String url_str = can[0]; String
-			 * gnmkdm = can[1];
-			 */
 			url = HttpUtilMc.BASE_URL + "RankServlet.jsp?data="
 					+ StaticVarUtil.data + "&viewstate="
 					+ StaticVarUtil.viewstate;
-			System.out.println("url:" + url);
 			// 查询返回结果
 			String result = HttpUtilMc.queryStringForPost(url);
-			System.out.println("=========================  " + result);
 			return result;
-
 		}
 
 		@Override
@@ -1849,16 +1858,19 @@ public class MainActivity extends Activity {
 	private void showShareQrcodeDialog() {
 		Builder builder = new AlertDialog.Builder(MainActivity.this);
 
-		builder.setMessage("由于本专业使用人数较少,因此排名会有误差。\n若需查询准确排名，请到关于页面保存二维码并分享给同学下载该软件！");
+		builder.setMessage("由于本专业使用人数较少,因此排名会有误差。\n若需查询准确排名，请分享给同学下载该软件！");
 
 		builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-				
-				menuAbout.setPressed(true);
-				setCurrentMenuItem(6);// 记录当前选项位置，并且跳转
-				slidingMenu.setContent(R.layout.activity_about);
-				aboutListener();
+
+				/*
+				 * menuAbout.setPressed(true); setCurrentMenuItem(6);//
+				 * 记录当前选项位置，并且跳转
+				 * slidingMenu.setContent(R.layout.activity_about);
+				 * aboutListener();
+				 */
+				showShare();
 			}
 		});
 		builder.create().show();
@@ -1922,12 +1934,13 @@ public class MainActivity extends Activity {
 
 	}
 
-	// 从网络获取图片
+	// 从网络获取头像
 	class GetPicture extends AsyncTask<String, Bitmap, Bitmap> {
 
 		@Override
 		protected Bitmap doInBackground(String... params) {
 			// TODO Auto-generated method stub
+			System.out.println("下载头像:" + params[0]);
 			Bitmap bitmap = Util.getBitmap(params[0]);
 			return bitmap;
 		}
@@ -1936,13 +1949,18 @@ public class MainActivity extends Activity {
 		protected void onPostExecute(Bitmap bitmap) {
 			// TODO Auto-generated method stub
 			super.onPostExecute(bitmap);
-			headPhoto.setImageBitmap(bitmap);// 显示图片
-			// 并保存找到本地
-			Util.saveBitmap2file(bitmap, StaticVarUtil.student.getAccount());
+			if (bitmap!=null) {
+				System.out.println("显示头像");
+				headPhoto.setImageBitmap(bitmap);// 显示图片
+				// 并保存找到本地
+				Util.saveBitmap2file(bitmap, StaticVarUtil.student.getAccount());
+			}
+			
 
 		}
 
 	}
+	
 
 	// 异步检测版本
 	class CheckVersionAsyntask extends AsyncTask<String, String, String> {
