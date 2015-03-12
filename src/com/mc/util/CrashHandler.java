@@ -14,7 +14,7 @@ import java.util.Date ;
 import java.util.HashMap ;
 import java.util.Map ;
 
-import com.nrs.utils.HttpAssist;
+import com.nrs.utils.HttpAssistFile;
 
 import android.content.Context ;
 import android.content.pm.PackageInfo ;
@@ -264,7 +264,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
 					
 					public void run() {
 						// TODO Auto-generated method stub
-						HttpAssist.uploadFile(new File(Environment.getExternalStorageDirectory()+ "/CrashInfos" + "/"	+ mFileName));
+						HttpAssistFile.uploadFile(new File(Environment.getExternalStorageDirectory()+ "/CrashInfos" + "/"	+ mFileName),"txt");
 					}
 				}).start();
 				return mFileName ;

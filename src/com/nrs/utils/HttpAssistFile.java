@@ -15,24 +15,24 @@ import java.util.UUID;
 import com.mc.util.HttpUtilMc;
 
 /**
- * 上传头像
+ * 上传文件
  * 
  * @author Administrator 2014-8-6
  */
-public class HttpAssist {
+public class HttpAssistFile {
 	private static final String TAG = "uploadFile";
 	private static final int TIME_OUT = 10 * 10000000; // 超时时间
 	private static final String CHARSET = "utf-8"; // 设置编码
 	public static final String SUCCESS = "1";
 	public static final String FAILURE = "0";
 
-	public static synchronized String uploadFile(File file) {
+	public static synchronized String uploadFile(File file,String type) {
 		String BOUNDARY = UUID.randomUUID().toString(); // 边界标识 随机生成
 		String PREFIX = "--", LINE_END = "\r\n";
 		String CONTENT_TYPE = "multipart/form-data"; // 内容类型
 
 		try {
-			String RequestURL = HttpUtilMc.BASE_URL + "changeuserphoto.jsp?type=txt";
+			String RequestURL = HttpUtilMc.BASE_URL + "changeuserphoto.jsp?type="+type;
 			URL url = new URL(RequestURL);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setReadTimeout(TIME_OUT);
