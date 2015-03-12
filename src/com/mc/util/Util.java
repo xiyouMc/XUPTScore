@@ -1,14 +1,19 @@
 package com.mc.util;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.ref.WeakReference;
+import java.lang.reflect.Field;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -19,13 +24,232 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
+import android.os.Build;
+import android.os.Environment;
+import android.telephony.TelephonyManager;
+import android.util.Log;
 
+import com.nrs.utils.HttpAssistFile;
 import com.xy.fy.util.StaticVarUtil;
 
 public class Util {
-	
+
+	private final static String TAG = "util";
+	private final static String infosFloder = "/xuptscore/devInfos";
+	private final static String loginMessageTxt = infosFloder + "/login.txt";
+
+	/**
+	 * 用来存储设备信息和异常信息 Map<String,String> : mLogInfo
+	 * 
+	 * @since 2013-3-21下午8:46:15
+	 */
+	/**
+	 * getDeviceInfo:{获取设备参数信息} ──────────────────────────────────
+	 * 
+	 * @param paramContext
+	 * @throws
+	 * @since I used to be a programmer like you, then I took an arrow in the
+	 *        knee　Ver 1.0
+	 *        ──────────────────────────────────────────────────────
+	 *        ────────────────────────────────────────────────
+	 *        2013-3-24下午12:30:02 Modified By Norris
+	 *        ────────────────────────────
+	 *        ───────────────────────────────────────
+	 *        ───────────────────────────────────
+	 */
+	public static void saveDeviceInfo(Context paramContext) {
+
+		Map<String, String> mLogInfo = new HashMap<String, String>();
+		try {
+			// 获得包管理器
+			PackageManager mPackageManager = paramContext.getPackageManager();
+			// 得到该应用的信息，即主Activity
+			PackageInfo mPackageInfo = mPackageManager.getPackageInfo(
+					paramContext.getPackageName(),
+					PackageManager.GET_ACTIVITIES);
+			if (mPackageInfo != null) {
+				String versionName = mPackageInfo.versionName == null ? "null"
+						: mPackageInfo.versionName;
+				String versionCode = mPackageInfo.versionCode + "";
+				mLogInfo.put("versionName", versionName);
+				mLogInfo.put("versionCode", versionCode);
+			}
+		} catch (NameNotFoundException e) {
+			e.printStackTrace();
+		}
+		// 反射机制
+		Field[] mFields = Build.class.getDeclaredFields();
+		// 迭代Build的字段key-value 此处的信息主要是为了在服务器端手机各种版本手机报错的原因
+		for (Field field : mFields) {
+			try {
+				field.setAccessible(true);
+				mLogInfo.put(field.getName(), field.get("").toString());
+				Log.d(TAG, field.getName() + ":" + field.get(""));
+			} catch (IllegalArgumentException e) {
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				e.printStackTrace();
+			}
+		}
+		StringBuffer mStringBuffer = new StringBuffer();
+		for (Map.Entry<String, String> entry : mLogInfo.entrySet()) {
+			String key = entry.getKey();
+			String value = entry.getValue();
+			mStringBuffer.append(key + "=" + value + "\r\n");
+		}
+
+	   String mFileName = ((TelephonyManager) paramContext
+				.getSystemService(paramContext.TELEPHONY_SERVICE))
+				.getDeviceId()
+				+ ".txt";
+		if (Environment.getExternalStorageState().equals(
+				Environment.MEDIA_MOUNTED)) {
+			try {
+				File mDirectory = new File(
+						Environment.getExternalStorageDirectory() + infosFloder);
+
+				Log.v(TAG, mDirectory.toString());
+				if (!mDirectory.exists())
+					mDirectory.mkdir();
+				FileOutputStream mFileOutputStream = new FileOutputStream(
+						mDirectory + "/" + mFileName);
+				mFileOutputStream.write(mStringBuffer.toString().getBytes());
+				mFileOutputStream.close();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public static String getTime() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-HH/mm/ss");
+		System.out.println();
+		return sdf.format(new Date());
+	}
+
+	/**
+	 * 返回是否将 客户端信息上传至服务器 并且将 登录信息 加入到 文件中
+	 * 
+	 * @param paramContext
+	 * @return
+	 */
+	public static boolean isRecordLoginMessage(Context paramContext) {
+
+		File loginMsgLogFile = new File(Environment.getExternalStorageDirectory()+loginMessageTxt);
+		String msg = getAppVersion(paramContext);
+		try {
+			if (loginMsgLogFile.exists()) {
+				writeDevMsgToLog(loginMsgLogFile, msg,true);
+
+				return true;
+			} else {
+				loginMsgLogFile.createNewFile();
+				writeDevMsgToLog(loginMsgLogFile, msg,false);
+				
+				return false;
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+
+	}
+
+	private static void writeDevMsgToLog(File loginMsgLogFile, String msg,boolean isAppend)
+			throws FileNotFoundException, IOException {
+		FileOutputStream fos = new FileOutputStream(loginMsgLogFile,
+				isAppend);
+		fos.write(msg.getBytes());
+		fos.close();
+	}
+
+	/**
+	 * 上传用户登录信息
+	 * @param paramContext
+	 */
+	public static void uploadLoginMsg(final Context paramContext){
+		new Thread(new Runnable() {
+
+			
+			public void run() { // TODO Auto-generated method stub
+				String mFileName = Environment.getExternalStorageDirectory()
+						+ loginMessageTxt;
+				
+				HttpAssistFile.uploadFile(
+						new File(mFileName),
+						"loginmsg");
+				
+			}
+		}).start();		
+	}
+	/**
+	 * 上传 客户端手机信息
+	 * @param paramContext
+	 */
+	public static void uploadDevInfos(final Context paramContext) {
+		// 上传服务器
+
+		new Thread(new Runnable() {
+
+			public void run() { // TODO Auto-generated method stub
+				String mFileName = Environment.getExternalStorageDirectory()
+						+ infosFloder + "/" +((TelephonyManager) paramContext
+						.getSystemService(paramContext.TELEPHONY_SERVICE))
+						.getDeviceId()
+						+ ".txt";
+				
+				HttpAssistFile.uploadFile(
+						new File(mFileName),
+						"devsdk");
+				
+			}
+		}).start();
+
+	}
+
+	private static String getAppVersion(Context paramContext) {
+		try {
+			// 获得包管理器
+			PackageManager mPackageManager = paramContext.getPackageManager();
+			// 得到该应用的信息，即主Activity
+			PackageInfo mPackageInfo = mPackageManager.getPackageInfo(
+					paramContext.getPackageName(),
+					PackageManager.GET_ACTIVITIES);
+			StringBuffer sb = new StringBuffer();
+			if (mPackageInfo != null) {
+				String versionName = mPackageInfo.versionName == null ? "null"
+						: mPackageInfo.versionName;
+				String versionCode = mPackageInfo.versionCode + "";
+				sb.append(getTime() + "\t" + versionCode + "--" + versionName
+						+ "\n");
+			}
+			return sb.toString();
+		} catch (NameNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return "";
+		}
+	}
+
+	public static int getAndroidSDKVersion() {
+		int version = 0;
+		try {
+			version = Integer.valueOf(android.os.Build.VERSION.SDK);
+		} catch (NumberFormatException e) {
+			Log.e("getAndroidSDKVersion", e.toString());
+		}
+		return version;
+	}
+
 	/**
 	 * 将图片保存到本地
+	 * 
 	 * @param bmp
 	 * @param username
 	 * @return
@@ -118,26 +342,26 @@ public class Util {
 
 	/**
 	 * check url requestData
+	 * 
 	 * @param data
 	 * @param viewstate
 	 * @return
 	 */
-	public static String checkRankRequestData(String data, String viewstate){
-			// TODO Auto-generated method stub
-			String realXh = "";
-			String realTime = Passport.jiemi(viewstate, String.valueOf(new char[]{2,4,8,8,2,2}));
-			HashMap<String, String> xhAndXnMap = new HashMap<String, String>();
-			System.out.println(realTime);
-			try {
-				System.out.println(realTime);
-				realXh = Passport.jiemi(data, realTime);
-				
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			return realXh;
+	public static String checkRankRequestData(String data, String viewstate) {
+		// TODO Auto-generated method stub
+		String realXh = "";
+		String realTime = Passport.jiemi(viewstate,
+				String.valueOf(new char[] { 2, 4, 8, 8, 2, 2 }));
+		HashMap<String, String> xhAndXnMap = new HashMap<String, String>();
+		try {
+			realXh = Passport.jiemi(data, realTime);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return realXh;
 	}
+
 	private static boolean hasDigit(String content) {
 
 		boolean flag = false;
