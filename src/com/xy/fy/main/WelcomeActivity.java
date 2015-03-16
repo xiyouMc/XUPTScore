@@ -11,6 +11,7 @@ import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 
 import com.mc.util.CrashHandler;
+import com.mc.util.Util;
 
 public class WelcomeActivity extends Activity {
 
@@ -23,7 +24,7 @@ public class WelcomeActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		try {
 			CrashHandler crashHandler = CrashHandler.getInstance();
-			//crashHandler.init(this);
+			crashHandler.init(this);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -40,11 +41,16 @@ public class WelcomeActivity extends Activity {
 		aa.setAnimationListener(new AnimationListener() {
 			@Override
 			public void onAnimationEnd(Animation arg0) {
+				if (!Util.isRecordLoginMessage(getApplicationContext())) {//是否已经上传了手机信息
+					//未上传,则保存手机信息到本地
+					Util.saveDeviceInfo(getApplicationContext());
+					//上传各种信息
+					Util.uploadDevInfos(getApplicationContext());
+				}
 				Intent i = new Intent();
 				i.setClass(getApplicationContext(), LoginActivity.class);
 				startActivity(i);
 				finish();
-
 			}
 
 			@Override
