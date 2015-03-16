@@ -1072,6 +1072,7 @@ public class MainActivity extends Activity {
 	@SuppressWarnings("deprecation")
 	private void rankRequestParmas(String data) {
 		long time = System.currentTimeMillis();
+		//String s = new char[]{3,2,3,4,3,8,3,8,3,2,3,2}.toString();
 		try {
 			String time_s = Passport.jiami(String.valueOf(time),
 					String.valueOf(new char[] { 2, 4, 8, 8, 2, 2 }));
@@ -2135,6 +2136,15 @@ public class MainActivity extends Activity {
 				Log.i("LoginActivity", e.toString());
 			}
 		}
+	}
+
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		allRankMap = new HashMap<String, String>();
+		showRankArrayList = new ArrayList<HashMap<String,Object>>();
+		allRankArrayList = new ArrayList<HashMap<String,Object>>();
 	}
 
 }
