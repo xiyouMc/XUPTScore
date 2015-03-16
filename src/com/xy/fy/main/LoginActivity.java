@@ -25,6 +25,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -44,6 +45,7 @@ import android.widget.Toast;
 
 import com.mc.db.DBConnection;
 import com.mc.db.DBConnection.UserSchema;
+import com.mc.util.CalculateFileTime;
 import com.mc.util.CircleImageView;
 import com.mc.util.HttpUtilMc;
 import com.mc.util.LogcatHelper;
@@ -108,6 +110,7 @@ public class LoginActivity extends Activity {
 		this.login.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				Util.saveLoginAppVersion(getApplicationContext());
 				String strAccount = account.getText().toString();
 				String strPassword = password.getText().toString();
 				try {
