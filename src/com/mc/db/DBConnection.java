@@ -72,7 +72,7 @@ public class DBConnection extends SQLiteOpenHelper {
 		if (c.moveToFirst()!=false) {
 			password = c.getString(2);//ªÒ»°√‹¬Î
 		}
-		
+		c.close();
 		return password;
 	}
 	/**
