@@ -4,6 +4,7 @@
 
 package com.mc.util;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -25,7 +26,8 @@ public class H5Toast {
         showToast(context, iconRes, textRes, Gravity.CENTER, 0, 0, duration);
     }
 
-    public static void showToast(Context context, int iconRes, String textRes,
+    @SuppressLint("InflateParams")
+	public static void showToast(Context context, int iconRes, String textRes,
             int gravity, int xOffset, int yOffset, int duration) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.h5_toast, null);
