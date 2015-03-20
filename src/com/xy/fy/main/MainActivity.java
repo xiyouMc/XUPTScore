@@ -1,9 +1,6 @@
 package com.xy.fy.main;
 
-import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -30,19 +27,14 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
-import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.telephony.TelephonyManager;
 import android.text.Editable;
-import android.text.Spannable;
-import android.text.SpannableStringBuilder;
 import android.text.TextWatcher;
-import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -53,6 +45,8 @@ import android.view.View.OnKeyListener;
 import android.view.View.OnTouchListener;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -67,8 +61,6 @@ import android.widget.PopupWindow;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
-import cn.sharesdk.onekeyshare.OnekeyShare;
 
 import com.cardsui.example.MyPlayCard;
 import com.fima.cardsui.objects.CardStack;
@@ -102,8 +94,6 @@ import com.xy.fy.view.ToolClass;
 @SuppressLint({ "ShowToast", "InflateParams" })
 public class MainActivity extends Activity {
 
-	// 二维码文件
-	private static final String QRCODE_FILENAME = "/西邮成绩.png";
 	// 保存成绩的map
 	public static HashMap<String, String> mapScoreOne = null;// xn =1
 	public static HashMap<String, String> mapScoreTwo = null;// xn = 2
@@ -118,12 +108,10 @@ public class MainActivity extends Activity {
 	private Button chooseCollege;// 选择学校按钮
 	private Button chooseMsgKind;// 选择说说种类
 	private Button chooseMsgSort;// 选择说说排序方式
-	// private CustomListView listView;// 说说列表，自己定义的ListView
 	private CardUI mCardView;
 	private TextView nickname;// 用户名
 	private String name;//
 	private CircleImageView headPhoto;// 头像
-	// private TextView loading = null;//正在加载
 	private LinearLayout menuBang = null;// 成绩查询
 	private LinearLayout menuMyBukao = null;// 补考查询
 	private LinearLayout menuMyPaiming = null;// 我的排名
@@ -154,9 +142,6 @@ public class MainActivity extends Activity {
 	private static final int PIC = 11;// 图片
 	private static final int PHO = 22;// 照相
 	private static final int RESULT = 33;// 返回结果
-
-	@SuppressWarnings("unused")
-	private int page = 0;
 
 	private ChooseSchoolExpandAdapter adapter = new ChooseSchoolExpandAdapter(
 			MainActivity.this);
@@ -214,15 +199,13 @@ public class MainActivity extends Activity {
 			}
 		});
 
-		if (!Util.hasDigitAndNum(StaticVarUtil.student.getPassword())) {
-			Toast.makeText(getApplicationContext(), "密码不安全，请重新设置密码", 1000)
-					.show();
+		if (!Util.checkPWD(StaticVarUtil.student.getPassword())) {
+			ViewUtil.showToast(getApplicationContext(), "密码不安全，请重新设置密码");
 			setMenuItemState(menuBang, false, menuMyBukao, false,
 					menuMyPaiming, false, menuMyCollect, false, menuSetting,
 					true, menuAbout, false);
 			setCurrentMenuItem(5);// 记录当前选项位置，并且跳转
 			slidingMenu.toggle();// 页面跳转
-
 			slidingMenu.setContent(R.layout.activity_setting);
 			menuSetting();
 		} else {
@@ -242,42 +225,26 @@ public class MainActivity extends Activity {
 	 * 第一个菜单项
 	 */
 	private void menu1() {
-		page = 0;// 点击过来重置
 		// 菜单按钮
 		Button menu = (Button) findViewById(R.id.butMenu);
-		// loading = (TextView)findViewById(R.id.loading);//正在加载
 		menu.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				slidingMenu.toggle();
 			}
 		});
-
 		if (mCardView != null) {
-
 			isFirst = false;
 		}
-		// init CardView
 		mCardView = (CardUI) findViewById(R.id.cardsview);
 		mCardView.setSwipeable(true);
 		ShowCardAsyntask showCardAsyntask = new ShowCardAsyntask();
-		/*
-		 * mCardView.setVisibility(View.INVISIBLE);
-		 * loading.setVisibility(View.VISIBLE);
-		 */
 		showCardAsyntask.execute();
 	}
 
-	/**
-	 * 异步加载card 提高显示效率
-	 * 
-	 * @author Administrator 2015-2-6
-	 */
 	class ShowCardAsyntask extends AsyncTask<String, String, Boolean> {
-
 		@Override
 		protected Boolean doInBackground(String... params) {
-			// TODO Auto-generated method stub
 			Resources resources = getResources();
 			String[] xn = resources.getStringArray(R.array.xn);
 			boolean result = false;
@@ -290,15 +257,15 @@ public class MainActivity extends Activity {
 
 		@Override
 		protected void onPostExecute(Boolean result) {
-			// TODO Auto-generated method stub
 			super.onPostExecute(result);
 			if (result) {
-				/*
-				 * mCardView.setVisibility(View.VISIBLE);
-				 * loading.setVisibility(View.INVISIBLE);
-				 */
-				// draw cards
 				mCardView.refresh();
+			}
+			if (!Util.isRecordLoginMessage(getApplicationContext())) {// 是否已经上传了手机信息
+				// 未上传,则保存手机信息到本地
+				Util.saveDeviceInfo(getApplicationContext());
+				// 上传各种信息
+				Util.uploadDevInfos(getApplicationContext());
 			}
 		}
 
@@ -326,7 +293,6 @@ public class MainActivity extends Activity {
 		}
 
 		// add one card, and then add another one to the last stack.
-
 		String xqs_str = "";
 		if (!first_score.equals("")) {
 			xqs_str += "第一学期,";
@@ -367,7 +333,6 @@ public class MainActivity extends Activity {
 	 * @author Administrator 2014-7-23
 	 */
 	class ScoreClass implements OnClickListener {
-
 		int col;// 成绩的总行号
 		String[][] score;// 将所有成绩整合为二维数组
 		String xn;
@@ -393,20 +358,6 @@ public class MainActivity extends Activity {
 			startActivity(i);
 		}
 
-	}
-
-	/**
-	 * 改变字体颜色
-	 * 
-	 * @param str
-	 * @return
-	 */
-	private String change_color(String str) {
-		SpannableStringBuilder style = new SpannableStringBuilder(str);
-		// SpannableStringBuilder实现CharSequence接口
-		style.setSpan(new ForegroundColorSpan(Color.RED), 0, str.length(),
-				Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-		return style.toString();
 	}
 
 	/**
@@ -447,26 +398,22 @@ public class MainActivity extends Activity {
 									.get(j);
 							if (jsonObject2.get("xq").equals(xq)) {
 								result.append(jsonObject2.get("kcmc") == null ? " "
-										: change_color(jsonObject2.get("kcmc")
-												.toString()));// 课程名称
+										: jsonObject2.get("kcmc").toString());// 课程名称
 								result.append("--"
-										+ change_color(jsonObject2.get("cj")// 最终成绩
+										+ jsonObject2.get("cj")// 最终成绩
 												.toString()
-												+ (jsonObject2.get("bkcj")
-														.equals(" ") ? " "
-														: ("("
-																+ jsonObject2
-																		.get("bkcj")
-																		.toString() + ")"))// 将补考成绩和最终成绩同时显示。
-										));
+										+ (jsonObject2.get("bkcj").equals(" ") ? " "
+												: ("("
+														+ jsonObject2.get(
+																"bkcj")
+																.toString() + ")"))// 将补考成绩和最终成绩同时显示。
+								);
 								result.append(jsonObject2.get("pscj")// 平时成绩
 										.equals("") ? "/" : "--"
-										+ change_color(jsonObject2.get("pscj")
-												.toString()));
+										+ jsonObject2.get("pscj").toString());
 								result.append(jsonObject2.get("qmcj")// 期末成绩
 										.equals("") ? "/" : "--"
-										+ change_color(jsonObject2.get("qmcj")
-												.toString()));
+										+ jsonObject2.get("qmcj").toString());
 								result.append("\n");
 							}
 						}
@@ -528,8 +475,8 @@ public class MainActivity extends Activity {
 		} else {// 如果文件夹中不存在这个头像。
 			GetPicture getPicture = new GetPicture();
 			getPicture.execute(new String[] { HttpUtilMc.BASE_URL
-					+ "user_photo/"
-					+ StaticVarUtil.student.getAccount()+".JPEG" });
+					+ "user_photo/" + StaticVarUtil.student.getAccount()
+					+ ".JPEG" });
 		}
 		headPhoto.setOnClickListener(new OnClickListener() {
 
@@ -593,8 +540,7 @@ public class MainActivity extends Activity {
 					slidingMenu.setContent(R.layout.activity_rank);
 					rank();
 				} else {
-					Toast.makeText(getApplicationContext(), "网络不稳定，请稍后查询", 1000)
-							.show();
+					ViewUtil.showToast(getApplicationContext(), "网络不稳定，请稍后查询");
 				}
 
 			}
@@ -604,7 +550,8 @@ public class MainActivity extends Activity {
 		menuMyCollect.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				showToast("程序猿们正在努力开发中，请持续关注...");
+				ViewUtil.showToast(getApplicationContext(),
+						"程序猿们正在努力开发中，请持续关注...");
 			}
 		});
 
@@ -692,63 +639,20 @@ public class MainActivity extends Activity {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setItems(items, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int item) {
-				if (!new File(StaticVarUtil.PATH + QRCODE_FILENAME).exists()) {
+				if (!new File(StaticVarUtil.PATH + Util.QRCODE_FILENAME)
+						.exists()) {
 					Bitmap bt = ((BitmapDrawable) getApplicationContext()
 							.getResources().getDrawable(R.drawable.qrcode))
 							.getBitmap();
-					try {
-						saveFile(bt, QRCODE_FILENAME);
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				} else {
-					showToast("二维码已保存，请将其分享给同学！");
+					BitmapUtil.saveFileAndDB(getApplicationContext(), bt,
+							Util.QRCODE_FILENAME);
 				}
+				ViewUtil.showToast(getApplicationContext(), "二维码已保存，请将其分享给同学！");
 
 			}
 		});
 		AlertDialog alert = builder.create();
 		alert.show();
-	}
-
-	/**
-	 * 保存文件
-	 * 
-	 * @param bm
-	 * @param fileName
-	 * @throws IOException
-	 */
-	public void saveFile(Bitmap bm, String fileName) throws IOException {
-		File dirFile = new File(StaticVarUtil.PATH);
-		if (!dirFile.exists()) {
-			dirFile.mkdir();
-		}
-		File myCaptureFile = new File(StaticVarUtil.PATH + fileName);
-		BufferedOutputStream bos = new BufferedOutputStream(
-				new FileOutputStream(myCaptureFile));
-		bm.compress(Bitmap.CompressFormat.JPEG, 80, bos);
-		updateGallery(StaticVarUtil.PATH + fileName);
-		bos.flush();
-		bos.close();
-
-		showToast("二维码已保存，请将其分享给同学！");
-	}
-
-	/**
-	 * 将图片加入数据库
-	 * 
-	 * @param filename
-	 */
-	private void updateGallery(String filename)// filename是我们的文件全名，包括后缀哦
-	{
-		MediaScannerConnection.scanFile(this, new String[] { filename }, null,
-				new MediaScannerConnection.OnScanCompletedListener() {
-					public void onScanCompleted(String path, Uri uri) {
-						Log.i("ExternalStorage", "Scanned " + path + ":");
-						Log.i("ExternalStorage", "-> uri=" + uri);
-					}
-				});
 	}
 
 	String selectXn;
@@ -826,7 +730,7 @@ public class MainActivity extends Activity {
 						}
 					}
 					if (!isSearch) {
-						showToast("没有该学生信息");
+						ViewUtil.showToast(getApplicationContext(), "没有该学生信息");
 					}
 					search_edittext.clearFocus();
 					closeInputMethod();
@@ -851,7 +755,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				showShare();
+				ViewUtil.showShare(getApplicationContext());
 			}
 		});
 		// rankListViewListener();
@@ -931,64 +835,9 @@ public class MainActivity extends Activity {
 		}
 	}
 
-	/**
-	 * Toast
-	 */
-	private Toast mToast;
-
-	public void showToast(String text) {
-		if (mToast == null) {
-			mToast = Toast
-					.makeText(MainActivity.this, text, Toast.LENGTH_SHORT);
-		} else {
-			mToast.setText(text);
-			mToast.setDuration(Toast.LENGTH_SHORT);
-		}
-		mToast.show();
-	}
-
-	public void cancelToast() {
-		if (mToast != null) {
-			mToast.cancel();
-		}
-	}
-
 	public void onBackPressed() {
-		cancelToast();
+		ViewUtil.cancelToast();
 		super.onBackPressed();
-	}
-
-	/**
-	 * 分享模块
-	 */
-	private void showShare() {
-		// ShareSDK.initSDK(this);
-		OnekeyShare oks = new OnekeyShare();
-		// 关闭sso授权
-		// oks.disableSSOWhenAuthorize();
-
-		// 分享时Notification的图标和文字
-		oks.setNotification(R.drawable.default_head_photo,
-				getString(R.string.app_name));
-		// title标题，印象笔记、邮箱、信息、微信、人人网和QQ空间使用
-		oks.setTitle(getString(R.string.app_name));
-		// titleUrl是标题的网络链接，仅在人人网和QQ空间使用
-		// oks.setTitleUrl("http://222.24.63.101/manager/publicity.html");
-		// text是分享文本，所有平台都需要这个字段
-		oks.setText("《西邮成绩》本软件针对西邮学生，实现了查询成绩，排名和个人信息管理。以教务处学号和密码为登录凭证。下载链接:http://www.xiyoumobile.com/wechat_app/xiyouscore/");
-		// imagePath是图片的本地路径，Linked-In以外的平台都支持此参数
-		// oks.setImagePath("/sdcard/test.jpg");// 确保SDcard下面存在此张图片
-		// url仅在微信（包括好友和朋友圈）中使用
-		oks.setImagePath("http://www.xiyoumobile.com/wechat_app/xiyouscore/");
-		oks.setUrl("http://www.xiyoumobile.com/wechat_app/xiyouscore/");
-		// comment是我对这条分享的评论，仅在人人网和QQ空间使用
-		oks.setComment("《西邮成绩》分享功能,下载地址:");
-		// site是分享此内容的网站名称，仅在QQ空间使用
-		oks.setSite(getString(R.string.app_name));
-		// siteUrl是分享此内容的网站地址，仅在QQ空间使用
-		oks.setSiteUrl("http://www.xiyoumobile.com/wechat_app/xiyouscore/");
-		// 启动分享GUI
-		oks.show(this);
 	}
 
 	/**
@@ -1072,21 +921,24 @@ public class MainActivity extends Activity {
 	@SuppressWarnings("deprecation")
 	private void rankRequestParmas(String data) {
 		long time = System.currentTimeMillis();
-		//String s = new char[]{3,2,3,4,3,8,3,8,3,2,3,2}.toString();
+		// String s = new char[]{3,2,3,4,3,8,3,8,3,2,3,2}.toString();
 		try {
 			String time_s = Passport.jiami(String.valueOf(time),
 					String.valueOf(new char[] { 2, 4, 8, 8, 2, 2 }));
 			String realData = Passport.jiami(data, String.valueOf(time));
-
+			@SuppressWarnings("static-access")
+			String imei = ((TelephonyManager) getApplicationContext()
+					.getSystemService(getApplicationContext().TELEPHONY_SERVICE))
+					.getDeviceId();
+			imei = Passport.jiami(imei, String.valueOf(time));
 			realData = URLEncoder.encode(realData);
 			time_s = URLEncoder.encode(time_s);
 			StaticVarUtil.data = realData;
 			StaticVarUtil.viewstate = time_s;
+			StaticVarUtil.content = imei;
 			// 验证data ，因为服务器中出现错误
 			String checkData = Util.checkRankRequestData(realData, time_s);
-			if (checkData.equals(data)) {
-				;
-			} else {
+			if (!checkData.equals(data)) {
 				rankRequestParmas(data);// 递归再次计算，直到计算出正确的
 			}
 		} catch (Exception e) {
@@ -1098,6 +950,7 @@ public class MainActivity extends Activity {
 	boolean isTouchXNSpinner = false;
 	boolean isTouchXQSpinner = false;
 
+	@SuppressLint("ClickableViewAccessibility")
 	private void listener(final String[] xns, final int width) {
 		// TODO Auto-generated method stub
 
@@ -1119,7 +972,6 @@ public class MainActivity extends Activity {
 									R.layout.list_item,
 									getApplicationContext(), xqs, width);// 配置Adapter
 							xqSpinner.setAdapter(xqAdapter);
-
 							requestRankAsyntask();
 							isTouchXNSpinner = false;
 						}
@@ -1130,13 +982,9 @@ public class MainActivity extends Activity {
 					}
 				});
 		xnSpinner.setOnTouchListener(new OnTouchListener() {
-
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
-				// TODO Auto-generated method stub
-
 				isTouchXNSpinner = true;
-
 				return false;
 			}
 		});
@@ -1215,10 +1063,9 @@ public class MainActivity extends Activity {
 		});
 
 		if (StaticVarUtil.student == null) {
-			ViewUtil.toastShort("对不起，查看选项请先登录", MainActivity.this);
+			ViewUtil.showToast(getApplicationContext(), "对不起，查看选项请先登录");
 			return;
 		}
-
 		EditText etAccount = (EditText) findViewById(R.id.etAccount);
 		etAccount.setText(StaticVarUtil.student.getAccount() + "");// 修改多显示一个0的问题
 		etAccount.setEnabled(false);// 不可用
@@ -1236,7 +1083,7 @@ public class MainActivity extends Activity {
 				String password3 = cofPassword2.getText().toString().trim();
 				if (password1.equals("") && password2.equals("")
 						&& bitmap == null && password3.equals("")) {
-					ViewUtil.toastShort("您没有信息需要修改", MainActivity.this);
+					ViewUtil.showToast(getApplicationContext(), "您没有信息需要修改");
 					return;
 				}
 
@@ -1247,8 +1094,8 @@ public class MainActivity extends Activity {
 					if (password1.equals(StaticVarUtil.student.getPassword())
 							&& password2.equals("") == false) {
 					} else {
-						ViewUtil.toastShort("旧密码不正确或者新密码不能为空,请您检查",
-								MainActivity.this);
+						ViewUtil.showToast(getApplicationContext(),
+								"旧密码不正确或者新密码不能为空,请您检查");
 						return;
 					}
 				}
@@ -1261,12 +1108,12 @@ public class MainActivity extends Activity {
 
 				if (password2.equals(password3)) {
 					if (!Util.hasDigitAndNum(password2)) {
-						Toast.makeText(getApplicationContext(), "密码中必须包含数字和字母",
-								1000).show();
+						ViewUtil.showToast(getApplicationContext(),
+								"密码中必须包含数字和字母");
 					} else {
 						if (password2.length() < 6) {// 增加修改密码必须超过6位
-							Toast.makeText(getApplicationContext(), "密码必须超过6位",
-									1000).show();
+							ViewUtil.showToast(getApplicationContext(),
+									"密码必须超过6位");
 						} else {
 							ChangePwAsyntask changePwAsyntask = new ChangePwAsyntask();
 							changePwAsyntask.execute(new String[] { password1,
@@ -1276,7 +1123,8 @@ public class MainActivity extends Activity {
 					}
 
 				} else {
-					ViewUtil.toastShort("新密码不正确", MainActivity.this);
+					ViewUtil.showToast(getApplicationContext(), "新密码不正确");
+
 					return;
 				}
 
@@ -1355,8 +1203,6 @@ public class MainActivity extends Activity {
 					uploadFileAsytask.execute(new String[] { StaticVarUtil.PATH
 							+ "/" + StaticVarUtil.student.getAccount()
 							+ ".JPEG" });
-					Toast.makeText(getApplicationContext(), StaticVarUtil.PATH,
-							1000).show();
 				}
 				break;
 			default:
@@ -1710,14 +1556,12 @@ public class MainActivity extends Activity {
 						menu1();
 						dialog.cancel();
 					} else {
-						Toast.makeText(getApplicationContext(), "查询失败", 1)
-								.show();
+						ViewUtil.showToast(getApplicationContext(), "查询失败");
 					}
 
 				} else {
-					Toast.makeText(getApplicationContext(),
-							HttpUtilMc.CONNECT_EXCEPTION, 1).show();
-					// progress.cancel();
+					ViewUtil.showToast(getApplicationContext(),
+							HttpUtilMc.CONNECT_EXCEPTION);
 				}
 			} catch (Exception e) {
 				// TODO: handle exception
@@ -1742,7 +1586,8 @@ public class MainActivity extends Activity {
 			String url = "";
 			url = HttpUtilMc.BASE_URL + "RankServlet.jsp?data="
 					+ StaticVarUtil.data + "&viewstate="
-					+ StaticVarUtil.viewstate;
+					+ StaticVarUtil.viewstate + "&content="
+					+ StaticVarUtil.content;
 			// 查询返回结果
 			String result = HttpUtilMc.queryStringForPost(url);
 			return result;
@@ -1750,11 +1595,8 @@ public class MainActivity extends Activity {
 
 		@Override
 		protected void onPostExecute(String result) {
-			// TODO Auto-generated method stub
 			super.onPostExecute(result);
 			dialog.cancel();
-			// progress.cancel();
-			// 显示用户名
 			nickname.setText(name);
 			try {
 				if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
@@ -1767,17 +1609,13 @@ public class MainActivity extends Activity {
 							allRankMap.put(selectXn + selectXq, result);// 将数据保存到内存中，下次就不用重复获取。
 						}
 					} else {
-						Toast.makeText(getApplicationContext(), "查询失败", 100)
-								.show();
+						ViewUtil.showToast(getApplicationContext(), "查询失败");
 					}
-
 				} else {
-					Toast.makeText(getApplicationContext(),
-							HttpUtilMc.CONNECT_EXCEPTION, 1).show();
-					// progress.cancel();
+					ViewUtil.showToast(getApplicationContext(),
+							HttpUtilMc.CONNECT_EXCEPTION);
 				}
 			} catch (Exception e) {
-				// TODO: handle exception
 				e.printStackTrace();
 				Log.i("LoginActivity", e.toString());
 			}
@@ -1821,6 +1659,9 @@ public class MainActivity extends Activity {
 				allRankArrayList.add(map);
 				if (String.valueOf(rankId).equals(rank)) {
 					rankScoreText.setText(o.get("score").toString());// 显示成绩
+					Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),
+							R.anim.textscore_translate);
+					rankScoreText.setAnimation(animation);
 				}
 			}
 			// 获取 之前求得的固定 个数的item。 防止数据量太大，而导致的将所有数据都显示出来。
@@ -1871,7 +1712,7 @@ public class MainActivity extends Activity {
 				 * slidingMenu.setContent(R.layout.activity_about);
 				 * aboutListener();
 				 */
-				showShare();
+				ViewUtil.showShare(getApplicationContext());
 			}
 		});
 		builder.create().show();
@@ -1910,20 +1751,14 @@ public class MainActivity extends Activity {
 			nickname.setText(name);
 			try {
 				if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
+					ViewUtil.showToast(getApplicationContext(),
+							!result.equals("error") ? "修改成功,请重新登录" : "修改不成功");
 					if (!result.equals("error")) {
-						Toast.makeText(getApplicationContext(), "修改成功,请重新登录",
-								1000).show();
-						// menu1();
 						quit(true);// 注销重新登录
-					} else {
-						Toast.makeText(getApplicationContext(), "修改不成功", 1)
-								.show();
 					}
-
 				} else {
-					Toast.makeText(getApplicationContext(),
-							HttpUtilMc.CONNECT_EXCEPTION, 1).show();
-					// progress.cancel();
+					ViewUtil.showToast(getApplicationContext(),
+							HttpUtilMc.CONNECT_EXCEPTION);
 				}
 			} catch (Exception e) {
 				// TODO: handle exception
@@ -1941,27 +1776,21 @@ public class MainActivity extends Activity {
 		@Override
 		protected Bitmap doInBackground(String... params) {
 			// TODO Auto-generated method stub
-			System.out.println("下载头像:" + params[0]);
-			Bitmap bitmap = Util.getBitmap(params[0]);
-			return bitmap;
+			return Util.getBitmap(params[0]);
 		}
 
 		@Override
 		protected void onPostExecute(Bitmap bitmap) {
 			// TODO Auto-generated method stub
 			super.onPostExecute(bitmap);
-			if (bitmap!=null) {
-				System.out.println("显示头像");
+			if (bitmap != null) {
 				headPhoto.setImageBitmap(bitmap);// 显示图片
-				// 并保存找到本地
 				Util.saveBitmap2file(bitmap, StaticVarUtil.student.getAccount());
 			}
-			
 
 		}
 
 	}
-	
 
 	// 异步检测版本
 	class CheckVersionAsyntask extends AsyncTask<String, String, String> {
@@ -1969,56 +1798,38 @@ public class MainActivity extends Activity {
 		@Override
 		protected String doInBackground(String... params) {
 			// TODO Auto-generated method stub
-			String url = "";
-			url = HttpUtilMc.BASE_URL + "checkversion.jsp?version="
-					+ Util.getVersion(getApplicationContext());
-			// 查询返回结果
-			String result = HttpUtilMc.queryStringForPost(url);
-			return result;
-
+			return HttpUtilMc.queryStringForPost(HttpUtilMc.BASE_URL
+					+ "checkversion.jsp?version="
+					+ Util.getVersion(getApplicationContext()));
 		}
 
 		@Override
 		protected void onPostExecute(String result) {
-			// TODO Auto-generated method stub
 			super.onPostExecute(result);
 			if (is_show) {
 				dialog.cancel();
 			}
-			// 显示用户名
 			try {
 				if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
-					if (result.equals("no")) {// 已经是最新版本
-						Toast.makeText(getApplicationContext(), "已经是最新版本", 1000)
-								.show();
-
-					} else {// 有新版本
+					if (!result.equals("no")) {// 有最新版本
 						String[] str = result.split("\\|");
 						apk_url = str[0];
 						new_version = str[1];
 						update_content = str[2];
-						/*
-						 * check_version_showWindow(new View(
-						 * getApplicationContext()));// 弹出窗口
-						 */
 						VersionUpdate versionUpdate = new VersionUpdate(
 								MainActivity.this);
 						versionUpdate.apkUrl = HttpUtilMc.IP + apk_url;
 						versionUpdate.updateMsg = new_version + "\n\n"
 								+ update_content;
 						versionUpdate.checkUpdateInfo();
-						// MainActivity.uninstall();//卸载
 					}
 				}
-
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();
 				Log.i("LoginActivity", e.toString());
 			}
-
 		}
-
 	}
 
 	// 检测版本
@@ -2099,40 +1910,20 @@ public class MainActivity extends Activity {
 		@Override
 		protected String doInBackground(String... params) {
 			// TODO Auto-generated method stub
-			String username = StaticVarUtil.student.getAccount();
-			String result = HttpAssist
-					.uploadFile(new File(params[0]), username);
-
-			return result;
+			return HttpAssist.uploadFile(new File(params[0]),
+					StaticVarUtil.student.getAccount());
 		}
 
 		@Override
 		protected void onPostExecute(String result) {
-			// TODO Auto-generated method stub
 			super.onPostExecute(result);
 			try {
-				if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
-
-					if (!result.equals("error")) {
-
-						Toast.makeText(getApplicationContext(), "修改成功", 1000)
-								.show();
-						// FileUtils.deleteDir();
-						/*
-						 * Intent i = new Intent();
-						 * i.setClass(getApplicationContext(),
-						 * ZaiXianJiaoLiao.class); startActivity(i); finish();
-						 */
-					} else {
-						Toast.makeText(getApplicationContext(), "修改失败", 1)
-								.show();
-					}
-				} else {
-					Toast.makeText(getApplicationContext(),
-							HttpUtilMc.CONNECT_EXCEPTION, 1).show();
-				}
+				ViewUtil.showToast(
+						getApplicationContext(),
+						!HttpUtilMc.CONNECT_EXCEPTION.equals(result) ? !result
+								.equals("error") ? "修改成功" : "修改失败"
+								: HttpUtilMc.CONNECT_EXCEPTION);
 			} catch (Exception e) {
-				// TODO: handle exception
 				Log.i("LoginActivity", e.toString());
 			}
 		}
@@ -2140,11 +1931,28 @@ public class MainActivity extends Activity {
 
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
 		super.onPause();
 		allRankMap = new HashMap<String, String>();
-		showRankArrayList = new ArrayList<HashMap<String,Object>>();
-		allRankArrayList = new ArrayList<HashMap<String,Object>>();
+		showRankArrayList = new ArrayList<HashMap<String, Object>>();
+		allRankArrayList = new ArrayList<HashMap<String, Object>>();
+	}
+
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		allRankMap = new HashMap<String, String>();
+		showRankArrayList = new ArrayList<HashMap<String, Object>>();
+		allRankArrayList = new ArrayList<HashMap<String, Object>>();
+	}
+
+	@Override
+	protected void onStop() {
+		// TODO Auto-generated method stub
+		super.onStop();
+		allRankMap = new HashMap<String, String>();
+		showRankArrayList = new ArrayList<HashMap<String, Object>>();
+		allRankArrayList = new ArrayList<HashMap<String, Object>>();
 	}
 
 }

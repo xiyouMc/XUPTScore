@@ -20,19 +20,23 @@ import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.telephony.TelephonyManager;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
+import android.view.View.OnKeyListener;
 import android.view.Window;
+import android.view.WindowManager;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
@@ -41,24 +45,25 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.mc.db.DBConnection;
 import com.mc.db.DBConnection.UserSchema;
-import com.mc.util.CalculateFileTime;
 import com.mc.util.CircleImageView;
 import com.mc.util.HttpUtilMc;
-import com.mc.util.LogcatHelper;
 import com.mc.util.SystemBarTintManager;
 import com.mc.util.Util;
 import com.mc.util.VersionUpdate;
+import com.xy.fy.util.BitmapUtil;
 import com.xy.fy.util.ConnectionUtil;
 import com.xy.fy.util.StaticVarUtil;
 import com.xy.fy.util.ViewUtil;
+import com.xy.fy.view.PullDoorView;
 import com.xy.fy.view.ToolClass;
 
-@SuppressLint("HandlerLeak")
+@SuppressLint({ "HandlerLeak", "NewApi", "ShowToast", "SdCardPath" })
 public class LoginActivity extends Activity {
+
 	private CircleImageView photo;// 登录界面的头像
 	private AutoCompleteTextView account;// 账号
 	private EditText password;// 密码
@@ -70,16 +75,25 @@ public class LoginActivity extends Activity {
 	private List<HashMap<String, String>> listHerf;
 	private DBConnection helper;// 数据库
 	SQLiteDatabase sqLiteDatabase;
+	private Button savePic;
+	private TextView tvHint;
 
+	private PullDoorView pullDoorView;
+	private Handler mHandler;
+	private Bitmap bitmap;
+
+	@SuppressLint("ShowToast")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		super.setContentView(R.layout.activity_login);
+		// LogcatHelper.getInstance(this).start(); // 将log保存到文件，便于调试，实际发布时请注释掉
+		setPullDoorViewImage();
 		setStatusStyle();
 		CheckVersionAsyntask checkVersionAsyntask = new CheckVersionAsyntask();
 		checkVersionAsyntask.execute();
-		// LogcatHelper.getInstance(this).start(); // 将log保存到文件，便于调试，实际发布时请注释掉
+
 		// **创建数据库
 		helper = new DBConnection(LoginActivity.this);
 		sqLiteDatabase = helper.getWritableDatabase();
@@ -101,38 +115,74 @@ public class LoginActivity extends Activity {
 				 * intent.setClass(getApplicationContext(),
 				 * ForgetPasswordActivity.class); startActivity(intent);
 				 */
-
-				Toast.makeText(getApplicationContext(), "暂不可用，请持续关注。。。", 1000)
-						.show();
+				ViewUtil.showToast(getApplicationContext(), "暂不可用，请持续关注。。。");
 			}
 		});
 		// 登陆按钮
 		this.login.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Util.saveLoginAppVersion(getApplicationContext());
-				String strAccount = account.getText().toString();
-				String strPassword = password.getText().toString();
-				try {
-					Integer.parseInt(strAccount);
-				} catch (Exception e) {
-					ViewUtil.toastShort("账号必须为十位以内的数字！", LoginActivity.this);
-					return;
-				}
-				if (strAccount == null || strAccount.equals("")
-						|| strPassword.equals("") || strPassword == null) {
-					ViewUtil.toastShort("账号密码不能为空", LoginActivity.this);
-					return;
-				}
-				if (!ConnectionUtil.isConn(getApplicationContext())) {
-					ConnectionUtil.setNetworkMethod(LoginActivity.this);
-					return;
-				}
-				rememberPassword(strAccount, strPassword);
 				login();
 			}
 		});
 	}
+
+	private void setPullDoorViewImage() {
+		// TODO Auto-generated method stub
+
+		savePic = (Button) this.findViewById(R.id.btn_above);
+		tvHint = (TextView) this.findViewById(R.id.tv_hint);
+		Animation ani = new AlphaAnimation(0f, 1f);
+		ani.setDuration(1500);
+		ani.setRepeatMode(Animation.REVERSE);
+		ani.setRepeatCount(Animation.INFINITE);
+		tvHint.startAnimation(ani);
+
+		Intent i = getIntent();
+		String imageMsg = i.getStringExtra("image") != null ? i
+				.getStringExtra("image") : "0|0";
+		String[] imageAndTime = imageMsg.split("\\|");
+		final String imageTime = imageAndTime[0];
+		String isPoll = imageAndTime[1];
+		savePic.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				BitmapUtil.saveFileAndDB(
+						getApplicationContext(),
+						bitmap != null ? bitmap : BitmapFactory.decodeResource(
+								getResources(), R.drawable.left1), imageTime
+								+ ".jpg");
+				ViewUtil.showToast(getApplicationContext(), "保存文件成功");
+			}
+		});
+		mHandler = new Handler();
+		pullDoorView = (PullDoorView) findViewById(R.id.myImage);
+		if (isPoll.equals("1")) {// 下拉下载
+			new Thread() {
+				public void run() {
+					bitmap = Util.getBitmap(HttpUtilMc.BASE_URL + "image/"
+							+ imageTime + ".jpg");
+					mHandler.post(runnableUi);
+				}
+			}.start();
+		} else
+			pullDoorView.setBgImage(R.drawable.left1);
+		if (bitmap != null) {
+			bitmap.recycle();
+		}
+	}
+
+	// 构建Runnable对象，在runnable中更新界面
+	Runnable runnableUi = new Runnable() {
+		@Override
+		public void run() {
+			// 更新界面
+			// bitmap = BitmapUtil.resizeBitmapWidth(bitmap, 480);
+			pullDoorView.setBgBitmap(bitmap);
+		}
+
+	};
 
 	private void setTranslucentStatus(boolean on) {
 		Window win = getWindow();
@@ -234,6 +284,24 @@ public class LoginActivity extends Activity {
 	 */
 	private void login() {
 
+		String strAccount = account.getText().toString();
+		String strPassword = password.getText().toString();
+		try {
+			Integer.parseInt(strAccount);
+		} catch (Exception e) {
+			ViewUtil.showToast(getApplicationContext(), "账号必须为十位以内的数字！");
+			return;
+		}
+		if (strAccount == null || strAccount.equals("")
+				|| strPassword.equals("") || strPassword == null) {
+			ViewUtil.showToast(getApplicationContext(), "账号密码不能为空");
+			return;
+		}
+		if (!ConnectionUtil.isConn(getApplicationContext())) {
+			ConnectionUtil.setNetworkMethod(LoginActivity.this);
+			return;
+		}
+		rememberPassword(strAccount, strPassword);
 		GetPicAsyntask getPicAsyntask = new GetPicAsyntask();
 		progressDialog.show();
 		getPicAsyntask.execute();
@@ -248,6 +316,19 @@ public class LoginActivity extends Activity {
 		// this.account = (EditText) findViewById(R.id.etAccount);
 		this.photo = (CircleImageView) findViewById(R.id.profile_image);
 		this.password = (EditText) findViewById(R.id.etPassword);
+		password.setOnKeyListener(new OnKeyListener() {
+
+			@Override
+			public boolean onKey(View v, int keyCode, KeyEvent event) {
+				// TODO Auto-generated method stub
+				if (KeyEvent.KEYCODE_ENTER == keyCode
+						&& event.getAction() == KeyEvent.ACTION_DOWN) {
+					login();
+					return true;
+				}
+				return false;
+			}
+		});
 		String[] USERSFROM = { UserSchema.ID, UserSchema.USERNAME,
 				UserSchema.PASSWORD, };
 		Cursor c = sqLiteDatabase.query(UserSchema.TABLE_NAME, USERSFROM, null,
@@ -266,6 +347,21 @@ public class LoginActivity extends Activity {
 		// 账号 自动提示
 		account = (AutoCompleteTextView) findViewById(R.id.etAccount);
 		account.setAdapter(av);
+		account.setOnKeyListener(new OnKeyListener() {
+
+			@Override
+			public boolean onKey(View v, int keyCode, KeyEvent event) {
+				// TODO Auto-generated method stub
+				if (KeyEvent.KEYCODE_ENTER == keyCode
+						&& event.getAction() == KeyEvent.ACTION_DOWN) {
+					password.setFocusable(true);
+					password.setFocusableInTouchMode(true);
+					password.requestFocus();
+					return true;
+				}
+				return false;
+			}
+		});
 		account.addTextChangedListener(new TextWatcher() {
 
 			@Override
@@ -302,12 +398,12 @@ public class LoginActivity extends Activity {
 						Bitmap bitmap = Util.convertToBitmap(StaticVarUtil.PATH
 								+ "/" + account.getText().toString() + ".JPEG",
 								240, 240);
-						if (bitmap!=null) {
-							photo.setImageBitmap(bitmap);	
-						}else {
+						if (bitmap != null) {
+							photo.setImageBitmap(bitmap);
+						} else {
 							file.delete();
 						}
-						
+
 					} else {// 如果文件夹中不存在这个头像。
 						;
 					}
@@ -333,12 +429,13 @@ public class LoginActivity extends Activity {
 			ConnectionUtil.setNetworkMethod(LoginActivity.this);
 			return;
 		}
-		
+
 	}
 
 	// 异步加载登录
 	class LoginAsyntask extends AsyncTask<Object, String, String> {
 
+		@SuppressWarnings("deprecation")
 		@Override
 		protected String doInBackground(Object... params) {
 			// TODO Auto-generated method stub
@@ -366,13 +463,11 @@ public class LoginActivity extends Activity {
 				if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
 					System.out.println("result:" + result);
 					if (result.equals("error")) {
-						Toast.makeText(getApplicationContext(), "密码错误", 1)
-								.show();
+						ViewUtil.showToast(getApplicationContext(), "密码错误");
 						password.setText("");
 					} else {
 						if (result.equals("no_user")) {
-							Toast.makeText(getApplicationContext(), "账号不存在", 1)
-									.show();
+							ViewUtil.showToast(getApplicationContext(), "账号不存在");
 							account.setText("");
 							password.setText("");
 						} else {// 登录成功
@@ -403,8 +498,8 @@ public class LoginActivity extends Activity {
 					}
 
 				} else {
-					Toast.makeText(getApplicationContext(),
-							HttpUtilMc.CONNECT_EXCEPTION, 1).show();
+					ViewUtil.showToast(getApplicationContext(),
+							HttpUtilMc.CONNECT_EXCEPTION);
 					progressDialog.cancel();
 				}
 			} catch (Exception e) {
@@ -422,14 +517,9 @@ public class LoginActivity extends Activity {
 		@Override
 		protected String doInBackground(Object... params) {
 			// TODO Auto-generated method stub
-			String url;
-			url = HttpUtilMc.BASE_URL + "GetPic.jsp";
-			System.out.println("url" + url);
-			// 查询返回结果
-			String result = HttpUtilMc.queryStringForPost(url);
-			System.out.println("=========================  " + result);
-			return result;
-
+			return HttpUtilMc.IsReachIP() ? HttpUtilMc
+					.queryStringForPost(HttpUtilMc.BASE_URL + "GetPic.jsp")
+					: HttpUtilMc.CONNECT_EXCEPTION;
 		}
 
 		@Override
@@ -439,31 +529,22 @@ public class LoginActivity extends Activity {
 			// progress.cancel();
 			try {
 				if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
-
 					if (!result.equals("error")) {
 						if (!result.equals("ip warning!!!")) {
 							JSONObject json = new JSONObject(result);
 							String session = json.getString("cookieSessionID");// session
-							System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@");
 							StaticVarUtil.session = session;
-							LoginAsyntask loginAsyntask = new LoginAsyntask();// 获取
-																				// session之后
-																				// 进行登录请求。
+							LoginAsyntask loginAsyntask = new LoginAsyntask();
 							loginAsyntask.execute();
 						}
 					} else {
-						Toast.makeText(getApplicationContext(), "服务器维护中。。。", 1)
-								.show();
+						ViewUtil.showToast(getApplicationContext(), "服务器维护中。。。");
 						progressDialog.cancel();
 					}
-
 				} else {
-					Toast.makeText(getApplicationContext(),
-							HttpUtilMc.CONNECT_EXCEPTION, 1000).show();
-					// progress.cancel();
+					ViewUtil.showToast(getApplicationContext(),
+							HttpUtilMc.CONNECT_EXCEPTION);
 					progressDialog.cancel();
-					LogcatHelper.getInstance(LoginActivity.this).stop();
-					// finish();
 				}
 			} catch (Exception e) {
 				// TODO: handle exception
@@ -472,11 +553,11 @@ public class LoginActivity extends Activity {
 
 		}
 	}
+
 	private String new_version;// 最新版本
 	private String update_content;// 更新内容
 	private static String apk_url;// 下载地址
-	private Button download_version;// 下载版本
-	private Button cancle_check;// 取消
+
 	// 异步检测版本
 	class CheckVersionAsyntask extends AsyncTask<String, String, String> {
 
@@ -496,29 +577,20 @@ public class LoginActivity extends Activity {
 		protected void onPostExecute(String result) {
 			// TODO Auto-generated method stub
 			super.onPostExecute(result);
-			
+
 			try {
 				if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
-					if (result.equals("no")) {// 已经是最新版本
-						Toast.makeText(getApplicationContext(), "已经是最新版本", 1000)
-								.show();
-
-					} else {// 有新版本
+					if (!result.equals("no")) {
 						String[] str = result.split("\\|");
 						apk_url = str[0];
 						new_version = str[1];
 						update_content = str[2];
-						/*
-						 * check_version_showWindow(new View(
-						 * getApplicationContext()));// 弹出窗口
-						 */
 						VersionUpdate versionUpdate = new VersionUpdate(
 								LoginActivity.this);
 						versionUpdate.apkUrl = HttpUtilMc.IP + apk_url;
 						versionUpdate.updateMsg = new_version + "\n\n"
 								+ update_content;
 						versionUpdate.checkUpdateInfo();
-						// MainActivity.uninstall();//卸载
 					}
 				}
 

@@ -1,6 +1,5 @@
 package com.xy.fy.main;
 
-import android.app.Activity;
 import android.app.ActivityGroup;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,8 +21,6 @@ public class AddFriendListActivity extends ActivityGroup {
 	Button friend_recommand;// 好友推荐
 	Button friend_apply;// 好友申请
 	private LinearLayout add_friend_layout;
-	private int swap = 0;// 控制显示 view 0表示第一个view 1表示 第二个view
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -70,7 +67,6 @@ public class AddFriendListActivity extends ActivityGroup {
 				recommand_focus();
 				friend_apply.setFocusable(false);
 				processViews(0);
-				swap = 0;
 			}
 		});
 
@@ -82,7 +78,6 @@ public class AddFriendListActivity extends ActivityGroup {
 				apply_focus();
 				friend_recommand.setFocusable(false);
 				processViews(1);
-				swap = 1;
 			}
 		});
 	}

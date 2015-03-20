@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.xy.fy.util.ViewUtil;
+
 import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -14,7 +16,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
 
 public class FriendRecommondActivity extends Activity {
 
@@ -48,8 +49,7 @@ public class FriendRecommondActivity extends Activity {
 						.getItemAtPosition(position);
 				String kecheng = map.get("kecheng");
 				String score = map.get("score");
-				Toast.makeText(getApplicationContext(), kecheng + " " + score,
-						1000).show();
+				ViewUtil.showToast(getApplicationContext(), kecheng + " " + score);
 			}
 		});
 	}
@@ -91,14 +91,12 @@ public class FriendRecommondActivity extends Activity {
 					firstscoreAllMap.put("kecheng",
 							first_score_all.split("--")[0]);
 					firstscoreAllMap.put("score", now_score);
-					firstscoreAllMap.put("bili", "´ý¶¨");
 				}
 			} else {
 				if (isNumeric(now_score) && Float.parseFloat(now_score) < 60) {
 					firstscoreAllMap.put("kecheng",
 							first_score_all.split("--")[0]);
 					firstscoreAllMap.put("score", now_score);
-					firstscoreAllMap.put("bili", "´ý¶¨");
 				}
 			}
 			if (firstscoreAllMap.size() != 0) {
@@ -129,8 +127,8 @@ public class FriendRecommondActivity extends Activity {
 		SimpleAdapter simpleAdapter = new SimpleAdapter(
 				getApplicationContext(), list_data,
 				R.layout.activity_add_friend_recommand_listview_item,
-				new String[] { "kecheng", "score", "bili" }, new int[] {
-						R.id.kecheng, R.id.score, R.id.bili });
+				new String[] { "kecheng", "score" }, new int[] {
+						R.id.kecheng, R.id.score });
 		kecheng_Listview.setAdapter(simpleAdapter);
 
 	}

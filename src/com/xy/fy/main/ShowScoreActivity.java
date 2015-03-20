@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -20,7 +19,7 @@ public class ShowScoreActivity extends Activity {
 
 	/** Called when the activity is first created. */
 	private final int WC = ViewGroup.LayoutParams.WRAP_CONTENT;
-	private final int FP = ViewGroup.LayoutParams.FILL_PARENT;
+	private final int FP = ViewGroup.LayoutParams.MATCH_PARENT;
 //    private Button back;
     private TextView XNandXQ;
     private LinearLayout layout;//为了实现点击就取消
