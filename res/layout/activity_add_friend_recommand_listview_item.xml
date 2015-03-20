@@ -8,8 +8,8 @@
     <TableLayout
         android:layout_width="fill_parent"
         android:layout_height="50dp"
-        android:stretchColumns="0" 
-        android:gravity="center">
+        android:gravity="center"
+        android:stretchColumns="0" >
 
         <TableRow>
 
@@ -23,23 +23,13 @@
 
             <TextView
                 android:id="@+id/score"
-                android:gravity="center_horizontal"
-                android:padding="3dip"
-                android:text="45       "
+                android:gravity="right"
+                android:paddingRight="10dip"
+                android:text="45 "
                 android:textColor="@color/gray" >
             </TextView>
 
-            <TextView
-                android:id="@+id/bili"
-                android:gravity="center_horizontal"
-                android:padding="3dip"
-                android:text="45%    "
-                android:textColor="@color/gray" />
 
-            <TextView
-                android:gravity="center_horizontal"
-                android:padding="3dip"
-                android:text="        " />
         </TableRow>
     </TableLayout>
 

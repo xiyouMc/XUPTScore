@@ -16,6 +16,7 @@
     <string name="hi">Hi~</string>
     <string name="rank_message">你位于本专业</string>
     <string name="times">名</string>
+    <string name="blank"></string>
     <!-- 学年 -->
     <string-array name="xn">
         <item>2011-2012</item>

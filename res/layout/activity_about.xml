@@ -12,7 +12,7 @@
 
         <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="50dp"
+            android:layout_height="47dp"
             android:background="@drawable/main_title_bar"
             android:orientation="horizontal" >
 
@@ -93,7 +93,8 @@
                 android:paddingBottom="10dp"
                 android:text="\n开发者：Mc\n\n负责单位：西安邮电3G手机实验室\n\n反馈方式：694449212@qq.com\n\nQQ:694449212"
                 android:textColor="@color/black"
-                android:textSize="18dp" />
+                android:textSize="18dp"
+                android:textIsSelectable="true"/>
 
             <Button
                 android:id="@+id/checkversion"

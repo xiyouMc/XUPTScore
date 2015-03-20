@@ -1,149 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#F5F5F5"
-    android:orientation="vertical" >
-
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="157dp"
-        android:background="#48D1CC" >
-
-        <TextView
-            android:id="@+id/t"
-            android:layout_width="fill_parent"
-            android:layout_height="60dp" />
-
-        <com.mc.util.CircleImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/profile_image"
-            android:layout_width="88dp"
-            android:layout_height="88dp"
-            android:layout_below="@id/t"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/person"
-            app:border_color="#BFEFFF"
-            app:border_width="2dp" />
-    </RelativeLayout>
+    android:background="#F5F5F5" >
 
     <LinearLayout
-        android:id="@+id/layout"
+        android:id="@+id/linearlayout"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:background="#F5F5F5"
         android:orientation="vertical" >
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="85dp"
-            android:gravity="center_vertical"
-            android:orientation="vertical" >
-
-            <!-- 输入账号 -->
-
-            <AutoCompleteTextView
-                android:id="@+id/etAccount"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#00000000"
-                android:ems="8"
-                android:gravity="center_vertical"
-                android:hint="学号"
-                android:paddingLeft="17dp"
-                android:textColor="#050505"
-                android:textCursorDrawable="@null"
-                android:textSize="7.5pt" />
+            android:layout_height="157dp"
+            android:background="#48D1CC" >
 
             <TextView
+                android:id="@+id/t"
                 android:layout_width="fill_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="7dp"
-                android:layout_marginRight="7dp"
-                android:background="#E6E6FA" />
-            <!-- 输入密码 -->
+                android:layout_height="60dp" />
 
-            <EditText
-                android:id="@+id/etPassword"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#00000000"
-                android:ems="14"
-                android:gravity="center_vertical"
-                android:hint="密码"
-                android:inputType="textPassword"
-                android:paddingLeft="17dp"
-                android:textColor="#050505"
-                android:textCursorDrawable="@null"
-                android:textSize="7.5pt" >
-            </EditText>
-        </LinearLayout>
+            <com.mc.util.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/profile_image"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:layout_below="@id/t"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/person"
+                app:border_color="#BFEFFF"
+                app:border_width="2dp" />
+        </RelativeLayout>
 
         <LinearLayout
+            android:id="@+id/layout"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/login_jb"
-            android:gravity="right"
-            android:orientation="vertical"
-            android:paddingRight="17dp" >
-
-            <!-- 忘记密码 -->
-
-
-            <!--  -->
-            <!-- 记住密码 -->
-
-            <CheckBox
-                android:id="@+id/butRememberPassword"
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:layout_gravity="right"
-                android:text="记住密码"
-                android:textColor="#40E0D0"
-                android:textSize="7pt" />
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="5dp" />
+            android:orientation="vertical" >
 
             <LinearLayout
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingLeft="17dp"
-                android:paddingRight="17dp" >
+                android:layout_height="85dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:gravity="center_vertical"
+                android:orientation="vertical" >
 
-                <Button
-                    android:id="@+id/butLogin"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_gravity="center_horizontal"
-                    android:background="@drawable/button_big"
-                    android:fontFamily="sans-serif-thin"
-                    android:text="登 录"
-                    android:textColor="@color/white"
-                    android:textSize="20sp" />
-            </LinearLayout>
+                <!-- 输入账号 -->
 
-            <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" >
-
-                <Button
-                    android:id="@+id/butForgetPassword"
+                <AutoCompleteTextView
+                    android:id="@+id/etAccount"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginLeft="6dp"
+                    android:layout_weight="1"
                     android:background="#00000000"
-                    android:gravity="left|center_vertical"
-                    android:text="无法登录?"
-                    android:textColor="#7EC0EE"
-                    android:textSize="6pt" />
-            </RelativeLayout>
+                    android:ems="8"
+                    android:gravity="center_vertical"
+                    android:hint="学号"
+                    android:paddingLeft="17dp"
+                    android:textColor="#050505"
+                    android:textCursorDrawable="@null"
+                    android:textSize="8pt" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:background="#E6E6FA" />
+                <!-- 输入密码 -->
+
+                <EditText
+                    android:id="@+id/etPassword"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#00000000"
+                    android:ems="14"
+                    android:gravity="center_vertical"
+                    android:hint="密码"
+                    android:inputType="textPassword"
+                    android:paddingLeft="17dp"
+                    android:textColor="#050505"
+                    android:textCursorDrawable="@null"
+                    android:textSize="8pt" >
+                </EditText>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/login_jb"
+                android:gravity="right"
+                android:orientation="vertical"
+                android:paddingRight="17dp" >
+
+                <!-- 记住密码 -->
+
+                <CheckBox
+                    android:id="@+id/butRememberPassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_gravity="right"
+                    android:text="记住密码"
+                    android:textColor="#40E0D0"
+                    android:textSize="7.5pt" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="5dp" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingLeft="17dp"
+                    android:paddingRight="17dp" >
+
+                    <Button
+                        android:id="@+id/butLogin"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/button_big"
+                        android:fontFamily="sans-serif-thin"
+                        android:text="登 录"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" >
+
+                    <Button
+                        android:id="@+id/butForgetPassword"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginLeft="6dp"
+                        android:background="#00000000"
+                        android:gravity="left|center_vertical"
+                        android:text="无法登录?"
+                        android:textColor="#7EC0EE"
+                        android:textSize="7.5pt" />
+                </RelativeLayout>
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
-</LinearLayout>
+    <com.xy.fy.view.PullDoorView
+        android:id="@+id/myImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ddd" >
+
+        <Button
+            android:id="@+id/btn_above"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/picture_down_up" />
+
+        <TextView
+            android:id="@+id/tv_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:text="上滑可以进入首页"
+            android:textColor="#ffffffff"
+            android:textSize="18sp" />
+    </com.xy.fy.view.PullDoorView>
+
+</FrameLayout>
