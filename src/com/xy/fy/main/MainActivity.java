@@ -93,7 +93,6 @@ import com.xy.fy.view.ToolClass;
  */
 @SuppressLint({ "ShowToast", "InflateParams" })
 public class MainActivity extends Activity {
-
 	// 保存成绩的map
 	public static HashMap<String, String> mapScoreOne = null;// xn =1
 	public static HashMap<String, String> mapScoreTwo = null;// xn = 2
@@ -646,6 +645,7 @@ public class MainActivity extends Activity {
 							.getBitmap();
 					BitmapUtil.saveFileAndDB(getApplicationContext(), bt,
 							Util.QRCODE_FILENAME);
+					bt.recycle();
 				}
 				ViewUtil.showToast(getApplicationContext(), "二维码已保存，请将其分享给同学！");
 
@@ -1583,14 +1583,10 @@ public class MainActivity extends Activity {
 		@Override
 		protected String doInBackground(String... params) {
 			// TODO Auto-generated method stub
-			String url = "";
-			url = HttpUtilMc.BASE_URL + "RankServlet.jsp?data="
-					+ StaticVarUtil.data + "&viewstate="
-					+ StaticVarUtil.viewstate + "&content="
-					+ StaticVarUtil.content;
-			// 查询返回结果
-			String result = HttpUtilMc.queryStringForPost(url);
-			return result;
+			return HttpUtilMc.queryStringForPost(HttpUtilMc.BASE_URL
+					+ "RankServlet.jsp?data=" + StaticVarUtil.data
+					+ "&viewstate=" + StaticVarUtil.viewstate + "&content="
+					+ StaticVarUtil.content);
 		}
 
 		@Override
@@ -1659,8 +1655,9 @@ public class MainActivity extends Activity {
 				allRankArrayList.add(map);
 				if (String.valueOf(rankId).equals(rank)) {
 					rankScoreText.setText(o.get("score").toString());// 显示成绩
-					Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),
-							R.anim.textscore_translate);
+					Animation animation = AnimationUtils
+							.loadAnimation(getApplicationContext(),
+									R.anim.textscore_translate);
 					rankScoreText.setAnimation(animation);
 				}
 			}
@@ -1674,9 +1671,7 @@ public class MainActivity extends Activity {
 				isFirstListView = false;
 			} else {
 				simpleAdapter.notifyDataSetChanged();
-
 			}
-
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -1705,13 +1700,6 @@ public class MainActivity extends Activity {
 		builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-
-				/*
-				 * menuAbout.setPressed(true); setCurrentMenuItem(6);//
-				 * 记录当前选项位置，并且跳转
-				 * slidingMenu.setContent(R.layout.activity_about);
-				 * aboutListener();
-				 */
 				ViewUtil.showShare(getApplicationContext());
 			}
 		});
@@ -1724,21 +1712,11 @@ public class MainActivity extends Activity {
 		@Override
 		protected String doInBackground(String... params) {
 			// TODO Auto-generated method stub
-			String url = "";
 			String canshu = Util.getURL(StaticVarUtil.CHANGE_PW);
-			/*
-			 * String[] can = canshu.split("&"); String url_str = can[0]; String
-			 * gnmkdm = can[1];
-			 */
-			url = HttpUtilMc.BASE_URL + "changepw.jsp?session="
-					+ StaticVarUtil.session + "&url=" + canshu
-					+ "&old_password=" + params[0] + "&new_password="
-					+ params[1];
-			System.out.println("url" + url);
-			// 查询返回结果
-			String result = HttpUtilMc.queryStringForPost(url);
-			System.out.println("=========================  " + result);
-			return result;
+			return HttpUtilMc.queryStringForPost(HttpUtilMc.BASE_URL
+					+ "changepw.jsp?session=" + StaticVarUtil.session + "&url="
+					+ canshu + "&old_password=" + params[0] + "&new_password="
+					+ params[1]);
 
 		}
 
@@ -1750,15 +1728,15 @@ public class MainActivity extends Activity {
 			// 显示用户名
 			nickname.setText(name);
 			try {
-				if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
-					ViewUtil.showToast(getApplicationContext(),
-							!result.equals("error") ? "修改成功,请重新登录" : "修改不成功");
-					if (!result.equals("error")) {
-						quit(true);// 注销重新登录
-					}
-				} else {
+				if (HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
 					ViewUtil.showToast(getApplicationContext(),
 							HttpUtilMc.CONNECT_EXCEPTION);
+					return;
+				}
+				ViewUtil.showToast(getApplicationContext(),
+						!result.equals("error") ? "修改成功,请重新登录" : "修改不成功");
+				if (!result.equals("error")) {
+					quit(true);// 注销重新登录
 				}
 			} catch (Exception e) {
 				// TODO: handle exception
@@ -1783,10 +1761,11 @@ public class MainActivity extends Activity {
 		protected void onPostExecute(Bitmap bitmap) {
 			// TODO Auto-generated method stub
 			super.onPostExecute(bitmap);
-			if (bitmap != null) {
-				headPhoto.setImageBitmap(bitmap);// 显示图片
-				Util.saveBitmap2file(bitmap, StaticVarUtil.student.getAccount());
-			}
+			if (bitmap == null)
+				return;
+			headPhoto.setImageBitmap(bitmap);// 显示图片
+			Util.saveBitmap2file(bitmap, StaticVarUtil.student.getAccount());
+			bitmap.recycle();
 
 		}
 
@@ -1812,6 +1791,7 @@ public class MainActivity extends Activity {
 			try {
 				if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
 					if (!result.equals("no")) {// 有最新版本
+
 						String[] str = result.split("\\|");
 						apk_url = str[0];
 						new_version = str[1];
@@ -1821,8 +1801,9 @@ public class MainActivity extends Activity {
 						versionUpdate.apkUrl = HttpUtilMc.IP + apk_url;
 						versionUpdate.updateMsg = new_version + "\n\n"
 								+ update_content;
-						versionUpdate.checkUpdateInfo();
+						return;
 					}
+					ViewUtil.showToast(getApplicationContext(), "已经是最新版本！");
 				}
 			} catch (Exception e) {
 				// TODO: handle exception
@@ -1933,7 +1914,7 @@ public class MainActivity extends Activity {
 	protected void onPause() {
 		super.onPause();
 		allRankMap = new HashMap<String, String>();
-		showRankArrayList = new ArrayList<HashMap<String, Object>>();
+//		showRankArrayList = new ArrayList<HashMap<String, Object>>();
 		allRankArrayList = new ArrayList<HashMap<String, Object>>();
 	}
 
@@ -1942,7 +1923,7 @@ public class MainActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onDestroy();
 		allRankMap = new HashMap<String, String>();
-		showRankArrayList = new ArrayList<HashMap<String, Object>>();
+//		showRankArrayList = new ArrayList<HashMap<String, Object>>();
 		allRankArrayList = new ArrayList<HashMap<String, Object>>();
 	}
 
@@ -1951,7 +1932,7 @@ public class MainActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onStop();
 		allRankMap = new HashMap<String, String>();
-		showRankArrayList = new ArrayList<HashMap<String, Object>>();
+//		showRankArrayList = new ArrayList<HashMap<String, Object>>();
 		allRankArrayList = new ArrayList<HashMap<String, Object>>();
 	}
 
