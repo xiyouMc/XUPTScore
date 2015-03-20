@@ -17,7 +17,9 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -28,15 +30,17 @@ import android.os.Build;
 import android.os.Environment;
 import android.telephony.TelephonyManager;
 import android.util.Log;
-
 import com.nrs.utils.HttpAssistFile;
 import com.xy.fy.util.StaticVarUtil;
 
+@SuppressLint("SimpleDateFormat")
 public class Util {
 
+	// 二维码文件
+	public static final String QRCODE_FILENAME = "/西邮成绩.png";
 	private final static String TAG = "util";
-	private final static String infosFloder = "/xuptscore/devInfos";
-	private final static String loginMessageTxt = infosFloder + "/login.txt";
+	public final static String infosFloder = "/xuptscore/devInfos";
+	public final static String LOGINFILE = "login.log";
 
 	/**
 	 * 用来存储设备信息和异常信息 Map<String,String> : mLogInfo
@@ -57,6 +61,7 @@ public class Util {
 	 *        ───────────────────────────────────────
 	 *        ───────────────────────────────────
 	 */
+	@SuppressWarnings("static-access")
 	public static void saveDeviceInfo(Context paramContext) {
 
 		Map<String, String> mLogInfo = new HashMap<String, String>();
@@ -98,10 +103,10 @@ public class Util {
 			mStringBuffer.append(key + "=" + value + "\r\n");
 		}
 
-	   String mFileName = ((TelephonyManager) paramContext
+		String mFileName = ((TelephonyManager) paramContext
 				.getSystemService(paramContext.TELEPHONY_SERVICE))
 				.getDeviceId()
-				+ ".txt";
+				+ ".log";
 		if (Environment.getExternalStorageState().equals(
 				Environment.MEDIA_MOUNTED)) {
 			try {
@@ -137,19 +142,23 @@ public class Util {
 	 */
 	public static boolean isRecordLoginMessage(Context paramContext) {
 
-		File loginMsgLogFile = new File(Environment.getExternalStorageDirectory()+loginMessageTxt);
-		String msg = getAppVersion(paramContext);
+		@SuppressWarnings("static-access")
+		File loginMsgLogFile = new File(
+				Environment.getExternalStorageDirectory()
+						+ infosFloder
+						+ "/"
+						+ ((TelephonyManager) paramContext
+								.getSystemService(paramContext.TELEPHONY_SERVICE))
+								.getDeviceId() + LOGINFILE);
 		try {
-			if (loginMsgLogFile.exists()) {
-				writeDevMsgToLog(loginMsgLogFile, msg,true);
-
-				return true;
-			} else {
+			if (!loginMsgLogFile.exists()) {
 				loginMsgLogFile.createNewFile();
-				writeDevMsgToLog(loginMsgLogFile, msg,false);
-				
+				saveLoginAppVersion(paramContext);
 				return false;
 			}
+			saveLoginAppVersion(paramContext);
+			return true;
+			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -161,59 +170,80 @@ public class Util {
 
 	}
 
-	private static void writeDevMsgToLog(File loginMsgLogFile, String msg,boolean isAppend)
-			throws FileNotFoundException, IOException {
-		FileOutputStream fos = new FileOutputStream(loginMsgLogFile,
-				isAppend);
-		fos.write(msg.getBytes());
-		fos.close();
+	/**
+	 * 将用户登录信息写入日志
+	 * 
+	 * @param loginMsgLogFile
+	 * @param msg
+	 * @param isAppend
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
+	private static void writeLoginMsgToLog(File loginMsgLogFile, String msg,
+			boolean isAppend) {
+		try {
+			FileOutputStream fos = new FileOutputStream(loginMsgLogFile,
+					isAppend);
+			fos.write(msg.getBytes());
+			fos.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
 	 * 上传用户登录信息
+	 * 
 	 * @param paramContext
 	 */
-	public static void uploadLoginMsg(final Context paramContext){
+	public static void uploadLoginMsg(final Context paramContext) {
 		new Thread(new Runnable() {
 
-			
+			@SuppressWarnings("static-access")
 			public void run() { // TODO Auto-generated method stub
 				String mFileName = Environment.getExternalStorageDirectory()
-						+ loginMessageTxt;
-				
-				HttpAssistFile.uploadFile(
-						new File(mFileName),
-						"loginmsg");
-				
+						+ "/"
+						+ ((TelephonyManager) paramContext
+								.getSystemService(paramContext.TELEPHONY_SERVICE))
+								.getDeviceId() + LOGINFILE;
+				File file = new File(mFileName);
+				HttpAssistFile httpAssistFile = new HttpAssistFile();
+				httpAssistFile.uploadFile(file, "loginmsg");
 			}
-		}).start();		
+		}).start();
 	}
+
 	/**
 	 * 上传 客户端手机信息
+	 * 
 	 * @param paramContext
 	 */
 	public static void uploadDevInfos(final Context paramContext) {
 		// 上传服务器
 
 		new Thread(new Runnable() {
-
 			public void run() { // TODO Auto-generated method stub
+				@SuppressWarnings("static-access")
 				String mFileName = Environment.getExternalStorageDirectory()
-						+ infosFloder + "/" +((TelephonyManager) paramContext
-						.getSystemService(paramContext.TELEPHONY_SERVICE))
-						.getDeviceId()
-						+ ".txt";
-				
-				HttpAssistFile.uploadFile(
-						new File(mFileName),
-						"devsdk");
-				
+						+ infosFloder
+						+ "/"
+						+ ((TelephonyManager) paramContext
+								.getSystemService(paramContext.TELEPHONY_SERVICE))
+								.getDeviceId() + ".log";
+				HttpAssistFile httpAssistFile = new HttpAssistFile();
+				httpAssistFile.uploadFile(new File(mFileName), "devsdk");
+                
 			}
 		}).start();
 
 	}
 
-	private static String getAppVersion(Context paramContext) {
+	@SuppressWarnings("static-access")
+	private static void saveLoginAppVersion(Context paramContext) {
 		try {
 			// 获得包管理器
 			PackageManager mPackageManager = paramContext.getPackageManager();
@@ -229,14 +259,22 @@ public class Util {
 				sb.append(getTime() + "\t" + versionCode + "--" + versionName
 						+ "\n");
 			}
-			return sb.toString();
+			writeLoginMsgToLog(
+					new File(
+							Environment.getExternalStorageDirectory()
+									+ infosFloder
+									+ "/"
+									+ ((TelephonyManager) paramContext
+											.getSystemService(paramContext.TELEPHONY_SERVICE))
+											.getDeviceId() + LOGINFILE),
+					sb.toString(), true);
 		} catch (NameNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return "";
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	public static int getAndroidSDKVersion() {
 		int version = 0;
 		try {
@@ -332,12 +370,17 @@ public class Util {
 
 	private static boolean haveChar(String str) {
 		try {
-			int num = Integer.valueOf(str);// 把字符串强制转换为数字
+			Integer.valueOf(str);// 把字符串强制转换为数字
 			return false;// 如果是数字，返回True
 		} catch (Exception e) {
 			return true;// 如果抛出异常，返回False
 		}
 
+	}
+
+	public static boolean checkPWD(String pwd) {
+		return pwd
+				.matches("^(?![A-Z]*$)(?![a-z]*$)(?![0-9]*$)(?![^a-zA-Z0-9]*$)\\S+$");
 	}
 
 	/**
@@ -352,7 +395,6 @@ public class Util {
 		String realXh = "";
 		String realTime = Passport.jiemi(viewstate,
 				String.valueOf(new char[] { 2, 4, 8, 8, 2, 2 }));
-		HashMap<String, String> xhAndXnMap = new HashMap<String, String>();
 		try {
 			realXh = Passport.jiemi(data, realTime);
 		} catch (Exception e) {
@@ -362,18 +404,22 @@ public class Util {
 		return realXh;
 	}
 
+	public static boolean isDebugable(Context context) {
+		try {
+			ApplicationInfo info = context.getApplicationInfo();
+			return (info.flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
+		} catch (Exception e) {
+		}
+		return false;
+	}
+
 	private static boolean hasDigit(String content) {
 
 		boolean flag = false;
-
 		Pattern p = Pattern.compile(".*\\d+.*");
-
 		Matcher m = p.matcher(content);
-
 		if (m.matches())
-
 			flag = true;
-
 		return flag;
 
 	}
