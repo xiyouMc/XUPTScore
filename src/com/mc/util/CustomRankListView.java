@@ -2,6 +2,7 @@ package com.mc.util;
 
 import java.util.Date;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -43,13 +44,11 @@ public class CustomRankListView extends ListView implements OnScrollListener {
 	private ProgressBar progressBar;
 	private TextView headTitle;
 	private TextView headLastUpdate;
-	private int headContentWidth;
 	private int headContentHeight;
 	private Animation animation;
 	private Animation reverseAnimation;
 	private OnRefreshListner refreshListner;// 刷新监听器
 
-	private boolean isRefreshable;
 	private boolean isRecored = false;// 用来记录第一次按下坐标点,在整个滑动的过程中 只记录一次
 	private float startY;
 	private boolean isBack = false;// 是从 松开刷新状态 来到的 下拉刷新状态
@@ -76,7 +75,7 @@ public class CustomRankListView extends ListView implements OnScrollListener {
 
 		MeasureView(headView);
 
-		headContentWidth = headView.getMeasuredWidth();
+		headView.getMeasuredWidth();
 		headContentHeight = headView.getMeasuredHeight();
 
 		headView.setPadding(0, -1 * headContentHeight, 0, 0);
@@ -100,9 +99,6 @@ public class CustomRankListView extends ListView implements OnScrollListener {
 
 		// 设置当前headView的状态
 		state = DONE;
-
-		// 设置当前下拉刷新是否可用
-		isRefreshable = false;
 	}
 
 	/**
@@ -114,7 +110,7 @@ public class CustomRankListView extends ListView implements OnScrollListener {
 		ViewGroup.LayoutParams lp = child.getLayoutParams();
 
 		if (null == lp) {
-			lp = new ViewGroup.LayoutParams(LayoutParams.FILL_PARENT,
+			lp = new ViewGroup.LayoutParams(LayoutParams.MATCH_PARENT,
 					LayoutParams.WRAP_CONTENT);
 		}
 
@@ -133,6 +129,7 @@ public class CustomRankListView extends ListView implements OnScrollListener {
 
 	}
 
+	@SuppressLint("ClickableViewAccessibility")
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 
@@ -358,8 +355,6 @@ public class CustomRankListView extends ListView implements OnScrollListener {
 	 * @param listener
 	 */
 	public void setOnRefreshListner(OnRefreshListner listener) {
-		// 设置下拉刷新可用
-		isRefreshable = true;
 		refreshListner = listener;
 
 	}
@@ -442,6 +437,7 @@ public class CustomRankListView extends ListView implements OnScrollListener {
 	/**
 	 * 上拉刷新完成时 所执行的操作,更改状态,隐藏head
 	 */
+	@SuppressWarnings("deprecation")
 	public void onRefreshComplete() {
 		state = DONE;
 		changeHeadViewOfState();
@@ -449,6 +445,7 @@ public class CustomRankListView extends ListView implements OnScrollListener {
 		headLastUpdate.setText("最后刷新时间： " + new Date().toLocaleString());
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void setAdapter(ListAdapter adapter) {
 

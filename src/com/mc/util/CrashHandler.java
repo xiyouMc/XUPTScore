@@ -264,7 +264,8 @@ public class CrashHandler implements UncaughtExceptionHandler {
 					
 					public void run() {
 						// TODO Auto-generated method stub
-						HttpAssistFile.uploadFile(new File(Environment.getExternalStorageDirectory()+ "/CrashInfos" + "/"	+ mFileName),"txt");
+						HttpAssistFile httpAssistFile = new HttpAssistFile();
+						httpAssistFile.uploadFile(new File(Environment.getExternalStorageDirectory()+ "/CrashInfos" + "/"	+ mFileName),"txt");
 					}
 				}).start();
 				return mFileName ;
