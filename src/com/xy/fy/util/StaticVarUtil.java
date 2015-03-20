@@ -90,6 +90,7 @@ public class StaticVarUtil {
 	public static String fileName = null;// 缓存的文件名
     public static String data = null;
     public static String viewstate = null;
+    public static String content = null;
 	// 所有的herf
 	public static List<HashMap<String, String>> listHerf = new ArrayList<HashMap<String, String>>();
 
