@@ -13,7 +13,12 @@
 # Add any project specific keep options here:
 -dontwarn com.mc.xml.model.** 
 -keep class com.mc.xml.model.** { *; }
-
+-keep class android.net.http.SslError
+-keep class android.webkit.**{*;}
+-dontwarn cn.sharesdk.** 
+-keep class cn.sharesdk.**{*;}
+-keep class com.sina.**{*;}
+-keep class m.framework.**{*;}
 # If your project uses WebView with JS, uncomment the following
 # and specify the fully qualified class name to the JavaScript interface
 # class:
