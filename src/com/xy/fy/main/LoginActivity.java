@@ -44,6 +44,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -81,6 +82,7 @@ public class LoginActivity extends Activity {
 	private PullDoorView pullDoorView;
 	private Handler mHandler;
 	private Bitmap bitmap;
+	private String scaletype;
 
 	@SuppressLint("ShowToast")
 	@Override
@@ -140,10 +142,11 @@ public class LoginActivity extends Activity {
 
 		Intent i = getIntent();
 		String imageMsg = i.getStringExtra("image") != null ? i
-				.getStringExtra("image") : "0|0";
+				.getStringExtra("image") : "0|0|0";
 		String[] imageAndTime = imageMsg.split("\\|");
 		final String imageTime = imageAndTime[0];
 		String isPoll = imageAndTime[1];
+		scaletype = imageAndTime[2];
 		savePic.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
@@ -179,7 +182,11 @@ public class LoginActivity extends Activity {
 		public void run() {
 			// 更新界面
 			// bitmap = BitmapUtil.resizeBitmapWidth(bitmap, 480);
+			pullDoorView
+					.setScaletype(scaletype.equals("0") ? ImageView.ScaleType.FIT_XY
+							: ImageView.ScaleType.CENTER_CROP);
 			pullDoorView.setBgBitmap(bitmap);
+
 		}
 
 	};
