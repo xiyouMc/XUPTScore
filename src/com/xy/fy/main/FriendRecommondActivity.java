@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.xy.fy.util.StaticVarUtil;
 import com.xy.fy.util.ViewUtil;
 
 import android.app.Activity;
@@ -16,7 +17,11 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-
+/**
+ * 好友推荐
+ * @author Administrator
+ * 2015-3-21
+ */
 public class FriendRecommondActivity extends Activity {
 
 	private ListView kecheng_Listview;
@@ -49,7 +54,8 @@ public class FriendRecommondActivity extends Activity {
 						.getItemAtPosition(position);
 				String kecheng = map.get("kecheng");
 				String score = map.get("score");
-				ViewUtil.showToast(getApplicationContext(), kecheng + " " + score);
+				//查询课程代码
+				ViewUtil.showToast(getApplicationContext(), StaticVarUtil.kcdmList.get(kecheng) + " " + score);
 			}
 		});
 	}

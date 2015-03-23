@@ -146,7 +146,7 @@ public class LoginActivity extends Activity {
 		String[] imageAndTime = imageMsg.split("\\|");
 		final String imageTime = imageAndTime[0];
 		String isPoll = imageAndTime[1];
-		scaletype = imageAndTime[2];
+		scaletype = imageAndTime.length==2?"0":imageAndTime[2];
 		savePic.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {

@@ -2,7 +2,11 @@ package com.xy.fy.main;
 
 import android.app.Activity;
 import android.os.Bundle;
-
+/**
+ * ∫√”—…Í«Î
+ * @author Administrator
+ * 2015-3-21
+ */
 public class FriendApplyActivity extends Activity {
 
 	@Override
