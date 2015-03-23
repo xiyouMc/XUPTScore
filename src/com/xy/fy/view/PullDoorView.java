@@ -82,6 +82,10 @@ public class PullDoorView extends RelativeLayout {
 		mImgView.setImageResource(id);
 	}
 
+	//设置 填充类型  默认是填充整个屏幕
+	public void setScaletype(ImageView.ScaleType scaleType){
+		mImgView.setScaleType(scaleType);// 填充整个屏幕
+	}
 	public void setBgBitmap(Bitmap bitmap) {
 		mImgView.setImageBitmap(bitmap);
 	}
