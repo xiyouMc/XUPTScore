@@ -112,13 +112,14 @@ public class MainActivity extends Activity {
 	private String name;//
 	private CircleImageView headPhoto;// 头像
 	private LinearLayout menuBang = null;// 成绩查询
-	private LinearLayout menuMyBukao = null;// 补考查询
+	private LinearLayout menuMyBukao = null;// 补考好友
 	private LinearLayout menuMyPaiming = null;// 我的排名
 	private LinearLayout menuMyCollect = null;// 我收藏的
 	private LinearLayout menuSetting = null;// 设置
 	private LinearLayout menuAbout = null;// 关于
 	private Button check_version = null;
 	ArrayList<HashMap<String, Object>> listItem;// json解析之后的列表,保存了所有的成绩数据
+
 	// 排名
 	private final static int DEFAULTITEMSUM = 100;
 	private static int lsitItemSum = DEFAULTITEMSUM;// 通过计算屏幕高度，求得应该显示多少行数据在listview
@@ -198,6 +199,14 @@ public class MainActivity extends Activity {
 			}
 		});
 
+		if (Util.isNull(StaticVarUtil.student.getAccount())) {
+			deleteCatch();
+			LogcatHelper.getInstance(MainActivity.this).stop();
+			Intent i = new Intent();
+			i.setClass(getApplicationContext(), LoginActivity.class);
+			startActivity(i);
+			return;
+		}
 		if (!Util.checkPWD(StaticVarUtil.student.getPassword())) {
 			ViewUtil.showToast(getApplicationContext(), "密码不安全，请重新设置密码");
 			setMenuItemState(menuBang, false, menuMyBukao, false,
@@ -396,6 +405,12 @@ public class MainActivity extends Activity {
 							JSONObject jsonObject2 = (JSONObject) jsonArray2
 									.get(j);
 							if (jsonObject2.get("xq").equals(xq)) {
+								// 添加 课程代码->课程名
+								StaticVarUtil.kcdmList.put(jsonObject2
+										.get("kcmc") == null ? " "
+										: jsonObject2.get("kcmc").toString(),
+										jsonObject2.get("kcdm").toString()
+												+ "|" + xn + "|" + xq);
 								result.append(jsonObject2.get("kcmc") == null ? " "
 										: jsonObject2.get("kcmc").toString());// 课程名称
 								result.append("--"
@@ -1099,13 +1114,6 @@ public class MainActivity extends Activity {
 						return;
 					}
 				}
-				/*
-				 * File file = null; // 头像 if (bitmap != null) { file = new
-				 * File(StaticVarUtil.PATH + "/headPhoto.JPEG"); } String
-				 * account = StaticVarUtil.student.getAccount() + ""; // 修改
-				 * alertStudent(account, password, file);
-				 */
-
 				if (password2.equals(password3)) {
 					if (!Util.hasDigitAndNum(password2)) {
 						ViewUtil.showToast(getApplicationContext(),
@@ -1910,30 +1918,6 @@ public class MainActivity extends Activity {
 		}
 	}
 
-	@Override
-	protected void onPause() {
-		super.onPause();
-		allRankMap = new HashMap<String, String>();
-//		showRankArrayList = new ArrayList<HashMap<String, Object>>();
-		allRankArrayList = new ArrayList<HashMap<String, Object>>();
-	}
-
-	@Override
-	protected void onDestroy() {
-		// TODO Auto-generated method stub
-		super.onDestroy();
-		allRankMap = new HashMap<String, String>();
-//		showRankArrayList = new ArrayList<HashMap<String, Object>>();
-		allRankArrayList = new ArrayList<HashMap<String, Object>>();
-	}
-
-	@Override
-	protected void onStop() {
-		// TODO Auto-generated method stub
-		super.onStop();
-		allRankMap = new HashMap<String, String>();
-//		showRankArrayList = new ArrayList<HashMap<String, Object>>();
-		allRankArrayList = new ArrayList<HashMap<String, Object>>();
-	}
+	
 
 }
