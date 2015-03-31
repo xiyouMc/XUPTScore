@@ -1,6 +1,5 @@
 package com.mc.xml.model;
 
-import java.util.List;
 /**
  * xn为最外层的
  * @author Administrator

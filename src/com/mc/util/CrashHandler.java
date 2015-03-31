@@ -155,7 +155,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
 		new Thread() {
 			public void run() {
 				Looper.prepare() ;
-				Toast.makeText(mContext , "很抱歉,程序出现异常,即将退出" , 0).show() ;
+				Toast.makeText(mContext , "很抱歉,程序出现异常,即将退出" , Toast.LENGTH_SHORT).show() ;
 				Looper.loop() ;
 			}
 		}.start() ;

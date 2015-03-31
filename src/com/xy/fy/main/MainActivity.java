@@ -31,6 +31,8 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.provider.MediaStore;
 import android.telephony.TelephonyManager;
 import android.text.Editable;
@@ -62,6 +64,8 @@ import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import cn.sharesdk.onekeyshare.OnekeyShare;
+
 import com.cardsui.example.MyPlayCard;
 import com.fima.cardsui.objects.CardStack;
 import com.fima.cardsui.views.CardUI;
@@ -80,6 +84,7 @@ import com.slidingmenu.lib.SlidingMenu.OnOpenListener;
 import com.xy.fy.adapter.ChooseHistorySchoolExpandAdapter;
 import com.xy.fy.adapter.ChooseSchoolExpandAdapter;
 import com.xy.fy.util.BitmapUtil;
+import com.xy.fy.util.ShareUtil;
 import com.xy.fy.util.StaticVarUtil;
 import com.xy.fy.util.TestArrayAdapter;
 import com.xy.fy.util.ViewUtil;
@@ -93,15 +98,14 @@ import com.xy.fy.view.ToolClass;
  */
 @SuppressLint({ "ShowToast", "InflateParams" })
 public class MainActivity extends Activity {
+	// share
+	private static OnekeyShare share;
+	private static ShareUtil shareUtil;
 	// 保存成绩的map
 	public static HashMap<String, String> mapScoreOne = null;// xn =1
 	public static HashMap<String, String> mapScoreTwo = null;// xn = 2
 	private static boolean isFirst = true;
-	// 检测版本
-	private static PopupWindow version_popupWindow;
 	private static boolean is_show = false;
-	private View view;
-	private TextView update_content_textview;
 
 	public static SlidingMenu slidingMenu;// 侧滑组件
 	private Button chooseCollege;// 选择学校按钮
@@ -114,7 +118,7 @@ public class MainActivity extends Activity {
 	private LinearLayout menuBang = null;// 成绩查询
 	private LinearLayout menuMyBukao = null;// 补考好友
 	private LinearLayout menuMyPaiming = null;// 我的排名
-	private LinearLayout menuMyCollect = null;// 我收藏的
+	private LinearLayout menuIdea_back = null;// 意见反馈
 	private LinearLayout menuSetting = null;// 设置
 	private LinearLayout menuAbout = null;// 关于
 	private Button check_version = null;
@@ -152,7 +156,8 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		super.setContentView(R.layout.activity_main);
-
+		shareUtil = new ShareUtil(getApplicationContext());
+		share = shareUtil.showShare();
 		softDeclare();// 将部分 变量 定义为弱引用
 		dialog = ViewUtil.getProgressDialog(MainActivity.this, "正在查询");
 		// init map
@@ -162,7 +167,6 @@ public class MainActivity extends Activity {
 
 		// 当前Activity进栈
 		StaticVarUtil.activities.add(MainActivity.this);
-
 		// 找到ID
 		slidingMenu = (SlidingMenu) findViewById(R.id.slidingMenuXyScore);
 		// 打开sliding组件监听
@@ -173,27 +177,27 @@ public class MainActivity extends Activity {
 				int item = getCurrentMeunItem();
 				if (item == 1) {
 					setMenuItemState(menuBang, true, menuMyBukao, false,
-							menuMyPaiming, false, menuMyCollect, false,
+							menuMyPaiming, false, menuIdea_back, false,
 							menuSetting, false, menuAbout, false);
 				} else if (item == 2) {
 					setMenuItemState(menuBang, false, menuMyBukao, true,
-							menuMyPaiming, false, menuMyCollect, false,
+							menuMyPaiming, false, menuIdea_back, false,
 							menuSetting, false, menuAbout, false);
 				} else if (item == 3) {
 					setMenuItemState(menuBang, false, menuMyBukao, false,
-							menuMyPaiming, true, menuMyCollect, false,
+							menuMyPaiming, true, menuIdea_back, false,
 							menuSetting, false, menuAbout, false);
 				} else if (item == 4) {
 					setMenuItemState(menuBang, false, menuMyBukao, false,
-							menuMyPaiming, false, menuMyCollect, true,
+							menuMyPaiming, false, menuIdea_back, true,
 							menuSetting, false, menuAbout, false);
 				} else if (item == 5) {
 					setMenuItemState(menuBang, false, menuMyBukao, false,
-							menuMyPaiming, false, menuMyCollect, false,
+							menuMyPaiming, false, menuIdea_back, false,
 							menuSetting, true, menuAbout, false);
 				} else if (item == 6) {
 					setMenuItemState(menuBang, false, menuMyBukao, false,
-							menuMyPaiming, false, menuMyCollect, false,
+							menuMyPaiming, false, menuIdea_back, false,
 							menuSetting, false, menuAbout, true);
 				}
 			}
@@ -210,7 +214,7 @@ public class MainActivity extends Activity {
 		if (!Util.checkPWD(StaticVarUtil.student.getPassword())) {
 			ViewUtil.showToast(getApplicationContext(), "密码不安全，请重新设置密码");
 			setMenuItemState(menuBang, false, menuMyBukao, false,
-					menuMyPaiming, false, menuMyCollect, false, menuSetting,
+					menuMyPaiming, false, menuIdea_back, false, menuSetting,
 					true, menuAbout, false);
 			setCurrentMenuItem(5);// 记录当前选项位置，并且跳转
 			slidingMenu.toggle();// 页面跳转
@@ -247,7 +251,9 @@ public class MainActivity extends Activity {
 		mCardView = (CardUI) findViewById(R.id.cardsview);
 		mCardView.setSwipeable(true);
 		ShowCardAsyntask showCardAsyntask = new ShowCardAsyntask();
+		dialog.show();
 		showCardAsyntask.execute();
+
 	}
 
 	class ShowCardAsyntask extends AsyncTask<String, String, Boolean> {
@@ -275,6 +281,7 @@ public class MainActivity extends Activity {
 				// 上传各种信息
 				Util.uploadDevInfos(getApplicationContext());
 			}
+			dialog.cancel();
 		}
 
 	}
@@ -354,6 +361,9 @@ public class MainActivity extends Activity {
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
+			if (Util.isFastDoubleClick()) {
+				return;
+			}
 			Intent i = new Intent();
 			i.setClass(getApplicationContext(), ShowScoreActivity.class);
 			Bundle b = new Bundle();
@@ -471,7 +481,7 @@ public class MainActivity extends Activity {
 		menuBang = (LinearLayout) findViewById(R.id.menu_bang);// 1.成绩查询
 		menuMyBukao = (LinearLayout) findViewById(R.id.menu_my_bukao);// 2.补考查询
 		menuMyPaiming = (LinearLayout) findViewById(R.id.menu_my_paiming);// 3.我的排名
-		menuMyCollect = (LinearLayout) findViewById(R.id.menu_my_collect);// 4.我收藏的
+		menuIdea_back = (LinearLayout) findViewById(R.id.idea_back);// 4.我收藏的
 		menuSetting = (LinearLayout) findViewById(R.id.menu_setting);// 5.设置
 		menuAbout = (LinearLayout) findViewById(R.id.menu_about);
 
@@ -510,13 +520,25 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				setMenuItemState(menuBang, true, menuMyBukao, false,
-						menuMyPaiming, false, menuMyCollect, false,
+						menuMyPaiming, false, menuIdea_back, false,
 						menuSetting, false, menuAbout, false);
-				setCurrentMenuItem(1);// 记录当前选项位置
 				slidingMenu.toggle();// 页面跳转
-
 				slidingMenu.setContent(R.layout.card_main);
-				menu1();
+				new Thread(new Runnable() {
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						try {
+							Thread.sleep(700);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						Message msg = new Message();
+						msg.what = 1;
+						mHandler.sendMessage(msg);
+					}
+				}).start();
 			}
 		});
 
@@ -529,14 +551,25 @@ public class MainActivity extends Activity {
 				// showToast("程序猿们正在努力开发中，请持续关注...");
 
 				setMenuItemState(menuBang, false, menuMyBukao, true,
-						menuMyPaiming, false, menuMyCollect, false,
+						menuMyPaiming, false, menuIdea_back, false,
 						menuSetting, false, menuAbout, false);
-				setCurrentMenuItem(2);// 记录当前选项位置
 				slidingMenu.toggle();// 页面跳转
-
 				slidingMenu.setContent(R.layout.activity_friend_list);
-				friend_list();
-
+				new Thread(new Runnable() {
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						try {
+							Thread.sleep(700);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						Message msg = new Message();
+						msg.what = 2;
+						mHandler.sendMessage(msg);
+					}
+				}).start();
 			}
 		});
 
@@ -546,26 +579,51 @@ public class MainActivity extends Activity {
 				if (StaticVarUtil.list_Rank_xnAndXq.size() != 0) {
 
 					setMenuItemState(menuBang, false, menuMyBukao, false,
-							menuMyPaiming, true, menuMyCollect, false,
+							menuMyPaiming, true, menuIdea_back, false,
 							menuSetting, false, menuAbout, false);
-					setCurrentMenuItem(3);// 记录当前选项位置
 					slidingMenu.toggle();// 页面跳转
-
 					slidingMenu.setContent(R.layout.activity_rank);
-					rank();
+					new Thread(new Runnable() {
+						@Override
+						public void run() {
+							// TODO Auto-generated method stub
+							try {
+								Thread.sleep(700);
+							} catch (InterruptedException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							Message msg = new Message();
+							msg.what = 3;
+							mHandler.sendMessage(msg);
+						}
+					}).start();
 				} else {
 					ViewUtil.showToast(getApplicationContext(), "网络不稳定，请稍后查询");
 				}
-
 			}
-
 		});
 
-		menuMyCollect.setOnClickListener(new OnClickListener() {
+		menuIdea_back.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				ViewUtil.showToast(getApplicationContext(),
-						"程序猿们正在努力开发中，请持续关注...");
+				slidingMenu.toggle();// 页面跳转
+				slidingMenu.setContent(R.layout.activity_ideaback);
+				new Thread(new Runnable() {
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						try {
+							Thread.sleep(700);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						Message msg = new Message();
+						msg.what = 4;
+						mHandler.sendMessage(msg);
+					}
+				}).start();
 			}
 		});
 
@@ -573,13 +631,25 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				setMenuItemState(menuBang, false, menuMyBukao, false,
-						menuMyPaiming, false, menuMyCollect, false,
+						menuMyPaiming, false, menuIdea_back, false,
 						menuSetting, true, menuAbout, false);
-				setCurrentMenuItem(5);// 记录当前选项位置，并且跳转
 				slidingMenu.toggle();// 页面跳转
-
 				slidingMenu.setContent(R.layout.activity_setting);
-				menuSetting();
+				new Thread(new Runnable() {
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						try {
+							Thread.sleep(700);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						Message msg = new Message();
+						msg.what = 5;
+						mHandler.sendMessage(msg);
+					}
+				}).start();
 
 			}
 		});
@@ -588,14 +658,27 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				setMenuItemState(menuBang, false, menuMyBukao, false,
-						menuMyPaiming, false, menuMyCollect, false,
+						menuMyPaiming, false, menuIdea_back, false,
 						menuSetting, false, menuAbout, true);
-				setCurrentMenuItem(6);// 记录当前选项位置，并且跳转
-				slidingMenu.toggle();// 页面跳转
 
+				slidingMenu.toggle();// 页面跳转
 				slidingMenu.setContent(R.layout.activity_about);
 
-				aboutListener();
+				new Thread(new Runnable() {
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						try {
+							Thread.sleep(700);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						Message msg = new Message();
+						msg.what = 6;
+						mHandler.sendMessage(msg);
+					}
+				}).start();
 			}
 		});
 
@@ -609,6 +692,7 @@ public class MainActivity extends Activity {
 	}
 
 	private void aboutListener() {
+		findViewById(R.id.newTip).setAlpha(100);
 		// 菜单按钮
 		Button menu = (Button) findViewById(R.id.butMenu);
 		menu.setOnClickListener(new OnClickListener() {
@@ -626,6 +710,28 @@ public class MainActivity extends Activity {
 				// TODO Auto-generated method stub
 				showDialogSaveQrcode();
 
+			}
+		});
+		findViewById(R.id.guanwang).setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				Uri uri = Uri.parse("http://www.xiyoumobile.com");
+				Intent it = new Intent(Intent.ACTION_VIEW, uri);
+				startActivity(it);
+			}
+		});
+		findViewById(R.id.email).setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent data = new Intent(Intent.ACTION_SENDTO);
+				data.setData(Uri.parse("69449212@qq.com"));
+				data.putExtra(Intent.EXTRA_SUBJECT, "《西邮成绩》反馈");
+				data.putExtra(Intent.EXTRA_TEXT, " ");
+				startActivity(data);
 			}
 		});
 		check_version = (Button) findViewById(R.id.checkversion);// 检测新版本按钮
@@ -770,7 +876,8 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				ViewUtil.showShare(getApplicationContext());
+				// ViewUtil.showShare(getApplicationContext());
+				shareUtil.showShareUI(MainActivity.share);
 			}
 		});
 		// rankListViewListener();
@@ -1355,7 +1462,6 @@ public class MainActivity extends Activity {
 		if (judgeCollegeId() > 0) {
 			if (!set.contains(chooseCollege.getText().toString())) {// 如果不包含就加入
 				set.add(chooseCollege.getText().toString());
-				System.out.print("加入历史：" + chooseCollege.getText().toString());
 			}
 		}
 		editor.putStringSet("college", set);// 存入进去
@@ -1509,10 +1615,8 @@ public class MainActivity extends Activity {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			System.out.println("url" + url);
 			// 查询返回结果
 			String result = HttpUtilMc.queryStringForPost(url);
-			System.out.println("=========================  " + result);
 			return result;
 
 		}
@@ -1532,7 +1636,6 @@ public class MainActivity extends Activity {
 						if (!result.equals("no_evaluation")) {
 							score_json = result;
 							listItem = new ArrayList<HashMap<String, Object>>();
-							System.out.println("rrrr:" + result);
 							JSONObject jsonObject = new JSONObject(result);
 							JSONArray jsonArray = (JSONArray) jsonObject
 									.get("liScoreModels");// 最外层的array
@@ -1562,7 +1665,7 @@ public class MainActivity extends Activity {
 							builder.create().show();
 						}
 						menu1();
-						dialog.cancel();
+
 					} else {
 						ViewUtil.showToast(getApplicationContext(), "查询失败");
 					}
@@ -1646,7 +1749,6 @@ public class MainActivity extends Activity {
 			}
 
 			JSONObject jsonObject = new JSONObject(result);
-			System.out.println("result::" + result);
 			String rank = String.valueOf(jsonObject.getString("rank"));
 			rankText.setText(rank);
 
@@ -1686,11 +1788,94 @@ public class MainActivity extends Activity {
 		}
 	}
 
+	private void menuIdeaBack() {
+		Button menu = (Button) findViewById(R.id.butMenu);
+		menu.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				slidingMenu.toggle();
+			}
+		});
+		final TextView msg = (TextView) findViewById(R.id.text);
+		final TextView phoneNum = (TextView) findViewById(R.id.phone);
+		findViewById(R.id.send).setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				/**
+				 msg.getText().toString().trim()
+							+ 
+							("".equals(phoneNum.getText().toString().trim()) ? ""
+									: phoneNum.getText().toString()
+													.trim())
+											+ StaticVarUtil.student
+													.getAccount()
+											+ Util.getVersion(getApplicationContext())
+				 */
+				
+			}
+		});
+	}
+
+	private Handler mHandler = new Handler() {
+
+		public void handleMessage(Message msg) {
+			switch (msg.what) {
+			case 1:
+				menu1();
+				setCurrentMenuItem(1);// 记录当前选项位置
+				break;
+			case 2:
+				friend_list();
+				setCurrentMenuItem(2);// 记录当前选项位置
+				break;
+			case 3:
+				rank();
+				setCurrentMenuItem(3);// 记录当前选项位置
+				break;
+			case 4:
+				menuIdeaBack();
+				setCurrentMenuItem(4);// 记录当前选项位置
+				break;
+			case 5:
+				menuSetting();
+				setCurrentMenuItem(5);// 记录当前选项位置
+				break;
+			case 6:
+				aboutListener();
+				setCurrentMenuItem(6);// 记录当前选项位置
+				break;
+			case 7:
+				showShareQrcodeDialog();
+				break;
+			// 获取传递的数据
+			// Bundle data = msg.getData();
+			// int count = data.getInt("COUNT");
+			// 处理UI更新等操作
+			}
+		};
+	};
+
 	// 显示 排名的listview
 	private void setListView() {
 		// TODO Auto-generated method stub
 		if (showRankArrayList.size() < DEFAULTITEMSUM) {
-			showShareQrcodeDialog();
+			new Thread(new Runnable() {
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					try {
+						Thread.sleep(300);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					Message msg = new Message();
+					msg.what = 7;
+					mHandler.sendMessage(msg);
+				}
+			}).start();
+
 		}
 		simpleAdapter = new SimpleAdapter(getApplicationContext(),
 				showRankArrayList, R.layout.allrank_listitem, new String[] {
@@ -1708,7 +1893,8 @@ public class MainActivity extends Activity {
 		builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-				ViewUtil.showShare(getApplicationContext());
+				// ViewUtil.showShare(getApplicationContext());
+				shareUtil.showShareUI(MainActivity.share);
 			}
 		});
 		builder.create().show();
@@ -1772,9 +1958,10 @@ public class MainActivity extends Activity {
 			if (bitmap == null)
 				return;
 			headPhoto.setImageBitmap(bitmap);// 显示图片
-			Util.saveBitmap2file(bitmap, StaticVarUtil.student.getAccount());
-			bitmap.recycle();
-
+			if (Util.isExternalStorageWritable()) {
+				Util.saveBitmap2file(bitmap, StaticVarUtil.student.getAccount());
+				bitmap.recycle();
+			}
 		}
 
 	}
@@ -1821,75 +2008,6 @@ public class MainActivity extends Activity {
 		}
 	}
 
-	// 检测版本
-	@SuppressWarnings({ "unused", "deprecation" })
-	private void check_version_showWindow(View parent) {
-
-		if (version_popupWindow == null) {
-			LayoutInflater layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-			view = layoutInflater.inflate(R.layout.check_apk_version, null);
-			update_content_textview = (TextView) view
-					.findViewById(R.id.update_content);
-			download_version = (Button) view
-					.findViewById(R.id.download_version);
-			cancle_check = (Button) view.findViewById(R.id.cancle_check);
-			// 创建一个PopuWidow对象
-			version_popupWindow = new PopupWindow(view, getWindowManager()
-					.getDefaultDisplay().getWidth(), 330);
-		}
-		// 使其聚集
-		version_popupWindow.setFocusable(true);
-		// 设置允许在外点击消失
-		version_popupWindow.setOutsideTouchable(true);
-		// 这个是为了点击“返回Back”也能使其消失，并且并不会影响你的背景
-		version_popupWindow.setBackgroundDrawable(new BitmapDrawable());
-		// 设置弹出动画
-		// popupWindow.setAnimationStyle(R.anim.push_bottom_out);
-		version_popupWindow.setAnimationStyle(R.style.mystyle);
-		WindowManager windowManager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
-		// 显示的位置为:屏幕的宽度的一半-PopupWindow的高度的一半
-		/*
-		 * int xPos = windowManager.getDefaultDisplay().getWidth() / 2 -
-		 * popupWindow.getWidth() / 2;
-		 */
-		int xPos = windowManager.getDefaultDisplay().getHeight() / 2
-				- version_popupWindow.getHeight() / 2;
-		Log.i("coder", "xPos:" + xPos);
-
-		version_popupWindow.showAsDropDown(parent,
-				windowManager.getDefaultDisplay().getHeight()
-						- version_popupWindow.getHeight(),
-				windowManager.getDefaultDisplay().getHeight()
-						- version_popupWindow.getHeight() - 74);
-		update_content_textview.setText("最近版本:" + new_version + "\n"
-				+ update_content);
-		// 检测更新，下载软件
-		download_version.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-
-				version_popupWindow.dismiss();
-				// 更新版本
-				VersionUpdate versionUpdate = new VersionUpdate(
-						MainActivity.this);
-				versionUpdate.apkUrl = apk_url;
-				versionUpdate.checkUpdateInfo();
-			}
-		});
-		cancle_check.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				version_popupWindow.dismiss();
-				// version_popupWindow = null;
-			}
-		});
-	}
-
 	/**
 	 * 上传头像
 	 * 
@@ -1917,7 +2035,5 @@ public class MainActivity extends Activity {
 			}
 		}
 	}
-
-	
 
 }

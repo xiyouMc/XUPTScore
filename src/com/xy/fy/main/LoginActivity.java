@@ -124,6 +124,9 @@ public class LoginActivity extends Activity {
 		this.login.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				if (Util.isFastDoubleClick()) {
+					return;
+				}
 				login();
 			}
 		});
@@ -146,17 +149,22 @@ public class LoginActivity extends Activity {
 		String[] imageAndTime = imageMsg.split("\\|");
 		final String imageTime = imageAndTime[0];
 		String isPoll = imageAndTime[1];
-		scaletype = imageAndTime.length==2?"0":imageAndTime[2];
+		scaletype = imageAndTime.length==2?"1":imageAndTime[2];
 		savePic.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				BitmapUtil.saveFileAndDB(
-						getApplicationContext(),
-						bitmap != null ? bitmap : BitmapFactory.decodeResource(
-								getResources(), R.drawable.left1), imageTime
-								+ ".jpg");
-				ViewUtil.showToast(getApplicationContext(), "保存文件成功");
+				if (Util.isExternalStorageWritable()) {
+					BitmapUtil.saveFileAndDB(
+							getApplicationContext(),
+							bitmap != null ? bitmap : BitmapFactory.decodeResource(
+									getResources(), R.drawable.left1), imageTime
+									+ ".jpg");
+					ViewUtil.showToast(getApplicationContext(), "保存文件成功");	
+				}else {
+					ViewUtil.showToast(getApplicationContext(), "sdcard不存在");
+				}
+				
 			}
 		});
 		mHandler = new Handler();
@@ -319,7 +327,8 @@ public class LoginActivity extends Activity {
 	 * 找到控件ID
 	 */
 	private void findViewById() {
-		StaticVarUtil.PATH = "/sdcard/xuptscore";// 设置文件目录
+		StaticVarUtil.PATH = Environment  
+	            .getExternalStorageDirectory()+"/xuptscore/";// 设置文件目录
 		// this.account = (EditText) findViewById(R.id.etAccount);
 		this.photo = (CircleImageView) findViewById(R.id.profile_image);
 		this.password = (EditText) findViewById(R.id.etPassword);
@@ -423,10 +432,10 @@ public class LoginActivity extends Activity {
 		this.progressDialog = ViewUtil.getProgressDialog(LoginActivity.this,
 				"正在登录");
 
-		Animation animation = AnimationUtils.loadAnimation(LoginActivity.this,
+		/*Animation animation = AnimationUtils.loadAnimation(LoginActivity.this,
 				R.anim.translate);
 		LinearLayout layout = (LinearLayout) findViewById(R.id.layout);
-		layout.setAnimation(animation);
+		layout.setAnimation(animation);*/
 	}
 
 	@Override
@@ -452,10 +461,8 @@ public class LoginActivity extends Activity {
 					+ URLEncoder.encode(password.getText().toString().trim())
 					+ "&session=" + StaticVarUtil.session;// 增加urlendcoder编码
 															// 防止密码中出现空格而崩掉
-			System.out.println("url" + url);
 			// 查询返回结果
 			String result = HttpUtilMc.queryStringForPost(url);
-			System.out.println("=========================  " + result);
 			return result;
 
 		}
@@ -468,7 +475,6 @@ public class LoginActivity extends Activity {
 			progressDialog.cancel();
 			try {
 				if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
-					System.out.println("result:" + result);
 					if (result.equals("error")) {
 						ViewUtil.showToast(getApplicationContext(), "密码错误");
 						password.setText("");

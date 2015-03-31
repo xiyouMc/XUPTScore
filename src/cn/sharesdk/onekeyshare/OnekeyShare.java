@@ -593,6 +593,7 @@ public class OnekeyShare implements PlatformActionListener, Callback {
 	}
 
 	// 在状态栏提示分享操作
+	@SuppressWarnings("deprecation")
 	private void showNotification(long cancelTime, String text) {
 		try {
 			Context app = context.getApplicationContext();

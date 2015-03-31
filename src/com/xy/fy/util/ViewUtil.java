@@ -22,7 +22,7 @@ public class ViewUtil {
 
 	/**
 	 * 分享模块
-	 */
+	 *//*
 	public static void showShare(Context context) {
 		// ShareSDK.initSDK(this);
 		OnekeyShare oks = new OnekeyShare();
@@ -51,7 +51,7 @@ public class ViewUtil {
 		oks.setSiteUrl("http://www.xiyoumobile.com/wechat_app/xiyouscore/");
 		// 启动分享GUI
 		oks.show(context);
-	}
+	}*/
 
 	/**
 	 * Toast

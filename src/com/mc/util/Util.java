@@ -128,6 +128,20 @@ public class Util {
 		}
 	}
 
+	private static long lastClickTime;
+	/**
+	 * 防止按钮被点击很多次
+	 * @return
+	 */
+    public static boolean isFastDoubleClick() {
+        long time = System.currentTimeMillis();
+        long timeD = time - lastClickTime;
+        if ( 0 < timeD && timeD < 500) {   
+            return true;   
+        }   
+        lastClickTime = time;   
+        return false;   
+    }
 	public static String getTime() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-HH/mm/ss");
 		System.out.println();
@@ -297,8 +311,17 @@ public class Util {
 		int quality = 100;
 		OutputStream stream = null;
 		try {
-			stream = new FileOutputStream(StaticVarUtil.PATH + "/" + username
-					+ ".JPEG");
+			String photoPath = StaticVarUtil.PATH + "/" + username
+					+ ".JPEG";
+			if (!new File(photoPath).exists()) {
+				try {
+					new File(photoPath).createNewFile();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			stream = new FileOutputStream(photoPath);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -307,6 +330,13 @@ public class Util {
 		return bmp.compress(format, quality, stream);
 	}
 
+	public static boolean isExternalStorageWritable() {
+	    String state = Environment.getExternalStorageState();
+	    if (Environment.MEDIA_MOUNTED.equals(state)) {
+	        return true;
+	    }
+	    return false;
+	}
 	// 从网络获取图片,并保存找到本地
 	public static Bitmap getBitmap(String pictureUrl) {
 		URL url = null;
@@ -378,6 +408,9 @@ public class Util {
 
 	}
 
+	public static boolean isNull(Object s){
+		return s==null?true:false;
+	}
 	public static boolean checkPWD(String pwd) {
 		return pwd
 				.matches("^(?![A-Z]*$)(?![a-z]*$)(?![0-9]*$)(?![^a-zA-Z0-9]*$)\\S+$");
@@ -425,7 +458,7 @@ public class Util {
 	}
 
 	public static boolean hasDigitAndNum(String str) {
-		if (haveChar(str) & hasDigit(str)) {
+		if (haveChar(str) && hasDigit(str)) {
 			return true;
 		} else {
 			return false;

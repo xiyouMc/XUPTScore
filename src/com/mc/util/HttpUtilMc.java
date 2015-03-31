@@ -4,9 +4,11 @@ import java.io.IOException;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.CoreConnectionPNames;
 import org.apache.http.util.EntityUtils;
 
 /**
@@ -16,18 +18,17 @@ import org.apache.http.util.EntityUtils;
 
 public class HttpUtilMc {
 	// 基础URL
-	// public static final String BASE_URL="http://10.0.2.2:8080/ShopServer/";
-	// public static final String BASE_URL = "http://192.168.137.1:8080/TuoC/";
-	public static final String IP = "http://192.168.191.1:8080";
+	public static final String IP = "http://222.24.63.101";
 	public static final String BASE_URL = IP + "/xuptqueryscore/";
-	// public static String SERVER_ADDRESS="192.168.1.103";
-
+	public static String SERVER_ADDRESS = "222.24.63.101";
+	public static final String XUPT_IP1 = "222.24.19.201";
+	public static final String XUPT_IP2 = "222.24.19.202";
 	/*
 	 * public static String SERVER_ADDRESS="192.168.11.1"; public static int
 	 * SERVER_PORT = 8080;
 	 */
 
-	public static String CONNECT_EXCEPTION = "服务器维护中。。。";
+	public static String CONNECT_EXCEPTION = "服务器异常，请重新登录";
 
 	// 获得Get请求对象request
 	public static HttpGet getHttpGet(String url) {
@@ -40,19 +41,28 @@ public class HttpUtilMc {
 		HttpPost request = new HttpPost(url);
 		return request;
 	}
-    
 
-	//根据请求获得响应对象response
+	// 根据请求获得响应对象response
 	public static HttpResponse getHttpResponse(HttpGet request)
 			throws ClientProtocolException, IOException {
-		HttpResponse response = new DefaultHttpClient().execute(request);
+		HttpClient client = new DefaultHttpClient();
+		client.getParams().setParameter(
+				CoreConnectionPNames.CONNECTION_TIMEOUT, 6000);
+		// 读取超时
+		client.getParams().setParameter(CoreConnectionPNames.SO_TIMEOUT, 6000);
+		HttpResponse response = client.execute(request);
 		return response;
 	}
 
-	//根据请求获得响应对象response
+	// 根据请求获得响应对象response
 	public static HttpResponse getHttpResponse(HttpPost request)
 			throws ClientProtocolException, IOException {
-		HttpResponse response = new DefaultHttpClient().execute(request);
+		HttpClient client = new DefaultHttpClient();
+		client.getParams().setParameter(
+				CoreConnectionPNames.CONNECTION_TIMEOUT, 6000);
+		// 读取超时
+		client.getParams().setParameter(CoreConnectionPNames.SO_TIMEOUT, 6000);
+		HttpResponse response = client.execute(request);
 		return response;
 	}
 
@@ -67,7 +77,6 @@ public class HttpUtilMc {
 		try {
 			// 获得响应对象
 			HttpResponse response = HttpUtilMc.getHttpResponse(request);
-
 			System.out.println("response==========" + response);
 			System.out
 					.println("response.getStatusLine().getStatusCode()=========="
@@ -147,5 +156,30 @@ public class HttpUtilMc {
 			return result;
 		}
 		return null;
+	}
+
+	/**
+	 * 验证学校服务器是否可以ping通
+	 * 
+	 * @param timeout
+	 * @return
+	 */
+	private static boolean IsReachIP(String ip) {
+		try {
+			return Runtime.getRuntime()
+					.exec("ping -c 1 -w 100 " + ip).waitFor() == 0 ? true
+					: false;
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	public static boolean IsReachIP() {
+		return true/*IsReachIP(XUPT_IP1) ? true : IsReachIP(XUPT_IP2)*/;
 	}
 }
