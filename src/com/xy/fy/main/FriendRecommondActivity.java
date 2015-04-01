@@ -83,7 +83,6 @@ public class FriendRecommondActivity extends Activity {
 			if (first_score_all == "") {
 				return false;
 			}
-			System.out.println("xn:" + xn + "first_score:" + first_score_all);
 			String now_score = first_score_all.split("--")[1].trim();
 			if (now_score.equals("\\")) {
 				return false;
