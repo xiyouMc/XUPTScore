@@ -557,6 +557,7 @@ public class LoginActivity extends Activity {
 
 		@Override
 		protected String doInBackground(Object... params) {
+			loginTimes++;
 			// TODO Auto-generated method stub
 			return HttpUtilMc.IsReachIP() ? HttpUtilMc
 					.queryStringForPost(HttpUtilMc.BASE_URL + "GetPic.jsp")
