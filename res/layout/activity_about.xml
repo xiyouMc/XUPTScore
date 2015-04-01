@@ -6,7 +6,7 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:background="#F8F8FF"
         android:orientation="vertical" >
 
@@ -38,106 +38,196 @@
                 android:gravity="center_vertical"
                 android:text="关于"
                 android:textColor="@color/white"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
         </RelativeLayout>
 
         <ImageView
             android:id="@+id/code"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:layout_gravity="center_horizontal"
+            android:contentDescription="@string/app_name"
             android:src="@drawable/qrcode" />
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:paddingTop="20dp" >
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#EDEDED" />
 
             <LinearLayout
+                android:id="@+id/checkVersion"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal" >
+                android:layout_height="60dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp" >
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingBottom="10dp"
-                    android:text="西邮成绩    "
-                    android:textColor="@color/black"
-                    android:textSize="19dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="10dp"
-                    android:text="V"
-                    android:textColor="@color/grey"
-                    android:textSize="18dp" />
+                    android:text="当前版本:"
+                    android:textColor="#595959"
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/version"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingBottom="10dp"
-                    android:text="1.1"
-                    android:textColor="@color/grey"
-                    android:textSize="16dp" />
+                    android:textColor="#595959"
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
-                android:text="\n开发者：Mc\n\n负责单位：西安邮电3G手机实验室\n\n反馈方式：694449212@qq.com\n\nQQ:694449212"
-                android:textColor="@color/black"
-                android:textSize="18dp"
-                android:textIsSelectable="true"/>
+                android:layout_width="match_parent"
+                android:layout_height="0.3dp"
+                android:background="#EDEDED" />
 
-            <Button
-                android:id="@+id/checkversion"
+            <LinearLayout
+                android:id="@+id/guanwang"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="#00000000"
-                android:drawableLeft="@drawable/emotionstore_newtips"
-                android:gravity="left|center_vertical"
-                android:text="检测新版本"
-                android:textColor="#7EC0EE"
-                android:textSize="18dp" />
+                android:layout_height="60dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp" >
 
-            <!--
-                 <TextView
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="5dp"
+                    android:text="官网"
+                    android:textColor="#595959"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="http://www.xiyoumobile.com"
+                    android:textColor="#595959"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="0.3dp"
+                android:background="#EDEDED" />
+
+            <LinearLayout
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
-                android:text="\n意见反馈"
-                android:textColor="@color/black"
-                android:textSize="18dp" />            -->
+                android:layout_height="60dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="5dp"
+                    android:text="Email"
+                    android:textColor="#595959"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="694449212@qq.com"
+                    android:textColor="#595959"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0.3dp"
+                android:background="#EDEDED" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="60dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="5dp"
+                    android:text="开发者"
+                    android:textColor="#595959"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mc"
+                    android:textColor="#595959"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0.3dp"
+                android:background="#EDEDED" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="60dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="5dp"
+                    android:text="负责单位"
+                    android:textColor="#595959"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="西安邮电3G手机实验室"
+                    android:textColor="#595959"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" 
+                android:gravity="center_vertical"
+                android:paddingLeft="20dp"
+                >
+
+                <Button
+                    android:id="@+id/checkversion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#00000000"
+                    android:layout_centerVertical="true"
+                    android:text="检测新版本"
+                    android:textColor="#7EC0EE"
+                    android:textSize="15sp"
+                    android:paddingLeft="10dp" />
+
+                <TextView
+                    android:id="@+id/newTip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/emotionstore_newtips" />
+            </RelativeLayout>
         </LinearLayout>
-
-        <!--
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:background="#FDF5E6"
-            android:orientation="vertical" >
-
-            <EditText
-                android:id="@+id/idea"
-                android:layout_width="fill_parent"
-                android:layout_height="200dp"
-                android:layout_marginLeft="10dip"
-                android:layout_marginRight="10dip"
-                android:layout_marginTop="5dip"
-                android:background="@drawable/chatfrom_bg_new_fmessage_normal"
-                android:gravity="top"
-                android:paddingLeft="15dp"
-                android:paddingTop="6dp"
-                android:singleLine="false"
-                android:textSize="10pt" />
-        </LinearLayout>   -->
     </LinearLayout>
 
 </ScrollView>

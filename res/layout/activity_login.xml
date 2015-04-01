@@ -30,7 +30,7 @@
                 android:layout_centerHorizontal="true"
                 android:src="@drawable/person"
                 app:border_color="#BFEFFF"
-                app:border_width="2dp" />
+                app:border_width="1dp" />
         </RelativeLayout>
 
         <LinearLayout
@@ -110,21 +110,22 @@
 
                 <TextView
                     android:layout_width="fill_parent"
-                    android:layout_height="5dp" />
+                    android:layout_height="10dp" />
 
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:paddingLeft="17dp"
-                    android:paddingRight="17dp" >
+                    android:paddingRight="17dp" 
+                    android:layout_marginTop="7dp">
 
                     <Button
                         android:id="@+id/butLogin"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:layout_gravity="center_horizontal"
-                        android:background="@drawable/button_big"
+                        android:background="@drawable/login_btn"
                         android:fontFamily="sans-serif-thin"
                         android:text="登 录"
                         android:textColor="@color/white"
@@ -133,7 +134,8 @@
 
                 <RelativeLayout
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content" >
+                    android:layout_height="wrap_content"
+                     >
 
                     <Button
                         android:id="@+id/butForgetPassword"
@@ -157,13 +159,14 @@
         android:layout_height="match_parent"
         android:background="#ddd" >
 
-        <Button
+        <ImageView
             android:id="@+id/btn_above"
-            android:layout_width="33dp"
-            android:layout_height="33dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:background="@drawable/picture_down_up" />
+            android:layout_marginBottom="7dp"
+            android:layout_marginLeft="7dp"
+            android:background="@drawable/default_ptr_rotate" />
 
         <TextView
             android:id="@+id/tv_hint"

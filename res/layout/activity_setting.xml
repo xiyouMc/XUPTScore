@@ -33,95 +33,185 @@
             android:layout_centerHorizontal="true"
             android:background="@drawable/transparent"
             android:gravity="center_vertical"
-            android:text="选项"
+            android:text="修改密码"
             android:textColor="@color/white"
             android:textSize="20dp" />
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
         android:orientation="vertical"
-        android:paddingLeft="50dp"
-        android:paddingRight="50dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:paddingTop="20dp" >
 
-        <TextView
+        <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="10dp"
-            android:text="友情提示：\n\t您可以修改头像，密码。\n\t只需填写自己想要修改的选项"
-            android:textColor="@color/black" />
-        <!-- 修改头像 -->
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
 
-        <ImageView
-            android:id="@+id/butChooseHeadPhoto"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center_horizontal"
-            android:paddingBottom="10dp"
-            android:src="@drawable/default_head_photo" />
-        <!-- 注册账号 -->
+             <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:paddingBottom="3dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="10dp" >
 
-        <EditText
-            android:id="@+id/etAccount"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="numberDecimal" >
-        </EditText>
-        <!-- 修改密码 -->
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="fill_parent"
+                    android:gravity="center_vertical"
+                    android:text="账号"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+                <!-- 修改密码 -->
 
-        <EditText
-            android:id="@+id/etPassword1"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="输入旧密码"
-            android:textColor="@color/darkgoldenrod"
-            android:inputType="textPassword" >
-        </EditText>
+                <EditText
+                    android:id="@+id/etAccount"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="输入旧密码"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" >
+                </EditText>
 
-        <!-- 修改为新密码 -->
+            </LinearLayout>
+           
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/expand_divider" />
+            <!-- 选项设置 -->
 
-        <EditText
-            android:id="@+id/etPassword2"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="输入新密码："
-            android:textColor="@color/darkgoldenrod"
-            android:inputType="textPassword" >
-        </EditText>
-         <!-- 确认新密码 -->
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:paddingBottom="3dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="10dp" >
 
-        <EditText
-            android:id="@+id/corfimPassword2"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="确认新密码："
-            android:textColor="@color/darkgoldenrod"
-            android:inputType="textPassword" >
-        </EditText>
-    </LinearLayout>
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="fill_parent"
+                    android:gravity="center_vertical"
+                    android:text="旧密码"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+                <!-- 修改密码 -->
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:paddingLeft="50dp"
-        android:paddingRight="50dp" >
+                <EditText
+                    android:id="@+id/etPassword1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="输入旧密码"
+                    android:inputType="textPassword"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gray"
+                    android:textSize="15sp" >
+                </EditText>
+            </LinearLayout>
 
-        <!-- 修改按钮 -->
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/expand_divider" />
+            <!-- 选项设置 -->
 
-        <Button
-            android:id="@+id/butAlter"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_big"
-            android:text="确认修改"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:paddingBottom="3dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="10dp" >
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="fill_parent"
+                    android:gravity="center_vertical"
+                    android:text="新密码"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+                <!-- 修改密码 -->
+
+                <EditText
+                    android:id="@+id/etPassword2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="字母、数字、符号至少两个"
+                    android:inputType="textPassword"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gray"
+                    android:textSize="15sp" >
+                </EditText>
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/expand_divider" />
+            <!-- 选项设置 -->
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:paddingBottom="3dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="10dp" >
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="fill_parent"
+                    android:gravity="center_vertical"
+                    android:text="重复密码"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/corfimPassword2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="重复新密码"
+                    android:inputType="textPassword"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gray"
+                    android:textSize="15sp" >
+                </EditText>
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/expand_divider" />
+
+            <Button
+                android:id="@+id/butAlter"
+                android:layout_width="fill_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="29dp"
+                android:background="@drawable/btn_click"
+                android:gravity="center"
+                android:text="修改"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

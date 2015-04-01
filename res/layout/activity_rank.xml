@@ -4,15 +4,12 @@
     android:layout_height="fill_parent"
     android:background="#F8F8FF"
     android:orientation="vertical" >
-
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="47dp"
         android:background="@drawable/main_title_bar"
         android:orientation="horizontal" >
-
         <!-- 菜单 -->
-
         <Button
             android:id="@+id/butMenu"
             android:layout_width="30dp"

@@ -59,7 +59,7 @@
             android:gravity="center_vertical"
             android:text="我发表的"
             android:textColor="@color/white"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
     </RelativeLayout>
 
     <com.xy.fy.view.CustomListView
