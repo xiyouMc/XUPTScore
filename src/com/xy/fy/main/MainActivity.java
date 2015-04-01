@@ -26,6 +26,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
@@ -63,12 +64,14 @@ import android.widget.PopupWindow;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import cn.sharesdk.onekeyshare.OnekeyShare;
 
 import com.cardsui.example.MyPlayCard;
 import com.fima.cardsui.objects.CardStack;
 import com.fima.cardsui.views.CardUI;
+import com.mc.db.DBConnection;
 import com.mc.util.CircleImageView;
 import com.mc.util.CustomRankListView;
 import com.mc.util.CustomRankListView.OnAddFootListener;
@@ -490,19 +493,10 @@ public class MainActivity extends Activity {
 		menuBang.setPressed(true);// 初始化默认是风云榜被按下
 		setCurrentMenuItem(1);// 记录当前选项位置
 
-		// 判断 头像文件夹中是否包含 该用户的头像
-		File file = new File(StaticVarUtil.PATH + "/"
-				+ StaticVarUtil.student.getAccount() + ".JPEG");
-		if (file.exists()) {// 如果存在
-			Bitmap bitmap = Util.convertToBitmap(StaticVarUtil.PATH + "/"
-					+ StaticVarUtil.student.getAccount() + ".JPEG", 240, 240);
-			headPhoto.setImageBitmap(bitmap);
-		} else {// 如果文件夹中不存在这个头像。
-			GetPicture getPicture = new GetPicture();
-			getPicture.execute(new String[] { HttpUtilMc.BASE_URL
-					+ "user_photo/" + StaticVarUtil.student.getAccount()
-					+ ".JPEG" });
-		}
+		// 请求服务器获取头像id 并且判断本地是否有这个文件
+		GetPhotoID getPhotoID = new GetPhotoID();
+		getPhotoID.execute();
+
 		headPhoto.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -530,7 +524,7 @@ public class MainActivity extends Activity {
 					public void run() {
 						// TODO Auto-generated method stub
 						try {
-							Thread.sleep(700);
+							Thread.sleep(300);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -561,7 +555,7 @@ public class MainActivity extends Activity {
 					public void run() {
 						// TODO Auto-generated method stub
 						try {
-							Thread.sleep(700);
+							Thread.sleep(300);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -589,7 +583,7 @@ public class MainActivity extends Activity {
 						public void run() {
 							// TODO Auto-generated method stub
 							try {
-								Thread.sleep(700);
+								Thread.sleep(300);
 							} catch (InterruptedException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
@@ -615,7 +609,7 @@ public class MainActivity extends Activity {
 					public void run() {
 						// TODO Auto-generated method stub
 						try {
-							Thread.sleep(700);
+							Thread.sleep(300);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -641,7 +635,7 @@ public class MainActivity extends Activity {
 					public void run() {
 						// TODO Auto-generated method stub
 						try {
-							Thread.sleep(700);
+							Thread.sleep(300);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -670,7 +664,7 @@ public class MainActivity extends Activity {
 					public void run() {
 						// TODO Auto-generated method stub
 						try {
-							Thread.sleep(700);
+							Thread.sleep(300);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -693,7 +687,9 @@ public class MainActivity extends Activity {
 	}
 
 	private void aboutListener() {
-		findViewById(R.id.newTip).setAlpha(100);
+		if (Util.getAndroidSDKVersion()>10) {
+			findViewById(R.id.newTip).setAlpha(100);
+		}
 		// 菜单按钮
 		Button menu = (Button) findViewById(R.id.butMenu);
 		menu.setOnClickListener(new OnClickListener() {
@@ -1824,7 +1820,7 @@ public class MainActivity extends Activity {
 				 * StaticVarUtil.student .getAccount() +
 				 * Util.getVersion(getApplicationContext())
 				 */
-
+                ViewUtil.showToast(getApplicationContext(), "测试版，未实现！");
 			}
 		});
 	}
@@ -1955,6 +1951,47 @@ public class MainActivity extends Activity {
 	}
 
 	// 从网络获取头像
+	class GetPhotoID extends AsyncTask<String, String, String> {
+
+		@Override
+		protected String doInBackground(String... params) {
+			// TODO Auto-generated method stub
+			return HttpUtilMc.queryStringForPost(HttpUtilMc.BASE_URL
+					+ "getuserphoto.jsp?username="
+					+ StaticVarUtil.student.getAccount());
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			// TODO Auto-generated method stub
+			super.onPostExecute(result);
+			if ("no_photo".equals(result) || result.split("/").length < 2) {
+				return;
+			}
+			StaticVarUtil.PHOTOFILENAME = result.split("/")[1];
+			// 判断 头像文件夹中是否包含 该用户的头像
+			if (DBConnection.getPhotoName(StaticVarUtil.student.getAccount(),
+					getApplicationContext())
+					.equals(StaticVarUtil.PHOTOFILENAME)
+					&& new File(StaticVarUtil.PATH + "/"
+							+ StaticVarUtil.student.getAccount() + ".JPEG")
+							.exists()) {// 如果存在
+				Bitmap bitmap = Util.convertToBitmap(StaticVarUtil.PATH + "/"
+						+ StaticVarUtil.student.getAccount() + ".JPEG", 240,
+						240);
+				if (bitmap != null) {
+					headPhoto.setImageBitmap(bitmap);
+				}
+			} else {// 如果文件夹中不存在这个头像。
+				GetPicture getPicture = new GetPicture();
+				getPicture.execute(new String[] { HttpUtilMc.BASE_URL
+						+ "user_photo/" + StaticVarUtil.PHOTOFILENAME });
+			}
+		}
+
+	}
+
+	// 从网络获取头像
 	class GetPicture extends AsyncTask<String, Bitmap, Bitmap> {
 
 		@Override
@@ -1969,11 +2006,15 @@ public class MainActivity extends Activity {
 			super.onPostExecute(bitmap);
 			if (bitmap == null)
 				return;
-			headPhoto.setImageBitmap(bitmap);// 显示图片
+
 			if (Util.isExternalStorageWritable()) {
-				Util.saveBitmap2file(bitmap, StaticVarUtil.student.getAccount());
-				bitmap.recycle();
+				Util.saveBitmap2file(bitmap, StaticVarUtil.PHOTOFILENAME,
+						getApplicationContext());
 			}
+			headPhoto.setImageBitmap(Util.convertToBitmap(StaticVarUtil.PATH
+					+ "/" + StaticVarUtil.student.getAccount() + ".JPEG", 240,
+					240));// 显示图片
+			bitmap.recycle();
 		}
 
 	}
@@ -2037,6 +2078,14 @@ public class MainActivity extends Activity {
 		protected void onPostExecute(String result) {
 			super.onPostExecute(result);
 			try {
+				if (result.equals("error")) {
+					return;
+				}
+				if (Util.isExternalStorageWritable()) {
+					Util.saveBitmap2file(bitmap, result,
+							getApplicationContext());
+					bitmap.recycle();
+				}
 				ViewUtil.showToast(
 						getApplicationContext(),
 						!HttpUtilMc.CONNECT_EXCEPTION.equals(result) ? !result
