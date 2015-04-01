@@ -35,7 +35,7 @@
             android:gravity="center_vertical"
             android:text="高等数学"
             android:textColor="@color/white"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
     </RelativeLayout>
     
     <!-- 针对这门课程推荐的好友 -->
