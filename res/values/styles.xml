@@ -44,8 +44,8 @@
     </style>
 
     <style name="AudioFileInfoOverlayText">
-        <item name="android:paddingLeft">4px</item>
-        <item name="android:paddingBottom">4px</item>
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
         <item name="android:textColor">#f1f1f1</item>
         <item name="android:textSize">50sp</item>
         <item name="android:shadowColor">#4d4d4d</item>

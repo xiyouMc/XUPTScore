@@ -3,6 +3,11 @@
 
     <color name="setting_translucent_bg">#e0000000</color>
     <color name="logincolor">#48D1CC</color>
+    <color name="menu_list">#495866</color>
+    <color name="change_down">#0074CC</color>
+    <color name="change_up">#0091FF</color>
+    <color name="login_up">#4EC0E2</color>
+    <color name="login_down">#30B0E2</color>
     <color name="transparent">#9000</color> <!-- 透明色 -->
     <color name="white">#FFFFFF</color> <!-- 白色 -->
     <color name="lightyellow">#FFFFE0</color> <!-- 亮黄色 -->
