@@ -28,6 +28,7 @@ import com.xy.fy.singleton.Student;
  */
 public class StaticVarUtil {
 
+	public static String PHOTOFILENAME;
 	public static HashMap<String, Object> kcdmList = new HashMap<String, Object>();// 课程代码list
 	/**
 	 * 提供给排名的学期和学年
