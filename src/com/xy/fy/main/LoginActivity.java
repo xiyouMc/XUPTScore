@@ -39,6 +39,7 @@ import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -65,6 +66,7 @@ import com.xy.fy.view.ToolClass;
 @SuppressLint({ "HandlerLeak", "NewApi", "ShowToast", "SdCardPath" })
 public class LoginActivity extends Activity {
 
+	private static int loginTimes = 0;
 	private CircleImageView photo;// 登录界面的头像
 	private AutoCompleteTextView account;// 账号
 	private EditText password;// 密码
@@ -76,7 +78,7 @@ public class LoginActivity extends Activity {
 	private List<HashMap<String, String>> listHerf;
 	private DBConnection helper;// 数据库
 	SQLiteDatabase sqLiteDatabase;
-	private Button savePic;
+	private ImageView savePic;
 	private TextView tvHint;
 
 	private PullDoorView pullDoorView;
@@ -135,7 +137,7 @@ public class LoginActivity extends Activity {
 	private void setPullDoorViewImage() {
 		// TODO Auto-generated method stub
 
-		savePic = (Button) this.findViewById(R.id.btn_above);
+		savePic = (ImageView) this.findViewById(R.id.btn_above);
 		tvHint = (TextView) this.findViewById(R.id.tv_hint);
 		Animation ani = new AlphaAnimation(0f, 1f);
 		ani.setDuration(1500);
@@ -149,7 +151,7 @@ public class LoginActivity extends Activity {
 		String[] imageAndTime = imageMsg.split("\\|");
 		final String imageTime = imageAndTime[0];
 		String isPoll = imageAndTime[1];
-		scaletype = imageAndTime.length==2?"1":imageAndTime[2];
+		scaletype = imageAndTime.length == 2 ? "1" : imageAndTime[2];
 		savePic.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
@@ -157,19 +159,24 @@ public class LoginActivity extends Activity {
 				if (Util.isExternalStorageWritable()) {
 					BitmapUtil.saveFileAndDB(
 							getApplicationContext(),
-							bitmap != null ? bitmap : BitmapFactory.decodeResource(
-									getResources(), R.drawable.left1), imageTime
+							bitmap != null ? bitmap : BitmapFactory
+									.decodeResource(getResources(),
+											R.drawable.left1), imageTime
 									+ ".jpg");
-					ViewUtil.showToast(getApplicationContext(), "保存文件成功");	
-				}else {
+					ViewUtil.showToast(getApplicationContext(), "保存文件成功");
+				} else {
 					ViewUtil.showToast(getApplicationContext(), "sdcard不存在");
 				}
-				
+
 			}
 		});
 		mHandler = new Handler();
 		pullDoorView = (PullDoorView) findViewById(R.id.myImage);
 		if (isPoll.equals("1")) {// 下拉下载
+			final Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.animated_remote); 
+			LinearInterpolator lir = new LinearInterpolator();  
+		    anim.setInterpolator(lir);
+			savePic.startAnimation(anim);
 			new Thread() {
 				public void run() {
 					bitmap = Util.getBitmap(HttpUtilMc.BASE_URL + "image/"
@@ -177,8 +184,11 @@ public class LoginActivity extends Activity {
 					mHandler.post(runnableUi);
 				}
 			}.start();
-		} else
+		} else{
+			savePic.setBackgroundResource(R.drawable.picture_down_up);
 			pullDoorView.setBgImage(R.drawable.left1);
+		}
+			
 		if (bitmap != null) {
 			bitmap.recycle();
 		}
@@ -194,7 +204,9 @@ public class LoginActivity extends Activity {
 					.setScaletype(scaletype.equals("0") ? ImageView.ScaleType.FIT_XY
 							: ImageView.ScaleType.CENTER_CROP);
 			pullDoorView.setBgBitmap(bitmap);
-
+			savePic.clearAnimation();
+            savePic.setBackgroundResource(R.drawable.picture_down_up);
+            
 		}
 
 	};
@@ -327,8 +339,15 @@ public class LoginActivity extends Activity {
 	 * 找到控件ID
 	 */
 	private void findViewById() {
-		StaticVarUtil.PATH = Environment  
-	            .getExternalStorageDirectory()+"/xuptscore/";// 设置文件目录
+		if (Util.isExternalStorageWritable()) {
+			StaticVarUtil.PATH = "/sdcard/xuptscore/";// 设置文件目录
+		} else {
+			StaticVarUtil.PATH = "/data/data/com.xy.fy.main/";// 设置文件目录
+		}
+
+		if (!new File(StaticVarUtil.PATH).exists()) {
+			new File(StaticVarUtil.PATH).mkdirs();
+		}
 		// this.account = (EditText) findViewById(R.id.etAccount);
 		this.photo = (CircleImageView) findViewById(R.id.profile_image);
 		this.password = (EditText) findViewById(R.id.etPassword);
@@ -432,10 +451,12 @@ public class LoginActivity extends Activity {
 		this.progressDialog = ViewUtil.getProgressDialog(LoginActivity.this,
 				"正在登录");
 
-		/*Animation animation = AnimationUtils.loadAnimation(LoginActivity.this,
-				R.anim.translate);
-		LinearLayout layout = (LinearLayout) findViewById(R.id.layout);
-		layout.setAnimation(animation);*/
+		/*
+		 * Animation animation =
+		 * AnimationUtils.loadAnimation(LoginActivity.this, R.anim.translate);
+		 * LinearLayout layout = (LinearLayout) findViewById(R.id.layout);
+		 * layout.setAnimation(animation);
+		 */
 	}
 
 	@Override
@@ -455,15 +476,12 @@ public class LoginActivity extends Activity {
 		@Override
 		protected String doInBackground(Object... params) {
 			// TODO Auto-generated method stub
-			String url;
-			url = HttpUtilMc.BASE_URL + "login.jsp?username="
+			loginTimes++;
+			return HttpUtilMc.queryStringForPost(HttpUtilMc.BASE_URL
+					+ "login.jsp?username="
 					+ account.getText().toString().trim() + "&password="
 					+ URLEncoder.encode(password.getText().toString().trim())
-					+ "&session=" + StaticVarUtil.session;// 增加urlendcoder编码
-															// 防止密码中出现空格而崩掉
-			// 查询返回结果
-			String result = HttpUtilMc.queryStringForPost(url);
-			return result;
+					+ "&session=" + StaticVarUtil.session);
 
 		}
 
@@ -472,9 +490,10 @@ public class LoginActivity extends Activity {
 			// TODO Auto-generated method stub
 			super.onPostExecute(result);
 			// progress.cancel();
-			progressDialog.cancel();
+
 			try {
 				if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
+					progressDialog.cancel();
 					if (result.equals("error")) {
 						ViewUtil.showToast(getApplicationContext(), "密码错误");
 						password.setText("");
@@ -483,7 +502,8 @@ public class LoginActivity extends Activity {
 							ViewUtil.showToast(getApplicationContext(), "账号不存在");
 							account.setText("");
 							password.setText("");
-						} else {// 登录成功
+						} else {// 登录成功'
+							
 							listHerf = new ArrayList<HashMap<String, String>>();
 							JSONObject json = new JSONObject(result);
 							JSONArray jsonArray = (JSONArray) json
@@ -496,24 +516,32 @@ public class LoginActivity extends Activity {
 								listHerf.add(map);
 							}
 							StaticVarUtil.listHerf = listHerf;// 设置为静态
-							Intent intent = new Intent();
-							intent.setClass(LoginActivity.this,
-									MainActivity.class);
-							startActivity(intent);
 							StaticVarUtil.student.setAccount(account.getText()
 									.toString().trim());
 							StaticVarUtil.student.setPassword(password
 									.getText().toString().trim());
-
+							Intent intent = new Intent();
+							intent.setClass(LoginActivity.this,
+									MainActivity.class);
+							startActivity(intent);
 							finish();
 						}
 
 					}
 
 				} else {
-					ViewUtil.showToast(getApplicationContext(),
-							HttpUtilMc.CONNECT_EXCEPTION);
-					progressDialog.cancel();
+
+					// 重新登录
+					if (loginTimes < 3) {
+						LoginAsyntask loginAsyntask = new LoginAsyntask();
+						ViewUtil.showToast(getApplicationContext(),
+								HttpUtilMc.CONNECT_REPEAT_EXCEPTION);
+						loginAsyntask.execute();
+					} else {
+						ViewUtil.showToast(getApplicationContext(),
+								HttpUtilMc.CONNECT_EXCEPTION);
+						progressDialog.cancel();
+					}
 				}
 			} catch (Exception e) {
 				// TODO: handle exception
@@ -547,6 +575,7 @@ public class LoginActivity extends Activity {
 							JSONObject json = new JSONObject(result);
 							String session = json.getString("cookieSessionID");// session
 							StaticVarUtil.session = session;
+							loginTimes = 0;//将登陆次数置零
 							LoginAsyntask loginAsyntask = new LoginAsyntask();
 							loginAsyntask.execute();
 						}
@@ -555,9 +584,16 @@ public class LoginActivity extends Activity {
 						progressDialog.cancel();
 					}
 				} else {
-					ViewUtil.showToast(getApplicationContext(),
-							HttpUtilMc.CONNECT_EXCEPTION);
-					progressDialog.cancel();
+					if (loginTimes<3) {
+						GetPicAsyntask getPicAsyntask = new GetPicAsyntask();
+						ViewUtil.showToast(getApplicationContext(),
+								HttpUtilMc.CONNECT_REPEAT_EXCEPTION);
+						getPicAsyntask.execute();
+					}else {
+						ViewUtil.showToast(getApplicationContext(),
+								HttpUtilMc.CONNECT_EXCEPTION);
+						progressDialog.cancel();
+					}
 				}
 			} catch (Exception e) {
 				// TODO: handle exception
@@ -577,12 +613,9 @@ public class LoginActivity extends Activity {
 		@Override
 		protected String doInBackground(String... params) {
 			// TODO Auto-generated method stub
-			String url = "";
-			url = HttpUtilMc.BASE_URL + "checkversion.jsp?version="
-					+ Util.getVersion(getApplicationContext());
-			// 查询返回结果
-			String result = HttpUtilMc.queryStringForPost(url);
-			return result;
+			return HttpUtilMc.queryStringForPost(HttpUtilMc.BASE_URL
+					+ "checkversion.jsp?version="
+					+ Util.getVersion(getApplicationContext()));
 
 		}
 

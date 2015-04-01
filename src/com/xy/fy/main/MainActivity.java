@@ -98,6 +98,7 @@ import com.xy.fy.view.ToolClass;
  */
 @SuppressLint({ "ShowToast", "InflateParams" })
 public class MainActivity extends Activity {
+	private static int requestTimes = 0;// 请求次数
 	// share
 	private static OnekeyShare share;
 	private static ShareUtil shareUtil;
@@ -1634,6 +1635,7 @@ public class MainActivity extends Activity {
 						 * 将字符串 写入xml文件中
 						 */
 						if (!result.equals("no_evaluation")) {
+							requestTimes = 0;
 							score_json = result;
 							listItem = new ArrayList<HashMap<String, Object>>();
 							JSONObject jsonObject = new JSONObject(result);
@@ -1671,8 +1673,13 @@ public class MainActivity extends Activity {
 					}
 
 				} else {
-					ViewUtil.showToast(getApplicationContext(),
-							HttpUtilMc.CONNECT_EXCEPTION);
+					if (requestTimes < 5) {
+						requestTimes++;
+						GetScoreAsyntask getScoreAsyntask = new GetScoreAsyntask();
+						getScoreAsyntask.execute();
+					} else
+						ViewUtil.showToast(getApplicationContext(),
+								HttpUtilMc.CONNECT_EXCEPTION);
 				}
 			} catch (Exception e) {
 				// TODO: handle exception
@@ -1703,7 +1710,7 @@ public class MainActivity extends Activity {
 		@Override
 		protected void onPostExecute(String result) {
 			super.onPostExecute(result);
-			dialog.cancel();
+
 			nickname.setText(name);
 			try {
 				if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
@@ -1712,6 +1719,8 @@ public class MainActivity extends Activity {
 						 * 将字符串 写入xml文件中
 						 */
 						if (!result.equals("")) {
+							dialog.cancel();
+							requestTimes = 0;
 							refeshRank(result, isFirstListView);
 							allRankMap.put(selectXn + selectXq, result);// 将数据保存到内存中，下次就不用重复获取。
 						}
@@ -1719,8 +1728,14 @@ public class MainActivity extends Activity {
 						ViewUtil.showToast(getApplicationContext(), "查询失败");
 					}
 				} else {
-					ViewUtil.showToast(getApplicationContext(),
-							HttpUtilMc.CONNECT_EXCEPTION);
+					if (requestTimes < 4) {
+						requestTimes++;
+						GetRankAsyntask getRankAsyntask = new GetRankAsyntask();
+						getRankAsyntask.execute();
+					} else {
+						ViewUtil.showToast(getApplicationContext(),
+								HttpUtilMc.CONNECT_EXCEPTION);
+					}
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -1803,16 +1818,13 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				/**
-				 msg.getText().toString().trim()
-							+ 
-							("".equals(phoneNum.getText().toString().trim()) ? ""
-									: phoneNum.getText().toString()
-													.trim())
-											+ StaticVarUtil.student
-													.getAccount()
-											+ Util.getVersion(getApplicationContext())
+				 * msg.getText().toString().trim() +
+				 * ("".equals(phoneNum.getText().toString().trim()) ? "" :
+				 * phoneNum.getText().toString() .trim()) +
+				 * StaticVarUtil.student .getAccount() +
+				 * Util.getVersion(getApplicationContext())
 				 */
-				
+
 			}
 		});
 	}
