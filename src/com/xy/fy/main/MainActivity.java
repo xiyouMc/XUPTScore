@@ -26,7 +26,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
@@ -60,12 +59,9 @@ import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import cn.sharesdk.onekeyshare.OnekeyShare;
 
 import com.cardsui.example.MyPlayCard;
@@ -80,6 +76,7 @@ import com.mc.util.HttpAssist;
 import com.mc.util.HttpUtilMc;
 import com.mc.util.LogcatHelper;
 import com.mc.util.Passport;
+import com.mc.util.SIMCardInfo;
 import com.mc.util.Util;
 import com.mc.util.VersionUpdate;
 import com.slidingmenu.lib.SlidingMenu;
@@ -127,7 +124,9 @@ public class MainActivity extends Activity {
 	private LinearLayout menuAbout = null;// 关于
 	private Button check_version = null;
 	ArrayList<HashMap<String, Object>> listItem;// json解析之后的列表,保存了所有的成绩数据
-
+	//意见反馈
+	private TextView ideaMsgText = null;
+	private TextView phoneText = null;
 	// 排名
 	private final static int DEFAULTITEMSUM = 100;
 	private static int lsitItemSum = DEFAULTITEMSUM;// 通过计算屏幕高度，求得应该显示多少行数据在listview
@@ -687,7 +686,7 @@ public class MainActivity extends Activity {
 	}
 
 	private void aboutListener() {
-		if (Util.getAndroidSDKVersion()>10) {
+		if (Util.getAndroidSDKVersion() > 10) {
 			findViewById(R.id.newTip).setAlpha(100);
 		}
 		// 菜单按钮
@@ -1807,20 +1806,29 @@ public class MainActivity extends Activity {
 				slidingMenu.toggle();
 			}
 		});
-		final TextView msg = (TextView) findViewById(R.id.text);
-		final TextView phoneNum = (TextView) findViewById(R.id.phone);
+		ideaMsgText = (TextView) findViewById(R.id.text);
+		phoneText = (TextView) findViewById(R.id.phone);
 		findViewById(R.id.send).setOnClickListener(new OnClickListener() {
-
 			@Override
 			public void onClick(View v) {
-				/**
-				 * msg.getText().toString().trim() +
-				 * ("".equals(phoneNum.getText().toString().trim()) ? "" :
-				 * phoneNum.getText().toString() .trim()) +
-				 * StaticVarUtil.student .getAccount() +
-				 * Util.getVersion(getApplicationContext())
-				 */
-                ViewUtil.showToast(getApplicationContext(), "测试版，未实现！");
+				SIMCardInfo siminfo = new SIMCardInfo(getApplicationContext());
+				final String number = siminfo.getNativePhoneNumber();
+				final String data = ideaMsgText.getText().toString().trim()
+						+ "|"
+						+ ("".equals(phoneText.getText().toString().trim()) ? ""
+								: phoneText.getText().toString().trim()) + "|"
+						+ StaticVarUtil.student.getAccount() + "|"
+						+ Util.getVersion(getApplicationContext()) + "|"
+						+ number;
+				new Thread(new Runnable() {
+					@Override
+					public void run() {
+						Util.sendMail(data);
+						Message msg = new Message();
+						msg.what = 8;
+						mHandler.sendMessage(msg);
+					}
+				}).start();
 			}
 		});
 	}
@@ -1855,6 +1863,9 @@ public class MainActivity extends Activity {
 				break;
 			case 7:
 				showShareQrcodeDialog();
+				break;
+			case 8:
+				ViewUtil.showToast(getApplicationContext(), "感谢反馈");
 				break;
 			// 获取传递的数据
 			// Bundle data = msg.getData();
