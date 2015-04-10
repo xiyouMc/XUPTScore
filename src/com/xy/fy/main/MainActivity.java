@@ -91,45 +91,35 @@ import com.xy.fy.util.ViewUtil;
 import com.xy.fy.view.HistoryCollege;
 import com.xy.fy.view.ToolClass;
 
-/**
- * 第一次启动主界面就请求 查询成绩
- * 
- * @author Administrator 2014-7-21
- */
-@SuppressLint({ "ShowToast", "InflateParams" })
 public class MainActivity extends Activity {
-  private static int requestTimes = 0;// 请求次数
-  // share
+  private static int requestTimes = 0;
   private static OnekeyShare share;
   private static ShareUtil shareUtil;
-  // 保存成绩的map
   public static HashMap<String, String> mapScoreOne = null;// xn =1
   public static HashMap<String, String> mapScoreTwo = null;// xn = 2
   private static boolean isFirst = true;
   private static boolean is_show = false;
 
-  public static SlidingMenu slidingMenu;// 侧滑组件
-  private Button chooseCollege;// 选择学校按钮
-  private Button chooseMsgKind;// 选择说说种类
-  private Button chooseMsgSort;// 选择说说排序方式
+  public static SlidingMenu slidingMenu;
+  private Button chooseCollege;
+  private Button chooseMsgKind;
+  private Button chooseMsgSort;
   private CardUI mCardView;
-  private TextView nickname;// 用户名
+  private TextView nickname;
   private String name;//
-  private CircleImageView headPhoto;// 头像
-  private LinearLayout menuBang = null;// 成绩查询
-  private LinearLayout menuMyBukao = null;// 补考好友
-  private LinearLayout menuMyPaiming = null;// 我的排名
-  private LinearLayout menuIdea_back = null;// 意见反馈
+  private CircleImageView headPhoto;
+  private LinearLayout menuBang = null;
+  private LinearLayout menuMyBukao = null;
+  private LinearLayout menuMyPaiming = null;
+  private LinearLayout menuIdea_back = null;
   private LinearLayout menuSetting = null;// 设置
   private LinearLayout menuAbout = null;// 关于
   private Button check_version = null;
   ArrayList<HashMap<String, Object>> listItem;// json解析之后的列表,保存了所有的成绩数据
-  // 意见反馈
   private TextView ideaMsgText = null;
   private TextView phoneText = null;
-  // 排名
   private final static int DEFAULTITEMSUM = 100;
-  private static int lsitItemSum = DEFAULTITEMSUM;// 通过计算屏幕高度，求得应该显示多少行数据在listview
+  private static int lsitItemSum = DEFAULTITEMSUM;
   private CustomRankListView allRankList;
   private TextView rankText;
   private TextView nameText;
@@ -212,12 +202,12 @@ public class MainActivity extends Activity {
       ViewUtil.showToast(getApplicationContext(), "密码不安全，请重新设置密码");
       setMenuItemState(menuBang, false, menuMyBukao, false, menuMyPaiming, false, menuIdea_back,
           false, menuSetting, true, menuAbout, false);
-      setCurrentMenuItem(5);// 记录当前选项位置，并且跳转
+      setCurrentMenuItem(5);
       slidingMenu.toggle();// 页面跳转
       slidingMenu.setContent(R.layout.activity_setting);
       menuSetting();
     } else {
-      // 请求 获取 成绩
+      // request get score
       GetScoreAsyntask getScoreAsyntask = new GetScoreAsyntask();
       dialog.show();
       getScoreAsyntask.execute();
@@ -230,7 +220,7 @@ public class MainActivity extends Activity {
 
   }
 
-  /**
+  /*
    * 第一个菜单项
    */
   private void menu1() {
@@ -284,7 +274,7 @@ public class MainActivity extends Activity {
 
   }
 
-  /**
+  /*
    * 显示卡片
    */
   private boolean showCard(String xn, boolean isFirst) {
@@ -335,7 +325,7 @@ public class MainActivity extends Activity {
 
   }
 
-  /**
+  /*
    * 点击卡片跳转
    * 
    * @author Administrator 2014-7-23
@@ -371,7 +361,7 @@ public class MainActivity extends Activity {
 
   }
 
-  /**
+  /*
    * 将 成绩整合成 n行4列的数组，为了可以显示在table页面中
    * 
    * @param score
@@ -386,7 +376,7 @@ public class MainActivity extends Activity {
     return result;
   }
 
-  /**
+  /*
    * 解析 获取固定学年 固定学期的成绩
    */
   private StringBuilder getScore(String xn, String xq) {
@@ -435,7 +425,7 @@ public class MainActivity extends Activity {
     return result;
   }
 
-  /**
+  /*
    * 设置当前MenuItem的状态
    * 
    * @param item
@@ -452,7 +442,7 @@ public class MainActivity extends Activity {
     item6.setPressed(flag6);
   }
 
-  /**
+  /*
    * 设置一些menuItem监听
    */
   private void setMenuItemListener() {
@@ -726,7 +716,7 @@ public class MainActivity extends Activity {
     });
   }
 
-  /**
+  /*
    * 保存二维码
    */
   private void showDialogSaveQrcode() {
@@ -883,8 +873,10 @@ public class MainActivity extends Activity {
     String result = "";// 成绩的数据
 
     if (allRankMap.size() != 0) {
-      for (String xnAndXq : allRankMap.keySet()) {// 由于是 menu触发的所以必须判断
-        if (xnAndXq.equals(selectXn + selectXq)) {// 如果存在则直接 或者value
+      for (String xnAndXq : allRankMap.keySet()) {
+        // 由于是 menu触发的所以必须判断
+        if (xnAndXq.equals(selectXn + selectXq)) {
+          // 如果存在则直接 或者value
           result = allRankMap.get(xnAndXq);
           refeshRank(result, isFirstListView);
           break;
@@ -904,7 +896,7 @@ public class MainActivity extends Activity {
     nameText = (TextView) findViewById(R.id.name);
   }
 
-  /**
+  /*
    * 取消软键盘
    */
   private void closeInputMethod() {
@@ -922,7 +914,7 @@ public class MainActivity extends Activity {
     super.onBackPressed();
   }
 
-  /**
+  /*
    * 下拉刷新
    */
   @SuppressWarnings("unused")
@@ -982,13 +974,15 @@ public class MainActivity extends Activity {
     String result = "";
     // 首先查询内存中是否有该学期成绩
     for (String xnAndXq : allRankMap.keySet()) {
-      if (xnAndXq.equals(selectXn + selectXq)) {// 如果存在则直接 或者value
+      if (xnAndXq.equals(selectXn + selectXq)) {
+        // 如果存在则直接 或者value
         result = allRankMap.get(xnAndXq);
         refeshRank(result, isFirstListView);
         break;
       }
     }
-    if (result.equals("")) {// 不存在，则请求
+    if (result.equals("")) {
+      // 不存在，则请求
       GetRankAsyntask getRankAsyntask = new GetRankAsyntask();
       dialog.show();
       getRankAsyntask.execute();
@@ -1013,7 +1007,6 @@ public class MainActivity extends Activity {
       StaticVarUtil.data = realData;
       StaticVarUtil.viewstate = time_s;
       StaticVarUtil.content = imei;
-      // 验证data ，因为服务器中出现错误
       String checkData = Util.checkRankRequestData(realData, time_s);
       if (!checkData.equals(data)) {
         rankRequestParmas(data);// 递归再次计算，直到计算出正确的
@@ -1118,7 +1111,7 @@ public class MainActivity extends Activity {
 
   }
 
-  /**
+  /*
    * 修改个人信息，只能修改昵称，密码，头像
    */
   protected void menuSetting() {
@@ -1157,11 +1150,13 @@ public class MainActivity extends Activity {
         }
 
         // 密码
-        if (password1.equals("") && password2.equals("")) {// 如果不修改
+        if (password1.equals("") && password2.equals("")) {
+          // 如果不修改
 
         } else {
           if (password1.equals(StaticVarUtil.student.getPassword())
               && password2.equals("") == false) {
+            ;
           } else {
             ViewUtil.showToast(getApplicationContext(), "旧密码不正确或者新密码不能为空,请您检查");
             return;
@@ -1171,7 +1166,8 @@ public class MainActivity extends Activity {
           if (!Util.hasDigitAndNum(password2)) {
             ViewUtil.showToast(getApplicationContext(), "密码中必须包含数字和字母");
           } else {
-            if (password2.length() < 6) {// 增加修改密码必须超过6位
+            if (password2.length() < 6) {
+              // 增加修改密码必须超过6位
               ViewUtil.showToast(getApplicationContext(), "密码必须超过6位");
             } else {
               ChangePwAsyntask changePwAsyntask = new ChangePwAsyntask();
@@ -1191,7 +1187,7 @@ public class MainActivity extends Activity {
 
   }
 
-  /**
+  /*
    * 选择头像
    * 
    * @return
@@ -1226,7 +1222,7 @@ public class MainActivity extends Activity {
         }).show();
   }
 
-  /**
+  /*
    * 取得回传的数据
    */
   protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -1267,7 +1263,7 @@ public class MainActivity extends Activity {
     super.onActivityResult(requestCode, resultCode, data);
   }
 
-  /**
+  /*
    * 裁剪图片方法实现
    * 
    * @param uri
@@ -1290,7 +1286,7 @@ public class MainActivity extends Activity {
     startActivityForResult(intent, RESULT);
   }
 
-  /**
+  /*
    * 判断是否是正确选择大学，-1代表出错，0代表所有，其他数字代表不同大学
    */
   private int judgeCollegeId() {
@@ -1310,7 +1306,7 @@ public class MainActivity extends Activity {
     return collegeId;
   }
 
-  /**
+  /*
    * 选择高校，高校中有选择历史
    */
   protected void chooseCollege() {
@@ -1363,7 +1359,7 @@ public class MainActivity extends Activity {
   private Button download_version;// 下载版本
   private Button cancle_check;// 取消
 
-  /**
+  /*
    * 刷新
    * 
    * @param messageSort
@@ -1379,7 +1375,7 @@ public class MainActivity extends Activity {
     StaticVarUtil.fileName = "jsonCache.txt";// 设置保存文件的名字
   }
 
-  /**
+  /*
    * 保存过往历史
    */
   private void saveHistory() {
@@ -1392,7 +1388,8 @@ public class MainActivity extends Activity {
     // 用于选择大学显示
     HashSet<String> set = (HashSet<String>) share.getStringSet("college", new HashSet<String>());
     if (judgeCollegeId() > 0) {
-      if (!set.contains(chooseCollege.getText().toString())) {// 如果不包含就加入
+      if (!set.contains(chooseCollege.getText().toString())) {
+        // 如果不包含就加入
         set.add(chooseCollege.getText().toString());
       }
     }
@@ -1400,7 +1397,7 @@ public class MainActivity extends Activity {
     editor.commit();// 同步更改硬盘内容
   }
 
-  /**
+  /*
    * 读取历史记录进行显示过往选择过的大学
    */
   private ArrayList<CharSequence> readHistory2() {
@@ -1408,7 +1405,8 @@ public class MainActivity extends Activity {
     // 显示最近一次记录,没有显示默认
     HashSet<String> set = (HashSet<String>) share.getStringSet("college", null);
     ArrayList<CharSequence> allHistory = null;// 要返回的数据
-    if (set != null) {// 不为空的话，进行数据的显示
+    if (set != null) {
+      // 不为空的话，进行数据的显示
       allHistory = new ArrayList<CharSequence>();
       for (String string : set) {
         allHistory.add(string);
@@ -1417,13 +1415,14 @@ public class MainActivity extends Activity {
     return allHistory;
   }
 
-  /**
+  /*
    * 对手机按钮的监听
    */
   @Override
   public boolean onKeyDown(int keyCode, KeyEvent event) {
     switch (keyCode) {
-    case KeyEvent.KEYCODE_BACK:// 如果是返回按钮,退出
+    case KeyEvent.KEYCODE_BACK:
+      // 如果是返回按钮,退出
       if (getCurrentMeunItem() != 1) {// 不在第一个页面,返回第一个页面
         menuBang.setPressed(true);// 初始化默认是风云榜被按下
         setCurrentMenuItem(1);// 记录当前选项位置
@@ -1442,7 +1441,7 @@ public class MainActivity extends Activity {
     return true;
   }
 
-  /**
+  /*
    * 清除内存块中的共享数据
    */
   private void deleteCatch() {
@@ -1456,7 +1455,7 @@ public class MainActivity extends Activity {
     isFirst = true;
   }
 
-  /**
+  /*
    * 退出模块
    * 
    * @param logout
@@ -1493,7 +1492,7 @@ public class MainActivity extends Activity {
     dialog.show();
   }
 
-  /**
+  /*
    * 记录设置当前MenuItem的位置，1，2，3，4，5分别代表成绩查询，补考查询，我的排名，我收藏的，选项
    * 
    * @param menuItem
@@ -1506,7 +1505,7 @@ public class MainActivity extends Activity {
     editor.commit();
   }
 
-  /**
+  /*
    * 取得当前MenuItem的位置
    * 
    * @return 当前的menu的菜单项 1，2，3，4，5分别代表成绩查询，补考查询，我的排名，我收藏的，选项,0代表没有这个
@@ -1553,7 +1552,7 @@ public class MainActivity extends Activity {
       try {
         if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
           if (!result.equals("error")) {
-            /**
+            /*
              * 将字符串 写入xml文件中
              */
             if (!result.equals("no_evaluation")) {
@@ -1607,8 +1606,9 @@ public class MainActivity extends Activity {
             requestTimes++;
             GetScoreAsyntask getScoreAsyntask = new GetScoreAsyntask();
             getScoreAsyntask.execute();
-          } else
+          } else {
             ViewUtil.showToast(getApplicationContext(), HttpUtilMc.CONNECT_EXCEPTION);
+          }
         }
       } catch (Exception e) {
         // TODO: handle exception
@@ -1620,7 +1620,7 @@ public class MainActivity extends Activity {
 
   }
 
-  /**
+  /*
    * 获取 成绩排名
    * 
    * @author Administrator 2015-2-8
@@ -1643,7 +1643,7 @@ public class MainActivity extends Activity {
       try {
         if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
           if (!result.equals("error")) {
-            /**
+            /*
              * 将字符串 写入xml文件中
              */
             if (!result.equals("")) {
@@ -1673,7 +1673,7 @@ public class MainActivity extends Activity {
 
   }
 
-  /**
+  /*
    * 
    * @param result
    *          成绩字符串
@@ -1800,6 +1800,7 @@ public class MainActivity extends Activity {
         CheckVersionAsyntask checkVersionAsyntask = new CheckVersionAsyntask();
         checkVersionAsyntask.execute();
         break;
+        
       // 获取传递的数据
       // Bundle data = msg.getData();
       // int count = data.getInt("COUNT");
@@ -1913,13 +1914,15 @@ public class MainActivity extends Activity {
       if (DBConnection.getPhotoName(StaticVarUtil.student.getAccount(), getApplicationContext())
           .equals(StaticVarUtil.PHOTOFILENAME)
           && new File(StaticVarUtil.PATH + "/" + StaticVarUtil.student.getAccount() + ".JPEG")
-              .exists()) {// 如果存在
+              .exists()) {
+        // 如果存在
         Bitmap bitmap = Util.convertToBitmap(
             StaticVarUtil.PATH + "/" + StaticVarUtil.student.getAccount() + ".JPEG", 240, 240);
         if (bitmap != null) {
           headPhoto.setImageBitmap(bitmap);
         }
-      } else {// 如果文件夹中不存在这个头像。
+      } else {
+        // 如果文件夹中不存在这个头像。
         GetPicture getPicture = new GetPicture();
         getPicture.execute(new String[] { HttpUtilMc.BASE_URL + "user_photo/"
             + StaticVarUtil.PHOTOFILENAME });
@@ -1941,8 +1944,9 @@ public class MainActivity extends Activity {
     protected void onPostExecute(Bitmap bitmap) {
       // TODO Auto-generated method stub
       super.onPostExecute(bitmap);
-      if (bitmap == null)
+      if (bitmap == null) {
         return;
+      }
 
       if (Util.isExternalStorageWritable()) {
         Util.saveBitmap2file(bitmap, StaticVarUtil.PHOTOFILENAME, getApplicationContext());
@@ -1972,8 +1976,8 @@ public class MainActivity extends Activity {
       }
       try {
         if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
-          if (!result.equals("no")) {// 有最新版本
-
+          if (!result.equals("no")) {
+            // 有最新版本
             String[] str = result.split("\\|");
             apk_url = str[0];
             new_version = str[1];
@@ -1994,7 +1998,7 @@ public class MainActivity extends Activity {
     }
   }
 
-  /**
+  /*
    * 上传头像
    * 
    * @author mc 2014-4-28
