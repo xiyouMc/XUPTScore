@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android" >
-    <item android:drawable="@drawable/friend_recommand_down" android:state_pressed="true"/>
-    <item android:drawable="@drawable/friend_recommand_down" android:state_selected="true"/>
-    <item android:drawable="@drawable/friend_recommand_up" android:state_window_focused="false"/>
-
-</selector>

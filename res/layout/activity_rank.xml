@@ -181,7 +181,8 @@
                 android:hint="@string/search"
                 android:textColor="#BABABA"
                 android:textColorHint="#BABABA"
-                android:textSize="9pt" />
+                android:textSize="9pt"
+                android:visibility="gone" />
 
             <com.mc.util.CustomRankListView
                 android:id="@+id/allRank"

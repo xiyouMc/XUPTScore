@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <!-- 按下去改变状态 -->
-    <item android:drawable="@drawable/button_choose_up" android:state_pressed="true"/>
-    <item android:drawable="@drawable/button_choose_up" android:state_focused="true"/>
-    <item android:drawable="@drawable/button_choose_up" android:state_selected="true"/>
-
-</selector>

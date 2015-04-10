@@ -55,7 +55,7 @@
                 android:layout_marginLeft="8dip"
                 android:fontFamily="sans-serif-thin"
                 android:text="By "
-                android:textColor="#33B6EA"
+                android:textColor="@color/change_up"
                 android:textSize="18sp" />
             <TextView
                 android:id="@+id/mc"
@@ -64,7 +64,7 @@
                 android:layout_marginLeft="8dip"
                 android:fontFamily="sans-serif-thin"
                 android:text="MC"
-                android:textColor="#33B6EA"
+                android:textColor="@color/change_up"
                 android:layout_toRightOf="@id/by"
                 android:textSize="19sp" />
             <TextView
@@ -76,7 +76,7 @@
                 android:layout_toRightOf="@id/by"
                 android:fontFamily="sans-serif-thin"
                 android:text="For Xiyou"
-                android:textColor="#33B6EA"
+                android:textColor="@color/change_up"
                 android:textSize="22sp" />
         </RelativeLayout>
 

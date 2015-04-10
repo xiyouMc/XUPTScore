@@ -44,7 +44,7 @@
                     android:layout_marginLeft="8dip"
                     android:fontFamily="sans-serif-thin"
                     android:text="@string/title"
-                    android:textColor="#33B6EA"
+                    android:textColor="@color/change_up"
                     android:textSize="24sp" />
 
                 <TextView
