@@ -1,6 +1,8 @@
 package com.xy.fy.view;
 
+import com.xy.fy.main.LoginActivity;
 import com.xy.fy.main.R;
+import com.xy.fy.util.ViewUtil;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -74,7 +76,7 @@ public class PullDoorView extends RelativeLayout {
 		mImgView.setScaleType(ImageView.ScaleType.FIT_XY);// 填充整个屏幕
 		mImgView.setImageResource(R.drawable.left1); // 默认背景
 		addView(mImgView);
-		startBounceAnim(mScreenHeigh,-mScreenHeigh,2000);
+		startBounceAnim(mScreenHeigh, -mScreenHeigh, 2000);
 	}
 
 	// 设置推动门背景
@@ -82,10 +84,11 @@ public class PullDoorView extends RelativeLayout {
 		mImgView.setImageResource(id);
 	}
 
-	//设置 填充类型  默认是填充整个屏幕
-	public void setScaletype(ImageView.ScaleType scaleType){
+	// 设置 填充类型 默认是填充整个屏幕
+	public void setScaletype(ImageView.ScaleType scaleType) {
 		mImgView.setScaleType(scaleType);// 填充整个屏幕
 	}
+
 	public void setBgBitmap(Bitmap bitmap) {
 		mImgView.setImageBitmap(bitmap);
 	}
@@ -110,28 +113,22 @@ public class PullDoorView extends RelativeLayout {
 		case MotionEvent.ACTION_DOWN:
 			mLastDownY = (int) event.getY();
 			mLastTime = System.currentTimeMillis();
-			System.err.println("ACTION_DOWN=" + mLastDownY);
 			return true;
 		case MotionEvent.ACTION_MOVE:
 			mCurryY = (int) event.getY();
-			System.err.println("ACTION_MOVE=" + mCurryY);
 			mDelY = mCurryY - mLastDownY;
 			// 只准上滑有效
 			if (mDelY < 0) {
 				scrollTo(0, -mDelY);
 			}
-			System.err.println("-------------  " + mDelY);
 
 			break;
 		case MotionEvent.ACTION_UP:
 			mCurryY = (int) event.getY();
 			mDelY = mCurryY - mLastDownY;
-			System.out.println("距离:" + mDelY);
 			if (mDelY < -2) {
 				long curryTime = System.currentTimeMillis();
 				long d = curryTime - mLastTime;
-				System.out.println("dd:" + d + "curryTime:" + curryTime
-						+ "mLastTime:" + mLastTime);
 				if (Math.abs(mDelY) > mScreenHeigh / 2
 						|| (d <= 300 && mDelY > -1000)) {
 
@@ -166,6 +163,11 @@ public class PullDoorView extends RelativeLayout {
 		} else {
 			if (mCloseFlag) {
 				this.setVisibility(View.GONE);
+				ViewUtil.showToast(mContext, "温馨提示：推动门图片是会更新的奥！");
+				/*com.mc.request.asyn.CheckVersionAsyntask checkVersionAsyntask = new com.mc.request.asyn.CheckVersionAsyntask(
+						mContext);
+				checkVersionAsyntask.execute();*/
+
 			}
 		}
 	}

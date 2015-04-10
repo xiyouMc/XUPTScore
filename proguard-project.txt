@@ -15,10 +15,19 @@
 -keep class com.mc.xml.model.** { *; }
 -keep class android.net.http.SslError
 -keep class android.webkit.**{*;}
--dontwarn cn.sharesdk.** 
+-dontwarn cn.sharesdk.sina.weibo.**
 -keep class cn.sharesdk.**{*;}
 -keep class com.sina.**{*;}
 -keep class m.framework.**{*;}
+
+-dontwarn org.apache.commons.mail.**
+-keep class org.apache.commons.mail.**{*;}
+-dontwarn org.apache.harmony.awt.**
+-keep class org.apache.harmony.awt.**{*;}
+-dontwarn com.sun.mail.imap.**
+-keep class com.sun.mail.imap.**{*;}
+-dontwarn javax.activation.**
+-keep class javax.activation.**{*;}
 # If your project uses WebView with JS, uncomment the following
 # and specify the fully qualified class name to the JavaScript interface
 # class:

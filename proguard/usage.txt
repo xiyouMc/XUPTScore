@@ -1,3 +1,15 @@
+Decoder.CharacterDecoder:
+    222:224:public byte[] decodeBuffer(java.io.InputStream)
+    233:233:public java.nio.ByteBuffer decodeBufferToByteBuffer(java.lang.String)
+    242:242:public java.nio.ByteBuffer decodeBufferToByteBuffer(java.io.InputStream)
+Decoder.CharacterEncoder:
+    185:187:public void encode(byte[],java.io.OutputStream)
+    228:259:private byte[] getBytes(java.nio.ByteBuffer)
+    272:274:public void encode(java.nio.ByteBuffer,java.io.OutputStream)
+    285:286:public java.lang.String encode(java.nio.ByteBuffer)
+    339:341:public void encodeBuffer(byte[],java.io.OutputStream)
+    372:374:public void encodeBuffer(java.nio.ByteBuffer,java.io.OutputStream)
+    385:386:public java.lang.String encodeBuffer(java.nio.ByteBuffer)
 android.support.v4.accessibilityservice.AccessibilityServiceInfoCompat
 android.support.v4.accessibilityservice.AccessibilityServiceInfoCompat$AccessibilityServiceInfoIcsImpl
 android.support.v4.accessibilityservice.AccessibilityServiceInfoCompat$AccessibilityServiceInfoStubImpl
@@ -1007,14 +1019,14 @@ com.actionbarsherlock.R$drawable:
 com.actionbarsherlock.R$id:
     261:261:public R$id()
 com.actionbarsherlock.R$integer:
-    313:313:public R$integer()
+    314:314:public R$integer()
 com.actionbarsherlock.R$layout:
-    316:316:public R$layout()
+    317:317:public R$layout()
 com.actionbarsherlock.R$string:
-    341:341:public R$string()
+    342:342:public R$string()
 com.actionbarsherlock.R$style
 com.actionbarsherlock.R$styleable:
-    447:447:public R$styleable()
+    448:448:public R$styleable()
 com.actionbarsherlock.app.ActionBar:
     public static final int NAVIGATION_MODE_STANDARD
     public static final int NAVIGATION_MODE_LIST
@@ -1927,9 +1939,6 @@ com.actionbarsherlock.widget.SuggestionsAdapter:
     250:252:public void close()
     690:701:private android.graphics.drawable.Drawable getActivityIconWithCache(android.content.ComponentName)
     712:729:private android.graphics.drawable.Drawable getActivityIcon(android.content.ComponentName)
-com.cardsui.example.MainActivity
-com.cardsui.example.MainActivity$1
-com.cardsui.example.MainActivity$2
 com.cardsui.example.MyCard
 com.cardsui.example.MyImageCard
 com.fima.cardsui.R:
@@ -2018,43 +2027,117 @@ com.fima.cardsui.views.CardUI:
     370:373:public void clearCards()
 com.fima.cardsui.views.CardUI$OnRenderedListener:
     public abstract void onRendered()
+com.mc.asyntask.AsyntaskUtil
+com.mc.asyntask.AsyntaskUtil$ShowCardAsyntask
 com.mc.db.DBConnection:
     private static final java.lang.String DATABASE_NAME
     private static final int DATABASE_VERSION
-    84:91:public static void deleteUser(java.lang.String,android.content.Context)
+    105:111:public static void deleteUser(java.lang.String,android.content.Context)
 com.mc.db.DBConnection$UserSchema
-com.mc.util.ActivityManager
+com.mc.request.asyn.CheckVersionAsyntask
+com.mc.util.BASE64:
+    10:10:public BASE64()
+    35:40:public static void main(java.lang.String[])
 com.mc.util.CircleImageView:
     private static final int COLORDRAWABLE_DIMENSION
     private static final int DEFAULT_BORDER_WIDTH
     private static final int DEFAULT_BORDER_COLOR
+com.mc.util.CrashHandler:
+    private static final java.lang.String TAG
+com.mc.util.CustomRankListView:
+    private static final int DONE
+    private static final int PULL_TO_REFRESH
+    private static final int RELEASE_TO_REFRESH
+    private static final int REFRESHING
+    private static final float RATIO
+    433:435:public void onFootLoadingComplete()
+    442:446:public void onRefreshComplete()
+com.mc.util.H5Log:
+    public static final java.lang.String TAG
+    9:9:public H5Log()
+    21:24:public static void setListener(com.mc.util.H5Log$LogListener)
+    40:42:public static void dWithDeviceInfo(android.content.Context,java.lang.String,java.lang.String)
+    45:46:public static void w(android.content.Context,java.lang.String)
+    49:55:public static void w(android.content.Context,java.lang.String,java.lang.String)
+    58:59:public static void e(android.content.Context,java.lang.String)
+    62:63:public static void e(android.content.Context,java.lang.String,java.lang.String)
+    66:68:public static void eWithDeviceInfo(android.content.Context,java.lang.String,java.lang.String)
+    71:72:public static void e(android.content.Context,java.lang.String,java.lang.Exception)
+    75:77:public static void e(android.content.Context,java.lang.String,java.lang.String,java.lang.Exception)
+com.mc.util.H5Toast
 com.mc.util.HVScrollView
-com.mc.util.HttpAssist
+com.mc.util.HttpAssist:
+    private static final java.lang.String TAG
+    private static final int TIME_OUT
+    private static final java.lang.String CHARSET
+    public static final java.lang.String SUCCESS
+    public static final java.lang.String FAILURE
+    20:20:public HttpAssist()
 com.mc.util.HttpUtilMc:
     public static final java.lang.String IP
     public static final java.lang.String BASE_URL
-    17:17:public HttpUtilMc()
-    34:35:public static org.apache.http.client.methods.HttpGet getHttpGet(java.lang.String)
-    47:48:public static org.apache.http.HttpResponse getHttpResponse(org.apache.http.client.methods.HttpGet)
+    public static final java.lang.String XUPT_IP1
+    public static final java.lang.String XUPT_IP2
+    19:19:public HttpUtilMc()
+    35:36:public static org.apache.http.client.methods.HttpGet getHttpGet(java.lang.String)
+    48:54:public static org.apache.http.HttpResponse getHttpResponse(org.apache.http.client.methods.HttpGet)
     104:123:public static java.lang.String queryStringForPost(org.apache.http.client.methods.HttpPost)
     129:149:public static java.lang.String queryStringForGet(java.lang.String)
+    160:170:private static boolean IsReachIP(java.lang.String)
 com.mc.util.LogcatHelper:
-    private static final java.lang.String LOG_FILE_DIR
+    61:71:public void start()
+    168:170:public static java.lang.String getFileName()
+com.mc.util.LogcatHelper$LogDumper:
+    final synthetic com.mc.util.LogcatHelper this$0
+    89:112:public LogcatHelper$LogDumper(com.mc.util.LogcatHelper,java.lang.String,java.lang.String)
 com.mc.util.MyScrollView
+com.mc.util.Passport:
+    118:124:java.lang.String passport_encode(java.lang.String[])
+    129:137:public java.lang.String implode(java.lang.String,java.lang.String[])
+    141:155:public static java.lang.String toStringHex(java.lang.String)
+com.mc.util.SIMCardInfo:
+    private java.lang.String IMSI
+    52:64:public java.lang.String getProvidersName()
 com.mc.util.ScrollViewLinearLayout
+com.mc.util.SystemBarTintManager:
+    public static final int DEFAULT_TINT_COLOR
+    private boolean mNavBarTintEnabled
+    141:145:public void setNavigationBarTintEnabled(boolean)
+    153:155:public void setTintColor(int)
+    163:165:public void setTintResource(int)
+    173:175:public void setTintDrawable(android.graphics.drawable.Drawable)
+    183:185:public void setTintAlpha(float)
+    193:196:public void setStatusBarTintColor(int)
+    216:219:public void setStatusBarTintDrawable(android.graphics.drawable.Drawable)
+    228:231:public void setStatusBarAlpha(float)
+    239:242:public void setNavigationBarTintColor(int)
+    250:253:public void setNavigationBarTintResource(int)
+    262:265:public void setNavigationBarTintDrawable(android.graphics.drawable.Drawable)
+    274:277:public void setNavigationBarAlpha(float)
+    285:285:public com.mc.util.SystemBarTintManager$SystemBarConfig getConfig()
+    294:294:public boolean isStatusBarTintEnabled()
+    303:303:public boolean isNavBarTintEnabled()
+com.mc.util.SystemBarTintManager$SystemBarConfig:
+    private static final java.lang.String STATUS_BAR_HEIGHT_RES_NAME
+    private static final java.lang.String NAV_BAR_HEIGHT_RES_NAME
+    private static final java.lang.String NAV_BAR_HEIGHT_LANDSCAPE_RES_NAME
+    private static final java.lang.String NAV_BAR_WIDTH_RES_NAME
+    private static final java.lang.String SHOW_NAV_BAR_RES_NAME
+    479:479:public int getActionBarHeight()
+    518:518:public int getPixelInsetTop(boolean)
+    527:530:public int getPixelInsetBottom()
+    540:543:public int getPixelInsetRight()
 com.mc.util.Util:
-    21:21:public Util()
+    public static final java.lang.String QRCODE_FILENAME
+    private static final java.lang.String TAG
+    public static final java.lang.String infosFloder
+    public static final java.lang.String LOGINFILE
+    42:42:public Util()
+    263:277:public static void uploadLoginMsg(android.content.Context)
+com.mc.util.Util$1
 com.mc.util.VersionUpdate:
-    private android.app.Dialog downloadDialog
-    private static final java.lang.String savePath
-    public static final java.lang.String saveFileName
     private static final int DOWN_UPDATE
     private static final int DOWN_OVER
-    private java.lang.Thread downLoadThread
-    118:137:private void showDownloadDialog()
-    192:194:private void downloadApk()
-    65:65:static synthetic void access$6(com.mc.util.VersionUpdate,boolean)
-com.mc.util.VersionUpdate$5
 com.nineoldandroids.animation.Animator:
     61:61:public void cancel()
     72:72:public void end()
@@ -2214,6 +2297,11 @@ com.nineoldandroids.view.ViewPropertyAnimatorPreHC$PropertyBundle
 com.nineoldandroids.view.animation.AnimatorProxy:
     163:167:public void setScrollX(int)
     176:180:public void setScrollY(int)
+com.nrs.utils.HttpAssistFile:
+    private static final int TIME_OUT
+    private static final java.lang.String CHARSET
+    public static final java.lang.String SUCCESS
+    public static final java.lang.String FAILURE
 com.slidingmenu.lib.CanvasTransformerBuilder
 com.slidingmenu.lib.CanvasTransformerBuilder$1
 com.slidingmenu.lib.CanvasTransformerBuilder$2
@@ -2255,7 +2343,7 @@ com.slidingmenu.lib.R$layout
 com.slidingmenu.lib.R$string
 com.slidingmenu.lib.R$style
 com.slidingmenu.lib.R$styleable:
-    468:468:public R$styleable()
+    469:469:public R$styleable()
 com.slidingmenu.lib.SlidingMenu:
     private static final java.lang.String TAG
     public static final int SLIDING_WINDOW
@@ -2266,14 +2354,14 @@ com.slidingmenu.lib.SlidingMenu:
     public static final int LEFT
     public static final int RIGHT
     public static final int LEFT_RIGHT
-    434:434:public boolean isSlidingEnabled()
-    479:480:public void showMenu()
-    496:497:public void showSecondaryMenu()
-    506:507:public void showSecondaryMenu(boolean)
-    560:560:public boolean isSecondaryMenuShowing()
-    852:853:public void addIgnoredView(android.view.View)
-    861:862:public void removeIgnoredView(android.view.View)
-    868:869:public void clearIgnoredViews()
+    433:433:public boolean isSlidingEnabled()
+    478:479:public void showMenu()
+    495:496:public void showSecondaryMenu()
+    505:506:public void showSecondaryMenu(boolean)
+    559:559:public boolean isSecondaryMenuShowing()
+    851:852:public void addIgnoredView(android.view.View)
+    860:861:public void removeIgnoredView(android.view.View)
+    867:868:public void clearIgnoredViews()
 com.slidingmenu.lib.SlidingMenu$1:
     public static final int POSITION_OPEN
     public static final int POSITION_CLOSE
@@ -2284,43 +2372,122 @@ com.slidingmenu.lib.app.SlidingActivityHelper$1
 com.slidingmenu.lib.app.SlidingFragmentActivity
 com.slidingmenu.lib.app.SlidingListActivity
 com.slidingmenu.lib.app.SlidingPreferenceActivity
+com.sun.activation.registries.LineTokenizer:
+    private static final java.lang.String singles
+    330:331:public void pushToken(java.lang.String)
+com.sun.activation.registries.LogSupport:
+    66:68:private LogSupport()
+com.sun.activation.registries.MailcapTokenizer:
+    public static final int UNKNOWN_TOKEN
+    public static final int START_TOKEN
+    public static final int STRING_TOKEN
+    public static final int EOI_TOKEN
+    public static final int SLASH_TOKEN
+    public static final int SEMICOLON_TOKEN
+    public static final int EQUALS_TOKEN
+    94:94:public int getCurrentToken()
+com.sun.activation.registries.MimeTypeEntry:
+    59:59:public java.lang.String getFileExtension()
+com.sun.mail.dsn.DeliveryStatus
+com.sun.mail.dsn.MessageHeaders
+com.sun.mail.dsn.MultipartReport
+com.sun.mail.dsn.message_deliverystatus
+com.sun.mail.dsn.multipart_report
+com.sun.mail.dsn.text_rfc822headers
+com.sun.mail.handlers.message_rfc822
+com.sun.mail.handlers.multipart_mixed
+com.sun.mail.handlers.text_html
+com.sun.mail.handlers.text_plain
+com.sun.mail.handlers.text_xml
+com.sun.mail.iap.Argument:
+    103:104:public void writeBytes(byte[])
+    111:112:public void writeBytes(java.io.ByteArrayOutputStream)
+com.sun.mail.iap.BadCommandException:
+    private static final long serialVersionUID
+com.sun.mail.iap.CommandFailedException:
+    private static final long serialVersionUID
+    63:64:public CommandFailedException(java.lang.String)
+com.sun.mail.iap.ConnectionException:
+    private static final long serialVersionUID
+com.sun.mail.iap.LiteralException:
+    private static final long serialVersionUID
+com.sun.mail.iap.ParsingException:
+    private static final long serialVersionUID
+    71:72:public ParsingException(com.sun.mail.iap.Response)
+com.sun.mail.iap.ProtocolException:
+    private static final long serialVersionUID
+com.sun.mail.iap.ResponseInputStream:
+    private static final int minIncrement
+    private static final int maxIncrement
+    private static final int incrementSlop
+    78:78:public com.sun.mail.iap.ByteArray readResponse()
+com.sun.mail.pop3.DefaultFolder
+com.sun.mail.pop3.POP3Folder
+com.sun.mail.pop3.POP3Message
+com.sun.mail.pop3.POP3SSLStore
+com.sun.mail.pop3.POP3Store
+com.sun.mail.pop3.Protocol
+com.sun.mail.pop3.Response
+com.sun.mail.pop3.SharedByteArrayOutputStream
+com.sun.mail.pop3.Status
+com.sun.mail.smtp.DigestMD5
+com.sun.mail.smtp.SMTPAddressFailedException
+com.sun.mail.smtp.SMTPAddressSucceededException
+com.sun.mail.smtp.SMTPMessage
+com.sun.mail.smtp.SMTPOutputStream
+com.sun.mail.smtp.SMTPSSLTransport
+com.sun.mail.smtp.SMTPSendFailedException
+com.sun.mail.smtp.SMTPTransport
+com.sun.mail.util.ASCIIUtility:
+    50:50:private ASCIIUtility()
+    222:230:public static java.lang.String toString(java.io.ByteArrayInputStream)
+com.sun.mail.util.BASE64DecoderStream:
+    95:97:public BASE64DecoderStream(java.io.InputStream,boolean)
+com.sun.mail.util.FolderClosedIOException:
+    private static final long serialVersionUID
+    64:65:public FolderClosedIOException(javax.mail.Folder)
+com.sun.mail.util.MessageRemovedIOException:
+    private static final long serialVersionUID
+com.sun.mail.util.SocketFetcher:
+    63:64:private SocketFetcher()
+    207:207:public static java.net.Socket getSocket(java.lang.String,int,java.util.Properties,java.lang.String)
+    274:274:public static java.net.Socket startTLS(java.net.Socket)
+com.sun.mail.util.UUDecoderStream:
+    131:132:public java.lang.String getName()
+    143:144:public int getMode()
+com.sun.mail.util.UUEncoderStream:
+    76:77:public UUEncoderStream(java.io.OutputStream,java.lang.String)
+    98:100:public void setNameMode(java.lang.String,int)
 com.xy.fy.adapter.ChooseHistorySchoolExpandAdapter
 com.xy.fy.adapter.ChooseKindAdapter
 com.xy.fy.adapter.CommentAdapter
 com.xy.fy.adapter.CommentAdapter$ViewHolder
 com.xy.fy.main.BuildConfig
-com.xy.fy.main.CircleImageView
 com.xy.fy.main.MainActivity:
-    private static android.widget.PopupWindow popupWindow
-    private static android.widget.PopupWindow version_popupWindow
-    private android.view.View view
-    private android.widget.TextView update_content_textview
-    private android.widget.Button refresh
     private android.widget.Button chooseCollege
     private android.widget.Button chooseMsgKind
     private android.widget.Button chooseMsgSort
-    private android.widget.ProgressBar progress
+    private static final int DEFAULTITEMSUM
     private static final int PIC
     private static final int PHO
     private static final int RESULT
     private android.widget.Button download_version
     private android.widget.Button cancle_check
-    643:674:protected void chooseHeadPhoto()
-    737:751:private int judgeCollegeId()
-    758:803:protected void chooseCollege()
-    820:840:private void refresh(int,int,int)
-    846:863:private void saveHistory()
-    869:880:private java.util.ArrayList readHistory2()
-    1216:1281:private void check_version_showWindow(android.view.View)
-    98:98:static synthetic android.widget.Button access$27(com.xy.fy.main.MainActivity)
-    90:90:static synthetic android.widget.PopupWindow access$28()
-com.xy.fy.main.MainActivity$12
-com.xy.fy.main.MainActivity$13
-com.xy.fy.main.MainActivity$14
-com.xy.fy.main.MainActivity$15
-com.xy.fy.main.MainActivity$18
-com.xy.fy.main.MainActivity$19
-com.xy.fy.main.MessageService
+    980:1025:private void rankListViewListener()
+    1367:1381:private int judgeCollegeId()
+    1388:1433:protected void chooseCollege()
+    1450:1455:private void refresh(int,int,int)
+    1461:1477:private void saveHistory()
+    1483:1494:private java.util.ArrayList readHistory2()
+    132:132:static synthetic int access$47()
+    138:138:static synthetic java.util.ArrayList access$48(com.xy.fy.main.MainActivity)
+    141:141:static synthetic android.widget.SimpleAdapter access$50(com.xy.fy.main.MainActivity)
+    112:112:static synthetic android.widget.Button access$52(com.xy.fy.main.MainActivity)
+com.xy.fy.main.MainActivity$24
+com.xy.fy.main.MainActivity$25
+com.xy.fy.main.MainActivity$25$1
+com.xy.fy.main.MainActivity$36
+com.xy.fy.main.MainActivity$37
 com.xy.fy.main.R:
     10:10:public R()
 com.xy.fy.main.R$anim
@@ -2336,7 +2503,7 @@ com.xy.fy.main.R$layout
 com.xy.fy.main.R$string
 com.xy.fy.main.R$style
 com.xy.fy.main.R$styleable:
-    2347:2347:public R$styleable()
+    2654:2654:public R$styleable()
 com.xy.fy.singleton.Comment
 com.xy.fy.singleton.Message:
     3:3:public Message()
@@ -2369,12 +2536,20 @@ com.xy.fy.singleton.Message:
     124:124:public int getColNum()
     128:129:public void setColNum(int)
 com.xy.fy.util.BitmapUtil:
-    23:23:public BitmapUtil()
-    36:54:public static android.graphics.Bitmap toRoundCorner(android.graphics.Bitmap,int)
-    69:93:public static android.graphics.Bitmap resizeBitmap(android.graphics.Bitmap,int,int)
-    107:129:public static android.graphics.Bitmap resizeBitmapHeight(android.graphics.Bitmap,int)
+    31:31:public BitmapUtil()
+    44:62:public static android.graphics.Bitmap toRoundCorner(android.graphics.Bitmap,int)
+    77:101:public static android.graphics.Bitmap resizeBitmap(android.graphics.Bitmap,int,int)
+    115:137:public static android.graphics.Bitmap resizeBitmapHeight(android.graphics.Bitmap,int)
+    210:227:public static android.graphics.Bitmap drawableToBitmap(android.graphics.drawable.Drawable)
 com.xy.fy.util.ConnectionUtil:
-    17:17:public ConnectionUtil()
+    public static final int NETWORKTYPE_INVALID
+    public static final int NETWORKTYPE_WAP
+    public static final int NETWORKTYPE_2G
+    public static final int NETWORKTYPE_3G
+    public static final int NETWORKTYPE_WIFI
+    19:19:public ConnectionUtil()
+    38:74:private static boolean isFastMobileNetwork(android.content.Context)
+    91:112:public static int getNetWorkType(android.content.Context)
 com.xy.fy.util.ExpressionUtil
 com.xy.fy.util.StaticVarUtil:
     public static final java.lang.String QUERY_SCORE
@@ -2399,17 +2574,17 @@ com.xy.fy.util.StaticVarUtil:
     public static final java.lang.String USER_INFO
     public static final java.lang.String IS_REMEMBER
     29:29:public StaticVarUtil()
-    91:101:public static com.xy.fy.singleton.Student parseJsonToStudent(java.lang.String)
-    121:143:public static com.xy.fy.singleton.Message getItemMessage(java.lang.String)
-    153:167:public static java.util.ArrayList getAllMessage(java.lang.String)
-    176:181:public static void collect(int,android.content.Context)
-    191:196:public static boolean isCollect(int,android.content.Context)
-    207:213:public static boolean isPraised(int,android.content.Context)
-    222:227:public static void praise(int,android.content.Context)
-    236:252:public static java.util.ArrayList getAllComments(java.lang.String)
+    99:109:public static com.xy.fy.singleton.Student parseJsonToStudent(java.lang.String)
+    129:151:public static com.xy.fy.singleton.Message getItemMessage(java.lang.String)
+    161:175:public static java.util.ArrayList getAllMessage(java.lang.String)
+    184:189:public static void collect(int,android.content.Context)
+    199:204:public static boolean isCollect(int,android.content.Context)
+    215:221:public static boolean isPraised(int,android.content.Context)
+    230:235:public static void praise(int,android.content.Context)
+    244:260:public static java.util.ArrayList getAllComments(java.lang.String)
 com.xy.fy.util.ViewUtil:
-    16:16:public ViewUtil()
-    35:52:public static void showDialog(java.lang.String,java.lang.String,android.app.Activity)
+    18:18:public ViewUtil()
+    53:70:public static void showDialog(java.lang.String,java.lang.String,android.app.Activity)
 com.xy.fy.util.ViewUtil$1
 com.xy.fy.util.ViewUtil$2
 com.xy.fy.view.CustomListView:
@@ -2426,3 +2601,328 @@ com.xy.fy.view.HistoryCollege
 com.xy.fy.view.ToolClass:
     7:7:public ToolClass()
     300:302:public static void main(java.lang.String[])
+javax.mail.AuthenticationFailedException:
+    private static final long serialVersionUID
+javax.mail.EventQueue:
+    152:156:void stop()
+javax.mail.FetchProfile:
+    175:178:public void add(java.lang.String)
+    191:191:public boolean contains(java.lang.String)
+    200:205:public javax.mail.FetchProfile$Item[] getItems()
+javax.mail.Folder$TerminatorEvent:
+    private static final long serialVersionUID
+javax.mail.FolderClosedException:
+    private static final long serialVersionUID
+javax.mail.FolderNotFoundException:
+    private static final long serialVersionUID
+    70:72:public FolderNotFoundException(javax.mail.Folder)
+    103:103:public javax.mail.Folder getFolder()
+javax.mail.IllegalWriteException:
+    private static final long serialVersionUID
+javax.mail.Message$RecipientType:
+    private static final long serialVersionUID
+    255:262:protected java.lang.Object readResolve()
+javax.mail.MessageAware
+javax.mail.MessageContext:
+    73:73:public javax.mail.Part getPart()
+    85:87:public javax.mail.Message getMessage()
+    101:110:private static javax.mail.Message getMessage(javax.mail.Part)
+    119:120:public javax.mail.Session getSession()
+javax.mail.MessageRemovedException:
+    private static final long serialVersionUID
+javax.mail.MessagingException:
+    private static final long serialVersionUID
+    106:106:public synchronized java.lang.Exception getNextException()
+javax.mail.MethodNotSupportedException:
+    private static final long serialVersionUID
+javax.mail.Multipart:
+    110:115:protected synchronized void setMultipartDataSource(javax.mail.MultipartDataSource)
+    173:178:public synchronized boolean removeBodyPart(javax.mail.BodyPart)
+    195:201:public synchronized void removeBodyPart(int)
+    public abstract void writeTo(java.io.OutputStream)
+    263:263:public synchronized javax.mail.Part getParent()
+javax.mail.MultipartDataSource:
+    public abstract int getCount()
+    public abstract javax.mail.BodyPart getBodyPart(int)
+javax.mail.NoSuchProviderException:
+    private static final long serialVersionUID
+javax.mail.Part:
+    public static final java.lang.String ATTACHMENT
+    public static final java.lang.String INLINE
+    public abstract int getLineCount()
+    public abstract java.lang.String getDisposition()
+    public abstract java.lang.String getDescription()
+    public abstract java.lang.String getFileName()
+    public abstract java.io.InputStream getInputStream()
+    public abstract void addHeader(java.lang.String,java.lang.String)
+    public abstract java.util.Enumeration getAllHeaders()
+    public abstract java.util.Enumeration getMatchingHeaders(java.lang.String[])
+    public abstract java.util.Enumeration getNonMatchingHeaders(java.lang.String[])
+javax.mail.Provider:
+    118:118:public java.lang.String getVendor()
+    123:123:public java.lang.String getVersion()
+javax.mail.Quota:
+    114:129:public void setResourceLimit(java.lang.String,long)
+javax.mail.QuotaAwareStore
+javax.mail.ReadOnlyFolderException:
+    private static final long serialVersionUID
+    64:65:public ReadOnlyFolderException(javax.mail.Folder)
+    84:84:public javax.mail.Folder getFolder()
+javax.mail.SendFailedException:
+    private static final long serialVersionUID
+    90:91:public SendFailedException(java.lang.String,java.lang.Exception)
+javax.mail.Service$TerminatorEvent:
+    private static final long serialVersionUID
+javax.mail.Session:
+    259:259:public static javax.mail.Session getInstance(java.util.Properties)
+    349:349:public static javax.mail.Session getDefaultInstance(java.util.Properties)
+    368:371:public synchronized void setDebug(boolean)
+    393:394:public synchronized void setDebugOut(java.io.PrintStream)
+    418:420:public synchronized javax.mail.Provider[] getProviders()
+    486:492:public synchronized void setProvider(javax.mail.Provider)
+    506:506:public javax.mail.Store getStore()
+    554:554:public javax.mail.Store getStore(javax.mail.Provider)
+    612:614:public javax.mail.Folder getFolder(javax.mail.URLName)
+    627:627:public javax.mail.Transport getTransport()
+    675:675:public javax.mail.Transport getTransport(javax.mail.Provider)
+    1053:1057:public synchronized void setProtocolForAddress(java.lang.String,java.lang.String)
+javax.mail.StoreClosedException:
+    private static final long serialVersionUID
+    68:69:public StoreClosedException(javax.mail.Store)
+    85:85:public javax.mail.Store getStore()
+javax.mail.Transport:
+    private java.util.Vector transportListeners
+    77:78:public Transport(javax.mail.Session,javax.mail.URLName)
+    139:141:public static void send(javax.mail.Message,javax.mail.Address[])
+    315:318:public synchronized void addTransportListener(javax.mail.event.TransportListener)
+    330:332:public synchronized void removeTransportListener(javax.mail.event.TransportListener)
+    347:353:protected void notifyTransportListeners(int,javax.mail.Address[],javax.mail.Address[],javax.mail.Address[],javax.mail.Message)
+javax.mail.UIDFolder:
+    public static final long LASTUID
+    public abstract long getUIDValidity()
+    public abstract javax.mail.Message getMessageByUID(long)
+    public abstract javax.mail.Message[] getMessagesByUID(long,long)
+    public abstract javax.mail.Message[] getMessagesByUID(long[])
+    public abstract long getUID(javax.mail.Message)
+javax.mail.URLName:
+    static final int caseDiff
+    168:169:public URLName(java.net.URL)
+    175:177:public URLName(java.lang.String)
+    246:321:protected void parseString(java.lang.String)
+    352:352:public java.lang.String getRef()
+    383:383:public java.net.URL getURL()
+javax.mail.Version
+javax.mail.event.ConnectionAdapter
+javax.mail.event.ConnectionEvent:
+    public static final int OPENED
+    public static final int DISCONNECTED
+    public static final int CLOSED
+    private static final long serialVersionUID
+    84:84:public int getType()
+javax.mail.event.FolderAdapter
+javax.mail.event.FolderEvent:
+    public static final int CREATED
+    public static final int DELETED
+    public static final int RENAMED
+    private static final long serialVersionUID
+    128:128:public int getType()
+    138:138:public javax.mail.Folder getFolder()
+    153:153:public javax.mail.Folder getNewFolder()
+javax.mail.event.MailEvent:
+    private static final long serialVersionUID
+javax.mail.event.MessageChangedEvent:
+    public static final int FLAGS_CHANGED
+    public static final int ENVELOPE_CHANGED
+    private static final long serialVersionUID
+    90:90:public int getMessageChangeType()
+    98:98:public javax.mail.Message getMessage()
+javax.mail.event.MessageCountAdapter
+javax.mail.event.MessageCountEvent:
+    public static final int ADDED
+    public static final int REMOVED
+    private static final long serialVersionUID
+    119:119:public int getType()
+    134:134:public boolean isRemoved()
+    142:142:public javax.mail.Message[] getMessages()
+javax.mail.event.StoreEvent:
+    public static final int ALERT
+    public static final int NOTICE
+    private static final long serialVersionUID
+    101:101:public int getMessageType()
+    110:110:public java.lang.String getMessage()
+javax.mail.event.TransportAdapter
+javax.mail.event.TransportEvent
+javax.mail.event.TransportListener
+javax.mail.internet.AddressException:
+    private static final long serialVersionUID
+    79:80:public AddressException(java.lang.String)
+    110:110:public java.lang.String getRef()
+    118:118:public int getPos()
+javax.mail.internet.ContentDisposition:
+    73:76:public ContentDisposition(java.lang.String,javax.mail.internet.ParameterList)
+    133:133:public javax.mail.internet.ParameterList getParameterList()
+    166:167:public void setParameterList(javax.mail.internet.ParameterList)
+javax.mail.internet.ContentType:
+    140:140:public java.lang.String getBaseType()
+    162:162:public javax.mail.internet.ParameterList getParameterList()
+    170:171:public void setPrimaryType(java.lang.String)
+    200:201:public void setParameterList(javax.mail.internet.ParameterList)
+javax.mail.internet.HeaderTokenizer:
+    public static final java.lang.String RFC822
+    public static final java.lang.String MIME
+    191:192:public HeaderTokenizer(java.lang.String)
+    224:227:public javax.mail.internet.HeaderTokenizer$Token peek()
+javax.mail.internet.HeaderTokenizer$Token:
+    public static final int ATOM
+    public static final int QUOTEDSTRING
+    public static final int COMMENT
+    public static final int EOF
+javax.mail.internet.MailDateFormat:
+    private static final long serialVersionUID
+javax.mail.internet.MailDateParser:
+    523:526:public int peekChar()
+javax.mail.internet.MimeMessage$RecipientType:
+    private static final long serialVersionUID
+    485:488:protected java.lang.Object readResolve()
+javax.mail.internet.MimeMultipart:
+    202:220:public MimeMultipart(javax.activation.DataSource)
+    268:277:public synchronized javax.mail.BodyPart getBodyPart(java.lang.String)
+    292:293:public boolean removeBodyPart(javax.mail.BodyPart)
+    309:311:public void removeBodyPart(int)
+    364:365:public synchronized boolean isComplete()
+    377:378:public synchronized java.lang.String getPreamble()
+    394:395:public synchronized void setPreamble(java.lang.String)
+    425:450:public synchronized void writeTo(java.io.OutputStream)
+javax.mail.internet.MimePart:
+    public abstract void addHeaderLine(java.lang.String)
+    public abstract java.util.Enumeration getAllHeaderLines()
+    public abstract java.util.Enumeration getMatchingHeaderLines(java.lang.String[])
+    public abstract java.lang.String getContentID()
+    public abstract java.lang.String getContentMD5()
+    public abstract void setContentMD5(java.lang.String)
+    public abstract java.lang.String[] getContentLanguage()
+    public abstract void setContentLanguage(java.lang.String[])
+    public abstract void setText(java.lang.String)
+    public abstract void setText(java.lang.String,java.lang.String,java.lang.String)
+javax.mail.internet.MimeUtility:
+    public static final int ALL
+    static final int ALL_ASCII
+    static final int MOSTLY_ASCII
+    static final int MOSTLY_NONASCII
+    372:387:public static java.io.OutputStream encode(java.io.OutputStream,java.lang.String,java.lang.String)
+    1374:1391:static int checkAscii(byte[])
+javax.mail.internet.NewsAddress:
+    private static final long serialVersionUID
+    101:102:public void setNewsgroup(java.lang.String)
+    110:110:public java.lang.String getNewsgroup()
+    119:120:public void setHost(java.lang.String)
+    128:128:public java.lang.String getHost()
+javax.mail.internet.ParameterList:
+    449:449:public int size()
+    524:533:public void set(java.lang.String,java.lang.String,java.lang.String)
+    542:543:public void remove(java.lang.String)
+    552:552:public java.util.Enumeration getNames()
+    665:689:private static javax.mail.internet.ParameterList$Value encodeValue(java.lang.String,java.lang.String)
+javax.mail.internet.ParameterList$ParamEnum
+javax.mail.internet.ParseException:
+    private static final long serialVersionUID
+javax.mail.internet.PreencodedMimeBodyPart
+javax.mail.internet.UniqueValue:
+    58:58:UniqueValue()
+javax.mail.search.AddressStringTerm:
+    private static final long serialVersionUID
+    68:69:protected AddressStringTerm(java.lang.String)
+javax.mail.search.AddressTerm:
+    private static final long serialVersionUID
+    62:64:protected AddressTerm(javax.mail.Address)
+javax.mail.search.AndTerm:
+    private static final long serialVersionUID
+    70:74:public AndTerm(javax.mail.search.SearchTerm,javax.mail.search.SearchTerm)
+    81:85:public AndTerm(javax.mail.search.SearchTerm[])
+javax.mail.search.BodyTerm:
+    private static final long serialVersionUID
+    62:63:public BodyTerm(java.lang.String)
+javax.mail.search.ComparisonTerm:
+    public static final int LE
+    public static final int LT
+    public static final int EQ
+    public static final int NE
+    public static final int GT
+    public static final int GE
+    private static final long serialVersionUID
+javax.mail.search.DateTerm:
+    private static final long serialVersionUID
+    66:69:protected DateTerm(int,java.util.Date)
+javax.mail.search.FlagTerm:
+    private static final long serialVersionUID
+javax.mail.search.FromStringTerm:
+    private static final long serialVersionUID
+    67:68:public FromStringTerm(java.lang.String)
+javax.mail.search.FromTerm:
+    private static final long serialVersionUID
+    61:62:public FromTerm(javax.mail.Address)
+javax.mail.search.HeaderTerm:
+    private static final long serialVersionUID
+    70:72:public HeaderTerm(java.lang.String,java.lang.String)
+javax.mail.search.IntegerComparisonTerm:
+    private static final long serialVersionUID
+    59:62:protected IntegerComparisonTerm(int,int)
+javax.mail.search.MessageIDTerm:
+    private static final long serialVersionUID
+    67:68:public MessageIDTerm(java.lang.String)
+javax.mail.search.MessageNumberTerm
+javax.mail.search.NotTerm:
+    private static final long serialVersionUID
+    61:63:public NotTerm(javax.mail.search.SearchTerm)
+javax.mail.search.OrTerm:
+    private static final long serialVersionUID
+    80:84:public OrTerm(javax.mail.search.SearchTerm[])
+javax.mail.search.ReceivedDateTerm:
+    private static final long serialVersionUID
+    63:64:public ReceivedDateTerm(int,java.util.Date)
+javax.mail.search.RecipientStringTerm:
+    private static final long serialVersionUID
+    75:77:public RecipientStringTerm(javax.mail.Message$RecipientType,java.lang.String)
+javax.mail.search.RecipientTerm:
+    private static final long serialVersionUID
+    70:72:public RecipientTerm(javax.mail.Message$RecipientType,javax.mail.Address)
+javax.mail.search.SearchException:
+    private static final long serialVersionUID
+javax.mail.search.SearchTerm:
+    private static final long serialVersionUID
+javax.mail.search.SentDateTerm:
+    private static final long serialVersionUID
+    63:64:public SentDateTerm(int,java.util.Date)
+javax.mail.search.SizeTerm:
+    private static final long serialVersionUID
+    62:63:public SizeTerm(int,int)
+javax.mail.search.StringTerm:
+    private static final long serialVersionUID
+    68:71:protected StringTerm(java.lang.String)
+    73:76:protected StringTerm(java.lang.String,boolean)
+    89:89:public boolean getIgnoreCase()
+javax.mail.search.SubjectTerm:
+    private static final long serialVersionUID
+    63:64:public SubjectTerm(java.lang.String)
+javax.mail.util.ByteArrayDataSource
+javax.mail.util.ByteArrayDataSource$DSByteArrayOutputStream
+javax.mail.util.SharedFileInputStream
+javax.mail.util.SharedFileInputStream$SharedFile
+myjava.awt.datatransfer.MimeTypeProcessor$MimeType:
+    private static final long serialVersionUID
+    241:242:void removeParameter(java.lang.String)
+    245:245:java.lang.Object getSystemParameter(java.lang.String)
+    249:250:void addSystemParameter(java.lang.String,java.lang.Object)
+myjava.awt.datatransfer.Transferable:
+    public abstract boolean isDataFlavorSupported(myjava.awt.datatransfer.DataFlavor)
+    public abstract myjava.awt.datatransfer.DataFlavor[] getTransferDataFlavors()
+myjava.awt.datatransfer.UnsupportedFlavorException:
+    private static final long serialVersionUID
+org.apache.harmony.misc.SystemUtils:
+    public static final int OS_WINDOWS
+    public static final int OS_LINUX
+    public static final int OS_UNKNOWN
+    public static final int ARC_IA32
+    public static final int ARC_IA64
+    public static final int ARC_UNKNOWN
+    23:23:public SystemUtils()

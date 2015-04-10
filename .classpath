@@ -7,6 +7,15 @@
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry kind="lib" path="E:/java处理二进制/sun.misc.BASE64Decoder.jar"/>
 	<classpathentry kind="lib" path="libs/mframework.jar"/>
-	<classpathentry kind="lib" path="libs/ShareSDK-Core-2.5.8.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-Core-2.5.9.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-QQ-2.5.9.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-QZone-2.5.9.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-ShortMessage-2.5.9.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-SinaWeibo-2.5.9.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-TencentWeibo-2.5.9.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-Wechat-2.5.9.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-Wechat-Core-2.5.9.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-Wechat-Favorite-2.5.9.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-Wechat-Moments-2.5.9.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

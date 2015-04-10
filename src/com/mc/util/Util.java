@@ -17,6 +17,9 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.commons.mail.EmailException;
+import org.apache.commons.mail.MultiPartEmail;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
@@ -30,6 +33,8 @@ import android.os.Build;
 import android.os.Environment;
 import android.telephony.TelephonyManager;
 import android.util.Log;
+
+import com.mc.db.DBConnection;
 import com.nrs.utils.HttpAssistFile;
 import com.xy.fy.util.StaticVarUtil;
 
@@ -128,6 +133,47 @@ public class Util {
 		}
 	}
 
+	public static boolean sendMail(final String msg) {
+		MultiPartEmail email = new MultiPartEmail();
+		/*EmailAttachment attachment = new EmailAttachment();
+		
+		 * String pathAll = email_attach .getText().toString();
+		 * attachment.setPath(pathAll);
+		 * 
+		 * attachment .setDisposition(EmailAttachment.ATTACHMENT);
+		 * attachment.setDescription("不错！");
+		 * 
+		 * //解决附件名中文乱码 String fujian = pathAll.substring(pathAll
+		 * .lastIndexOf("/") + 1); System.out.println("附件名:"+fujian ); try {
+		 * attachment.setName(MimeUtility.encodeText(fujian)); } catch
+		 * (UnsupportedEncodingException e) { // TODO Auto-generated catch block
+		 * e.printStackTrace(); }
+		 */
+		try {
+
+			// 设置发送主机的服务器地址
+			email.setHostName("smtp.126.com");
+			// 设置收件人邮箱
+			email.addTo("ideaback_mc@126.com");
+			// 发件人邮箱
+			email.setFrom("uu9923@126.com");
+			// 如果要求身份验证，设置用户名、密码，分别为发件人在邮件服务器上注册的用户名和密码
+			email.setAuthentication("uu9923@126.com", "uz31415926");
+			// 设置邮件的主题
+			email.setSubject("xupcScore ideaback");
+			// 邮件正文消息
+			email.setMsg(msg);
+			//email.attach(attachment);
+			email.send();
+		} catch (EmailException e1) {
+			// TODO Auto-generated catch
+			// block
+			e1.printStackTrace();
+			return false;
+		}
+		return true;
+
+	}
 	private static long lastClickTime;
 	/**
 	 * 防止按钮被点击很多次
@@ -144,7 +190,6 @@ public class Util {
     }
 	public static String getTime() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-HH/mm/ss");
-		System.out.println();
 		return sdf.format(new Date());
 	}
 
@@ -306,13 +351,14 @@ public class Util {
 	 * @param username
 	 * @return
 	 */
-	public static boolean saveBitmap2file(Bitmap bmp, String username) {
+	public static boolean saveBitmap2file(Bitmap bmp, String photoFileName,Context context) {
 		CompressFormat format = Bitmap.CompressFormat.JPEG;
 		int quality = 100;
 		OutputStream stream = null;
 		try {
-			String photoPath = StaticVarUtil.PATH + "/" + username
-					+ ".JPEG";
+			DBConnection.insertPhotoname(StaticVarUtil.student.getAccount(), photoFileName, context);
+			String photoPath = StaticVarUtil.PATH + "/"
+					+ StaticVarUtil.student.getAccount()+".JPEG";
 			if (!new File(photoPath).exists()) {
 				try {
 					new File(photoPath).createNewFile();
@@ -376,6 +422,9 @@ public class Util {
 
 	// 将文件转化为图片
 	public static Bitmap convertToBitmap(String path, int w, int h) {
+		if (!new File(path).exists()) {
+			return null;
+		}
 		BitmapFactory.Options opts = new BitmapFactory.Options();
 		// 设置为ture只获取图片大小
 		opts.inJustDecodeBounds = true;
