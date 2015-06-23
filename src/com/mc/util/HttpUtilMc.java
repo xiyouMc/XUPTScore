@@ -21,8 +21,8 @@ public class HttpUtilMc {
   public static final String IP = "http://222.24.63.101";
   public static final String BASE_URL = IP + "/xuptqueryscore/";
   public static String SERVER_ADDRESS = "222.24.63.101";
-  public static final String XUPT_IP1 = "222.24.19.201";
-  public static final String XUPT_IP2 = "222.24.19.202";
+  public static final String XUPT_IP1 = "222.24.63.101";
+  public static final String XUPT_IP2 = "222.24.63.101";
   /*
    * public static String SERVER_ADDRESS="192.168.11.1"; public static int SERVER_PORT = 8080;
    */

@@ -46,7 +46,7 @@
 		<activity android:name="com.xy.fy.main.FriendRecommondActivity" 
 			android:theme="@style/AnimActivityTheme" />
 		<activity android:name="com.xy.fy.main.FriendApplyActivity" />
-		
+		<activity android:name="com.xy.fy.main.CETActivity" />
 		<activity android:name="com.xy.fy.main.AddFriendListActivity"
 			android:theme="@style/AnimActivityTheme" />
 		<activity android:name="com.xy.fy.main.ShowScoreActivity"

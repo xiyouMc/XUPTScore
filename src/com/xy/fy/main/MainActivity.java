@@ -111,6 +111,8 @@ public class MainActivity extends Activity {
   private LinearLayout menuBang = null;
   private LinearLayout menuMyBukao = null;
   private LinearLayout menuMyPaiming = null;
+  private LinearLayout menuMyCjTongji = null;
+  private LinearLayout menuMyCET = null;
   private LinearLayout menuIdea_back = null;
   private LinearLayout menuSetting = null;// 设置
   private LinearLayout menuAbout = null;// 关于
@@ -149,6 +151,8 @@ public class MainActivity extends Activity {
     requestWindowFeature(Window.FEATURE_NO_TITLE);
     super.setContentView(R.layout.activity_main);
 
+    CheckVersionAsyntask checkVersionAsyntask = new CheckVersionAsyntask();
+    checkVersionAsyntask.execute();
     shareUtil = new ShareUtil(getApplicationContext());
     share = shareUtil.showShare();
     softDeclare();// 将部分 变量 定义为弱引用
@@ -168,24 +172,30 @@ public class MainActivity extends Activity {
       public void onOpen() {
         // 读取当前菜单的选项
         int item = getCurrentMeunItem();
-        if (item == 1) {
-          setMenuItemState(menuBang, true, menuMyBukao, false, menuMyPaiming, false, menuIdea_back,
-              false, menuSetting, false, menuAbout, false);
-        } else if (item == 2) {
-          setMenuItemState(menuBang, false, menuMyBukao, true, menuMyPaiming, false, menuIdea_back,
-              false, menuSetting, false, menuAbout, false);
-        } else if (item == 3) {
-          setMenuItemState(menuBang, false, menuMyBukao, false, menuMyPaiming, true, menuIdea_back,
-              false, menuSetting, false, menuAbout, false);
-        } else if (item == 4) {
-          setMenuItemState(menuBang, false, menuMyBukao, false, menuMyPaiming, false,
-              menuIdea_back, true, menuSetting, false, menuAbout, false);
-        } else if (item == 5) {
-          setMenuItemState(menuBang, false, menuMyBukao, false, menuMyPaiming, false,
-              menuIdea_back, false, menuSetting, true, menuAbout, false);
-        } else if (item == 6) {
-          setMenuItemState(menuBang, false, menuMyBukao, false, menuMyPaiming, false,
-              menuIdea_back, false, menuSetting, false, menuAbout, true);
+        if (item == StaticVarUtil.MENU_BANG) {
+          setMenuItemState(menuBang, true, menuMyBukao, false, menuMyCjTongji, false,menuMyCET,false,
+              menuMyPaiming, false, menuIdea_back, false, menuSetting, false, menuAbout, false);
+        } else if (item == StaticVarUtil.MENU_BUKAO) {
+          setMenuItemState(menuBang, false, menuMyBukao, true, menuMyCjTongji, false,menuMyCET,false,
+              menuMyPaiming, false, menuIdea_back, false, menuSetting, false, menuAbout, false);
+        } else if (item == StaticVarUtil.MENU_CJ_TJ) {
+          setMenuItemState(menuBang, false, menuMyBukao, false, menuMyCjTongji, true,menuMyCET,false,
+              menuMyPaiming, false, menuIdea_back, false, menuSetting, false, menuAbout, false);
+        } else if (item == StaticVarUtil.MENU_PAIMING) {
+          setMenuItemState(menuBang, false, menuMyBukao, false, menuMyCjTongji, false,menuMyCET,false,
+              menuMyPaiming, true, menuIdea_back, false, menuSetting, false, menuAbout, false);
+        } else if (item == StaticVarUtil.MENU_IDEA_BACK) {
+          setMenuItemState(menuBang, false, menuMyBukao, false, menuMyCjTongji, false,menuMyCET,false,
+              menuMyPaiming, false, menuIdea_back, true, menuSetting, false, menuAbout, false);
+        } else if (item == StaticVarUtil.MENU_SETTING) {
+          setMenuItemState(menuBang, false, menuMyBukao, false, menuMyCjTongji, false,menuMyCET,false,
+              menuMyPaiming, false, menuIdea_back, false, menuSetting, true, menuAbout, false);
+        } else if (item == StaticVarUtil.MENU_ABOUT) {
+          setMenuItemState(menuBang, false, menuMyBukao, false, menuMyCjTongji, false,menuMyCET,false,
+              menuMyPaiming, false, menuIdea_back, false, menuSetting, false, menuAbout, true);
+        } else if (item == StaticVarUtil.MENU_CET) {
+          setMenuItemState(menuBang, false, menuMyBukao, false, menuMyCjTongji, false,menuMyCET,true,
+              menuMyPaiming, false, menuIdea_back, false, menuSetting, false, menuAbout, true);
         }
       }
     });
@@ -200,9 +210,9 @@ public class MainActivity extends Activity {
     }
     if (!Util.checkPWD(StaticVarUtil.student.getPassword())) {
       ViewUtil.showToast(getApplicationContext(), "密码不安全，请重新设置密码");
-      setMenuItemState(menuBang, false, menuMyBukao, false, menuMyPaiming, false, menuIdea_back,
-          false, menuSetting, true, menuAbout, false);
-      setCurrentMenuItem(5);
+      setMenuItemState(menuBang, false, menuMyBukao, false, menuMyCjTongji, false,menuMyCET,false, menuMyPaiming,
+          false, menuIdea_back, false, menuSetting, true, menuAbout, false);
+      setCurrentMenuItem(StaticVarUtil.MENU_SETTING);
       slidingMenu.toggle();// 页面跳转
       slidingMenu.setContent(R.layout.activity_setting);
       menuSetting();
@@ -365,6 +375,7 @@ public class MainActivity extends Activity {
    * 将 成绩整合成 n行4列的数组，为了可以显示在table页面中
    * 
    * @param score
+   * 
    * @return
    */
   private String[][] getScoreToArray(String score) {
@@ -428,18 +439,21 @@ public class MainActivity extends Activity {
   /*
    * 设置当前MenuItem的状态
    * 
-   * @param item
-   *          MenuItem组件，flag代表组件状态
+   * @param item MenuItem组件，flag代表组件状态
    */
   private void setMenuItemState(LinearLayout item1, boolean flag1, LinearLayout item2,
       boolean flag2, LinearLayout item3, boolean flag3, LinearLayout item4, boolean flag4,
-      LinearLayout item5, boolean flag5, LinearLayout item6, boolean flag6) {
+      LinearLayout item5, boolean flag5, LinearLayout item6, boolean flag6, LinearLayout item7,
+      boolean flag7,LinearLayout item8,
+      boolean flag8) {
     item1.setPressed(flag1);
     item2.setPressed(flag2);
     item3.setPressed(flag3);
     item4.setPressed(flag4);
     item5.setPressed(flag5);
     item6.setPressed(flag6);
+    item7.setPressed(flag7);
+    item8.setPressed(flag8);
   }
 
   /*
@@ -452,14 +466,17 @@ public class MainActivity extends Activity {
     headPhoto = (CircleImageView) findViewById(R.id.headphoto);// 头像
     menuBang = (LinearLayout) findViewById(R.id.menu_bang);// 1.成绩查询
     menuMyBukao = (LinearLayout) findViewById(R.id.menu_my_bukao);// 2.补考查询
+    menuMyCjTongji = (LinearLayout) findViewById(R.id.menu_my_cj_tongji);// 成绩统计
+    menuMyCjTongji.setVisibility(View.GONE);
     menuMyPaiming = (LinearLayout) findViewById(R.id.menu_my_paiming);// 3.我的排名
+    menuMyCET = (LinearLayout)findViewById(R.id.menu_my_cet);//CET查分
     menuIdea_back = (LinearLayout) findViewById(R.id.idea_back);// 4.我收藏的
     menuSetting = (LinearLayout) findViewById(R.id.menu_setting);// 5.设置
     menuAbout = (LinearLayout) findViewById(R.id.menu_about);
 
     LinearLayout menuQuit = (LinearLayout) findViewById(R.id.menu_quit);
     menuBang.setPressed(true);// 初始化默认是风云榜被按下
-    setCurrentMenuItem(1);// 记录当前选项位置
+    setCurrentMenuItem(StaticVarUtil.MENU_BANG);// 记录当前选项位置
 
     // 请求服务器获取头像id 并且判断本地是否有这个文件
     GetPhotoID getPhotoID = new GetPhotoID();
@@ -482,8 +499,8 @@ public class MainActivity extends Activity {
     menuBang.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
-        setMenuItemState(menuBang, true, menuMyBukao, false, menuMyPaiming, false, menuIdea_back,
-            false, menuSetting, false, menuAbout, false);
+        setMenuItemState(menuBang, true, menuMyBukao, false, menuMyCjTongji, false,menuMyCET,false, menuMyPaiming,
+            false, menuIdea_back, false, menuSetting, false, menuAbout, false);
         slidingMenu.toggle();// 页面跳转
         slidingMenu.setContent(R.layout.card_main);
         new Thread(new Runnable() {
@@ -497,7 +514,7 @@ public class MainActivity extends Activity {
               e.printStackTrace();
             }
             Message msg = new Message();
-            msg.what = 1;
+            msg.what = StaticVarUtil.MENU_BANG;
             mHandler.sendMessage(msg);
           }
         }).start();
@@ -531,8 +548,8 @@ public class MainActivity extends Activity {
       public void onClick(View v) {
         if (StaticVarUtil.list_Rank_xnAndXq.size() != 0) {
 
-          setMenuItemState(menuBang, false, menuMyBukao, false, menuMyPaiming, true, menuIdea_back,
-              false, menuSetting, false, menuAbout, false);
+          setMenuItemState(menuBang, false, menuMyBukao, false, menuMyCjTongji, false,menuMyCET,false,
+              menuMyPaiming, true, menuIdea_back, false, menuSetting, false, menuAbout, false);
           slidingMenu.toggle();// 页面跳转
           slidingMenu.setContent(R.layout.activity_rank);
           new Thread(new Runnable() {
@@ -546,7 +563,7 @@ public class MainActivity extends Activity {
                 e.printStackTrace();
               }
               Message msg = new Message();
-              msg.what = 3;
+              msg.what = StaticVarUtil.MENU_PAIMING;
               mHandler.sendMessage(msg);
             }
           }).start();
@@ -572,7 +589,7 @@ public class MainActivity extends Activity {
               e.printStackTrace();
             }
             Message msg = new Message();
-            msg.what = 4;
+            msg.what = StaticVarUtil.MENU_IDEA_BACK;
             mHandler.sendMessage(msg);
           }
         }).start();
@@ -582,8 +599,8 @@ public class MainActivity extends Activity {
     menuSetting.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
-        setMenuItemState(menuBang, false, menuMyBukao, false, menuMyPaiming, false, menuIdea_back,
-            false, menuSetting, true, menuAbout, false);
+        setMenuItemState(menuBang, false, menuMyBukao, false, menuMyCjTongji, false,menuMyCET,false, menuMyPaiming,
+            false, menuIdea_back, false, menuSetting, true, menuAbout, false);
         slidingMenu.toggle();// 页面跳转
         slidingMenu.setContent(R.layout.activity_setting);
         new Thread(new Runnable() {
@@ -597,7 +614,7 @@ public class MainActivity extends Activity {
               e.printStackTrace();
             }
             Message msg = new Message();
-            msg.what = 5;
+            msg.what = StaticVarUtil.MENU_SETTING;
             mHandler.sendMessage(msg);
           }
         }).start();
@@ -605,11 +622,37 @@ public class MainActivity extends Activity {
       }
     });
 
+    menuMyCET.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        setMenuItemState(menuBang, false, menuMyBukao, false, menuMyCjTongji, false,menuMyCET,true, menuMyPaiming,
+            false, menuIdea_back, false, menuSetting, false, menuAbout, false);
+        slidingMenu.toggle();// 页面跳转
+        slidingMenu.setContent(R.layout.activity_cet);
+        new Thread(new Runnable() {
+          @Override
+          public void run() {
+            // TODO Auto-generated method stub
+            try {
+              Thread.sleep(300);
+            } catch (InterruptedException e) {
+              // TODO Auto-generated catch block
+              e.printStackTrace();
+            }
+            Message msg = new Message();
+            msg.what = StaticVarUtil.MENU_CET;
+            mHandler.sendMessage(msg);
+          }
+        }).start();
+
+      }
+    });
+    
     menuAbout.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
-        setMenuItemState(menuBang, false, menuMyBukao, false, menuMyPaiming, false, menuIdea_back,
-            false, menuSetting, false, menuAbout, true);
+        setMenuItemState(menuBang, false, menuMyBukao, false, menuMyCjTongji, false,menuMyCET,false, menuMyPaiming,
+            false, menuIdea_back, false, menuSetting, false, menuAbout, true);
 
         slidingMenu.toggle();// 页面跳转
         slidingMenu.setContent(R.layout.activity_about);
@@ -625,7 +668,7 @@ public class MainActivity extends Activity {
               e.printStackTrace();
             }
             Message msg = new Message();
-            msg.what = 6;
+            msg.what = StaticVarUtil.MENU_ABOUT;
             mHandler.sendMessage(msg);
           }
         }).start();
@@ -661,7 +704,6 @@ public class MainActivity extends Activity {
       public void onClick(View v) {
         // TODO Auto-generated method stub
         showDialogSaveQrcode();
-
       }
     });
     findViewById(R.id.guanwang).setOnClickListener(new OnClickListener() {
@@ -751,6 +793,9 @@ public class MainActivity extends Activity {
     // menu出发 判断为第一次 为了初始化 listview
     isFirstListView = true;
     findviewById();
+    if (rankScoreText == null) {
+      return;
+    }
     rankScoreText.setOnClickListener(new OnClickListener() {
 
       @Override
@@ -1111,6 +1156,21 @@ public class MainActivity extends Activity {
 
   }
 
+  // 四六级
+  protected void cet() {
+    // TODO Auto-generated method stub
+    // 菜单按钮
+    Button menu = (Button) findViewById(R.id.butMenu);
+    menu.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        slidingMenu.toggle();
+      }
+    });
+
+   
+
+  }
   /*
    * 修改个人信息，只能修改昵称，密码，头像
    */
@@ -1362,8 +1422,7 @@ public class MainActivity extends Activity {
   /*
    * 刷新
    * 
-   * @param messageSort
-   *          0代表近期关注1代表七日关注2代表风云榜
+   * @param messageSort 0代表近期关注1代表七日关注2代表风云榜
    */
   @SuppressLint("SimpleDateFormat")
   private void refresh(int collegeId, int messageKind, int messageSort) {
@@ -1425,7 +1484,7 @@ public class MainActivity extends Activity {
       // 如果是返回按钮,退出
       if (getCurrentMeunItem() != 1) {// 不在第一个页面,返回第一个页面
         menuBang.setPressed(true);// 初始化默认是风云榜被按下
-        setCurrentMenuItem(1);// 记录当前选项位置
+        setCurrentMenuItem(StaticVarUtil.MENU_BANG);// 记录当前选项位置
         slidingMenu.setContent(R.layout.card_main);
         menu1();
       } else
@@ -1458,8 +1517,7 @@ public class MainActivity extends Activity {
   /*
    * 退出模块
    * 
-   * @param logout
-   *          是否注销
+   * @param logout 是否注销
    */
   private void quit(final boolean logout) {
     Builder builder = new AlertDialog.Builder(MainActivity.this);
@@ -1495,8 +1553,7 @@ public class MainActivity extends Activity {
   /*
    * 记录设置当前MenuItem的位置，1，2，3，4，5分别代表成绩查询，补考查询，我的排名，我收藏的，选项
    * 
-   * @param menuItem
-   *          菜单的选项
+   * @param menuItem 菜单的选项
    */
   private void setCurrentMenuItem(int menuItem) {
     SharedPreferences preferences = getSharedPreferences("currentMenuItem", MODE_PRIVATE);
@@ -1582,21 +1639,14 @@ public class MainActivity extends Activity {
               builder.create().show();
             }
             menu1();
-            new Thread(new Runnable() {
-              @Override
-              public void run() {
-                // TODO Auto-generated method stub
-                try {
-                  Thread.sleep(1300);
-                } catch (InterruptedException e) {
-                  // TODO Auto-generated catch block
-                  e.printStackTrace();
-                }
-                Message msg = new Message();
-                msg.what = 10;
-                mHandler.sendMessage(msg);
-              }
-            }).start();
+            /*
+             * new Thread(new Runnable() {
+             * 
+             * @Override public void run() { // TODO Auto-generated method stub try {
+             * Thread.sleep(1300); } catch (InterruptedException e) { // TODO Auto-generated catch
+             * block e.printStackTrace(); } Message msg = new Message(); msg.what = 10;
+             * mHandler.sendMessage(msg); } }).start();
+             */
           } else {
             ViewUtil.showToast(getApplicationContext(), "查询失败");
           }
@@ -1675,10 +1725,9 @@ public class MainActivity extends Activity {
 
   /*
    * 
-   * @param result
-   *          成绩字符串
-   * @param isFirst
-   *          是否是第一次
+   * @param result 成绩字符串
+   * 
+   * @param isFirst 是否是第一次
    */
   private void refeshRank(String result, boolean isFirst) {
     try {
@@ -1707,9 +1756,11 @@ public class MainActivity extends Activity {
         allRankArrayList.add(map);
         if (String.valueOf(rankId).equals(rank)) {
           rankScoreText.setText(o.get("score").toString());// 显示成绩
+
           Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),
               R.anim.textscore_translate);
           rankScoreText.setAnimation(animation);
+
         }
       }
       // 获取 之前求得的固定 个数的item。 防止数据量太大，而导致的将所有数据都显示出来。
@@ -1754,7 +1805,7 @@ public class MainActivity extends Activity {
           public void run() {
             Util.sendMail(data);
             Message msg = new Message();
-            msg.what = 8;
+            msg.what = StaticVarUtil.IDEA_BACK_TOAST;
             mHandler.sendMessage(msg);
           }
         }).start();
@@ -1766,45 +1817,44 @@ public class MainActivity extends Activity {
 
     public void handleMessage(Message msg) {
       switch (msg.what) {
-      case 1:
+      case StaticVarUtil.MENU_BANG:
         menu1();
-        setCurrentMenuItem(1);// 记录当前选项位置
+        setCurrentMenuItem(StaticVarUtil.MENU_BANG);// 记录当前选项位置
         break;
-      case 2:
+      case StaticVarUtil.MENU_BUKAO:
         friend_list();
-        setCurrentMenuItem(2);// 记录当前选项位置
+        setCurrentMenuItem(StaticVarUtil.MENU_BUKAO);// 记录当前选项位置
         break;
-      case 3:
+      case StaticVarUtil.MENU_PAIMING:
         rank();
-        setCurrentMenuItem(3);// 记录当前选项位置
+        setCurrentMenuItem(StaticVarUtil.MENU_PAIMING);// 记录当前选项位置
         break;
-      case 4:
+      case StaticVarUtil.MENU_IDEA_BACK:
         menuIdeaBack();
-        setCurrentMenuItem(4);// 记录当前选项位置
+        setCurrentMenuItem(StaticVarUtil.MENU_IDEA_BACK);// 记录当前选项位置
         break;
-      case 5:
+      case StaticVarUtil.MENU_SETTING:
         menuSetting();
-        setCurrentMenuItem(5);// 记录当前选项位置
+        setCurrentMenuItem(StaticVarUtil.MENU_SETTING);// 记录当前选项位置
         break;
-      case 6:
+      case StaticVarUtil.MENU_ABOUT:
         aboutListener();
-        setCurrentMenuItem(6);// 记录当前选项位置
+        setCurrentMenuItem(StaticVarUtil.MENU_ABOUT);// 记录当前选项位置
         break;
-      case 7:
+      case StaticVarUtil.SHARE:
         showShareQrcodeDialog();
         break;
-      case 8:
+      case StaticVarUtil.MENU_CET:
+        cet();
+        setCurrentMenuItem(StaticVarUtil.MENU_CET);// 记录当前选项位置
+        break;
+      case StaticVarUtil.IDEA_BACK_TOAST:
         ViewUtil.showToast(getApplicationContext(), "感谢反馈");
         break;
       case 10:
         CheckVersionAsyntask checkVersionAsyntask = new CheckVersionAsyntask();
         checkVersionAsyntask.execute();
         break;
-        
-      // 获取传递的数据
-      // Bundle data = msg.getData();
-      // int count = data.getInt("COUNT");
-      // 处理UI更新等操作
       }
     };
   };
@@ -1812,24 +1862,7 @@ public class MainActivity extends Activity {
   // 显示 排名的listview
   private void setListView() {
     // TODO Auto-generated method stub
-    if (showRankArrayList.size() < DEFAULTITEMSUM) {
-      new Thread(new Runnable() {
-        @Override
-        public void run() {
-          // TODO Auto-generated method stub
-          try {
-            Thread.sleep(300);
-          } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-          }
-          Message msg = new Message();
-          msg.what = 7;
-          mHandler.sendMessage(msg);
-        }
-      }).start();
 
-    }
     simpleAdapter = new SimpleAdapter(getApplicationContext(), showRankArrayList,
         R.layout.allrank_listitem, new String[] { "rankId", "name", "score" }, new int[] {
             R.id.rankId, R.id.name, R.id.score });

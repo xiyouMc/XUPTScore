@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#F8F8FF" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#F8F8FF"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="47dp"
+            android:background="@drawable/main_title_bar"
+            android:orientation="horizontal" >
+
+            <!-- 菜单 -->
+
+            <Button
+                android:id="@+id/butMenu"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/button_menu"
+                android:gravity="center_vertical"
+                android:textColor="#FF8C00"
+                android:textSize="14sp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/transparent"
+                android:gravity="center_vertical"
+                android:text="四六级查分"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/share"
+                android:layout_width="30dp"
+                android:layout_height="35dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/share"
+                android:gravity="center_vertical"
+                android:textColor="#FF8C00"
+                android:textSize="14sp"
+                android:visibility="visible" />
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center_horizontal"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/cet" />
+
+        <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="20dp" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+             <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:paddingBottom="3dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="10dp" >
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="fill_parent"
+                    android:gravity="center_vertical"
+                    android:text="准考证号"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+                <!-- 修改密码 -->
+
+                <EditText
+                    android:id="@+id/etAccount"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@null"
+                    android:hint="输入准考证号"
+                    android:gravity="center_vertical"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" >
+                </EditText>
+
+            </LinearLayout>
+           
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/expand_divider" />
+            <!-- 选项设置 -->
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:paddingBottom="3dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="10dp" >
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="fill_parent"
+                    android:gravity="center_vertical"
+                    android:text="姓名"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+                <!-- 修改密码 -->
+
+                <EditText
+                    android:id="@+id/name"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@null"
+                    android:ems="2"
+                    android:gravity="center_vertical"
+                    android:hint="输入姓名前两位"
+                    android:inputType="textPassword"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gray"
+                    android:textSize="15sp" >
+                </EditText>
+            </LinearLayout>
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/expand_divider" />
+
+            <Button
+                android:id="@+id/butQuery"
+                android:layout_width="fill_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="29dp"
+                android:background="@drawable/btn_click"
+                android:gravity="center"
+                android:text="查询"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
+
+</ScrollView>

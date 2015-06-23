@@ -70,7 +70,8 @@ public class WelcomeActivity extends Activity {
       try {
         Intent i = new Intent();
         i.setClass(getApplicationContext(), LoginActivity.class);
-        i.putExtra("image", !HttpUtilMc.CONNECT_EXCEPTION.equals(result) ? result : "0|0|0");// 如果网络原因，则直接返回0|0
+        // 如果网络原因，则直接返回0|0
+        i.putExtra("image", !HttpUtilMc.CONNECT_EXCEPTION.equals(result) ? result : "0|0|0");
         startActivity(i);
         finish();
       } catch (Exception e) {
