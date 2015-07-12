@@ -17,5 +17,14 @@
 	<classpathentry kind="lib" path="libs/ShareSDK-Wechat-Core-2.5.9.jar"/>
 	<classpathentry kind="lib" path="libs/ShareSDK-Wechat-Favorite-2.5.9.jar"/>
 	<classpathentry kind="lib" path="libs/ShareSDK-Wechat-Moments-2.5.9.jar"/>
+	<classpathentry kind="lib" path="libs/commons-email-1.2.jar"/>
+	<classpathentry kind="lib" path="libs/mail.jar"/>
+	<classpathentry kind="lib" path="libs/baidumapapi_v3_0_0.jar"/>
+	<classpathentry kind="lib" path="libs/bmobim_v1.1.2beta.jar"/>
+	<classpathentry kind="lib" path="libs/bmobsdk_v3.2.3_0919.jar"/>
+	<classpathentry kind="lib" path="libs/locSDK_4.2.jar"/>
+	<classpathentry kind="lib" path="libs/photoview-library-1.2.2.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-Email-2.5.9.jar"/>
+	<classpathentry kind="lib" path="libs/universal-image-loader-1.9.2_sources.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

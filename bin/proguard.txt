@@ -1,7 +1,17 @@
 # view res/layout/activity_publish.xml #generated:133
+# view res/layout/include_chat_bottom_bar.xml #generated:112
 -keep class android.support.v4.view.ViewPager { <init>(...); }
 
-# view AndroidManifest.xml #generated:58
+# view AndroidManifest.xml #generated:221
+-keep class cn.bmob.im.poll.BmobPollService { <init>(...); }
+
+# view AndroidManifest.xml #generated:202
+-keep class cn.bmob.push.PushReceiver { <init>(...); }
+
+# view AndroidManifest.xml #generated:191
+-keep class cn.bmob.push.lib.service.PushService { <init>(...); }
+
+# view AndroidManifest.xml #generated:117
 -keep class cn.sharesdk.framework.ShareSDKUIShell { <init>(...); }
 
 # view res/layout/abs__screen_action_bar.xml #generated:44
@@ -64,6 +74,78 @@
 # view res/layout/abs__search_view.xml #generated:84
 -keep class com.actionbarsherlock.widget.SearchView$SearchAutoComplete { <init>(...); }
 
+# view AndroidManifest.xml #generated:180
+-keep class com.baidu.location.f { <init>(...); }
+
+# view res/layout/activity_location.xml #generated:11
+-keep class com.baidu.mapapi.map.MapView { <init>(...); }
+
+# view AndroidManifest.xml #generated:79
+-keep class com.bmob.im.demo.CustomApplcation { <init>(...); }
+
+# view AndroidManifest.xml #generated:212
+-keep class com.bmob.im.demo.MyMessageReceiver { <init>(...); }
+
+# view AndroidManifest.xml #generated:156
+-keep class com.bmob.im.demo.ui.AddFriendActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:150
+-keep class com.bmob.im.demo.ui.BlackListActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:165
+-keep class com.bmob.im.demo.ui.ChatActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:153
+-keep class com.bmob.im.demo.ui.ImageBrowserActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:147
+-keep class com.bmob.im.demo.ui.LocationActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:145
+-keep class com.bmob.im.demo.ui.LoginActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:141
+-keep class com.bmob.im.demo.ui.MainActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:161
+-keep class com.bmob.im.demo.ui.NearPeopleActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:160
+-keep class com.bmob.im.demo.ui.NewFriendActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:171
+-keep class com.bmob.im.demo.ui.RegisterActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:169
+-keep class com.bmob.im.demo.ui.SetMyInfoActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:137
+-keep class com.bmob.im.demo.ui.SplashActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:163
+-keep class com.bmob.im.demo.ui.UpdateInfoActivity { <init>(...); }
+
+# view res/layout/fragment_contacts.xml #generated:18
+# view res/layout/fragment_recent.xml #generated:12
+-keep class com.bmob.im.demo.view.ClearEditText { <init>(...); }
+
+# view res/layout/activity_showpicture.xml #generated:8
+-keep class com.bmob.im.demo.view.CustomViewPager { <init>(...); }
+
+# view res/layout/include_chat_bottom_bar.xml #generated:35
+-keep class com.bmob.im.demo.view.EmoticonsEditText { <init>(...); }
+
+# view res/layout/include_action_bar.xml #generated:2
+-keep class com.bmob.im.demo.view.HeaderLayout { <init>(...); }
+
+# view res/layout/fragment_contacts.xml #generated:64
+-keep class com.bmob.im.demo.view.MyLetterView { <init>(...); }
+
+# view res/layout/activity_add_contact.xml #generated:42
+# view res/layout/activity_chat.xml #generated:17
+# view res/layout/activity_near_people.xml #generated:18
+-keep class com.bmob.im.demo.view.xlist.XListView { <init>(...); }
+
 # view res/layout/card_main.xml #generated:84
 -keep class com.fima.cardsui.views.CardUI { <init>(...); }
 
@@ -82,31 +164,34 @@
 # view res/layout/slidingmenumain.xml #generated:2
 -keep class com.slidingmenu.lib.SlidingMenu { <init>(...); }
 
-# view AndroidManifest.xml #generated:50
+# view AndroidManifest.xml #generated:109
 -keep class com.xy.fy.main.AddFriendListActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:48
+# view AndroidManifest.xml #generated:108
+-keep class com.xy.fy.main.CETActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:107
 -keep class com.xy.fy.main.FriendApplyActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:46
+# view AndroidManifest.xml #generated:105
 -keep class com.xy.fy.main.FriendRecommondActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:42
+# view AndroidManifest.xml #generated:101
 -keep class com.xy.fy.main.LoginActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:39
+# view AndroidManifest.xml #generated:98
 -keep class com.xy.fy.main.MainActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:55
+# view AndroidManifest.xml #generated:114
 -keep class com.xy.fy.main.MessageDetailActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:52
+# view AndroidManifest.xml #generated:111
 -keep class com.xy.fy.main.ShowScoreActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:24
+# view AndroidManifest.xml #generated:83
 -keep class com.xy.fy.main.WelcomeActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:71
+# view AndroidManifest.xml #generated:130
 -keep class com.xy.fy.main.wxapi.WXEntryActivity { <init>(...); }
 
 # view res/layout/activity_message_detail.xml #generated:212
@@ -116,4 +201,16 @@
 
 # view res/layout/activity_login.xml #generated:156
 -keep class com.xy.fy.view.PullDoorView { <init>(...); }
+
+# view res/layout/item_show_picture.xml #generated:8
+-keep class uk.co.senab.photoview.PhotoView { <init>(...); }
+
+# onClick res/layout/activity_chat_main.xml #generated:20
+# onClick res/layout/activity_chat_main.xml #generated:55
+# onClick res/layout/activity_chat_main.xml #generated:85
+-keepclassmembers class * { *** onTabSelect(...); }
+
+# onClick res/layout/include_chat_bottom_bar.xml #generated:18
+# onClick res/layout/include_chat_bottom_bar.xml #generated:26
+-keepclassmembers class * { *** toAction(...); }
 

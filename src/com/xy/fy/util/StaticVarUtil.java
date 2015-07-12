@@ -106,6 +106,9 @@ public class StaticVarUtil {
   public static String data = null;
   public static String viewstate = null;
   public static String content = null;
+  public static String cet_account = null;
+  public static String cet_data = null;
+  public static String cet_viewstate = null;
   // ËùÓÐµÄherf
   public static List<HashMap<String, String>> listHerf = new ArrayList<HashMap<String, String>>();
 
