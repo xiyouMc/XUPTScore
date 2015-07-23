@@ -21,6 +21,7 @@ import com.bmob.im.demo.config.BmobConstants;
 import com.bmob.im.demo.util.CommonUtils;
 import com.bmob.im.demo.view.dialog.DialogTips;
 import com.xy.fy.main.R;
+import com.xy.fy.util.StaticVarUtil;
 
 /**
  * @ClassName: LoginActivity
@@ -58,6 +59,9 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 		btn_register = (TextView) findViewById(R.id.btn_register);
 		btn_login.setOnClickListener(this);
 		btn_register.setOnClickListener(this);
+		
+		et_username.setText(StaticVarUtil.student.getAccount());
+		et_password.setText(StaticVarUtil.student.getPassword());
 	}
 
 	public class MyBroadcastReceiver extends BroadcastReceiver {

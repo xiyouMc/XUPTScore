@@ -18,6 +18,12 @@ public class CollectionUtils {
 		}
 		return false;
 	}
+	public static boolean isNull(Collection<?> collection) {
+    if (collection == null || collection.size() == 0) {
+      return true;
+    }
+    return false;
+  }
 	
 	/** list转map
 	 *  以用户名为key

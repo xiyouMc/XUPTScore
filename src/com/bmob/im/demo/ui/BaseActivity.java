@@ -168,7 +168,7 @@ public class BaseActivity extends FragmentActivity {
 		dialog.SetOnSuccessListener(new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialogInterface, int userId) {
 				CustomApplcation.getInstance().logout();
-				startActivity(new Intent(context, LoginActivity.class));
+				startActivity(new Intent(context, SplashActivity.class));
 				finish();
 				dialogInterface.dismiss();
 			}

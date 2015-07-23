@@ -80,6 +80,7 @@
     <string name="username">用户名</string>
     <string name="new_friends">新朋友</string>
     <string name="near_people">附近的人</string>
+    <string name="file_resource">文件资料</string>
     <string name="voice_up_tips">手指上滑,取消发送</string>
     <string name="voice_cancel_tips">松开手指，取消发送</string>
     <string name="voice_seconds_tips">还可以说%1$s秒</string>

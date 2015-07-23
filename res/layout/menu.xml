@@ -47,7 +47,6 @@
             android:layout_height="fill_parent"
             android:orientation="vertical" >
 
-
             <LinearLayout
                 android:id="@+id/menu_bang"
                 android:layout_width="318dp"
@@ -78,10 +77,10 @@
                     android:layout_gravity="center"
                     android:paddingLeft="20dp"
                     android:src="@drawable/menu_arrow" />
-
             </LinearLayout>
 
             <!-- 我发表的说说 -->
+
             <LinearLayout
                 android:id="@+id/menu_my_bukao"
                 android:layout_width="fill_parent"
@@ -97,6 +96,7 @@
                     android:src="@drawable/menu_my_publish" />
 
                 <TextView
+                    android:id="@+id/bukao_tip"
                     android:layout_width="110dp"
                     android:layout_height="fill_parent"
                     android:gravity="center_vertical"
@@ -113,6 +113,7 @@
                     android:src="@drawable/menu_arrow" />
             </LinearLayout>
             <!-- 成绩统计 -->
+
             <LinearLayout
                 android:id="@+id/menu_my_cj_tongji"
                 android:layout_width="fill_parent"
@@ -143,7 +144,7 @@
                     android:paddingLeft="20dp"
                     android:src="@drawable/menu_arrow" />
             </LinearLayout>
-            
+
             <!-- 我评论过的说说 -->
 
             <LinearLayout
@@ -177,8 +178,7 @@
                     android:src="@drawable/menu_arrow" />
             </LinearLayout>
 
-            
-             <LinearLayout
+            <LinearLayout
                 android:id="@+id/menu_my_cet"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -208,8 +208,7 @@
                     android:paddingLeft="20dp"
                     android:src="@drawable/menu_arrow" />
             </LinearLayout>
-           <!-- 
-
+            <!--
             <LinearLayout
                 android:id="@+id/menu_my_collect"
                 android:layout_width="fill_parent"
@@ -239,13 +238,15 @@
                     android:layout_gravity="center"
                     android:paddingLeft="20dp"
                     android:src="@drawable/menu_arrow" />
-            </LinearLayout> -->
+            </LinearLayou
+            -->
 
             <ImageView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/expand_divider" />
             <!-- 选项设置 -->
+
             <LinearLayout
                 android:id="@+id/idea_back"
                 android:layout_width="fill_parent"
@@ -276,7 +277,6 @@
                     android:paddingLeft="20dp"
                     android:src="@drawable/menu_arrow" />
             </LinearLayout>
-            
 
             <LinearLayout
                 android:id="@+id/menu_setting"
@@ -306,8 +306,6 @@
                     android:layout_height="wrap_content"
                     android:paddingLeft="20dp"
                     android:src="@drawable/menu_arrow" />
-
-                
             </LinearLayout>
 
             <!-- 选项设置 -->
@@ -334,6 +332,7 @@
                     android:text="关于"
                     android:textColor="@drawable/change_menu_text_color"
                     android:textSize="18dp" />
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -341,6 +340,7 @@
                     android:src="@drawable/menu_arrow" />
             </LinearLayout>
             <!-- 退出 -->
+
             <LinearLayout
                 android:id="@+id/menu_quit"
                 android:layout_width="fill_parent"

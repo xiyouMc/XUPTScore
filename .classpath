@@ -5,7 +5,6 @@
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
-	<classpathentry kind="lib" path="E:/java处理二进制/sun.misc.BASE64Decoder.jar"/>
 	<classpathentry kind="lib" path="libs/mframework.jar"/>
 	<classpathentry kind="lib" path="libs/ShareSDK-Core-2.5.9.jar"/>
 	<classpathentry kind="lib" path="libs/ShareSDK-QQ-2.5.9.jar"/>
@@ -21,10 +20,11 @@
 	<classpathentry kind="lib" path="libs/mail.jar"/>
 	<classpathentry kind="lib" path="libs/baidumapapi_v3_0_0.jar"/>
 	<classpathentry kind="lib" path="libs/bmobim_v1.1.2beta.jar"/>
-	<classpathentry kind="lib" path="libs/bmobsdk_v3.2.3_0919.jar"/>
 	<classpathentry kind="lib" path="libs/locSDK_4.2.jar"/>
 	<classpathentry kind="lib" path="libs/photoview-library-1.2.2.jar"/>
 	<classpathentry kind="lib" path="libs/ShareSDK-Email-2.5.9.jar"/>
 	<classpathentry kind="lib" path="libs/universal-image-loader-1.9.2_sources.jar"/>
+	<classpathentry kind="lib" path="libs/sun.misc.BASE64Decoder.jar"/>
+	<classpathentry kind="lib" path="libs/BmobSDK_V3.4.1_0710.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

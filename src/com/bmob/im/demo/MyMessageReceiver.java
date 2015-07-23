@@ -28,6 +28,7 @@ import com.bmob.im.demo.ui.MainActivity;
 import com.bmob.im.demo.ui.NewFriendActivity;
 import com.bmob.im.demo.util.CollectionUtils;
 import com.bmob.im.demo.util.CommonUtils;
+import com.mc.util.BadgeUtil;
 import com.xy.fy.main.R;
 
 /**
@@ -215,6 +216,7 @@ public class MyMessageReceiver extends BroadcastReceiver {
 		boolean isAllowVibrate = CustomApplcation.getInstance().getSpUtil().isAllowVibrate();
 		
 		BmobNotifyManager.getInstance(context).showNotifyWithExtras(isAllowVoice,isAllowVibrate,icon, tickerText.toString(), contentTitle, tickerText.toString(),intent);
+    BadgeUtil.setBadgeCount(context, mNewNum);
 	}
 	
 	

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="com.xy.fy.main" android:versionCode="1" android:versionName="1.9">
+	package="com.xy.fy.main" android:versionCode="1" android:versionName="3.0">
 	<uses-sdk android:minSdkVersion="11" />
 	<supports-screens
         android:anyDensity="true"
@@ -159,7 +159,7 @@
          
 		<activity android:name="com.bmob.im.demo.ui.NewFriendActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 		<activity android:name="com.bmob.im.demo.ui.NearPeopleActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
-        
+        <activity android:name="com.bmob.im.demo.ui.FileSourceActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 		<activity android:name="com.bmob.im.demo.ui.UpdateInfoActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
         
 		<activity
@@ -175,7 +175,7 @@
 		<!-- baidu map-->
 		<meta-data
 			android:name="com.baidu.lbsapi.API_KEY"
-			android:value="hfyMtrWcv6qTQyvwgtusaYGE" />
+			android:value="W0Chxt8spGRQsmaoNfDDfG31" />
         
 		<service
 			android:name="com.baidu.location.f"

@@ -556,7 +556,7 @@ public class SetMyInfoActivity extends ActivityBase implements OnClickListener {
 			@Override
 			public void onSuccess() {
 				// TODO Auto-generated method stub
-				String url = bmobFile.getFileUrl();
+				String url = bmobFile.getFileUrl(getApplicationContext());
 				// 更新BmobUser对象
 				updateUserAvatar(url);
 			}

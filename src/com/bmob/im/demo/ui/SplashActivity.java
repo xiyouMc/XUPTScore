@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import cn.bmob.im.BmobChat;
+import cn.bmob.im.BmobUserManager;
 import cn.bmob.im.util.BmobLog;
 import cn.bmob.v3.BmobInstallation;
 import cn.bmob.v3.datatype.BmobFile;
@@ -68,7 +69,7 @@ public class SplashActivity extends BaseActivity {
     if (userManager.getCurrentUser() != null) {
       // 每次自动登陆的时候就需要更新下当前位置和好友的资料，因为好友的头像，昵称啥的是经常变动的
       updateUserInfos();
-      mHandler.sendEmptyMessageDelayed(GO_HOME, 2000);
+      mHandler.sendEmptyMessageDelayed(GO_HOME, 100);
     } else {
       mHandler.sendEmptyMessageDelayed(GO_LOGIN, 2000);
     }
@@ -77,11 +78,7 @@ public class SplashActivity extends BaseActivity {
   /**
    * 开启定位，更新当前用户的经纬度坐标
    * 
-   * @Title: initLocClient
-   * @Description: TODO
-   * @param
-   * @return void
-   * @throws
+   * @Title: initLocClient @Description: TODO @param @return void @throws
    */
   private void initLocClient() {
     mLocationClient = CustomApplcation.getInstance().mLocationClient;
@@ -107,7 +104,8 @@ public class SplashActivity extends BaseActivity {
         // 由于每个应用的注册所需的资料都不一样，故IM sdk未提供注册方法，用户可按照bmod SDK的注册方式进行注册。
         // 注册的时候需要注意两点：1、User表中绑定设备id和type，2、设备表中绑定username字段
         final User bu = new User();
-        bu.setUsername(StaticVarUtil.student.getAccount());
+        bu.setUsername(
+            StaticVarUtil.student.getName() + "-" + StaticVarUtil.student.getAccount());
         bu.setPassword(StaticVarUtil.student.getPassword());
         // 将user和设备id进行绑定
         bu.setDeviceType("android");
@@ -134,11 +132,11 @@ public class SplashActivity extends BaseActivity {
               @Override
               public void onSuccess() {
                 // TODO Auto-generated method stub
-                File file = new File(StaticVarUtil.PATH, StaticVarUtil.student.getAccount()
-                    + ".JPEG");
+                File file = new File(StaticVarUtil.PATH,
+                    StaticVarUtil.student.getAccount() + ".JPEG");
                 if (file.exists()) {
-                  uploadAvatar(StaticVarUtil.PATH + "/" + StaticVarUtil.student.getAccount()
-                      + ".JPEG");
+                  uploadAvatar(
+                      StaticVarUtil.PATH + "/" + StaticVarUtil.student.getAccount() + ".JPEG");
                 } else {
                   // 启动主页
                   Intent intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -160,33 +158,34 @@ public class SplashActivity extends BaseActivity {
             // TODO Auto-generated method stub
             BmobLog.i(arg1);
             if ("already taken.".equals(arg1.split("'")[2].trim())) {// 已经注册过
-              userManager.login(StaticVarUtil.student.getAccount(),
+              userManager.login(
+                  StaticVarUtil.student.getName() + "-" + StaticVarUtil.student.getAccount(),
                   StaticVarUtil.student.getPassword(), new SaveListener() {
 
-                    @Override
-                    public void onSuccess() {
-                      // TODO Auto-generated method stub
-                      runOnUiThread(new Runnable() {
-
-                        @Override
-                        public void run() {
-                          // TODO Auto-generated method stub
-                        }
-                      });
-                      // 更新用户的地理位置以及好友的资料
-                      updateUserInfos();
-                      Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                      startActivity(intent);
-                      finish();
-                    }
+                @Override
+                public void onSuccess() {
+                  // TODO Auto-generated method stub
+                  runOnUiThread(new Runnable() {
 
                     @Override
-                    public void onFailure(int errorcode, String arg0) {
+                    public void run() {
                       // TODO Auto-generated method stub
-                      BmobLog.i(arg0);
-                      ShowToast(arg0);
                     }
                   });
+                  // 更新用户的地理位置以及好友的资料
+                  updateUserInfos();
+                  Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                  startActivity(intent);
+                  finish();
+                }
+
+                @Override
+                public void onFailure(int errorcode, String arg0) {
+                  // TODO Auto-generated method stub
+                  BmobLog.i(arg0);
+                  ShowToast(arg0);
+                }
+              });
 
             }
             // ShowToast("注册失败:" + arg1);
@@ -207,7 +206,7 @@ public class SplashActivity extends BaseActivity {
       @Override
       public void onSuccess() {
         // TODO Auto-generated method stub
-        String url = bmobFile.getFileUrl();
+        String url = bmobFile.getFileUrl(getApplicationContext());
         // 更新BmobUser对象
         updateUserAvatar(url);
       }

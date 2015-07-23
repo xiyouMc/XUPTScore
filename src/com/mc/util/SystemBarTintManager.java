@@ -124,7 +124,7 @@ public class SystemBarTintManager {
     public void setStatusBarTintEnabled(boolean enabled) {  
         mStatusBarTintEnabled = enabled;  
         if (mStatusBarAvailable) {  
-            mStatusBarTintView.setVisibility(enabled ? View.VISIBLE : View.GONE);  
+            mStatusBarTintView.setVisibility(enabled ? View.VISIBLE : View.INVISIBLE);  
         }  
     }  
   
@@ -140,7 +140,7 @@ public class SystemBarTintManager {
     public void setNavigationBarTintEnabled(boolean enabled) {  
         mNavBarTintEnabled = enabled;  
         if (mNavBarAvailable) {  
-            mNavBarTintView.setVisibility(enabled ? View.VISIBLE : View.GONE);  
+            mNavBarTintView.setVisibility(enabled ? View.VISIBLE : View.INVISIBLE);  
         }  
     }  
   
@@ -312,7 +312,7 @@ public class SystemBarTintManager {
         }  
         mStatusBarTintView.setLayoutParams(params);  
         mStatusBarTintView.setBackgroundColor(DEFAULT_TINT_COLOR);  
-        mStatusBarTintView.setVisibility(View.GONE);  
+        mStatusBarTintView.setVisibility(View.INVISIBLE);  
         decorViewGroup.addView(mStatusBarTintView);  
     }  
   
@@ -328,7 +328,7 @@ public class SystemBarTintManager {
         }  
         mNavBarTintView.setLayoutParams(params);  
         mNavBarTintView.setBackgroundColor(DEFAULT_TINT_COLOR);  
-        mNavBarTintView.setVisibility(View.GONE);  
+        mNavBarTintView.setVisibility(View.INVISIBLE);  
         decorViewGroup.addView(mNavBarTintView);  
     }  
   

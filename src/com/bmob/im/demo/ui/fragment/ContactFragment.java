@@ -210,6 +210,7 @@ public class ContactFragment extends FragmentBase implements OnItemClickListener
 	TextView tv_new_name;
 	LinearLayout layout_new;//新朋友
 	LinearLayout layout_near;//附近的人
+	LinearLayout layout_file;
 	
 	private void initListView() {
 		list_friends= (ListView)findViewById(R.id.list_friends);

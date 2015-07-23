@@ -14,8 +14,39 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.bmob.im.demo.CustomApplcation;
+import com.bmob.im.demo.ui.BaseActivity;
+import com.bmob.im.demo.ui.SplashActivity;
+import com.cardsui.example.MyPlayCard;
+import com.fima.cardsui.objects.CardStack;
+import com.fima.cardsui.views.CardUI;
+import com.mc.db.DBConnection;
+import com.mc.util.BadgeUtil;
+import com.mc.util.CircleImageView;
+import com.mc.util.CustomRankListView;
+import com.mc.util.CustomRankListView.OnAddFootListener;
+import com.mc.util.CustomRankListView.OnFootLoadingListener;
+import com.mc.util.HttpAssist;
+import com.mc.util.HttpUtilMc;
+import com.mc.util.LogcatHelper;
+import com.mc.util.Passport;
+import com.mc.util.RankUtils;
+import com.mc.util.SIMCardInfo;
+import com.mc.util.Util;
+import com.mc.util.VersionUpdate;
+import com.slidingmenu.lib.SlidingMenu;
+import com.slidingmenu.lib.SlidingMenu.OnOpenListener;
+import com.xy.fy.adapter.ChooseHistorySchoolExpandAdapter;
+import com.xy.fy.adapter.ChooseSchoolExpandAdapter;
+import com.xy.fy.util.BitmapUtil;
+import com.xy.fy.util.ShareUtil;
+import com.xy.fy.util.StaticVarUtil;
+import com.xy.fy.util.TestArrayAdapter;
+import com.xy.fy.util.ViewUtil;
+import com.xy.fy.view.HistoryCollege;
+import com.xy.fy.view.ToolClass;
+
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.Dialog;
@@ -62,39 +93,13 @@ import android.widget.LinearLayout;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import cn.bmob.im.bean.BmobInvitation;
+import cn.bmob.im.bean.BmobMsg;
+import cn.bmob.im.db.BmobDB;
+import cn.bmob.im.inteface.EventListener;
 import cn.sharesdk.onekeyshare.OnekeyShare;
 
-import com.bmob.im.demo.CustomApplcation;
-import com.bmob.im.demo.ui.BaseActivity;
-import com.bmob.im.demo.ui.SplashActivity;
-import com.cardsui.example.MyPlayCard;
-import com.fima.cardsui.objects.CardStack;
-import com.fima.cardsui.views.CardUI;
-import com.mc.db.DBConnection;
-import com.mc.util.CircleImageView;
-import com.mc.util.CustomRankListView;
-import com.mc.util.CustomRankListView.OnAddFootListener;
-import com.mc.util.CustomRankListView.OnFootLoadingListener;
-import com.mc.util.HttpAssist;
-import com.mc.util.HttpUtilMc;
-import com.mc.util.LogcatHelper;
-import com.mc.util.Passport;
-import com.mc.util.SIMCardInfo;
-import com.mc.util.Util;
-import com.mc.util.VersionUpdate;
-import com.slidingmenu.lib.SlidingMenu;
-import com.slidingmenu.lib.SlidingMenu.OnOpenListener;
-import com.xy.fy.adapter.ChooseHistorySchoolExpandAdapter;
-import com.xy.fy.adapter.ChooseSchoolExpandAdapter;
-import com.xy.fy.util.BitmapUtil;
-import com.xy.fy.util.ShareUtil;
-import com.xy.fy.util.StaticVarUtil;
-import com.xy.fy.util.TestArrayAdapter;
-import com.xy.fy.util.ViewUtil;
-import com.xy.fy.view.HistoryCollege;
-import com.xy.fy.view.ToolClass;
-
-public class MainActivity extends Activity {
+public class MainActivity extends BaseActivity implements EventListener {
   private static int requestTimes = 0;
   private static OnekeyShare share;
   private static ShareUtil shareUtil;
@@ -102,6 +107,7 @@ public class MainActivity extends Activity {
   public static HashMap<String, String> mapScoreTwo = null;// xn = 2
   private static boolean isFirst = true;
   private static boolean is_show = false;
+  private static boolean isShowTip = true;
 
   public static SlidingMenu slidingMenu;
   private Button chooseCollege;
@@ -120,6 +126,7 @@ public class MainActivity extends Activity {
   private LinearLayout menuSetting = null;// 设置
   private LinearLayout menuAbout = null;// 关于
   private Button check_version = null;
+  private TextView bukao_tip = null;
   ArrayList<HashMap<String, Object>> listItem;// json解析之后的列表,保存了所有的成绩数据
   private TextView ideaMsgText = null;
   private TextView phoneText = null;
@@ -130,9 +137,7 @@ public class MainActivity extends Activity {
   private TextView nameText;
   private TextView rankScoreText;
   private HashMap<String, String> allRankMap = new HashMap<String, String>();// 所有学年和学期的成绩
-  private ArrayList<HashMap<String, Object>> allRankArrayList;// 所有的数据
-  private ArrayList<HashMap<String, Object>> showRankArrayList;// 应该显示的数据
-  private AutoCompleteTextView search_edittext;
+    private AutoCompleteTextView search_edittext;
   private SimpleAdapter simpleAdapter;
   private String score_json;// json数据
   private static boolean isFirstListView = true;
@@ -153,9 +158,8 @@ public class MainActivity extends Activity {
     super.onCreate(savedInstanceState);
     requestWindowFeature(Window.FEATURE_NO_TITLE);
     super.setContentView(R.layout.activity_main);
-    
-    
-    
+
+    BadgeUtil.resetBadgeCount(getApplicationContext());
     CheckVersionAsyntask checkVersionAsyntask = new CheckVersionAsyntask();
     checkVersionAsyntask.execute();
     shareUtil = new ShareUtil(getApplicationContext());
@@ -207,7 +211,8 @@ public class MainActivity extends Activity {
               true);
         } else if (item == StaticVarUtil.MENU_CET) {
           setMenuItemState(menuBang, false, menuMyBukao, false, menuMyCjTongji, false, menuMyCET,
-              true, menuMyPaiming, false, menuIdea_back, false, menuSetting, false, menuAbout, false);
+              true, menuMyPaiming, false, menuIdea_back, false, menuSetting, false, menuAbout,
+              false);
         }
       }
     });
@@ -222,8 +227,8 @@ public class MainActivity extends Activity {
     }
     if (!Util.checkPWD(StaticVarUtil.student.getPassword())) {
       ViewUtil.showToast(getApplicationContext(), "密码不安全，请重新设置密码");
-      setMenuItemState(menuBang, false, menuMyBukao, false, menuMyCjTongji, false, menuMyCET,
-          false, menuMyPaiming, false, menuIdea_back, false, menuSetting, true, menuAbout, false);
+      setMenuItemState(menuBang, false, menuMyBukao, false, menuMyCjTongji, false, menuMyCET, false,
+          menuMyPaiming, false, menuIdea_back, false, menuSetting, true, menuAbout, false);
       setCurrentMenuItem(StaticVarUtil.MENU_SETTING);
       slidingMenu.toggle();// 页面跳转
       slidingMenu.setContent(R.layout.activity_setting);
@@ -323,8 +328,8 @@ public class MainActivity extends Activity {
       MyPlayCard _myPlayCard = new MyPlayCard("第一学期", first_score, "#33b6ea", "#33b6ea", true,
           false);
       String[][] first_score_array = getScoreToArray(first_score);
-      _myPlayCard.setOnClickListener(new ScoreClass(first_score_array.length, first_score_array, xn
-          + " 第一学期"));
+      _myPlayCard.setOnClickListener(
+          new ScoreClass(first_score_array.length, first_score_array, xn + " 第一学期"));
       mCardView.addCard(_myPlayCard);
       // mCardView.addCardToLastStack(new
       // MyCard("By Androguide & GadgetCheck"));
@@ -334,8 +339,8 @@ public class MainActivity extends Activity {
       xqs_str += "第二学期,";
       MyPlayCard myCard = new MyPlayCard("第二学期", second_score, "#e00707", "#e00707", false, true);
       String[][] second_score_array = getScoreToArray(second_score);
-      myCard.setOnClickListener(new ScoreClass(second_score_array.length, second_score_array, xn
-          + " 第二学期"));
+      myCard.setOnClickListener(
+          new ScoreClass(second_score_array.length, second_score_array, xn + " 第二学期"));
       mCardView.addCardToLastStack(myCard);
     }
     if (xqs_str.length() != 0) {
@@ -422,13 +427,13 @@ public class MainActivity extends Activity {
                 StaticVarUtil.kcdmList.put(
                     jsonObject2.get("kcmc") == null ? " " : jsonObject2.get("kcmc").toString(),
                     jsonObject2.get("kcdm").toString() + "|" + xn + "|" + xq);
-                result.append(jsonObject2.get("kcmc") == null ? " " : jsonObject2.get("kcmc")
-                    .toString());// 课程名称
+                result.append(
+                    jsonObject2.get("kcmc") == null ? " " : jsonObject2.get("kcmc").toString());// 课程名称
                 result.append("--"
                     + jsonObject2.get("cj")// 最终成绩
                         .toString()
-                    + (jsonObject2.get("bkcj").equals(" ") ? " " : ("("
-                        + jsonObject2.get("bkcj").toString() + ")"))// 将补考成绩和最终成绩同时显示。
+                    + (jsonObject2.get("bkcj").equals(" ") ? " "
+                        : ("(" + jsonObject2.get("bkcj").toString() + ")"))// 将补考成绩和最终成绩同时显示。
                 );
                 result.append(jsonObject2.get("pscj")// 平时成绩
                     .equals("") ? "/" : "--" + jsonObject2.get("pscj").toString());
@@ -484,7 +489,14 @@ public class MainActivity extends Activity {
     menuIdea_back = (LinearLayout) findViewById(R.id.idea_back);// 4.我收藏的
     menuSetting = (LinearLayout) findViewById(R.id.menu_setting);// 5.设置
     menuAbout = (LinearLayout) findViewById(R.id.menu_about);
+    bukao_tip = (TextView) findViewById(R.id.bukao_tip);
+    if (isShowTip) {
+      bukao_tip.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.msg_tips, 0);
+      isShowTip = false;
+    } else {
+      bukao_tip.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
 
+    }
     LinearLayout menuQuit = (LinearLayout) findViewById(R.id.menu_quit);
     menuBang.setPressed(true);// 初始化默认是风云榜被按下
     setCurrentMenuItem(StaticVarUtil.MENU_BANG);// 记录当前选项位置
@@ -511,7 +523,8 @@ public class MainActivity extends Activity {
       @Override
       public void onClick(View v) {
         setMenuItemState(menuBang, true, menuMyBukao, false, menuMyCjTongji, false, menuMyCET,
-            false, menuMyPaiming, false, menuIdea_back, false, menuSetting, false, menuAbout, false);
+            false, menuMyPaiming, false, menuIdea_back, false, menuSetting, false, menuAbout,
+            false);
         slidingMenu.toggle();// 页面跳转
         slidingMenu.setContent(R.layout.card_main);
         new Thread(new Runnable() {
@@ -536,7 +549,10 @@ public class MainActivity extends Activity {
     menuMyBukao.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
-        
+        if (BmobDB.create(getApplicationContext()).hasUnReadMsg()||!isShowTip) {
+          bukao_tip.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+          isShowTip = true;
+        }
         
         setMenuItemState(menuBang, false, menuMyBukao, true, menuMyCjTongji, false, menuMyCET,
             false, menuMyPaiming, false, menuIdea_back, false, menuSetting, false, menuAbout,
@@ -704,10 +720,8 @@ public class MainActivity extends Activity {
 
   }
 
-  
-  //补考好友
-  
-  
+  // 补考好友
+
   private void aboutListener() {
     if (Util.getAndroidSDKVersion() > 10) {
       findViewById(R.id.newTip).setAlpha(100);
@@ -791,8 +805,8 @@ public class MainActivity extends Activity {
     builder.setItems(items, new DialogInterface.OnClickListener() {
       public void onClick(DialogInterface dialog, int item) {
         if (!new File(StaticVarUtil.PATH + Util.QRCODE_FILENAME).exists()) {
-          Bitmap bt = ((BitmapDrawable) getApplicationContext().getResources().getDrawable(
-              R.drawable.qrcode)).getBitmap();
+          Bitmap bt = ((BitmapDrawable) getApplicationContext().getResources()
+              .getDrawable(R.drawable.qrcode)).getBitmap();
           BitmapUtil.saveFileAndDB(getApplicationContext(), bt, Util.QRCODE_FILENAME);
           bt.recycle();
         }
@@ -850,7 +864,7 @@ public class MainActivity extends Activity {
         // TODO Auto-generated method stub
         if (search_edittext.getText().toString().length() > 0) {
           // 定位
-          for (HashMap<String, Object> map : showRankArrayList) {
+          for (HashMap<String, Object> map : RankUtils.showRankArrayList) {
             if ((map.get("name").toString()).equals(search_edittext.getText().toString())) {
               search_edittext.clearFocus();
               closeInputMethod();
@@ -867,7 +881,7 @@ public class MainActivity extends Activity {
       public boolean onKey(View v, int keyCode, KeyEvent event) {
         if (KeyEvent.KEYCODE_ENTER == keyCode && event.getAction() == KeyEvent.ACTION_DOWN) {
           boolean isSearch = false;
-          for (HashMap<String, Object> map : showRankArrayList) {
+          for (HashMap<String, Object> map : RankUtils.showRankArrayList) {
             if ((map.get("name").toString()).equals(search_edittext.getText().toString())) {
               allRankList.setSelection(Integer.parseInt(map.get("rankId").toString()) - 1);
               isSearch = true;
@@ -910,13 +924,13 @@ public class MainActivity extends Activity {
     @SuppressWarnings("deprecation")
     int width = wm.getDefaultDisplay().getWidth() / 4 + 10;
     xnSpinner = (Spinner) findViewById(R.id.xnSpinner);
-    xnSpinner.setLayoutParams(new LinearLayout.LayoutParams(width,
-        LinearLayout.LayoutParams.WRAP_CONTENT));
+    xnSpinner.setLayoutParams(
+        new LinearLayout.LayoutParams(width, LinearLayout.LayoutParams.WRAP_CONTENT));
 
     // xnSpinner.setDropDownWidth(width);
     xqSpinner = (Spinner) findViewById(R.id.xqSpinner);
-    xqSpinner.setLayoutParams(new LinearLayout.LayoutParams(width,
-        LinearLayout.LayoutParams.WRAP_CONTENT));
+    xqSpinner.setLayoutParams(
+        new LinearLayout.LayoutParams(width, LinearLayout.LayoutParams.WRAP_CONTENT));
     String[] xns = new String[StaticVarUtil.list_Rank_xnAndXq.size()];
     int i = 0;
 
@@ -1011,8 +1025,8 @@ public class MainActivity extends Activity {
             }
             // 再次读取10行数据
             ArrayList<HashMap<String, Object>> virtualData = new ArrayList<HashMap<String, Object>>();
-            for (int i = lsitItemSum; i < allRankArrayList.size(); i++) {
-              virtualData.add(allRankArrayList.get(i));
+            for (int i = lsitItemSum; i < RankUtils.allRankArrayList.size(); i++) {
+              virtualData.add(RankUtils.allRankArrayList.get(i));
               lsitItemSum += 1;
             }
             // 设置新的大小
@@ -1022,7 +1036,7 @@ public class MainActivity extends Activity {
           // 在doInBackground后面执行
           @Override
           protected void onPostExecute(ArrayList<HashMap<String, Object>> result) {
-            showRankArrayList.addAll(result);// 这个是往后添加数据
+            RankUtils.showRankArrayList.addAll(result);// 这个是往后添加数据
             simpleAdapter.notifyDataSetChanged();
             allRankList.onFootLoadingComplete();// 完成上拉刷新,就是底部加载完毕,这个方法要调用
             // 移除footer,这个动作不能少
@@ -1068,8 +1082,8 @@ public class MainActivity extends Activity {
           String.valueOf(new char[] { 2, 4, 8, 8, 2, 2 }));
       String realData = Passport.jiami(data, String.valueOf(time));
       @SuppressWarnings("static-access")
-      String imei = ((TelephonyManager) getApplicationContext().getSystemService(
-          getApplicationContext().TELEPHONY_SERVICE)).getDeviceId();
+      String imei = ((TelephonyManager) getApplicationContext()
+          .getSystemService(getApplicationContext().TELEPHONY_SERVICE)).getDeviceId();
       imei = Passport.jiami(imei, String.valueOf(time));
       realData = URLEncoder.encode(realData);
       time_s = URLEncoder.encode(time_s);
@@ -1261,7 +1275,8 @@ public class MainActivity extends Activity {
         String password1 = etPassword1.getText().toString();
         String password2 = etPassword2.getText().toString().trim();
         String password3 = cofPassword2.getText().toString().trim();
-        if (password1.equals("") && password2.equals("") && bitmap == null && password3.equals("")) {
+        if (password1.equals("") && password2.equals("") && bitmap == null
+            && password3.equals("")) {
           ViewUtil.showToast(getApplicationContext(), "您没有信息需要修改");
           return;
         }
@@ -1367,8 +1382,8 @@ public class MainActivity extends Activity {
           headPhoto.setImageBitmap(bitmap);
           // 上传头像
           UploadFileAsytask uploadFileAsytask = new UploadFileAsytask();
-          uploadFileAsytask.execute(new String[] { StaticVarUtil.PATH + "/"
-              + StaticVarUtil.student.getAccount() + ".JPEG" });
+          uploadFileAsytask.execute(new String[] {
+              StaticVarUtil.PATH + "/" + StaticVarUtil.student.getAccount() + ".JPEG" });
         }
         break;
       default:
@@ -1562,7 +1577,7 @@ public class MainActivity extends Activity {
    */
   private void deleteCatch() {
     StaticVarUtil.list_Rank_xnAndXq.clear();
-    allRankArrayList = null;
+    RankUtils.allRankArrayList = null;
     mapScoreOne = null;
     mapScoreTwo = null;
     CustomApplcation.getInstance().logout();
@@ -1570,6 +1585,15 @@ public class MainActivity extends Activity {
     isFirstListView = true;
     // 清空成绩缓存
     isFirst = true;
+  }
+
+  @Override
+  protected void onResume() {
+    // TODO Auto-generated method stub
+    super.onResume();
+    if (BmobDB.create(this).hasUnReadMsg()) {
+      bukao_tip.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.msg_tips, 0);
+    }
   }
 
   /*
@@ -1583,14 +1607,14 @@ public class MainActivity extends Activity {
     if (logout) {
       builder.setMessage("你确定要注销吗？");
     } else {
-//      builder.setMessage("你确定要退出吗？");
-      dialog.cancel();
-      deleteCatch();
-      LogcatHelper.getInstance(MainActivity.this).stop();
-      moveTaskToBack(false);
+      // builder.setMessage("你确定要退出吗？");
+      /*
+       * dialog.cancel(); deleteCatch(); LogcatHelper.getInstance(MainActivity.this).stop();
+       */
+      moveTaskToBack(true);
       return;
     }
-    
+
     builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
       @Override
       public void onClick(DialogInterface dialog, int which) {
@@ -1745,9 +1769,9 @@ public class MainActivity extends Activity {
     @Override
     protected String doInBackground(String... params) {
       // TODO Auto-generated method stub
-      return HttpUtilMc.queryStringForPost(HttpUtilMc.BASE_URL + "RankServlet.jsp?data="
-          + StaticVarUtil.data + "&viewstate=" + StaticVarUtil.viewstate + "&content="
-          + StaticVarUtil.content);
+      return HttpUtilMc
+          .queryStringForPost(HttpUtilMc.BASE_URL + "RankServlet.jsp?data=" + StaticVarUtil.data
+              + "&viewstate=" + StaticVarUtil.viewstate + "&content=" + StaticVarUtil.content);
     }
 
     @Override
@@ -1793,9 +1817,8 @@ public class MainActivity extends Activity {
     @Override
     protected String doInBackground(String... params) {
       // TODO Auto-generated method stub
-      return HttpUtilMc.queryStringForPost(HttpUtilMc.XIYOUMC_BASE_IP
-          + "servlet/CetServlet?ticket=" + StaticVarUtil.cet_data + "&time="
-          + StaticVarUtil.cet_viewstate + "&name=" + params[0]);
+      return HttpUtilMc.queryStringForPost(HttpUtilMc.XIYOUMC_BASE_IP + "servlet/CetServlet?ticket="
+          + StaticVarUtil.cet_data + "&time=" + StaticVarUtil.cet_viewstate + "&name=" + params[0]);
     }
 
     @Override
@@ -1843,12 +1866,12 @@ public class MainActivity extends Activity {
    */
   private void refeshRank(String result, boolean isFirst) {
     try {
-      if (allRankArrayList == null & showRankArrayList == null) {
-        allRankArrayList = new ArrayList<HashMap<String, Object>>();
-        showRankArrayList = new ArrayList<HashMap<String, Object>>();
+      if (RankUtils.allRankArrayList == null & RankUtils.showRankArrayList == null) {
+        RankUtils.allRankArrayList = new ArrayList<HashMap<String, Object>>();
+        RankUtils.showRankArrayList = new ArrayList<HashMap<String, Object>>();
       } else {
-        allRankArrayList.clear();
-        showRankArrayList.clear();
+        RankUtils.allRankArrayList.clear();
+        RankUtils.showRankArrayList.clear();
       }
 
       JSONObject jsonObject = new JSONObject(result);
@@ -1865,7 +1888,7 @@ public class MainActivity extends Activity {
         map.put("name", o.get("name"));
         map.put("xh", o.get("xh"));
         map.put("score", o.get("score"));
-        allRankArrayList.add(map);
+        RankUtils.allRankArrayList.add(map);
         if (String.valueOf(rankId).equals(rank)) {
           rankScoreText.setText(o.get("score").toString());// 显示成绩
 
@@ -1876,9 +1899,9 @@ public class MainActivity extends Activity {
         }
       }
       // 获取 之前求得的固定 个数的item。 防止数据量太大，而导致的将所有数据都显示出来。
-      for (int i = 0; i < (lsitItemSum > allRankArrayList.size() ? allRankArrayList.size()
+      for (int i = 0; i < (lsitItemSum > RankUtils.allRankArrayList.size() ? RankUtils.allRankArrayList.size()
           : lsitItemSum); i++) {
-        showRankArrayList.add(allRankArrayList.get(i));
+        RankUtils.showRankArrayList.add(RankUtils.allRankArrayList.get(i));
       }
       if (isFirst) {
         setListView();
@@ -1907,10 +1930,10 @@ public class MainActivity extends Activity {
       public void onClick(View v) {
         SIMCardInfo siminfo = new SIMCardInfo(getApplicationContext());
         final String number = siminfo.getNativePhoneNumber();
-        final String data = ideaMsgText.getText().toString().trim()
-            + "|"
-            + ("".equals(phoneText.getText().toString().trim()) ? "" : phoneText.getText()
-                .toString().trim()) + "|" + StaticVarUtil.student.getAccount() + "|"
+        final String data = ideaMsgText.getText().toString().trim() + "|"
+            + ("".equals(phoneText.getText().toString().trim()) ? ""
+                : phoneText.getText().toString().trim())
+            + "|" + StaticVarUtil.student.getAccount() + "|"
             + Util.getVersion(getApplicationContext()) + "|" + number;
         new Thread(new Runnable() {
           @Override
@@ -1975,9 +1998,9 @@ public class MainActivity extends Activity {
   private void setListView() {
     // TODO Auto-generated method stub
 
-    simpleAdapter = new SimpleAdapter(getApplicationContext(), showRankArrayList,
-        R.layout.allrank_listitem, new String[] { "rankId", "name", "score" }, new int[] {
-            R.id.rankId, R.id.name, R.id.score });
+    simpleAdapter = new SimpleAdapter(getApplicationContext(), RankUtils.showRankArrayList,
+        R.layout.allrank_listitem, new String[] { "rankId", "name", "score" },
+        new int[] { R.id.rankId, R.id.name, R.id.score });
     allRankList.setAdapter(simpleAdapter);
 
   }
@@ -2004,9 +2027,9 @@ public class MainActivity extends Activity {
     protected String doInBackground(String... params) {
       // TODO Auto-generated method stub
       String canshu = Util.getURL(StaticVarUtil.CHANGE_PW);
-      return HttpUtilMc.queryStringForPost(HttpUtilMc.BASE_URL + "changepw.jsp?session="
-          + StaticVarUtil.session + "&url=" + canshu + "&old_password=" + params[0]
-          + "&new_password=" + params[1]);
+      return HttpUtilMc
+          .queryStringForPost(HttpUtilMc.BASE_URL + "changepw.jsp?session=" + StaticVarUtil.session
+              + "&url=" + canshu + "&old_password=" + params[0] + "&new_password=" + params[1]);
 
     }
 
@@ -2022,8 +2045,8 @@ public class MainActivity extends Activity {
           ViewUtil.showToast(getApplicationContext(), HttpUtilMc.CONNECT_EXCEPTION);
           return;
         }
-        ViewUtil.showToast(getApplicationContext(), !result.equals("error") ? "修改成功,请重新登录"
-            : "修改不成功");
+        ViewUtil.showToast(getApplicationContext(),
+            !result.equals("error") ? "修改成功,请重新登录" : "修改不成功");
         if (!result.equals("error")) {
           quit(true);// 注销重新登录
         }
@@ -2043,8 +2066,8 @@ public class MainActivity extends Activity {
     @Override
     protected String doInBackground(String... params) {
       // TODO Auto-generated method stub
-      return HttpUtilMc.queryStringForPost(HttpUtilMc.BASE_URL + "getuserphoto.jsp?username="
-          + StaticVarUtil.student.getAccount());
+      return HttpUtilMc.queryStringForPost(
+          HttpUtilMc.BASE_URL + "getuserphoto.jsp?username=" + StaticVarUtil.student.getAccount());
     }
 
     @Override
@@ -2072,8 +2095,8 @@ public class MainActivity extends Activity {
       } else {
         // 如果文件夹中不存在这个头像。
         GetPicture getPicture = new GetPicture();
-        getPicture.execute(new String[] { HttpUtilMc.BASE_URL + "user_photo/"
-            + StaticVarUtil.PHOTOFILENAME });
+        getPicture.execute(
+            new String[] { HttpUtilMc.BASE_URL + "user_photo/" + StaticVarUtil.PHOTOFILENAME });
       }
     }
 
@@ -2099,8 +2122,8 @@ public class MainActivity extends Activity {
       if (Util.isExternalStorageWritable()) {
         Util.saveBitmap2file(bitmap, StaticVarUtil.PHOTOFILENAME, getApplicationContext());
       }
-      headPhoto.setImageBitmap(Util.convertToBitmap(StaticVarUtil.PATH + "/"
-          + StaticVarUtil.student.getAccount() + ".JPEG", 240, 240));// 显示图片
+      headPhoto.setImageBitmap(Util.convertToBitmap(
+          StaticVarUtil.PATH + "/" + StaticVarUtil.student.getAccount() + ".JPEG", 240, 240));// 显示图片
       bitmap.recycle();
     }
 
@@ -2169,13 +2192,43 @@ public class MainActivity extends Activity {
           Util.saveBitmap2file(bitmap, result, getApplicationContext());
           bitmap.recycle();
         }
-        ViewUtil.showToast(getApplicationContext(),
-            !HttpUtilMc.CONNECT_EXCEPTION.equals(result) ? !result.equals("error") ? "修改成功"
-                : "修改失败" : HttpUtilMc.CONNECT_EXCEPTION);
+        ViewUtil.showToast(getApplicationContext(), !HttpUtilMc.CONNECT_EXCEPTION.equals(result)
+            ? !result.equals("error") ? "修改成功" : "修改失败" : HttpUtilMc.CONNECT_EXCEPTION);
       } catch (Exception e) {
         Log.i("LoginActivity", e.toString());
       }
     }
+  }
+
+  @Override
+  public void onAddUser(BmobInvitation arg0) {
+    // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  public void onMessage(BmobMsg arg0) {
+    // TODO Auto-generated method stub
+    bukao_tip.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.msg_tips, 0);
+    bukao_tip.refreshDrawableState();
+  }
+
+  @Override
+  public void onNetChange(boolean arg0) {
+    // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  public void onOffline() {
+    // TODO Auto-generated method stub
+
+  }
+
+  @Override
+  public void onReaded(String arg0, String arg1) {
+    // TODO Auto-generated method stub
+
   }
 
 }

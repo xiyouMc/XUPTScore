@@ -44,7 +44,7 @@ public class AddFriendAdapter extends BaseListAdapter<BmobChatUser> {
 		TextView name = ViewHolder.get(convertView, R.id.name);
 		ImageView iv_avatar = ViewHolder.get(convertView, R.id.avatar);
 		
-		Button btn_add = ViewHolder.get(convertView, R.id.btn_add);
+		final Button btn_add = ViewHolder.get(convertView, R.id.btn_add);
 
 		String avatar = contract.getAvatar();
 
@@ -72,6 +72,7 @@ public class AddFriendAdapter extends BaseListAdapter<BmobChatUser> {
 					public void onSuccess() {
 						// TODO Auto-generated method stub
 						progress.dismiss();
+						btn_add.setText("已添加");
 						ShowToast("发送请求成功，等待对方验证!");
 					}
 					
