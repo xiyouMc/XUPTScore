@@ -20,6 +20,19 @@
 -keep class com.sina.**{*;}
 -keep class m.framework.**{*;}
 
+-ignorewarnings
+# 这里根据具体的SDK版本修改
+-libraryjars libs/bmob_v3.0.9beta.jar
+
+-keepattributes Signature
+-keep class cn.bmob.v3.** {*;}
+
+# 保证继承自BmobObject、BmobUser类的JavaBean不被混淆
+-keep class com.example.bmobexample.Person{*;}
+-keep class com.example.bmobexample.MyUser{*;}
+-keep class com.example.bmobexample.relationaldata.Weibo{*;}
+-keep class com.example.bmobexample.relationaldata.Comment{*;}
+
 -dontwarn org.apache.commons.mail.**
 -keep class org.apache.commons.mail.**{*;}
 -dontwarn org.apache.harmony.awt.**

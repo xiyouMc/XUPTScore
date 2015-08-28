@@ -21,6 +21,7 @@ import cn.bmob.im.inteface.EventListener;
 
 import com.bmob.im.demo.CustomApplcation;
 import com.bmob.im.demo.MyMessageReceiver;
+import com.bmob.im.demo.config.BmobConstants;
 import com.bmob.im.demo.ui.fragment.ContactFragment;
 import com.bmob.im.demo.ui.fragment.RecentFragment;
 import com.bmob.im.demo.ui.fragment.SettingsFragment;
@@ -50,6 +51,7 @@ public class MainActivity extends ActivityBase implements EventListener {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_chat_main);
+    BmobConstants.IS_STARTED = 1;
     // 开启定时检测服务（单位为秒）-在这里检测后台是否还有未读的消息，有的话就取出来
     BmobChat.getInstance(this).startPollService(30);
     // 开启广播接收器

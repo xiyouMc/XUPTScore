@@ -57,6 +57,7 @@
 	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 	<uses-permission android:name="android.permission.BROADCAST_STICKY" />
 	<uses-permission android:name="android.permission.WRITE_SETTINGS" />
+	<uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT"/>
 	<!-- 来电消音 -->
 	<uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" >
 	</uses-permission>
@@ -110,6 +111,8 @@
 			android:theme="@style/AnimActivityTheme" />
 		<activity android:name="com.xy.fy.main.ShowScoreActivity"
 			android:theme="@style/Transparent" />
+		<activity android:name="com.xy.fy.main.ForgetCetActivity"
+			android:theme="@style/Transparent" />
 		<!-- 放置软键盘自动弹出 -->
 		<activity android:name="com.xy.fy.main.MessageDetailActivity"
 			android:configChanges="keyboardHidden|orientation"
@@ -136,7 +139,9 @@
 			
 		<activity
 			android:name="com.bmob.im.demo.ui.SplashActivity"
-			android:theme="@android:style/Theme.Translucent.NoTitleBar">
+			android:theme="@android:style/Theme.Translucent.NoTitleBar"
+			android:launchMode="singleInstance"
+			>
 		</activity>
 		<activity
 			android:name="com.bmob.im.demo.ui.MainActivity"
@@ -161,6 +166,7 @@
 		<activity android:name="com.bmob.im.demo.ui.NearPeopleActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
         <activity android:name="com.bmob.im.demo.ui.FileSourceActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 		<activity android:name="com.bmob.im.demo.ui.UpdateInfoActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:name="com.bmob.im.demo.ui.TestActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
         
 		<activity
 			android:name="com.bmob.im.demo.ui.ChatActivity"
@@ -223,6 +229,12 @@
 				<action android:name="cn.bmob.im.service.BmobPollService"/>
 			</intent-filter>
 		</service>
+		
+		<!-- 如果是通过桌面长按添加快捷方式，才需要添加此配置 -->  
+            <intent-filter>    
+              <action android:name="android.intent.action.CREATE_SHORTCUT" />    
+              <category android:name="android.intent.category.DEFAULT" />    
+          </intent-filter>    
 	</application>
 
 </manifest>

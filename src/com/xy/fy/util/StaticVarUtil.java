@@ -68,10 +68,13 @@ public class StaticVarUtil {
   public static final int MENU_SETTING = 6;
   public static final int MENU_ABOUT = 7;
 
-  
+  public static final int FILE_SELECT = 1;
   
   public static final int SHARE = 8;
   public static final int IDEA_BACK_TOAST = 9;
+  
+  public static final int CHECK_VERSION = 10;
+  public static final int BMOB_CHAT = 11;
   // 一组常用的handler数据
   public static final int START = 13;
   public static final int END_SUCCESS = 14;

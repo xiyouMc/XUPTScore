@@ -28,6 +28,8 @@ import com.bmob.im.demo.util.CollectionUtils;
 import com.bmob.im.demo.util.ImageLoadOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.xy.fy.main.R;
+import com.xy.fy.util.FileUtils;
+import com.xy.fy.util.StaticVarUtil;
 
 /**
  * 云文件
@@ -37,10 +39,10 @@ import com.xy.fy.main.R;
  * @author smile
  * @date 2014-6-9 下午1:26:12
  */
-public class FileResourceAdapter extends BaseListAdapter<BmobFile> {
+public class FileResourceAdapter extends BaseListAdapter<String> {
 
-  public FileResourceAdapter(Context context, List<BmobFile> list) {
-    super(context, list);
+  public FileResourceAdapter(Context context, List<String> listFilename) {
+    super(context, listFilename);
     // TODO Auto-generated constructor stub
   }
 
@@ -51,14 +53,14 @@ public class FileResourceAdapter extends BaseListAdapter<BmobFile> {
       convertView = mInflater.inflate(R.layout.item_add_friend, null);
     }
 
-    final BmobFile msg = getList().get(arg0);
+    final String filename = getList().get(arg0);
     TextView name = ViewHolder.get(convertView, R.id.name);
     ImageView iv_avatar = ViewHolder.get(convertView, R.id.avatar);
 
     final Button btn_add = ViewHolder.get(convertView, R.id.btn_add);
     btn_add.setText("下载");
 
-    String prefix = msg.getFilename().substring(msg.getFilename().lastIndexOf(".") + 1);
+    String prefix = filename.substring(filename.lastIndexOf(".") + 1);
     if (prefix == null || prefix.equals("")) {
       iv_avatar.setImageResource(R.drawable.iconfont_txt);
     } else if (prefix.equalsIgnoreCase("doc")) {
@@ -75,19 +77,20 @@ public class FileResourceAdapter extends BaseListAdapter<BmobFile> {
       public void onClick(View arg0) {
         // TODO Auto-generated method stub
 
-        downloadFile(msg);
+        downloadFile(filename);
 
       }
 
     });
-    name.setText(msg.getFilename());
+    name.setText(filename);
 
     return convertView;
   }
 
   ProgressDialog dialog = null;
 
-  private void downloadFile(final BmobFile msg) {
+  private void downloadFile(final String filename) {
+    Log.i("bmob", "文件名：" + filename);
     dialog = new ProgressDialog(mContext);
     dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
     dialog.setTitle("正在下载...");
@@ -96,12 +99,15 @@ public class FileResourceAdapter extends BaseListAdapter<BmobFile> {
     dialog.setCanceledOnTouchOutside(false);
     dialog.show();
 
-    BmobProFile.getInstance(mContext).download(msg.getFilename(), new DownloadListener() {
+    BmobProFile.getInstance(mContext).download(filename, new DownloadListener() {
 
       @Override
       public void onSuccess(String fullPath) {
         // TODO Auto-generated method stub
+        dialog.dismiss();
+//        /data/data/com.xy.fy.main/cache/BmobCache/Download/78817953cfa14bbebd423769621d419d.pdf
         Log.i("bmob", "下载成功：" + fullPath);
+        FileUtils.copyFile(fullPath, StaticVarUtil.PATH+"/download/files",filename);
       }
 
       @Override
@@ -120,42 +126,4 @@ public class FileResourceAdapter extends BaseListAdapter<BmobFile> {
     });
   }
 
-  /**
-   * 添加好友 agressAdd @Title: agressAdd @Description: TODO @param @param btn_add @param @param
-   * msg @return void @throws
-   */
-  private void agressAdd(final Button btn_add, final BmobInvitation msg) {
-    final ProgressDialog progress = new ProgressDialog(mContext);
-    progress.setMessage("正在添加...");
-    progress.setCanceledOnTouchOutside(false);
-    progress.show();
-    try {
-      // 同意添加好友
-      BmobUserManager.getInstance(mContext).agreeAddContact(msg, new UpdateListener() {
-
-        @Override
-        public void onSuccess() {
-          // TODO Auto-generated method stub
-          progress.dismiss();
-          btn_add.setText("已同意");
-          btn_add.setBackgroundDrawable(null);
-          btn_add.setTextColor(mContext.getResources().getColor(R.color.base_color_text_black));
-          btn_add.setEnabled(false);
-          // 保存到application中方便比较
-          CustomApplcation.getInstance()
-              .setContactList(CollectionUtils.list2map(BmobDB.create(mContext).getContactList()));
-        }
-
-        @Override
-        public void onFailure(int arg0, final String arg1) {
-          // TODO Auto-generated method stub
-          progress.dismiss();
-          ShowToast("添加失败: " + arg1);
-        }
-      });
-    } catch (final Exception e) {
-      progress.dismiss();
-      ShowToast("添加失败: " + e.getMessage());
-    }
-  }
 }

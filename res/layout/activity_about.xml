@@ -121,9 +121,9 @@
                     android:textSize="15sp" />
 
                 <TextView
+                    android:id="@+id/ip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="http://www.xiyoumobile.com"
                     android:textColor="#595959"
                     android:textSize="13sp" />
             </LinearLayout>

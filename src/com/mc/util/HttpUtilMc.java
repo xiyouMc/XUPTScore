@@ -23,7 +23,7 @@ public class HttpUtilMc {
   public static String SERVER_ADDRESS = "222.24.63.101";
   public static final String XUPT_IP1 = "222.24.63.101";
   public static final String XUPT_IP2 = "222.24.63.101";
-  public static final String xiyouMC_IP = "http://120.25.124.226";
+  public static final String xiyouMC_IP = "http://222.24.63.101";
   public static final String XIYOUMC_BASE_IP = xiyouMC_IP + "/xuptqueryscore/";
   /*
    * public static String SERVER_ADDRESS="192.168.11.1"; public static int SERVER_PORT = 8080;

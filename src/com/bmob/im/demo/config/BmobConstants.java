@@ -34,6 +34,7 @@ public class BmobConstants {
 	public static final int REQUESTCODE_TAKE_LOCATION = 0x000003;//位置
 	public static final String EXTRA_STRING = "extra_string";
 	
+	public static int IS_STARTED = 0;
 	
 	public static final String ACTION_REGISTER_SUCCESS_FINISH ="register.success.finish";//注册成功之后登陆页面退出
 }

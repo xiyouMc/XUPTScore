@@ -1,3 +1,20 @@
+A.This
+B.I:
+    76:76:private java.lang.Object writeReplace()
+B.The:
+    32:32:private The()
+B.This:
+    45:45:private This()
+B.This$This:
+    private static final long serialVersionUID
+B.This$of:
+    private static final long serialVersionUID
+B.This$thing:
+    private static final long serialVersionUID
+B.acknowledge:
+    625:625:private java.lang.Object writeReplace()
+C.is:
+    58:58:private is()
 Decoder.CharacterDecoder:
     222:224:public byte[] decodeBuffer(java.io.InputStream)
     233:233:public java.nio.ByteBuffer decodeBufferToByteBuffer(java.lang.String)
@@ -10,6 +27,48 @@ Decoder.CharacterEncoder:
     339:341:public void encodeBuffer(byte[],java.io.OutputStream)
     372:374:public void encodeBuffer(java.nio.ByteBuffer,java.io.OutputStream)
     385:386:public java.lang.String encodeBuffer(java.nio.ByteBuffer)
+E.I:
+    private static final long serialVersionUID
+F.I
+F.I$1
+F.I$1$1
+F.This
+F.This$1
+F.This$1$1
+F.This$2
+F.This$3
+F.This$4
+F.This$4$1
+F.This$4$2
+F.This$5
+F.This$6
+F.This$7
+F.This$8
+F.This$8$1
+F.This$9
+F.This$This
+F.This$thing
+F.darkness
+F.darkness$This
+F.of
+F.thing
+G.This
+H.This
+H.This$1
+H.This$This
+H.This$thing
+H.of
+H.of$1
+H.of$2
+H.of$3
+H.of$This
+H.thing
+H.thing$This
+H.thing$thing
+a.This:
+    73:75:public This()
+a.thing:
+    107:124:public static org.json.JSONObject Code(android.content.Context,org.json.JSONObject)
 android.support.v4.accessibilityservice.AccessibilityServiceInfoCompat
 android.support.v4.accessibilityservice.AccessibilityServiceInfoCompat$AccessibilityServiceInfoIcsImpl
 android.support.v4.accessibilityservice.AccessibilityServiceInfoCompat$AccessibilityServiceInfoStubImpl
@@ -35,12 +94,9 @@ android.support.v4.app.BackStackRecord:
     350:353:public java.lang.CharSequence getBreadCrumbTitle()
     357:360:public java.lang.CharSequence getBreadCrumbShortTitle()
     379:380:public android.support.v4.app.FragmentTransaction add(android.support.v4.app.Fragment,java.lang.String)
-    384:385:public android.support.v4.app.FragmentTransaction add(int,android.support.v4.app.Fragment)
     421:421:public android.support.v4.app.FragmentTransaction replace(int,android.support.v4.app.Fragment)
     425:430:public android.support.v4.app.FragmentTransaction replace(int,android.support.v4.app.Fragment,java.lang.String)
     434:439:public android.support.v4.app.FragmentTransaction remove(android.support.v4.app.Fragment)
-    443:448:public android.support.v4.app.FragmentTransaction hide(android.support.v4.app.Fragment)
-    452:457:public android.support.v4.app.FragmentTransaction show(android.support.v4.app.Fragment)
     479:479:public android.support.v4.app.FragmentTransaction setCustomAnimations(int,int)
     484:488:public android.support.v4.app.FragmentTransaction setCustomAnimations(int,int,int,int)
     492:493:public android.support.v4.app.FragmentTransaction setTransition(int)
@@ -57,61 +113,8 @@ android.support.v4.app.BackStackRecord:
     783:783:public int getTransitionStyle()
     787:787:public boolean isEmpty()
 android.support.v4.app.DialogFragment
-android.support.v4.app.Fragment:
-    static final int INITIALIZING
-    static final int CREATED
-    static final int ACTIVITY_CREATED
-    static final int STOPPED
-    static final int STARTED
-    static final int RESUMED
-    481:481:public final int getId()
-    488:488:public final java.lang.String getTag()
-    499:503:public void setArguments(android.os.Bundle)
-    510:510:public final android.os.Bundle getArguments()
-    522:527:public void setInitialSavedState(android.support.v4.app.Fragment$SavedState)
-    541:543:public void setTargetFragment(android.support.v4.app.Fragment,int)
-    549:549:public final android.support.v4.app.Fragment getTargetFragment()
-    556:556:public final int getTargetRequestCode()
-    583:583:public final java.lang.CharSequence getText(int)
-    593:593:public final java.lang.String getString(int)
-    606:606:public final varargs java.lang.String getString(int,java.lang.Object[])
-    620:620:public final android.support.v4.app.FragmentManager getFragmentManager()
-    628:640:public final android.support.v4.app.FragmentManager getChildFragmentManager()
-    648:648:public final android.support.v4.app.Fragment getParentFragment()
-    655:655:public final boolean isAdded()
-    673:673:public final boolean isRemoving()
-    684:684:public final boolean isInLayout()
-    692:692:public final boolean isResumed()
-    701:701:public final boolean isVisible()
-    713:713:public final boolean isHidden()
-    741:746:public void setRetainInstance(boolean)
-    749:749:public final boolean getRetainInstance()
-    760:766:public void setHasOptionsMenu(boolean)
-    778:784:public void setMenuVisibility(boolean)
-    800:805:public void setUserVisibleHint(boolean)
-    812:812:public boolean getUserVisibleHint()
-    819:827:public android.support.v4.app.LoaderManager getLoaderManager()
-    835:839:public void startActivity(android.content.Intent)
-    846:850:public void startActivityForResult(android.content.Intent,int)
-    1001:1001:public android.view.View getView()
-    1288:1289:public void registerForContextMenu(android.view.View)
-    1299:1300:public void unregisterForContextMenu(android.view.View)
-    1410:1416:android.support.v4.app.Fragment findFragmentByWho(java.lang.String)
 android.support.v4.app.Fragment$SavedState:
     301:303:Fragment$SavedState(android.os.Bundle)
-android.support.v4.app.FragmentActivity:
-    private static final java.lang.String TAG
-    static final java.lang.String FRAGMENTS_TAG
-    private static final int HONEYCOMB
-    static final int MSG_REALLY_STOPPED
-    static final int MSG_RESUME_PENDING
-    70:129:public FragmentActivity()
-    612:614:public java.lang.Object getLastCustomNonConfigurationInstance()
-    805:805:public android.support.v4.app.FragmentManager getSupportFragmentManager()
-    825:833:public void startActivityFromFragment(android.support.v4.app.Fragment,android.content.Intent,int)
-    854:859:public android.support.v4.app.LoaderManager getSupportLoaderManager()
-android.support.v4.app.FragmentActivity$1
-android.support.v4.app.FragmentActivity$2
 android.support.v4.app.FragmentActivity$FragmentTag:
     public static final int Fragment_id
     public static final int Fragment_name
@@ -160,7 +163,6 @@ android.support.v4.app.FragmentManagerImpl:
     530:534:public void addOnBackStackChangedListener(android.support.v4.app.FragmentManager$OnBackStackChangedListener)
     538:541:public void removeOnBackStackChangedListener(android.support.v4.app.FragmentManager$OnBackStackChangedListener)
     572:580:public android.support.v4.app.Fragment$SavedState saveFragmentInstanceState(android.support.v4.app.Fragment)
-    1314:1322:public android.support.v4.app.Fragment findFragmentByWho(java.lang.String)
 android.support.v4.app.FragmentManagerImpl$2
 android.support.v4.app.FragmentManagerImpl$3
 android.support.v4.app.FragmentManagerImpl$4
@@ -187,12 +189,9 @@ android.support.v4.app.FragmentTransaction:
     public static final int TRANSIT_FRAGMENT_CLOSE
     public static final int TRANSIT_FRAGMENT_FADE
     public abstract android.support.v4.app.FragmentTransaction add(android.support.v4.app.Fragment,java.lang.String)
-    public abstract android.support.v4.app.FragmentTransaction add(int,android.support.v4.app.Fragment)
     public abstract android.support.v4.app.FragmentTransaction replace(int,android.support.v4.app.Fragment)
     public abstract android.support.v4.app.FragmentTransaction replace(int,android.support.v4.app.Fragment,java.lang.String)
     public abstract android.support.v4.app.FragmentTransaction remove(android.support.v4.app.Fragment)
-    public abstract android.support.v4.app.FragmentTransaction hide(android.support.v4.app.Fragment)
-    public abstract android.support.v4.app.FragmentTransaction show(android.support.v4.app.Fragment)
     public abstract boolean isEmpty()
     public abstract android.support.v4.app.FragmentTransaction setCustomAnimations(int,int)
     public abstract android.support.v4.app.FragmentTransaction setCustomAnimations(int,int,int,int)
@@ -412,12 +411,6 @@ android.support.v4.view.MotionEventCompat$MotionEventVersionImpl:
 android.support.v4.view.MotionEventCompatEclair:
     24:24:MotionEventCompatEclair()
     38:38:public static int getPointerCount(android.view.MotionEvent)
-android.support.v4.view.PagerAdapter:
-    public static final int POSITION_UNCHANGED
-    public static final int POSITION_NONE
-    78:79:public PagerAdapter()
-    276:277:public void notifyDataSetChanged()
-    297:297:public java.lang.CharSequence getPageTitle(int)
 android.support.v4.view.PagerTabStrip
 android.support.v4.view.PagerTabStrip$1
 android.support.v4.view.PagerTabStrip$2
@@ -546,32 +539,6 @@ android.support.v4.view.ViewGroupCompat$ViewGroupCompatIcsImpl
 android.support.v4.view.ViewGroupCompat$ViewGroupCompatImpl
 android.support.v4.view.ViewGroupCompat$ViewGroupCompatStubImpl
 android.support.v4.view.ViewGroupCompatIcs
-android.support.v4.view.ViewPager:
-    private static final java.lang.String TAG
-    private static final boolean DEBUG
-    private static final boolean USE_CACHE
-    private static final int DEFAULT_OFFSCREEN_PAGES
-    private static final int MAX_SETTLE_DURATION
-    private static final int MIN_DISTANCE_FOR_FLING
-    private static final int DEFAULT_GUTTER_SIZE
-    private static final int MIN_FLING_VELOCITY
-    private boolean mIgnoreGutter
-    private static final int INVALID_POINTER
-    private static final int CLOSE_ENOUGH
-    private long mFakeDragBeginTime
-    private static final int DRAW_ORDER_DEFAULT
-    private static final int DRAW_ORDER_FORWARD
-    private static final int DRAW_ORDER_REVERSE
-    public static final int SCROLL_STATE_IDLE
-    public static final int SCROLL_STATE_DRAGGING
-    public static final int SCROLL_STATE_SETTLING
-    578:590:public void setPageTransformer(boolean,android.support.v4.view.ViewPager$PageTransformer)
-    622:624:android.support.v4.view.ViewPager$OnPageChangeListener setInternalPageChangeListener(android.support.v4.view.ViewPager$OnPageChangeListener)
-    746:747:void smoothScrollTo(int,int)
-    2194:2210:public boolean beginFakeDrag()
-    2220:2241:public void endFakeDrag()
-    2251:2289:public void fakeDragBy(float)
-    2301:2301:public boolean isFakeDragging()
 android.support.v4.view.ViewPager$SimpleOnPageChangeListener
 android.support.v4.view.accessibility.AccessibilityEventCompat
 android.support.v4.view.accessibility.AccessibilityEventCompat$AccessibilityEventIcsImpl
@@ -948,6 +915,428 @@ android.support.v4.widget.SearchViewCompatIcs$MySearchView
 android.support.v4.widget.SimpleCursorAdapter
 android.support.v4.widget.SimpleCursorAdapter$CursorToStringConverter
 android.support.v4.widget.SimpleCursorAdapter$ViewBinder
+c.This:
+    146:166:public final void Code(android.content.Context,cn.bmob.v3.listener.XListener)
+    272:297:public final void requestSMS(android.content.Context,java.lang.String,java.lang.String,java.lang.String,cn.bmob.v3.listener.RequestSMSCodeListener)
+    310:334:public final void requestSMSCode(android.content.Context,java.lang.String,java.lang.String,cn.bmob.v3.listener.RequestSMSCodeListener)
+    347:370:public final void Code(android.content.Context,java.lang.String,java.lang.String,cn.bmob.v3.listener.VerifySMSCodeListener)
+    382:406:public final void Code(android.content.Context,int,cn.bmob.v3.listener.QuerySMSStateListener)
+c.This$11
+c.This$12
+c.This$13
+c.This$2
+c.This$8
+cn.bmob.im.BmobChatManager:
+    public void queryTargetMsg(java.lang.String,java.lang.String,cn.bmob.v3.listener.FindListener)
+    public void sendJsonMessage(java.lang.String,java.lang.String,cn.bmob.v3.listener.PushListener)
+    public void sendJsonMessage(java.lang.String,java.lang.String)
+cn.bmob.im.BmobNotifyManager:
+    public static final int NOTIFY_ID
+    public void cancelAll()
+cn.bmob.im.BmobPlayManager:
+    public int getPlaybackDuration()
+    public android.media.MediaPlayer getMediaPlayer()
+cn.bmob.im.BmobRecordManager:
+    public android.media.MediaRecorder getMediaRecorder()
+cn.bmob.im.BmobUserManager:
+    public static final java.lang.String COLUMN_NAME_CONTACTS
+    public static final java.lang.String COLUMN_NAME_BLACKLIST
+    public void register()
+    public void deleteContact(java.lang.String)
+    public void queryContactsTotalCount(cn.bmob.v3.listener.CountListener)
+    public void queryNearByListByPage(boolean,int,java.lang.String,double,double,boolean,java.lang.String,java.lang.Object,cn.bmob.v3.listener.FindListener)
+    public void queryNearTotalCount(java.lang.Class,java.lang.String,double,double,boolean,java.lang.String,java.lang.Object,cn.bmob.v3.listener.CountListener)
+cn.bmob.im.author
+cn.bmob.im.bean.BmobChatInstallation:
+    private static final long serialVersionUID
+    public BmobChatInstallation(android.content.Context)
+    public java.lang.String getUid()
+cn.bmob.im.bean.BmobInvitation:
+    private static final long serialVersionUID
+    public void setNick(java.lang.String)
+    public void setTime(long)
+    public void setFromid(java.lang.String)
+    public void setFromname(java.lang.String)
+    public void setAvatar(java.lang.String)
+    public void setStatus(int)
+cn.bmob.im.bean.BmobMsg:
+    private static final long serialVersionUID
+    public static cn.bmob.im.bean.BmobMsg createFriendMsg()
+    public void setTag(java.lang.String)
+    public void setToId(java.lang.String)
+    public void setBelongAvatar(java.lang.String)
+    public void setBelongNick(java.lang.String)
+    public void setBelongUsername(java.lang.String)
+    public void setMsgTime(java.lang.String)
+    public void setConversationId(java.lang.String)
+    public void setMsgType(java.lang.Integer)
+    public void setBelongId(java.lang.String)
+cn.bmob.im.bean.BmobRecent:
+    private static final long serialVersionUID
+    public void setNick(java.lang.String)
+    public void setType(int)
+    public void setTargetid(java.lang.String)
+    public void setAvatar(java.lang.String)
+    public void setUserName(java.lang.String)
+    public void setMessage(java.lang.String)
+    public void setTime(long)
+cn.bmob.im.config.BmobConfig:
+    public static final java.lang.String SDK_VERSION
+    public static final int LIMIT_CONTACTS
+    public static final int TYPE_TEXT
+    public static final int TYPE_IMAGE
+    public static final int TYPE_LOCATION
+    public static final int TYPE_VOICE
+    public static final int STATE_UNREAD
+    public static final int STATE_READED
+    public static final int STATE_UNREAD_RECEIVED
+    public static final int STATUS_SEND_START
+    public static final int STATUS_SEND_SUCCESS
+    public static final int STATUS_SEND_FAIL
+    public static final int STATUS_SEND_RECEIVERED
+    public static final int INVITE_ADD_NO_VALIDATION
+    public static final int INVITE_ADD_AGREE
+    public static final int INVITE_ADD_NO_VALI_RECEIVED
+    public static final java.lang.String TAG_ADD_CONTACT
+    public static final java.lang.String TAG_ADD_AGREE
+    public static final java.lang.String TAG_READED
+    public static final java.lang.String TAG_OFFLINE
+    public static final int CODE_COMMON_NONE
+    public static final int CODE_COMMON_FAILURE
+    public static final int CODE_COMMON_EXISTED
+    public static final java.lang.String BLACK_YES
+    public static final java.lang.String BLACK_NO
+    public static final java.lang.String BROADCAST_NEW_MESSAGE
+    public static final java.lang.String BROADCAST_ADD_USER_MESSAGE
+    public BmobConfig()
+cn.bmob.im.config.BmobConstant
+cn.bmob.im.db.BmobDB:
+    public void deleteTargetMsg(cn.bmob.im.bean.BmobMsg)
+    public void deleteAllRecent()
+cn.bmob.im.db.DBConfig:
+    public void setDbVersion(int)
+    public void setDbUpdateListener(cn.bmob.im.db.DBConfig$DbUpdateListener)
+cn.bmob.im.for
+cn.bmob.im.grateful
+cn.bmob.im.h
+cn.bmob.im.inteface.MsgType
+cn.bmob.im.inteface.PlayControlListener
+cn.bmob.im.inteface.RecordControlListener
+cn.bmob.im.j
+cn.bmob.im.poll.BmobPollService:
+    public static final java.lang.String ACTION
+cn.bmob.im.star
+cn.bmob.im.task.BQuery:
+    private static final long serialVersionUID
+    public void setType(int)
+    public void setTable(java.util.List)
+cn.bmob.im.task.BQuery$QueryType
+cn.bmob.im.task.BRequest:
+    public BRequest(java.util.List,cn.bmob.v3.BmobQuery$CachePolicy)
+    public BRequest(java.util.List,java.lang.String,cn.bmob.v3.BmobQuery$CachePolicy)
+    public BRequest(java.lang.String,java.util.List)
+    public BRequest(java.lang.String,boolean,boolean,java.util.List,int)
+    public BRequest(boolean,java.util.List)
+    public void setEqualList(java.util.List)
+    public void setRefresh(boolean)
+    public void setLoadMore(boolean)
+    public boolean isRefresh()
+    public void setSkipPage(int)
+    public void setCachePolicy(cn.bmob.v3.BmobQuery$CachePolicy)
+    public void setLimitLength(int)
+    public void setOrderBy(java.lang.String)
+cn.bmob.im.task.BRequest$Field
+cn.bmob.im.task.BRequest$Model
+cn.bmob.im.task.BTable:
+    private static final long serialVersionUID
+    public void setTableFiled(java.lang.String)
+    public void setTableFiledValue(java.lang.Object[])
+cn.bmob.im.util.BmobJsonUtil:
+    public BmobJsonUtil()
+    public static java.lang.String getStringNoEmpty(org.json.JSONObject,java.lang.String)
+    public static java.lang.String getString(org.json.JSONObject,java.lang.String,java.lang.String)
+    public static java.lang.Integer getInt(org.json.JSONObject,java.lang.String,java.lang.Integer)
+    public static java.lang.Long getLong(org.json.JSONObject,java.lang.String,java.lang.Long)
+    public static java.lang.Float getFloat(org.json.JSONObject,java.lang.String)
+    public static java.lang.Double getDouble(org.json.JSONObject,java.lang.String)
+    public static java.lang.Boolean getBoolean(org.json.JSONObject,java.lang.String)
+    public static org.json.JSONObject getJSONObject(org.json.JSONObject,java.lang.String)
+    public static org.json.JSONArray getJSONArray(org.json.JSONObject,java.lang.String)
+    public static org.json.JSONObject getJSONObjectAt(org.json.JSONArray,int)
+    public static java.util.Map jsonToMap(org.json.JSONObject)
+    public static boolean isEmpty(org.json.JSONArray)
+    public static void put(org.json.JSONObject,java.lang.String,java.lang.Object)
+    public static void add(org.json.JSONArray,java.lang.Object)
+cn.bmob.im.util.BmobLog:
+    public static final java.lang.String Tag
+    public BmobLog()
+    public static void v(java.lang.String,java.lang.String)
+    public static void d(java.lang.String,java.lang.String)
+    public static void w(java.lang.String,java.lang.String)
+    public static void e(java.lang.String,java.lang.String)
+cn.bmob.im.util.BmobNetUtil:
+    public BmobNetUtil()
+    public static boolean isWifi(android.content.Context)
+    public static boolean isMobile(android.content.Context)
+cn.bmob.im.util.BmobUtils:
+    public BmobUtils()
+    public static boolean isNotNull(java.util.Collection)
+    public static java.util.List map2list(java.util.Map)
+    public static java.lang.String convertMD5(java.lang.String)
+    public static java.lang.String getFormatSize(double)
+    public static long getSecond(java.util.Date,java.util.Date)
+cn.bmob.push.a.Tempest:
+    private static final long serialVersionUID
+cn.bmob.push.a.to
+cn.bmob.push.lib.a.A:
+    public A()
+cn.bmob.push.lib.a.fast:
+    public fast()
+cn.bmob.push.way:
+    public way()
+cn.bmob.v3.AsyncCustomEndpoints
+cn.bmob.v3.AsyncCustomEndpoints$1
+cn.bmob.v3.Bmob:
+    public static e.this spUtil
+    27:27:public Bmob()
+    48:63:public static void getServerTime(android.content.Context,cn.bmob.v3.listener.GetServerTimeListener)
+    74:82:public static void uploadBatch(android.content.Context,java.lang.String[],cn.bmob.v3.listener.UploadBatchListener)
+    86:92:private static void Code(android.content.Context,int,java.lang.String[],java.util.List,java.util.List,cn.bmob.v3.listener.UploadBatchListener)
+    95:125:private static void Code(android.content.Context,boolean,int,int,java.lang.String[],java.util.List,java.util.List,cn.bmob.v3.listener.UploadBatchListener)
+    85:85:static synthetic void V(android.content.Context,int,java.lang.String[],java.util.List,java.util.List,cn.bmob.v3.listener.UploadBatchListener)
+cn.bmob.v3.Bmob$1
+cn.bmob.v3.Bmob$2
+cn.bmob.v3.BmobACL:
+    private static final long serialVersionUID
+    33:34:public void setAcl(java.util.Map)
+    37:47:private void Code(java.lang.String,java.lang.String,boolean)
+    55:62:public void setReadAccess(java.lang.String,boolean)
+    70:79:public void setReadAccess(cn.bmob.v3.BmobUser,boolean)
+    87:93:public void setWriteAccess(java.lang.String,boolean)
+    101:110:public void setWriteAccess(cn.bmob.v3.BmobUser,boolean)
+    118:124:public void setRoleReadAccess(java.lang.String,boolean)
+    132:141:public void setRoleReadAccess(cn.bmob.v3.BmobRole,boolean)
+    149:155:public void setRoleWriteAccess(java.lang.String,boolean)
+    163:172:public void setRoleWriteAccess(cn.bmob.v3.BmobRole,boolean)
+    179:183:public void setPublicReadAccess(boolean)
+    190:193:public void setPublicWriteAccess(boolean)
+cn.bmob.v3.BmobInstallation:
+    private static final long serialVersionUID
+    98:99:public void setDeviceToken(java.lang.String)
+    154:154:public java.lang.String getTimeZone()
+    170:171:public void subscribe(java.lang.String)
+    178:180:public void unsubscribe(java.lang.String)
+cn.bmob.v3.BmobPushManager:
+    33:34:public void pushMessage(java.lang.String)
+    54:55:public void pushMessage(org.json.JSONObject)
+    75:76:public void pushMessageAll(java.lang.String)
+    82:83:public void pushMessageAll(org.json.JSONObject)
+    104:104:public cn.bmob.v3.BmobQuery getQuery()
+cn.bmob.v3.BmobQuery:
+    private java.lang.String _c_
+    68:73:public BmobQuery(java.lang.String)
+    93:139:private void Code(android.content.Context,java.lang.String,cn.bmob.v3.listener.BaseCallback)
+    152:153:public void getObject(android.content.Context,java.lang.String,cn.bmob.v3.listener.GetCallback)
+    164:165:public void findObjects(android.content.Context,cn.bmob.v3.listener.FindCallback)
+    181:182:public cn.bmob.v3.BmobQuery addWhereLessThan(java.lang.String,java.lang.Object)
+    195:196:public cn.bmob.v3.BmobQuery addWhereLessThanOrEqualTo(java.lang.String,java.lang.Object)
+    209:210:public cn.bmob.v3.BmobQuery addWhereGreaterThan(java.lang.String,java.lang.Object)
+    223:224:public cn.bmob.v3.BmobQuery addWhereGreaterThanOrEqualTo(java.lang.String,java.lang.Object)
+    251:252:public cn.bmob.v3.BmobQuery addWhereNotEqualTo(java.lang.String,java.lang.Object)
+    265:266:public cn.bmob.v3.BmobQuery addWhereContainsAll(java.lang.String,java.util.Collection)
+    336:338:public cn.bmob.v3.BmobQuery addWhereStartsWith(java.lang.String,java.lang.String)
+    351:353:public cn.bmob.v3.BmobQuery addWhereEndsWith(java.lang.String,java.lang.String)
+    382:383:public cn.bmob.v3.BmobQuery addWhereWithinMiles(java.lang.String,cn.bmob.v3.datatype.BmobGeoPoint,double)
+    414:415:public cn.bmob.v3.BmobQuery addWhereWithinRadians(java.lang.String,cn.bmob.v3.datatype.BmobGeoPoint,double)
+    431:432:public cn.bmob.v3.BmobQuery addWhereWithinGeoBox(java.lang.String,cn.bmob.v3.datatype.BmobGeoPoint,cn.bmob.v3.datatype.BmobGeoPoint)
+    443:444:public cn.bmob.v3.BmobQuery addWhereExists(java.lang.String)
+    455:456:public cn.bmob.v3.BmobQuery addWhereDoesNotExists(java.lang.String)
+    485:486:public cn.bmob.v3.BmobQuery addWhereMatchesQuery(java.lang.String,java.lang.String,cn.bmob.v3.BmobQuery)
+    501:502:public cn.bmob.v3.BmobQuery addWhereDoesNotMatchQuery(java.lang.String,java.lang.String,cn.bmob.v3.BmobQuery)
+    513:514:public cn.bmob.v3.BmobQuery addQueryKeys(java.lang.String)
+    556:557:public void include(java.lang.String)
+    566:567:public cn.bmob.v3.BmobQuery or(java.util.List)
+    577:578:public cn.bmob.v3.BmobQuery and(java.util.List)
+    741:754:public void getObject(android.content.Context,java.lang.String,cn.bmob.v3.listener.GetListener)
+    837:837:public cn.bmob.v3.BmobQuery$CachePolicy getCachePolicy()
+    847:848:public void setMaxCacheAge(long)
+    856:856:public long getMaxCacheAge()
+    867:869:private org.json.JSONObject Code(android.content.Context,java.lang.Class)
+    878:881:public boolean hasCachedResult(android.content.Context,java.lang.Class)
+    888:889:public void clearCachedResult(android.content.Context,java.lang.Class)
+    895:896:public static void clearAllCachedResults(android.content.Context)
+    937:938:public cn.bmob.v3.BmobQuery setHasGroupCount(boolean)
+    949:950:public cn.bmob.v3.BmobQuery groupby(java.lang.String[])
+    961:962:public cn.bmob.v3.BmobQuery sum(java.lang.String[])
+    973:974:public cn.bmob.v3.BmobQuery average(java.lang.String[])
+    985:986:public cn.bmob.v3.BmobQuery max(java.lang.String[])
+    997:998:public cn.bmob.v3.BmobQuery min(java.lang.String[])
+    1010:1011:public cn.bmob.v3.BmobQuery having(java.util.HashMap)
+    1023:1064:public void findStatistics(android.content.Context,java.lang.Class,cn.bmob.v3.listener.FindStatisticsListener)
+    1074:1075:public cn.bmob.v3.BmobQuery setSQL(java.lang.String)
+    1085:1086:public cn.bmob.v3.BmobQuery setPreparedParams(java.lang.Object[])
+    1098:1110:public void doSQLQuery(android.content.Context,cn.bmob.v3.listener.SQLQueryListener)
+    1119:1120:public void doSQLQuery(android.content.Context,java.lang.String,cn.bmob.v3.listener.SQLQueryListener)
+    1132:1156:private varargs void Code(android.content.Context,java.lang.Class,java.lang.String,cn.bmob.v3.listener.AbsBaseListener,java.lang.Object[])
+    1168:1170:public varargs void doSQLQuery(android.content.Context,java.lang.String,cn.bmob.v3.listener.SQLQueryListener,java.lang.Object[])
+    1182:1183:public void doStatisticQuery(android.content.Context,java.lang.String,cn.bmob.v3.listener.StatisticQueryListener)
+    1195:1220:public varargs void doStatisticQuery(android.content.Context,java.lang.String,cn.bmob.v3.listener.StatisticQueryListener,java.lang.Object[])
+cn.bmob.v3.BmobQuery$1
+cn.bmob.v3.BmobQuery$6
+cn.bmob.v3.BmobQuery$7
+cn.bmob.v3.BmobRealTimeData
+cn.bmob.v3.BmobRealTimeData$1
+cn.bmob.v3.BmobRealTimeData$1$1
+cn.bmob.v3.BmobRealTimeData$1$1$1
+cn.bmob.v3.BmobRole:
+    private static final long serialVersionUID
+    private java.lang.String name
+    private cn.bmob.v3.datatype.BmobRelation K
+    private cn.bmob.v3.datatype.BmobRelation M
+    32:34:public BmobRole(java.lang.String)
+    41:41:public java.lang.String getName()
+    48:49:public void setName(java.lang.String)
+    55:55:public cn.bmob.v3.datatype.BmobRelation getRoles()
+    62:62:public cn.bmob.v3.datatype.BmobRelation getUsers()
+cn.bmob.v3.BmobSMS
+cn.bmob.v3.BmobUser$BmobThirdUserAuth:
+    public static final java.lang.String SNS_TYPE_WEIBO
+    public static final java.lang.String SNS_TYPE_QQ
+    public static final java.lang.String SNS_TYPE_WEIXIN
+    614:619:public BmobUser$BmobThirdUserAuth(java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+    635:635:public java.lang.String getAccessToken()
+    639:640:public void setAccessToken(java.lang.String)
+    643:643:public java.lang.String getUserId()
+    647:648:public void setUserId(java.lang.String)
+    651:651:public java.lang.String getExpiresIn()
+    655:656:public void setExpiresIn(java.lang.String)
+    663:664:public void setSnsType(java.lang.String)
+cn.bmob.v3.Manifest
+cn.bmob.v3.Manifest$permission
+cn.bmob.v3.datatype.BmobDate:
+    private static final long serialVersionUID
+    private java.lang.String iso
+    private java.lang.String __type
+    25:29:public BmobDate(java.util.Date)
+    40:40:public java.lang.String getDate()
+cn.bmob.v3.datatype.BmobFile:
+    private static final long serialVersionUID
+    static g.From mImageLoader
+    static int cacheSize
+    225:226:public void delete(android.content.Context)
+    234:279:public void delete(android.content.Context,cn.bmob.v3.listener.DeleteListener)
+    350:351:public void loadImageThumbnail(android.content.Context,android.widget.ImageView,int,int)
+    362:397:public void loadImageThumbnail(android.content.Context,android.widget.ImageView,int,int,int)
+    407:426:public void loadImage(android.content.Context,android.widget.ImageView)
+    436:454:public void loadImage(android.content.Context,android.widget.ImageView,int,int)
+    469:470:public void setUrl(java.lang.String)
+    477:477:public java.lang.String getGroup()
+    487:488:protected void setGroup(java.lang.String)
+    495:495:public java.lang.String getFilename()
+    503:504:protected void setFilename(java.lang.String)
+    528:530:public static cn.bmob.v3.datatype.BmobFile createEmptyFile()
+cn.bmob.v3.datatype.BmobFile$3
+cn.bmob.v3.datatype.BmobFile$4
+cn.bmob.v3.datatype.BmobFile$5
+cn.bmob.v3.datatype.BmobFile$6
+cn.bmob.v3.datatype.BmobGeoPoint:
+    private static final long serialVersionUID
+    95:108:public double distanceInRadiansTo(cn.bmob.v3.datatype.BmobGeoPoint)
+    117:117:public double distanceInKilometersTo(cn.bmob.v3.datatype.BmobGeoPoint)
+    126:126:public double distanceInMilesTo(cn.bmob.v3.datatype.BmobGeoPoint)
+cn.bmob.v3.datatype.BmobPointer:
+    private static final long serialVersionUID
+    private static org.json.JSONObject params
+    private static cn.bmob.v3.requestmanager.of requestCommand
+    private static a.thing rApi$6fc396a8
+    37:40:public BmobPointer(java.lang.String,java.lang.String)
+    63:63:public java.lang.String getClassName()
+    71:71:public java.lang.String getObjectId()
+    85:112:public void getObject(android.content.Context,cn.bmob.v3.listener.GetListener)
+cn.bmob.v3.datatype.BmobQueryResult:
+    private static final long serialVersionUID
+    32:32:public java.util.List getResults()
+    40:40:public int getCount()
+cn.bmob.v3.datatype.BmobRelation:
+    private static final long serialVersionUID
+    24:27:public BmobRelation(java.lang.Object)
+    44:47:public void isRemove(boolean)
+    50:50:public java.lang.String get__op()
+    56:57:public void setObjects(java.util.List)
+cn.bmob.v3.datatype.BmobSmsState
+cn.bmob.v3.exception.BmobException:
+    private static final long serialVersionUID
+    11:12:public BmobException(java.lang.String)
+    15:16:public BmobException(java.lang.String,java.lang.Throwable)
+    19:20:public BmobException(java.lang.Throwable)
+    25:27:public BmobException(int)
+    44:46:public BmobException(int,java.lang.String,java.lang.Throwable)
+    53:55:public BmobException(int,java.lang.Throwable)
+    61:61:public int getErrorCode()
+cn.bmob.v3.listener.BaseCallback
+cn.bmob.v3.listener.BmobDialogButtonListener
+cn.bmob.v3.listener.BmobListener:
+    15:15:public BmobListener()
+cn.bmob.v3.listener.BmobUpdateListener
+cn.bmob.v3.listener.CloudCodeListener
+cn.bmob.v3.listener.DeleteListener:
+    8:8:public DeleteListener()
+cn.bmob.v3.listener.FindCallback
+cn.bmob.v3.listener.FindStatisticsListener
+cn.bmob.v3.listener.GetCallback
+cn.bmob.v3.listener.GetServerTimeListener
+cn.bmob.v3.listener.LogInListener:
+    5:5:public LogInListener()
+    10:11:protected final void postDone(java.lang.Object,cn.bmob.v3.exception.BmobException)
+cn.bmob.v3.listener.OtherLoginListener:
+    5:5:public OtherLoginListener()
+    14:15:protected final void postFailure(int,java.lang.String)
+cn.bmob.v3.listener.QuerySMSStateListener
+cn.bmob.v3.listener.RequestSMSCodeListener
+cn.bmob.v3.listener.ResetPasswordByCodeListener:
+    10:10:public ResetPasswordByCodeListener()
+    15:16:protected final void postDone(java.lang.Void,cn.bmob.v3.exception.BmobException)
+    1:1:protected synthetic void postDone(java.lang.Object,cn.bmob.v3.exception.BmobException)
+cn.bmob.v3.listener.ResetPasswordByEmailListener:
+    9:9:public ResetPasswordByEmailListener()
+    18:19:protected final void postFailure(int,java.lang.String)
+cn.bmob.v3.listener.StatisticQueryListener
+cn.bmob.v3.listener.ThumbnailUrlListener
+cn.bmob.v3.listener.UploadBatchListener
+cn.bmob.v3.listener.ValueEventListener
+cn.bmob.v3.listener.VerifySMSCodeListener
+cn.bmob.v3.requestmanager.ApiResult:
+    19:20:public void setData(z.madness)
+    27:28:public void setResult(cn.bmob.v3.requestmanager.Result)
+cn.bmob.v3.requestmanager.Result:
+    10:11:public void setCode(int)
+    16:17:public void setMessage(java.lang.String)
+    19:19:public Result()
+cn.bmob.v3.requestmanager.thing:
+    108:109:public final void Z(java.lang.String)
+    127:127:public final org.json.JSONObject I()
+    316:321:public final void Code(java.lang.String,cn.bmob.v3.datatype.BmobGeoPoint,double)
+    357:358:public final void I(java.lang.String,cn.bmob.v3.datatype.BmobGeoPoint,double)
+    478:479:public final void B(java.lang.String)
+    628:629:public final void Code(boolean)
+    639:640:public final void Code(java.lang.String[])
+    649:650:public final void V(java.lang.String[])
+    660:661:public final void I(java.lang.String[])
+    670:671:public final void Z(java.lang.String[])
+    680:681:public final void B(java.lang.String[])
+    691:704:public final void Code(java.util.HashMap)
+    709:710:public final void C(java.lang.String)
+    720:721:public final void Code(java.lang.Object[])
+cn.bmob.v3.update.AppVersion
+cn.bmob.v3.update.BmobUpdateAgent
+cn.bmob.v3.update.BmobUpdateAgent$1
+cn.bmob.v3.update.BmobUpdateAgent$2
+cn.bmob.v3.update.UpdateDialogActivity
+cn.bmob.v3.update.UpdateDialogActivity$1
+cn.bmob.v3.update.UpdateResponse
+cn.bmob.v3.update.UpdateStatus
+cn.volley.CommonLibs:
+    public CommonLibs(java.lang.String)
 com.actionbarsherlock.ActionBarSherlock:
     protected static final java.lang.String TAG
     public static final int FLAG_DELEGATE
@@ -1939,6 +2328,1068 @@ com.actionbarsherlock.widget.SuggestionsAdapter:
     250:252:public void close()
     690:701:private android.graphics.drawable.Drawable getActivityIconWithCache(android.content.ComponentName)
     712:729:private android.graphics.drawable.Drawable getActivityIcon(android.content.ComponentName)
+com.baidu.lbsapi.auth.ErrorMessage
+com.baidu.lbsapi.auth.b
+com.baidu.lbsapi.auth.b$a
+com.baidu.lbsapi.auth.c:
+    private final java.lang.String a
+    private android.content.Context b
+    private java.lang.String c
+    private java.lang.String d
+    private java.util.HashMap e
+    private com.baidu.lbsapi.auth.c$a f
+    protected c(android.content.Context)
+    protected void a(java.util.HashMap,com.baidu.lbsapi.auth.c$a)
+    private void a(java.lang.String)
+    private boolean a(org.apache.http.client.HttpClient)
+    private void b(org.apache.http.client.HttpClient)
+    private void a(org.apache.http.client.HttpClient,java.lang.String,java.util.HashMap)
+    private void a(java.lang.String,java.util.HashMap)
+    private java.lang.String a(android.content.Context)
+    private java.util.HashMap a(java.util.HashMap)
+    private org.apache.http.client.HttpClient a()
+    static synthetic java.lang.String a(com.baidu.lbsapi.auth.c)
+    static synthetic java.util.HashMap b(com.baidu.lbsapi.auth.c)
+    static synthetic void a(com.baidu.lbsapi.auth.c,java.lang.String,java.util.HashMap)
+com.baidu.lbsapi.auth.c$a
+com.baidu.lbsapi.auth.c$b
+com.baidu.lbsapi.auth.d
+com.baidu.lbsapi.auth.e:
+    private java.lang.String a(android.content.Context,java.lang.String)
+    private synchronized void a(java.lang.String,java.lang.String)
+    private int a(java.lang.String)
+    public int a(boolean,java.lang.String,java.util.Hashtable,com.baidu.lbsapi.auth.i)
+    private boolean b(java.lang.String)
+    private void a(boolean,java.lang.String,java.util.Hashtable,java.lang.String)
+    private java.lang.String d()
+    private void c(java.lang.String)
+    private java.lang.String a(android.content.Context)
+    static synthetic boolean a(com.baidu.lbsapi.auth.e,java.lang.String)
+    static synthetic void a(com.baidu.lbsapi.auth.e,boolean,java.lang.String,java.util.Hashtable,java.lang.String)
+    static synthetic com.baidu.lbsapi.auth.j b()
+    static synthetic void a(com.baidu.lbsapi.auth.e,java.lang.String,java.lang.String)
+com.baidu.lbsapi.auth.g
+com.baidu.lbsapi.auth.h
+com.baidu.lbsapi.auth.j:
+    public void a()
+    public void b()
+    public void c()
+com.baidu.location.BDErrorReport:
+    private java.lang.String a
+    public BDErrorReport()
+    public BDErrorReport(com.baidu.location.BDErrorReport)
+    public int setErrorInfo(boolean,double,double,boolean,java.lang.String,double,double,java.lang.String,java.lang.String)
+    public android.os.Bundle getErrorInfo()
+com.baidu.location.BDGeofence
+com.baidu.location.BDGeofence$Builder
+com.baidu.location.BDLocation:
+    public static final int TypeNone
+    public static final int TypeGpsLocation
+    public static final int TypeCriteriaException
+    public static final int TypeNetWorkException
+    public static final int TypeOffLineLocation
+    public static final int TypeOffLineLocationFail
+    public static final int TypeOffLineLocationNetworkFail
+    public static final int TypeNetWorkLocation
+    public static final int TypeCacheLocation
+    public static final int TypeServerError
+    public static final int OPERATORS_TYPE_UNKONW
+    public static final int OPERATORS_TYPE_MOBILE
+    public static final int OPERATORS_TYPE_UNICOM
+    public static final int OPERATORS_TYPE_TELECOMU
+    protected java.lang.String bm()
+    public boolean isCellChangeFlag()
+    public double getAltitude()
+    public void setAltitude(double)
+    public float getSpeed()
+    public java.lang.String getCoorType()
+    public void setCoorType(java.lang.String)
+    public boolean hasAltitude()
+    public boolean hasSpeed()
+    public boolean hasRadius()
+    protected com.baidu.location.BDLocation p(java.lang.String)
+    public int getSatelliteNumber()
+    public float getDirection()
+    public boolean hasSateNumber()
+    public boolean hasAddr()
+    public java.lang.String getProvince()
+    public java.lang.String getCity()
+    public java.lang.String getCityCode()
+    public java.lang.String getDistrict()
+    public java.lang.String getStreet()
+    public java.lang.String getStreetNumber()
+    public java.lang.String getFloor()
+    public int getOperators()
+    private java.lang.String bn()
+    public java.lang.String getAdUrl(java.lang.String)
+    private static java.lang.String bo()
+com.baidu.location.BDLocationStatusCodes
+com.baidu.location.BDNotifyListener:
+    public void SetNotifyLocation(double,double,float,java.lang.String)
+com.baidu.location.CommonEncrypt
+com.baidu.location.GeofenceClient:
+    private static final int bj
+    public static final java.lang.String BUNDLE_FOR_GEOFENCE_ID
+    private android.content.Context bf
+    private boolean bl
+    private android.os.Messenger bk
+    private com.baidu.location.GeofenceClient$a bm
+    private android.os.Messenger bi
+    private com.baidu.location.GeofenceClient$OnGeofenceTriggerListener bg
+    private android.content.ServiceConnection bh
+    public GeofenceClient(android.content.Context)
+    public void start()
+    private void void()
+    public void setInterval(long)
+    public boolean isStarted()
+    public void registerGeofenceTriggerListener(com.baidu.location.GeofenceClient$OnGeofenceTriggerListener)
+    public void addBDGeofence(com.baidu.location.BDGeofence,com.baidu.location.GeofenceClient$OnAddBDGeofencesResultListener)
+    public void removeBDGeofences(java.util.List,com.baidu.location.GeofenceClient$OnRemoveBDGeofencesResultListener)
+    private void for(java.lang.String)
+    private void int(java.lang.String)
+    public void startGeofenceScann()
+    public void stop()
+    private void long()
+    static synthetic android.os.Messenger if(com.baidu.location.GeofenceClient,android.os.Messenger)
+    static synthetic android.os.Messenger if(com.baidu.location.GeofenceClient)
+    static synthetic boolean if(com.baidu.location.GeofenceClient,boolean)
+    static synthetic void do(com.baidu.location.GeofenceClient,java.lang.String)
+    static synthetic void do(com.baidu.location.GeofenceClient)
+    static synthetic void if(com.baidu.location.GeofenceClient,java.lang.String)
+com.baidu.location.GeofenceClient$1
+com.baidu.location.GeofenceClient$OnGeofenceTriggerListener
+com.baidu.location.GeofenceClient$a
+com.baidu.location.Jni:
+    Jni()
+    private static native java.lang.String g(byte[])
+    private static native void f(byte[],byte[])
+    public static void int(java.lang.String,java.lang.String)
+    public static java.lang.String k(java.lang.String)
+com.baidu.location.LocationClient:
+    private static final java.lang.String jq
+    private static final int jt
+    private static final int jS
+    private static final int jB
+    private static final int j4
+    private static final int jO
+    private static final int jR
+    private static final int jH
+    private static final int jC
+    private static final int jF
+    private static final int jo
+    private static final int j1
+    private static final int jP
+    private static final int jx
+    public LocationClient(android.content.Context,com.baidu.location.LocationClientOption)
+    public com.baidu.location.LocationClientOption getLocOption()
+    public boolean updateLocation(android.location.Location)
+    public int requestOfflineLocation()
+    public com.baidu.location.BDLocation getLastKnownLocation()
+    public java.lang.String getVersion()
+    public void registerNotify(com.baidu.location.BDNotifyListener)
+    public void removeNotifyEvent(com.baidu.location.BDNotifyListener)
+    private android.os.Bundle cw()
+    public void unRegisterLocationListener(com.baidu.location.BDLocationListener)
+    public void setForBaiduMap(boolean)
+    public void setDebug(boolean)
+    public boolean notifyError()
+    public int reportErrorWithInfo(com.baidu.location.BDErrorReport)
+    public void cancleError()
+    private boolean else(int)
+    static synthetic java.lang.Boolean if(com.baidu.location.LocationClient,java.lang.Boolean)
+com.baidu.location.LocationClientOption:
+    public static final int MIN_SCAN_SPAN
+    public static final int MIN_SCAN_SPAN_NETWORK
+    protected static final int byte
+    protected static final int void
+    protected static final int try
+    public java.lang.String getCoorType()
+    public java.lang.String getAddrType()
+    public boolean isOpenGps()
+    public boolean isLocationNotify()
+    public void setLocationNotify(boolean)
+    public int getScanSpan()
+    public int getTimeOut()
+    public void setTimeOut(int)
+    public java.lang.String getProdName()
+    public void setNeedDeviceDirect(boolean)
+    public void SetIgnoreCacheException(boolean)
+com.baidu.location.a
+com.baidu.location.a.a
+com.baidu.location.a.b
+com.baidu.location.a0:
+    private static final int iT
+    private static final int jb
+    private static final int iU
+    private static final int jd
+    public static final long i2
+    private static final int iW
+    public static final java.lang.String ji
+    private static final java.lang.String ja
+    private static final java.lang.String jk
+    private static final java.lang.String i4
+    private static final java.lang.String jh
+    private static final java.lang.String iR
+    private static final java.lang.String iZ
+    public void new(android.content.Context)
+com.baidu.location.a0$a:
+    private static final java.lang.String dQ
+    private static final java.lang.String dT
+    private static final java.lang.String dS
+    private static final java.lang.String dU
+    private static final java.lang.String dW
+com.baidu.location.ac
+com.baidu.location.ad
+com.baidu.location.ad$1
+com.baidu.location.ad$2
+com.baidu.location.ad$3
+com.baidu.location.ad$a
+com.baidu.location.ad$b
+com.baidu.location.ah:
+    private boolean au()
+    public void for(com.baidu.location.BDLocation)
+com.baidu.location.ai:
+    static synthetic boolean if(com.baidu.location.ai,boolean)
+    static synthetic boolean do(com.baidu.location.ai)
+    static synthetic android.os.Handler if(com.baidu.location.ai)
+com.baidu.location.ai$2
+com.baidu.location.aj
+com.baidu.location.aj$1
+com.baidu.location.aj$2
+com.baidu.location.al
+com.baidu.location.am
+com.baidu.location.am$a
+com.baidu.location.an
+com.baidu.location.ao:
+    ao()
+com.baidu.location.ap
+com.baidu.location.aq:
+    private static final int d
+    private static final long void
+    public static final int int
+    private static final int e
+    private static final java.lang.String for
+    private static final java.lang.String byte
+    private static final int else
+    private static final int case
+    private static final int i
+    private long h
+    public long goto()
+    public boolean byte()
+    public long else()
+    public void a(long)
+    public int new()
+com.baidu.location.ar:
+    private static final int hN
+    public static double if(com.baidu.location.ar$b,com.baidu.location.ar$b)
+com.baidu.location.ar$b:
+    public ar$b(com.baidu.location.ar,com.baidu.location.ar$b)
+com.baidu.location.as:
+    public boolean do(com.baidu.location.ar$b)
+    public int try(com.baidu.location.BDLocation)
+com.baidu.location.at:
+    public int cX()
+    public java.lang.String cU()
+com.baidu.location.au:
+    public static final int h4
+    private static final java.lang.String i
+    private static final java.lang.String h2
+    private static final java.lang.String h5
+    private static final java.lang.String h7
+    private static final java.lang.String h9
+    private static final java.lang.String h6
+    private static final java.lang.String ih
+    private static final int ie
+    private static final int id
+    private static final int h3
+    private static final int ic
+    public void if(com.baidu.location.aq,com.baidu.location.GeofenceClient$OnAddBDGeofencesResultListener)
+    public void if(java.util.List,com.baidu.location.GeofenceClient$OnRemoveBDGeofencesResultListener)
+    private synchronized long cc()
+    private void ca()
+    private final void cb()
+    private synchronized int if(com.baidu.location.aq,java.lang.String)
+    private synchronized int do(java.util.List)
+    private void if(com.baidu.location.GeofenceClient$OnAddBDGeofencesResultListener,int,java.lang.String)
+    static synthetic android.content.Context if(com.baidu.location.au)
+    static synthetic void if(com.baidu.location.au,com.baidu.location.GeofenceClient$OnAddBDGeofencesResultListener,int,java.lang.String)
+    static synthetic com.baidu.location.au$a do(com.baidu.location.au)
+    static synthetic int if(com.baidu.location.au,com.baidu.location.aq,java.lang.String)
+    static synthetic int if(com.baidu.location.au,java.util.List)
+com.baidu.location.au$a:
+    public static final int if
+    public static final int do
+    public static final int for
+com.baidu.location.au$b
+com.baidu.location.au$c
+com.baidu.location.au$d
+com.baidu.location.av
+com.baidu.location.aw:
+    public boolean int()
+com.baidu.location.ax:
+    public static final java.lang.String i
+    public static final int F
+    public static final int byte
+    public static final int for
+    public static final int k
+    public static final int r
+    public static final int O
+    public static final int d
+    public static final int L
+    public static final int Q
+    public static final int else
+    public static final int E
+    public static final int goto
+    public static final int q
+    public static final int K
+    public static final int G
+    public static final int o
+    public static final int void
+    public static final int do
+    public static final int char
+    public static final int p
+    public static final int n
+    public static final int h
+    public static final int x
+    public static final int e
+    public static final int case
+    public static final int C
+    public static final int f
+    public static final int D
+    public static final int A
+    public static final int B
+    public static final int z
+    public static final int m
+    public static final int M
+    public static final int u
+    public static final int s
+    public static final int N
+    public static final int H
+    public static final int w
+    public static final int y
+    public static final int v
+    public static final int try
+    public static final int l
+    public static final int g
+    public static final int int
+    public static final int t
+    public static final int long
+    public static final int if
+    public static final int b
+    public static final int P
+    public static final int j
+    public static final int J
+    public static final int new
+    public static final int c
+com.baidu.location.ay:
+    public void ch()
+com.baidu.location.az:
+    private android.hardware.Sensor iO
+    public java.lang.String co()
+    public java.lang.String cl()
+    public java.lang.String s(java.lang.String)
+com.baidu.location.b
+com.baidu.location.b.a.a:
+    private static final boolean a
+com.baidu.location.b.a.b:
+    private static final java.lang.String do
+    private static final boolean a
+    private static final java.lang.String int
+    private static final java.lang.String for
+    private static final java.lang.String if
+    private b()
+com.baidu.location.b.a.b$a:
+    private static final java.lang.String do
+com.baidu.location.b.a.c:
+    private c()
+com.baidu.location.b.b.a:
+    private static final java.lang.String if
+    private static final java.lang.String a
+    private a()
+com.baidu.location.b.b.b:
+    private b()
+com.baidu.location.c:
+    public static final boolean aG
+    c()
+    static float if(java.lang.String,java.lang.String,java.lang.String)
+    static double for(java.lang.String,java.lang.String,java.lang.String)
+    static java.lang.String if(java.lang.String,java.lang.String,java.lang.String,double)
+    static java.lang.String if()
+    public static void if(java.lang.String)
+    public static void do(java.lang.String)
+    public static java.lang.String do()
+    public static java.lang.String byte()
+    public static java.lang.String else()
+com.baidu.location.f:
+    private static final java.lang.String ij
+com.baidu.location.i:
+    i()
+com.baidu.location.k:
+    public boolean k()
+    public void i()
+com.baidu.location.k$a:
+    public void a()
+com.baidu.location.l:
+    private java.lang.String bG
+    private static final int bK
+    private static final int bW
+    private static final int b5
+    private final long by
+    private final int b1
+    private long bX
+    private long[] bC
+    private int bH
+    private com.baidu.location.t$a bR
+    public static final java.lang.String bM
+    private java.lang.String bN
+    private int b3
+    private boolean bF
+    private boolean bP
+    private boolean b4
+    private final int bT
+    private long bS
+    private int b2
+    private long bQ
+    private long bO
+    com.baidu.location.l$c bx
+    java.lang.String bU
+    public l(android.content.Context)
+    void v()
+    private void if(boolean)
+    private void t()
+    public static void q()
+    public boolean r()
+    boolean if(double,double)
+com.baidu.location.l$1
+com.baidu.location.l$a:
+    public l$a(com.baidu.location.l)
+com.baidu.location.l$b
+com.baidu.location.l$c
+com.baidu.location.m:
+    private static final java.lang.String do
+    private static final int if
+com.baidu.location.n
+com.baidu.location.o
+com.baidu.location.o$1
+com.baidu.location.o$a
+com.baidu.location.p
+com.baidu.location.q:
+    private static final int ca
+    private static final int cb
+    private static final int cG
+    private static final int cp
+    private static final int cr
+    private static final int cj
+    public static void if(double,double,double,double)
+    public void z()
+    public void A()
+    public static void if(java.lang.String,int)
+    public static void if(java.lang.String,int,boolean)
+    public static void if(int,int)
+    public static void if(int,int,boolean)
+    public static void C()
+    public static void F()
+com.baidu.location.s:
+    public void R()
+    public static boolean if(android.content.Context)
+com.baidu.location.s$3
+com.baidu.location.t:
+    public java.lang.String ao()
+com.baidu.location.t$a:
+    public t$a(com.baidu.location.t,int,int,int,int,char)
+com.baidu.location.u:
+    static final int eE
+com.baidu.location.v:
+    v()
+com.baidu.location.v$a:
+    v$a()
+com.baidu.location.w:
+    private static final int eI
+    private static final int eR
+    private static final int eZ
+    private static final int e2
+    private static final int eY
+    private static final int e0
+    private static final int eK
+    private static final int eM
+    private void aL()
+    public void aO()
+    private boolean aN()
+    private void aI()
+com.baidu.location.x:
+    private static final int fH
+    private static final int fM
+    private static final int fC
+    private static final int fs
+    private static final double fq
+    private static final int fJ
+    private static final int fV
+    private android.location.Location fm
+    private android.location.Location fy
+    private long fK
+    private long fx
+    public java.lang.String aV()
+    private boolean aQ()
+    private void try(android.location.Location)
+com.baidu.location.y:
+    private static final int f7
+com.baidu.location.z:
+    public static final java.lang.String gi
+    public void if(com.baidu.location.BDNotifyListener)
+com.baidu.location.z$a:
+    public void a(com.baidu.location.BDLocation)
+com.baidu.mapapi.SDKInitializer:
+    public static final java.lang.String SDK_BROADTCAST_ACTION_STRING_PERMISSION_CHECK_ERROR
+    public static final java.lang.String SDK_BROADCAST_ACTION_STRING_NETWORK_ERROR
+    public static final java.lang.String SDK_BROADTCAST_INTENT_EXTRA_INFO_KEY_ERROR_CODE
+    private SDKInitializer()
+com.baidu.mapapi.VersionInfo:
+    public static final java.lang.String VERSION_INFO
+    public static final java.lang.String VERSION_DESC
+    public VersionInfo()
+    public static java.lang.String getVersionDesc()
+com.baidu.mapapi.cloud.BaseCloudSearchInfo
+com.baidu.mapapi.cloud.BaseSearchInfo
+com.baidu.mapapi.cloud.BaseSearchResult
+com.baidu.mapapi.cloud.BoundSearchInfo
+com.baidu.mapapi.cloud.CloudListener
+com.baidu.mapapi.cloud.CloudManager
+com.baidu.mapapi.cloud.CloudPoiInfo
+com.baidu.mapapi.cloud.CloudSearchResult
+com.baidu.mapapi.cloud.DetailSearchInfo
+com.baidu.mapapi.cloud.DetailSearchResult
+com.baidu.mapapi.cloud.LocalSearchInfo
+com.baidu.mapapi.cloud.NearbySearchInfo
+com.baidu.mapapi.cloud.a
+com.baidu.mapapi.map.Arc
+com.baidu.mapapi.map.ArcOptions
+com.baidu.mapapi.map.BaiduMap:
+    public static final int MAP_TYPE_NORMAL
+    public static final int MAP_TYPE_SATELLITE
+    public final void clear()
+    public final void setMapType(int)
+    public final int getMapType()
+    public final float getMaxZoomLevel()
+    public final float getMinZoomLevel()
+    public final com.baidu.mapapi.map.Projection getProjection()
+    public final com.baidu.mapapi.map.UiSettings getUiSettings()
+    public final void setBuildingsEnabled(boolean)
+    public final boolean isBuildingsEnabled()
+    public final com.baidu.mapapi.map.MyLocationData getLocationData()
+    public final com.baidu.mapapi.map.MyLocationConfigeration getLocationConfigeration()
+    public final void setTrafficEnabled(boolean)
+    public final boolean isTrafficEnabled()
+    public final void snapshot(com.baidu.mapapi.map.BaiduMap$SnapshotReadyCallback)
+    public void showInfoWindow(com.baidu.mapapi.map.InfoWindow)
+    public void hideInfoWindow()
+    public final void setOnMapStatusChangeListener(com.baidu.mapapi.map.BaiduMap$OnMapStatusChangeListener)
+    public final void setOnMapClickListener(com.baidu.mapapi.map.BaiduMap$OnMapClickListener)
+    public void setOnMapLoadedCallback(com.baidu.mapapi.map.BaiduMap$OnMapLoadedCallback)
+    public final void setOnMapDoubleClickListener(com.baidu.mapapi.map.BaiduMap$OnMapDoubleClickListener)
+    public final void setOnMapLongClickListener(com.baidu.mapapi.map.BaiduMap$OnMapLongClickListener)
+    public final void setOnMarkerClickListener(com.baidu.mapapi.map.BaiduMap$OnMarkerClickListener)
+    public final void setOnMyLocationClickListener(com.baidu.mapapi.map.BaiduMap$OnMyLocationClickListener)
+com.baidu.mapapi.map.BaiduMapOptions:
+    public BaiduMapOptions()
+    public com.baidu.mapapi.map.BaiduMapOptions mapStatus(com.baidu.mapapi.map.MapStatus)
+    public com.baidu.mapapi.map.BaiduMapOptions compassEnabled(boolean)
+    public com.baidu.mapapi.map.BaiduMapOptions mapType(int)
+    public com.baidu.mapapi.map.BaiduMapOptions rotateGesturesEnabled(boolean)
+    public com.baidu.mapapi.map.BaiduMapOptions scrollGesturesEnabled(boolean)
+    public com.baidu.mapapi.map.BaiduMapOptions overlookingGesturesEnabled(boolean)
+    public com.baidu.mapapi.map.BaiduMapOptions zoomControlsEnabled(boolean)
+    public com.baidu.mapapi.map.BaiduMapOptions zoomGesturesEnabled(boolean)
+    public com.baidu.mapapi.map.BaiduMapOptions scaleControlEnabled(boolean)
+com.baidu.mapapi.map.BitmapDescriptorFactory:
+    public BitmapDescriptorFactory()
+    public static com.baidu.mapapi.map.BitmapDescriptor fromAsset(java.lang.String)
+    public static com.baidu.mapapi.map.BitmapDescriptor fromFile(java.lang.String)
+    public static com.baidu.mapapi.map.BitmapDescriptor fromPath(java.lang.String)
+    public static com.baidu.mapapi.map.BitmapDescriptor fromView(android.view.View)
+com.baidu.mapapi.map.Circle
+com.baidu.mapapi.map.CircleOptions
+com.baidu.mapapi.map.Dot
+com.baidu.mapapi.map.DotOptions
+com.baidu.mapapi.map.GroundOverlay
+com.baidu.mapapi.map.GroundOverlayOptions
+com.baidu.mapapi.map.InfoWindow:
+    com.baidu.mapapi.map.BitmapDescriptor a
+    android.view.View b
+    com.baidu.mapapi.model.LatLng c
+    public InfoWindow(android.view.View,com.baidu.mapapi.model.LatLng,com.baidu.mapapi.map.InfoWindow$OnInfoWindowClickListener)
+    public InfoWindow(com.baidu.mapapi.map.BitmapDescriptor,com.baidu.mapapi.model.LatLng,com.baidu.mapapi.map.InfoWindow$OnInfoWindowClickListener)
+com.baidu.mapapi.map.MapFragment
+com.baidu.mapapi.map.MapPoi:
+    public java.lang.String getName()
+    public com.baidu.mapapi.model.LatLng getPosition()
+com.baidu.mapapi.map.MapStatus$Builder:
+    public com.baidu.mapapi.map.MapStatus$Builder zoom(float)
+    public com.baidu.mapapi.map.MapStatus$Builder targetScreen(android.graphics.Point)
+com.baidu.mapapi.map.MapStatusUpdateFactory:
+    MapStatusUpdateFactory()
+    public static com.baidu.mapapi.map.MapStatusUpdate newLatLngBounds(com.baidu.mapapi.model.LatLngBounds)
+    public static com.baidu.mapapi.map.MapStatusUpdate newLatLngBounds(com.baidu.mapapi.model.LatLngBounds,int,int)
+    public static com.baidu.mapapi.map.MapStatusUpdate newLatLngZoom(com.baidu.mapapi.model.LatLng,float)
+    public static com.baidu.mapapi.map.MapStatusUpdate scrollBy(int,int)
+    public static com.baidu.mapapi.map.MapStatusUpdate zoomBy(float)
+    public static com.baidu.mapapi.map.MapStatusUpdate zoomBy(float,android.graphics.Point)
+    public static com.baidu.mapapi.map.MapStatusUpdate zoomIn()
+    public static com.baidu.mapapi.map.MapStatusUpdate zoomOut()
+    public static com.baidu.mapapi.map.MapStatusUpdate zoomTo(float)
+com.baidu.mapapi.map.MapViewLayoutParams:
+    public static final int ALIGN_LEFT
+    public static final int ALIGN_RIGHT
+    public static final int ALIGN_CENTER_HORIZONTAL
+    public static final int ALIGN_TOP
+    public static final int ALIGN_BOTTOM
+    public static final int ALIGN_CENTER_VERTICAL
+    MapViewLayoutParams(int,int,com.baidu.mapapi.model.LatLng,android.graphics.Point,com.baidu.mapapi.map.MapViewLayoutParams$ELayoutMode,int,int)
+com.baidu.mapapi.map.MapViewLayoutParams$Builder
+com.baidu.mapapi.map.Marker:
+    public void setIcon(com.baidu.mapapi.map.BitmapDescriptor)
+    public com.baidu.mapapi.map.BitmapDescriptor getIcon()
+    public void setPosition(com.baidu.mapapi.model.LatLng)
+    public com.baidu.mapapi.model.LatLng getPosition()
+    public void setPerspective(boolean)
+    public boolean isPerspective()
+    public void setAnchor(float,float)
+    public float getAnchorX()
+    public float getAnchorY()
+    public void setRotate(float)
+    public float getRotate()
+    public void setTitle(java.lang.String)
+    public java.lang.String getTitle()
+com.baidu.mapapi.map.MarkerOptions:
+    public com.baidu.mapapi.map.BitmapDescriptor getIcon()
+    public com.baidu.mapapi.model.LatLng getPosition()
+    public com.baidu.mapapi.map.MarkerOptions perspective(boolean)
+    public boolean isPerspective()
+    public com.baidu.mapapi.map.MarkerOptions anchor(float,float)
+    public float getAnchorX()
+    public float getAnchorY()
+    public com.baidu.mapapi.map.MarkerOptions rotate(float)
+    public float getRotate()
+    public com.baidu.mapapi.map.MarkerOptions title(java.lang.String)
+    public java.lang.String getTitle()
+    public com.baidu.mapapi.map.MarkerOptions visible(boolean)
+    public boolean isVisible()
+    public int getZIndex()
+    public com.baidu.mapapi.map.MarkerOptions extraInfo(android.os.Bundle)
+    public android.os.Bundle getExtraInfo()
+com.baidu.mapapi.map.MyLocationData$Builder:
+    public com.baidu.mapapi.map.MyLocationData$Builder speed(float)
+    public com.baidu.mapapi.map.MyLocationData$Builder satellitesNum(int)
+com.baidu.mapapi.map.Overlay:
+    public boolean isVisible()
+    public void setVisible(boolean)
+    public int getZIndex()
+    public void setZIndex(int)
+    public android.os.Bundle getExtraInfo()
+    public void setExtraInfo(android.os.Bundle)
+    android.os.Bundle a()
+    public void remove()
+    static void a(int,android.os.Bundle)
+    static void a(java.util.List,android.os.Bundle)
+com.baidu.mapapi.map.Overlay$a:
+    public abstract void a(com.baidu.mapapi.map.Overlay)
+    public abstract void b(com.baidu.mapapi.map.Overlay)
+com.baidu.mapapi.map.Polygon
+com.baidu.mapapi.map.PolygonOptions
+com.baidu.mapapi.map.Polyline
+com.baidu.mapapi.map.PolylineOptions
+com.baidu.mapapi.map.Projection:
+    public com.baidu.mapapi.model.LatLng fromScreenLocation(android.graphics.Point)
+    public android.graphics.Point toScreenLocation(com.baidu.mapapi.model.LatLng)
+com.baidu.mapapi.map.Stroke
+com.baidu.mapapi.map.SupportMapFragment
+com.baidu.mapapi.map.Text
+com.baidu.mapapi.map.TextOptions
+com.baidu.mapapi.map.UiSettings:
+    public boolean isCompassEnabled()
+    public boolean isRotateGesturesEnabled()
+    public boolean isScrollGesturesEnabled()
+    public boolean isOverlookingGesturesEnabled()
+    public boolean isZoomGesturesEnabled()
+    public void setAllGesturesEnabled(boolean)
+    public void setCompassEnabled(boolean)
+    public void setRotateGesturesEnabled(boolean)
+    public void setScrollGesturesEnabled(boolean)
+    public void setOverlookingGesturesEnabled(boolean)
+    public void setZoomGesturesEnabled(boolean)
+com.baidu.mapapi.map.a:
+    public void a(com.baidu.mapapi.map.Overlay)
+    public void b(com.baidu.mapapi.map.Overlay)
+com.baidu.mapapi.map.offline.MKOLSearchRecord
+com.baidu.mapapi.map.offline.MKOLUpdateElement
+com.baidu.mapapi.map.offline.MKOfflineMap
+com.baidu.mapapi.map.offline.MKOfflineMapListener
+com.baidu.mapapi.map.offline.a
+com.baidu.mapapi.model.LatLngBounds:
+    LatLngBounds(com.baidu.mapapi.model.LatLng,com.baidu.mapapi.model.LatLng)
+    public boolean contains(com.baidu.mapapi.model.LatLng)
+com.baidu.mapapi.model.LatLngBounds$Builder
+com.baidu.mapapi.model.a:
+    public static com.baidu.mapapi.model.LatLng a(java.lang.String)
+    public static java.util.List c(java.lang.String)
+    public static java.util.List d(java.lang.String)
+com.baidu.mapapi.navi.BaiduMapAppNotSupportNaviException
+com.baidu.mapapi.navi.BaiduMapNavigation
+com.baidu.mapapi.navi.IllegalNaviArgumentException
+com.baidu.mapapi.navi.NaviPara
+com.baidu.mapapi.overlayutil.BusLineOverlay
+com.baidu.mapapi.overlayutil.DrivingRouteOvelray
+com.baidu.mapapi.overlayutil.OverlayManager
+com.baidu.mapapi.overlayutil.PoiOverlay
+com.baidu.mapapi.overlayutil.TransitRouteOverlay
+com.baidu.mapapi.overlayutil.TransitRouteOverlay$1
+com.baidu.mapapi.overlayutil.WalkingRouteOverlay
+com.baidu.mapapi.search.a.a
+com.baidu.mapapi.search.busline.BusLineResult
+com.baidu.mapapi.search.busline.BusLineResult$BusStation
+com.baidu.mapapi.search.busline.BusLineResult$BusStep
+com.baidu.mapapi.search.busline.BusLineSearch
+com.baidu.mapapi.search.busline.BusLineSearch$1
+com.baidu.mapapi.search.busline.BusLineSearch$a
+com.baidu.mapapi.search.busline.BusLineSearchOption
+com.baidu.mapapi.search.busline.OnGetBusLineSearchResultListener
+com.baidu.mapapi.search.busline.a
+com.baidu.mapapi.search.core.CityInfo
+com.baidu.mapapi.search.core.PoiInfo:
+    public java.lang.String city
+    public com.baidu.mapapi.search.core.PoiInfo$POITYPE type
+    public boolean hasCaterDetails
+    public boolean isPano
+com.baidu.mapapi.search.core.PoiInfo$POITYPE
+com.baidu.mapapi.search.core.RouteLine
+com.baidu.mapapi.search.core.RouteNode
+com.baidu.mapapi.search.core.RouteStep
+com.baidu.mapapi.search.core.TaxiInfo
+com.baidu.mapapi.search.core.VehicleInfo
+com.baidu.mapapi.search.geocode.GeoCodeOption
+com.baidu.mapapi.search.geocode.GeoCodeResult:
+    public com.baidu.mapapi.model.LatLng getLocation()
+    public java.lang.String getAddress()
+com.baidu.mapapi.search.geocode.GeoCoder:
+    public boolean geocode(com.baidu.mapapi.search.geocode.GeoCodeOption)
+    public void destroy()
+com.baidu.mapapi.search.geocode.ReverseGeoCodeResult:
+    public java.lang.String getBusinessCircle()
+    public com.baidu.mapapi.search.geocode.ReverseGeoCodeResult$AddressComponent getAddressDetail()
+    public com.baidu.mapapi.model.LatLng getLocation()
+    public java.util.List getPoiList()
+com.baidu.mapapi.search.poi.ImageUtil
+com.baidu.mapapi.search.poi.ImageUtil$ImageListener
+com.baidu.mapapi.search.poi.OnGetPoiSearchResultListener
+com.baidu.mapapi.search.poi.PlaceCaterActivity
+com.baidu.mapapi.search.poi.PoiBoundSearchOption
+com.baidu.mapapi.search.poi.PoiCitySearchOption
+com.baidu.mapapi.search.poi.PoiDetailResult
+com.baidu.mapapi.search.poi.PoiDetailSearchOption
+com.baidu.mapapi.search.poi.PoiNearbySearchOption
+com.baidu.mapapi.search.poi.PoiResult
+com.baidu.mapapi.search.poi.PoiSearch
+com.baidu.mapapi.search.poi.PoiSearch$1
+com.baidu.mapapi.search.poi.PoiSearch$a
+com.baidu.mapapi.search.poi.a
+com.baidu.mapapi.search.poi.b
+com.baidu.mapapi.search.poi.c
+com.baidu.mapapi.search.poi.d
+com.baidu.mapapi.search.poi.e
+com.baidu.mapapi.search.poi.f
+com.baidu.mapapi.search.poi.g
+com.baidu.mapapi.search.poi.h
+com.baidu.mapapi.search.poi.i
+com.baidu.mapapi.search.route.DrivingRouteLine
+com.baidu.mapapi.search.route.DrivingRouteLine$DrivingStep
+com.baidu.mapapi.search.route.DrivingRoutePlanOption
+com.baidu.mapapi.search.route.DrivingRoutePlanOption$DrivingPolicy
+com.baidu.mapapi.search.route.DrivingRouteResult
+com.baidu.mapapi.search.route.OnGetRoutePlanResultListener
+com.baidu.mapapi.search.route.PlanNode
+com.baidu.mapapi.search.route.RoutePlanSearch
+com.baidu.mapapi.search.route.RoutePlanSearch$1
+com.baidu.mapapi.search.route.RoutePlanSearch$a
+com.baidu.mapapi.search.route.SuggestAddrInfo
+com.baidu.mapapi.search.route.TransitRouteLine
+com.baidu.mapapi.search.route.TransitRouteLine$TransitStep
+com.baidu.mapapi.search.route.TransitRouteLine$TransitStep$TransitRouteStepType
+com.baidu.mapapi.search.route.TransitRoutePlanOption
+com.baidu.mapapi.search.route.TransitRoutePlanOption$TransitPolicy
+com.baidu.mapapi.search.route.TransitRouteResult
+com.baidu.mapapi.search.route.WalkingRouteLine
+com.baidu.mapapi.search.route.WalkingRouteLine$WalkingStep
+com.baidu.mapapi.search.route.WalkingRoutePlanOption
+com.baidu.mapapi.search.route.WalkingRouteResult
+com.baidu.mapapi.search.route.a
+com.baidu.mapapi.search.share.LocationShareURLOption
+com.baidu.mapapi.search.share.OnGetShareUrlResultListener
+com.baidu.mapapi.search.share.PoiDetailShareURLOption
+com.baidu.mapapi.search.share.ShareUrlResult
+com.baidu.mapapi.search.share.ShareUrlSearch
+com.baidu.mapapi.search.share.ShareUrlSearch$1
+com.baidu.mapapi.search.share.ShareUrlSearch$a
+com.baidu.mapapi.search.share.a
+com.baidu.mapapi.search.sug.OnGetSuggestionResultListener
+com.baidu.mapapi.search.sug.SuggestionResult
+com.baidu.mapapi.search.sug.SuggestionResult$SuggestionInfo
+com.baidu.mapapi.search.sug.SuggestionSearch
+com.baidu.mapapi.search.sug.SuggestionSearch$1
+com.baidu.mapapi.search.sug.SuggestionSearch$a
+com.baidu.mapapi.search.sug.SuggestionSearchOption
+com.baidu.mapapi.search.sug.a
+com.baidu.mapapi.utils.CoordinateConverter
+com.baidu.mapapi.utils.CoordinateConverter$1
+com.baidu.mapapi.utils.CoordinateConverter$CoordType
+com.baidu.mapapi.utils.DistanceUtil
+com.baidu.mapapi.utils.PermissionCheck:
+    public static synchronized int permissionCheck()
+com.baidu.mapapi.utils.c
+com.baidu.platform.comapi.a.a
+com.baidu.platform.comapi.a.c
+com.baidu.platform.comapi.b.a
+com.baidu.platform.comapi.b.c:
+    public void a()
+com.baidu.platform.comapi.b.d:
+    public void a()
+    public void a(int)
+    public boolean a(java.lang.String,java.lang.String,int,com.baidu.platform.comapi.a.c,int,java.util.Map)
+    public boolean a(java.lang.String,int,int,int,com.baidu.platform.comapi.a.c,com.baidu.platform.comapi.a.c,java.util.Map)
+    public boolean a(java.lang.String,int,int,com.baidu.platform.comapi.a.c,int,com.baidu.platform.comapi.a.d,java.util.Map)
+    private android.os.Bundle a(com.baidu.platform.comapi.b.a)
+    public boolean a(com.baidu.platform.comapi.b.a,com.baidu.platform.comapi.b.a,java.lang.String,com.baidu.platform.comapi.a.c,int,int,java.util.Map)
+    public boolean a(com.baidu.platform.comapi.b.a,com.baidu.platform.comapi.b.a,java.lang.String,java.lang.String,java.lang.String,com.baidu.platform.comapi.a.c,int,int,int,java.util.ArrayList,java.util.Map)
+    public boolean a(com.baidu.platform.comapi.b.a,com.baidu.platform.comapi.b.a,java.lang.String,java.lang.String,java.lang.String,com.baidu.platform.comapi.a.c,int,java.util.Map)
+    public boolean a(java.lang.String)
+    public boolean a(java.lang.String,java.lang.String)
+    public boolean a(java.lang.String,int,java.lang.String,com.baidu.platform.comapi.a.c,int,com.baidu.platform.comapi.a.d)
+    public boolean b(java.lang.String,java.lang.String)
+    public boolean a(com.baidu.platform.comapi.a.d,java.lang.String,java.lang.String)
+    public boolean b(java.lang.String)
+    private android.os.Bundle b()
+com.baidu.platform.comapi.b.f
+com.baidu.platform.comapi.c.a
+com.baidu.platform.comapi.d.a
+com.baidu.platform.comapi.d.c:
+    public static int n()
+    public static int o()
+    public static java.lang.String q()
+    public static java.lang.String r()
+    public static java.lang.String s()
+com.baidu.platform.comapi.map.e:
+    private boolean d
+    public boolean b()
+    public void a(boolean)
+    public boolean c()
+    public void c(boolean)
+    public boolean d()
+    public void d(boolean)
+    public boolean e()
+    public boolean g()
+    public void f(boolean)
+    public void g(boolean)
+    public boolean h()
+    public void h(boolean)
+    public boolean i()
+    public void i(boolean)
+    public boolean j()
+    public void a(java.lang.String)
+    public void m()
+    public void b(android.os.Bundle)
+    public void c(android.os.Bundle)
+    public int a(android.os.Bundle,int,int)
+    public boolean a(int)
+com.baidu.platform.comapi.map.k
+com.baidu.platform.comapi.map.l
+com.baidu.platform.comapi.map.m
+com.baidu.platform.comapi.map.n
+com.baidu.platform.comapi.map.o
+com.baidu.platform.comapi.map.p
+com.baidu.platform.comapi.map.q
+com.baidu.platform.comapi.map.x:
+    public java.lang.String a()
+    public android.os.Bundle b()
+com.baidu.platform.comjni.base.userdatacollect.JNIUserdataCollect
+com.baidu.platform.comjni.base.userdatacollect.a
+com.baidu.platform.comjni.engine.AppEngine:
+    public AppEngine()
+    public static void despatchMessage(int,int,int,int)
+com.baidu.platform.comjni.engine.a:
+    public static void a(int,int,int,int)
+com.baidu.platform.comjni.map.basemap.BaseMapCallback:
+    public BaseMapCallback()
+    public static int ReqLayerData(android.os.Bundle,int,int)
+com.baidu.platform.comjni.map.basemap.JNIBaseMap:
+    public native void ShowTrafficMap(int,boolean)
+    public native void ClearLayer(int,int)
+    public native void SaveScreenToLocal(int,java.lang.String)
+    public native boolean OnRecordAdd(int,int)
+    public native boolean OnRecordStart(int,int,boolean,int)
+    public native boolean OnRecordSuspend(int,int,boolean,int)
+    public native boolean OnRecordRemove(int,int,boolean)
+    public native java.lang.String OnRecordGetAll(int)
+    public native java.lang.String OnRecordGetAt(int,int)
+    public native boolean OnRecordImport(int,boolean)
+    public native java.lang.String OnHotcityGet(int)
+    public native java.lang.String OnSchcityGet(int,java.lang.String)
+    public native void updateOneOverlayItem(int,android.os.Bundle)
+    public native void removeOneOverlayItem(int,android.os.Bundle)
+    public native void enableDrawHouseHeight(int,boolean)
+    public native boolean isDrawHouseHeightEnable(int)
+com.baidu.platform.comjni.map.basemap.a:
+    public void b(boolean)
+    public void b(int)
+    public void a(java.lang.String)
+    public boolean c(int)
+    public boolean a(int,boolean,int)
+    public boolean b(int,boolean,int)
+    public boolean b(int,boolean)
+    public java.lang.String h()
+    public java.lang.String d(int)
+    public boolean c(boolean)
+    public java.lang.String i()
+    public java.lang.String b(java.lang.String)
+    public void d(android.os.Bundle)
+    public void e(android.os.Bundle)
+    public void d(boolean)
+    public boolean k()
+com.baidu.platform.comjni.map.basemap.b:
+    public abstract int a(android.os.Bundle,int,int)
+    public abstract boolean a(int)
+com.baidu.platform.comjni.map.cloud.JniCloud
+com.baidu.platform.comjni.map.cloud.a
+com.baidu.platform.comjni.map.search.JNISearch:
+    public native int Release(int)
+    public native boolean ForceSearchByCityName(int,android.os.Bundle)
+    public native boolean AreaSearch(int,android.os.Bundle)
+    public native boolean RoutePlanByBus(int,android.os.Bundle)
+    public native boolean RoutePlanByCar(int,android.os.Bundle)
+    public native boolean RoutePlanByFoot(int,android.os.Bundle)
+    public native boolean POIDetailSearchPlace(int,java.lang.String)
+    public native boolean BusLineDetailSearch(int,java.lang.String,java.lang.String)
+    public native boolean SuggestionSearch(int,android.os.Bundle)
+    public native boolean geocode(int,java.lang.String,java.lang.String)
+    public native boolean PoiRGCShareUrlSearch(int,int,int,java.lang.String,java.lang.String)
+    public native boolean PoiDetailShareUrlSearch(int,java.lang.String)
+    public native boolean MapBoundSearch(int,android.os.Bundle)
+com.baidu.platform.comjni.map.search.a:
+    public int b()
+    public boolean a(android.os.Bundle)
+    public boolean b(android.os.Bundle)
+    public boolean c(android.os.Bundle)
+    public boolean d(android.os.Bundle)
+    public boolean e(android.os.Bundle)
+    public boolean a(java.lang.String)
+    public boolean a(java.lang.String,java.lang.String)
+    public boolean f(android.os.Bundle)
+    public boolean b(java.lang.String,java.lang.String)
+    public boolean a(int,int,java.lang.String,java.lang.String)
+    public boolean b(java.lang.String)
+    public boolean g(android.os.Bundle)
+com.baidu.platform.comjni.tools.BundleKeySet
+com.baidu.platform.comjni.tools.JNITools:
+    public static native boolean TransGeoStr2Pt(java.lang.Object)
+    public static native boolean TransGeoStr2ComplexPt(java.lang.Object)
+    public static native void GetDistanceByMC(java.lang.Object)
+com.baidu.platform.comjni.tools.ParcelItem:
+    public android.os.Bundle getBundle()
+com.baidu.platform.comjni.tools.a
+com.baidu.vi.VDeviceAPI
+com.baidu.vi.VMsg:
+    private static void postMessage(int,int,int,int)
+com.baidu.vi.a
+com.baidu.vi.b:
+    public static android.content.Context a()
+com.baidu.vi.c
+com.baidu.vi.c$1
+com.bmob.BTPFileResponse:
+    33:33:public boolean isReadable()
+    41:41:public boolean isWriteable()
+    49:49:public int getStatusCode()
+com.bmob.BmobConfiguration:
+    26:26:public static com.bmob.BmobConfiguration createDefault(android.content.Context)
+com.bmob.BmobConfiguration$Builder:
+    54:67:public com.bmob.BmobConfiguration$Builder customExternalCacheDir(java.lang.String)
+com.bmob.BmobPro:
+    61:65:public synchronized void initConfig(com.bmob.BmobConfiguration)
+    139:140:public java.lang.String getCacheDir()
+    162:163:public java.lang.String getCacheThumbnailDir()
+    174:174:public java.io.File getThumbnail(java.lang.String)
+    183:185:public void clearCache()
+    194:194:public long getCacheFileSize()
+    204:204:public java.lang.String getCacheFormatSize()
+com.bmob.BmobProFile:
+    171:181:public void uploadBatch(java.lang.String[],com.bmob.btp.callback.UploadBatchListener)
+    193:200:private void Code(int,java.lang.String[],java.util.List,java.util.List,java.util.List,com.bmob.btp.callback.UploadBatchListener)
+    204:232:private void Code(boolean,int,int,java.lang.String[],java.util.List,java.util.List,java.util.List,com.bmob.btp.callback.UploadBatchListener)
+    300:325:public void submitThumnailTask(java.lang.String,int,com.bmob.btp.callback.ThumbnailListener)
+    359:385:public void getLocalThumbnail(java.lang.String,int,com.bmob.btp.callback.LocalThumbnailListener)
+    431:432:public void getLocalThumbnail(java.lang.String,int,int,int,com.bmob.btp.callback.LocalThumbnailListener)
+    443:448:public void getLocalThumbnail(java.lang.String,int,int,int,int,com.bmob.btp.callback.LocalThumbnailListener)
+    462:486:public java.lang.String signURL(java.lang.String,java.lang.String,java.lang.String,long,java.lang.String)
+    497:522:public void getAccessURL(java.lang.String,com.bmob.btp.callback.GetAccessUrlListener)
+    532:557:public void deleteFile(java.lang.String,com.bmob.btp.callback.DeleteFileListener)
+    191:191:static synthetic void Code(com.bmob.BmobProFile,int,java.lang.String[],java.util.List,java.util.List,java.util.List,com.bmob.btp.callback.UploadBatchListener)
+    327:327:static synthetic void Code(com.bmob.BmobProFile,int,u.thing,o.this,com.bmob.btp.callback.ThumbnailListener)
+    392:392:static synthetic void Code(com.bmob.BmobProFile,java.lang.String,int,com.bmob.btp.callback.LocalThumbnailListener)
+com.bmob.BmobProFile$2
+com.bmob.BmobProFile$4
+com.bmob.BmobProFile$5
+com.bmob.BmobProFile$6
+com.bmob.BmobProFile$7
+com.bmob.btp.callback.LocalThumbnailListener
+com.bmob.btp.callback.UploadBatchListener
+com.bmob.utils.BmobLog:
+    public static final java.lang.String Tag
+    18:18:public BmobLog()
+    30:30:public static void smile(java.lang.String)
+    55:55:public static varargs void d(java.lang.String,java.lang.Object[])
+    64:64:public static varargs void e(java.lang.String,java.lang.Object[])
+com.bmob.utils.This:
+    59:59:public This()
+    177:182:public static int Code(int,int)
+    191:197:public static java.util.Map Code(java.util.List)
+    227:239:public static java.util.List ah(java.lang.String)
+    249:279:public static android.graphics.Bitmap ai(java.lang.String)
+    292:318:public static java.lang.String Code(android.content.Context,java.lang.String,android.graphics.Bitmap,int)
+    333:341:public static java.lang.String Code(java.lang.String,int,int,int,int)
+    574:579:public static java.lang.String F(long)
+com.bmob.utils.of:
+    44:44:public static java.io.File u(android.content.Context)
+com.bmob.utils.thing:
+    11:11:public thing()
+com.bmob.video.BmobSliceTask
+com.bmob.video.BmobVideo
+com.bmob.video.BmobVideo$1
+com.bmob.video.BmobVideo$2
+com.bmob.video.BmobVideo$3
+com.bmob.video.BmobVideoActivity
+com.bmob.video.BmobVideoActivity$1
+com.bmob.video.BmobVideoActivity$2
+com.bmob.video.BmobVideoActivity$3
+com.bmob.video.BmobVideoActivity$OnVideoCompletionListener
+com.bmob.video.widget.BmobMediaController
+com.bmob.video.widget.BmobMediaController$1
+com.bmob.video.widget.BmobMediaController$2
+com.bmob.video.widget.BmobMediaController$3
+com.bmob.video.widget.BmobMediaController$MediaPlayerControl
+com.bmob.video.widget.BmobMediaController$OnHiddenListener
+com.bmob.video.widget.BmobMediaController$OnShownListener
+com.bmob.video.widget.BmobMediaController$This
+com.bmob.video.widget.BmobVideoView
+com.bmob.video.widget.From
+com.bmob.video.widget.From$1
+com.bmob.video.widget.I
+com.bmob.video.widget.OutlineTextView
+com.bmob.video.widget.Tempest
+com.bmob.video.widget.The
+com.bmob.video.widget.This
+com.bmob.video.widget.V
+com.bmob.video.widget.acknowledge
+com.bmob.video.widget.darkness
+com.bmob.video.widget.i
+com.bmob.video.widget.mine
+com.bmob.video.widget.of
+com.bmob.video.widget.thing
 com.cardsui.example.MyCard
 com.cardsui.example.MyImageCard
 com.fima.cardsui.R:
@@ -2036,8 +3487,15 @@ com.mc.db.DBConnection:
 com.mc.db.DBConnection$UserSchema
 com.mc.request.asyn.CheckVersionAsyntask
 com.mc.util.BASE64:
-    10:10:public BASE64()
-    35:40:public static void main(java.lang.String[])
+    9:9:public BASE64()
+    34:39:public static void main(java.lang.String[])
+com.mc.util.BadgeUtil:
+    private static final java.lang.String TAG
+    private static final java.lang.String ACTION_BADGE_COUNT_UPDATE
+    private static final java.lang.String EXTRA_BADGE_COUNT
+    private static final java.lang.String EXTRA_BADGE_COUNT_PACKAGE_NAME
+    private static final java.lang.String EXTRA_BADGE_COUNT_CLASS_NAME
+    10:10:public BadgeUtil()
 com.mc.util.CircleImageView:
     private static final int COLORDRAWABLE_DIMENSION
     private static final int DEFAULT_BORDER_WIDTH
@@ -2064,7 +3522,10 @@ com.mc.util.H5Log:
     66:68:public static void eWithDeviceInfo(android.content.Context,java.lang.String,java.lang.String)
     71:72:public static void e(android.content.Context,java.lang.String,java.lang.Exception)
     75:77:public static void e(android.content.Context,java.lang.String,java.lang.String,java.lang.Exception)
-com.mc.util.H5Toast
+com.mc.util.H5Toast:
+    22:22:public H5Toast()
+    26:27:public static void showToast(android.content.Context,int,java.lang.String,int)
+    32:48:public static void showToast(android.content.Context,int,java.lang.String,int,int,int,int)
 com.mc.util.HVScrollView
 com.mc.util.HttpAssist:
     private static final java.lang.String TAG
@@ -2078,12 +3539,14 @@ com.mc.util.HttpUtilMc:
     public static final java.lang.String BASE_URL
     public static final java.lang.String XUPT_IP1
     public static final java.lang.String XUPT_IP2
+    public static final java.lang.String xiyouMC_IP
+    public static final java.lang.String XIYOUMC_BASE_IP
     19:19:public HttpUtilMc()
-    35:36:public static org.apache.http.client.methods.HttpGet getHttpGet(java.lang.String)
-    48:54:public static org.apache.http.HttpResponse getHttpResponse(org.apache.http.client.methods.HttpGet)
-    104:123:public static java.lang.String queryStringForPost(org.apache.http.client.methods.HttpPost)
-    129:149:public static java.lang.String queryStringForGet(java.lang.String)
-    160:170:private static boolean IsReachIP(java.lang.String)
+    37:38:public static org.apache.http.client.methods.HttpGet getHttpGet(java.lang.String)
+    50:55:public static org.apache.http.HttpResponse getHttpResponse(org.apache.http.client.methods.HttpGet)
+    112:131:public static java.lang.String queryStringForPost(org.apache.http.client.methods.HttpPost)
+    137:157:public static java.lang.String queryStringForGet(java.lang.String)
+    168:176:private static boolean IsReachIP(java.lang.String)
 com.mc.util.LogcatHelper:
     61:71:public void start()
     168:170:public static java.lang.String getFileName()
@@ -2095,6 +3558,8 @@ com.mc.util.Passport:
     118:124:java.lang.String passport_encode(java.lang.String[])
     129:137:public java.lang.String implode(java.lang.String,java.lang.String[])
     141:155:public static java.lang.String toStringHex(java.lang.String)
+com.mc.util.RankUtils:
+    9:9:public RankUtils()
 com.mc.util.SIMCardInfo:
     private java.lang.String IMSI
     52:64:public java.lang.String getProvidersName()
@@ -2297,6 +3762,283 @@ com.nineoldandroids.view.ViewPropertyAnimatorPreHC$PropertyBundle
 com.nineoldandroids.view.animation.AnimatorProxy:
     163:167:public void setScrollX(int)
     176:180:public void setScrollY(int)
+com.nostra13.universalimageloader.cache.disc.BaseDiscCache:
+    private static final java.lang.String ERROR_ARG_NULL
+    40:41:public BaseDiscCache(java.io.File)
+    63:69:public void clear()
+com.nostra13.universalimageloader.cache.disc.DiscCacheAware:
+    public abstract void clear()
+com.nostra13.universalimageloader.cache.disc.LimitedDiscCache:
+    private static final int INVALID_SIZE
+    55:56:public LimitedDiscCache(java.io.File,int)
+    119:122:public void clear()
+com.nostra13.universalimageloader.cache.disc.impl.FileCountLimitedDiscCache:
+    40:41:public FileCountLimitedDiscCache(java.io.File,int)
+com.nostra13.universalimageloader.cache.disc.impl.LimitedAgeDiscCache
+com.nostra13.universalimageloader.cache.disc.impl.TotalSizeLimitedDiscCache:
+    private static final int MIN_NORMAL_CACHE_SIZE_IN_MB
+    private static final int MIN_NORMAL_CACHE_SIZE
+com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator:
+    private static final java.lang.String HASH_ALGORITHM
+    private static final int RADIX
+com.nostra13.universalimageloader.cache.memory.BaseMemoryCache:
+    63:64:public void clear()
+com.nostra13.universalimageloader.cache.memory.LimitedMemoryCache
+com.nostra13.universalimageloader.cache.memory.MemoryCacheAware:
+    public abstract void clear()
+com.nostra13.universalimageloader.cache.memory.impl.FIFOLimitedMemoryCache
+com.nostra13.universalimageloader.cache.memory.impl.FuzzyKeyMemoryCache:
+    72:73:public void clear()
+com.nostra13.universalimageloader.cache.memory.impl.LRULimitedMemoryCache
+com.nostra13.universalimageloader.cache.memory.impl.LargestLimitedMemoryCache
+com.nostra13.universalimageloader.cache.memory.impl.LimitedAgeMemoryCache
+com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache:
+    126:127:public void clear()
+com.nostra13.universalimageloader.cache.memory.impl.UsingFreqLimitedMemoryCache
+com.nostra13.universalimageloader.core.DefaultConfigurationFactory:
+    53:121:public DefaultConfigurationFactory()
+com.nostra13.universalimageloader.core.DisplayBitmapTask:
+    private static final java.lang.String LOG_DISPLAY_IMAGE_IN_IMAGEAWARE
+    private static final java.lang.String LOG_TASK_CANCELLED_IMAGEAWARE_REUSED
+    private static final java.lang.String LOG_TASK_CANCELLED_IMAGEAWARE_COLLECTED
+com.nostra13.universalimageloader.core.DisplayImageOptions$Builder:
+    237:238:public com.nostra13.universalimageloader.core.DisplayImageOptions$Builder showStubImage(int)
+    248:249:public com.nostra13.universalimageloader.core.DisplayImageOptions$Builder showImageOnLoading(int)
+    258:259:public com.nostra13.universalimageloader.core.DisplayImageOptions$Builder showImageOnLoading(android.graphics.drawable.Drawable)
+    281:282:public com.nostra13.universalimageloader.core.DisplayImageOptions$Builder showImageForEmptyUri(android.graphics.drawable.Drawable)
+    304:305:public com.nostra13.universalimageloader.core.DisplayImageOptions$Builder showImageOnFail(android.graphics.drawable.Drawable)
+    315:316:public com.nostra13.universalimageloader.core.DisplayImageOptions$Builder resetViewBeforeLoading()
+    334:335:public com.nostra13.universalimageloader.core.DisplayImageOptions$Builder cacheInMemory()
+    350:351:public com.nostra13.universalimageloader.core.DisplayImageOptions$Builder cacheOnDisc()
+    385:387:public com.nostra13.universalimageloader.core.DisplayImageOptions$Builder decodingOptions(android.graphics.BitmapFactory$Options)
+    392:393:public com.nostra13.universalimageloader.core.DisplayImageOptions$Builder delayBeforeLoading(int)
+    398:399:public com.nostra13.universalimageloader.core.DisplayImageOptions$Builder extraForDownloader(java.lang.Object)
+    414:415:public com.nostra13.universalimageloader.core.DisplayImageOptions$Builder preProcessor(com.nostra13.universalimageloader.core.process.BitmapProcessor)
+    424:425:public com.nostra13.universalimageloader.core.DisplayImageOptions$Builder postProcessor(com.nostra13.universalimageloader.core.process.BitmapProcessor)
+    439:440:com.nostra13.universalimageloader.core.DisplayImageOptions$Builder syncLoading(boolean)
+    448:449:public com.nostra13.universalimageloader.core.DisplayImageOptions$Builder handler(android.os.Handler)
+com.nostra13.universalimageloader.core.ImageLoader:
+    static final java.lang.String LOG_INIT_CONFIG
+    static final java.lang.String LOG_DESTROY
+    static final java.lang.String LOG_LOAD_IMAGE_FROM_MEMORY_CACHE
+    private static final java.lang.String WARNING_RE_INIT_CONFIG
+    private static final java.lang.String ERROR_WRONG_ARGUMENTS
+    private static final java.lang.String ERROR_NOT_INIT
+    private static final java.lang.String ERROR_INIT_CONFIG_WITH_NULL
+    110:110:public boolean isInited()
+    126:127:public void displayImage(java.lang.String,com.nostra13.universalimageloader.core.imageaware.ImageAware)
+    144:145:public void displayImage(java.lang.String,com.nostra13.universalimageloader.core.imageaware.ImageAware,com.nostra13.universalimageloader.core.listener.ImageLoadingListener)
+    162:163:public void displayImage(java.lang.String,com.nostra13.universalimageloader.core.imageaware.ImageAware,com.nostra13.universalimageloader.core.DisplayImageOptions)
+    183:184:public void displayImage(java.lang.String,com.nostra13.universalimageloader.core.imageaware.ImageAware,com.nostra13.universalimageloader.core.DisplayImageOptions,com.nostra13.universalimageloader.core.listener.ImageLoadingListener)
+    318:319:public void displayImage(java.lang.String,android.widget.ImageView,com.nostra13.universalimageloader.core.listener.ImageLoadingListener)
+    375:376:public void loadImage(java.lang.String,com.nostra13.universalimageloader.core.listener.ImageLoadingListener)
+    395:396:public void loadImage(java.lang.String,com.nostra13.universalimageloader.core.assist.ImageSize,com.nostra13.universalimageloader.core.listener.ImageLoadingListener)
+    414:415:public void loadImage(java.lang.String,com.nostra13.universalimageloader.core.DisplayImageOptions,com.nostra13.universalimageloader.core.listener.ImageLoadingListener)
+    439:440:public void loadImage(java.lang.String,com.nostra13.universalimageloader.core.assist.ImageSize,com.nostra13.universalimageloader.core.DisplayImageOptions,com.nostra13.universalimageloader.core.listener.ImageLoadingListener)
+    466:476:public void loadImage(java.lang.String,com.nostra13.universalimageloader.core.assist.ImageSize,com.nostra13.universalimageloader.core.DisplayImageOptions,com.nostra13.universalimageloader.core.listener.ImageLoadingListener,com.nostra13.universalimageloader.core.listener.ImageLoadingProgressListener)
+    490:490:public android.graphics.Bitmap loadImageSync(java.lang.String)
+    506:506:public android.graphics.Bitmap loadImageSync(java.lang.String,com.nostra13.universalimageloader.core.DisplayImageOptions)
+    524:524:public android.graphics.Bitmap loadImageSync(java.lang.String,com.nostra13.universalimageloader.core.assist.ImageSize)
+    543:550:public android.graphics.Bitmap loadImageSync(java.lang.String,com.nostra13.universalimageloader.core.assist.ImageSize,com.nostra13.universalimageloader.core.DisplayImageOptions)
+    570:571:public com.nostra13.universalimageloader.cache.memory.MemoryCacheAware getMemoryCache()
+    580:582:public void clearMemoryCache()
+    590:591:public com.nostra13.universalimageloader.cache.disc.DiscCacheAware getDiscCache()
+    600:602:public void clearDiscCache()
+    609:609:public java.lang.String getLoadingUriForView(com.nostra13.universalimageloader.core.imageaware.ImageAware)
+    617:617:public java.lang.String getLoadingUriForView(android.widget.ImageView)
+    628:629:public void cancelDisplayTask(com.nostra13.universalimageloader.core.imageaware.ImageAware)
+    638:639:public void cancelDisplayTask(android.widget.ImageView)
+    652:653:public void denyNetworkDownloads(boolean)
+    663:664:public void handleSlowNetwork(boolean)
+    672:673:public void pause()
+    677:678:public void resume()
+    685:686:public void stop()
+    694:698:public void destroy()
+com.nostra13.universalimageloader.core.ImageLoaderConfiguration:
+    139:139:public static com.nostra13.universalimageloader.core.ImageLoaderConfiguration createDefault(android.content.Context)
+com.nostra13.universalimageloader.core.ImageLoaderConfiguration$Builder:
+    private static final java.lang.String WARNING_OVERLAP_DISC_CACHE_PARAMS
+    private static final java.lang.String WARNING_OVERLAP_DISC_CACHE_NAME_GENERATOR
+    private static final java.lang.String WARNING_OVERLAP_MEMORY_CACHE
+    private static final java.lang.String WARNING_OVERLAP_EXECUTOR
+    public static final int DEFAULT_THREAD_POOL_SIZE
+    public static final int DEFAULT_THREAD_PRIORITY
+    222:224:public com.nostra13.universalimageloader.core.ImageLoaderConfiguration$Builder memoryCacheExtraOptions(int,int)
+    242:247:public com.nostra13.universalimageloader.core.ImageLoaderConfiguration$Builder discCacheExtraOptions(int,int,android.graphics.Bitmap$CompressFormat,int,com.nostra13.universalimageloader.core.process.BitmapProcessor)
+    264:269:public com.nostra13.universalimageloader.core.ImageLoaderConfiguration$Builder taskExecutor(java.util.concurrent.Executor)
+    291:296:public com.nostra13.universalimageloader.core.ImageLoaderConfiguration$Builder taskExecutorForCachedImages(java.util.concurrent.Executor)
+    369:376:public com.nostra13.universalimageloader.core.ImageLoaderConfiguration$Builder memoryCacheSize(int)
+    389:399:public com.nostra13.universalimageloader.core.ImageLoaderConfiguration$Builder memoryCacheSizePercentage(int)
+    430:437:public com.nostra13.universalimageloader.core.ImageLoaderConfiguration$Builder discCacheSize(int)
+    449:457:public com.nostra13.universalimageloader.core.ImageLoaderConfiguration$Builder discCacheFileCount(int)
+    482:483:public com.nostra13.universalimageloader.core.ImageLoaderConfiguration$Builder imageDownloader(com.nostra13.universalimageloader.core.download.ImageDownloader)
+    493:494:public com.nostra13.universalimageloader.core.ImageLoaderConfiguration$Builder imageDecoder(com.nostra13.universalimageloader.core.decode.ImageDecoder)
+    530:531:public com.nostra13.universalimageloader.core.ImageLoaderConfiguration$Builder defaultDisplayImageOptions(com.nostra13.universalimageloader.core.DisplayImageOptions)
+com.nostra13.universalimageloader.core.ImageLoaderEngine:
+    139:140:void denyNetworkDownloads(boolean)
+    150:151:void handleSlowNetwork(boolean)
+    158:159:void pause()
+    163:167:void resume()
+    171:180:void stop()
+com.nostra13.universalimageloader.core.LoadAndDisplayImageTask:
+    private static final java.lang.String LOG_WAITING_FOR_RESUME
+    private static final java.lang.String LOG_RESUME_AFTER_PAUSE
+    private static final java.lang.String LOG_DELAY_BEFORE_LOADING
+    private static final java.lang.String LOG_START_DISPLAY_IMAGE_TASK
+    private static final java.lang.String LOG_WAITING_FOR_IMAGE_LOADED
+    private static final java.lang.String LOG_GET_IMAGE_FROM_MEMORY_CACHE_AFTER_WAITING
+    private static final java.lang.String LOG_LOAD_IMAGE_FROM_NETWORK
+    private static final java.lang.String LOG_LOAD_IMAGE_FROM_DISC_CACHE
+    private static final java.lang.String LOG_RESIZE_CACHED_IMAGE_FILE
+    private static final java.lang.String LOG_PREPROCESS_IMAGE
+    private static final java.lang.String LOG_POSTPROCESS_IMAGE
+    private static final java.lang.String LOG_CACHE_IMAGE_IN_MEMORY
+    private static final java.lang.String LOG_CACHE_IMAGE_ON_DISC
+    private static final java.lang.String LOG_PROCESS_IMAGE_BEFORE_CACHE_ON_DISC
+    private static final java.lang.String LOG_TASK_CANCELLED_IMAGEAWARE_REUSED
+    private static final java.lang.String LOG_TASK_CANCELLED_IMAGEAWARE_COLLECTED
+    private static final java.lang.String LOG_TASK_INTERRUPTED
+    private static final java.lang.String ERROR_PRE_PROCESSOR_NULL
+    private static final java.lang.String ERROR_POST_PROCESSOR_NULL
+    private static final java.lang.String ERROR_PROCESSOR_FOR_DISC_CACHE_NULL
+    private static final int BUFFER_SIZE
+com.nostra13.universalimageloader.core.ProcessAndDisplayImageTask:
+    private static final java.lang.String LOG_POSTPROCESS_IMAGE
+com.nostra13.universalimageloader.core.assist.FailReason:
+    37:37:public com.nostra13.universalimageloader.core.assist.FailReason$FailType getType()
+    42:42:public java.lang.Throwable getCause()
+com.nostra13.universalimageloader.core.assist.ImageSize:
+    private static final int TO_STRING_MAX_LENGHT
+    private static final java.lang.String SEPARATOR
+com.nostra13.universalimageloader.core.assist.deque.BlockingDeque:
+    public abstract void addFirst(java.lang.Object)
+    public abstract void addLast(java.lang.Object)
+    public abstract boolean offerFirst(java.lang.Object)
+    public abstract boolean offerLast(java.lang.Object)
+    public abstract void putFirst(java.lang.Object)
+    public abstract void putLast(java.lang.Object)
+    public abstract boolean offerFirst(java.lang.Object,long,java.util.concurrent.TimeUnit)
+    public abstract boolean offerLast(java.lang.Object,long,java.util.concurrent.TimeUnit)
+    public abstract java.lang.Object takeFirst()
+    public abstract java.lang.Object takeLast()
+    public abstract java.lang.Object pollFirst(long,java.util.concurrent.TimeUnit)
+    public abstract java.lang.Object pollLast(long,java.util.concurrent.TimeUnit)
+    public abstract boolean removeFirstOccurrence(java.lang.Object)
+    public abstract boolean removeLastOccurrence(java.lang.Object)
+    public abstract boolean add(java.lang.Object)
+    public abstract boolean offer(java.lang.Object)
+    public abstract void put(java.lang.Object)
+    public abstract boolean offer(java.lang.Object,long,java.util.concurrent.TimeUnit)
+    public abstract java.lang.Object remove()
+    public abstract java.lang.Object poll()
+    public abstract java.lang.Object take()
+    public abstract java.lang.Object poll(long,java.util.concurrent.TimeUnit)
+    public abstract java.lang.Object element()
+    public abstract java.lang.Object peek()
+    public abstract boolean remove(java.lang.Object)
+    public abstract boolean contains(java.lang.Object)
+    public abstract int size()
+    public abstract java.util.Iterator iterator()
+    public abstract void push(java.lang.Object)
+com.nostra13.universalimageloader.core.assist.deque.Deque:
+    public abstract void addFirst(java.lang.Object)
+    public abstract void addLast(java.lang.Object)
+    public abstract boolean offerFirst(java.lang.Object)
+    public abstract boolean offerLast(java.lang.Object)
+    public abstract java.lang.Object removeFirst()
+    public abstract java.lang.Object removeLast()
+    public abstract java.lang.Object pollFirst()
+    public abstract java.lang.Object pollLast()
+    public abstract java.lang.Object getFirst()
+    public abstract java.lang.Object getLast()
+    public abstract java.lang.Object peekFirst()
+    public abstract java.lang.Object peekLast()
+    public abstract boolean removeFirstOccurrence(java.lang.Object)
+    public abstract boolean removeLastOccurrence(java.lang.Object)
+    public abstract boolean add(java.lang.Object)
+    public abstract boolean offer(java.lang.Object)
+    public abstract java.lang.Object remove()
+    public abstract java.lang.Object poll()
+    public abstract java.lang.Object element()
+    public abstract java.lang.Object peek()
+    public abstract void push(java.lang.Object)
+    public abstract java.lang.Object pop()
+    public abstract boolean remove(java.lang.Object)
+    public abstract boolean contains(java.lang.Object)
+    public abstract int size()
+    public abstract java.util.Iterator iterator()
+    public abstract java.util.Iterator descendingIterator()
+com.nostra13.universalimageloader.core.assist.deque.LIFOLinkedBlockingDeque:
+    private static final long serialVersionUID
+com.nostra13.universalimageloader.core.assist.deque.LinkedBlockingDeque:
+    private static final long serialVersionUID
+    165:178:public LinkedBlockingDeque(java.util.Collection)
+    294:296:public void addFirst(java.lang.Object)
+    342:352:public void putFirst(java.lang.Object)
+    377:390:public boolean offerFirst(java.lang.Object,long,java.util.concurrent.TimeUnit)
+    430:432:public java.lang.Object removeLast()
+    446:451:public java.lang.Object pollLast()
+    469:477:public java.lang.Object takeLast()
+    501:513:public java.lang.Object pollLast(long,java.util.concurrent.TimeUnit)
+    530:532:public java.lang.Object getLast()
+    546:551:public java.lang.Object peekLast()
+    573:585:public boolean removeLastOccurrence(java.lang.Object)
+    738:739:public void push(java.lang.Object)
+    745:745:public java.lang.Object pop()
+    1007:1007:public java.util.Iterator descendingIterator()
+    1133:1146:private void writeObject(java.io.ObjectOutputStream)
+    1155:1167:private void readObject(java.io.ObjectInputStream)
+com.nostra13.universalimageloader.core.assist.deque.LinkedBlockingDeque$DescendingItr
+com.nostra13.universalimageloader.core.decode.BaseImageDecoder:
+    protected static final java.lang.String LOG_SABSAMPLE_IMAGE
+    protected static final java.lang.String LOG_SCALE_IMAGE
+    protected static final java.lang.String LOG_ROTATE_IMAGE
+    protected static final java.lang.String LOG_FLIP_IMAGE
+    protected static final java.lang.String ERROR_CANT_DECODE_IMAGE
+com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer
+com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer$RoundedDrawable
+com.nostra13.universalimageloader.core.display.RoundedVignetteBitmapDisplayer
+com.nostra13.universalimageloader.core.display.RoundedVignetteBitmapDisplayer$RoundedVignetteDrawable
+com.nostra13.universalimageloader.core.download.BaseImageDownloader:
+    public static final int DEFAULT_HTTP_CONNECT_TIMEOUT
+    public static final int DEFAULT_HTTP_READ_TIMEOUT
+    protected static final int BUFFER_SIZE
+    protected static final java.lang.String ALLOWED_URI_CHARS
+    protected static final int MAX_REDIRECT_COUNT
+    private static final java.lang.String ERROR_UNSUPPORTED_SCHEME
+    74:78:public BaseImageDownloader(android.content.Context,int,int)
+com.nostra13.universalimageloader.core.download.HttpClientImageDownloader
+com.nostra13.universalimageloader.core.imageaware.ImageNonViewAware
+com.nostra13.universalimageloader.core.imageaware.ImageViewAware:
+    public static final java.lang.String WARN_CANT_SET_DRAWABLE
+    public static final java.lang.String WARN_CANT_SET_BITMAP
+com.nostra13.universalimageloader.core.listener.PauseOnScrollListener
+com.nostra13.universalimageloader.core.listener.SyncImageLoadingListener
+com.nostra13.universalimageloader.utils.DiscCacheUtils
+com.nostra13.universalimageloader.utils.ImageSizeUtils:
+    private static final int DEFAULT_MAX_BITMAP_DIMENSION
+    45:46:private ImageSizeUtils()
+com.nostra13.universalimageloader.utils.IoUtils:
+    public static final int DEFAULT_BUFFER_SIZE
+    public static final int CONTINUE_LOADING_PERCENTAGE
+    36:37:private IoUtils()
+com.nostra13.universalimageloader.utils.L:
+    private static final java.lang.String LOG_FORMAT
+    32:33:private L()
+    37:38:public static void enableLogging()
+    42:43:public static void disableLogging()
+    66:67:public static varargs void e(java.lang.Throwable,java.lang.String,java.lang.Object[])
+com.nostra13.universalimageloader.utils.MemoryCacheUtils:
+    private static final java.lang.String URI_AND_SIZE_SEPARATOR
+    private static final java.lang.String WIDTH_AND_HEIGHT_SEPARATOR
+    38:39:private MemoryCacheUtils()
+    67:73:public static java.util.List findCachedBitmapsForImageUri(java.lang.String,com.nostra13.universalimageloader.cache.memory.MemoryCacheAware)
+    83:89:public static java.util.List findCacheKeysForImageUri(java.lang.String,com.nostra13.universalimageloader.cache.memory.MemoryCacheAware)
+    99:108:public static void removeFromCache(java.lang.String,com.nostra13.universalimageloader.cache.memory.MemoryCacheAware)
+com.nostra13.universalimageloader.utils.StorageUtils:
+    private static final java.lang.String EXTERNAL_STORAGE_PERMISSION
+    private static final java.lang.String INDIVIDUAL_DIR_NAME
+    38:39:private StorageUtils()
 com.nrs.utils.HttpAssistFile:
     private static final int TIME_OUT
     private static final java.lang.String CHARSET
@@ -2473,21 +4215,22 @@ com.xy.fy.main.MainActivity:
     private static final int RESULT
     private android.widget.Button download_version
     private android.widget.Button cancle_check
-    980:1025:private void rankListViewListener()
-    1367:1381:private int judgeCollegeId()
-    1388:1433:protected void chooseCollege()
-    1450:1455:private void refresh(int,int,int)
-    1461:1477:private void saveHistory()
-    1483:1494:private java.util.ArrayList readHistory2()
-    132:132:static synthetic int access$47()
-    138:138:static synthetic java.util.ArrayList access$48(com.xy.fy.main.MainActivity)
-    141:141:static synthetic android.widget.SimpleAdapter access$50(com.xy.fy.main.MainActivity)
-    112:112:static synthetic android.widget.Button access$52(com.xy.fy.main.MainActivity)
+    1004:1046:private void rankListViewListener()
+    1431:1444:private int judgeCollegeId()
+    1451:1492:protected void chooseCollege()
+    1508:1513:private void refresh(int,int,int)
+    1519:1535:private void saveHistory()
+    1541:1552:private java.util.ArrayList readHistory2()
+    136:136:static synthetic int access$51()
+    143:143:static synthetic android.widget.SimpleAdapter access$53(com.xy.fy.main.MainActivity)
+    115:115:static synthetic android.widget.Button access$55(com.xy.fy.main.MainActivity)
 com.xy.fy.main.MainActivity$24
 com.xy.fy.main.MainActivity$25
 com.xy.fy.main.MainActivity$25$1
-com.xy.fy.main.MainActivity$36
-com.xy.fy.main.MainActivity$37
+com.xy.fy.main.MainActivity$39
+com.xy.fy.main.MainActivity$40
+com.xy.fy.main.Manifest
+com.xy.fy.main.Manifest$permission
 com.xy.fy.main.R:
     10:10:public R()
 com.xy.fy.main.R$anim
@@ -2500,10 +4243,11 @@ com.xy.fy.main.R$drawable
 com.xy.fy.main.R$id
 com.xy.fy.main.R$integer
 com.xy.fy.main.R$layout
+com.xy.fy.main.R$raw
 com.xy.fy.main.R$string
 com.xy.fy.main.R$style
 com.xy.fy.main.R$styleable:
-    2654:2654:public R$styleable()
+    3189:3189:public R$styleable()
 com.xy.fy.singleton.Comment
 com.xy.fy.singleton.Message:
     3:3:public Message()
@@ -2551,6 +4295,8 @@ com.xy.fy.util.ConnectionUtil:
     38:74:private static boolean isFastMobileNetwork(android.content.Context)
     91:112:public static int getNetWorkType(android.content.Context)
 com.xy.fy.util.ExpressionUtil
+com.xy.fy.util.FileUtils:
+    7:7:public FileUtils()
 com.xy.fy.util.StaticVarUtil:
     public static final java.lang.String QUERY_SCORE
     public static final java.lang.String CHANGE_PW
@@ -2566,22 +4312,32 @@ com.xy.fy.util.StaticVarUtil:
     public static final int GET_PASSWORD_BACK2_END
     public static final int LOGIN_START
     public static final int LOGIN_END
+    public static final int MENU_BANG
+    public static final int MENU_BUKAO
+    public static final int MENU_PAIMING
+    public static final int MENU_CJ_TJ
+    public static final int MENU_IDEA_BACK
+    public static final int MENU_SETTING
+    public static final int MENU_ABOUT
+    public static final int SHARE
+    public static final int IDEA_BACK_TOAST
     public static final int START
     public static final int END_SUCCESS
     public static final int END_FAIL
+    public static final int MENU_CET
     public static final java.lang.String ACCOUNT
     public static final java.lang.String PASSWORD
     public static final java.lang.String USER_INFO
     public static final java.lang.String IS_REMEMBER
     29:29:public StaticVarUtil()
-    99:109:public static com.xy.fy.singleton.Student parseJsonToStudent(java.lang.String)
-    129:151:public static com.xy.fy.singleton.Message getItemMessage(java.lang.String)
-    161:175:public static java.util.ArrayList getAllMessage(java.lang.String)
-    184:189:public static void collect(int,android.content.Context)
-    199:204:public static boolean isCollect(int,android.content.Context)
-    215:221:public static boolean isPraised(int,android.content.Context)
-    230:235:public static void praise(int,android.content.Context)
-    244:260:public static java.util.ArrayList getAllComments(java.lang.String)
+    116:126:public static com.xy.fy.singleton.Student parseJsonToStudent(java.lang.String)
+    146:168:public static com.xy.fy.singleton.Message getItemMessage(java.lang.String)
+    178:191:public static java.util.ArrayList getAllMessage(java.lang.String)
+    200:205:public static void collect(int,android.content.Context)
+    215:220:public static boolean isCollect(int,android.content.Context)
+    231:237:public static boolean isPraised(int,android.content.Context)
+    246:251:public static void praise(int,android.content.Context)
+    260:276:public static java.util.ArrayList getAllComments(java.lang.String)
 com.xy.fy.util.ViewUtil:
     18:18:public ViewUtil()
     53:70:public static void showDialog(java.lang.String,java.lang.String,android.app.Activity)
@@ -2601,6 +4357,100 @@ com.xy.fy.view.HistoryCollege
 com.xy.fy.view.ToolClass:
     7:7:public ToolClass()
     300:302:public static void main(java.lang.String[])
+d.This
+e.From
+e.I:
+    34:34:public I()
+    529:534:public static int Code(int,int)
+    543:555:public static java.lang.String C(java.lang.String[])
+e.The:
+    11:11:public The()
+    14:31:public static final java.lang.String p(java.lang.String)
+e.This
+e.darkness:
+    26:26:public darkness()
+    249:256:public static void L(android.content.Context)
+e.i:
+    11:11:private i()
+    50:50:public static int e(java.lang.String,java.lang.String)
+e.madness:
+    32:32:public madness()
+    254:282:public static java.lang.String i(android.content.Context)
+    315:332:private static java.lang.String j(android.content.Context)
+    400:409:public static int k(android.content.Context)
+    420:437:public static boolean l(android.content.Context)
+    445:451:public static java.lang.String S(android.content.Context,java.lang.String)
+    484:499:public static java.lang.String Code(long)
+e.mine:
+    private android.content.Context mContext
+    android.app.NotificationManager bM
+    private android.content.Intent bN
+    android.app.Notification bO
+    android.app.PendingIntent bP
+    java.lang.String bQ
+    java.lang.String bR
+    private android.os.Handler handler
+    39:43:public mine(android.content.Context,java.lang.String)
+    99:122:public final void b()
+    139:187:public final void n(java.lang.String)
+    190:194:private void V(int,int)
+    124:124:static synthetic void Code(e.mine,int)
+    31:31:static synthetic android.content.Context Code(e.mine)
+    24:24:public mine()
+e.mine$1
+e.of:
+    7:7:public of()
+e.thing
+e.this:
+    162:162:public final long Code(java.lang.String,long)
+f.Tempest:
+    359:366:public static byte[] B(java.lang.String,java.lang.String)
+f.Though:
+    179:180:public final f.Though Code(f.yet)
+f.be:
+    117:126:public static long V(java.io.File)
+f.i:
+    28:29:public i(f.Tempest)
+f.method:
+    35:37:public method(java.lang.String)
+g.From:
+    private final f.this aW
+    private int dL
+    private final g.From$thing dM
+    private final java.util.HashMap dN
+    private final java.util.HashMap dO
+    private final android.os.Handler mHandler
+    private java.lang.Runnable cG
+    84:87:public From(f.this,g.From$thing)
+    188:235:public final g.From$of Code(java.lang.String,g.From$darkness,int,int)
+    431:462:private void Code(java.lang.String,g.From$This)
+    60:60:static synthetic java.util.HashMap Code(g.From)
+    252:252:static synthetic void Code(g.From,java.lang.String,android.graphics.Bitmap)
+    272:272:static synthetic void Code(g.From,java.lang.String,f.method)
+    67:67:static synthetic void Code(g.From,java.lang.Runnable)
+    39:39:public From()
+    53:53:public static boolean P()
+    135:139:public static android.util.Pair m(android.content.Context)
+    150:160:private static android.util.Pair n(android.content.Context)
+g.From$1
+g.From$2
+g.From$3
+g.From$This
+g.From$darkness
+g.From$of:
+    private android.graphics.Bitmap mBitmap
+    private final g.From$darkness dU
+    311:316:public From$of(g.From,android.graphics.Bitmap,java.lang.String,java.lang.String,g.From$darkness)
+    348:348:public final android.graphics.Bitmap getBitmap()
+    296:296:static synthetic g.From$darkness I(g.From$of)
+    294:294:static synthetic void Code(g.From$of,android.graphics.Bitmap)
+    32:32:public From$of()
+g.From$thing
+g.The
+h.darkness:
+    14:14:public darkness()
+j.This:
+    14:14:public This()
 javax.mail.AuthenticationFailedException:
     private static final long serialVersionUID
 javax.mail.EventQueue:
@@ -2908,6 +4758,38 @@ javax.mail.util.ByteArrayDataSource
 javax.mail.util.ByteArrayDataSource$DSByteArrayOutputStream
 javax.mail.util.SharedFileInputStream
 javax.mail.util.SharedFileInputStream$SharedFile
+l.This:
+    private static final long serialVersionUID
+m.From:
+    private static final long serialVersionUID
+m.Hamlet:
+    private static final long serialVersionUID
+m.I
+m.II:
+    private static final long serialVersionUID
+m.Tempest:
+    private static final long serialVersionUID
+m.The
+m.This:
+    private static final long serialVersionUID
+m.What:
+    private static final long serialVersionUID
+m.acknowledge
+m.darkness
+m.ii:
+    private static final long serialVersionUID
+m.mine:
+    private static final long serialVersionUID
+    25:27:public mine(java.lang.String)
+m.of
+m.t:
+    46:46:public final int getId()
+    62:62:public final int getWidth()
+    70:70:public final int getHeight()
+m.there:
+    64:64:public final java.lang.String aU()
+m.thing:
+    private static final long serialVersionUID
 myjava.awt.datatransfer.MimeTypeProcessor$MimeType:
     private static final long serialVersionUID
     241:242:void removeParameter(java.lang.String)
@@ -2918,6 +4800,23 @@ myjava.awt.datatransfer.Transferable:
     public abstract myjava.awt.datatransfer.DataFlavor[] getTransferDataFlavors()
 myjava.awt.datatransfer.UnsupportedFlavorException:
     private static final long serialVersionUID
+n.thing:
+    12:12:public thing()
+o.Tempest
+o.The
+o.This:
+    271:274:public final o.this Code(java.lang.String,int,com.bmob.btp.callback.ThumbnailListener)
+    310:312:public final o.this Code(com.bmob.video.BmobSliceTask,com.bmob.btp.callback.SubmitListener)
+    320:322:public final o.this Code(java.lang.String,com.bmob.btp.callback.VideoPlayListener)
+    330:332:public final o.this Code(m.I,com.bmob.btp.callback.CommonListener)
+    339:341:public final o.this Code(java.lang.String,com.bmob.btp.callback.GetAccessUrlListener)
+    347:349:public final o.this Code(java.lang.String,com.bmob.btp.callback.DeleteFileListener)
+o.Though
+o.V
+o.acknowledge
+o.i
+o.thing:
+    9:9:public thing()
 org.apache.harmony.misc.SystemUtils:
     public static final int OS_WINDOWS
     public static final int OS_LINUX
@@ -2926,3 +4825,101 @@ org.apache.harmony.misc.SystemUtils:
     public static final int ARC_IA64
     public static final int ARC_UNKNOWN
     23:23:public SystemUtils()
+q.acknowledge:
+    18:18:public acknowledge()
+    174:174:public static boolean j(int)
+q.of:
+    12:12:public of()
+q.thing:
+    12:12:public thing()
+r.This
+r.This$1
+r.This$2
+r.thing:
+    43:43:public final java.lang.String by()
+    49:53:public final java.lang.String getCacheThumbnailDir()
+    74:79:public final long bA()
+    84:90:public final void clearCache()
+    94:105:private void I(java.io.File)
+    120:120:public final java.io.File getThumbnail(java.lang.String)
+s.This:
+    290:300:public void postThumbnailSuccess(com.bmob.btp.callback.LocalThumbnailListener,java.lang.String)
+s.This$8
+t.This:
+    659:660:public final synchronized void bD()
+u.Tempest:
+    private static final long serialVersionUID
+u.This:
+    private static final long serialVersionUID
+    826:835:private void writeObject(java.io.ObjectOutputStream)
+    842:853:private void readObject(java.io.ObjectInputStream)
+u.Though:
+    private static final long serialVersionUID
+uk.co.senab.photoview.Compat:
+    private static final int SIXTY_FPS_INTERVAL
+    25:25:public Compat()
+uk.co.senab.photoview.IPhotoView
+uk.co.senab.photoview.PhotoView:
+    62:62:public boolean canZoom()
+    77:77:public boolean setDisplayMatrix(android.graphics.Matrix)
+    213:214:public void setScale(float,boolean)
+    218:219:public void setScale(float,float,float,boolean)
+uk.co.senab.photoview.PhotoViewAttacher:
+    private static final java.lang.String LOG_TAG
+    static final int ZOOM_DURATION
+    static final int EDGE_NONE
+    static final int EDGE_LEFT
+    static final int EDGE_RIGHT
+    static final int EDGE_BOTH
+    public static final float DEFAULT_MAX_SCALE
+    public static final float DEFAULT_MID_SCALE
+    public static final float DEFAULT_MIN_SCALE
+    192:192:public final boolean canZoom()
+    245:259:public boolean setDisplayMatrix(android.graphics.Matrix)
+    292:292:public float getMinScale()
+    303:303:public float getMidScale()
+    314:314:public float getMaxScale()
+    543:544:public void setMinScale(float)
+    555:556:public void setMidScale(float)
+    567:568:public void setMaxScale(float)
+    673:673:public android.graphics.Matrix getDisplayMatrix()
+uk.co.senab.photoview.gestures.CupcakeGestureDetector:
+    private static final java.lang.String LOG_TAG
+uk.co.senab.photoview.gestures.EclairGestureDetector:
+    private static final int INVALID_POINTER_ID
+uk.co.senab.photoview.gestures.VersionedGestureDetector:
+    22:22:public VersionedGestureDetector()
+uk.co.senab.photoview.log.LogManager:
+    23:23:public LogManager()
+    28:29:public static void setLogger(uk.co.senab.photoview.log.Logger)
+uk.co.senab.photoview.log.Logger:
+    public abstract int v(java.lang.String,java.lang.String)
+    public abstract int v(java.lang.String,java.lang.String,java.lang.Throwable)
+    public abstract int d(java.lang.String,java.lang.String,java.lang.Throwable)
+    public abstract int i(java.lang.String,java.lang.String,java.lang.Throwable)
+    public abstract int w(java.lang.String,java.lang.String)
+    public abstract int w(java.lang.String,java.lang.String,java.lang.Throwable)
+    public abstract int e(java.lang.String,java.lang.String)
+    public abstract int e(java.lang.String,java.lang.String,java.lang.Throwable)
+uk.co.senab.photoview.log.LoggerDefault:
+    27:27:public int v(java.lang.String,java.lang.String)
+    32:32:public int v(java.lang.String,java.lang.String,java.lang.Throwable)
+    42:42:public int d(java.lang.String,java.lang.String,java.lang.Throwable)
+    52:52:public int i(java.lang.String,java.lang.String,java.lang.Throwable)
+    57:57:public int w(java.lang.String,java.lang.String)
+    62:62:public int w(java.lang.String,java.lang.String,java.lang.Throwable)
+    67:67:public int e(java.lang.String,java.lang.String)
+    72:72:public int e(java.lang.String,java.lang.String,java.lang.Throwable)
+vi.com.gdi.bgl.android.java.EnvDrawText
+vi.com.gdi.bgl.android.java.a
+y.This
+y.This$This
+y.This$darkness
+y.This$of
+y.This$thing
+z.ii:
+    private static final long serialVersionUID
+z.method:
+    static final long serialVersionUID
+z.yet:
+    private static final long serialVersionUID

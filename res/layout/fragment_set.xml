@@ -199,6 +199,7 @@
         android:layout_width="fill_parent"
         android:layout_height="45dp"
         android:layout_margin="@dimen/activity_vertical_margin"
-        android:text="@string/logout" />
+        android:text="@string/logout"
+        android:visibility="gone" />
 
 </LinearLayout>
