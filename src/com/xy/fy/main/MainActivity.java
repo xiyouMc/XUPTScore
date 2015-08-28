@@ -40,6 +40,7 @@ import com.xy.fy.adapter.ChooseHistorySchoolExpandAdapter;
 import com.xy.fy.adapter.ChooseSchoolExpandAdapter;
 import com.xy.fy.util.BitmapUtil;
 import com.xy.fy.util.ShareUtil;
+import com.xy.fy.util.ShortcutUtils;
 import com.xy.fy.util.StaticVarUtil;
 import com.xy.fy.util.TestArrayAdapter;
 import com.xy.fy.util.ViewUtil;
@@ -67,7 +68,9 @@ import android.os.Message;
 import android.provider.MediaStore;
 import android.telephony.TelephonyManager;
 import android.text.Editable;
+import android.text.Html;
 import android.text.TextWatcher;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -100,6 +103,8 @@ import cn.bmob.im.inteface.EventListener;
 import cn.sharesdk.onekeyshare.OnekeyShare;
 
 public class MainActivity extends BaseActivity implements EventListener {
+  
+  private final static String TAG  = "MainActivity";
   private static int requestTimes = 0;
   private static OnekeyShare share;
   private static ShareUtil shareUtil;
@@ -137,7 +142,7 @@ public class MainActivity extends BaseActivity implements EventListener {
   private TextView nameText;
   private TextView rankScoreText;
   private HashMap<String, String> allRankMap = new HashMap<String, String>();// 所有学年和学期的成绩
-    private AutoCompleteTextView search_edittext;
+  private AutoCompleteTextView search_edittext;
   private SimpleAdapter simpleAdapter;
   private String score_json;// json数据
   private static boolean isFirstListView = true;
@@ -158,6 +163,16 @@ public class MainActivity extends BaseActivity implements EventListener {
     super.onCreate(savedInstanceState);
     requestWindowFeature(Window.FEATURE_NO_TITLE);
     super.setContentView(R.layout.activity_main);
+    
+    //创建快捷方式
+    final Intent launchIntent = getIntent();  
+    final String action = launchIntent.getAction(); 
+    if (Intent.ACTION_CREATE_SHORTCUT.equals(action)) {  
+        Log.i(TAG, "create shortcut method one---------------- ");  
+        setResult(RESULT_OK, ShortcutUtils.getShortcutToDesktopIntent(MainActivity.this));  
+          
+        finish();  
+    }   
 
     BadgeUtil.resetBadgeCount(getApplicationContext());
     CheckVersionAsyntask checkVersionAsyntask = new CheckVersionAsyntask();
@@ -549,11 +564,7 @@ public class MainActivity extends BaseActivity implements EventListener {
     menuMyBukao.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
-        if (BmobDB.create(getApplicationContext()).hasUnReadMsg()||!isShowTip) {
-          bukao_tip.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-          isShowTip = true;
-        }
-        
+
         setMenuItemState(menuBang, false, menuMyBukao, true, menuMyCjTongji, false, menuMyCET,
             false, menuMyPaiming, false, menuIdea_back, false, menuSetting, false, menuAbout,
             false);
@@ -561,10 +572,22 @@ public class MainActivity extends BaseActivity implements EventListener {
         // 判断如果没有头像的话，先让选择头像，并填写昵称
         // 暂且跳转到好友列表
         // showToast("程序猿们正在努力开发中，请持续关注...");
+        new Thread(new Runnable() {
+          @Override
+          public void run() {
+            // TODO Auto-generated method stub
+            try {
+              Thread.sleep(300);
+            } catch (InterruptedException e) {
+              // TODO Auto-generated catch block
+              e.printStackTrace();
+            }
+            Message msg = new Message();
+            msg.what = StaticVarUtil.BMOB_CHAT;
+            mHandler.sendMessage(msg);
+          }
+        }).start();
 
-        Intent intent = new Intent();
-        intent.setClass(getApplicationContext(), SplashActivity.class);
-        startActivity(intent);
         /*
          * setMenuItemState(menuBang, false, menuMyBukao, true, menuMyPaiming, false, menuIdea_back,
          * false, menuSetting, false, menuAbout, false); slidingMenu.toggle();// 页面跳转
@@ -744,16 +767,11 @@ public class MainActivity extends BaseActivity implements EventListener {
         showDialogSaveQrcode();
       }
     });
-    findViewById(R.id.guanwang).setOnClickListener(new OnClickListener() {
-
-      @Override
-      public void onClick(View arg0) {
-        // TODO Auto-generated method stub
-        Uri uri = Uri.parse("http://www.xiyoumobile.com");
-        Intent it = new Intent(Intent.ACTION_VIEW, uri);
-        startActivity(it);
-      }
-    });
+    TextView guanwang = (TextView) findViewById(R.id.ip);
+    String ip = "http://www.xiyoumobile.com";
+    CharSequence cs = Html.fromHtml(ip);
+    guanwang.setText(cs);
+    guanwang.setMovementMethod(LinkMovementMethod.getInstance());
     findViewById(R.id.email).setOnClickListener(new OnClickListener() {
 
       @Override
@@ -1239,7 +1257,16 @@ public class MainActivity extends BaseActivity implements EventListener {
         }
       }
     });
+    Button searchCet = (Button) findViewById(R.id.butForgetCet);
+    searchCet.setOnClickListener(new OnClickListener() {
 
+      @Override
+      public void onClick(View arg0) {
+        // TODO Auto-generated method stub
+        Intent intent = new Intent(getApplicationContext(), ForgetCetActivity.class);
+        startActivity(intent);
+      }
+    });
   }
 
   /*
@@ -1899,8 +1926,8 @@ public class MainActivity extends BaseActivity implements EventListener {
         }
       }
       // 获取 之前求得的固定 个数的item。 防止数据量太大，而导致的将所有数据都显示出来。
-      for (int i = 0; i < (lsitItemSum > RankUtils.allRankArrayList.size() ? RankUtils.allRankArrayList.size()
-          : lsitItemSum); i++) {
+      for (int i = 0; i < (lsitItemSum > RankUtils.allRankArrayList.size()
+          ? RankUtils.allRankArrayList.size() : lsitItemSum); i++) {
         RankUtils.showRankArrayList.add(RankUtils.allRankArrayList.get(i));
       }
       if (isFirst) {
@@ -1986,7 +2013,17 @@ public class MainActivity extends BaseActivity implements EventListener {
       case StaticVarUtil.IDEA_BACK_TOAST:
         ViewUtil.showToast(getApplicationContext(), "感谢反馈");
         break;
-      case 10:
+
+      case StaticVarUtil.BMOB_CHAT:
+        if (BmobDB.create(getApplicationContext()).hasUnReadMsg() || !isShowTip) {
+          bukao_tip.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+          isShowTip = true;
+        }
+        Intent intent = new Intent();
+        intent.setClass(getApplicationContext(), SplashActivity.class);
+        startActivity(intent);
+        break;
+      case StaticVarUtil.CHECK_VERSION:
         CheckVersionAsyntask checkVersionAsyntask = new CheckVersionAsyntask();
         checkVersionAsyntask.execute();
         break;
@@ -2228,7 +2265,5 @@ public class MainActivity extends BaseActivity implements EventListener {
   @Override
   public void onReaded(String arg0, String arg1) {
     // TODO Auto-generated method stub
-
-  }
-
+    }
 }

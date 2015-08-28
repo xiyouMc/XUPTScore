@@ -1,20 +1,21 @@
 package com.xy.fy.main;
 
+import com.mc.util.CrashHandler;
+import com.mc.util.H5Log;
+import com.mc.util.HttpUtilMc;
+import com.mc.util.Util;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
-
-import com.mc.util.CrashHandler;
-import com.mc.util.H5Log;
-import com.mc.util.HttpUtilMc;
-import com.mc.util.Util;
 
 public class WelcomeActivity extends Activity {
   @Override
@@ -59,8 +60,9 @@ public class WelcomeActivity extends Activity {
     @Override
     protected String doInBackground(String... params) {
       // TODO Auto-generated method stub
-      return HttpUtilMc.IsReachIP() ? HttpUtilMc.queryStringForPost(HttpUtilMc.BASE_URL
-          + "GetPollImageTimeIspoll") : HttpUtilMc.CONNECT_EXCEPTION;
+      return HttpUtilMc.IsReachIP()
+          ? HttpUtilMc.queryStringForPost(HttpUtilMc.BASE_URL + "GetPollImageTimeIspoll")
+          : HttpUtilMc.CONNECT_EXCEPTION;
     }
 
     @Override
