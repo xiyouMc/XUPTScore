@@ -2285,9 +2285,14 @@ public class MainActivity extends BaseActivity implements EventListener {
     if (currentTabIndex != index) {
       FragmentTransaction trx = getSupportFragmentManager().beginTransaction();
       trx.hide(fragments[currentTabIndex]);
-      if (!fragments[index].isAdded()&&index != 1) {
-          trx.add(R.id.fragment_container, fragments[index]);
-      }
+//      if (!fragments[index].isAdded()) {
+//        try {
+//          trx.add(R.id.fragment_container, fragments[index]);
+//        } catch (Exception e) {
+//          // TODO: handle exception
+//        }
+//         
+//      }
       trx.show(fragments[index]).commit();
     }
     mTabs[currentTabIndex].setSelected(false);
