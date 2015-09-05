@@ -2161,6 +2161,7 @@ public class MainActivity extends BaseActivity implements EventListener {
     // BmobIM SDK初始化--只需要这一段代码即可完成初始化
     // 请到Bmob官网(http://www.bmob.cn/)申请ApplicationId,具体地址:http://docs.bmob.cn/android/faststart/index.html?menukey=fast_start&key=start_android
     BmobChat.getInstance(this).init(Config.applicationId);
+    dialog.show();
     // 开启定位
     initLocClient();
     // 注册地图 SDK 广播监听者
@@ -2169,7 +2170,6 @@ public class MainActivity extends BaseActivity implements EventListener {
     iFilter.addAction(SDKInitializer.SDK_BROADCAST_ACTION_STRING_NETWORK_ERROR);
     mReceiver = new BaiduReceiver();
     registerReceiver(mReceiver, iFilter);
-    dialog.show();
     if (userManager.getCurrentUser() != null) {
       // 每次自动登陆的时候就需要更新下当前位置和好友的资料，因为好友的头像，昵称啥的是经常变动的
       File file = new File(StaticVarUtil.PATH, StaticVarUtil.student.getAccount() + ".JPEG");
@@ -2240,26 +2240,20 @@ public class MainActivity extends BaseActivity implements EventListener {
     // 把第一个tab设为选中状态
     mTabs[0].setSelected(true);
   }
-  
+
   private void initTab() {
     contactFragment = new ContactFragment();
     recentFragment = new RecentFragment();
     settingFragment = new SettingsFragment();
     fragments = new Fragment[] { recentFragment, contactFragment, settingFragment };
     // 添加显示第一个fragment
-    try {
-      if (!contactFragment.isAdded()) {
-        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, recentFragment)
+    getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, recentFragment)
         .add(R.id.fragment_container, contactFragment).hide(contactFragment).show(recentFragment)
         .commitAllowingStateLoss();
-      }
-    } catch (Exception e) {
-      // TODO: handle exception
-    }
-//    while (contactFragment.isAdded()) {
-      dialog.dismiss();
-//      break;
-//    }
+    // while (contactFragment.isAdded()) {
+    // break;
+    // }
+    dialog.dismiss();
   }
 
   /**
@@ -2285,14 +2279,9 @@ public class MainActivity extends BaseActivity implements EventListener {
     if (currentTabIndex != index) {
       FragmentTransaction trx = getSupportFragmentManager().beginTransaction();
       trx.hide(fragments[currentTabIndex]);
-//      if (!fragments[index].isAdded()) {
-//        try {
-//          trx.add(R.id.fragment_container, fragments[index]);
-//        } catch (Exception e) {
-//          // TODO: handle exception
-//        }
-//         
-//      }
+      if (!fragments[index].isAdded()) {
+        trx.add(R.id.fragment_container, fragments[index]);
+      }
       trx.show(fragments[index]).commit();
     }
     mTabs[currentTabIndex].setSelected(false);

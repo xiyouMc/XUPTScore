@@ -38,6 +38,7 @@ import com.mc.util.H5Toast;
 import com.xy.fy.main.R;
 import com.xy.fy.util.FileUtils;
 import com.xy.fy.util.StaticVarUtil;
+import com.xy.fy.util.ViewUtil;
 
 /**
  * 基类
@@ -200,6 +201,8 @@ public class BaseActivity extends FragmentActivity {
    */
   public void updateUserInfos() {
     // 更新地理位置信息
+    final ProgressDialog dialog = ViewUtil.getProgressDialog(this, "正在加载联系人...");
+    dialog.show();
     updateUserLocation();
     // 查询该用户的好友列表(这个好友列表是去除黑名单用户的哦),目前支持的查询好友个数为100，如需修改请在调用这个方法前设置BmobConfig.LIMIT_CONTACTS即可。
     // 这里默认采取的是登陆成功之后即将好于列表存储到数据库中，并更新到当前内存中,
@@ -213,6 +216,7 @@ public class BaseActivity extends FragmentActivity {
         } else {
           ShowLog("查询好友列表失败：" + arg1);
         }
+        dialog.cancel();;
       }
 
       @Override
@@ -220,6 +224,7 @@ public class BaseActivity extends FragmentActivity {
         // TODO Auto-generated method stub
         // 保存到application中方便比较
         CustomApplcation.getInstance().setContactList(CollectionUtils.list2map(arg0));
+        dialog.cancel();
       }
     });
   }
