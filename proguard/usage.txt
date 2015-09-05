@@ -2526,17 +2526,10 @@ com.bmob.im.demo.ui.ImageBrowserActivity:
     android.widget.LinearLayout layout_image
 com.bmob.im.demo.ui.LocationActivity:
     com.baidu.mapapi.map.BitmapDescriptor mCurrentMarker
-com.bmob.im.demo.ui.LoginActivity:
-    cn.bmob.im.bean.BmobChatUser currentUser
 com.bmob.im.demo.ui.MainActivity:
     private static long firstTime
-com.bmob.im.demo.ui.RegisterActivity:
-    cn.bmob.im.bean.BmobChatUser currentUser
 com.bmob.im.demo.ui.SetMyInfoActivity:
     android.graphics.Bitmap newBitmap
-com.bmob.im.demo.ui.SplashActivity:
-    private static final int GO_HOME
-    private static final int GO_LOGIN
 com.bmob.im.demo.ui.fragment.ContactFragment:
     android.widget.TextView tv_new_name
 com.bmob.im.demo.util.CharacterParser:
@@ -3516,32 +3509,29 @@ com.xy.fy.adapter.CommentAdapter$ViewHolder
 com.xy.fy.main.BuildConfig
 com.xy.fy.main.MainActivity:
     private static final java.lang.String TAG
-    private android.widget.Button chooseCollege
-    private android.widget.Button chooseMsgKind
-    private android.widget.Button chooseMsgSort
     private static final int DEFAULTITEMSUM
     private static final int PIC
     private static final int PHO
     private static final int RESULT
-    private android.widget.Button download_version
-    private android.widget.Button cancle_check
+    private android.widget.Button chooseCollege
+    private android.widget.Button chooseMsgKind
+    private android.widget.Button chooseMsgSort
     private static final int GO_HOME
     private static final int GO_LOGIN
-    private static long firstTime
-    1054:1096:private void rankListViewListener()
-    1481:1494:private int judgeCollegeId()
-    1501:1542:protected void chooseCollege()
+    1055:1097:private void rankListViewListener()
+    1482:1495:private int judgeCollegeId()
+    1503:1544:protected void chooseCollege()
     1558:1563:private void refresh(int,int,int)
     1569:1585:private void saveHistory()
     1591:1602:private java.util.ArrayList readHistory2()
-    169:169:static synthetic int access$54()
-    176:176:static synthetic android.widget.SimpleAdapter access$56(com.xy.fy.main.MainActivity)
-    148:148:static synthetic android.widget.Button access$58(com.xy.fy.main.MainActivity)
+    146:146:static synthetic int access$54()
+    181:181:static synthetic android.widget.SimpleAdapter access$56(com.xy.fy.main.MainActivity)
+    154:154:static synthetic android.widget.Button access$58(com.xy.fy.main.MainActivity)
+com.xy.fy.main.MainActivity$24
 com.xy.fy.main.MainActivity$25
-com.xy.fy.main.MainActivity$26
-com.xy.fy.main.MainActivity$26$1
+com.xy.fy.main.MainActivity$25$1
+com.xy.fy.main.MainActivity$39
 com.xy.fy.main.MainActivity$40
-com.xy.fy.main.MainActivity$41
 com.xy.fy.main.Manifest
 com.xy.fy.main.Manifest$permission
 com.xy.fy.main.R:
@@ -3560,7 +3550,7 @@ com.xy.fy.main.R$raw
 com.xy.fy.main.R$string
 com.xy.fy.main.R$style
 com.xy.fy.main.R$styleable:
-    3061:3061:public R$styleable()
+    3063:3063:public R$styleable()
 com.xy.fy.singleton.Comment
 com.xy.fy.singleton.Message:
     3:3:public Message()

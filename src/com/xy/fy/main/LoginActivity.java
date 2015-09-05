@@ -9,12 +9,10 @@ import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -47,7 +45,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.mc.db.DBConnection;
@@ -55,9 +52,7 @@ import com.mc.db.DBConnection.UserSchema;
 import com.mc.util.CircleImageView;
 import com.mc.util.HttpUtilMc;
 import com.mc.util.SystemBarTintManager;
-import com.mc.util.SystemBarTintManager.SystemBarConfig;
 import com.mc.util.Util;
-import com.mc.util.VersionUpdate;
 import com.xy.fy.util.BitmapUtil;
 import com.xy.fy.util.ConnectionUtil;
 import com.xy.fy.util.StaticVarUtil;
@@ -201,7 +196,8 @@ public class LoginActivity extends Activity {
 
   };
 
-  private void setTranslucentStatus(boolean on) {
+  @SuppressLint("InlinedApi")
+private void setTranslucentStatus(boolean on) {
     Window win = getWindow();
     WindowManager.LayoutParams winParams = win.getAttributes();
     final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
@@ -320,7 +316,8 @@ public class LoginActivity extends Activity {
   /**
    * 找到控件ID
    */
-  private void findViewById() {
+  @SuppressLint("SdCardPath")
+private void findViewById() {
     if (Util.isExternalStorageWritable()) {
       StaticVarUtil.PATH = "/sdcard/xuptscore/";// 设置文件目录
     } else {

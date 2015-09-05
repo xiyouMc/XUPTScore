@@ -10554,9 +10554,6 @@ com.bmob.im.demo.ui.ImageBrowserActivity
 com.bmob.im.demo.ui.ImageBrowserActivity: ImageBrowserActivity()
 com.bmob.im.demo.ui.LocationActivity
 com.bmob.im.demo.ui.LocationActivity: LocationActivity()
-com.bmob.im.demo.ui.LoginActivity
-com.bmob.im.demo.ui.LoginActivity: LoginActivity()
-com.bmob.im.demo.ui.LoginActivity: void onClick(android.view.View)
 com.bmob.im.demo.ui.MainActivity
 com.bmob.im.demo.ui.MainActivity: MainActivity()
 com.bmob.im.demo.ui.MainActivity: void onTabSelect(android.view.View)
@@ -10564,13 +10561,9 @@ com.bmob.im.demo.ui.NearPeopleActivity
 com.bmob.im.demo.ui.NearPeopleActivity: NearPeopleActivity()
 com.bmob.im.demo.ui.NewFriendActivity
 com.bmob.im.demo.ui.NewFriendActivity: NewFriendActivity()
-com.bmob.im.demo.ui.RegisterActivity
-com.bmob.im.demo.ui.RegisterActivity: RegisterActivity()
 com.bmob.im.demo.ui.SetMyInfoActivity
 com.bmob.im.demo.ui.SetMyInfoActivity: SetMyInfoActivity()
 com.bmob.im.demo.ui.SetMyInfoActivity: void onClick(android.view.View)
-com.bmob.im.demo.ui.SplashActivity
-com.bmob.im.demo.ui.SplashActivity: SplashActivity()
 com.bmob.im.demo.ui.TestActivity
 com.bmob.im.demo.ui.TestActivity: TestActivity()
 com.bmob.im.demo.ui.UpdateInfoActivity
@@ -13022,6 +13015,7 @@ com.xy.fy.main.R$color: int royalblue
 com.xy.fy.main.R$color: int saddlebrown
 com.xy.fy.main.R$color: int salmon
 com.xy.fy.main.R$color: int sandybrown
+com.xy.fy.main.R$color: int score_transparent
 com.xy.fy.main.R$color: int seagreen
 com.xy.fy.main.R$color: int seashell
 com.xy.fy.main.R$color: int setting_translucent_bg
@@ -13541,7 +13535,6 @@ com.xy.fy.main.R$drawable: int icon_set_normal
 com.xy.fy.main.R$drawable: int icon_set_press
 com.xy.fy.main.R$drawable: int iconfont_iconfontcolor51
 com.xy.fy.main.R$drawable: int iconfont_pdf
-com.xy.fy.main.R$drawable: int iconfont_tianjia
 com.xy.fy.main.R$drawable: int iconfont_txt
 com.xy.fy.main.R$drawable: int iconfont_uploading
 com.xy.fy.main.R$drawable: int iconfont_wenjian

@@ -2,7 +2,6 @@ package com.xy.fy.main;
 
 import com.mc.util.CrashHandler;
 import com.mc.util.H5Log;
-import com.mc.util.H5Toast;
 import com.mc.util.HttpUtilMc;
 import com.mc.util.Util;
 import android.annotation.SuppressLint;

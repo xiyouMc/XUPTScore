@@ -16668,29 +16668,6 @@ com.bmob.im.demo.ui.LocationActivity$BaiduReceiver -> com.bmob.im.demo.ui.aj:
 com.bmob.im.demo.ui.LocationActivity$MyLocationListenner -> com.bmob.im.demo.ui.ak:
     com.bmob.im.demo.ui.LocationActivity this$0 -> a
     void onReceiveLocation(com.baidu.location.BDLocation) -> a
-com.bmob.im.demo.ui.LoginActivity -> com.bmob.im.demo.ui.LoginActivity:
-    android.widget.EditText et_username -> n
-    android.widget.EditText et_password -> o
-    android.widget.Button btn_login -> p
-    android.widget.TextView btn_register -> q
-    com.bmob.im.demo.ui.LoginActivity$MyBroadcastReceiver receiver -> r
-    void onCreate(android.os.Bundle) -> onCreate
-    void init() -> f
-    void onClick(android.view.View) -> onClick
-    void login() -> g
-    void onDestroy() -> onDestroy
-com.bmob.im.demo.ui.LoginActivity$1 -> com.bmob.im.demo.ui.al:
-    com.bmob.im.demo.ui.LoginActivity this$0 -> a
-    android.app.ProgressDialog val$progress -> b
-    void onSuccess() -> onSuccess
-    void onFailure(int,java.lang.String) -> onFailure
-com.bmob.im.demo.ui.LoginActivity$1$1 -> com.bmob.im.demo.ui.am:
-    com.bmob.im.demo.ui.LoginActivity$1 this$1 -> a
-    android.app.ProgressDialog val$progress -> b
-    void run() -> run
-com.bmob.im.demo.ui.LoginActivity$MyBroadcastReceiver -> com.bmob.im.demo.ui.an:
-    com.bmob.im.demo.ui.LoginActivity this$0 -> a
-    void onReceive(android.content.Context,android.content.Intent) -> onReceive
 com.bmob.im.demo.ui.MainActivity -> com.bmob.im.demo.ui.MainActivity:
     android.widget.Button[] mTabs -> s
     com.bmob.im.demo.ui.fragment.ContactFragment contactFragment -> t
@@ -16724,10 +16701,10 @@ com.bmob.im.demo.ui.MainActivity -> com.bmob.im.demo.ui.MainActivity:
     void onDestroy() -> onDestroy
     void access$0(com.bmob.im.demo.ui.MainActivity,cn.bmob.im.bean.BmobMsg) -> a
     void access$1(com.bmob.im.demo.ui.MainActivity,cn.bmob.im.bean.BmobInvitation) -> a
-com.bmob.im.demo.ui.MainActivity$NewBroadcastReceiver -> com.bmob.im.demo.ui.ao:
+com.bmob.im.demo.ui.MainActivity$NewBroadcastReceiver -> com.bmob.im.demo.ui.al:
     com.bmob.im.demo.ui.MainActivity this$0 -> a
     void onReceive(android.content.Context,android.content.Intent) -> onReceive
-com.bmob.im.demo.ui.MainActivity$TagBroadcastReceiver -> com.bmob.im.demo.ui.ap:
+com.bmob.im.demo.ui.MainActivity$TagBroadcastReceiver -> com.bmob.im.demo.ui.am:
     com.bmob.im.demo.ui.MainActivity this$0 -> a
     void onReceive(android.content.Context,android.content.Intent) -> onReceive
 com.bmob.im.demo.ui.NearPeopleActivity -> com.bmob.im.demo.ui.NearPeopleActivity:
@@ -16751,16 +16728,16 @@ com.bmob.im.demo.ui.NearPeopleActivity -> com.bmob.im.demo.ui.NearPeopleActivity
     void access$0(com.bmob.im.demo.ui.NearPeopleActivity) -> a
     void access$1(com.bmob.im.demo.ui.NearPeopleActivity) -> b
     void access$2(com.bmob.im.demo.ui.NearPeopleActivity,int) -> a
-com.bmob.im.demo.ui.NearPeopleActivity$1 -> com.bmob.im.demo.ui.aq:
+com.bmob.im.demo.ui.NearPeopleActivity$1 -> com.bmob.im.demo.ui.an:
     com.bmob.im.demo.ui.NearPeopleActivity this$0 -> a
     boolean val$isUpdate -> b
     void onSuccess(java.util.List) -> onSuccess
     void onError(int,java.lang.String) -> onError
-com.bmob.im.demo.ui.NearPeopleActivity$2 -> com.bmob.im.demo.ui.ar:
+com.bmob.im.demo.ui.NearPeopleActivity$2 -> com.bmob.im.demo.ui.ao:
     com.bmob.im.demo.ui.NearPeopleActivity this$0 -> a
     void onSuccess(java.util.List) -> onSuccess
     void onError(int,java.lang.String) -> onError
-com.bmob.im.demo.ui.NearPeopleActivity$3 -> com.bmob.im.demo.ui.as:
+com.bmob.im.demo.ui.NearPeopleActivity$3 -> com.bmob.im.demo.ui.ap:
     com.bmob.im.demo.ui.NearPeopleActivity this$0 -> a
     void onSuccess(int) -> onSuccess
     void onFailure(int,java.lang.String) -> onFailure
@@ -16775,28 +16752,11 @@ com.bmob.im.demo.ui.NewFriendActivity -> com.bmob.im.demo.ui.NewFriendActivity:
     void deleteInvite(int,cn.bmob.im.bean.BmobInvitation) -> b
     void onDestroy() -> onDestroy
     void access$0(com.bmob.im.demo.ui.NewFriendActivity,int,cn.bmob.im.bean.BmobInvitation) -> a
-com.bmob.im.demo.ui.NewFriendActivity$1 -> com.bmob.im.demo.ui.at:
+com.bmob.im.demo.ui.NewFriendActivity$1 -> com.bmob.im.demo.ui.aq:
     com.bmob.im.demo.ui.NewFriendActivity this$0 -> a
     int val$position -> b
     cn.bmob.im.bean.BmobInvitation val$invite -> c
     void onClick(android.content.DialogInterface,int) -> onClick
-com.bmob.im.demo.ui.RegisterActivity -> com.bmob.im.demo.ui.RegisterActivity:
-    android.widget.Button btn_register -> n
-    android.widget.EditText et_username -> o
-    android.widget.EditText et_password -> p
-    android.widget.EditText et_email -> q
-    void onCreate(android.os.Bundle) -> onCreate
-    void register() -> f
-    void access$0(com.bmob.im.demo.ui.RegisterActivity) -> a
-com.bmob.im.demo.ui.RegisterActivity$1 -> com.bmob.im.demo.ui.au:
-    com.bmob.im.demo.ui.RegisterActivity this$0 -> a
-    void onClick(android.view.View) -> onClick
-com.bmob.im.demo.ui.RegisterActivity$2 -> com.bmob.im.demo.ui.av:
-    com.bmob.im.demo.ui.RegisterActivity this$0 -> a
-    android.app.ProgressDialog val$progress -> b
-    com.bmob.im.demo.bean.User val$bu -> c
-    void onSuccess() -> onSuccess
-    void onFailure(int,java.lang.String) -> onFailure
 com.bmob.im.demo.ui.SetMyInfoActivity -> com.bmob.im.demo.ui.SetMyInfoActivity:
     android.widget.TextView tv_set_name -> n
     android.widget.TextView tv_set_nick -> o
@@ -16845,98 +16805,52 @@ com.bmob.im.demo.ui.SetMyInfoActivity -> com.bmob.im.demo.ui.SetMyInfoActivity:
     void access$1(com.bmob.im.demo.ui.SetMyInfoActivity,int) -> a
     void access$2(com.bmob.im.demo.ui.SetMyInfoActivity,java.lang.String) -> a
     void access$3(com.bmob.im.demo.ui.SetMyInfoActivity,java.lang.String) -> b
-com.bmob.im.demo.ui.SetMyInfoActivity$1 -> com.bmob.im.demo.ui.aw:
+com.bmob.im.demo.ui.SetMyInfoActivity$1 -> com.bmob.im.demo.ui.ar:
     com.bmob.im.demo.ui.SetMyInfoActivity this$0 -> a
     void onError(int,java.lang.String) -> onError
     void onSuccess(java.util.List) -> onSuccess
-com.bmob.im.demo.ui.SetMyInfoActivity$10 -> com.bmob.im.demo.ui.ax:
+com.bmob.im.demo.ui.SetMyInfoActivity$10 -> com.bmob.im.demo.ui.as:
     com.bmob.im.demo.ui.SetMyInfoActivity this$0 -> a
     java.lang.String val$url -> b
     void onSuccess() -> onSuccess
     void onFailure(int,java.lang.String) -> onFailure
-com.bmob.im.demo.ui.SetMyInfoActivity$2 -> com.bmob.im.demo.ui.ay:
+com.bmob.im.demo.ui.SetMyInfoActivity$2 -> com.bmob.im.demo.ui.at:
     com.bmob.im.demo.ui.SetMyInfoActivity this$0 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-com.bmob.im.demo.ui.SetMyInfoActivity$3 -> com.bmob.im.demo.ui.az:
+com.bmob.im.demo.ui.SetMyInfoActivity$3 -> com.bmob.im.demo.ui.au:
     com.bmob.im.demo.ui.SetMyInfoActivity this$0 -> a
     com.bmob.im.demo.bean.User val$user -> b
     void onSuccess() -> onSuccess
     void onFailure(int,java.lang.String) -> onFailure
-com.bmob.im.demo.ui.SetMyInfoActivity$4 -> com.bmob.im.demo.ui.ba:
+com.bmob.im.demo.ui.SetMyInfoActivity$4 -> com.bmob.im.demo.ui.av:
     com.bmob.im.demo.ui.SetMyInfoActivity this$0 -> a
     android.app.ProgressDialog val$progress -> b
     void onSuccess() -> onSuccess
     void onFailure(int,java.lang.String) -> onFailure
-com.bmob.im.demo.ui.SetMyInfoActivity$5 -> com.bmob.im.demo.ui.bb:
+com.bmob.im.demo.ui.SetMyInfoActivity$5 -> com.bmob.im.demo.ui.aw:
     com.bmob.im.demo.ui.SetMyInfoActivity this$0 -> a
     java.lang.String val$username -> b
     void onClick(android.content.DialogInterface,int) -> onClick
     com.bmob.im.demo.ui.SetMyInfoActivity access$0(com.bmob.im.demo.ui.SetMyInfoActivity$5) -> a
-com.bmob.im.demo.ui.SetMyInfoActivity$5$1 -> com.bmob.im.demo.ui.bc:
+com.bmob.im.demo.ui.SetMyInfoActivity$5$1 -> com.bmob.im.demo.ui.ax:
     com.bmob.im.demo.ui.SetMyInfoActivity$5 this$1 -> a
     void onSuccess() -> onSuccess
     void onFailure(int,java.lang.String) -> onFailure
-com.bmob.im.demo.ui.SetMyInfoActivity$6 -> com.bmob.im.demo.ui.bd:
+com.bmob.im.demo.ui.SetMyInfoActivity$6 -> com.bmob.im.demo.ui.ay:
     com.bmob.im.demo.ui.SetMyInfoActivity this$0 -> a
     void onClick(android.view.View) -> onClick
-com.bmob.im.demo.ui.SetMyInfoActivity$7 -> com.bmob.im.demo.ui.be:
+com.bmob.im.demo.ui.SetMyInfoActivity$7 -> com.bmob.im.demo.ui.az:
     com.bmob.im.demo.ui.SetMyInfoActivity this$0 -> a
     void onClick(android.view.View) -> onClick
-com.bmob.im.demo.ui.SetMyInfoActivity$8 -> com.bmob.im.demo.ui.bf:
+com.bmob.im.demo.ui.SetMyInfoActivity$8 -> com.bmob.im.demo.ui.ba:
     com.bmob.im.demo.ui.SetMyInfoActivity this$0 -> a
     boolean onTouch(android.view.View,android.view.MotionEvent) -> onTouch
-com.bmob.im.demo.ui.SetMyInfoActivity$9 -> com.bmob.im.demo.ui.bg:
+com.bmob.im.demo.ui.SetMyInfoActivity$9 -> com.bmob.im.demo.ui.bb:
     com.bmob.im.demo.ui.SetMyInfoActivity this$0 -> a
     cn.bmob.v3.datatype.BmobFile val$bmobFile -> b
     void onSuccess() -> onSuccess
     void onProgress(java.lang.Integer) -> onProgress
     void onFailure(int,java.lang.String) -> onFailure
-com.bmob.im.demo.ui.SplashActivity -> com.bmob.im.demo.ui.SplashActivity:
-    com.baidu.location.LocationClient mLocationClient -> n
-    com.bmob.im.demo.ui.SplashActivity$BaiduReceiver mReceiver -> o
-    android.os.Handler mHandler -> p
-    void onCreate(android.os.Bundle) -> onCreate
-    void initLocClient() -> f
-    void uploadAvatar(java.lang.String) -> e
-    void updateUserAvatar(java.lang.String) -> f
-    void onDestroy() -> onDestroy
-    void access$0(com.bmob.im.demo.ui.SplashActivity,java.lang.String) -> a
-    void access$1(com.bmob.im.demo.ui.SplashActivity,java.lang.String) -> b
-com.bmob.im.demo.ui.SplashActivity$1 -> com.bmob.im.demo.ui.bh:
-    com.bmob.im.demo.ui.SplashActivity this$0 -> a
-    void handleMessage(android.os.Message) -> handleMessage
-    com.bmob.im.demo.ui.SplashActivity access$0(com.bmob.im.demo.ui.SplashActivity$1) -> a
-com.bmob.im.demo.ui.SplashActivity$1$1 -> com.bmob.im.demo.ui.bi:
-    com.bmob.im.demo.ui.SplashActivity$1 this$1 -> a
-    com.bmob.im.demo.bean.User val$bu -> b
-    void onSuccess() -> onSuccess
-    void updateInfo(java.lang.String) -> a
-    void onFailure(int,java.lang.String) -> onFailure
-    com.bmob.im.demo.ui.SplashActivity$1 access$0(com.bmob.im.demo.ui.SplashActivity$1$1) -> a
-com.bmob.im.demo.ui.SplashActivity$1$1$1 -> com.bmob.im.demo.ui.bj:
-    com.bmob.im.demo.ui.SplashActivity$1$1 this$2 -> a
-    void onSuccess() -> onSuccess
-    void onFailure(int,java.lang.String) -> onFailure
-com.bmob.im.demo.ui.SplashActivity$1$1$2 -> com.bmob.im.demo.ui.bk:
-    com.bmob.im.demo.ui.SplashActivity$1$1 this$2 -> a
-    void onSuccess() -> onSuccess
-    void onFailure(int,java.lang.String) -> onFailure
-com.bmob.im.demo.ui.SplashActivity$1$1$2$1 -> com.bmob.im.demo.ui.bl:
-    com.bmob.im.demo.ui.SplashActivity$1$1$2 this$3 -> a
-    void run() -> run
-com.bmob.im.demo.ui.SplashActivity$2 -> com.bmob.im.demo.ui.bm:
-    com.bmob.im.demo.ui.SplashActivity this$0 -> a
-    cn.bmob.v3.datatype.BmobFile val$bmobFile -> b
-    void onSuccess() -> onSuccess
-    void onProgress(java.lang.Integer) -> onProgress
-    void onFailure(int,java.lang.String) -> onFailure
-com.bmob.im.demo.ui.SplashActivity$3 -> com.bmob.im.demo.ui.bn:
-    com.bmob.im.demo.ui.SplashActivity this$0 -> a
-    void onSuccess() -> onSuccess
-    void onFailure(int,java.lang.String) -> onFailure
-com.bmob.im.demo.ui.SplashActivity$BaiduReceiver -> com.bmob.im.demo.ui.bo:
-    com.bmob.im.demo.ui.SplashActivity this$0 -> a
-    void onReceive(android.content.Context,android.content.Intent) -> onReceive
 com.bmob.im.demo.ui.TestActivity -> com.bmob.im.demo.ui.TestActivity:
     void onCreate(android.os.Bundle) -> onCreate
     void showFileChooser() -> a
@@ -16946,10 +16860,10 @@ com.bmob.im.demo.ui.UpdateInfoActivity -> com.bmob.im.demo.ui.UpdateInfoActivity
     void initView() -> h
     void updateInfo(java.lang.String) -> e
     void access$0(com.bmob.im.demo.ui.UpdateInfoActivity,java.lang.String) -> a
-com.bmob.im.demo.ui.UpdateInfoActivity$1 -> com.bmob.im.demo.ui.bp:
+com.bmob.im.demo.ui.UpdateInfoActivity$1 -> com.bmob.im.demo.ui.bc:
     com.bmob.im.demo.ui.UpdateInfoActivity this$0 -> a
     void onClick() -> a
-com.bmob.im.demo.ui.UpdateInfoActivity$2 -> com.bmob.im.demo.ui.bq:
+com.bmob.im.demo.ui.UpdateInfoActivity$2 -> com.bmob.im.demo.ui.bd:
     com.bmob.im.demo.ui.UpdateInfoActivity this$0 -> a
     void onSuccess() -> onSuccess
     void onFailure(int,java.lang.String) -> onFailure
@@ -20978,33 +20892,33 @@ com.xy.fy.main.LoginActivity$LoginAsyntask -> com.xy.fy.main.o:
     void onPostExecute(java.lang.Object) -> onPostExecute
     java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
 com.xy.fy.main.MainActivity -> com.xy.fy.main.MainActivity:
+    java.util.HashMap mapScoreOne -> n
+    java.util.HashMap mapScoreTwo -> o
     int requestTimes -> M
     cn.sharesdk.onekeyshare.OnekeyShare share -> N
     com.xy.fy.util.ShareUtil shareUtil -> O
-    java.util.HashMap mapScoreOne -> n
-    java.util.HashMap mapScoreTwo -> o
     boolean isFirst -> P
     boolean is_show -> Q
-    boolean isShowTip -> R
-    com.slidingmenu.lib.SlidingMenu slidingMenu -> p
-    com.fima.cardsui.views.CardUI mCardView -> S
-    android.widget.TextView nickname -> T
-    java.lang.String name -> U
-    com.mc.util.CircleImageView headPhoto -> V
-    android.widget.LinearLayout menuBang -> W
-    android.widget.LinearLayout menuMyBukao -> X
-    android.widget.LinearLayout menuMyPaiming -> Y
-    android.widget.LinearLayout menuMyCjTongji -> Z
-    android.widget.LinearLayout menuMyCET -> aa
-    android.widget.LinearLayout menuIdea_back -> ab
-    android.widget.LinearLayout menuSetting -> ac
-    android.widget.LinearLayout menuAbout -> ad
-    android.widget.Button check_version -> ae
-    android.widget.TextView bukao_tip -> q
+    int lsitItemSum -> R
+    android.widget.TextView bukao_tip -> p
+    boolean isFirstListView -> S
+    com.slidingmenu.lib.SlidingMenu slidingMenu -> q
+    com.fima.cardsui.views.CardUI mCardView -> T
+    android.widget.TextView nickname -> U
+    java.lang.String name -> V
+    com.mc.util.CircleImageView headPhoto -> W
+    android.widget.LinearLayout menuBang -> X
+    android.widget.LinearLayout menuMyBukao -> Y
+    android.widget.LinearLayout menuMyPaiming -> Z
+    android.widget.LinearLayout menuMyCjTongji -> aa
+    android.widget.LinearLayout menuMyCET -> ab
+    android.widget.LinearLayout menuIdea_back -> ac
+    android.widget.LinearLayout menuSetting -> ad
+    android.widget.LinearLayout menuAbout -> ae
+    android.widget.Button check_version -> af
     java.util.ArrayList listItem -> r
-    android.widget.TextView ideaMsgText -> af
-    android.widget.TextView phoneText -> ag
-    int lsitItemSum -> ah
+    android.widget.TextView ideaMsgText -> ag
+    android.widget.TextView phoneText -> ah
     com.mc.util.CustomRankListView allRankList -> ai
     android.widget.TextView rankText -> aj
     android.widget.TextView nameText -> ak
@@ -21013,9 +20927,9 @@ com.xy.fy.main.MainActivity -> com.xy.fy.main.MainActivity:
     android.widget.AutoCompleteTextView search_edittext -> an
     android.widget.SimpleAdapter simpleAdapter -> ao
     java.lang.String score_json -> ap
-    boolean isFirstListView -> aq
-    android.app.ProgressDialog dialog -> ar
-    android.graphics.Bitmap bitmap -> as
+    android.app.ProgressDialog dialog -> aq
+    android.graphics.Bitmap bitmap -> ar
+    com.xy.fy.main.MainActivity$MyHandler mHandler -> as
     com.xy.fy.adapter.ChooseSchoolExpandAdapter adapter -> at
     java.lang.String selectXn -> s
     java.lang.String selectXq -> t
@@ -21028,22 +20942,21 @@ com.xy.fy.main.MainActivity -> com.xy.fy.main.MainActivity:
     java.lang.String new_version -> au
     java.lang.String update_content -> av
     java.lang.String apk_url -> aw
-    android.os.Handler mHandler -> ax
-    com.baidu.location.LocationClient mLocationClient -> ay
-    com.xy.fy.main.MainActivity$BaiduReceiver mReceiver -> az
-    android.widget.Button[] mTabs -> aA
-    com.bmob.im.demo.ui.fragment.ContactFragment contactFragment -> aB
-    com.bmob.im.demo.ui.fragment.RecentFragment recentFragment -> aC
-    com.bmob.im.demo.ui.fragment.SettingsFragment settingFragment -> aD
-    android.support.v4.app.Fragment[] fragments -> aE
-    int index -> aF
-    int currentTabIndex -> aG
+    com.baidu.location.LocationClient mLocationClient -> ax
+    com.xy.fy.main.MainActivity$BaiduReceiver mReceiver -> ay
+    android.widget.Button[] mTabs -> az
+    com.bmob.im.demo.ui.fragment.ContactFragment contactFragment -> aA
+    com.bmob.im.demo.ui.fragment.RecentFragment recentFragment -> aB
+    com.bmob.im.demo.ui.fragment.SettingsFragment settingFragment -> aC
+    android.support.v4.app.Fragment[] fragments -> aD
+    int index -> aE
+    int currentTabIndex -> aF
     android.widget.ImageView iv_recent_tips -> H
     android.widget.ImageView iv_contact_tips -> I
     android.widget.ImageView iv_bukao_tips -> J
     com.xy.fy.main.MainActivity$NewBroadcastReceiver newReceiver -> K
     com.xy.fy.main.MainActivity$TagBroadcastReceiver userReceiver -> L
-    android.os.Handler chatHandler -> aH
+    android.os.Handler chatHandler -> aG
     void onCreate(android.os.Bundle) -> onCreate
     void softDeclare() -> s
     void menu1() -> t
@@ -21097,30 +21010,30 @@ com.xy.fy.main.MainActivity -> com.xy.fy.main.MainActivity:
     void showShareQrcodeDialog() -> M
     void onMessage(cn.bmob.im.bean.BmobMsg) -> onMessage
     void access$0(com.xy.fy.main.MainActivity) -> a
-    void access$1(com.xy.fy.main.MainActivity,int) -> a
-    void access$2(com.xy.fy.main.MainActivity) -> b
-    android.widget.LinearLayout access$3(com.xy.fy.main.MainActivity) -> c
-    void access$4(com.xy.fy.main.MainActivity) -> d
-    void access$5(com.xy.fy.main.MainActivity) -> e
-    void access$6(com.xy.fy.main.MainActivity) -> f
-    void access$7(com.xy.fy.main.MainActivity) -> g
-    void access$8(com.xy.fy.main.MainActivity) -> h
-    cn.bmob.im.BmobUserManager access$9(com.xy.fy.main.MainActivity) -> i
-    void access$10(com.xy.fy.main.MainActivity,java.lang.String) -> a
-    android.app.ProgressDialog access$11(com.xy.fy.main.MainActivity) -> j
-    boolean access$12() -> l
-    boolean access$13(com.xy.fy.main.MainActivity,java.lang.String,boolean) -> a
-    com.fima.cardsui.views.CardUI access$14(com.xy.fy.main.MainActivity) -> k
-    void access$15(com.xy.fy.main.MainActivity,java.lang.String) -> b
-    android.widget.TextView access$16(com.xy.fy.main.MainActivity) -> l
-    java.lang.String access$17(com.xy.fy.main.MainActivity) -> m
-    void access$18(int) -> a
-    void access$19(com.xy.fy.main.MainActivity,java.lang.String) -> c
-    void access$20(com.xy.fy.main.MainActivity,boolean) -> a
-    int access$21() -> m
-    boolean access$22() -> n
-    void access$23(com.xy.fy.main.MainActivity,java.lang.String,boolean) -> b
-    java.util.HashMap access$24(com.xy.fy.main.MainActivity) -> n
+    cn.bmob.im.BmobUserManager access$1(com.xy.fy.main.MainActivity) -> b
+    void access$2(com.xy.fy.main.MainActivity,java.lang.String) -> a
+    android.app.ProgressDialog access$3(com.xy.fy.main.MainActivity) -> c
+    android.widget.LinearLayout access$4(com.xy.fy.main.MainActivity) -> d
+    void access$5(com.xy.fy.main.MainActivity,int) -> a
+    void access$6(com.xy.fy.main.MainActivity) -> e
+    boolean access$7() -> l
+    boolean access$8(com.xy.fy.main.MainActivity,java.lang.String,boolean) -> a
+    com.fima.cardsui.views.CardUI access$9(com.xy.fy.main.MainActivity) -> f
+    void access$10(com.xy.fy.main.MainActivity,java.lang.String) -> b
+    android.widget.TextView access$11(com.xy.fy.main.MainActivity) -> g
+    java.lang.String access$12(com.xy.fy.main.MainActivity) -> h
+    void access$13(int) -> a
+    void access$14(com.xy.fy.main.MainActivity,java.lang.String) -> c
+    void access$15(com.xy.fy.main.MainActivity,boolean) -> a
+    int access$16() -> m
+    boolean access$17() -> n
+    void access$18(com.xy.fy.main.MainActivity,java.lang.String,boolean) -> b
+    java.util.HashMap access$19(com.xy.fy.main.MainActivity) -> i
+    void access$20(com.xy.fy.main.MainActivity) -> j
+    void access$21(com.xy.fy.main.MainActivity) -> k
+    void access$22(com.xy.fy.main.MainActivity) -> l
+    void access$23(com.xy.fy.main.MainActivity) -> m
+    void access$24(com.xy.fy.main.MainActivity) -> n
     void access$25(com.xy.fy.main.MainActivity,cn.bmob.im.bean.BmobMsg) -> a
     void access$26(com.xy.fy.main.MainActivity,cn.bmob.im.bean.BmobInvitation) -> a
     com.mc.util.CircleImageView access$27(com.xy.fy.main.MainActivity) -> o
@@ -21141,7 +21054,7 @@ com.xy.fy.main.MainActivity -> com.xy.fy.main.MainActivity:
     android.widget.LinearLayout access$42(com.xy.fy.main.MainActivity) -> y
     android.widget.LinearLayout access$43(com.xy.fy.main.MainActivity) -> z
     void access$44(com.xy.fy.main.MainActivity,android.widget.LinearLayout,boolean,android.widget.LinearLayout,boolean,android.widget.LinearLayout,boolean,android.widget.LinearLayout,boolean,android.widget.LinearLayout,boolean,android.widget.LinearLayout,boolean,android.widget.LinearLayout,boolean,android.widget.LinearLayout,boolean) -> a
-    android.os.Handler access$45(com.xy.fy.main.MainActivity) -> A
+    com.xy.fy.main.MainActivity$MyHandler access$45(com.xy.fy.main.MainActivity) -> A
     void access$46(com.xy.fy.main.MainActivity) -> B
     com.xy.fy.util.ShareUtil access$47() -> q
     cn.sharesdk.onekeyshare.OnekeyShare access$48() -> r
@@ -21159,252 +21072,253 @@ com.xy.fy.main.MainActivity -> com.xy.fy.main.MainActivity:
 com.xy.fy.main.MainActivity$1 -> com.xy.fy.main.p:
     com.xy.fy.main.MainActivity this$0 -> a
     void handleMessage(android.os.Message) -> handleMessage
-com.xy.fy.main.MainActivity$10 -> com.xy.fy.main.q:
-    com.xy.fy.main.MainActivity this$0 -> a
-    void onClick(android.view.View) -> onClick
-    com.xy.fy.main.MainActivity access$0(com.xy.fy.main.MainActivity$10) -> a
-com.xy.fy.main.MainActivity$10$1 -> com.xy.fy.main.r:
-    com.xy.fy.main.MainActivity$10 this$1 -> a
-    void run() -> run
-com.xy.fy.main.MainActivity$11 -> com.xy.fy.main.s:
-    com.xy.fy.main.MainActivity this$0 -> a
-    void onClick(android.view.View) -> onClick
-    com.xy.fy.main.MainActivity access$0(com.xy.fy.main.MainActivity$11) -> a
-com.xy.fy.main.MainActivity$11$1 -> com.xy.fy.main.t:
-    com.xy.fy.main.MainActivity$11 this$1 -> a
-    void run() -> run
-com.xy.fy.main.MainActivity$12 -> com.xy.fy.main.u:
-    com.xy.fy.main.MainActivity this$0 -> a
-    void onClick(android.view.View) -> onClick
-    com.xy.fy.main.MainActivity access$0(com.xy.fy.main.MainActivity$12) -> a
-com.xy.fy.main.MainActivity$12$1 -> com.xy.fy.main.v:
-    com.xy.fy.main.MainActivity$12 this$1 -> a
-    void run() -> run
-com.xy.fy.main.MainActivity$13 -> com.xy.fy.main.w:
-    com.xy.fy.main.MainActivity this$0 -> a
-    void onClick(android.view.View) -> onClick
-com.xy.fy.main.MainActivity$14 -> com.xy.fy.main.x:
-    com.xy.fy.main.MainActivity this$0 -> a
-    void onClick(android.view.View) -> onClick
-com.xy.fy.main.MainActivity$15 -> com.xy.fy.main.y:
-    com.xy.fy.main.MainActivity this$0 -> a
-    void onClick(android.view.View) -> onClick
-com.xy.fy.main.MainActivity$16 -> com.xy.fy.main.z:
-    com.xy.fy.main.MainActivity this$0 -> a
-    void onClick(android.view.View) -> onClick
-com.xy.fy.main.MainActivity$17 -> com.xy.fy.main.aa:
-    com.xy.fy.main.MainActivity this$0 -> a
-    void onClick(android.view.View) -> onClick
-com.xy.fy.main.MainActivity$18 -> com.xy.fy.main.ab:
-    com.xy.fy.main.MainActivity this$0 -> a
-    void onClick(android.view.View) -> onClick
-com.xy.fy.main.MainActivity$19 -> com.xy.fy.main.ac:
-    com.xy.fy.main.MainActivity this$0 -> a
-    void onClick(android.content.DialogInterface,int) -> onClick
-com.xy.fy.main.MainActivity$2 -> com.xy.fy.main.ad:
-    com.xy.fy.main.MainActivity this$0 -> a
-    void handleMessage(android.os.Message) -> handleMessage
-    com.xy.fy.main.MainActivity access$0(com.xy.fy.main.MainActivity$2) -> a
-com.xy.fy.main.MainActivity$2$1 -> com.xy.fy.main.ae:
-    com.xy.fy.main.MainActivity$2 this$1 -> a
+    com.xy.fy.main.MainActivity access$0(com.xy.fy.main.MainActivity$1) -> a
+com.xy.fy.main.MainActivity$1$1 -> com.xy.fy.main.q:
+    com.xy.fy.main.MainActivity$1 this$1 -> a
     com.bmob.im.demo.bean.User val$bu -> b
     void onSuccess() -> onSuccess
     void updateInfo(java.lang.String) -> a
     void onFailure(int,java.lang.String) -> onFailure
-    com.xy.fy.main.MainActivity$2 access$0(com.xy.fy.main.MainActivity$2$1) -> a
-com.xy.fy.main.MainActivity$2$1$1 -> com.xy.fy.main.af:
-    com.xy.fy.main.MainActivity$2$1 this$2 -> a
+    com.xy.fy.main.MainActivity$1 access$0(com.xy.fy.main.MainActivity$1$1) -> a
+com.xy.fy.main.MainActivity$1$1$1 -> com.xy.fy.main.r:
+    com.xy.fy.main.MainActivity$1$1 this$2 -> a
     void onSuccess() -> onSuccess
     void onFailure(int,java.lang.String) -> onFailure
-com.xy.fy.main.MainActivity$2$1$2 -> com.xy.fy.main.ag:
-    com.xy.fy.main.MainActivity$2$1 this$2 -> a
+com.xy.fy.main.MainActivity$1$1$2 -> com.xy.fy.main.s:
+    com.xy.fy.main.MainActivity$1$1 this$2 -> a
     void onSuccess() -> onSuccess
     void onFailure(int,java.lang.String) -> onFailure
-com.xy.fy.main.MainActivity$2$1$2$1 -> com.xy.fy.main.ah:
-    com.xy.fy.main.MainActivity$2$1$2 this$3 -> a
+com.xy.fy.main.MainActivity$1$1$2$1 -> com.xy.fy.main.t:
+    com.xy.fy.main.MainActivity$1$1$2 this$3 -> a
     void run() -> run
-com.xy.fy.main.MainActivity$20 -> com.xy.fy.main.ai:
+com.xy.fy.main.MainActivity$10 -> com.xy.fy.main.u:
     com.xy.fy.main.MainActivity this$0 -> a
     void onClick(android.view.View) -> onClick
-com.xy.fy.main.MainActivity$21 -> com.xy.fy.main.aj:
+    com.xy.fy.main.MainActivity access$0(com.xy.fy.main.MainActivity$10) -> a
+com.xy.fy.main.MainActivity$10$1 -> com.xy.fy.main.v:
+    com.xy.fy.main.MainActivity$10 this$1 -> a
+    void run() -> run
+com.xy.fy.main.MainActivity$11 -> com.xy.fy.main.w:
+    com.xy.fy.main.MainActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+    com.xy.fy.main.MainActivity access$0(com.xy.fy.main.MainActivity$11) -> a
+com.xy.fy.main.MainActivity$11$1 -> com.xy.fy.main.x:
+    com.xy.fy.main.MainActivity$11 this$1 -> a
+    void run() -> run
+com.xy.fy.main.MainActivity$12 -> com.xy.fy.main.y:
+    com.xy.fy.main.MainActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.xy.fy.main.MainActivity$13 -> com.xy.fy.main.z:
+    com.xy.fy.main.MainActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.xy.fy.main.MainActivity$14 -> com.xy.fy.main.aa:
+    com.xy.fy.main.MainActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.xy.fy.main.MainActivity$15 -> com.xy.fy.main.ab:
+    com.xy.fy.main.MainActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.xy.fy.main.MainActivity$16 -> com.xy.fy.main.ac:
+    com.xy.fy.main.MainActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.xy.fy.main.MainActivity$17 -> com.xy.fy.main.ad:
+    com.xy.fy.main.MainActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.xy.fy.main.MainActivity$18 -> com.xy.fy.main.ae:
+    com.xy.fy.main.MainActivity this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.xy.fy.main.MainActivity$19 -> com.xy.fy.main.af:
+    com.xy.fy.main.MainActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.xy.fy.main.MainActivity$2 -> com.xy.fy.main.ag:
+    com.xy.fy.main.MainActivity this$0 -> a
+    void onOpen() -> a
+com.xy.fy.main.MainActivity$20 -> com.xy.fy.main.ah:
     com.xy.fy.main.MainActivity this$0 -> a
     void onTextChanged(java.lang.CharSequence,int,int,int) -> onTextChanged
     void beforeTextChanged(java.lang.CharSequence,int,int,int) -> beforeTextChanged
     void afterTextChanged(android.text.Editable) -> afterTextChanged
-com.xy.fy.main.MainActivity$22 -> com.xy.fy.main.ak:
+com.xy.fy.main.MainActivity$21 -> com.xy.fy.main.ai:
     com.xy.fy.main.MainActivity this$0 -> a
     boolean onKey(android.view.View,int,android.view.KeyEvent) -> onKey
-com.xy.fy.main.MainActivity$23 -> com.xy.fy.main.al:
+com.xy.fy.main.MainActivity$22 -> com.xy.fy.main.aj:
     com.xy.fy.main.MainActivity this$0 -> a
     void onClick(android.view.View) -> onClick
-com.xy.fy.main.MainActivity$24 -> com.xy.fy.main.am:
+com.xy.fy.main.MainActivity$23 -> com.xy.fy.main.ak:
     com.xy.fy.main.MainActivity this$0 -> a
     void onClick(android.view.View) -> onClick
-com.xy.fy.main.MainActivity$27 -> com.xy.fy.main.an:
+com.xy.fy.main.MainActivity$26 -> com.xy.fy.main.al:
     com.xy.fy.main.MainActivity this$0 -> a
     java.lang.String[] val$xns -> b
     int val$width -> c
     void onItemSelected(android.widget.AdapterView,android.view.View,int,long) -> onItemSelected
     void onNothingSelected(android.widget.AdapterView) -> onNothingSelected
-com.xy.fy.main.MainActivity$28 -> com.xy.fy.main.ao:
+com.xy.fy.main.MainActivity$27 -> com.xy.fy.main.am:
     com.xy.fy.main.MainActivity this$0 -> a
     boolean onTouch(android.view.View,android.view.MotionEvent) -> onTouch
-com.xy.fy.main.MainActivity$29 -> com.xy.fy.main.ap:
+com.xy.fy.main.MainActivity$28 -> com.xy.fy.main.an:
     com.xy.fy.main.MainActivity this$0 -> a
     void onItemSelected(android.widget.AdapterView,android.view.View,int,long) -> onItemSelected
     void onNothingSelected(android.widget.AdapterView) -> onNothingSelected
-com.xy.fy.main.MainActivity$3 -> com.xy.fy.main.aq:
-    com.xy.fy.main.MainActivity this$0 -> a
-    void onOpen() -> a
-com.xy.fy.main.MainActivity$30 -> com.xy.fy.main.ar:
+com.xy.fy.main.MainActivity$29 -> com.xy.fy.main.ao:
     com.xy.fy.main.MainActivity this$0 -> a
     boolean onTouch(android.view.View,android.view.MotionEvent) -> onTouch
-com.xy.fy.main.MainActivity$31 -> com.xy.fy.main.as:
+com.xy.fy.main.MainActivity$3 -> com.xy.fy.main.ap:
     com.xy.fy.main.MainActivity this$0 -> a
     void onClick(android.view.View) -> onClick
-com.xy.fy.main.MainActivity$32 -> com.xy.fy.main.at:
+com.xy.fy.main.MainActivity$30 -> com.xy.fy.main.aq:
     com.xy.fy.main.MainActivity this$0 -> a
     void onClick(android.view.View) -> onClick
-com.xy.fy.main.MainActivity$33 -> com.xy.fy.main.au:
+com.xy.fy.main.MainActivity$31 -> com.xy.fy.main.ar:
     com.xy.fy.main.MainActivity this$0 -> a
     void onClick(android.view.View) -> onClick
-com.xy.fy.main.MainActivity$34 -> com.xy.fy.main.av:
+com.xy.fy.main.MainActivity$32 -> com.xy.fy.main.as:
+    com.xy.fy.main.MainActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.xy.fy.main.MainActivity$33 -> com.xy.fy.main.at:
     com.xy.fy.main.MainActivity this$0 -> a
     android.widget.EditText val$accout -> b
     android.widget.EditText val$name -> c
     void onClick(android.view.View) -> onClick
-com.xy.fy.main.MainActivity$35 -> com.xy.fy.main.aw:
+com.xy.fy.main.MainActivity$34 -> com.xy.fy.main.au:
     com.xy.fy.main.MainActivity this$0 -> a
     void onClick(android.view.View) -> onClick
-com.xy.fy.main.MainActivity$36 -> com.xy.fy.main.ax:
+com.xy.fy.main.MainActivity$35 -> com.xy.fy.main.av:
     com.xy.fy.main.MainActivity this$0 -> a
     void onClick(android.view.View) -> onClick
-com.xy.fy.main.MainActivity$37 -> com.xy.fy.main.ay:
+com.xy.fy.main.MainActivity$36 -> com.xy.fy.main.aw:
     com.xy.fy.main.MainActivity this$0 -> a
     android.widget.EditText val$etPassword1 -> b
     android.widget.EditText val$etPassword2 -> c
     android.widget.EditText val$cofPassword2 -> d
     void onClick(android.view.View) -> onClick
-com.xy.fy.main.MainActivity$38 -> com.xy.fy.main.az:
+com.xy.fy.main.MainActivity$37 -> com.xy.fy.main.ax:
     com.xy.fy.main.MainActivity this$0 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-com.xy.fy.main.MainActivity$39 -> com.xy.fy.main.ba:
+com.xy.fy.main.MainActivity$38 -> com.xy.fy.main.ay:
     com.xy.fy.main.MainActivity this$0 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-com.xy.fy.main.MainActivity$4 -> com.xy.fy.main.bb:
+com.xy.fy.main.MainActivity$4 -> com.xy.fy.main.az:
     com.xy.fy.main.MainActivity this$0 -> a
     void onClick(android.view.View) -> onClick
-com.xy.fy.main.MainActivity$42 -> com.xy.fy.main.bc:
+com.xy.fy.main.MainActivity$41 -> com.xy.fy.main.ba:
     com.xy.fy.main.MainActivity this$0 -> a
     boolean val$logout -> b
     void onClick(android.content.DialogInterface,int) -> onClick
-com.xy.fy.main.MainActivity$43 -> com.xy.fy.main.bd:
+com.xy.fy.main.MainActivity$42 -> com.xy.fy.main.bb:
     com.xy.fy.main.MainActivity this$0 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-com.xy.fy.main.MainActivity$44 -> com.xy.fy.main.be:
+com.xy.fy.main.MainActivity$43 -> com.xy.fy.main.bc:
     com.xy.fy.main.MainActivity this$0 -> a
     void onClick(android.view.View) -> onClick
-com.xy.fy.main.MainActivity$45 -> com.xy.fy.main.bf:
+com.xy.fy.main.MainActivity$44 -> com.xy.fy.main.bd:
     com.xy.fy.main.MainActivity this$0 -> a
     void onClick(android.view.View) -> onClick
-    com.xy.fy.main.MainActivity access$0(com.xy.fy.main.MainActivity$45) -> a
-com.xy.fy.main.MainActivity$45$1 -> com.xy.fy.main.bg:
-    com.xy.fy.main.MainActivity$45 this$1 -> a
+    com.xy.fy.main.MainActivity access$0(com.xy.fy.main.MainActivity$44) -> a
+com.xy.fy.main.MainActivity$44$1 -> com.xy.fy.main.be:
+    com.xy.fy.main.MainActivity$44 this$1 -> a
     java.lang.String val$data -> b
     void run() -> run
-com.xy.fy.main.MainActivity$46 -> com.xy.fy.main.bh:
+com.xy.fy.main.MainActivity$45 -> com.xy.fy.main.bf:
     com.xy.fy.main.MainActivity this$0 -> a
     cn.bmob.v3.datatype.BmobFile val$bmobFile -> b
     void onSuccess() -> onSuccess
     void onProgress(java.lang.Integer) -> onProgress
     void onFailure(int,java.lang.String) -> onFailure
-com.xy.fy.main.MainActivity$47 -> com.xy.fy.main.bi:
+com.xy.fy.main.MainActivity$46 -> com.xy.fy.main.bg:
     com.xy.fy.main.MainActivity this$0 -> a
     void onSuccess() -> onSuccess
     void onFailure(int,java.lang.String) -> onFailure
-com.xy.fy.main.MainActivity$48 -> com.xy.fy.main.bj:
+com.xy.fy.main.MainActivity$47 -> com.xy.fy.main.bh:
     com.xy.fy.main.MainActivity this$0 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-com.xy.fy.main.MainActivity$5 -> com.xy.fy.main.bk:
+com.xy.fy.main.MainActivity$5 -> com.xy.fy.main.bi:
     com.xy.fy.main.MainActivity this$0 -> a
     void onClick(android.view.View) -> onClick
-com.xy.fy.main.MainActivity$6 -> com.xy.fy.main.bl:
+    com.xy.fy.main.MainActivity access$0(com.xy.fy.main.MainActivity$5) -> a
+com.xy.fy.main.MainActivity$5$1 -> com.xy.fy.main.bj:
+    com.xy.fy.main.MainActivity$5 this$1 -> a
+    void run() -> run
+com.xy.fy.main.MainActivity$6 -> com.xy.fy.main.bk:
     com.xy.fy.main.MainActivity this$0 -> a
     void onClick(android.view.View) -> onClick
     com.xy.fy.main.MainActivity access$0(com.xy.fy.main.MainActivity$6) -> a
-com.xy.fy.main.MainActivity$6$1 -> com.xy.fy.main.bm:
+com.xy.fy.main.MainActivity$6$1 -> com.xy.fy.main.bl:
     com.xy.fy.main.MainActivity$6 this$1 -> a
     void run() -> run
-com.xy.fy.main.MainActivity$7 -> com.xy.fy.main.bn:
+com.xy.fy.main.MainActivity$7 -> com.xy.fy.main.bm:
     com.xy.fy.main.MainActivity this$0 -> a
     void onClick(android.view.View) -> onClick
     com.xy.fy.main.MainActivity access$0(com.xy.fy.main.MainActivity$7) -> a
-com.xy.fy.main.MainActivity$7$1 -> com.xy.fy.main.bo:
+com.xy.fy.main.MainActivity$7$1 -> com.xy.fy.main.bn:
     com.xy.fy.main.MainActivity$7 this$1 -> a
     void run() -> run
-com.xy.fy.main.MainActivity$8 -> com.xy.fy.main.bp:
+com.xy.fy.main.MainActivity$8 -> com.xy.fy.main.bo:
     com.xy.fy.main.MainActivity this$0 -> a
     void onClick(android.view.View) -> onClick
     com.xy.fy.main.MainActivity access$0(com.xy.fy.main.MainActivity$8) -> a
-com.xy.fy.main.MainActivity$8$1 -> com.xy.fy.main.bq:
+com.xy.fy.main.MainActivity$8$1 -> com.xy.fy.main.bp:
     com.xy.fy.main.MainActivity$8 this$1 -> a
     void run() -> run
-com.xy.fy.main.MainActivity$9 -> com.xy.fy.main.br:
+com.xy.fy.main.MainActivity$9 -> com.xy.fy.main.bq:
     com.xy.fy.main.MainActivity this$0 -> a
     void onClick(android.view.View) -> onClick
     com.xy.fy.main.MainActivity access$0(com.xy.fy.main.MainActivity$9) -> a
-com.xy.fy.main.MainActivity$9$1 -> com.xy.fy.main.bs:
+com.xy.fy.main.MainActivity$9$1 -> com.xy.fy.main.br:
     com.xy.fy.main.MainActivity$9 this$1 -> a
     void run() -> run
-com.xy.fy.main.MainActivity$BaiduReceiver -> com.xy.fy.main.bt:
+com.xy.fy.main.MainActivity$BaiduReceiver -> com.xy.fy.main.bs:
     com.xy.fy.main.MainActivity this$0 -> a
     void onReceive(android.content.Context,android.content.Intent) -> onReceive
-com.xy.fy.main.MainActivity$ChangePwAsyntask -> com.xy.fy.main.bu:
+com.xy.fy.main.MainActivity$ChangePwAsyntask -> com.xy.fy.main.bt:
     com.xy.fy.main.MainActivity this$0 -> a
     java.lang.String doInBackground(java.lang.String[]) -> a
     void onPostExecute(java.lang.String) -> a
     void onPostExecute(java.lang.Object) -> onPostExecute
     java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
-com.xy.fy.main.MainActivity$CheckVersionAsyntask -> com.xy.fy.main.bv:
+com.xy.fy.main.MainActivity$CheckVersionAsyntask -> com.xy.fy.main.bu:
     com.xy.fy.main.MainActivity this$0 -> a
     java.lang.String doInBackground(java.lang.String[]) -> a
     void onPostExecute(java.lang.String) -> a
     void onPostExecute(java.lang.Object) -> onPostExecute
     java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
-com.xy.fy.main.MainActivity$GetCETAsyntask -> com.xy.fy.main.bw:
+com.xy.fy.main.MainActivity$GetCETAsyntask -> com.xy.fy.main.bv:
     com.xy.fy.main.MainActivity this$0 -> a
     java.lang.String doInBackground(java.lang.String[]) -> a
     void onPostExecute(java.lang.String) -> a
     void onPostExecute(java.lang.Object) -> onPostExecute
     java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
-com.xy.fy.main.MainActivity$GetPhotoID -> com.xy.fy.main.bx:
+com.xy.fy.main.MainActivity$GetPhotoID -> com.xy.fy.main.bw:
     com.xy.fy.main.MainActivity this$0 -> a
     java.lang.String doInBackground(java.lang.String[]) -> a
     void onPostExecute(java.lang.String) -> a
     void onPostExecute(java.lang.Object) -> onPostExecute
     java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
-com.xy.fy.main.MainActivity$GetPicture -> com.xy.fy.main.by:
+com.xy.fy.main.MainActivity$GetPicture -> com.xy.fy.main.bx:
     com.xy.fy.main.MainActivity this$0 -> a
     android.graphics.Bitmap doInBackground(java.lang.String[]) -> a
     void onPostExecute(android.graphics.Bitmap) -> a
     void onPostExecute(java.lang.Object) -> onPostExecute
     java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
-com.xy.fy.main.MainActivity$GetRankAsyntask -> com.xy.fy.main.bz:
+com.xy.fy.main.MainActivity$GetRankAsyntask -> com.xy.fy.main.by:
     com.xy.fy.main.MainActivity this$0 -> a
     java.lang.String doInBackground(java.lang.String[]) -> a
     void onPostExecute(java.lang.String) -> a
     void onPostExecute(java.lang.Object) -> onPostExecute
     java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
-com.xy.fy.main.MainActivity$GetScoreAsyntask -> com.xy.fy.main.ca:
+com.xy.fy.main.MainActivity$GetScoreAsyntask -> com.xy.fy.main.bz:
     com.xy.fy.main.MainActivity this$0 -> a
     java.lang.String doInBackground(java.lang.Object[]) -> a
     void onPostExecute(java.lang.String) -> a
     void onPostExecute(java.lang.Object) -> onPostExecute
     java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
     com.xy.fy.main.MainActivity access$2(com.xy.fy.main.MainActivity$GetScoreAsyntask) -> a
-com.xy.fy.main.MainActivity$GetScoreAsyntask$1 -> com.xy.fy.main.cb:
+com.xy.fy.main.MainActivity$GetScoreAsyntask$1 -> com.xy.fy.main.ca:
     com.xy.fy.main.MainActivity$GetScoreAsyntask this$1 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
+com.xy.fy.main.MainActivity$MyHandler -> com.xy.fy.main.cb:
+    java.lang.ref.WeakReference mActivityReference -> a
+    com.xy.fy.main.MainActivity this$0 -> b
+    void handleMessage(android.os.Message) -> handleMessage
 com.xy.fy.main.MainActivity$NewBroadcastReceiver -> com.xy.fy.main.cc:
     com.xy.fy.main.MainActivity this$0 -> a
     void onReceive(android.content.Context,android.content.Intent) -> onReceive

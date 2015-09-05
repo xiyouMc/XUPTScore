@@ -2,6 +2,7 @@ package com.xy.fy.main;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
+import java.lang.ref.WeakReference;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -62,6 +63,7 @@ import com.xy.fy.view.HistoryCollege;
 import com.xy.fy.view.ToolClass;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.Dialog;
@@ -133,13 +135,20 @@ import cn.sharesdk.onekeyshare.OnekeyShare;
 public class MainActivity extends BaseActivity implements EventListener {
 
   private final static String TAG = "MainActivity";
+  public static HashMap<String, String> mapScoreOne = null;// xn =1
+  public static HashMap<String, String> mapScoreTwo = null;// xn = 2
   private static int requestTimes = 0;
   private static OnekeyShare share;
   private static ShareUtil shareUtil;
-  public static HashMap<String, String> mapScoreOne = null;// xn =1
-  public static HashMap<String, String> mapScoreTwo = null;// xn = 2
   private static boolean isFirst = true;
   private static boolean is_show = false;
+  private final static int DEFAULTITEMSUM = 100;
+  private static int lsitItemSum = DEFAULTITEMSUM;
+  private static final int PIC = 11;// 图片
+  private static final int PHO = 22;// 照相
+  private static final int RESULT = 33;// 返回结果
+  public static TextView bukao_tip = null;
+  private static boolean isFirstListView = true;
 
   public static SlidingMenu slidingMenu;
   private Button chooseCollege;
@@ -158,12 +167,11 @@ public class MainActivity extends BaseActivity implements EventListener {
   private LinearLayout menuSetting = null;// 设置
   private LinearLayout menuAbout = null;// 关于
   private Button check_version = null;
-  public static TextView bukao_tip = null;
+
   ArrayList<HashMap<String, Object>> listItem;// json解析之后的列表,保存了所有的成绩数据
   private TextView ideaMsgText = null;
   private TextView phoneText = null;
-  private final static int DEFAULTITEMSUM = 100;
-  private static int lsitItemSum = DEFAULTITEMSUM;
+
   private CustomRankListView allRankList;
   private TextView rankText;
   private TextView nameText;
@@ -172,15 +180,11 @@ public class MainActivity extends BaseActivity implements EventListener {
   private AutoCompleteTextView search_edittext;
   private SimpleAdapter simpleAdapter;
   private String score_json;// json数据
-  private static boolean isFirstListView = true;
 
   private ProgressDialog dialog = null;
 
   private Bitmap bitmap = null;// 修改头像
-
-  private static final int PIC = 11;// 图片
-  private static final int PHO = 22;// 照相
-  private static final int RESULT = 33;// 返回结果
+  private MyHandler mHandler;
 
   private ChooseSchoolExpandAdapter adapter = new ChooseSchoolExpandAdapter(MainActivity.this);
 
@@ -191,7 +195,7 @@ public class MainActivity extends BaseActivity implements EventListener {
     requestWindowFeature(Window.FEATURE_NO_TITLE);
 
     super.setContentView(R.layout.activity_main);
-
+    mHandler = new MyHandler(this);
     // 创建快捷方式
     final Intent launchIntent = getIntent();
     final String action = launchIntent.getAction();
@@ -1494,6 +1498,7 @@ public class MainActivity extends BaseActivity implements EventListener {
   /*
    * 选择高校，高校中有选择历史
    */
+  @SuppressLint("InflateParams")
   protected void chooseCollege() {
     LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
     View view = inflater.inflate(R.layout.choose_school, null);
@@ -1702,6 +1707,7 @@ public class MainActivity extends BaseActivity implements EventListener {
     // TODO Auto-generated method stub
     super.onPause();
     MyMessageReceiver.ehList.remove(this);// 取消监听推送的消息
+    allRankMap.clear();
   }
 
   /*
@@ -1981,7 +1987,7 @@ public class MainActivity extends BaseActivity implements EventListener {
    */
   private void refeshRank(String result, boolean isFirst) {
     try {
-      if (RankUtils.allRankArrayList == null & RankUtils.showRankArrayList == null) {
+      if (RankUtils.allRankArrayList == null || RankUtils.showRankArrayList == null) {
         RankUtils.allRankArrayList = new ArrayList<HashMap<String, Object>>();
         RankUtils.showRankArrayList = new ArrayList<HashMap<String, Object>>();
       } else {
@@ -2063,73 +2069,85 @@ public class MainActivity extends BaseActivity implements EventListener {
     });
   }
 
-  private Handler mHandler = new Handler() {
+  class MyHandler extends Handler {
 
+    WeakReference<Activity> mActivityReference;
+
+    MyHandler(Activity activity) {
+      mActivityReference = new WeakReference<Activity>(activity);
+    }
+
+    @Override
     public void handleMessage(Message msg) {
-      switch (msg.what) {
-      case StaticVarUtil.MENU_BANG:
-        menu1();
-        setCurrentMenuItem(StaticVarUtil.MENU_BANG);// 记录当前选项位置
-        return;
-      case StaticVarUtil.MENU_ABOUT:
-        aboutListener();
-        setCurrentMenuItem(StaticVarUtil.MENU_ABOUT);// 记录当前选项位置
-        return;
-      }
-      if (!ConnectionUtil.isConn(getApplicationContext())) {
-        ConnectionUtil.setNetworkMethod(MainActivity.this);
-        menuBang.setPressed(true);// 初始化默认是风云榜被按下
-        setCurrentMenuItem(StaticVarUtil.MENU_BANG);// 记录当前选项位置
-        slidingMenu.setContent(R.layout.card_main);
-        menu1();
-        return;
-      }
-      switch (msg.what) {
-      case StaticVarUtil.MENU_BUKAO:
-        friend_list();
-        setCurrentMenuItem(StaticVarUtil.MENU_BUKAO);// 记录当前选项位置
-        break;
-      case StaticVarUtil.MENU_PAIMING:
-        rank();
-        setCurrentMenuItem(StaticVarUtil.MENU_PAIMING);// 记录当前选项位置
-        break;
-      case StaticVarUtil.MENU_IDEA_BACK:
-        menuIdeaBack();
-        setCurrentMenuItem(StaticVarUtil.MENU_IDEA_BACK);// 记录当前选项位置
-        break;
-      case StaticVarUtil.MENU_SETTING:
-        menuSetting();
-        setCurrentMenuItem(StaticVarUtil.MENU_SETTING);// 记录当前选项位置
-        break;
-
-      case StaticVarUtil.SHARE:
-        showShareQrcodeDialog();
-        break;
-      case StaticVarUtil.MENU_CET:
-        cet();
-        setCurrentMenuItem(StaticVarUtil.MENU_CET);// 记录当前选项位置
-        break;
-      case StaticVarUtil.IDEA_BACK_TOAST:
-        ViewUtil.showToast(getApplicationContext(), "感谢反馈");
-        break;
-
-      case StaticVarUtil.BMOB_CHAT:
-        try {
-          chat();
-        } catch (ClassCastException e) {
-          // TODO: handle exception
-          e.printStackTrace();
+      // TODO Auto-generated method stub
+      final Activity activity = mActivityReference.get();
+      if (activity != null) {
+        switch (msg.what) {
+        case StaticVarUtil.MENU_BANG:
+          menu1();
+          setCurrentMenuItem(StaticVarUtil.MENU_BANG);// 记录当前选项位置
+          return;
+        case StaticVarUtil.MENU_ABOUT:
+          aboutListener();
+          setCurrentMenuItem(StaticVarUtil.MENU_ABOUT);// 记录当前选项位置
+          return;
         }
+        if (!ConnectionUtil.isConn(getApplicationContext())) {
+          ConnectionUtil.setNetworkMethod(MainActivity.this);
+          menuBang.setPressed(true);// 初始化默认是风云榜被按下
+          setCurrentMenuItem(StaticVarUtil.MENU_BANG);// 记录当前选项位置
+          slidingMenu.setContent(R.layout.card_main);
+          menu1();
+          return;
+        }
+        switch (msg.what) {
+        case StaticVarUtil.MENU_BUKAO:
+          friend_list();
+          setCurrentMenuItem(StaticVarUtil.MENU_BUKAO);// 记录当前选项位置
+          break;
+        case StaticVarUtil.MENU_PAIMING:
+          rank();
+          setCurrentMenuItem(StaticVarUtil.MENU_PAIMING);// 记录当前选项位置
+          break;
+        case StaticVarUtil.MENU_IDEA_BACK:
+          menuIdeaBack();
+          setCurrentMenuItem(StaticVarUtil.MENU_IDEA_BACK);// 记录当前选项位置
+          break;
+        case StaticVarUtil.MENU_SETTING:
+          menuSetting();
+          setCurrentMenuItem(StaticVarUtil.MENU_SETTING);// 记录当前选项位置
+          break;
 
-        setCurrentMenuItem(StaticVarUtil.MENU_BUKAO);// 记录当前选项位置
-        break;
-      case StaticVarUtil.CHECK_VERSION:
-        CheckVersionAsyntask checkVersionAsyntask = new CheckVersionAsyntask();
-        checkVersionAsyntask.execute();
-        break;
+        case StaticVarUtil.SHARE:
+          showShareQrcodeDialog();
+          break;
+        case StaticVarUtil.MENU_CET:
+          cet();
+          setCurrentMenuItem(StaticVarUtil.MENU_CET);// 记录当前选项位置
+          break;
+        case StaticVarUtil.IDEA_BACK_TOAST:
+          ViewUtil.showToast(getApplicationContext(), "感谢反馈");
+          break;
+
+        case StaticVarUtil.BMOB_CHAT:
+          try {
+            chat();
+          } catch (ClassCastException e) {
+            // TODO: handle exception
+            e.printStackTrace();
+          }
+
+          setCurrentMenuItem(StaticVarUtil.MENU_BUKAO);// 记录当前选项位置
+          break;
+        case StaticVarUtil.CHECK_VERSION:
+          CheckVersionAsyntask checkVersionAsyntask = new CheckVersionAsyntask();
+          checkVersionAsyntask.execute();
+          break;
+        }
       }
-    };
-  };
+    }
+
+  }
 
   private static final int GO_HOME = 100;
   private static final int GO_LOGIN = 200;
@@ -2199,6 +2217,9 @@ public class MainActivity extends BaseActivity implements EventListener {
     iv_recent_tips = (ImageView) findViewById(R.id.iv_recent_tips);
     iv_contact_tips = (ImageView) findViewById(R.id.iv_contact_tips);
 
+    if (iv_recent_tips == null) {
+      return;
+    }
     if (BmobDB.create(this).hasUnReadMsg()) {
       iv_recent_tips.setVisibility(View.VISIBLE);
       iv_bukao_tips.setVisibility(View.VISIBLE);
@@ -2391,8 +2412,6 @@ public class MainActivity extends BaseActivity implements EventListener {
   public void onReaded(String conversionId, String msgTime) {
     // TODO Auto-generated method stub
   }
-
-  private static long firstTime;
 
   /**
    * 连续按两次返回键就退出
