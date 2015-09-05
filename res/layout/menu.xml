@@ -93,17 +93,40 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/menu_my_publish" />
+                    android:src="@drawable/menu_my_publish" 
+                    />
 
-                <TextView
-                    android:id="@+id/bukao_tip"
-                    android:layout_width="110dp"
-                    android:layout_height="fill_parent"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="15dp"
-                    android:text="补考好友"
-                    android:textColor="@drawable/change_menu_text_color"
-                    android:textSize="18dp" />
+                <RelativeLayout
+                    android:layout_width="110dip"
+                    android:layout_height="match_parent"
+                     >
+
+                    <TextView
+                        android:id="@+id/bukao_tip"
+                        android:layout_width="90dp"
+                        android:layout_height="fill_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="15dp"
+                        android:text="补考好友"
+                        android:textColor="@drawable/change_menu_text_color"
+                        android:textSize="18dp" />
+
+                    <ImageView
+                        android:id="@+id/iv_bukao_tips"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="7dp"
+                        android:background="@drawable/msg_tips"
+                        android:contentDescription="@string/action_settings"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"
+                        android:textSize="12sp"
+                        android:visibility="gone" >
+                    </ImageView>
+                </RelativeLayout>
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -208,39 +231,7 @@
                     android:paddingLeft="20dp"
                     android:src="@drawable/menu_arrow" />
             </LinearLayout>
-            <!--
-            <LinearLayout
-                android:id="@+id/menu_my_collect"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/menu_list"
-                android:clickable="true"
-                android:orientation="horizontal"
-                android:padding="5dp" >
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/menu_my_collect" />
-
-                <TextView
-                    android:layout_width="110dp"
-                    android:layout_height="fill_parent"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="15dp"
-                    android:text="我收藏的"
-                    android:textColor="@drawable/change_menu_text_color"
-                    android:textSize="18dp" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:paddingLeft="20dp"
-                    android:src="@drawable/menu_arrow" />
-            </LinearLayou
-            -->
-
+           
             <ImageView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"

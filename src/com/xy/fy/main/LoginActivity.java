@@ -124,6 +124,13 @@ public class LoginActivity extends Activity {
   }
 
   private void setPullDoorViewImage() {
+
+    Intent i = getIntent();
+    String imageMsg = i.getStringExtra("image") != null ? i.getStringExtra("image") : "0|0|0";
+    
+//    if (imageMsg.equals("0|0|0")||imageMsg.equals("0|0")) {
+//      return;
+//    }
     savePic = (ImageView) this.findViewById(R.id.btn_above);
     tvHint = (TextView) this.findViewById(R.id.tv_hint);
     Animation ani = new AlphaAnimation(0f, 1f);
@@ -132,8 +139,6 @@ public class LoginActivity extends Activity {
     ani.setRepeatCount(Animation.INFINITE);
     tvHint.startAnimation(ani);
 
-    Intent i = getIntent();
-    String imageMsg = i.getStringExtra("image") != null ? i.getStringExtra("image") : "0|0|0";
     String[] imageAndTime = imageMsg.split("\\|");
     final String imageTime = imageAndTime[0];
     String isPoll = imageAndTime[1];

@@ -76,7 +76,7 @@ public class ViewUtil {
 		progressDialog.setTitle(title);// 设置ProgressDialog 标题
 		progressDialog.setMessage("请稍后...");// 设置ProgressDialog 提示信息
 		progressDialog.setIndeterminate(false);// 设置ProgressDialog
-		progressDialog.setCancelable(true);// 是否可以按退回按键取消
+		progressDialog.setCancelable(false);// 是否可以按退回按键取消
 		return progressDialog;
 	}
 }

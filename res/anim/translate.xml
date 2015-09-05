@@ -5,7 +5,7 @@
     <!-- 从屏幕下面进入 -->
     <translate
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:duration="1000"
+        android:duration="700"
         android:fromYDelta="50%p"
         android:interpolator="@android:anim/linear_interpolator"
         android:toYDelta="0%p" >

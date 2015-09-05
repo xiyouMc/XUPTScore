@@ -19,6 +19,8 @@ import cn.bmob.im.config.BmobConfig;
 import cn.bmob.im.db.BmobDB;
 import cn.bmob.im.inteface.EventListener;
 
+import java.util.zip.Inflater;
+
 import com.bmob.im.demo.CustomApplcation;
 import com.bmob.im.demo.MyMessageReceiver;
 import com.bmob.im.demo.config.BmobConstants;
@@ -44,8 +46,9 @@ public class MainActivity extends ActivityBase implements EventListener {
   private Fragment[] fragments;
   private int index;
   private int currentTabIndex;
-
-  ImageView iv_recent_tips, iv_contact_tips;// 消息提示
+  private View menuView;
+  
+  ImageView iv_recent_tips, iv_contact_tips,iv_bukao_tips;// 消息提示
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +71,10 @@ public class MainActivity extends ActivityBase implements EventListener {
     mTabs[2] = (Button) findViewById(R.id.btn_set);
     iv_recent_tips = (ImageView) findViewById(R.id.iv_recent_tips);
     iv_contact_tips = (ImageView) findViewById(R.id.iv_contact_tips);
+
+    menuView = View.inflate(getApplicationContext(), R.layout.menu,null );
+    
+    iv_bukao_tips = (ImageView)menuView.findViewById(R.id.iv_bukao_tips);
     // 把第一个tab设为选中状态
     mTabs[0].setSelected(true);
   }
@@ -121,15 +128,20 @@ public class MainActivity extends ActivityBase implements EventListener {
     // 小圆点提示
     if (BmobDB.create(this).hasUnReadMsg()) {
       iv_recent_tips.setVisibility(View.VISIBLE);
+      iv_bukao_tips.setVisibility(View.VISIBLE);
     } else {
+      iv_bukao_tips.setVisibility(View.GONE);
       iv_recent_tips.setVisibility(View.GONE);
     }
     if (BmobDB.create(this).hasNewInvite()) {
       iv_contact_tips.setVisibility(View.VISIBLE);
+      iv_recent_tips.setVisibility(View.VISIBLE);
     } else {
       iv_contact_tips.setVisibility(View.GONE);
+      iv_recent_tips.setVisibility(View.GONE);
     }
     MyMessageReceiver.ehList.add(this);// 监听推送的消息
+    menuView.invalidate();
     // 清空
     MyMessageReceiver.mNewNum = 0;
 
@@ -151,11 +163,7 @@ public class MainActivity extends ActivityBase implements EventListener {
   /**
    * 刷新界面
    * 
-   * @Title: refreshNewMsg
-   * @Description: TODO
-   * @param @param message
-   * @return void
-   * @throws
+   * @Title: refreshNewMsg @Description: TODO @param @param message @return void @throws
    */
   private void refreshNewMsg(BmobMsg message) {
     // 声音提示
@@ -163,6 +171,7 @@ public class MainActivity extends ActivityBase implements EventListener {
     if (isAllow) {
       CustomApplcation.getInstance().getMediaPlayer().start();
     }
+    iv_recent_tips.setVisibility(View.VISIBLE);
     iv_recent_tips.setVisibility(View.VISIBLE);
     // 也要存储起来
     if (message != null) {
@@ -172,6 +181,7 @@ public class MainActivity extends ActivityBase implements EventListener {
       // 当前页面如果为会话页面，刷新此页面
       if (recentFragment != null) {
         recentFragment.refresh();
+        menuView.invalidate();
       }
     }
   }
@@ -242,11 +252,7 @@ public class MainActivity extends ActivityBase implements EventListener {
   /**
    * 刷新好友请求
    * 
-   * @Title: notifyAddUser
-   * @Description: TODO
-   * @param @param message
-   * @return void
-   * @throws
+   * @Title: notifyAddUser @Description: TODO @param @param message @return void @throws
    */
   private void refreshInvite(BmobInvitation message) {
     boolean isAllow = CustomApplcation.getInstance().getSpUtil().isAllowVoice();
@@ -254,9 +260,11 @@ public class MainActivity extends ActivityBase implements EventListener {
       CustomApplcation.getInstance().getMediaPlayer().start();
     }
     iv_contact_tips.setVisibility(View.VISIBLE);
+    iv_recent_tips.setVisibility(View.VISIBLE);
     if (currentTabIndex == 1) {
       if (contactFragment != null) {
         contactFragment.refresh();
+        menuView.invalidate();
       }
     } else {
       // 同时提醒通知
@@ -289,7 +297,7 @@ public class MainActivity extends ActivityBase implements EventListener {
     // TODO Auto-generated method stub
     // if (firstTime + 2000 > System.currentTimeMillis()) {
     super.onBackPressed();
-    
+
     /*
      * } else { ShowToast("再按一次退出程序"); } firstTime = System.currentTimeMillis();
      */

@@ -251,8 +251,9 @@ public class ContactFragment extends FragmentBase
       @Override
       public void onClick(View arg0) {
         // TODO Auto-generated method stub
-        Intent intent = new Intent(getActivity(), FileSourceActivity.class);
-        startAnimActivity(intent);
+//        Intent intent = new Intent(getActivity(), FileSourceActivity.class);
+//        startAnimActivity(intent);
+       H5Toast.showToast(getActivity(), "正在开发中，将支持资料下载，敬请等待。。。");
       }
     });
 

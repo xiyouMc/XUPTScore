@@ -259,6 +259,7 @@ public class CustomApplcation extends Application {
 	 */
 	public void logout() {
 		BmobUserManager.getInstance(getApplicationContext()).logout();
+//		CustomApplcation.getInstance().getContactList().clear();
 		setContactList(null);
 		setLatitude(null);
 		setLongtitude(null);

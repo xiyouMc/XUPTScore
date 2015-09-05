@@ -145,7 +145,8 @@
 		</activity>
 		<activity
 			android:name="com.bmob.im.demo.ui.MainActivity"
-			android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+			android:theme="@android:style/Theme.Translucent.NoTitleBar"
+			android:launchMode="singleInstance"/>
         
 		<activity android:name="com.bmob.im.demo.ui.LoginActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
         

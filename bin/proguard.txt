@@ -1,14 +1,14 @@
 # view res/layout/activity_publish.xml #generated:133
-# view res/layout/include_chat_bottom_bar.xml #generated:112
+# view res/layout/include_chat_bottom_bar.xml #generated:113
 -keep class android.support.v4.view.ViewPager { <init>(...); }
 
-# view AndroidManifest.xml #generated:227
+# view AndroidManifest.xml #generated:228
 -keep class cn.bmob.im.poll.BmobPollService { <init>(...); }
 
-# view AndroidManifest.xml #generated:208
+# view AndroidManifest.xml #generated:209
 -keep class cn.bmob.push.PushReceiver { <init>(...); }
 
-# view AndroidManifest.xml #generated:197
+# view AndroidManifest.xml #generated:198
 -keep class cn.bmob.push.lib.service.PushService { <init>(...); }
 
 # view AndroidManifest.xml #generated:120
@@ -74,7 +74,7 @@
 # view res/layout/abs__search_view.xml #generated:84
 -keep class com.actionbarsherlock.widget.SearchView$SearchAutoComplete { <init>(...); }
 
-# view AndroidManifest.xml #generated:186
+# view AndroidManifest.xml #generated:187
 -keep class com.baidu.location.f { <init>(...); }
 
 # view res/layout/activity_location.xml #generated:11
@@ -83,52 +83,52 @@
 # view AndroidManifest.xml #generated:80
 -keep class com.bmob.im.demo.CustomApplcation { <init>(...); }
 
-# view AndroidManifest.xml #generated:218
+# view AndroidManifest.xml #generated:219
 -keep class com.bmob.im.demo.MyMessageReceiver { <init>(...); }
 
-# view AndroidManifest.xml #generated:161
+# view AndroidManifest.xml #generated:162
 -keep class com.bmob.im.demo.ui.AddFriendActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:155
+# view AndroidManifest.xml #generated:156
 -keep class com.bmob.im.demo.ui.BlackListActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:171
+# view AndroidManifest.xml #generated:172
 -keep class com.bmob.im.demo.ui.ChatActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:167
+# view AndroidManifest.xml #generated:168
 -keep class com.bmob.im.demo.ui.FileSourceActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:158
+# view AndroidManifest.xml #generated:159
 -keep class com.bmob.im.demo.ui.ImageBrowserActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:152
+# view AndroidManifest.xml #generated:153
 -keep class com.bmob.im.demo.ui.LocationActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:150
+# view AndroidManifest.xml #generated:151
 -keep class com.bmob.im.demo.ui.LoginActivity { <init>(...); }
 
 # view AndroidManifest.xml #generated:146
 -keep class com.bmob.im.demo.ui.MainActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:166
+# view AndroidManifest.xml #generated:167
 -keep class com.bmob.im.demo.ui.NearPeopleActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:165
+# view AndroidManifest.xml #generated:166
 -keep class com.bmob.im.demo.ui.NewFriendActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:177
+# view AndroidManifest.xml #generated:178
 -keep class com.bmob.im.demo.ui.RegisterActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:175
+# view AndroidManifest.xml #generated:176
 -keep class com.bmob.im.demo.ui.SetMyInfoActivity { <init>(...); }
 
 # view AndroidManifest.xml #generated:140
 -keep class com.bmob.im.demo.ui.SplashActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:169
+# view AndroidManifest.xml #generated:170
 -keep class com.bmob.im.demo.ui.TestActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:168
+# view AndroidManifest.xml #generated:169
 -keep class com.bmob.im.demo.ui.UpdateInfoActivity { <init>(...); }
 
 # view res/layout/fragment_contacts.xml #generated:18
@@ -138,7 +138,7 @@
 # view res/layout/activity_showpicture.xml #generated:8
 -keep class com.bmob.im.demo.view.CustomViewPager { <init>(...); }
 
-# view res/layout/include_chat_bottom_bar.xml #generated:35
+# view res/layout/include_chat_bottom_bar.xml #generated:36
 -keep class com.bmob.im.demo.view.EmoticonsEditText { <init>(...); }
 
 # view res/layout/include_action_bar.xml #generated:2
@@ -219,7 +219,7 @@
 # onClick res/layout/activity_chat_main.xml #generated:85
 -keepclassmembers class * { *** onTabSelect(...); }
 
-# onClick res/layout/include_chat_bottom_bar.xml #generated:18
-# onClick res/layout/include_chat_bottom_bar.xml #generated:26
+# onClick res/layout/include_chat_bottom_bar.xml #generated:19
+# onClick res/layout/include_chat_bottom_bar.xml #generated:27
 -keepclassmembers class * { *** toAction(...); }
 

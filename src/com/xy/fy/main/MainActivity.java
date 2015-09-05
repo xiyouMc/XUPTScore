@@ -3,6 +3,7 @@ package com.xy.fy.main;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.sql.RowId;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -14,9 +15,20 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
+import com.baidu.location.LocationClientOption.LocationMode;
+import com.baidu.mapapi.SDKInitializer;
 import com.bmob.im.demo.CustomApplcation;
+import com.bmob.im.demo.MyMessageReceiver;
+import com.bmob.im.demo.bean.User;
+import com.bmob.im.demo.config.BmobConstants;
+import com.bmob.im.demo.config.Config;
 import com.bmob.im.demo.ui.BaseActivity;
-import com.bmob.im.demo.ui.SplashActivity;
+import com.bmob.im.demo.ui.NewFriendActivity;
+import com.bmob.im.demo.ui.fragment.ContactFragment;
+import com.bmob.im.demo.ui.fragment.RecentFragment;
+import com.bmob.im.demo.ui.fragment.SettingsFragment;
 import com.cardsui.example.MyPlayCard;
 import com.fima.cardsui.objects.CardStack;
 import com.fima.cardsui.views.CardUI;
@@ -26,6 +38,8 @@ import com.mc.util.CircleImageView;
 import com.mc.util.CustomRankListView;
 import com.mc.util.CustomRankListView.OnAddFootListener;
 import com.mc.util.CustomRankListView.OnFootLoadingListener;
+import com.mc.util.H5Log;
+import com.mc.util.H5Toast;
 import com.mc.util.HttpAssist;
 import com.mc.util.HttpUtilMc;
 import com.mc.util.LogcatHelper;
@@ -39,6 +53,7 @@ import com.slidingmenu.lib.SlidingMenu.OnOpenListener;
 import com.xy.fy.adapter.ChooseHistorySchoolExpandAdapter;
 import com.xy.fy.adapter.ChooseSchoolExpandAdapter;
 import com.xy.fy.util.BitmapUtil;
+import com.xy.fy.util.ConnectionUtil;
 import com.xy.fy.util.ShareUtil;
 import com.xy.fy.util.ShortcutUtils;
 import com.xy.fy.util.StaticVarUtil;
@@ -52,9 +67,11 @@ import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
@@ -66,6 +83,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.Html;
@@ -96,15 +115,26 @@ import android.widget.LinearLayout;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import cn.bmob.im.BmobChat;
+import cn.bmob.im.BmobChatManager;
+import cn.bmob.im.BmobNotifyManager;
 import cn.bmob.im.bean.BmobInvitation;
 import cn.bmob.im.bean.BmobMsg;
+import cn.bmob.im.config.BmobConfig;
 import cn.bmob.im.db.BmobDB;
+import cn.bmob.im.db.DBConfig;
 import cn.bmob.im.inteface.EventListener;
+import cn.bmob.im.util.BmobLog;
+import cn.bmob.v3.BmobInstallation;
+import cn.bmob.v3.datatype.BmobFile;
+import cn.bmob.v3.listener.SaveListener;
+import cn.bmob.v3.listener.UpdateListener;
+import cn.bmob.v3.listener.UploadFileListener;
 import cn.sharesdk.onekeyshare.OnekeyShare;
 
 public class MainActivity extends BaseActivity implements EventListener {
-  
-  private final static String TAG  = "MainActivity";
+
+  private final static String TAG = "MainActivity";
   private static int requestTimes = 0;
   private static OnekeyShare share;
   private static ShareUtil shareUtil;
@@ -131,7 +161,7 @@ public class MainActivity extends BaseActivity implements EventListener {
   private LinearLayout menuSetting = null;// 设置
   private LinearLayout menuAbout = null;// 关于
   private Button check_version = null;
-  private TextView bukao_tip = null;
+  public static TextView bukao_tip = null;
   ArrayList<HashMap<String, Object>> listItem;// json解析之后的列表,保存了所有的成绩数据
   private TextView ideaMsgText = null;
   private TextView phoneText = null;
@@ -162,17 +192,18 @@ public class MainActivity extends BaseActivity implements EventListener {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     requestWindowFeature(Window.FEATURE_NO_TITLE);
+
     super.setContentView(R.layout.activity_main);
-    
-    //创建快捷方式
-    final Intent launchIntent = getIntent();  
-    final String action = launchIntent.getAction(); 
-    if (Intent.ACTION_CREATE_SHORTCUT.equals(action)) {  
-        Log.i(TAG, "create shortcut method one---------------- ");  
-        setResult(RESULT_OK, ShortcutUtils.getShortcutToDesktopIntent(MainActivity.this));  
-          
-        finish();  
-    }   
+
+    // 创建快捷方式
+    final Intent launchIntent = getIntent();
+    final String action = launchIntent.getAction();
+    if (Intent.ACTION_CREATE_SHORTCUT.equals(action)) {
+      Log.i(TAG, "create shortcut method one---------------- ");
+      setResult(RESULT_OK, ShortcutUtils.getShortcutToDesktopIntent(MainActivity.this));
+
+      finish();
+    }
 
     BadgeUtil.resetBadgeCount(getApplicationContext());
     CheckVersionAsyntask checkVersionAsyntask = new CheckVersionAsyntask();
@@ -181,6 +212,7 @@ public class MainActivity extends BaseActivity implements EventListener {
     share = shareUtil.showShare();
     softDeclare();// 将部分 变量 定义为弱引用
     dialog = ViewUtil.getProgressDialog(MainActivity.this, "正在查询");
+    dialog.setCancelable(false);
     // init map
     mapScoreOne = new HashMap<String, String>();// tm 指向同一块内存了 。
     mapScoreTwo = new HashMap<String, String>();
@@ -497,6 +529,8 @@ public class MainActivity extends BaseActivity implements EventListener {
     headPhoto = (CircleImageView) findViewById(R.id.headphoto);// 头像
     menuBang = (LinearLayout) findViewById(R.id.menu_bang);// 1.成绩查询
     menuMyBukao = (LinearLayout) findViewById(R.id.menu_my_bukao);// 2.补考查询
+    iv_bukao_tips = (ImageView) findViewById(R.id.iv_bukao_tips);
+
     menuMyCjTongji = (LinearLayout) findViewById(R.id.menu_my_cj_tongji);// 成绩统计
     menuMyCjTongji.setVisibility(View.GONE);
     menuMyPaiming = (LinearLayout) findViewById(R.id.menu_my_paiming);// 3.我的排名
@@ -505,13 +539,7 @@ public class MainActivity extends BaseActivity implements EventListener {
     menuSetting = (LinearLayout) findViewById(R.id.menu_setting);// 5.设置
     menuAbout = (LinearLayout) findViewById(R.id.menu_about);
     bukao_tip = (TextView) findViewById(R.id.bukao_tip);
-    if (isShowTip) {
-      bukao_tip.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.msg_tips, 0);
-      isShowTip = false;
-    } else {
-      bukao_tip.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
 
-    }
     LinearLayout menuQuit = (LinearLayout) findViewById(R.id.menu_quit);
     menuBang.setPressed(true);// 初始化默认是风云榜被按下
     setCurrentMenuItem(StaticVarUtil.MENU_BANG);// 记录当前选项位置
@@ -572,6 +600,7 @@ public class MainActivity extends BaseActivity implements EventListener {
         // 判断如果没有头像的话，先让选择头像，并填写昵称
         // 暂且跳转到好友列表
         // showToast("程序猿们正在努力开发中，请持续关注...");
+        slidingMenu.setContent(R.layout.activity_chat_main);
         new Thread(new Runnable() {
           @Override
           public void run() {
@@ -1010,10 +1039,10 @@ public class MainActivity extends BaseActivity implements EventListener {
     }
   }
 
-  public void onBackPressed() {
-    ViewUtil.cancelToast();
-    super.onBackPressed();
-  }
+  // public void onBackPressed() {
+  // ViewUtil.cancelToast();
+  // super.onBackPressed();
+  // }
 
   /*
    * 下拉刷新
@@ -1612,15 +1641,72 @@ public class MainActivity extends BaseActivity implements EventListener {
     isFirstListView = true;
     // 清空成绩缓存
     isFirst = true;
+    fragments = null;
+    try {
+      unregisterReceiver(mReceiver);
+    } catch (Exception e) {
+      // TODO: handle exception
+    }
+
+    try {
+      unregisterReceiver(newReceiver);
+    } catch (Exception e) {
+    }
+    newReceiver = null;
+    try {
+      unregisterReceiver(userReceiver);
+    } catch (Exception e) {
+    }
+    userReceiver = null;
+    contactFragment = null;
+    recentFragment = null;
+    settingFragment = null;
+    try {
+      // BmobDB.create(this).clearAllDbCache();
+
+    } catch (Exception e) {
+      // TODO: handle exception
+    }
+
   }
 
   @Override
   protected void onResume() {
     // TODO Auto-generated method stub
     super.onResume();
-    if (BmobDB.create(this).hasUnReadMsg()) {
-      bukao_tip.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.msg_tips, 0);
+
+    if (!ConnectionUtil.isConn(getApplicationContext())) {
+      ConnectionUtil.setNetworkMethod(MainActivity.this);
+      return;
     }
+    // 小圆点提示
+    if (iv_recent_tips == null || iv_bukao_tips == null) {
+      return;
+    }
+    if (BmobDB.create(this).hasUnReadMsg()) {
+      iv_recent_tips.setVisibility(View.VISIBLE);
+      iv_bukao_tips.setVisibility(View.VISIBLE);
+    } else {
+      iv_bukao_tips.setVisibility(View.GONE);
+      iv_recent_tips.setVisibility(View.GONE);
+    }
+    if (BmobDB.create(this).hasNewInvite()) {
+      iv_contact_tips.setVisibility(View.VISIBLE);
+      iv_bukao_tips.setVisibility(View.VISIBLE);
+    } else {
+      iv_contact_tips.setVisibility(View.GONE);
+      iv_bukao_tips.setVisibility(View.GONE);
+    }
+    MyMessageReceiver.ehList.add(this);// 监听推送的消息
+    // 清空
+    MyMessageReceiver.mNewNum = 0;
+  }
+
+  @Override
+  protected void onPause() {
+    // TODO Auto-generated method stub
+    super.onPause();
+    MyMessageReceiver.ehList.remove(this);// 取消监听推送的消息
   }
 
   /*
@@ -1646,8 +1732,13 @@ public class MainActivity extends BaseActivity implements EventListener {
       @Override
       public void onClick(DialogInterface dialog, int which) {
         dialog.cancel();
+        BmobDB.create(getApplicationContext()).queryBmobInviteList().clear();
         deleteCatch();
         LogcatHelper.getInstance(MainActivity.this).stop();
+        // 取消定时检测服务
+        BmobChat.getInstance(getApplicationContext()).stopPollService();
+
+        userManager.logout();
         if (logout) {
           Intent i = new Intent();
           i.setClass(getApplicationContext(), LoginActivity.class);
@@ -1827,11 +1918,13 @@ public class MainActivity extends BaseActivity implements EventListener {
             GetRankAsyntask getRankAsyntask = new GetRankAsyntask();
             getRankAsyntask.execute();
           } else {
+            dialog.cancel();
             ViewUtil.showToast(getApplicationContext(), HttpUtilMc.CONNECT_EXCEPTION);
           }
         }
       } catch (Exception e) {
         e.printStackTrace();
+        dialog.cancel();
         Log.i("LoginActivity", e.toString());
       }
 
@@ -1982,7 +2075,21 @@ public class MainActivity extends BaseActivity implements EventListener {
       case StaticVarUtil.MENU_BANG:
         menu1();
         setCurrentMenuItem(StaticVarUtil.MENU_BANG);// 记录当前选项位置
-        break;
+        return;
+      case StaticVarUtil.MENU_ABOUT:
+        aboutListener();
+        setCurrentMenuItem(StaticVarUtil.MENU_ABOUT);// 记录当前选项位置
+        return;
+      }
+      if (!ConnectionUtil.isConn(getApplicationContext())) {
+        ConnectionUtil.setNetworkMethod(MainActivity.this);
+        menuBang.setPressed(true);// 初始化默认是风云榜被按下
+        setCurrentMenuItem(StaticVarUtil.MENU_BANG);// 记录当前选项位置
+        slidingMenu.setContent(R.layout.card_main);
+        menu1();
+        return;
+      }
+      switch (msg.what) {
       case StaticVarUtil.MENU_BUKAO:
         friend_list();
         setCurrentMenuItem(StaticVarUtil.MENU_BUKAO);// 记录当前选项位置
@@ -1999,10 +2106,7 @@ public class MainActivity extends BaseActivity implements EventListener {
         menuSetting();
         setCurrentMenuItem(StaticVarUtil.MENU_SETTING);// 记录当前选项位置
         break;
-      case StaticVarUtil.MENU_ABOUT:
-        aboutListener();
-        setCurrentMenuItem(StaticVarUtil.MENU_ABOUT);// 记录当前选项位置
-        break;
+
       case StaticVarUtil.SHARE:
         showShareQrcodeDialog();
         break;
@@ -2015,13 +2119,14 @@ public class MainActivity extends BaseActivity implements EventListener {
         break;
 
       case StaticVarUtil.BMOB_CHAT:
-        if (BmobDB.create(getApplicationContext()).hasUnReadMsg() || !isShowTip) {
-          bukao_tip.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-          isShowTip = true;
+        try {
+          chat();
+        } catch (ClassCastException e) {
+          // TODO: handle exception
+          e.printStackTrace();
         }
-        Intent intent = new Intent();
-        intent.setClass(getApplicationContext(), SplashActivity.class);
-        startActivity(intent);
+
+        setCurrentMenuItem(StaticVarUtil.MENU_BUKAO);// 记录当前选项位置
         break;
       case StaticVarUtil.CHECK_VERSION:
         CheckVersionAsyntask checkVersionAsyntask = new CheckVersionAsyntask();
@@ -2030,6 +2135,508 @@ public class MainActivity extends BaseActivity implements EventListener {
       }
     };
   };
+
+  private static final int GO_HOME = 100;
+  private static final int GO_LOGIN = 200;
+
+  // 定位获取当前用户的地理位置
+  private LocationClient mLocationClient;
+
+  private BaiduReceiver mReceiver;// 注册广播接收器，用于监听网络以及验证key
+
+  private void chat() {
+    // BmobIM SDK初始化--只需要这一段代码即可完成初始化
+    // 请到Bmob官网(http://www.bmob.cn/)申请ApplicationId,具体地址:http://docs.bmob.cn/android/faststart/index.html?menukey=fast_start&key=start_android
+    BmobChat.getInstance(this).init(Config.applicationId);
+    // 开启定位
+    initLocClient();
+    // 注册地图 SDK 广播监听者
+    IntentFilter iFilter = new IntentFilter();
+    iFilter.addAction(SDKInitializer.SDK_BROADTCAST_ACTION_STRING_PERMISSION_CHECK_ERROR);
+    iFilter.addAction(SDKInitializer.SDK_BROADCAST_ACTION_STRING_NETWORK_ERROR);
+    mReceiver = new BaiduReceiver();
+    registerReceiver(mReceiver, iFilter);
+    dialog.show();
+    if (userManager.getCurrentUser() != null) {
+      // 每次自动登陆的时候就需要更新下当前位置和好友的资料，因为好友的头像，昵称啥的是经常变动的
+      File file = new File(StaticVarUtil.PATH, StaticVarUtil.student.getAccount() + ".JPEG");
+      if (file.exists()) {
+        uploadAvatar(StaticVarUtil.PATH + "/" + StaticVarUtil.student.getAccount() + ".JPEG");
+      }
+
+      updateUserInfos();
+      chatHandler.sendEmptyMessageDelayed(GO_HOME, 0);
+    } else {
+      chatHandler.sendEmptyMessageDelayed(GO_LOGIN, 2000);
+    }
+  }
+
+  /**
+   * 开启定位，更新当前用户的经纬度坐标
+   * 
+   * @Title: initLocClient @Description: TODO @param @return void @throws
+   */
+  private void initLocClient() {
+    mLocationClient = CustomApplcation.getInstance().mLocationClient;
+    LocationClientOption option = new LocationClientOption();
+    option.setLocationMode(LocationMode.Hight_Accuracy);// 设置定位模式:高精度模式
+    option.setCoorType("bd09ll"); // 设置坐标类型:百度经纬度
+    option.setScanSpan(1000);// 设置发起定位请求的间隔时间为1000ms:低于1000为手动定位一次，大于或等于1000则为定时定位
+    option.setIsNeedAddress(false);// 不需要包含地址信息
+    mLocationClient.setLocOption(option);
+    mLocationClient.start();
+  }
+
+  private Button[] mTabs;
+  private ContactFragment contactFragment;
+  private RecentFragment recentFragment;
+  private SettingsFragment settingFragment;
+  private Fragment[] fragments;
+  private int index;
+  private int currentTabIndex;
+  ImageView iv_recent_tips, iv_contact_tips, iv_bukao_tips;// 消息提示
+
+  private void initView() {
+    mTabs = new Button[3];
+    mTabs[0] = (Button) findViewById(R.id.btn_message);
+    mTabs[1] = (Button) findViewById(R.id.btn_contract);
+    mTabs[2] = (Button) findViewById(R.id.btn_set);
+    iv_recent_tips = (ImageView) findViewById(R.id.iv_recent_tips);
+    iv_contact_tips = (ImageView) findViewById(R.id.iv_contact_tips);
+
+    if (BmobDB.create(this).hasUnReadMsg()) {
+      iv_recent_tips.setVisibility(View.VISIBLE);
+      iv_bukao_tips.setVisibility(View.VISIBLE);
+    } else {
+      iv_recent_tips.setVisibility(View.GONE);
+      iv_bukao_tips.setVisibility(View.GONE);
+    }
+    if (BmobDB.create(this).hasNewInvite()) {
+      iv_contact_tips.setVisibility(View.VISIBLE);
+      iv_bukao_tips.setVisibility(View.VISIBLE);
+    } else {
+      iv_contact_tips.setVisibility(View.GONE);
+      iv_bukao_tips.setVisibility(View.GONE);
+    }
+    MyMessageReceiver.ehList.add(this);// 监听推送的消息
+    // 清空
+    MyMessageReceiver.mNewNum = 0;
+    // 把第一个tab设为选中状态
+    mTabs[0].setSelected(true);
+  }
+
+  private void initTab() {
+    contactFragment = new ContactFragment();
+    recentFragment = new RecentFragment();
+    settingFragment = new SettingsFragment();
+    fragments = new Fragment[] { recentFragment, contactFragment, settingFragment };
+    // 添加显示第一个fragment
+    getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, recentFragment)
+        .add(R.id.fragment_container, contactFragment).hide(contactFragment).show(recentFragment)
+        .commitAllowingStateLoss();
+    dialog.dismiss();
+  }
+
+  /**
+   * button点击事件
+   * 
+   * @param view
+   */
+  public void onTabSelect(View view) {
+    if (mTabs == null) {
+      return;
+    }
+    switch (view.getId()) {
+    case R.id.btn_message:
+      index = 0;
+      break;
+    case R.id.btn_contract:
+      index = 1;
+      break;
+    case R.id.btn_set:
+      index = 2;
+      break;
+    }
+    if (currentTabIndex != index) {
+      FragmentTransaction trx = getSupportFragmentManager().beginTransaction();
+      trx.hide(fragments[currentTabIndex]);
+      if (!fragments[index].isAdded()) {
+        trx.add(R.id.fragment_container, fragments[index]);
+      }
+      trx.show(fragments[index]).commit();
+    }
+    mTabs[currentTabIndex].setSelected(false);
+    // 把当前tab设为选中状态
+    mTabs[index].setSelected(true);
+    currentTabIndex = index;
+  }
+
+  /**
+   * 刷新界面
+   * 
+   * @Title: refreshNewMsg @Description: TODO @param @param message @return void @throws
+   */
+  private void refreshNewMsg(BmobMsg message) {
+    // 声音提示
+    boolean isAllow = CustomApplcation.getInstance().getSpUtil().isAllowVoice();
+    if (isAllow) {
+      CustomApplcation.getInstance().getMediaPlayer().start();
+    }
+    iv_recent_tips.setVisibility(View.VISIBLE);
+    iv_bukao_tips.setVisibility(View.VISIBLE);
+    // 也要存储起来
+    if (message != null) {
+      BmobChatManager.getInstance(MainActivity.this).saveReceiveMessage(true, message);
+    }
+    if (currentTabIndex == 0) {
+      // 当前页面如果为会话页面，刷新此页面
+      if (recentFragment != null) {
+        recentFragment.refresh();
+      }
+    }
+  }
+
+  NewBroadcastReceiver newReceiver;
+
+  private void initNewMessageBroadCast() {
+    // 注册接收消息广播
+    newReceiver = new NewBroadcastReceiver();
+    IntentFilter intentFilter = new IntentFilter(BmobConfig.BROADCAST_NEW_MESSAGE);
+    // 优先级要低于ChatActivity
+    intentFilter.setPriority(3);
+    registerReceiver(newReceiver, intentFilter);
+  }
+
+  /**
+   * 新消息广播接收者
+   * 
+   */
+  private class NewBroadcastReceiver extends BroadcastReceiver {
+    @Override
+    public void onReceive(Context context, Intent intent) {
+      // 刷新界面
+      refreshNewMsg(null);
+      // 记得把广播给终结掉
+      abortBroadcast();
+    }
+  }
+
+  TagBroadcastReceiver userReceiver;
+
+  private void initTagMessageBroadCast() {
+    // 注册接收消息广播
+    userReceiver = new TagBroadcastReceiver();
+    IntentFilter intentFilter = new IntentFilter(BmobConfig.BROADCAST_ADD_USER_MESSAGE);
+    // 优先级要低于ChatActivity
+    intentFilter.setPriority(3);
+    registerReceiver(userReceiver, intentFilter);
+  }
+
+  /**
+   * 标签消息广播接收者
+   */
+  private class TagBroadcastReceiver extends BroadcastReceiver {
+    @Override
+    public void onReceive(Context context, Intent intent) {
+      BmobInvitation message = (BmobInvitation) intent.getSerializableExtra("invite");
+      refreshInvite(message);
+      // 记得把广播给终结掉
+      abortBroadcast();
+    }
+  }
+
+  @Override
+  public void onNetChange(boolean isNetConnected) {
+    // TODO Auto-generated method stub
+    if (isNetConnected) {
+      ShowToast(R.string.network_tips);
+    }
+  }
+
+  @Override
+  public void onAddUser(BmobInvitation message) {
+    // TODO Auto-generated method stub
+    refreshInvite(message);
+  }
+
+  /**
+   * 刷新好友请求
+   * 
+   * @Title: notifyAddUser @Description: TODO @param @param message @return void @throws
+   */
+  private void refreshInvite(BmobInvitation message) {
+    boolean isAllow = CustomApplcation.getInstance().getSpUtil().isAllowVoice();
+    if (isAllow) {
+      CustomApplcation.getInstance().getMediaPlayer().start();
+    }
+    iv_contact_tips.setVisibility(View.VISIBLE);
+    iv_bukao_tips.setVisibility(View.VISIBLE);
+    if (currentTabIndex == 1) {
+      if (contactFragment != null) {
+        contactFragment.refresh();
+      }
+    } else {
+      // 同时提醒通知
+      String tickerText = message.getFromname() + "请求添加好友";
+      boolean isAllowVibrate = CustomApplcation.getInstance().getSpUtil().isAllowVibrate();
+      BmobNotifyManager.getInstance(this).showNotify(isAllow, isAllowVibrate,
+          R.drawable.ic_launcher, tickerText, message.getFromname(), tickerText.toString(),
+          NewFriendActivity.class);
+    }
+  }
+
+  @Override
+  public void onOffline() {
+    // TODO Auto-generated method stub
+    showOfflineDialog(this);
+    finish();
+  }
+
+  @Override
+  public void onReaded(String conversionId, String msgTime) {
+    // TODO Auto-generated method stub
+  }
+
+  private static long firstTime;
+
+  /**
+   * 连续按两次返回键就退出
+   */
+  @Override
+  public void onBackPressed() {
+    // TODO Auto-generated method stub
+    // if (firstTime + 2000 > System.currentTimeMillis()) {
+    ViewUtil.cancelToast();
+    super.onBackPressed();
+
+    /*
+     * } else { ShowToast("再按一次退出程序"); } firstTime = System.currentTimeMillis();
+     */
+  }
+
+  private void startChatActivity() {
+    BmobConstants.IS_STARTED = 1;
+    // 开启定时检测服务（单位为秒）-在这里检测后台是否还有未读的消息，有的话就取出来
+    BmobChat.getInstance(getApplicationContext()).startPollService(30);
+    // 开启广播接收器
+    initNewMessageBroadCast();
+    initTagMessageBroadCast();
+    initView();
+    initTab();
+  }
+
+  @SuppressLint("HandlerLeak")
+  private Handler chatHandler = new Handler() {
+    @Override
+    public void handleMessage(Message msg) {
+      switch (msg.what) {
+      case GO_HOME:
+        // startAnimActivity(com.bmob.im.demo.ui.MainActivity.class);
+        H5Log.d(getApplicationContext(), "go home");
+        startChatActivity();
+        break;
+      case GO_LOGIN:
+        H5Log.d(getApplicationContext(), "go login");
+        // 由于每个应用的注册所需的资料都不一样，故IM sdk未提供注册方法，用户可按照bmod SDK的注册方式进行注册。
+        // 注册的时候需要注意两点：1、User表中绑定设备id和type，2、设备表中绑定username字段
+        final User bu = new User();
+        bu.setUsername(StaticVarUtil.student.getName() + "-" + StaticVarUtil.student.getAccount());
+        bu.setPassword(StaticVarUtil.student.getPassword());
+        // 将user和设备id进行绑定
+        bu.setDeviceType("android");
+        bu.setInstallId(BmobInstallation.getInstallationId(getApplicationContext()));
+        bu.signUp(getApplicationContext(), new SaveListener() {
+
+          @Override
+          public void onSuccess() {
+            // TODO Auto-generated method stub
+            // ShowToast("注册成功");
+            // 将设备与username进行绑定
+            userManager.bindInstallationForRegister(bu.getUsername());
+            // 更新地理位置信息
+            updateUserLocation();
+            // 发广播通知登陆页面退出
+            sendBroadcast(new Intent(BmobConstants.ACTION_REGISTER_SUCCESS_FINISH));
+            updateInfo(StaticVarUtil.student.getName());
+          }
+
+          private void updateInfo(String nick) {
+            final User user = userManager.getCurrentUser(User.class);
+            user.setNick(nick);
+            user.update(getApplicationContext(), new UpdateListener() {
+              @Override
+              public void onSuccess() {
+                // TODO Auto-generated method stub
+                File file = new File(StaticVarUtil.PATH,
+                    StaticVarUtil.student.getAccount() + ".JPEG");
+                if (file.exists()) {
+                  uploadAvatar(
+                      StaticVarUtil.PATH + "/" + StaticVarUtil.student.getAccount() + ".JPEG");
+                } else {
+                  // 启动主页
+                  // Intent intent = new Intent(getApplicationContext(),
+                  // com.bmob.im.demo.ui.MainActivity.class);
+                  // startActivity(intent);
+                  startChatActivity();
+                }
+              }
+
+              @Override
+              public void onFailure(int arg0, String arg1) {
+                // TODO Auto-generated method stub
+                ShowToast("onFailure:" + arg1);
+              }
+            });
+          }
+
+          @Override
+          public void onFailure(int arg0, String arg1) {
+            // TODO Auto-generated method stub
+            dialog.cancel();
+            if (arg1 == null) {
+              return;
+            }
+            BmobLog.i(arg1);
+           
+            if (arg1.split("'").length < 3) {
+              H5Toast.showToast(getApplicationContext(), "业务繁忙，请稍后再试！");
+              menuBang.setPressed(true);// 初始化默认是风云榜被按下
+              setCurrentMenuItem(StaticVarUtil.MENU_BANG);// 记录当前选项位置
+              slidingMenu.setContent(R.layout.card_main);
+              menu1();
+              return;
+            }
+            if ("already taken.".equals(arg1.split("'")[2].trim())) {// 已经注册过
+              userManager.login(
+                  StaticVarUtil.student.getName() + "-" + StaticVarUtil.student.getAccount(),
+                  StaticVarUtil.student.getPassword(), new SaveListener() {
+
+                @Override
+                public void onSuccess() {
+                  // TODO Auto-generated method stub
+                  runOnUiThread(new Runnable() {
+
+                    @Override
+                    public void run() {
+                      // TODO Auto-generated method stub
+                    }
+                  });
+                  // 更新用户的地理位置以及好友的资料
+                  updateUserInfos();
+                  // Intent intent = new Intent(getApplicationContext(),
+                  // com.bmob.im.demo.ui.MainActivity.class);
+                  // startActivity(intent);
+                  startChatActivity();
+                }
+
+                @Override
+                public void onFailure(int errorcode, String arg0) {
+                  // TODO Auto-generated method stub
+                  BmobLog.i(arg0);
+                  ShowToast(arg0);
+                }
+              });
+
+            }
+            // ShowToast("注册失败:" + arg1);
+          }
+        });
+        /*
+         * startAnimActivity(LoginActivity.class); finish();
+         */break;
+      }
+    }
+  };
+
+  // 更新用户头像
+  private void uploadAvatar(String path) {
+    final BmobFile bmobFile = new BmobFile(new File(path));
+    bmobFile.upload(this, new UploadFileListener() {
+
+      @Override
+      public void onSuccess() {
+        // TODO Auto-generated method stub
+        String url = bmobFile.getFileUrl(getApplicationContext());
+        // 更新BmobUser对象
+        updateUserAvatar(url);
+      }
+
+      @Override
+      public void onProgress(Integer arg0) {
+        // TODO Auto-generated method stub
+
+      }
+
+      @Override
+      public void onFailure(int arg0, String msg) {
+        // TODO Auto-generated method stub
+        ShowToast("头像上传失败：" + msg);
+      }
+    });
+  }
+
+  // 更新用户信息
+  private void updateUserAvatar(final String url) {
+    User user = (User) userManager.getCurrentUser(User.class);
+    user.setAvatar(url);
+    user.update(this, new UpdateListener() {
+      @Override
+      public void onSuccess() {
+        // TODO Auto-generated method stub
+        // Intent intent = new Intent(getApplicationContext(),
+        // com.bmob.im.demo.ui.MainActivity.class);
+        // startActivity(intent);
+        startChatActivity();
+        // 更新头像
+      }
+
+      @Override
+      public void onFailure(int code, String msg) {
+        // TODO Auto-generated method stub
+        ShowToast("头像更新失败：" + msg);
+      }
+    });
+  }
+
+  /**
+   * 构造广播监听类，监听 SDK key 验证以及网络异常广播
+   */
+  public class BaiduReceiver extends BroadcastReceiver {
+    public void onReceive(Context context, Intent intent) {
+      String s = intent.getAction();
+      if (s.equals(SDKInitializer.SDK_BROADTCAST_ACTION_STRING_PERMISSION_CHECK_ERROR)) {
+        ShowToast("key 验证出错! 请在 AndroidManifest.xml 文件中检查 key 设置");
+      } else if (s.equals(SDKInitializer.SDK_BROADCAST_ACTION_STRING_NETWORK_ERROR)) {
+        ShowToast("当前网络连接不稳定，请检查您的网络设置!");
+      }
+    }
+  }
+
+  @Override
+  protected void onDestroy() {
+    // 退出时销毁定位
+    if (mLocationClient != null && mLocationClient.isStarted()) {
+      mLocationClient.stop();
+    }
+    try {
+      CustomApplcation.getInstance().logout();
+      unregisterReceiver(mReceiver);
+    } catch (Exception e) {
+      // TODO: handle exception
+    }
+
+    try {
+      unregisterReceiver(newReceiver);
+    } catch (Exception e) {
+    }
+    try {
+      unregisterReceiver(userReceiver);
+    } catch (Exception e) {
+    }
+    // 取消定时检测服务
+    BmobChat.getInstance(this).stopPollService();
+    super.onDestroy();
+  }
 
   // 显示 排名的listview
   private void setListView() {
@@ -2238,32 +2845,8 @@ public class MainActivity extends BaseActivity implements EventListener {
   }
 
   @Override
-  public void onAddUser(BmobInvitation arg0) {
+  public void onMessage(BmobMsg message) {
     // TODO Auto-generated method stub
-
+    refreshNewMsg(message);
   }
-
-  @Override
-  public void onMessage(BmobMsg arg0) {
-    // TODO Auto-generated method stub
-    bukao_tip.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.msg_tips, 0);
-    bukao_tip.refreshDrawableState();
-  }
-
-  @Override
-  public void onNetChange(boolean arg0) {
-    // TODO Auto-generated method stub
-
-  }
-
-  @Override
-  public void onOffline() {
-    // TODO Auto-generated method stub
-
-  }
-
-  @Override
-  public void onReaded(String arg0, String arg1) {
-    // TODO Auto-generated method stub
-    }
 }

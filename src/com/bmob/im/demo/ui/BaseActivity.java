@@ -1,5 +1,6 @@
 package com.bmob.im.demo.ui;
 
+import java.io.File;
 import java.util.List;
 
 import android.app.Activity;
@@ -36,6 +37,7 @@ import com.bmob.im.demo.view.dialog.DialogTips;
 import com.mc.util.H5Toast;
 import com.xy.fy.main.R;
 import com.xy.fy.util.FileUtils;
+import com.xy.fy.util.StaticVarUtil;
 
 /**
  * »ùÀà
@@ -47,7 +49,7 @@ import com.xy.fy.util.FileUtils;
  */
 public class BaseActivity extends FragmentActivity {
 
-  BmobUserManager userManager;
+  protected BmobUserManager userManager;
   BmobChatManager manager;
 
   CustomApplcation mApplication;
@@ -165,7 +167,7 @@ public class BaseActivity extends FragmentActivity {
     dialog.SetOnSuccessListener(new DialogInterface.OnClickListener() {
       public void onClick(DialogInterface dialogInterface, int userId) {
         CustomApplcation.getInstance().logout();
-        startActivity(new Intent(context, SplashActivity.class));
+        startActivity(new Intent(context, com.xy.fy.main.LoginActivity.class));
         finish();
         dialogInterface.dismiss();
       }

@@ -31,7 +31,7 @@
 
     <LinearLayout
         android:id="@+id/header_layout_rightview_container"
-        android:layout_width="wrap_content"
+        android:layout_width="50dp"
         android:layout_height="fill_parent"
         android:layout_alignParentRight="true"
         android:gravity="center_vertical|right"

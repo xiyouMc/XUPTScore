@@ -193,7 +193,7 @@ public class MyMessageReceiver extends BroadcastReceiver {
 	  */
 	public void showMsgNotify(Context context,BmobMsg msg) {
 		// 更新通知栏
-		int icon = R.drawable.ic_launcher;
+		int icon = R.drawable.default_head_photo;
 		String trueMsg = "";
 		if(msg.getMsgType()==BmobConfig.TYPE_TEXT && msg.getContent().contains("\\ue")){
 			trueMsg = "[表情]";
@@ -229,7 +229,7 @@ public class MyMessageReceiver extends BroadcastReceiver {
 		boolean isAllowVibrate = CustomApplcation.getInstance().getSpUtil().isAllowVibrate();
 		if(isAllow && currentUser!=null && currentUser.getObjectId().equals(toId)){
 			//同时提醒通知
-			BmobNotifyManager.getInstance(context).showNotify(isAllowVoice,isAllowVibrate,R.drawable.ic_launcher, ticker,username, ticker.toString(),NewFriendActivity.class);
+			BmobNotifyManager.getInstance(context).showNotify(isAllowVoice,isAllowVibrate,R.drawable.default_head_photo, ticker,username, ticker.toString(),NewFriendActivity.class);
 		}
 	}
 	

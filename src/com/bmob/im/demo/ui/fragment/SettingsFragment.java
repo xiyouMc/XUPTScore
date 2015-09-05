@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import cn.bmob.im.BmobUserManager;
+import cn.bmob.im.db.BmobDB;
 
 import com.bmob.im.demo.CustomApplcation;
 import com.bmob.im.demo.ui.BlackListActivity;
@@ -70,7 +71,6 @@ public class SettingsFragment extends FragmentBase implements OnClickListener{
 		initTopBarForOnlyTitle("设置");
 		//黑名单列表
 		layout_blacklist = (RelativeLayout) findViewById(R.id.layout_blacklist);
-		
 		layout_info = (RelativeLayout) findViewById(R.id.layout_info);
 		rl_switch_notification = (RelativeLayout) findViewById(R.id.rl_switch_notification);
 		rl_switch_voice = (RelativeLayout) findViewById(R.id.rl_switch_voice);

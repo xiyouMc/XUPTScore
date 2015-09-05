@@ -56,7 +56,7 @@ public class SplashActivity extends BaseActivity {
     setContentView(R.layout.activity_splash);
     // BmobIM SDK初始化--只需要这一段代码即可完成初始化
     // 请到Bmob官网(http://www.bmob.cn/)申请ApplicationId,具体地址:http://docs.bmob.cn/android/faststart/index.html?menukey=fast_start&key=start_android
-    BmobChat.getInstance(this).init(Config.applicationId);
+    BmobChat.getInstance(getApplicationContext()).init(Config.applicationId);
     // 开启定位
     initLocClient();
     // 注册地图 SDK 广播监听者
@@ -69,7 +69,7 @@ public class SplashActivity extends BaseActivity {
     if (userManager.getCurrentUser() != null) {
       // 每次自动登陆的时候就需要更新下当前位置和好友的资料，因为好友的头像，昵称啥的是经常变动的
       updateUserInfos();
-      mHandler.sendEmptyMessageDelayed(GO_HOME, 100);
+      mHandler.sendEmptyMessageDelayed(GO_HOME, 0);
     } else {
       mHandler.sendEmptyMessageDelayed(GO_LOGIN, 2000);
     }

@@ -47,6 +47,14 @@ public class Util {
 	public final static String infosFloder = "/xuptscore/devInfos";
 	public final static String LOGINFILE = "login.log";
 
+	public static boolean isDebug(Context context) {
+    try {
+        ApplicationInfo e = context.getPackageManager().getApplicationInfo(context.getPackageName(), 16384);
+        return (e.flags & 2) != 0;
+    } catch (Exception var2) {
+        return false;
+    }
+}
 	/**
 	 * 用来存储设备信息和异常信息 Map<String,String> : mLogInfo
 	 * 

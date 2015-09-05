@@ -8,7 +8,7 @@
     <color name="change_up">#0091FF</color>
     <color name="login_up">#4EC0E2</color>
     <color name="login_down">#30B0E2</color>
-    <color name="transparent">#9000</color> <!-- 透明色 -->
+    <color name="transparent">#00000000</color> <!-- 透明色 -->
     <color name="white">#FFFFFF</color> <!-- 白色 -->
     <color name="lightyellow">#FFFFE0</color> <!-- 亮黄色 -->
     <color name="yellow">#FFFF00</color> <!-- 黄色 -->

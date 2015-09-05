@@ -11,6 +11,9 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.CoreConnectionPNames;
 import org.apache.http.util.EntityUtils;
 
+import com.xy.fy.main.LoginActivity;
+import com.xy.fy.util.ConnectionUtil;
+
 /**
  * @author Administrator
  * @description 记得修改代码，当和服务器响应的时候需要 fall back 代码
