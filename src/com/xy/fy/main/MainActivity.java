@@ -2240,17 +2240,26 @@ public class MainActivity extends BaseActivity implements EventListener {
     // 把第一个tab设为选中状态
     mTabs[0].setSelected(true);
   }
-
+  
   private void initTab() {
     contactFragment = new ContactFragment();
     recentFragment = new RecentFragment();
     settingFragment = new SettingsFragment();
     fragments = new Fragment[] { recentFragment, contactFragment, settingFragment };
     // 添加显示第一个fragment
-    getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, recentFragment)
+    try {
+      if (!contactFragment.isAdded()) {
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, recentFragment)
         .add(R.id.fragment_container, contactFragment).hide(contactFragment).show(recentFragment)
         .commitAllowingStateLoss();
-    dialog.dismiss();
+      }
+    } catch (Exception e) {
+      // TODO: handle exception
+    }
+//    while (contactFragment.isAdded()) {
+      dialog.dismiss();
+//      break;
+//    }
   }
 
   /**
@@ -2276,8 +2285,8 @@ public class MainActivity extends BaseActivity implements EventListener {
     if (currentTabIndex != index) {
       FragmentTransaction trx = getSupportFragmentManager().beginTransaction();
       trx.hide(fragments[currentTabIndex]);
-      if (!fragments[index].isAdded()) {
-        trx.add(R.id.fragment_container, fragments[index]);
+      if (!fragments[index].isAdded()&&index != 1) {
+          trx.add(R.id.fragment_container, fragments[index]);
       }
       trx.show(fragments[index]).commit();
     }

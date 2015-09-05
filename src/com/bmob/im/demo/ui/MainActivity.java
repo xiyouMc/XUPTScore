@@ -85,9 +85,17 @@ public class MainActivity extends ActivityBase implements EventListener {
     settingFragment = new SettingsFragment();
     fragments = new Fragment[] { recentFragment, contactFragment, settingFragment };
     // 添加显示第一个fragment
-    getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, recentFragment)
+    try {
+      if (!contactFragment.isAdded()) {
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, recentFragment)
         .add(R.id.fragment_container, contactFragment).hide(contactFragment).show(recentFragment)
-        .commit();
+        .commitAllowingStateLoss();
+      }
+    } catch (Exception e) {
+      // TODO: handle exception
+      e.printStackTrace();
+    }
+    
   }
 
   /**
