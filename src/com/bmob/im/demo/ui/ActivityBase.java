@@ -1,5 +1,7 @@
 package com.bmob.im.demo.ui;
 
+import com.xy.fy.main.LoginActivity;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;

@@ -3,7 +3,6 @@ package com.xy.fy.main;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.sql.RowId;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -122,7 +121,6 @@ import cn.bmob.im.bean.BmobInvitation;
 import cn.bmob.im.bean.BmobMsg;
 import cn.bmob.im.config.BmobConfig;
 import cn.bmob.im.db.BmobDB;
-import cn.bmob.im.db.DBConfig;
 import cn.bmob.im.inteface.EventListener;
 import cn.bmob.im.util.BmobLog;
 import cn.bmob.v3.BmobInstallation;
@@ -142,7 +140,6 @@ public class MainActivity extends BaseActivity implements EventListener {
   public static HashMap<String, String> mapScoreTwo = null;// xn = 2
   private static boolean isFirst = true;
   private static boolean is_show = false;
-  private static boolean isShowTip = true;
 
   public static SlidingMenu slidingMenu;
   private Button chooseCollege;
@@ -1544,8 +1541,6 @@ public class MainActivity extends BaseActivity implements EventListener {
   private String new_version;// 最新版本
   private String update_content;// 更新内容
   private static String apk_url;// 下载地址
-  private Button download_version;// 下载版本
-  private Button cancle_check;// 取消
 
   /*
    * 刷新
@@ -2497,7 +2492,7 @@ public class MainActivity extends BaseActivity implements EventListener {
               return;
             }
             BmobLog.i(arg1);
-           
+
             if (arg1.split("'").length < 3) {
               H5Toast.showToast(getApplicationContext(), "业务繁忙，请稍后再试！");
               menuBang.setPressed(true);// 初始化默认是风云榜被按下
