@@ -1,7 +1,7 @@
 package com.bmob.im.demo.adapter;
 
 import java.util.List;
-
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.util.Log;
@@ -11,22 +11,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import cn.bmob.im.BmobUserManager;
-import cn.bmob.im.bean.BmobInvitation;
-import cn.bmob.im.config.BmobConfig;
-import cn.bmob.im.db.BmobDB;
-import cn.bmob.im.util.BmobLog;
-import cn.bmob.v3.datatype.BmobFile;
-import cn.bmob.v3.listener.UpdateListener;
 
 import com.bmob.BmobProFile;
 import com.bmob.btp.callback.DownloadListener;
-import com.bmob.im.demo.CustomApplcation;
 import com.bmob.im.demo.adapter.base.BaseListAdapter;
 import com.bmob.im.demo.adapter.base.ViewHolder;
-import com.bmob.im.demo.util.CollectionUtils;
-import com.bmob.im.demo.util.ImageLoadOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
 import com.xy.fy.main.R;
 import com.xy.fy.util.FileUtils;
 import com.xy.fy.util.StaticVarUtil;
@@ -46,7 +35,8 @@ public class FileResourceAdapter extends BaseListAdapter<String> {
     // TODO Auto-generated constructor stub
   }
 
-  @Override
+  @SuppressLint("InflateParams")
+@Override
   public View bindView(int arg0, View convertView, ViewGroup arg2) {
     // TODO Auto-generated method stub
     if (convertView == null) {
