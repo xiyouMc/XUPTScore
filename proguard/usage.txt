@@ -2510,7 +2510,7 @@ com.bmob.im.demo.config.BmobConstants:
 com.bmob.im.demo.config.Config:
     9:9:public Config()
 com.bmob.im.demo.ui.BaseActivity:
-    123:126:public void initTopBarForOnlyTitle(java.lang.String)
+    124:127:public void initTopBarForOnlyTitle(java.lang.String)
 com.bmob.im.demo.ui.ChatActivity:
     public static final int NEW_MESSAGE
 com.bmob.im.demo.ui.FragmentBase:

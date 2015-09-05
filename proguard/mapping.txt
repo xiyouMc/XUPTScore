@@ -16400,6 +16400,7 @@ com.bmob.im.demo.ui.BaseActivity$3 -> com.bmob.im.demo.ui.h:
     void onClick(android.content.DialogInterface,int) -> onClick
 com.bmob.im.demo.ui.BaseActivity$4 -> com.bmob.im.demo.ui.i:
     com.bmob.im.demo.ui.BaseActivity this$0 -> a
+    android.app.ProgressDialog val$dialog -> b
     void onError(int,java.lang.String) -> onError
     void onSuccess(java.util.List) -> onSuccess
 com.bmob.im.demo.ui.BaseActivity$5 -> com.bmob.im.demo.ui.j:
