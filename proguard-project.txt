@@ -10,6 +10,8 @@
 # For more details, see
 #   http://developer.android.com/guide/developing/tools/proguard.html
 
+-renamesourcefileattribute SourceFile
+-keepattributes SourceFile,LineNumberTable
 # Add any project specific keep options here:
 -keep class android.net.http.SslError
 -keep class android.webkit.**{*;}
