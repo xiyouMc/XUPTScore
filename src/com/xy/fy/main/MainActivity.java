@@ -185,6 +185,7 @@ public class MainActivity extends BaseActivity implements EventListener {
 
   private Bitmap bitmap = null;// 修改头像
   private MyHandler mHandler;
+  private Activity mActivity;
 
   private ChooseSchoolExpandAdapter adapter = new ChooseSchoolExpandAdapter(MainActivity.this);
 
@@ -195,6 +196,8 @@ public class MainActivity extends BaseActivity implements EventListener {
     requestWindowFeature(Window.FEATURE_NO_TITLE);
 
     super.setContentView(R.layout.activity_main);
+    mActivity = MainActivity.this;
+    
     mHandler = new MyHandler(this);
     // 创建快捷方式
     final Intent launchIntent = getIntent();
@@ -343,8 +346,9 @@ public class MainActivity extends BaseActivity implements EventListener {
         // 上传各种信息
         Util.uploadDevInfos(getApplicationContext());
       }
-      dialog.cancel();
-
+      if(mActivity!=null&& !mActivity.isFinishing()){
+        dialog.cancel();
+      }
     }
 
   }
@@ -1905,7 +1909,9 @@ public class MainActivity extends BaseActivity implements EventListener {
              * 将字符串 写入xml文件中
              */
             if (!result.equals("")) {
-              dialog.cancel();
+              if(mActivity!=null&& !mActivity.isFinishing()){
+                dialog.cancel();
+              }
               requestTimes = 0;
               refeshRank(result, isFirstListView);
               allRankMap.put(selectXn + selectXq, result);// 将数据保存到内存中，下次就不用重复获取。
@@ -1919,13 +1925,17 @@ public class MainActivity extends BaseActivity implements EventListener {
             GetRankAsyntask getRankAsyntask = new GetRankAsyntask();
             getRankAsyntask.execute();
           } else {
-            dialog.cancel();
+            if(mActivity!=null&& !mActivity.isFinishing()){
+              dialog.cancel();
+            }
             ViewUtil.showToast(getApplicationContext(), HttpUtilMc.CONNECT_EXCEPTION);
           }
         }
       } catch (Exception e) {
         e.printStackTrace();
-        dialog.cancel();
+        if(mActivity!=null&& !mActivity.isFinishing()){
+          dialog.cancel();
+        }
         Log.i("LoginActivity", e.toString());
       }
 
@@ -1946,7 +1956,9 @@ public class MainActivity extends BaseActivity implements EventListener {
     protected void onPostExecute(String result) {
       super.onPostExecute(result);
 
-      dialog.cancel();
+      if(mActivity!=null&& !mActivity.isFinishing()){
+        dialog.cancel();
+      }
       try {
         if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
           if (!result.equals("error")) {
@@ -2804,7 +2816,9 @@ public class MainActivity extends BaseActivity implements EventListener {
     protected void onPostExecute(String result) {
       super.onPostExecute(result);
       if (is_show) {
-        dialog.cancel();
+        if(mActivity!=null&& !mActivity.isFinishing()){
+          dialog.cancel();
+        }
       }
       try {
         if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
