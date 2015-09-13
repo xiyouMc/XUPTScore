@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.mc.util.ScoreUtil;
 import com.xy.fy.util.StaticVarUtil;
 import com.xy.fy.util.ViewUtil;
 
@@ -69,8 +70,8 @@ public class FriendRecommondActivity extends Activity {
     Resources resources = getResources();
     String[] xn = resources.getStringArray(R.array.xn);
     for (int i = 0; i < xn.length; i++) {
-      addData(xn[i], MainActivity.mapScoreOne);
-      addData(xn[i], MainActivity.mapScoreTwo);
+      addData(xn[i], ScoreUtil.mapScoreOne);
+      addData(xn[i], ScoreUtil.mapScoreTwo);
     }
   }
 

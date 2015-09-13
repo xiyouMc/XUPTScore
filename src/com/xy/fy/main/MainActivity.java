@@ -12,7 +12,6 @@ import java.util.Iterator;
 import java.util.Map.Entry;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.baidu.location.LocationClient;
@@ -29,8 +28,6 @@ import com.bmob.im.demo.ui.NewFriendActivity;
 import com.bmob.im.demo.ui.fragment.ContactFragment;
 import com.bmob.im.demo.ui.fragment.RecentFragment;
 import com.bmob.im.demo.ui.fragment.SettingsFragment;
-import com.cardsui.example.MyPlayCard;
-import com.fima.cardsui.objects.CardStack;
 import com.fima.cardsui.views.CardUI;
 import com.mc.db.DBConnection;
 import com.mc.util.BadgeUtil;
@@ -44,14 +41,18 @@ import com.mc.util.HttpAssist;
 import com.mc.util.HttpUtilMc;
 import com.mc.util.LogcatHelper;
 import com.mc.util.Passport;
+import com.mc.util.ProgressDialogUtil;
 import com.mc.util.RankUtils;
 import com.mc.util.SIMCardInfo;
+import com.mc.util.ScoreUtil;
 import com.mc.util.Util;
-import com.mc.util.VersionUpdate;
 import com.slidingmenu.lib.SlidingMenu;
 import com.slidingmenu.lib.SlidingMenu.OnOpenListener;
 import com.xy.fy.adapter.ChooseHistorySchoolExpandAdapter;
 import com.xy.fy.adapter.ChooseSchoolExpandAdapter;
+import com.xy.fy.asynctask.CheckVersionAsynctask;
+import com.xy.fy.asynctask.GetRankAsycntask;
+import com.xy.fy.asynctask.ShowCardAsyncTask;
 import com.xy.fy.util.BitmapUtil;
 import com.xy.fy.util.ConnectionUtil;
 import com.xy.fy.util.ShareUtil;
@@ -67,7 +68,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.Dialog;
-import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -75,7 +75,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
@@ -101,8 +100,6 @@ import android.view.View.OnKeyListener;
 import android.view.View.OnTouchListener;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -113,7 +110,6 @@ import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import cn.bmob.im.BmobChat;
@@ -135,26 +131,21 @@ import cn.sharesdk.onekeyshare.OnekeyShare;
 public class MainActivity extends BaseActivity implements EventListener {
 
   private final static String TAG = "MainActivity";
-  public static HashMap<String, String> mapScoreOne = null;// xn =1
-  public static HashMap<String, String> mapScoreTwo = null;// xn = 2
+
   private static int requestTimes = 0;
   private static OnekeyShare share;
   private static ShareUtil shareUtil;
   private static boolean isFirst = true;
-  private static boolean is_show = false;
-  private final static int DEFAULTITEMSUM = 100;
-  private static int lsitItemSum = DEFAULTITEMSUM;
   private static final int PIC = 11;// 图片
   private static final int PHO = 22;// 照相
   private static final int RESULT = 33;// 返回结果
   public static TextView bukao_tip = null;
-  private static boolean isFirstListView = true;
 
   public static SlidingMenu slidingMenu;
   private Button chooseCollege;
   private Button chooseMsgKind;
   private Button chooseMsgSort;
-  private CardUI mCardView;
+
   private TextView nickname;
   private String name;//
   private CircleImageView headPhoto;
@@ -168,24 +159,17 @@ public class MainActivity extends BaseActivity implements EventListener {
   private LinearLayout menuAbout = null;// 关于
   private Button check_version = null;
 
-  ArrayList<HashMap<String, Object>> listItem;// json解析之后的列表,保存了所有的成绩数据
   private TextView ideaMsgText = null;
   private TextView phoneText = null;
 
-  private CustomRankListView allRankList;
-  private TextView rankText;
   private TextView nameText;
-  private TextView rankScoreText;
-  private HashMap<String, String> allRankMap = new HashMap<String, String>();// 所有学年和学期的成绩
-  private AutoCompleteTextView search_edittext;
-  private SimpleAdapter simpleAdapter;
-  private String score_json;// json数据
 
-  private ProgressDialog dialog = null;
+  private AutoCompleteTextView search_edittext;
 
   private Bitmap bitmap = null;// 修改头像
   private MyHandler mHandler;
-  private Activity mActivity;
+
+  private ArrayList<HashMap<String, Object>> listItem;
 
   private ChooseSchoolExpandAdapter adapter = new ChooseSchoolExpandAdapter(MainActivity.this);
 
@@ -194,10 +178,8 @@ public class MainActivity extends BaseActivity implements EventListener {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     requestWindowFeature(Window.FEATURE_NO_TITLE);
-
     super.setContentView(R.layout.activity_main);
-    mActivity = MainActivity.this;
-    
+
     mHandler = new MyHandler(this);
     // 创建快捷方式
     final Intent launchIntent = getIntent();
@@ -206,20 +188,16 @@ public class MainActivity extends BaseActivity implements EventListener {
       Log.i(TAG, "create shortcut method one---------------- ");
       setResult(RESULT_OK, ShortcutUtils.getShortcutToDesktopIntent(MainActivity.this));
 
-      finish();
     }
 
     BadgeUtil.resetBadgeCount(getApplicationContext());
-    CheckVersionAsyntask checkVersionAsyntask = new CheckVersionAsyntask();
+    CheckVersionAsynctask checkVersionAsyntask = new CheckVersionAsynctask(getApplicationContext(),
+        false);
     checkVersionAsyntask.execute();
     shareUtil = new ShareUtil(getApplicationContext());
     share = shareUtil.showShare();
     softDeclare();// 将部分 变量 定义为弱引用
-    dialog = ViewUtil.getProgressDialog(MainActivity.this, "正在查询");
-    dialog.setCancelable(false);
-    // init map
-    mapScoreOne = new HashMap<String, String>();// tm 指向同一块内存了 。
-    mapScoreTwo = new HashMap<String, String>();
+
     setMenuItemListener();
 
     // 当前Activity进栈
@@ -285,9 +263,8 @@ public class MainActivity extends BaseActivity implements EventListener {
       slidingMenu.setContent(R.layout.activity_setting);
       menuSetting();
     } else {
-      // request get score
       GetScoreAsyntask getScoreAsyntask = new GetScoreAsyntask();
-      dialog.show();
+      ProgressDialogUtil.getInstance(MainActivity.this).show();
       getScoreAsyntask.execute();
 
     }
@@ -301,6 +278,8 @@ public class MainActivity extends BaseActivity implements EventListener {
   /*
    * 第一个菜单项
    */
+  CardUI mCardView;
+
   private void menu1() {
     // 菜单按钮
     Button menu = (Button) findViewById(R.id.butMenu);
@@ -310,199 +289,15 @@ public class MainActivity extends BaseActivity implements EventListener {
         slidingMenu.toggle();
       }
     });
+
     if (mCardView != null) {
       isFirst = false;
     }
     mCardView = (CardUI) findViewById(R.id.cardsview);
     mCardView.setSwipeable(true);
-    ShowCardAsyntask showCardAsyntask = new ShowCardAsyntask();
-    dialog.show();
+    ShowCardAsyncTask showCardAsyntask = new ShowCardAsyncTask(this, getResources(), isFirst,
+        mCardView, listItem, ScoreUtil.scoreJson);
     showCardAsyntask.execute();
-
-  }
-
-  class ShowCardAsyntask extends AsyncTask<String, String, Boolean> {
-    @Override
-    protected Boolean doInBackground(String... params) {
-      Resources resources = getResources();
-      String[] xn = resources.getStringArray(R.array.xn);
-      boolean result = false;
-      for (int i = 0; i < xn.length; i++) {
-        result = showCard(xn[i], isFirst);// 这里延迟太大，可以考虑直接从内存取
-        // 不用每次计算。(已经修改为从内存中取值)
-      }
-      return result;
-    }
-
-    @Override
-    protected void onPostExecute(Boolean result) {
-      super.onPostExecute(result);
-      if (result) {
-        mCardView.refresh();
-      }
-      if (!Util.isRecordLoginMessage(getApplicationContext())) {// 是否已经上传了手机信息
-        // 未上传,则保存手机信息到本地
-        Util.saveDeviceInfo(getApplicationContext());
-        // 上传各种信息
-        Util.uploadDevInfos(getApplicationContext());
-      }
-      if(mActivity!=null&& !mActivity.isFinishing()){
-        dialog.cancel();
-      }
-    }
-
-  }
-
-  /*
-   * 显示卡片
-   */
-  private boolean showCard(String xn, boolean isFirst) {
-    String first_score = "";
-    String second_score = "";
-
-    if (isFirst || (mapScoreOne.isEmpty() && mapScoreTwo.isEmpty())) {
-      first_score = getScore(xn, "1") == null ? "" : getScore(xn, "1").toString();
-      second_score = getScore(xn, "2") == null ? "" : getScore(xn, "2").toString();
-      mapScoreOne.put(xn, first_score);
-      mapScoreTwo.put(xn, second_score);
-    } else {
-      first_score = mapScoreOne.get(xn) == null ? "" : mapScoreOne.get(xn);
-      second_score = mapScoreTwo.get(xn) == null ? "" : mapScoreTwo.get(xn);
-    }
-
-    // add one card, and then add another one to the last stack.
-    String xqs_str = "";
-    if (!first_score.equals("")) {
-      xqs_str += "第一学期,";
-      CardStack stackPlay = new CardStack();
-      stackPlay.setTitle(xn);
-      mCardView.addStack(stackPlay);
-      MyPlayCard _myPlayCard = new MyPlayCard("第一学期", first_score, "#33b6ea", "#33b6ea", true,
-          false);
-      String[][] first_score_array = getScoreToArray(first_score);
-      _myPlayCard.setOnClickListener(
-          new ScoreClass(first_score_array.length, first_score_array, xn + " 第一学期"));
-      mCardView.addCard(_myPlayCard);
-      // mCardView.addCardToLastStack(new
-      // MyCard("By Androguide & GadgetCheck"));
-    }
-
-    if (!second_score.equals("")) {
-      xqs_str += "第二学期,";
-      MyPlayCard myCard = new MyPlayCard("第二学期", second_score, "#e00707", "#e00707", false, true);
-      String[][] second_score_array = getScoreToArray(second_score);
-      myCard.setOnClickListener(
-          new ScoreClass(second_score_array.length, second_score_array, xn + " 第二学期"));
-      mCardView.addCardToLastStack(myCard);
-    }
-    if (xqs_str.length() != 0) {
-      xqs_str = xqs_str.substring(0, xqs_str.length() - 1);
-      StaticVarUtil.list_Rank_xnAndXq.put(xn, xqs_str);
-    }
-
-    return true;
-
-  }
-
-  /*
-   * 点击卡片跳转
-   * 
-   * @author Administrator 2014-7-23
-   */
-  class ScoreClass implements OnClickListener {
-    int col;// 成绩的总行号
-    String[][] score;// 将所有成绩整合为二维数组
-    String xn;
-
-    public ScoreClass(int col, String[][] score, String xn) {
-      this.col = col;
-      this.score = score;
-      this.xn = xn;
-    }
-
-    @Override
-    public void onClick(View v) {
-      // TODO Auto-generated method stub
-      if (Util.isFastDoubleClick()) {
-        return;
-      }
-      Intent i = new Intent();
-      i.setClass(getApplicationContext(), ShowScoreActivity.class);
-      Bundle b = new Bundle();
-      b.putString("col", String.valueOf(col));
-      for (int j = 0; j < score.length; j++) {
-        b.putStringArray("score" + j, score[j]);
-      }
-      b.putString("xn_and_xq", xn);
-      i.putExtras(b);
-      startActivity(i);
-    }
-
-  }
-
-  /*
-   * 将 成绩整合成 n行4列的数组，为了可以显示在table页面中
-   * 
-   * @param score
-   * 
-   * @return
-   */
-  private String[][] getScoreToArray(String score) {
-    String[] s = score.split("\n");
-    String[][] result = new String[s.length][4];// n行 4列的数组
-    for (int i = 0; i < result.length; i++) {
-      result[i] = s[i].split("--");
-    }
-    return result;
-  }
-
-  /*
-   * 解析 获取固定学年 固定学期的成绩
-   */
-  private StringBuilder getScore(String xn, String xq) {
-    StringBuilder result = null;
-    if (listItem != null) {
-      result = new StringBuilder();
-      // 解析json
-      JSONObject jsonObject;
-      try {
-        jsonObject = new JSONObject(score_json);
-        JSONArray jsonArray = (JSONArray) jsonObject.get("liScoreModels");// 学年
-        for (int i = 0; i < jsonArray.length(); i++) {
-          JSONObject o = (JSONObject) jsonArray.get(i);
-          if (o.get("xn").equals(xn)) {// 某个学年
-            JSONArray jsonArray2 = (JSONArray) o.get("list_xueKeScore");
-            for (int j = 0; j < jsonArray2.length(); j++) {
-              JSONObject jsonObject2 = (JSONObject) jsonArray2.get(j);
-              if (jsonObject2.get("xq").equals(xq)) {
-                // 添加 课程代码->课程名
-                StaticVarUtil.kcdmList.put(
-                    jsonObject2.get("kcmc") == null ? " " : jsonObject2.get("kcmc").toString(),
-                    jsonObject2.get("kcdm").toString() + "|" + xn + "|" + xq);
-                result.append(
-                    jsonObject2.get("kcmc") == null ? " " : jsonObject2.get("kcmc").toString());// 课程名称
-                result.append("--"
-                    + jsonObject2.get("cj")// 最终成绩
-                        .toString()
-                    + (jsonObject2.get("bkcj").equals(" ") ? " "
-                        : ("(" + jsonObject2.get("bkcj").toString() + ")"))// 将补考成绩和最终成绩同时显示。
-                );
-                result.append(jsonObject2.get("pscj")// 平时成绩
-                    .equals("") ? "/" : "--" + jsonObject2.get("pscj").toString());
-                result.append(jsonObject2.get("qmcj")// 期末成绩
-                    .equals("") ? "/" : "--" + jsonObject2.get("qmcj").toString());
-                result.append("\n");
-              }
-            }
-          }
-        }
-      } catch (JSONException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-      }
-
-    }
-    return result;
   }
 
   /*
@@ -529,7 +324,6 @@ public class MainActivity extends BaseActivity implements EventListener {
    */
   private void setMenuItemListener() {
 
-    mCardView = null;
     nickname = (TextView) findViewById(R.id.nickname);// 用户名
     headPhoto = (CircleImageView) findViewById(R.id.headphoto);// 头像
     menuBang = (LinearLayout) findViewById(R.id.menu_bang);// 1.成绩查询
@@ -621,17 +415,6 @@ public class MainActivity extends BaseActivity implements EventListener {
             mHandler.sendMessage(msg);
           }
         }).start();
-
-        /*
-         * setMenuItemState(menuBang, false, menuMyBukao, true, menuMyPaiming, false, menuIdea_back,
-         * false, menuSetting, false, menuAbout, false); slidingMenu.toggle();// 页面跳转
-         * slidingMenu.setContent(R.layout.activity_friend_list); new Thread(new Runnable() {
-         * 
-         * @Override public void run() { // TODO Auto-generated method stub try { Thread.sleep(300);
-         * } catch (InterruptedException e) { // TODO Auto-generated catch block
-         * e.printStackTrace(); } Message msg = new Message(); msg.what = 2;
-         * mHandler.sendMessage(msg); } }).start();
-         */
       }
     });
 
@@ -840,9 +623,9 @@ public class MainActivity extends BaseActivity implements EventListener {
       public void onClick(View v) {
         // TODO Auto-generated method stub
 
-        CheckVersionAsyntask checkVersionAsyntask = new CheckVersionAsyntask();
-        is_show = true;
-        dialog.show();
+        CheckVersionAsynctask checkVersionAsyntask = new CheckVersionAsynctask(
+            getApplicationContext(), true);
+        ProgressDialogUtil.getInstance(MainActivity.this).show();
         checkVersionAsyntask.execute();
       }
     });
@@ -870,8 +653,6 @@ public class MainActivity extends BaseActivity implements EventListener {
     alert.show();
   }
 
-  String selectXn;
-  String selectXq;
   // TODO Auto-generated method stub
   Spinner xnSpinner;
   Spinner xqSpinner;
@@ -881,18 +662,19 @@ public class MainActivity extends BaseActivity implements EventListener {
   private void rank() {
 
     // menu出发 判断为第一次 为了初始化 listview
-    isFirstListView = true;
+    RankUtils.isFirstListView = true;
     findviewById();
-    if (rankScoreText == null) {
+    if (RankUtils.rankScoreText == null) {
       return;
     }
-    rankScoreText.setOnClickListener(new OnClickListener() {
+    RankUtils.rankScoreText.setOnClickListener(new OnClickListener() {
 
       @Override
       public void onClick(View v) {
         // TODO Auto-generated method stub
-        if (!rankText.getText().equals("")) {
-          allRankList.setSelection(Integer.parseInt(rankText.getText().toString()) - 1);
+        if (!RankUtils.rankText.getText().equals("")) {
+          RankUtils.allRankList
+              .setSelection(Integer.parseInt(RankUtils.rankText.getText().toString()) - 1);
         }
       }
     });
@@ -920,7 +702,8 @@ public class MainActivity extends BaseActivity implements EventListener {
             if ((map.get("name").toString()).equals(search_edittext.getText().toString())) {
               search_edittext.clearFocus();
               closeInputMethod();
-              allRankList.setSelection(Integer.parseInt(map.get("rankId").toString()) - 1);
+              RankUtils.allRankList
+                  .setSelection(Integer.parseInt(map.get("rankId").toString()) - 1);
 
             }
           }
@@ -928,14 +711,14 @@ public class MainActivity extends BaseActivity implements EventListener {
       }
     });
     search_edittext.setOnKeyListener(new OnKeyListener() {
-
       @Override
       public boolean onKey(View v, int keyCode, KeyEvent event) {
         if (KeyEvent.KEYCODE_ENTER == keyCode && event.getAction() == KeyEvent.ACTION_DOWN) {
           boolean isSearch = false;
           for (HashMap<String, Object> map : RankUtils.showRankArrayList) {
             if ((map.get("name").toString()).equals(search_edittext.getText().toString())) {
-              allRankList.setSelection(Integer.parseInt(map.get("rankId").toString()) - 1);
+              RankUtils.allRankList
+                  .setSelection(Integer.parseInt(map.get("rankId").toString()) - 1);
               isSearch = true;
             }
           }
@@ -947,7 +730,6 @@ public class MainActivity extends BaseActivity implements EventListener {
           return true;
         }
         return false;
-
       }
     });
 
@@ -964,12 +746,9 @@ public class MainActivity extends BaseActivity implements EventListener {
     share.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
-        // TODO Auto-generated method stub
-        // ViewUtil.showShare(getApplicationContext());
         shareUtil.showShareUI(MainActivity.share);
       }
     });
-    // rankListViewListener();
 
     nameText.setText(name);
     WindowManager wm = this.getWindowManager();
@@ -1007,13 +786,13 @@ public class MainActivity extends BaseActivity implements EventListener {
     listener(xns, width);
     String result = "";// 成绩的数据
 
-    if (allRankMap.size() != 0) {
-      for (String xnAndXq : allRankMap.keySet()) {
+    if (RankUtils.allRankMap.size() != 0) {
+      for (String xnAndXq : RankUtils.allRankMap.keySet()) {
         // 由于是 menu触发的所以必须判断
-        if (xnAndXq.equals(selectXn + selectXq)) {
+        if (xnAndXq.equals(RankUtils.selectXn + RankUtils.selectXq)) {
           // 如果存在则直接 或者value
-          result = allRankMap.get(xnAndXq);
-          refeshRank(result, isFirstListView);
+          result = RankUtils.allRankMap.get(xnAndXq);
+          RankUtils.refeshRank(result, RankUtils.isFirstListView, getApplicationContext());
           break;
         }
       }
@@ -1024,10 +803,10 @@ public class MainActivity extends BaseActivity implements EventListener {
 
   private void findviewById() {
     // TODO Auto-generated method stub
-    allRankList = (CustomRankListView) findViewById(R.id.allRank);
-    rankScoreText = (TextView) findViewById(R.id.score);
+    RankUtils.allRankList = (CustomRankListView) findViewById(R.id.allRank);
+    RankUtils.rankScoreText = (TextView) findViewById(R.id.score);
     search_edittext = (AutoCompleteTextView) findViewById(R.id.search);
-    rankText = (TextView) findViewById(R.id.rank);
+    RankUtils.rankText = (TextView) findViewById(R.id.rank);
     nameText = (TextView) findViewById(R.id.name);
   }
 
@@ -1039,15 +818,8 @@ public class MainActivity extends BaseActivity implements EventListener {
     boolean isOpen = imm.isActive();
     if (isOpen) {
       imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);// 没有显示则显示
-      // imm.hideSoftInputFromWindow(mobile_topup_num.getWindowToken(),
-      // InputMethodManager.HIDE_NOT_ALWAYS);
     }
   }
-
-  // public void onBackPressed() {
-  // ViewUtil.cancelToast();
-  // super.onBackPressed();
-  // }
 
   /*
    * 下拉刷新
@@ -1057,13 +829,13 @@ public class MainActivity extends BaseActivity implements EventListener {
     // TODO Auto-generated method stub
     // 创建FootView
     final View footer = View.inflate(getApplicationContext(), R.layout.rank_footer, null);
-    allRankList.setOnAddFootListener(new OnAddFootListener() {
+    RankUtils.allRankList.setOnAddFootListener(new OnAddFootListener() {
       @Override
       public void addFoot() {
-        allRankList.addFooterView(footer);
+        RankUtils.allRankList.addFooterView(footer);
       }
     });
-    allRankList.setOnFootLoadingListener(new OnFootLoadingListener() {
+    RankUtils.allRankList.setOnFootLoadingListener(new OnFootLoadingListener() {
       @Override
       public void onFootLoading() {
         new AsyncTask<Void, Void, ArrayList<HashMap<String, Object>>>() {
@@ -1077,9 +849,9 @@ public class MainActivity extends BaseActivity implements EventListener {
             }
             // 再次读取10行数据
             ArrayList<HashMap<String, Object>> virtualData = new ArrayList<HashMap<String, Object>>();
-            for (int i = lsitItemSum; i < RankUtils.allRankArrayList.size(); i++) {
+            for (int i = RankUtils.lsitItemSum; i < RankUtils.allRankArrayList.size(); i++) {
               virtualData.add(RankUtils.allRankArrayList.get(i));
-              lsitItemSum += 1;
+              RankUtils.lsitItemSum += 1;
             }
             // 设置新的大小
             return virtualData;
@@ -1089,10 +861,10 @@ public class MainActivity extends BaseActivity implements EventListener {
           @Override
           protected void onPostExecute(ArrayList<HashMap<String, Object>> result) {
             RankUtils.showRankArrayList.addAll(result);// 这个是往后添加数据
-            simpleAdapter.notifyDataSetChanged();
-            allRankList.onFootLoadingComplete();// 完成上拉刷新,就是底部加载完毕,这个方法要调用
+            RankUtils.simpleAdapter.notifyDataSetChanged();
+            RankUtils.allRankList.onFootLoadingComplete();// 完成上拉刷新,就是底部加载完毕,这个方法要调用
             // 移除footer,这个动作不能少
-            allRankList.removeFooterView(footer);
+            RankUtils.allRankList.removeFooterView(footer);
             super.onPostExecute(result);
           }
         }.execute();
@@ -1102,24 +874,23 @@ public class MainActivity extends BaseActivity implements EventListener {
 
   private void requestRankAsyntask() {
     // 默认
-    selectXn = xnSpinner.getSelectedItem().toString();
-    selectXq = xqSpinner.getSelectedItem().toString();
-    rankRequestParmas(StaticVarUtil.student.getAccount() + "|" + selectXn.split("\\-")[0] + "|"
-        + (selectXq.equals("第一学期") ? "1" : "2"));
+    RankUtils.selectXn = xnSpinner.getSelectedItem().toString();
+    RankUtils.selectXq = xqSpinner.getSelectedItem().toString();
+    rankRequestParmas(StaticVarUtil.student.getAccount() + "|" + RankUtils.selectXn.split("\\-")[0]
+        + "|" + (RankUtils.selectXq.equals("第一学期") ? "1" : "2"));
     String result = "";
     // 首先查询内存中是否有该学期成绩
-    for (String xnAndXq : allRankMap.keySet()) {
-      if (xnAndXq.equals(selectXn + selectXq)) {
+    for (String xnAndXq : RankUtils.allRankMap.keySet()) {
+      if (xnAndXq.equals(RankUtils.selectXn + RankUtils.selectXq)) {
         // 如果存在则直接 或者value
-        result = allRankMap.get(xnAndXq);
-        refeshRank(result, isFirstListView);
+        result = RankUtils.allRankMap.get(xnAndXq);
+        RankUtils.refeshRank(result, RankUtils.isFirstListView, getApplicationContext());
         break;
       }
     }
     if (result.equals("")) {
       // 不存在，则请求
-      GetRankAsyntask getRankAsyntask = new GetRankAsyntask();
-      dialog.show();
+      GetRankAsycntask getRankAsyntask = new GetRankAsycntask(this, nickname, name);
       getRankAsyntask.execute();
     }
 
@@ -1164,9 +935,8 @@ public class MainActivity extends BaseActivity implements EventListener {
       public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
         // TODO Auto-generated method stub
         if (isTouchXNSpinner) {
-          lsitItemSum = DEFAULTITEMSUM;// 设置为默认
           // 将spinner上的选择答案显示在TextView上面
-          selectXn = xnAdapter.getItem(arg2);
+          RankUtils.selectXn = xnAdapter.getItem(arg2);
           // 自动适配 学期
           String xq = StaticVarUtil.list_Rank_xnAndXq.get(xns[arg2]);// 默认第一学年的首个学期数组
           String[] xqs = xq.split("\\,");
@@ -1193,9 +963,8 @@ public class MainActivity extends BaseActivity implements EventListener {
       public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
         // TODO Auto-generated method stub
         if (isTouchXQSpinner) {
-          lsitItemSum = DEFAULTITEMSUM;// 设置为默认
           // 将spinner上的选择答案显示在TextView上面
-          selectXq = xqAdapter.getItem(arg2);
+          RankUtils.selectXq = xqAdapter.getItem(arg2);
           requestRankAsyntask();
           isTouchXQSpinner = false;
         }
@@ -1280,7 +1049,7 @@ public class MainActivity extends BaseActivity implements EventListener {
         StaticVarUtil.cet_data = Passport.jiami(accoutStr, String.valueOf(time));
         StaticVarUtil.cet_viewstate = time_s;
         GetCETAsyntask getCETAsyntask = new GetCETAsyntask();
-        dialog.show();
+        ProgressDialogUtil.getInstance(MainActivity.this).show();
         try {
           getCETAsyntask.execute(new String[] { URLEncoder.encode(
               URLEncoder.encode(nameStr.length() < 3 ? nameStr : nameStr.substring(0, 2), "utf-8"),
@@ -1480,133 +1249,6 @@ public class MainActivity extends BaseActivity implements EventListener {
   }
 
   /*
-   * 判断是否是正确选择大学，-1代表出错，0代表所有，其他数字代表不同大学
-   */
-  private int judgeCollegeId() {
-    int collegeId = -1;
-    try {
-      // 如果是所有大学，直接返回0
-      if (chooseCollege.getText().toString().equals("所有大学")) {
-        return 0;// 直接返回所有大学
-      }
-      // 如果是某一大学，返回Id
-      collegeId = Integer.parseInt(ToolClass.nameIdTreeMap.get(chooseCollege.getText().toString()));
-    } catch (Exception e) {
-      // 出错返回-1
-      System.out.println("没有这个大学");
-      collegeId = -1;
-    }
-    return collegeId;
-  }
-
-  /*
-   * 选择高校，高校中有选择历史
-   */
-  @SuppressLint("InflateParams")
-  protected void chooseCollege() {
-    LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
-    View view = inflater.inflate(R.layout.choose_school, null);
-
-    // 显示大学历史adapterHistory.notifyDataSetChanged();
-    ArrayList<CharSequence> allCollege = readHistory2();
-    HistoryCollege.initData(allCollege);// 初始化数据源
-    ChooseHistorySchoolExpandAdapter adapterHistory = new ChooseHistorySchoolExpandAdapter(
-        MainActivity.this);
-    ExpandableListView expandHistory = (ExpandableListView) view.findViewById(R.id.expandHistory);
-    expandHistory.setAdapter(adapterHistory);
-
-    // 找到控件expandListView
-    ExpandableListView expandListView = (ExpandableListView) view.findViewById(R.id.expandListView);
-    expandListView.setAdapter(adapter);
-
-    final Dialog dialog = new AlertDialog.Builder(MainActivity.this).setView(view).create();
-    dialog.setCancelable(true);
-    dialog.show();
-
-    // 选择大学监听
-    expandListView.setOnChildClickListener(new OnChildClickListener() {
-      public boolean onChildClick(ExpandableListView parent, View v, int groupPosition,
-          int childPosition, long id) {
-        String schoolName = ToolClass.schoolsList.get(groupPosition).get(childPosition).toString();
-        dialog.cancel();
-        chooseCollege.setText(schoolName);
-        return true;
-      }
-    });
-
-    // 选择历史监听
-    expandHistory.setOnChildClickListener(new OnChildClickListener() {
-      public boolean onChildClick(ExpandableListView parent, View v, int groupPosition,
-          int childPosition, long id) {
-        String schoolName = HistoryCollege.allHistory.get(groupPosition).get(childPosition)
-            .toString();
-        dialog.cancel();
-        chooseCollege.setText(schoolName);
-        return true;
-      }
-    });
-  }
-
-  private String new_version;// 最新版本
-  private String update_content;// 更新内容
-  private static String apk_url;// 下载地址
-
-  /*
-   * 刷新
-   * 
-   * @param messageSort 0代表近期关注1代表七日关注2代表风云榜
-   */
-  @SuppressLint("SimpleDateFormat")
-  private void refresh(int collegeId, int messageKind, int messageSort) {
-    // 保存搜索历史，保存搜索的学校（每次都保存），种类，排序方式（只保存当前这次，为了再次进入时候直接显示）
-    saveHistory();
-    // 开启新线程
-    Calendar calendar = Calendar.getInstance();
-    calendar.set(Calendar.MINUTE, calendar.get(Calendar.MINUTE) + 6);
-    StaticVarUtil.fileName = "jsonCache.txt";// 设置保存文件的名字
-  }
-
-  /*
-   * 保存过往历史
-   */
-  private void saveHistory() {
-    SharedPreferences share = getSharedPreferences("history", MODE_PRIVATE);
-    Editor editor = share.edit();
-    editor.putString("msgKind", chooseMsgKind.getText().toString());// 用于下次登录显示
-    editor.putString("msgSort", chooseMsgSort.getText().toString());// 用于下次登录显示
-    editor.putString("theLastCollege", chooseCollege.getText().toString());// 用于下次登录显示
-
-    // 用于选择大学显示
-    HashSet<String> set = (HashSet<String>) share.getStringSet("college", new HashSet<String>());
-    if (judgeCollegeId() > 0) {
-      if (!set.contains(chooseCollege.getText().toString())) {
-        // 如果不包含就加入
-        set.add(chooseCollege.getText().toString());
-      }
-    }
-    editor.putStringSet("college", set);// 存入进去
-    editor.commit();// 同步更改硬盘内容
-  }
-
-  /*
-   * 读取历史记录进行显示过往选择过的大学
-   */
-  private ArrayList<CharSequence> readHistory2() {
-    SharedPreferences share = getSharedPreferences("history", MODE_PRIVATE);
-    // 显示最近一次记录,没有显示默认
-    HashSet<String> set = (HashSet<String>) share.getStringSet("college", null);
-    ArrayList<CharSequence> allHistory = null;// 要返回的数据
-    if (set != null) {
-      // 不为空的话，进行数据的显示
-      allHistory = new ArrayList<CharSequence>();
-      for (String string : set) {
-        allHistory.add(string);
-      }
-    }
-    return allHistory;
-  }
-
-  /*
    * 对手机按钮的监听
    */
   @Override
@@ -1638,11 +1280,13 @@ public class MainActivity extends BaseActivity implements EventListener {
   private void deleteCatch() {
     StaticVarUtil.list_Rank_xnAndXq.clear();
     RankUtils.allRankArrayList = null;
-    mapScoreOne = null;
-    mapScoreTwo = null;
+    ScoreUtil.mapScoreOne.clear();
+    ;
+    ScoreUtil.mapScoreTwo.clear();
+    ;
     CustomApplcation.getInstance().logout();
     StaticVarUtil.quit();
-    isFirstListView = true;
+    RankUtils.isFirstListView = true;
     // 清空成绩缓存
     isFirst = true;
     fragments = null;
@@ -1665,12 +1309,6 @@ public class MainActivity extends BaseActivity implements EventListener {
     contactFragment = null;
     recentFragment = null;
     settingFragment = null;
-    try {
-      // BmobDB.create(this).clearAllDbCache();
-
-    } catch (Exception e) {
-      // TODO: handle exception
-    }
 
   }
 
@@ -1711,12 +1349,11 @@ public class MainActivity extends BaseActivity implements EventListener {
     // TODO Auto-generated method stub
     super.onPause();
     MyMessageReceiver.ehList.remove(this);// 取消监听推送的消息
-    allRankMap.clear();
+    RankUtils.allRankMap.clear();
   }
 
   /*
    * 退出模块
-   * 
    * @param logout 是否注销
    */
   private void quit(final boolean logout) {
@@ -1725,10 +1362,6 @@ public class MainActivity extends BaseActivity implements EventListener {
     if (logout) {
       builder.setMessage("你确定要注销吗？");
     } else {
-      // builder.setMessage("你确定要退出吗？");
-      /*
-       * dialog.cancel(); deleteCatch(); LogcatHelper.getInstance(MainActivity.this).stop();
-       */
       moveTaskToBack(true);
       return;
     }
@@ -1763,7 +1396,6 @@ public class MainActivity extends BaseActivity implements EventListener {
 
   /*
    * 记录设置当前MenuItem的位置，1，2，3，4，5分别代表成绩查询，补考查询，我的排名，我收藏的，选项
-   * 
    * @param menuItem 菜单的选项
    */
   private void setCurrentMenuItem(int menuItem) {
@@ -1819,14 +1451,14 @@ public class MainActivity extends BaseActivity implements EventListener {
       nickname.setText(name);
       StaticVarUtil.student.setName(name);
       try {
-        if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
+        if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result) || result.isEmpty()) {
           if (!result.equals("error")) {
             /*
              * 将字符串 写入xml文件中
              */
             if (!result.equals("no_evaluation")) {
               requestTimes = 0;
-              score_json = result;
+              ScoreUtil.scoreJson = result;
               listItem = new ArrayList<HashMap<String, Object>>();
               JSONObject jsonObject = new JSONObject(result);
               JSONArray jsonArray = (JSONArray) jsonObject.get("liScoreModels");// 最外层的array
@@ -1850,15 +1482,8 @@ public class MainActivity extends BaseActivity implements EventListener {
               });
               builder.create().show();
             }
+
             menu1();
-            /*
-             * new Thread(new Runnable() {
-             * 
-             * @Override public void run() { // TODO Auto-generated method stub try {
-             * Thread.sleep(1300); } catch (InterruptedException e) { // TODO Auto-generated catch
-             * block e.printStackTrace(); } Message msg = new Message(); msg.what = 10;
-             * mHandler.sendMessage(msg); } }).start();
-             */
           } else {
             ViewUtil.showToast(getApplicationContext(), "查询失败");
           }
@@ -1882,67 +1507,6 @@ public class MainActivity extends BaseActivity implements EventListener {
 
   }
 
-  /*
-   * 获取 成绩排名
-   * 
-   * @author Administrator 2015-2-8
-   */
-  class GetRankAsyntask extends AsyncTask<String, String, String> {
-
-    @Override
-    protected String doInBackground(String... params) {
-      // TODO Auto-generated method stub
-      return HttpUtilMc
-          .queryStringForPost(HttpUtilMc.BASE_URL + "RankServlet.jsp?data=" + StaticVarUtil.data
-              + "&viewstate=" + StaticVarUtil.viewstate + "&content=" + StaticVarUtil.content);
-    }
-
-    @Override
-    protected void onPostExecute(String result) {
-      super.onPostExecute(result);
-
-      nickname.setText(name);
-      try {
-        if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
-          if (!result.equals("error")) {
-            /*
-             * 将字符串 写入xml文件中
-             */
-            if (!result.equals("")) {
-              if(mActivity!=null&& !mActivity.isFinishing()){
-                dialog.cancel();
-              }
-              requestTimes = 0;
-              refeshRank(result, isFirstListView);
-              allRankMap.put(selectXn + selectXq, result);// 将数据保存到内存中，下次就不用重复获取。
-            }
-          } else {
-            ViewUtil.showToast(getApplicationContext(), "查询失败");
-          }
-        } else {
-          if (requestTimes < 4) {
-            requestTimes++;
-            GetRankAsyntask getRankAsyntask = new GetRankAsyntask();
-            getRankAsyntask.execute();
-          } else {
-            if(mActivity!=null&& !mActivity.isFinishing()){
-              dialog.cancel();
-            }
-            ViewUtil.showToast(getApplicationContext(), HttpUtilMc.CONNECT_EXCEPTION);
-          }
-        }
-      } catch (Exception e) {
-        e.printStackTrace();
-        if(mActivity!=null&& !mActivity.isFinishing()){
-          dialog.cancel();
-        }
-        Log.i("LoginActivity", e.toString());
-      }
-
-    }
-
-  }
-
   class GetCETAsyntask extends AsyncTask<String, String, String> {
 
     @Override
@@ -1956,9 +1520,7 @@ public class MainActivity extends BaseActivity implements EventListener {
     protected void onPostExecute(String result) {
       super.onPostExecute(result);
 
-      if(mActivity!=null&& !mActivity.isFinishing()){
-        dialog.cancel();
-      }
+      ProgressDialogUtil.getInstance(MainActivity.this).dismiss();
       try {
         if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
           if (!result.equals("error")) {
@@ -1989,63 +1551,6 @@ public class MainActivity extends BaseActivity implements EventListener {
 
     }
 
-  }
-
-  /*
-   * 
-   * @param result 成绩字符串
-   * 
-   * @param isFirst 是否是第一次
-   */
-  private void refeshRank(String result, boolean isFirst) {
-    try {
-      if (RankUtils.allRankArrayList == null || RankUtils.showRankArrayList == null) {
-        RankUtils.allRankArrayList = new ArrayList<HashMap<String, Object>>();
-        RankUtils.showRankArrayList = new ArrayList<HashMap<String, Object>>();
-      } else {
-        RankUtils.allRankArrayList.clear();
-        RankUtils.showRankArrayList.clear();
-      }
-
-      JSONObject jsonObject = new JSONObject(result);
-      String rank = String.valueOf(jsonObject.getString("rank"));
-      rankText.setText(rank);
-
-      JSONArray jsonArray = (JSONArray) jsonObject.get("rankList");
-      int rankId = 0;
-      for (int i = jsonArray.length() - 1; i >= 0; i--) {
-        JSONObject o = (JSONObject) jsonArray.get(i);
-        HashMap<String, Object> map = new HashMap<String, Object>();
-        rankId += 1;
-        map.put("rankId", String.valueOf(rankId));
-        map.put("name", o.get("name"));
-        map.put("xh", o.get("xh"));
-        map.put("score", o.get("score"));
-        RankUtils.allRankArrayList.add(map);
-        if (String.valueOf(rankId).equals(rank)) {
-          rankScoreText.setText(o.get("score").toString());// 显示成绩
-
-          Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),
-              R.anim.textscore_translate);
-          rankScoreText.setAnimation(animation);
-
-        }
-      }
-      // 获取 之前求得的固定 个数的item。 防止数据量太大，而导致的将所有数据都显示出来。
-      for (int i = 0; i < (lsitItemSum > RankUtils.allRankArrayList.size()
-          ? RankUtils.allRankArrayList.size() : lsitItemSum); i++) {
-        RankUtils.showRankArrayList.add(RankUtils.allRankArrayList.get(i));
-      }
-      if (isFirst) {
-        setListView();
-        isFirstListView = false;
-      } else {
-        simpleAdapter.notifyDataSetChanged();
-      }
-    } catch (JSONException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
   }
 
   private void menuIdeaBack() {
@@ -2152,7 +1657,8 @@ public class MainActivity extends BaseActivity implements EventListener {
           setCurrentMenuItem(StaticVarUtil.MENU_BUKAO);// 记录当前选项位置
           break;
         case StaticVarUtil.CHECK_VERSION:
-          CheckVersionAsyntask checkVersionAsyntask = new CheckVersionAsyntask();
+          CheckVersionAsynctask checkVersionAsyntask = new CheckVersionAsynctask(
+              getApplicationContext(), true);
           checkVersionAsyntask.execute();
           break;
         }
@@ -2173,7 +1679,7 @@ public class MainActivity extends BaseActivity implements EventListener {
     // BmobIM SDK初始化--只需要这一段代码即可完成初始化
     // 请到Bmob官网(http://www.bmob.cn/)申请ApplicationId,具体地址:http://docs.bmob.cn/android/faststart/index.html?menukey=fast_start&key=start_android
     BmobChat.getInstance(this).init(Config.applicationId);
-    dialog.show();
+    ProgressDialogUtil.getInstance(MainActivity.this).show();
     // 开启定位
     initLocClient();
     // 注册地图 SDK 广播监听者
@@ -2265,7 +1771,7 @@ public class MainActivity extends BaseActivity implements EventListener {
     // while (contactFragment.isAdded()) {
     // break;
     // }
-    dialog.dismiss();
+    ProgressDialogUtil.getInstance(MainActivity.this).dismiss();
   }
 
   /**
@@ -2434,13 +1940,8 @@ public class MainActivity extends BaseActivity implements EventListener {
   @Override
   public void onBackPressed() {
     // TODO Auto-generated method stub
-    // if (firstTime + 2000 > System.currentTimeMillis()) {
     ViewUtil.cancelToast();
     super.onBackPressed();
-
-    /*
-     * } else { ShowToast("再按一次退出程序"); } firstTime = System.currentTimeMillis();
-     */
   }
 
   private void startChatActivity() {
@@ -2460,7 +1961,6 @@ public class MainActivity extends BaseActivity implements EventListener {
     public void handleMessage(Message msg) {
       switch (msg.what) {
       case GO_HOME:
-        // startAnimActivity(com.bmob.im.demo.ui.MainActivity.class);
         H5Log.d(getApplicationContext(), "go home");
         startChatActivity();
         break;
@@ -2521,7 +2021,7 @@ public class MainActivity extends BaseActivity implements EventListener {
           @Override
           public void onFailure(int arg0, String arg1) {
             // TODO Auto-generated method stub
-            dialog.cancel();
+            ProgressDialogUtil.getInstance(MainActivity.this).dismiss();
             if (arg1 == null) {
               return;
             }
@@ -2542,19 +2042,8 @@ public class MainActivity extends BaseActivity implements EventListener {
 
                 @Override
                 public void onSuccess() {
-                  // TODO Auto-generated method stub
-                  runOnUiThread(new Runnable() {
-
-                    @Override
-                    public void run() {
-                      // TODO Auto-generated method stub
-                    }
-                  });
                   // 更新用户的地理位置以及好友的资料
                   updateUserInfos();
-                  // Intent intent = new Intent(getApplicationContext(),
-                  // com.bmob.im.demo.ui.MainActivity.class);
-                  // startActivity(intent);
                   startChatActivity();
                 }
 
@@ -2567,12 +2056,9 @@ public class MainActivity extends BaseActivity implements EventListener {
               });
 
             }
-            // ShowToast("注册失败:" + arg1);
           }
         });
-        /*
-         * startAnimActivity(LoginActivity.class); finish();
-         */break;
+        break;
       }
     }
   };
@@ -2611,10 +2097,6 @@ public class MainActivity extends BaseActivity implements EventListener {
     user.update(this, new UpdateListener() {
       @Override
       public void onSuccess() {
-        // TODO Auto-generated method stub
-        // Intent intent = new Intent(getApplicationContext(),
-        // com.bmob.im.demo.ui.MainActivity.class);
-        // startActivity(intent);
         startChatActivity();
         // 更新头像
       }
@@ -2665,17 +2147,6 @@ public class MainActivity extends BaseActivity implements EventListener {
     // 取消定时检测服务
     BmobChat.getInstance(this).stopPollService();
     super.onDestroy();
-  }
-
-  // 显示 排名的listview
-  private void setListView() {
-    // TODO Auto-generated method stub
-
-    simpleAdapter = new SimpleAdapter(getApplicationContext(), RankUtils.showRankArrayList,
-        R.layout.allrank_listitem, new String[] { "rankId", "name", "score" },
-        new int[] { R.id.rankId, R.id.name, R.id.score });
-    allRankList.setAdapter(simpleAdapter);
-
   }
 
   private void showShareQrcodeDialog() {
@@ -2800,48 +2271,6 @@ public class MainActivity extends BaseActivity implements EventListener {
       bitmap.recycle();
     }
 
-  }
-
-  // 异步检测版本
-  class CheckVersionAsyntask extends AsyncTask<String, String, String> {
-
-    @Override
-    protected String doInBackground(String... params) {
-      // TODO Auto-generated method stub
-      return HttpUtilMc.queryStringForPost(HttpUtilMc.BASE_URL + "checkversion.jsp?version="
-          + Util.getVersion(getApplicationContext()));
-    }
-
-    @Override
-    protected void onPostExecute(String result) {
-      super.onPostExecute(result);
-      if (is_show) {
-        if(mActivity!=null&& !mActivity.isFinishing()){
-          dialog.cancel();
-        }
-      }
-      try {
-        if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
-          if (!result.equals("no")) {
-            // 有最新版本
-            String[] str = result.split("\\|");
-            apk_url = str[0];
-            new_version = str[1];
-            update_content = str[2];
-            VersionUpdate versionUpdate = new VersionUpdate(MainActivity.this);
-            versionUpdate.apkUrl = HttpUtilMc.IP + apk_url;
-            versionUpdate.updateMsg = new_version + "\n\n" + update_content;
-            versionUpdate.checkUpdateInfo();
-            return;
-          }
-          ViewUtil.showToast(getApplicationContext(), "已经是最新版本！");
-        }
-      } catch (Exception e) {
-        // TODO: handle exception
-        e.printStackTrace();
-        Log.i("LoginActivity", e.toString());
-      }
-    }
   }
 
   /*

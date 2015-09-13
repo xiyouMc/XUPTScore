@@ -69,9 +69,9 @@ public class ViewUtil {
 		dialog.show();
 	}
 
-	public static ProgressDialog getProgressDialog(Activity activity,
+	public static ProgressDialog getProgressDialog(Context mContext,
 			String title) {
-		ProgressDialog progressDialog = new ProgressDialog(activity);// 实例化
+		ProgressDialog progressDialog = new ProgressDialog(mContext);// 实例化
 		progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);// 设置进度条风格，风格为圆形，旋转的
 		progressDialog.setTitle(title);// 设置ProgressDialog 标题
 		progressDialog.setMessage("请稍后...");// 设置ProgressDialog 提示信息
