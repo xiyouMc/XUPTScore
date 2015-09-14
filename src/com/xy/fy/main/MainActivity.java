@@ -30,8 +30,6 @@ import com.fima.cardsui.views.CardUI;
 import com.mc.util.BadgeUtil;
 import com.mc.util.CircleImageView;
 import com.mc.util.CustomRankListView;
-import com.mc.util.CustomRankListView.OnAddFootListener;
-import com.mc.util.CustomRankListView.OnFootLoadingListener;
 import com.mc.util.H5Log;
 import com.mc.util.H5Toast;
 import com.mc.util.HttpUtilMc;
@@ -45,6 +43,7 @@ import com.mc.util.Util;
 import com.slidingmenu.lib.SlidingMenu;
 import com.slidingmenu.lib.SlidingMenu.OnOpenListener;
 import com.xy.fy.asynctask.CheckVersionAsynctask;
+import com.xy.fy.asynctask.GetCETAsyntask;
 import com.xy.fy.asynctask.GetPhotoIDAsynctask;
 import com.xy.fy.asynctask.GetRankAsycntask;
 import com.xy.fy.asynctask.ShowCardAsyncTask;
@@ -168,7 +167,7 @@ public class MainActivity extends BaseActivity implements EventListener {
     mHandler = new MyHandler(this);
 
     BadgeUtil.resetBadgeCount(getApplicationContext());
-    CheckVersionAsynctask checkVersionAsyntask = new CheckVersionAsynctask(getApplicationContext(),
+    CheckVersionAsynctask checkVersionAsyntask = new CheckVersionAsynctask(this,
         false);
     checkVersionAsyntask.execute();
     shareUtil = new ShareUtil(getApplicationContext());
@@ -321,7 +320,7 @@ public class MainActivity extends BaseActivity implements EventListener {
     setCurrentMenuItem(StaticVarUtil.MENU_BANG);// 记录当前选项位置
 
     // 请求服务器获取头像id 并且判断本地是否有这个文件
-    GetPhotoIDAsynctask getPhotoID = new GetPhotoIDAsynctask(getApplicationContext(),headPhoto);
+    GetPhotoIDAsynctask getPhotoID = new GetPhotoIDAsynctask(MainActivity.this,headPhoto);
     getPhotoID.execute();
 
     headPhoto.setOnClickListener(new OnClickListener() {
@@ -599,9 +598,8 @@ public class MainActivity extends BaseActivity implements EventListener {
       @Override
       public void onClick(View v) {
         // TODO Auto-generated method stub
-
         CheckVersionAsynctask checkVersionAsyntask = new CheckVersionAsynctask(
-            getApplicationContext(), true);
+            MainActivity.this, true);
         ProgressDialogUtil.getInstance(MainActivity.this).show();
         checkVersionAsyntask.execute();
       }
@@ -798,56 +796,6 @@ public class MainActivity extends BaseActivity implements EventListener {
     }
   }
 
-  /*
-   * 下拉刷新
-   */
-  @SuppressWarnings("unused")
-  private void rankListViewListener() {
-    // TODO Auto-generated method stub
-    // 创建FootView
-    final View footer = View.inflate(getApplicationContext(), R.layout.rank_footer, null);
-    RankUtils.allRankList.setOnAddFootListener(new OnAddFootListener() {
-      @Override
-      public void addFoot() {
-        RankUtils.allRankList.addFooterView(footer);
-      }
-    });
-    RankUtils.allRankList.setOnFootLoadingListener(new OnFootLoadingListener() {
-      @Override
-      public void onFootLoading() {
-        new AsyncTask<Void, Void, ArrayList<HashMap<String, Object>>>() {
-          @Override
-          protected ArrayList<HashMap<String, Object>> doInBackground(Void... params) {
-            try {
-              // 模拟从服务器获取数据的过程
-              Thread.sleep(2000);
-            } catch (InterruptedException e) {
-              e.printStackTrace();
-            }
-            // 再次读取10行数据
-            ArrayList<HashMap<String, Object>> virtualData = new ArrayList<HashMap<String, Object>>();
-            for (int i = RankUtils.lsitItemSum; i < RankUtils.allRankArrayList.size(); i++) {
-              virtualData.add(RankUtils.allRankArrayList.get(i));
-              RankUtils.lsitItemSum += 1;
-            }
-            // 设置新的大小
-            return virtualData;
-          }
-
-          // 在doInBackground后面执行
-          @Override
-          protected void onPostExecute(ArrayList<HashMap<String, Object>> result) {
-            RankUtils.showRankArrayList.addAll(result);// 这个是往后添加数据
-            RankUtils.simpleAdapter.notifyDataSetChanged();
-            RankUtils.allRankList.onFootLoadingComplete();// 完成上拉刷新,就是底部加载完毕,这个方法要调用
-            // 移除footer,这个动作不能少
-            RankUtils.allRankList.removeFooterView(footer);
-            super.onPostExecute(result);
-          }
-        }.execute();
-      }
-    });
-  }
 
   private void requestRankAsyntask() {
     // 默认
@@ -873,7 +821,6 @@ public class MainActivity extends BaseActivity implements EventListener {
 
   }
 
-  @SuppressWarnings("deprecation")
   private void rankRequestParmas(String data) {
     long time = System.currentTimeMillis();
     // String s = new char[]{3,2,3,4,3,8,3,8,3,2,3,2}.toString();
@@ -903,7 +850,6 @@ public class MainActivity extends BaseActivity implements EventListener {
   boolean isTouchXNSpinner = false;
   boolean isTouchXQSpinner = false;
 
-  @SuppressLint("ClickableViewAccessibility")
   private void listener(final String[] xns, final int width) {
     // TODO Auto-generated method stub
 
@@ -1025,7 +971,7 @@ public class MainActivity extends BaseActivity implements EventListener {
             String.valueOf(new char[] { 2, 4, 8, 8, 2, 2 }));
         StaticVarUtil.cet_data = Passport.jiami(accoutStr, String.valueOf(time));
         StaticVarUtil.cet_viewstate = time_s;
-        GetCETAsyntask getCETAsyntask = new GetCETAsyntask();
+        GetCETAsyntask getCETAsyntask = new GetCETAsyntask(MainActivity.this);
         ProgressDialogUtil.getInstance(MainActivity.this).show();
         try {
           getCETAsyntask.execute(new String[] { URLEncoder.encode(
@@ -1188,7 +1134,7 @@ public class MainActivity extends BaseActivity implements EventListener {
               StaticVarUtil.student.getAccount() + ".JPEG");
           headPhoto.setImageBitmap(bitmap);
           // 上传头像
-          UploadFileAsytask uploadFileAsytask = new UploadFileAsytask(getApplicationContext(),bitmap);
+          UploadFileAsytask uploadFileAsytask = new UploadFileAsytask(MainActivity.this,bitmap);
           uploadFileAsytask.execute(new String[] {
               StaticVarUtil.PATH + "/" + StaticVarUtil.student.getAccount() + ".JPEG" });
         }
@@ -1484,52 +1430,6 @@ public class MainActivity extends BaseActivity implements EventListener {
 
   }
 
-  class GetCETAsyntask extends AsyncTask<String, String, String> {
-
-    @Override
-    protected String doInBackground(String... params) {
-      // TODO Auto-generated method stub
-      return HttpUtilMc.queryStringForPost(HttpUtilMc.XIYOUMC_BASE_IP + "servlet/CetServlet?ticket="
-          + StaticVarUtil.cet_data + "&time=" + StaticVarUtil.cet_viewstate + "&name=" + params[0]);
-    }
-
-    @Override
-    protected void onPostExecute(String result) {
-      super.onPostExecute(result);
-
-      ProgressDialogUtil.getInstance(MainActivity.this).dismiss();
-      try {
-        if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
-          if (!result.equals("error")) {
-            if (result.equals("2")) {
-              ViewUtil.showToast(getApplicationContext(), "准考证输入错误");
-              return;
-            }
-            if (result.equals("4")) {
-              ViewUtil.showToast(getApplicationContext(), "姓名输入错误");
-              return;
-            }
-            if (result.length() < 2) {
-              return;
-            }
-            Bundle bundle = new Bundle();
-            bundle.putString("data", result);
-            Intent intent = new Intent(getApplicationContext(), CETActivity.class);
-            intent.putExtras(bundle);
-            startActivity(intent);
-          } else {
-            ViewUtil.showToast(getApplicationContext(), "查询失败");
-          }
-        }
-      } catch (Exception e) {
-        e.printStackTrace();
-        Log.i("LoginActivity", e.toString());
-      }
-
-    }
-
-  }
-
   private void menuIdeaBack() {
     Button menu = (Button) findViewById(R.id.butMenu);
     menu.setOnClickListener(new OnClickListener() {
@@ -1635,7 +1535,7 @@ public class MainActivity extends BaseActivity implements EventListener {
           break;
         case StaticVarUtil.CHECK_VERSION:
           CheckVersionAsynctask checkVersionAsyntask = new CheckVersionAsynctask(
-              getApplicationContext(), true);
+              MainActivity.this, true);
           checkVersionAsyntask.execute();
           break;
         }

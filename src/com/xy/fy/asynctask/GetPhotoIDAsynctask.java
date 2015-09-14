@@ -8,17 +8,17 @@ import com.mc.util.HttpUtilMc;
 import com.mc.util.Util;
 import com.xy.fy.util.StaticVarUtil;
 
-import android.content.Context;
+import android.app.Activity;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 
 public class GetPhotoIDAsynctask extends AsyncTask<String, String, String> {
 
   private CircleImageView headPhoto;
-  private Context context;
+  private Activity mActivity;
 
-  public GetPhotoIDAsynctask(Context context, CircleImageView headPhoto) {
-    this.context = context;
+  public GetPhotoIDAsynctask(Activity mActivity, CircleImageView headPhoto) {
+    this.mActivity = mActivity;
     this.headPhoto = headPhoto;
   }
 
@@ -40,7 +40,7 @@ public class GetPhotoIDAsynctask extends AsyncTask<String, String, String> {
     }
     StaticVarUtil.PHOTOFILENAME = result.split("/")[1];
     // 判断 头像文件夹中是否包含 该用户的头像
-    if (DBConnection.getPhotoName(StaticVarUtil.student.getAccount(), context)
+    if (DBConnection.getPhotoName(StaticVarUtil.student.getAccount(), mActivity)
         .equals(StaticVarUtil.PHOTOFILENAME)
         && new File(StaticVarUtil.PATH + "/" + StaticVarUtil.student.getAccount() + ".JPEG")
             .exists()) {
@@ -52,7 +52,7 @@ public class GetPhotoIDAsynctask extends AsyncTask<String, String, String> {
       }
     } else {
       // 如果文件夹中不存在这个头像。
-      GetHeadPictureAsyncTask getHeadPictureAsyncTask = new GetHeadPictureAsyncTask(context,
+      GetHeadPictureAsyncTask getHeadPictureAsyncTask = new GetHeadPictureAsyncTask(mActivity,
           headPhoto);
       getHeadPictureAsyncTask.execute(
           new String[] { HttpUtilMc.BASE_URL + "user_photo/" + StaticVarUtil.PHOTOFILENAME });

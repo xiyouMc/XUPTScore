@@ -6,19 +6,20 @@ import com.mc.util.Util;
 import com.mc.util.VersionUpdate;
 import com.xy.fy.util.ViewUtil;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
 public class CheckVersionAsynctask extends AsyncTask<String, String, String> {
 
-  private Context mContext;
+  private Activity mActivity;
 
   private boolean isShowDialog;
 
-  public CheckVersionAsynctask(Context context, boolean isShow) {
+  public CheckVersionAsynctask(Activity mActivity, boolean isShow) {
     // TODO Auto-generated constructor stub
-    this.mContext = context;
+    this.mActivity = mActivity;
     this.isShowDialog = isShow;
   }
 
@@ -26,7 +27,7 @@ public class CheckVersionAsynctask extends AsyncTask<String, String, String> {
   protected String doInBackground(String... params) {
     // TODO Auto-generated method stub
     return HttpUtilMc.queryStringForPost(
-        HttpUtilMc.BASE_URL + "checkversion.jsp?version=" + Util.getVersion(mContext));
+        HttpUtilMc.BASE_URL + "checkversion.jsp?version=" + Util.getVersion(mActivity));
   }
 
   @Override
@@ -34,7 +35,7 @@ public class CheckVersionAsynctask extends AsyncTask<String, String, String> {
     // TODO Auto-generated method stub
     super.onPostExecute(result);
     if (isShowDialog) {
-      ProgressDialogUtil.getInstance(mContext).dismiss();
+      ProgressDialogUtil.getInstance(mActivity).dismiss();
     }
     try {
       if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
@@ -44,14 +45,14 @@ public class CheckVersionAsynctask extends AsyncTask<String, String, String> {
           String new_version = str[1];
           String update_content = str[2];
           VersionUpdate versionUpdate = new VersionUpdate(
-              mContext);
+              mActivity);
           versionUpdate.apkUrl = HttpUtilMc.IP + apk_url;
           versionUpdate.updateMsg = new_version + "\n\n"
               + update_content;
           versionUpdate.checkUpdateInfo();
           return;
         }
-        ViewUtil.showToast(mContext, "最新版本！");
+        ViewUtil.showToast(mActivity, "最新版本！");
       }
 
     } catch (Exception e) {

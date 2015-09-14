@@ -8,19 +8,19 @@ import com.mc.util.Util;
 import com.xy.fy.util.StaticVarUtil;
 import com.xy.fy.util.ViewUtil;
 
-import android.content.Context;
+import android.app.Activity;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.util.Log;
 
 public class UploadFileAsytask extends AsyncTask<String, String, String> {
 
-  private Context context;
+  private Activity mActivity;
   private Bitmap bitmap;
 
-  public UploadFileAsytask(Context context, Bitmap bitmap) {
+  public UploadFileAsytask(Activity mActivity, Bitmap bitmap) {
     // TODO Auto-generated constructor stub
-    this.context = context;
+    this.mActivity = mActivity;
     this.bitmap = bitmap;
   }
 
@@ -38,10 +38,10 @@ public class UploadFileAsytask extends AsyncTask<String, String, String> {
         return;
       }
       if (Util.isExternalStorageWritable()) {
-        Util.saveBitmap2file(bitmap, result, context);
+        Util.saveBitmap2file(bitmap, result, mActivity);
         bitmap.recycle();
       }
-      ViewUtil.showToast(context, !HttpUtilMc.CONNECT_EXCEPTION.equals(result)
+      ViewUtil.showToast(mActivity, !HttpUtilMc.CONNECT_EXCEPTION.equals(result)
           ? !result.equals("error") ? "修改成功" : "修改失败" : HttpUtilMc.CONNECT_EXCEPTION);
     } catch (Exception e) {
       Log.i("LoginActivity", e.toString());
