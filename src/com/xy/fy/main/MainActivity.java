@@ -51,6 +51,7 @@ import com.slidingmenu.lib.SlidingMenu.OnOpenListener;
 import com.xy.fy.adapter.ChooseHistorySchoolExpandAdapter;
 import com.xy.fy.adapter.ChooseSchoolExpandAdapter;
 import com.xy.fy.asynctask.CheckVersionAsynctask;
+import com.xy.fy.asynctask.GetPhotoIDAsynctask;
 import com.xy.fy.asynctask.GetRankAsycntask;
 import com.xy.fy.asynctask.ShowCardAsyncTask;
 import com.xy.fy.util.BitmapUtil;
@@ -142,9 +143,6 @@ public class MainActivity extends BaseActivity implements EventListener {
   public static TextView bukao_tip = null;
 
   public static SlidingMenu slidingMenu;
-  private Button chooseCollege;
-  private Button chooseMsgKind;
-  private Button chooseMsgSort;
 
   private TextView nickname;
   private String name;//
@@ -171,8 +169,6 @@ public class MainActivity extends BaseActivity implements EventListener {
 
   private ArrayList<HashMap<String, Object>> listItem;
 
-  private ChooseSchoolExpandAdapter adapter = new ChooseSchoolExpandAdapter(MainActivity.this);
-
   @SuppressLint("ShowToast")
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -181,14 +177,6 @@ public class MainActivity extends BaseActivity implements EventListener {
     super.setContentView(R.layout.activity_main);
 
     mHandler = new MyHandler(this);
-    // 创建快捷方式
-    final Intent launchIntent = getIntent();
-    final String action = launchIntent.getAction();
-    if (Intent.ACTION_CREATE_SHORTCUT.equals(action)) {
-      Log.i(TAG, "create shortcut method one---------------- ");
-      setResult(RESULT_OK, ShortcutUtils.getShortcutToDesktopIntent(MainActivity.this));
-
-    }
 
     BadgeUtil.resetBadgeCount(getApplicationContext());
     CheckVersionAsynctask checkVersionAsyntask = new CheckVersionAsynctask(getApplicationContext(),
@@ -344,7 +332,7 @@ public class MainActivity extends BaseActivity implements EventListener {
     setCurrentMenuItem(StaticVarUtil.MENU_BANG);// 记录当前选项位置
 
     // 请求服务器获取头像id 并且判断本地是否有这个文件
-    GetPhotoID getPhotoID = new GetPhotoID();
+    GetPhotoIDAsynctask getPhotoID = new GetPhotoIDAsynctask(getApplicationContext(),headPhoto);
     getPhotoID.execute();
 
     headPhoto.setOnClickListener(new OnClickListener() {
@@ -2204,75 +2192,7 @@ public class MainActivity extends BaseActivity implements EventListener {
 
   }
 
-  // 从网络获取头像
-  class GetPhotoID extends AsyncTask<String, String, String> {
-
-    @Override
-    protected String doInBackground(String... params) {
-      // TODO Auto-generated method stub
-      return HttpUtilMc.queryStringForPost(
-          HttpUtilMc.BASE_URL + "getuserphoto.jsp?username=" + StaticVarUtil.student.getAccount());
-    }
-
-    @Override
-    protected void onPostExecute(String result) {
-      // TODO Auto-generated method stub
-      super.onPostExecute(result);
-      if (result == null) {
-        return;
-      }
-      if ("no_photo".equals(result) || result.split("/").length < 2) {
-        return;
-      }
-      StaticVarUtil.PHOTOFILENAME = result.split("/")[1];
-      // 判断 头像文件夹中是否包含 该用户的头像
-      if (DBConnection.getPhotoName(StaticVarUtil.student.getAccount(), getApplicationContext())
-          .equals(StaticVarUtil.PHOTOFILENAME)
-          && new File(StaticVarUtil.PATH + "/" + StaticVarUtil.student.getAccount() + ".JPEG")
-              .exists()) {
-        // 如果存在
-        Bitmap bitmap = Util.convertToBitmap(
-            StaticVarUtil.PATH + "/" + StaticVarUtil.student.getAccount() + ".JPEG", 240, 240);
-        if (bitmap != null) {
-          headPhoto.setImageBitmap(bitmap);
-        }
-      } else {
-        // 如果文件夹中不存在这个头像。
-        GetPicture getPicture = new GetPicture();
-        getPicture.execute(
-            new String[] { HttpUtilMc.BASE_URL + "user_photo/" + StaticVarUtil.PHOTOFILENAME });
-      }
-    }
-
-  }
-
-  // 从网络获取头像
-  class GetPicture extends AsyncTask<String, Bitmap, Bitmap> {
-
-    @Override
-    protected Bitmap doInBackground(String... params) {
-      // TODO Auto-generated method stub
-      return Util.getBitmap(params[0]);
-    }
-
-    @Override
-    protected void onPostExecute(Bitmap bitmap) {
-      // TODO Auto-generated method stub
-      super.onPostExecute(bitmap);
-      if (bitmap == null) {
-        return;
-      }
-
-      if (Util.isExternalStorageWritable()) {
-        Util.saveBitmap2file(bitmap, StaticVarUtil.PHOTOFILENAME, getApplicationContext());
-      }
-      headPhoto.setImageBitmap(Util.convertToBitmap(
-          StaticVarUtil.PATH + "/" + StaticVarUtil.student.getAccount() + ".JPEG", 240, 240));// 显示图片
-      bitmap.recycle();
-    }
-
-  }
-
+  
   /*
    * 上传头像
    * 
