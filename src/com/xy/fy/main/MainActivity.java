@@ -5,9 +5,7 @@ import java.io.UnsupportedEncodingException;
 import java.lang.ref.WeakReference;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map.Entry;
 
@@ -29,7 +27,6 @@ import com.bmob.im.demo.ui.fragment.ContactFragment;
 import com.bmob.im.demo.ui.fragment.RecentFragment;
 import com.bmob.im.demo.ui.fragment.SettingsFragment;
 import com.fima.cardsui.views.CardUI;
-import com.mc.db.DBConnection;
 import com.mc.util.BadgeUtil;
 import com.mc.util.CircleImageView;
 import com.mc.util.CustomRankListView;
@@ -37,7 +34,6 @@ import com.mc.util.CustomRankListView.OnAddFootListener;
 import com.mc.util.CustomRankListView.OnFootLoadingListener;
 import com.mc.util.H5Log;
 import com.mc.util.H5Toast;
-import com.mc.util.HttpAssist;
 import com.mc.util.HttpUtilMc;
 import com.mc.util.LogcatHelper;
 import com.mc.util.Passport;
@@ -48,21 +44,17 @@ import com.mc.util.ScoreUtil;
 import com.mc.util.Util;
 import com.slidingmenu.lib.SlidingMenu;
 import com.slidingmenu.lib.SlidingMenu.OnOpenListener;
-import com.xy.fy.adapter.ChooseHistorySchoolExpandAdapter;
-import com.xy.fy.adapter.ChooseSchoolExpandAdapter;
 import com.xy.fy.asynctask.CheckVersionAsynctask;
 import com.xy.fy.asynctask.GetPhotoIDAsynctask;
 import com.xy.fy.asynctask.GetRankAsycntask;
 import com.xy.fy.asynctask.ShowCardAsyncTask;
+import com.xy.fy.asynctask.UploadFileAsytask;
 import com.xy.fy.util.BitmapUtil;
 import com.xy.fy.util.ConnectionUtil;
 import com.xy.fy.util.ShareUtil;
-import com.xy.fy.util.ShortcutUtils;
 import com.xy.fy.util.StaticVarUtil;
 import com.xy.fy.util.TestArrayAdapter;
 import com.xy.fy.util.ViewUtil;
-import com.xy.fy.view.HistoryCollege;
-import com.xy.fy.view.ToolClass;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -93,7 +85,6 @@ import android.text.TextWatcher;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -107,8 +98,6 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ExpandableListView;
-import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -1199,7 +1188,7 @@ public class MainActivity extends BaseActivity implements EventListener {
               StaticVarUtil.student.getAccount() + ".JPEG");
           headPhoto.setImageBitmap(bitmap);
           // 上传头像
-          UploadFileAsytask uploadFileAsytask = new UploadFileAsytask();
+          UploadFileAsytask uploadFileAsytask = new UploadFileAsytask(getApplicationContext(),bitmap);
           uploadFileAsytask.execute(new String[] {
               StaticVarUtil.PATH + "/" + StaticVarUtil.student.getAccount() + ".JPEG" });
         }
@@ -2191,39 +2180,7 @@ public class MainActivity extends BaseActivity implements EventListener {
     }
 
   }
-
   
-  /*
-   * 上传头像
-   * 
-   * @author mc 2014-4-28
-   */
-  class UploadFileAsytask extends AsyncTask<String, String, String> {
-    @Override
-    protected String doInBackground(String... params) {
-      // TODO Auto-generated method stub
-      return HttpAssist.uploadFile(new File(params[0]), StaticVarUtil.student.getAccount());
-    }
-
-    @Override
-    protected void onPostExecute(String result) {
-      super.onPostExecute(result);
-      try {
-        if (result.equals("error")) {
-          return;
-        }
-        if (Util.isExternalStorageWritable()) {
-          Util.saveBitmap2file(bitmap, result, getApplicationContext());
-          bitmap.recycle();
-        }
-        ViewUtil.showToast(getApplicationContext(), !HttpUtilMc.CONNECT_EXCEPTION.equals(result)
-            ? !result.equals("error") ? "修改成功" : "修改失败" : HttpUtilMc.CONNECT_EXCEPTION);
-      } catch (Exception e) {
-        Log.i("LoginActivity", e.toString());
-      }
-    }
-  }
-
   @Override
   public void onMessage(BmobMsg message) {
     // TODO Auto-generated method stub
