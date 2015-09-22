@@ -167,8 +167,7 @@ public class MainActivity extends BaseActivity implements EventListener {
     mHandler = new MyHandler(this);
 
     BadgeUtil.resetBadgeCount(getApplicationContext());
-    CheckVersionAsynctask checkVersionAsyntask = new CheckVersionAsynctask(this,
-        false);
+    CheckVersionAsynctask checkVersionAsyntask = new CheckVersionAsynctask(this, false);
     checkVersionAsyntask.execute();
     shareUtil = new ShareUtil(getApplicationContext());
     share = shareUtil.showShare();
@@ -320,7 +319,7 @@ public class MainActivity extends BaseActivity implements EventListener {
     setCurrentMenuItem(StaticVarUtil.MENU_BANG);// 记录当前选项位置
 
     // 请求服务器获取头像id 并且判断本地是否有这个文件
-    GetPhotoIDAsynctask getPhotoID = new GetPhotoIDAsynctask(MainActivity.this,headPhoto);
+    GetPhotoIDAsynctask getPhotoID = new GetPhotoIDAsynctask(MainActivity.this, headPhoto);
     getPhotoID.execute();
 
     headPhoto.setOnClickListener(new OnClickListener() {
@@ -381,11 +380,12 @@ public class MainActivity extends BaseActivity implements EventListener {
           public void run() {
             // TODO Auto-generated method stub
             try {
-              Thread.sleep(300);
+              Thread.sleep(400);
             } catch (InterruptedException e) {
               // TODO Auto-generated catch block
               e.printStackTrace();
             }
+            isCanTouch = false;
             Message msg = new Message();
             msg.what = StaticVarUtil.BMOB_CHAT;
             mHandler.sendMessage(msg);
@@ -598,8 +598,8 @@ public class MainActivity extends BaseActivity implements EventListener {
       @Override
       public void onClick(View v) {
         // TODO Auto-generated method stub
-        CheckVersionAsynctask checkVersionAsyntask = new CheckVersionAsynctask(
-            MainActivity.this, true);
+        CheckVersionAsynctask checkVersionAsyntask = new CheckVersionAsynctask(MainActivity.this,
+            true);
         ProgressDialogUtil.getInstance(MainActivity.this).show();
         checkVersionAsyntask.execute();
       }
@@ -795,7 +795,6 @@ public class MainActivity extends BaseActivity implements EventListener {
       imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);// 没有显示则显示
     }
   }
-
 
   private void requestRankAsyntask() {
     // 默认
@@ -1134,7 +1133,7 @@ public class MainActivity extends BaseActivity implements EventListener {
               StaticVarUtil.student.getAccount() + ".JPEG");
           headPhoto.setImageBitmap(bitmap);
           // 上传头像
-          UploadFileAsytask uploadFileAsytask = new UploadFileAsytask(MainActivity.this,bitmap);
+          UploadFileAsytask uploadFileAsytask = new UploadFileAsytask(MainActivity.this, bitmap);
           uploadFileAsytask.execute(new String[] {
               StaticVarUtil.PATH + "/" + StaticVarUtil.student.getAccount() + ".JPEG" });
         }
@@ -1277,6 +1276,7 @@ public class MainActivity extends BaseActivity implements EventListener {
 
   /*
    * 退出模块
+   * 
    * @param logout 是否注销
    */
   private void quit(final boolean logout) {
@@ -1319,6 +1319,7 @@ public class MainActivity extends BaseActivity implements EventListener {
 
   /*
    * 记录设置当前MenuItem的位置，1，2，3，4，5分别代表成绩查询，补考查询，我的排名，我收藏的，选项
+   * 
    * @param menuItem 菜单的选项
    */
   private void setCurrentMenuItem(int menuItem) {
@@ -1443,6 +1444,7 @@ public class MainActivity extends BaseActivity implements EventListener {
     findViewById(R.id.send).setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
+        ProgressDialogUtil.getInstance(MainActivity.this).show();
         SIMCardInfo siminfo = new SIMCardInfo(getApplicationContext());
         final String number = siminfo.getNativePhoneNumber();
         final String data = ideaMsgText.getText().toString().trim() + "|"
@@ -1520,7 +1522,21 @@ public class MainActivity extends BaseActivity implements EventListener {
           setCurrentMenuItem(StaticVarUtil.MENU_CET);// 记录当前选项位置
           break;
         case StaticVarUtil.IDEA_BACK_TOAST:
-          ViewUtil.showToast(getApplicationContext(), "感谢反馈");
+          ProgressDialogUtil.getInstance(MainActivity.this).dismiss();
+          // ViewUtil.showToast(getApplicationContext(), "感谢反馈");
+          ViewUtil.showDialog("感谢反馈，我们会做个更优秀", "反馈", activity, false,
+              new ViewUtil.DialogCallback() {
+
+                @Override
+                public void onPost() {
+                  // TODO Auto-generated method stub
+                  closeInputMethod();
+                  menuBang.setPressed(true);// 初始化默认是风云榜被按下
+                  setCurrentMenuItem(StaticVarUtil.MENU_BANG);// 记录当前选项位置
+                  slidingMenu.setContent(R.layout.card_main);
+                  menu1();
+                }
+              });
           break;
 
         case StaticVarUtil.BMOB_CHAT:
@@ -1534,8 +1550,8 @@ public class MainActivity extends BaseActivity implements EventListener {
           setCurrentMenuItem(StaticVarUtil.MENU_BUKAO);// 记录当前选项位置
           break;
         case StaticVarUtil.CHECK_VERSION:
-          CheckVersionAsynctask checkVersionAsyntask = new CheckVersionAsynctask(
-              MainActivity.this, true);
+          CheckVersionAsynctask checkVersionAsyntask = new CheckVersionAsynctask(MainActivity.this,
+              true);
           checkVersionAsyntask.execute();
           break;
         }
@@ -1575,7 +1591,7 @@ public class MainActivity extends BaseActivity implements EventListener {
       updateUserInfos();
       chatHandler.sendEmptyMessageDelayed(GO_HOME, 0);
     } else {
-      chatHandler.sendEmptyMessageDelayed(GO_LOGIN, 2000);
+      chatHandler.sendEmptyMessageDelayed(GO_LOGIN, 0);
     }
   }
 
@@ -1642,9 +1658,17 @@ public class MainActivity extends BaseActivity implements EventListener {
     settingFragment = new SettingsFragment();
     fragments = new Fragment[] { recentFragment, contactFragment, settingFragment };
     // 添加显示第一个fragment
-    getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, recentFragment)
-        .add(R.id.fragment_container, contactFragment).hide(contactFragment).show(recentFragment)
-        .commitAllowingStateLoss();
+    if (contactFragment.isAdded()) {
+      return;
+    }
+    try {
+      getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, recentFragment)
+      .add(R.id.fragment_container, contactFragment).hide(contactFragment).show(recentFragment)
+      .commitAllowingStateLoss();
+    } catch (IllegalArgumentException e) {
+      // TODO: handle exception
+    }
+    
     // while (contactFragment.isAdded()) {
     // break;
     // }
@@ -2080,10 +2104,17 @@ public class MainActivity extends BaseActivity implements EventListener {
     }
 
   }
-  
+
   @Override
   public void onMessage(BmobMsg message) {
     // TODO Auto-generated method stub
     refreshNewMsg(message);
   }
+
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent ev) {
+    // TODO Auto-generated method stub
+    return isCanTouch?super.dispatchTouchEvent(ev):true;
+  }
+  
 }

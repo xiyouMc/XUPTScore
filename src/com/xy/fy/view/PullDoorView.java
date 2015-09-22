@@ -1,6 +1,5 @@
 package com.xy.fy.view;
 
-import com.xy.fy.main.LoginActivity;
 import com.xy.fy.main.R;
 import com.xy.fy.util.ViewUtil;
 

@@ -85,8 +85,16 @@ public class LoginActivity extends Activity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     requestWindowFeature(Window.FEATURE_NO_TITLE);
-    super.setContentView(R.layout.activity_login);
-    setPullDoorViewImage();
+
+    Intent i = getIntent();
+    String imageMsg = i.getStringExtra("image") != null ? i.getStringExtra("image") : "0|0|0";
+    if (imageMsg.equals("0|0|0") || imageMsg.equals("0|0")) {
+      super.setContentView(R.layout.activity_login_normal);
+    } else {
+      super.setContentView(R.layout.activity_login);
+      setPullDoorViewImage(imageMsg);
+    }
+
     setStatusStyle();
     helper = new DBConnection(LoginActivity.this);
     sqLiteDatabase = helper.getWritableDatabase();
@@ -118,14 +126,11 @@ public class LoginActivity extends Activity {
     });
   }
 
-  private void setPullDoorViewImage() {
+  private void setPullDoorViewImage(String imageMsg) {
 
-    Intent i = getIntent();
-    String imageMsg = i.getStringExtra("image") != null ? i.getStringExtra("image") : "0|0|0";
-    
-//    if (imageMsg.equals("0|0|0")||imageMsg.equals("0|0")) {
-//      return;
-//    }
+    // if (imageMsg.equals("0|0|0")||imageMsg.equals("0|0")) {
+    // return;
+    // }
     savePic = (ImageView) this.findViewById(R.id.btn_above);
     tvHint = (TextView) this.findViewById(R.id.tv_hint);
     Animation ani = new AlphaAnimation(0f, 1f);
@@ -142,10 +147,10 @@ public class LoginActivity extends Activity {
       @Override
       public void onClick(View arg0) {
         if (Util.isExternalStorageWritable()) {
-          BitmapUtil.saveFileAndDB(
-              getApplicationContext(),
-              bitmap != null ? bitmap : BitmapFactory.decodeResource(getResources(),
-                  R.drawable.left1), imageTime + ".jpg");
+          BitmapUtil.saveFileAndDB(getApplicationContext(),
+              bitmap != null ? bitmap
+                  : BitmapFactory.decodeResource(getResources(), R.drawable.left1),
+              imageTime + ".jpg");
           ViewUtil.showToast(getApplicationContext(), "保存文件成功");
         } else {
           ViewUtil.showToast(getApplicationContext(), "sdcard不存在");
@@ -186,8 +191,8 @@ public class LoginActivity extends Activity {
   Runnable runnableUi = new Runnable() {
     @Override
     public void run() {
-      pullDoorView.setScaletype(scaletype.equals("0") ? ImageView.ScaleType.FIT_XY
-          : ImageView.ScaleType.CENTER_CROP);
+      pullDoorView.setScaletype(
+          scaletype.equals("0") ? ImageView.ScaleType.FIT_XY : ImageView.ScaleType.CENTER_CROP);
       pullDoorView.setBgBitmap(bitmap);
       savePic.clearAnimation();
       savePic.setBackgroundResource(R.drawable.picture_down_up);
@@ -197,7 +202,7 @@ public class LoginActivity extends Activity {
   };
 
   @SuppressLint("InlinedApi")
-private void setTranslucentStatus(boolean on) {
+  private void setTranslucentStatus(boolean on) {
     Window win = getWindow();
     WindowManager.LayoutParams winParams = win.getAttributes();
     final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
@@ -222,8 +227,8 @@ private void setTranslucentStatus(boolean on) {
   private boolean initData() {
     this.progressDialog = ViewUtil.getProgressDialog(LoginActivity.this, "正在登录");
     // 获取数据库
-    boolean isSDcardExist = Environment.getExternalStorageState().equals(
-        android.os.Environment.MEDIA_MOUNTED); // 判断sd卡是否存在
+    boolean isSDcardExist = Environment.getExternalStorageState()
+        .equals(android.os.Environment.MEDIA_MOUNTED); // 判断sd卡是否存在
     return isSDcardExist;
   }
 
@@ -317,7 +322,7 @@ private void setTranslucentStatus(boolean on) {
    * 找到控件ID
    */
   @SuppressLint("SdCardPath")
-private void findViewById() {
+  private void findViewById() {
     if (Util.isExternalStorageWritable()) {
       StaticVarUtil.PATH = "/sdcard/xuptscore/";// 设置文件目录
     } else {
@@ -396,13 +401,13 @@ private void findViewById() {
           photo.setImageDrawable(drawable);
         }
         if (account.getText().toString().length() == 8) {
-          password.setText(DBConnection.getPassword(account.getText().toString(),
-              LoginActivity.this));
+          password
+              .setText(DBConnection.getPassword(account.getText().toString(), LoginActivity.this));
           // 判断 头像文件夹中是否包含 该用户的头像
           File file = new File(StaticVarUtil.PATH + "/" + account.getText().toString() + ".JPEG");
           if (file.exists()) {// 如果存在
-            Bitmap bitmap = Util.convertToBitmap(StaticVarUtil.PATH + "/"
-                + account.getText().toString() + ".JPEG", 240, 240);
+            Bitmap bitmap = Util.convertToBitmap(
+                StaticVarUtil.PATH + "/" + account.getText().toString() + ".JPEG", 240, 240);
             if (bitmap != null) {
               photo.setImageBitmap(bitmap);
             } else {
@@ -445,10 +450,10 @@ private void findViewById() {
     protected String doInBackground(Object... params) {
       // TODO Auto-generated method stub
       loginTimes++;
-      return HttpUtilMc.queryStringForPost(HttpUtilMc.BASE_URL + "login.jsp?username="
-          + account.getText().toString().trim() + "&password="
-          + URLEncoder.encode(password.getText().toString().trim()) + "&session="
-          + StaticVarUtil.session);
+      return HttpUtilMc.queryStringForPost(
+          HttpUtilMc.BASE_URL + "login.jsp?username=" + account.getText().toString().trim()
+              + "&password=" + URLEncoder.encode(password.getText().toString().trim()) + "&session="
+              + StaticVarUtil.session);
 
     }
 
@@ -522,8 +527,9 @@ private void findViewById() {
     protected String doInBackground(Object... params) {
       loginTimes++;
       // TODO Auto-generated method stub
-      return HttpUtilMc.IsReachIP() ? HttpUtilMc.queryStringForPost(HttpUtilMc.BASE_URL
-          + "GetPic.jsp") : HttpUtilMc.CONNECT_EXCEPTION;
+      return HttpUtilMc.IsReachIP()
+          ? HttpUtilMc.queryStringForPost(HttpUtilMc.BASE_URL + "GetPic.jsp")
+          : HttpUtilMc.CONNECT_EXCEPTION;
     }
 
     @Override
@@ -563,5 +569,5 @@ private void findViewById() {
 
     }
   }
-  
+
 }

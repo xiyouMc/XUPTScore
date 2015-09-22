@@ -160,6 +160,7 @@
 -keep class com.fima.cardsui.views.QuickReturnListView { <init>(...); }
 
 # view res/layout/activity_login.xml #generated:24
+# view res/layout/activity_login_normal.xml #generated:24
 # view res/layout/menu.xml #generated:15
 -keep class com.mc.util.CircleImageView { <init>(...); }
 

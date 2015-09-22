@@ -14,6 +14,7 @@ import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.widget.Toast;
 import cn.bmob.im.BmobChatManager;
 import cn.bmob.im.BmobUserManager;
@@ -58,6 +59,8 @@ public class BaseActivity extends FragmentActivity {
 
   protected int mScreenWidth;
   protected int mScreenHeight;
+
+  protected static boolean isCanTouch = true;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -216,7 +219,9 @@ public class BaseActivity extends FragmentActivity {
         } else {
           ShowLog("查询好友列表失败：" + arg1);
         }
-        dialog.cancel();;
+        isCanTouch = true;
+        dialog.cancel();
+        ;
       }
 
       @Override
@@ -224,6 +229,7 @@ public class BaseActivity extends FragmentActivity {
         // TODO Auto-generated method stub
         // 保存到application中方便比较
         CustomApplcation.getInstance().setContactList(CollectionUtils.list2map(arg0));
+        isCanTouch = true;
         dialog.cancel();
       }
     });
@@ -264,6 +270,12 @@ public class BaseActivity extends FragmentActivity {
         // ShowLog("用户位置未发生过变化");
       }
     }
+  }
+
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent ev) {
+    // TODO Auto-generated method stub
+    return isCanTouch ? super.dispatchTouchEvent(ev) : true;
   }
 
 }
