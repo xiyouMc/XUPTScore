@@ -81,7 +81,7 @@ public class StaticVarUtil {
   public static final int END_FAIL = 15;
 
   public static final int MENU_CET = 16;
-  
+  public static final int MENU_LIB = 17;
   public static final String ACCOUNT = "account";
   public static final String PASSWORD = "password";
   public static final String USER_INFO = "userinfo";
@@ -108,6 +108,7 @@ public class StaticVarUtil {
   public static String fileName = null;// 缓存的文件名
   public static String data = null;
   public static String viewstate = null;
+  public static long time;
   public static String content = null;
   public static String cet_account = null;
   public static String cet_data = null;

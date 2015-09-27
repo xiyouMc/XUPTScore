@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/common_actionbar"
+        layout="@layout/include_action_bar" />
+
+    <include
+        android:id="@+id/common_bind"
+        layout="@layout/include_bind" 
+        android:visibility="gone"/>
+    
+    <include
+        android:id="@+id/common_show_lib"
+        layout="@layout/include_show_lib"
+        android:visibility="gone" />
+</LinearLayout>

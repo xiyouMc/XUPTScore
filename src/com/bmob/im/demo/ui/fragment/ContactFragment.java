@@ -59,6 +59,7 @@ import com.bmob.im.demo.view.dialog.DialogTips;
 import com.mc.util.H5Toast;
 import com.xy.fy.main.R;
 import com.xy.fy.util.FileUtils;
+import com.xy.fy.util.StaticVarUtil;
 
 /**
  * 联系人
@@ -251,9 +252,12 @@ public class ContactFragment extends FragmentBase
       @Override
       public void onClick(View arg0) {
         // TODO Auto-generated method stub
-//        Intent intent = new Intent(getActivity(), FileSourceActivity.class);
-//        startAnimActivity(intent);
-       H5Toast.showToast(getActivity(), "正在开发中，将支持资料下载，敬请等待。。。");
+        if (StaticVarUtil.student.getAccount().equals("04113129")) {
+          Intent intent = new Intent(getActivity(), FileSourceActivity.class);
+          startAnimActivity(intent);
+        } else {
+          H5Toast.showToast(getActivity(), "正在开发中，将支持资料下载，敬请等待。。。");
+        }
       }
     });
 
@@ -434,7 +438,5 @@ public class ContactFragment extends FragmentBase
       }
     });
   }
-
- 
 
 }

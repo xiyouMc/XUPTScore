@@ -2,16 +2,16 @@
 # view res/layout/include_chat_bottom_bar.xml #generated:113
 -keep class android.support.v4.view.ViewPager { <init>(...); }
 
-# view AndroidManifest.xml #generated:228
+# view AndroidManifest.xml #generated:262
 -keep class cn.bmob.im.poll.BmobPollService { <init>(...); }
 
-# view AndroidManifest.xml #generated:209
+# view AndroidManifest.xml #generated:242
 -keep class cn.bmob.push.PushReceiver { <init>(...); }
 
-# view AndroidManifest.xml #generated:198
+# view AndroidManifest.xml #generated:231
 -keep class cn.bmob.push.lib.service.PushService { <init>(...); }
 
-# view AndroidManifest.xml #generated:120
+# view AndroidManifest.xml #generated:142
 -keep class cn.sharesdk.framework.ShareSDKUIShell { <init>(...); }
 
 # view res/layout/abs__screen_action_bar.xml #generated:44
@@ -74,61 +74,61 @@
 # view res/layout/abs__search_view.xml #generated:84
 -keep class com.actionbarsherlock.widget.SearchView$SearchAutoComplete { <init>(...); }
 
-# view AndroidManifest.xml #generated:187
+# view AndroidManifest.xml #generated:220
 -keep class com.baidu.location.f { <init>(...); }
 
 # view res/layout/activity_location.xml #generated:11
 -keep class com.baidu.mapapi.map.MapView { <init>(...); }
 
-# view AndroidManifest.xml #generated:80
+# view AndroidManifest.xml #generated:91
 -keep class com.bmob.im.demo.CustomApplcation { <init>(...); }
 
-# view AndroidManifest.xml #generated:219
+# view AndroidManifest.xml #generated:252
 -keep class com.bmob.im.demo.MyMessageReceiver { <init>(...); }
 
-# view AndroidManifest.xml #generated:162
+# view AndroidManifest.xml #generated:184
 -keep class com.bmob.im.demo.ui.AddFriendActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:156
+# view AndroidManifest.xml #generated:178
 -keep class com.bmob.im.demo.ui.BlackListActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:172
+# view AndroidManifest.xml #generated:203
 -keep class com.bmob.im.demo.ui.ChatActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:168
+# view AndroidManifest.xml #generated:194
 -keep class com.bmob.im.demo.ui.FileSourceActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:159
+# view AndroidManifest.xml #generated:181
 -keep class com.bmob.im.demo.ui.ImageBrowserActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:153
+# view AndroidManifest.xml #generated:175
 -keep class com.bmob.im.demo.ui.LocationActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:151
+# view AndroidManifest.xml #generated:172
 -keep class com.bmob.im.demo.ui.LoginActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:146
+# view AndroidManifest.xml #generated:168
 -keep class com.bmob.im.demo.ui.MainActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:167
+# view AndroidManifest.xml #generated:191
 -keep class com.bmob.im.demo.ui.NearPeopleActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:166
+# view AndroidManifest.xml #generated:188
 -keep class com.bmob.im.demo.ui.NewFriendActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:178
+# view AndroidManifest.xml #generated:210
 -keep class com.bmob.im.demo.ui.RegisterActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:176
+# view AndroidManifest.xml #generated:207
 -keep class com.bmob.im.demo.ui.SetMyInfoActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:140
+# view AndroidManifest.xml #generated:163
 -keep class com.bmob.im.demo.ui.SplashActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:170
+# view AndroidManifest.xml #generated:200
 -keep class com.bmob.im.demo.ui.TestActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:169
+# view AndroidManifest.xml #generated:197
 -keep class com.bmob.im.demo.ui.UpdateInfoActivity { <init>(...); }
 
 # view res/layout/fragment_contacts.xml #generated:18
@@ -152,6 +152,25 @@
 # view res/layout/activity_near_people.xml #generated:18
 -keep class com.bmob.im.demo.view.xlist.XListView { <init>(...); }
 
+# view res/layout/activity_sgv.xml #generated:1
+# view res/layout/activity_sgv_empy_view.xml #generated:6
+-keep class com.etsy.android.grid.StaggeredGridView { <init>(...); }
+
+# view res/layout/list_item_sample.xml #generated:10
+-keep class com.etsy.android.grid.util.DynamicHeightTextView { <init>(...); }
+
+# view AndroidManifest.xml #generated:278
+-keep class com.etsy.android.sample.ListViewActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:275
+-keep class com.etsy.android.sample.StaggeredGridActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:276
+-keep class com.etsy.android.sample.StaggeredGridActivityFragment { <init>(...); }
+
+# view AndroidManifest.xml #generated:277
+-keep class com.etsy.android.sample.StaggeredGridEmptyViewActivity { <init>(...); }
+
 # view res/layout/card_main.xml #generated:84
 -keep class com.fima.cardsui.views.CardUI { <init>(...); }
 
@@ -171,37 +190,37 @@
 # view res/layout/slidingmenumain.xml #generated:2
 -keep class com.slidingmenu.lib.SlidingMenu { <init>(...); }
 
-# view AndroidManifest.xml #generated:110
+# view AndroidManifest.xml #generated:128
 -keep class com.xy.fy.main.AddFriendListActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:109
+# view AndroidManifest.xml #generated:127
 -keep class com.xy.fy.main.CETActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:114
+# view AndroidManifest.xml #generated:134
 -keep class com.xy.fy.main.ForgetCetActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:108
+# view AndroidManifest.xml #generated:126
 -keep class com.xy.fy.main.FriendApplyActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:106
+# view AndroidManifest.xml #generated:123
 -keep class com.xy.fy.main.FriendRecommondActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:102
+# view AndroidManifest.xml #generated:121
 -keep class com.xy.fy.main.LoginActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:99
+# view AndroidManifest.xml #generated:117
 -keep class com.xy.fy.main.MainActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:117
+# view AndroidManifest.xml #generated:138
 -keep class com.xy.fy.main.MessageDetailActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:112
+# view AndroidManifest.xml #generated:131
 -keep class com.xy.fy.main.ShowScoreActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:84
+# view AndroidManifest.xml #generated:98
 -keep class com.xy.fy.main.WelcomeActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:133
+# view AndroidManifest.xml #generated:157
 -keep class com.xy.fy.main.wxapi.WXEntryActivity { <init>(...); }
 
 # view res/layout/activity_message_detail.xml #generated:212

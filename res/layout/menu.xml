@@ -232,6 +232,36 @@
                     android:src="@drawable/menu_arrow" />
             </LinearLayout>
            
+             <LinearLayout
+                android:id="@+id/menu_my_lib"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/menu_list"
+                android:clickable="true"
+                android:orientation="horizontal"
+                android:padding="5dp" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/menu_my_comment" />
+
+                <TextView
+                    android:layout_width="110dp"
+                    android:layout_height="fill_parent"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="15dp"
+                    android:text="我的图书馆"
+                    android:textColor="@drawable/change_menu_text_color"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingLeft="20dp"
+                    android:src="@drawable/menu_arrow" />
+            </LinearLayout>
             <ImageView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"

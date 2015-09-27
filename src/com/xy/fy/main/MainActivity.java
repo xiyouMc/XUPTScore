@@ -26,6 +26,8 @@ import com.bmob.im.demo.ui.NewFriendActivity;
 import com.bmob.im.demo.ui.fragment.ContactFragment;
 import com.bmob.im.demo.ui.fragment.RecentFragment;
 import com.bmob.im.demo.ui.fragment.SettingsFragment;
+import com.etsy.android.sample.StaggeredGridActivity;
+import com.etsy.android.sample.StaggeredGridActivityFragment;
 import com.fima.cardsui.views.CardUI;
 import com.mc.util.BadgeUtil;
 import com.mc.util.CircleImageView;
@@ -42,12 +44,14 @@ import com.mc.util.ScoreUtil;
 import com.mc.util.Util;
 import com.slidingmenu.lib.SlidingMenu;
 import com.slidingmenu.lib.SlidingMenu.OnOpenListener;
+import com.xy.fy.asynctask.BindXuptLibAsyncTask;
 import com.xy.fy.asynctask.CheckVersionAsynctask;
 import com.xy.fy.asynctask.GetCETAsyntask;
 import com.xy.fy.asynctask.GetPhotoIDAsynctask;
 import com.xy.fy.asynctask.GetRankAsycntask;
 import com.xy.fy.asynctask.ShowCardAsyncTask;
 import com.xy.fy.asynctask.UploadFileAsytask;
+import com.xy.fy.asynctask.XuptLibLoginAsynctask;
 import com.xy.fy.util.BitmapUtil;
 import com.xy.fy.util.ConnectionUtil;
 import com.xy.fy.util.ShareUtil;
@@ -77,7 +81,6 @@ import android.os.Message;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.Html;
 import android.text.TextWatcher;
@@ -140,6 +143,7 @@ public class MainActivity extends BaseActivity implements EventListener {
   private LinearLayout menuMyPaiming = null;
   private LinearLayout menuMyCjTongji = null;
   private LinearLayout menuMyCET = null;
+  private LinearLayout menuLib = null;
   private LinearLayout menuIdea_back = null;
   private LinearLayout menuSetting = null;// 设置
   private LinearLayout menuAbout = null;// 关于
@@ -187,36 +191,40 @@ public class MainActivity extends BaseActivity implements EventListener {
         int item = getCurrentMeunItem();
         if (item == StaticVarUtil.MENU_BANG) {
           setMenuItemState(menuBang, true, menuMyBukao, false, menuMyCjTongji, false, menuMyCET,
-              false, menuMyPaiming, false, menuIdea_back, false, menuSetting, false, menuAbout,
-              false);
+              false, menuLib, false, menuMyPaiming, false, menuIdea_back, false, menuSetting, false,
+              menuAbout, false);
         } else if (item == StaticVarUtil.MENU_BUKAO) {
           setMenuItemState(menuBang, false, menuMyBukao, true, menuMyCjTongji, false, menuMyCET,
-              false, menuMyPaiming, false, menuIdea_back, false, menuSetting, false, menuAbout,
-              false);
+              false, menuLib, false, menuMyPaiming, false, menuIdea_back, false, menuSetting, false,
+              menuAbout, false);
         } else if (item == StaticVarUtil.MENU_CJ_TJ) {
           setMenuItemState(menuBang, false, menuMyBukao, false, menuMyCjTongji, true, menuMyCET,
-              false, menuMyPaiming, false, menuIdea_back, false, menuSetting, false, menuAbout,
-              false);
+              false, menuLib, false, menuMyPaiming, false, menuIdea_back, false, menuSetting, false,
+              menuAbout, false);
         } else if (item == StaticVarUtil.MENU_PAIMING) {
           setMenuItemState(menuBang, false, menuMyBukao, false, menuMyCjTongji, false, menuMyCET,
-              false, menuMyPaiming, true, menuIdea_back, false, menuSetting, false, menuAbout,
-              false);
+              false, menuLib, false, menuMyPaiming, true, menuIdea_back, false, menuSetting, false,
+              menuAbout, false);
         } else if (item == StaticVarUtil.MENU_IDEA_BACK) {
           setMenuItemState(menuBang, false, menuMyBukao, false, menuMyCjTongji, false, menuMyCET,
-              false, menuMyPaiming, false, menuIdea_back, true, menuSetting, false, menuAbout,
-              false);
+              false, menuLib, false, menuMyPaiming, false, menuIdea_back, true, menuSetting, false,
+              menuAbout, false);
         } else if (item == StaticVarUtil.MENU_SETTING) {
           setMenuItemState(menuBang, false, menuMyBukao, false, menuMyCjTongji, false, menuMyCET,
-              false, menuMyPaiming, false, menuIdea_back, false, menuSetting, true, menuAbout,
-              false);
+              false, menuLib, false, menuMyPaiming, false, menuIdea_back, false, menuSetting, true,
+              menuAbout, false);
         } else if (item == StaticVarUtil.MENU_ABOUT) {
           setMenuItemState(menuBang, false, menuMyBukao, false, menuMyCjTongji, false, menuMyCET,
-              false, menuMyPaiming, false, menuIdea_back, false, menuSetting, false, menuAbout,
-              true);
+              false, menuLib, false, menuMyPaiming, false, menuIdea_back, false, menuSetting, false,
+              menuAbout, true);
         } else if (item == StaticVarUtil.MENU_CET) {
           setMenuItemState(menuBang, false, menuMyBukao, false, menuMyCjTongji, false, menuMyCET,
-              true, menuMyPaiming, false, menuIdea_back, false, menuSetting, false, menuAbout,
-              false);
+              true, menuLib, false, menuMyPaiming, false, menuIdea_back, false, menuSetting, false,
+              menuAbout, false);
+        } else if (item == StaticVarUtil.MENU_LIB) {
+          setMenuItemState(menuBang, false, menuMyBukao, false, menuMyCjTongji, false, menuMyCET,
+              false, menuLib, true, menuMyPaiming, false, menuIdea_back, false, menuSetting, false,
+              menuAbout, false);
         }
       }
     });
@@ -232,7 +240,8 @@ public class MainActivity extends BaseActivity implements EventListener {
     if (!Util.checkPWD(StaticVarUtil.student.getPassword())) {
       ViewUtil.showToast(getApplicationContext(), "密码不安全，请重新设置密码");
       setMenuItemState(menuBang, false, menuMyBukao, false, menuMyCjTongji, false, menuMyCET, false,
-          menuMyPaiming, false, menuIdea_back, false, menuSetting, true, menuAbout, false);
+          menuLib, false, menuMyPaiming, false, menuIdea_back, false, menuSetting, true, menuAbout,
+          false);
       setCurrentMenuItem(StaticVarUtil.MENU_SETTING);
       slidingMenu.toggle();// 页面跳转
       slidingMenu.setContent(R.layout.activity_setting);
@@ -283,7 +292,7 @@ public class MainActivity extends BaseActivity implements EventListener {
   private void setMenuItemState(LinearLayout item1, boolean flag1, LinearLayout item2,
       boolean flag2, LinearLayout item3, boolean flag3, LinearLayout item4, boolean flag4,
       LinearLayout item5, boolean flag5, LinearLayout item6, boolean flag6, LinearLayout item7,
-      boolean flag7, LinearLayout item8, boolean flag8) {
+      boolean flag7, LinearLayout item8, boolean flag8, LinearLayout item9, boolean flag9) {
     item1.setPressed(flag1);
     item2.setPressed(flag2);
     item3.setPressed(flag3);
@@ -292,6 +301,7 @@ public class MainActivity extends BaseActivity implements EventListener {
     item6.setPressed(flag6);
     item7.setPressed(flag7);
     item8.setPressed(flag8);
+    item9.setPressed(flag9);
   }
 
   /*
@@ -309,6 +319,7 @@ public class MainActivity extends BaseActivity implements EventListener {
     menuMyCjTongji.setVisibility(View.GONE);
     menuMyPaiming = (LinearLayout) findViewById(R.id.menu_my_paiming);// 3.我的排名
     menuMyCET = (LinearLayout) findViewById(R.id.menu_my_cet);// CET查分
+    menuLib = (LinearLayout) findViewById(R.id.menu_my_lib);
     menuIdea_back = (LinearLayout) findViewById(R.id.idea_back);// 4.我收藏的
     menuSetting = (LinearLayout) findViewById(R.id.menu_setting);// 5.设置
     menuAbout = (LinearLayout) findViewById(R.id.menu_about);
@@ -340,8 +351,8 @@ public class MainActivity extends BaseActivity implements EventListener {
       @Override
       public void onClick(View v) {
         setMenuItemState(menuBang, true, menuMyBukao, false, menuMyCjTongji, false, menuMyCET,
-            false, menuMyPaiming, false, menuIdea_back, false, menuSetting, false, menuAbout,
-            false);
+            false, menuLib, false, menuMyPaiming, false, menuIdea_back, false, menuSetting, false,
+            menuAbout, false);
         slidingMenu.toggle();// 页面跳转
         slidingMenu.setContent(R.layout.card_main);
         new Thread(new Runnable() {
@@ -368,8 +379,8 @@ public class MainActivity extends BaseActivity implements EventListener {
       public void onClick(View v) {
 
         setMenuItemState(menuBang, false, menuMyBukao, true, menuMyCjTongji, false, menuMyCET,
-            false, menuMyPaiming, false, menuIdea_back, false, menuSetting, false, menuAbout,
-            false);
+            false, menuLib, false, menuMyPaiming, false, menuIdea_back, false, menuSetting, false,
+            menuAbout, false);
         slidingMenu.toggle();// 页面跳转
         // 判断如果没有头像的话，先让选择头像，并填写昵称
         // 暂且跳转到好友列表
@@ -400,8 +411,8 @@ public class MainActivity extends BaseActivity implements EventListener {
         if (StaticVarUtil.list_Rank_xnAndXq.size() != 0) {
 
           setMenuItemState(menuBang, false, menuMyBukao, false, menuMyCjTongji, false, menuMyCET,
-              false, menuMyPaiming, true, menuIdea_back, false, menuSetting, false, menuAbout,
-              false);
+              false, menuLib, false, menuMyPaiming, true, menuIdea_back, false, menuSetting, false,
+              menuAbout, false);
           slidingMenu.toggle();// 页面跳转
           slidingMenu.setContent(R.layout.activity_rank);
           new Thread(new Runnable() {
@@ -452,7 +463,8 @@ public class MainActivity extends BaseActivity implements EventListener {
       @Override
       public void onClick(View v) {
         setMenuItemState(menuBang, false, menuMyBukao, false, menuMyCjTongji, false, menuMyCET,
-            false, menuMyPaiming, false, menuIdea_back, false, menuSetting, true, menuAbout, false);
+            false, menuLib, false, menuMyPaiming, false, menuIdea_back, false, menuSetting, true,
+            menuAbout, false);
         slidingMenu.toggle();// 页面跳转
         slidingMenu.setContent(R.layout.activity_setting);
         new Thread(new Runnable() {
@@ -478,7 +490,8 @@ public class MainActivity extends BaseActivity implements EventListener {
       @Override
       public void onClick(View v) {
         setMenuItemState(menuBang, false, menuMyBukao, false, menuMyCjTongji, false, menuMyCET,
-            true, menuMyPaiming, false, menuIdea_back, false, menuSetting, false, menuAbout, false);
+            true, menuLib, false, menuMyPaiming, false, menuIdea_back, false, menuSetting, false,
+            menuAbout, false);
         slidingMenu.toggle();// 页面跳转
         slidingMenu.setContent(R.layout.activity_cet);
         new Thread(new Runnable() {
@@ -500,11 +513,41 @@ public class MainActivity extends BaseActivity implements EventListener {
       }
     });
 
+    menuLib.setOnClickListener(new OnClickListener() {
+
+      @Override
+      public void onClick(View v) {
+        // TODO Auto-generated method stub
+        setMenuItemState(menuBang, false, menuMyBukao, false, menuMyCjTongji, false, menuMyCET,
+            true, menuLib, true, menuMyPaiming, false, menuIdea_back, false, menuSetting, false,
+            menuAbout, true);
+
+        slidingMenu.toggle();// 页面跳转
+        slidingMenu.setContent(R.layout.activity_lib);
+
+        new Thread(new Runnable() {
+          @Override
+          public void run() {
+            // TODO Auto-generated method stub
+            try {
+              Thread.sleep(300);
+            } catch (InterruptedException e) {
+              // TODO Auto-generated catch block
+              e.printStackTrace();
+            }
+            Message msg = new Message();
+            msg.what = StaticVarUtil.MENU_LIB;
+            mHandler.sendMessage(msg);
+          }
+        }).start();
+      }
+    });
     menuAbout.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
         setMenuItemState(menuBang, false, menuMyBukao, false, menuMyCjTongji, false, menuMyCET,
-            false, menuMyPaiming, false, menuIdea_back, false, menuSetting, false, menuAbout, true);
+            false, menuLib, false, menuMyPaiming, false, menuIdea_back, false, menuSetting, false,
+            menuAbout, true);
 
         slidingMenu.toggle();// 页面跳转
         slidingMenu.setContent(R.layout.activity_about);
@@ -800,8 +843,9 @@ public class MainActivity extends BaseActivity implements EventListener {
     // 默认
     RankUtils.selectXn = xnSpinner.getSelectedItem().toString();
     RankUtils.selectXq = xqSpinner.getSelectedItem().toString();
-    rankRequestParmas(StaticVarUtil.student.getAccount() + "|" + RankUtils.selectXn.split("\\-")[0]
-        + "|" + (RankUtils.selectXq.equals("第一学期") ? "1" : "2"));
+    Util.getRequestParmas(getApplicationContext(),
+        StaticVarUtil.student.getAccount() + "|" + RankUtils.selectXn.split("\\-")[0] + "|"
+            + (RankUtils.selectXq.equals("第一学期") ? "1" : "2"));
     String result = "";
     // 首先查询内存中是否有该学期成绩
     for (String xnAndXq : RankUtils.allRankMap.keySet()) {
@@ -818,32 +862,6 @@ public class MainActivity extends BaseActivity implements EventListener {
       getRankAsyntask.execute();
     }
 
-  }
-
-  private void rankRequestParmas(String data) {
-    long time = System.currentTimeMillis();
-    // String s = new char[]{3,2,3,4,3,8,3,8,3,2,3,2}.toString();
-    try {
-      String time_s = Passport.jiami(String.valueOf(time),
-          String.valueOf(new char[] { 2, 4, 8, 8, 2, 2 }));
-      String realData = Passport.jiami(data, String.valueOf(time));
-      @SuppressWarnings("static-access")
-      String imei = ((TelephonyManager) getApplicationContext()
-          .getSystemService(getApplicationContext().TELEPHONY_SERVICE)).getDeviceId();
-      imei = Passport.jiami(imei, String.valueOf(time));
-      realData = URLEncoder.encode(realData);
-      time_s = URLEncoder.encode(time_s);
-      StaticVarUtil.data = realData;
-      StaticVarUtil.viewstate = time_s;
-      StaticVarUtil.content = imei;
-      String checkData = Util.checkRankRequestData(realData, time_s);
-      if (!checkData.equals(data)) {
-        rankRequestParmas(data);// 递归再次计算，直到计算出正确的
-      }
-    } catch (Exception e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
   }
 
   boolean isTouchXNSpinner = false;
@@ -1521,6 +1539,10 @@ public class MainActivity extends BaseActivity implements EventListener {
           cet();
           setCurrentMenuItem(StaticVarUtil.MENU_CET);// 记录当前选项位置
           break;
+        case StaticVarUtil.MENU_LIB:
+          lib();
+          setCurrentMenuItem(StaticVarUtil.MENU_LIB);// 记录当前选项位置
+          break;
         case StaticVarUtil.IDEA_BACK_TOAST:
           ProgressDialogUtil.getInstance(MainActivity.this).dismiss();
           // ViewUtil.showToast(getApplicationContext(), "感谢反馈");
@@ -1558,6 +1580,97 @@ public class MainActivity extends BaseActivity implements EventListener {
       }
     }
 
+  }
+
+  private void lib() {
+    initTopBarForOnlyTitle("绑定");
+    String lib = "password=123456&account=S04131071";
+    final LinearLayout bind_layout = (LinearLayout) findViewById(R.id.common_bind);
+    final BindXuptLibAsyncTask bindXuptLibAsyncTask = new BindXuptLibAsyncTask(MainActivity.this,
+        lib, "0", new BindXuptLibAsyncTask.OnPostExecute() {
+
+          @Override
+          public void returnResult(String result) {
+            // TODO Auto-generated method stub
+            if ("none".equals(result) || result == null) {// 未绑定
+              bindLib(bind_layout);
+            } else {// 绑定 直接请求
+              login_lib(result, bind_layout, false);
+            }
+          }
+        });
+    bindXuptLibAsyncTask.execute();
+  }
+
+  private void bindLib(final LinearLayout bind_layout) {
+    initTopBarForOnlyTitle("绑定");
+
+    bind_layout.setVisibility(View.VISIBLE);
+    final EditText libAccount = (EditText) findViewById(R.id.libAccount);
+    libAccount.setHint("S" + StaticVarUtil.student.getAccount());
+    final EditText libPW = (EditText) findViewById(R.id.libPW);
+    Button bindBT = (Button) findViewById(R.id.bind);
+    bindBT.setOnClickListener(new OnClickListener() {
+
+      @Override
+      public void onClick(View v) {
+        // TODO Auto-generated method stub
+        if (libAccount.getText().toString().isEmpty() || libPW.getText().toString().isEmpty()) {
+          H5Toast.showToast(getApplicationContext(), "请输入账号和密码");
+          return;
+        }
+        login_lib("account=" + libAccount.getText().toString() + "&password="
+            + libPW.getText().toString(), bind_layout, true);
+
+      }
+    });
+  }
+
+  private void login_lib(final String libName, final LinearLayout bind_layout,
+      final boolean isBind) {
+    XuptLibLoginAsynctask xuptLibLoginAsynctask = new XuptLibLoginAsynctask(MainActivity.this,
+        libName, new XuptLibLoginAsynctask.Login() {
+
+          @Override
+          public void onPostLogin(String result) {
+            // TODO Auto-generated method stub
+            if (!"fail".equals(result)) {// 获取数据
+              if (isBind) {
+                bind(libName, bind_layout);
+              } else {
+                initTopBarForOnlyTitle("图书馆");
+                LinearLayout show_lib_layout = (LinearLayout) findViewById(R.id.common_show_lib);
+                show_lib_layout.setVisibility(View.VISIBLE);
+                bind_layout.setVisibility(View.GONE);
+              }
+              Log.d(TAG, "mcmcmcmc" + result);
+              startActivity(new Intent(MainActivity.this,StaggeredGridActivityFragment.class));
+            } else {
+
+            }
+          }
+        });
+    xuptLibLoginAsynctask.execute();
+  }
+
+  private void bind(String libName, final LinearLayout bind_layout) {
+    BindXuptLibAsyncTask bindXuptLibAsyncTask = new BindXuptLibAsyncTask(MainActivity.this, libName,
+        "1", new BindXuptLibAsyncTask.OnPostExecute() {
+
+          @Override
+          public void returnResult(String result) {
+            if ("success".equals(result)) {
+              initTopBarForOnlyTitle("图书馆");
+              LinearLayout show_lib_layout = (LinearLayout) findViewById(R.id.common_show_lib);
+              show_lib_layout.setVisibility(View.VISIBLE);
+              bind_layout.setVisibility(View.GONE);
+            } else {// 绑定失败
+              bind_layout.setVisibility(View.VISIBLE);
+              H5Toast.showToast(getApplicationContext(), "请重新绑定");
+            }
+          }
+        });
+    bindXuptLibAsyncTask.execute();
   }
 
   private static final int GO_HOME = 100;
@@ -1663,12 +1776,12 @@ public class MainActivity extends BaseActivity implements EventListener {
     }
     try {
       getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, recentFragment)
-      .add(R.id.fragment_container, contactFragment).hide(contactFragment).show(recentFragment)
-      .commitAllowingStateLoss();
+          .add(R.id.fragment_container, contactFragment).hide(contactFragment).show(recentFragment)
+          .commitAllowingStateLoss();
     } catch (IllegalArgumentException e) {
       // TODO: handle exception
     }
-    
+
     // while (contactFragment.isAdded()) {
     // break;
     // }
@@ -2114,7 +2227,7 @@ public class MainActivity extends BaseActivity implements EventListener {
   @Override
   public boolean dispatchTouchEvent(MotionEvent ev) {
     // TODO Auto-generated method stub
-    return isCanTouch?super.dispatchTouchEvent(ev):true;
+    return isCanTouch ? super.dispatchTouchEvent(ev) : true;
   }
-  
+
 }

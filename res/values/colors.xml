@@ -184,4 +184,6 @@
 
     <color name="common_bg">#fcfcfc</color>
     
+    <color name="list_item_pressed">#1A000000</color>
+    
 </resources>

@@ -23,11 +23,15 @@ public class HttpUtilMc {
   // 基础URL
   public static final String IP = "http://222.24.63.101";
   public static final String BASE_URL = IP + "/xuptqueryscore/";
+  public static final String LIB_URL = IP + "/xuptlibrary/";
   public static String SERVER_ADDRESS = "222.24.63.101";
   public static final String XUPT_IP1 = "222.24.63.101";
   public static final String XUPT_IP2 = "222.24.63.101";
   public static final String xiyouMC_IP = "http://222.24.63.101";
   public static final String XIYOUMC_BASE_IP = xiyouMC_IP + "/xuptqueryscore/";
+  
+  public static String libURL = "http://222.24.63.101/XiYouLibrary/login";
+  public static String RENEW_URL = "http://222.24.63.101/XiYouLibrary/renew";
   /*
    * public static String SERVER_ADDRESS="192.168.11.1"; public static int SERVER_PORT = 8080;
    */
@@ -48,8 +52,8 @@ public class HttpUtilMc {
   }
 
   // 根据请求获得响应对象response
-  public static HttpResponse getHttpResponse(HttpGet request) throws ClientProtocolException,
-      IOException {
+  public static HttpResponse getHttpResponse(HttpGet request)
+      throws ClientProtocolException, IOException {
     HttpClient client = new DefaultHttpClient();
     client.getParams().setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 6000);
     // 读取超时
@@ -67,8 +71,8 @@ public class HttpUtilMc {
    * @throws ClientProtocolException
    * @throws IOException
    */
-  public static HttpResponse getHttpResponse(HttpPost request) throws ClientProtocolException,
-      IOException {
+  public static HttpResponse getHttpResponse(HttpPost request)
+      throws ClientProtocolException, IOException {
     HttpClient client = new DefaultHttpClient();
     client.getParams().setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 6000);
     // 读取超时

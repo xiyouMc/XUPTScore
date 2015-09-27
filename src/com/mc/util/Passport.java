@@ -7,8 +7,13 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Random;
 
+import com.xy.fy.main.MainActivity;
+import com.xy.fy.util.StaticVarUtil;
+
 import Decoder.BASE64Decoder;
 import Decoder.BASE64Encoder;
+import android.content.Context;
+import android.telephony.TelephonyManager;
 
 public class Passport {
 
