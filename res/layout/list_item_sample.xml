@@ -1,23 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/panel_content"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:descendantFocusability="blocksDescendants">
+    android:gravity="top"
+    android:orientation="horizontal"
+    android:layout_marginLeft="10dip" 
+    >
 
-    <com.etsy.android.grid.util.DynamicHeightTextView
-        android:id="@+id/txt_line1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"/>
-
-    <Button
-        android:id="@+id/btn_go"
+    <TextView
+        android:id="@+id/book_numbe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="top|right"
-        android:text="Go" />
+        android:layout_marginLeft="4dip"
+        android:layout_marginTop="7dip"
+        android:background="@drawable/but_renw_number"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="9pt" />
 
-</FrameLayout>
+    <LinearLayout
+        android:layout_width="230dip"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dip"
+        android:layout_marginTop="7dip"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="书名："
+                android:textColor="@color/coral"
+                android:textSize="7pt" />
+
+            <TextView
+                android:id="@+id/book_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="fasfsafsadfsdfdsfsdfsdfsdfsdfsdfdsf"
+                android:textColor="@color/black"
+                android:textSize="8pt" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="到期："
+                android:textColor="@color/coral"
+                android:textSize="7pt" />
+
+            <TextView
+                android:id="@+id/renew_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="fasfsafsadfsdfdsfsdfsdfsdfsdfsdfdsf"
+                android:textColor="@color/black"
+                android:textSize="8pt" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/renewBtn"
+        android:layout_width="40dip"
+        android:layout_height="40dip"
+        android:layout_marginLeft="4dip"
+        android:layout_marginTop="7dip"
+        android:background="@drawable/btn_renew" />
+
+</LinearLayout>

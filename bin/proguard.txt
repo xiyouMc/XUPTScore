@@ -152,25 +152,6 @@
 # view res/layout/activity_near_people.xml #generated:18
 -keep class com.bmob.im.demo.view.xlist.XListView { <init>(...); }
 
-# view res/layout/activity_sgv.xml #generated:1
-# view res/layout/activity_sgv_empy_view.xml #generated:6
--keep class com.etsy.android.grid.StaggeredGridView { <init>(...); }
-
-# view res/layout/list_item_sample.xml #generated:10
--keep class com.etsy.android.grid.util.DynamicHeightTextView { <init>(...); }
-
-# view AndroidManifest.xml #generated:278
--keep class com.etsy.android.sample.ListViewActivity { <init>(...); }
-
-# view AndroidManifest.xml #generated:275
--keep class com.etsy.android.sample.StaggeredGridActivity { <init>(...); }
-
-# view AndroidManifest.xml #generated:276
--keep class com.etsy.android.sample.StaggeredGridActivityFragment { <init>(...); }
-
-# view AndroidManifest.xml #generated:277
--keep class com.etsy.android.sample.StaggeredGridEmptyViewActivity { <init>(...); }
-
 # view res/layout/card_main.xml #generated:84
 -keep class com.fima.cardsui.views.CardUI { <init>(...); }
 

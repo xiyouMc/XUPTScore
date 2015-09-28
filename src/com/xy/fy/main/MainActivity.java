@@ -10,6 +10,7 @@ import java.util.Iterator;
 import java.util.Map.Entry;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.baidu.location.LocationClient;
@@ -26,8 +27,6 @@ import com.bmob.im.demo.ui.NewFriendActivity;
 import com.bmob.im.demo.ui.fragment.ContactFragment;
 import com.bmob.im.demo.ui.fragment.RecentFragment;
 import com.bmob.im.demo.ui.fragment.SettingsFragment;
-import com.etsy.android.sample.StaggeredGridActivity;
-import com.etsy.android.sample.StaggeredGridActivityFragment;
 import com.fima.cardsui.views.CardUI;
 import com.mc.util.BadgeUtil;
 import com.mc.util.CircleImageView;
@@ -44,6 +43,7 @@ import com.mc.util.ScoreUtil;
 import com.mc.util.Util;
 import com.slidingmenu.lib.SlidingMenu;
 import com.slidingmenu.lib.SlidingMenu.OnOpenListener;
+import com.xy.fy.adapter.LibAdapter;
 import com.xy.fy.asynctask.BindXuptLibAsyncTask;
 import com.xy.fy.asynctask.CheckVersionAsynctask;
 import com.xy.fy.asynctask.GetCETAsyntask;
@@ -52,6 +52,7 @@ import com.xy.fy.asynctask.GetRankAsycntask;
 import com.xy.fy.asynctask.ShowCardAsyncTask;
 import com.xy.fy.asynctask.UploadFileAsytask;
 import com.xy.fy.asynctask.XuptLibLoginAsynctask;
+import com.xy.fy.singleton.BookList;
 import com.xy.fy.util.BitmapUtil;
 import com.xy.fy.util.ConnectionUtil;
 import com.xy.fy.util.ShareUtil;
@@ -102,6 +103,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import cn.bmob.im.BmobChat;
@@ -1582,6 +1584,8 @@ public class MainActivity extends BaseActivity implements EventListener {
 
   }
 
+  boolean isReq = true;
+
   private void lib() {
     initTopBarForOnlyTitle("绑定");
     String lib = "password=123456&account=S04131071";
@@ -1593,6 +1597,11 @@ public class MainActivity extends BaseActivity implements EventListener {
           public void returnResult(String result) {
             // TODO Auto-generated method stub
             if ("none".equals(result) || result == null) {// 未绑定
+              if (isReq) {
+                lib();
+                isReq = false;
+                return;
+              }
               bindLib(bind_layout);
             } else {// 绑定 直接请求
               login_lib(result, bind_layout, false);
@@ -1628,13 +1637,14 @@ public class MainActivity extends BaseActivity implements EventListener {
 
   private void login_lib(final String libName, final LinearLayout bind_layout,
       final boolean isBind) {
+    ProgressDialogUtil.getInstance(MainActivity.this).show();
     XuptLibLoginAsynctask xuptLibLoginAsynctask = new XuptLibLoginAsynctask(MainActivity.this,
         libName, new XuptLibLoginAsynctask.Login() {
 
           @Override
           public void onPostLogin(String result) {
             // TODO Auto-generated method stub
-            if (!"fail".equals(result)) {// 获取数据
+            if (!"fail".equals(result.trim())) {// 获取数据
               if (isBind) {
                 bind(libName, bind_layout);
               } else {
@@ -1642,28 +1652,52 @@ public class MainActivity extends BaseActivity implements EventListener {
                 LinearLayout show_lib_layout = (LinearLayout) findViewById(R.id.common_show_lib);
                 show_lib_layout.setVisibility(View.VISIBLE);
                 bind_layout.setVisibility(View.GONE);
-              }
-              Log.d(TAG, "mcmcmcmc" + result);
-              startActivity(new Intent(MainActivity.this,StaggeredGridActivityFragment.class));
-            } else {
+                Log.d(TAG, "login" + result);
+                try {
+                  ArrayList<BookList> allBookList = new ArrayList<BookList>();
+                  JSONArray bookArray = new JSONArray(result);
+                  for (int i = 0; i < bookArray.length(); i++) {
+                    JSONObject jo = (JSONObject) bookArray.get(i);
+                    BookList bookList = new BookList();
+                    bookList.setLibName(jo.getString("name"));
+                    bookList.setNumber(jo.getString("id"));
+                    String[] date = jo.getString("date").split("/");
+                    bookList.setLibRenewDate(date[0] + "年" + date[1] + "月" + date[2]);
+                    bookList.setBarcode(jo.getString("barcode"));
+                    bookList.setRenew(jo.getBoolean("isRenew"));
+                    allBookList.add(bookList);
+                  }
+                  ListView libList = (ListView) findViewById(R.id.book_list);
+                  LibAdapter adapter = new LibAdapter(allBookList, getApplicationContext());
+                  libList.setAdapter(adapter);
 
+                } catch (JSONException e) {
+                  // TODO Auto-generated catch block
+                  e.printStackTrace();
+                }
+              }
+            } else {
+              Log.d(TAG, "login error" + result + " " + libName);
+              if (isBind) {
+                H5Toast.showToast(getApplicationContext(), "绑定失败，请确认账号和密码！");
+              }else{
+                login_lib(libName, bind_layout, isBind);
+              }
             }
+            ProgressDialogUtil.getInstance(MainActivity.this).dismiss();
           }
         });
     xuptLibLoginAsynctask.execute();
   }
 
-  private void bind(String libName, final LinearLayout bind_layout) {
+  private void bind(final String libName, final LinearLayout bind_layout) {
     BindXuptLibAsyncTask bindXuptLibAsyncTask = new BindXuptLibAsyncTask(MainActivity.this, libName,
         "1", new BindXuptLibAsyncTask.OnPostExecute() {
 
           @Override
           public void returnResult(String result) {
             if ("success".equals(result)) {
-              initTopBarForOnlyTitle("图书馆");
-              LinearLayout show_lib_layout = (LinearLayout) findViewById(R.id.common_show_lib);
-              show_lib_layout.setVisibility(View.VISIBLE);
-              bind_layout.setVisibility(View.GONE);
+             login_lib(libName, bind_layout, false);
             } else {// 绑定失败
               bind_layout.setVisibility(View.VISIBLE);
               H5Toast.showToast(getApplicationContext(), "请重新绑定");

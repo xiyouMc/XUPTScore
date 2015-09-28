@@ -271,11 +271,6 @@
 
             <category android:name="android.intent.category.DEFAULT" />
         </intent-filter>
-
-        <activity android:name="com.etsy.android.sample.StaggeredGridActivity" />
-        <activity android:name="com.etsy.android.sample.StaggeredGridActivityFragment" />
-        <activity android:name="com.etsy.android.sample.StaggeredGridEmptyViewActivity" />
-        <activity android:name="com.etsy.android.sample.ListViewActivity" />
     </application>
 
 </manifest>

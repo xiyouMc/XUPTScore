@@ -11,11 +11,27 @@
 
     <include
         android:id="@+id/common_bind"
-        layout="@layout/include_bind" 
-        android:visibility="gone"/>
-    
-    <include
-        android:id="@+id/common_show_lib"
-        layout="@layout/include_show_lib"
+        layout="@layout/include_bind"
         android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/common_show_lib"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/main_background"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <ListView
+            android:id="@+id/book_list"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="25dip"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:divider="@drawable/listview_tail"
+            android:fastScrollEnabled="true" >
+        </ListView>
+    </LinearLayout>
+
 </LinearLayout>
