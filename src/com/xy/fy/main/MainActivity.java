@@ -1221,6 +1221,7 @@ public class MainActivity extends BaseActivity implements EventListener {
    */
   private void deleteCatch() {
     StaticVarUtil.list_Rank_xnAndXq.clear();
+    StaticVarUtil.allBookList = null;
     RankUtils.allRankArrayList = null;
     ScoreUtil.mapScoreOne.clear();
     ;
@@ -1590,6 +1591,11 @@ public class MainActivity extends BaseActivity implements EventListener {
     initTopBarForOnlyTitle("∞Û∂®");
     String lib = "password=123456&account=S04131071";
     final LinearLayout bind_layout = (LinearLayout) findViewById(R.id.common_bind);
+    if (StaticVarUtil.allBookList != null) {
+      ShowLibMessage(bind_layout, StaticVarUtil.allBookList);
+      return;
+    }
+    ProgressDialogUtil.getInstance(MainActivity.this).show();
     final BindXuptLibAsyncTask bindXuptLibAsyncTask = new BindXuptLibAsyncTask(MainActivity.this,
         lib, "0", new BindXuptLibAsyncTask.OnPostExecute() {
 
@@ -1616,7 +1622,7 @@ public class MainActivity extends BaseActivity implements EventListener {
 
     bind_layout.setVisibility(View.VISIBLE);
     final EditText libAccount = (EditText) findViewById(R.id.libAccount);
-    libAccount.setHint("S" + StaticVarUtil.student.getAccount());
+    libAccount.setText("S" + StaticVarUtil.student.getAccount());
     final EditText libPW = (EditText) findViewById(R.id.libPW);
     Button bindBT = (Button) findViewById(R.id.bind);
     bindBT.setOnClickListener(new OnClickListener() {
@@ -1626,18 +1632,20 @@ public class MainActivity extends BaseActivity implements EventListener {
         // TODO Auto-generated method stub
         if (libAccount.getText().toString().isEmpty() || libPW.getText().toString().isEmpty()) {
           H5Toast.showToast(getApplicationContext(), "«Î ‰»Î’À∫≈∫Õ√‹¬Î");
+          ProgressDialogUtil.getInstance(MainActivity.this).dismiss();
           return;
         }
-        login_lib("account=" + libAccount.getText().toString() + "&password="
-            + libPW.getText().toString(), bind_layout, true);
+        login_lib("account=" + libAccount.getText().toString().trim() + "&password="
+            + libPW.getText().toString().trim(), bind_layout, true);
 
       }
     });
   }
 
+  int times = 0;
+
   private void login_lib(final String libName, final LinearLayout bind_layout,
       final boolean isBind) {
-    ProgressDialogUtil.getInstance(MainActivity.this).show();
     XuptLibLoginAsynctask xuptLibLoginAsynctask = new XuptLibLoginAsynctask(MainActivity.this,
         libName, new XuptLibLoginAsynctask.Login() {
 
@@ -1648,11 +1656,18 @@ public class MainActivity extends BaseActivity implements EventListener {
               if (isBind) {
                 bind(libName, bind_layout);
               } else {
-                initTopBarForOnlyTitle("Õº Èπ›");
-                LinearLayout show_lib_layout = (LinearLayout) findViewById(R.id.common_show_lib);
-                show_lib_layout.setVisibility(View.VISIBLE);
-                bind_layout.setVisibility(View.GONE);
+
                 Log.d(TAG, "login" + result);
+                if (HttpUtilMc.CONNECT_EXCEPTION.equals(result) && times < 3) {
+                  login_lib(libName, bind_layout, isBind);
+                  times++;
+                  return;
+                }
+                if (HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
+                  H5Toast.showToast(getApplicationContext(), HttpUtilMc.CONNECT_EXCEPTION);
+                  ProgressDialogUtil.getInstance(MainActivity.this).dismiss();
+                  return;
+                }
                 try {
                   ArrayList<BookList> allBookList = new ArrayList<BookList>();
                   JSONArray bookArray = new JSONArray(result);
@@ -1667,9 +1682,9 @@ public class MainActivity extends BaseActivity implements EventListener {
                     bookList.setRenew(jo.getBoolean("isRenew"));
                     allBookList.add(bookList);
                   }
-                  ListView libList = (ListView) findViewById(R.id.book_list);
-                  LibAdapter adapter = new LibAdapter(allBookList, getApplicationContext());
-                  libList.setAdapter(adapter);
+
+                  StaticVarUtil.allBookList = allBookList;
+                  ShowLibMessage(bind_layout, allBookList);
 
                 } catch (JSONException e) {
                   // TODO Auto-generated catch block
@@ -1680,14 +1695,25 @@ public class MainActivity extends BaseActivity implements EventListener {
               Log.d(TAG, "login error" + result + " " + libName);
               if (isBind) {
                 H5Toast.showToast(getApplicationContext(), "∞Û∂® ß∞‹£¨«Î»∑»œ’À∫≈∫Õ√‹¬Î£°");
-              }else{
+              } else {
                 login_lib(libName, bind_layout, isBind);
               }
             }
             ProgressDialogUtil.getInstance(MainActivity.this).dismiss();
           }
+
         });
     xuptLibLoginAsynctask.execute();
+  }
+
+  private void ShowLibMessage(LinearLayout bind_layout, ArrayList<BookList> allBookList) {
+    initTopBarForOnlyTitle("Õº Èπ›");
+    LinearLayout show_lib_layout = (LinearLayout) findViewById(R.id.common_show_lib);
+    show_lib_layout.setVisibility(View.VISIBLE);
+    bind_layout.setVisibility(View.GONE);
+    ListView libList = (ListView) findViewById(R.id.book_list);
+    LibAdapter adapter = new LibAdapter(allBookList, getApplicationContext());
+    libList.setAdapter(adapter);
   }
 
   private void bind(final String libName, final LinearLayout bind_layout) {
@@ -1697,7 +1723,7 @@ public class MainActivity extends BaseActivity implements EventListener {
           @Override
           public void returnResult(String result) {
             if ("success".equals(result)) {
-             login_lib(libName, bind_layout, false);
+              login_lib(libName, bind_layout, false);
             } else {// ∞Û∂® ß∞‹
               bind_layout.setVisibility(View.VISIBLE);
               H5Toast.showToast(getApplicationContext(), "«Î÷ÿ–¬∞Û∂®");

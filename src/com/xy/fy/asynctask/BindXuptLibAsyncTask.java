@@ -30,7 +30,6 @@ public class BindXuptLibAsyncTask extends AsyncTask<String, String, String> {
     this.libName = libName;
     this.type = type;
     this.onPostExecute = oExecute;
-    ProgressDialogUtil.getInstance(mActivity).show();
   }
 
   @Override
@@ -51,7 +50,7 @@ public class BindXuptLibAsyncTask extends AsyncTask<String, String, String> {
     super.onPostExecute(result);
     System.out.println("mcmcmc" + result);
     onPostExecute.returnResult(result);
-    ProgressDialogUtil.getInstance(mActivity).dismiss();
+  
   }
 
 }

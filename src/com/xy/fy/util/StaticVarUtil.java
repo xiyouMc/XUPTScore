@@ -16,6 +16,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
+import com.xy.fy.singleton.BookList;
 import com.xy.fy.singleton.Comment;
 import com.xy.fy.singleton.Message;
 import com.xy.fy.singleton.Student;
@@ -99,6 +100,8 @@ public class StaticVarUtil {
   public static String smallPicPath = null;// 小图片路径
 
   public static Message message = null;// 点击的说说
+  
+  public static ArrayList<BookList> allBookList = null;
 
   public static ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime()
       .availableProcessors() + 1);// 根据系统资源定义线程池大小

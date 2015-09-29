@@ -26,7 +26,6 @@ public class XuptLibLoginAsynctask extends AsyncTask<String, String, String> {
     this.mActivity = mActivity;
     this.libName = libName;
     this.login = login;
-    ProgressDialogUtil.getInstance(mActivity).show();
   }
 
   @Override
@@ -43,7 +42,6 @@ public class XuptLibLoginAsynctask extends AsyncTask<String, String, String> {
     // TODO Auto-generated method stub
     super.onPostExecute(result);
     login.onPostLogin(result);
-    ProgressDialogUtil.getInstance(mActivity).dismiss();
   }
 
 }
