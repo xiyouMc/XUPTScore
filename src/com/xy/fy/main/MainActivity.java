@@ -356,6 +356,9 @@ public class MainActivity extends BaseActivity implements EventListener {
             false, menuLib, false, menuMyPaiming, false, menuIdea_back, false, menuSetting, false,
             menuAbout, false);
         slidingMenu.toggle();// 页面跳转
+        if (getCurrentMeunItem() == StaticVarUtil.MENU_BANG) {
+          return;
+        }
         slidingMenu.setContent(R.layout.card_main);
         new Thread(new Runnable() {
           @Override
@@ -384,6 +387,9 @@ public class MainActivity extends BaseActivity implements EventListener {
             false, menuLib, false, menuMyPaiming, false, menuIdea_back, false, menuSetting, false,
             menuAbout, false);
         slidingMenu.toggle();// 页面跳转
+        if (getCurrentMeunItem() == StaticVarUtil.MENU_BUKAO) {
+          return;
+        }
         // 判断如果没有头像的话，先让选择头像，并填写昵称
         // 暂且跳转到好友列表
         // showToast("程序猿们正在努力开发中，请持续关注...");
@@ -416,6 +422,9 @@ public class MainActivity extends BaseActivity implements EventListener {
               false, menuLib, false, menuMyPaiming, true, menuIdea_back, false, menuSetting, false,
               menuAbout, false);
           slidingMenu.toggle();// 页面跳转
+          if (getCurrentMeunItem() == StaticVarUtil.MENU_PAIMING) {
+            return;
+          }
           slidingMenu.setContent(R.layout.activity_rank);
           new Thread(new Runnable() {
             @Override
@@ -468,6 +477,9 @@ public class MainActivity extends BaseActivity implements EventListener {
             false, menuLib, false, menuMyPaiming, false, menuIdea_back, false, menuSetting, true,
             menuAbout, false);
         slidingMenu.toggle();// 页面跳转
+        if (getCurrentMeunItem() == StaticVarUtil.MENU_SETTING) {
+          return;
+        }
         slidingMenu.setContent(R.layout.activity_setting);
         new Thread(new Runnable() {
           @Override
@@ -495,6 +507,9 @@ public class MainActivity extends BaseActivity implements EventListener {
             true, menuLib, false, menuMyPaiming, false, menuIdea_back, false, menuSetting, false,
             menuAbout, false);
         slidingMenu.toggle();// 页面跳转
+        if (getCurrentMeunItem() == StaticVarUtil.MENU_CET) {
+          return;
+        }
         slidingMenu.setContent(R.layout.activity_cet);
         new Thread(new Runnable() {
           @Override
@@ -525,6 +540,9 @@ public class MainActivity extends BaseActivity implements EventListener {
             menuAbout, true);
 
         slidingMenu.toggle();// 页面跳转
+        if (getCurrentMeunItem() == StaticVarUtil.MENU_LIB) {
+          return;
+        }
         slidingMenu.setContent(R.layout.activity_lib);
 
         new Thread(new Runnable() {
@@ -1198,12 +1216,12 @@ public class MainActivity extends BaseActivity implements EventListener {
     switch (keyCode) {
     case KeyEvent.KEYCODE_BACK:
       // 如果是返回按钮,退出
-      if (getCurrentMeunItem() != 1) {// 不在第一个页面,返回第一个页面
-        menuBang.setPressed(true);// 初始化默认是风云榜被按下
-        setCurrentMenuItem(StaticVarUtil.MENU_BANG);// 记录当前选项位置
-        slidingMenu.setContent(R.layout.card_main);
-        menu1();
-      } else
+//      if (getCurrentMeunItem() != 1) {// 不在第一个页面,返回第一个页面
+//        menuBang.setPressed(true);// 初始化默认是风云榜被按下
+//        setCurrentMenuItem(StaticVarUtil.MENU_BANG);// 记录当前选项位置
+//        slidingMenu.setContent(R.layout.card_main);
+//        menu1();
+//      } else
         quit(false);
 
       break;
@@ -2000,7 +2018,7 @@ public class MainActivity extends BaseActivity implements EventListener {
   public void onOffline() {
     // TODO Auto-generated method stub
     showOfflineDialog(this);
-    finish();
+//    finish();
   }
 
   @Override
