@@ -58,8 +58,8 @@
                 android:padding="5dp" >
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="40dip"
+                    android:layout_height="40dip"
                     android:src="@drawable/menu_bang" />
 
                 <TextView
@@ -91,15 +91,13 @@
                 android:padding="5dp" >
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/menu_my_publish" 
-                    />
+                    android:layout_width="40dip"
+                    android:layout_height="40dip"
+                    android:src="@drawable/menu_haoyou" />
 
                 <RelativeLayout
                     android:layout_width="110dip"
-                    android:layout_height="match_parent"
-                     >
+                    android:layout_height="match_parent" >
 
                     <TextView
                         android:id="@+id/bukao_tip"
@@ -146,9 +144,10 @@
                 android:orientation="horizontal"
                 android:padding="5dp" >
 
+                
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="40dip"
+                    android:layout_height="40dip"
                     android:src="@drawable/menu_my_publish" />
 
                 <TextView
@@ -180,9 +179,10 @@
                 android:padding="5dp" >
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/menu_my_comment" />
+                    android:layout_width="40dip"
+                    android:layout_height="30dip"
+                    android:src="@drawable/menu_paiming"
+                    android:layout_gravity="center_vertical" />
 
                 <TextView
                     android:layout_width="110dp"
@@ -231,8 +231,8 @@
                     android:paddingLeft="20dp"
                     android:src="@drawable/menu_arrow" />
             </LinearLayout>
-           
-             <LinearLayout
+
+            <LinearLayout
                 android:id="@+id/menu_my_lib"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -242,9 +242,9 @@
                 android:padding="5dp" >
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/menu_my_comment" />
+                    android:layout_width="40dip"
+                    android:layout_height="40dip"
+                    android:src="@drawable/menu_tushu" />
 
                 <TextView
                     android:layout_width="110dp"
@@ -262,6 +262,7 @@
                     android:paddingLeft="20dp"
                     android:src="@drawable/menu_arrow" />
             </LinearLayout>
+
             <ImageView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -278,8 +279,8 @@
                 android:padding="5dp" >
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="40dip"
+                    android:layout_height="40dip"
                     android:src="@drawable/menu_my_publish" />
 
                 <TextView
@@ -307,10 +308,9 @@
                 android:clickable="true"
                 android:orientation="horizontal"
                 android:padding="5dp" >
-
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="40dip"
+                    android:layout_height="40dip"
                     android:src="@drawable/menu_setting" />
 
                 <TextView
@@ -341,8 +341,8 @@
                 android:padding="5dp" >
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="40dip"
+                    android:layout_height="40dip"
                     android:src="@drawable/menu_about" />
 
                 <TextView
@@ -372,8 +372,8 @@
                 android:padding="5dp" >
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="40dip"
+                    android:layout_height="40dip"
                     android:src="@drawable/menu_quit" />
 
                 <TextView
