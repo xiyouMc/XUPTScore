@@ -231,7 +231,7 @@ public class MainActivity extends BaseActivity implements EventListener {
       }
     });
 
-    if (Util.isNull(StaticVarUtil.student.getAccount())) {
+    if (Util.isNull(StaticVarUtil.student) || Util.isNull(StaticVarUtil.student.getAccount())) {
       deleteCatch();
       LogcatHelper.getInstance(MainActivity.this).stop();
       Intent i = new Intent();
@@ -894,6 +894,11 @@ public class MainActivity extends BaseActivity implements EventListener {
 
       public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
         // TODO Auto-generated method stub
+        if (!ConnectionUtil.isConn(getApplicationContext())) {
+          ConnectionUtil.setNetworkMethod(MainActivity.this);
+          xnSpinner.setSelection(0, false);// 这两个方法真变态
+          return;
+        }
         if (isTouchXNSpinner) {
           // 将spinner上的选择答案显示在TextView上面
           RankUtils.selectXn = xnAdapter.getItem(arg2);
@@ -922,6 +927,11 @@ public class MainActivity extends BaseActivity implements EventListener {
 
       public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
         // TODO Auto-generated method stub
+        if (!ConnectionUtil.isConn(getApplicationContext())) {
+          ConnectionUtil.setNetworkMethod(MainActivity.this);
+          xqSpinner.setSelection(0, false);
+          return;
+        }
         if (isTouchXQSpinner) {
           // 将spinner上的选择答案显示在TextView上面
           RankUtils.selectXq = xqAdapter.getItem(arg2);
@@ -1216,13 +1226,13 @@ public class MainActivity extends BaseActivity implements EventListener {
     switch (keyCode) {
     case KeyEvent.KEYCODE_BACK:
       // 如果是返回按钮,退出
-//      if (getCurrentMeunItem() != 1) {// 不在第一个页面,返回第一个页面
-//        menuBang.setPressed(true);// 初始化默认是风云榜被按下
-//        setCurrentMenuItem(StaticVarUtil.MENU_BANG);// 记录当前选项位置
-//        slidingMenu.setContent(R.layout.card_main);
-//        menu1();
-//      } else
-        quit(false);
+      // if (getCurrentMeunItem() != 1) {// 不在第一个页面,返回第一个页面
+      // menuBang.setPressed(true);// 初始化默认是风云榜被按下
+      // setCurrentMenuItem(StaticVarUtil.MENU_BANG);// 记录当前选项位置
+      // slidingMenu.setContent(R.layout.card_main);
+      // menu1();
+      // } else
+      quit(false);
 
       break;
     case KeyEvent.KEYCODE_MENU:// 如果是菜单按钮
@@ -1324,7 +1334,11 @@ public class MainActivity extends BaseActivity implements EventListener {
     if (logout) {
       builder.setMessage("你确定要注销吗？");
     } else {
-      moveTaskToBack(true);
+      if (slidingMenu.isMenuShowing()) {
+        slidingMenu.showContent();
+      } else {
+        moveTaskToBack(true);
+      }
       return;
     }
 
@@ -1452,6 +1466,10 @@ public class MainActivity extends BaseActivity implements EventListener {
           }
 
         } else {
+          if (!ConnectionUtil.isConn(getApplicationContext())) {
+            ConnectionUtil.setNetworkMethod(MainActivity.this);
+            return;
+          }
           if (requestTimes < 5) {
             requestTimes++;
             GetScoreAsyntask getScoreAsyntask = new GetScoreAsyntask();
@@ -1532,6 +1550,7 @@ public class MainActivity extends BaseActivity implements EventListener {
           menuBang.setPressed(true);// 初始化默认是风云榜被按下
           setCurrentMenuItem(StaticVarUtil.MENU_BANG);// 记录当前选项位置
           slidingMenu.setContent(R.layout.card_main);
+          isCanTouch = true;
           menu1();
           return;
         }
@@ -2018,7 +2037,7 @@ public class MainActivity extends BaseActivity implements EventListener {
   public void onOffline() {
     // TODO Auto-generated method stub
     showOfflineDialog(this);
-//    finish();
+    // finish();
   }
 
   @Override

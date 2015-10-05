@@ -58,8 +58,8 @@
                 android:padding="5dp" >
 
                 <ImageView
-                    android:layout_width="40dip"
-                    android:layout_height="40dip"
+                    android:layout_width="35dip"
+                    android:layout_height="35dip"
                     android:src="@drawable/menu_bang" />
 
                 <TextView
@@ -72,8 +72,8 @@
                     android:textSize="18dp" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="40dip"
+                    android:layout_height="40dip"
                     android:layout_gravity="center"
                     android:paddingLeft="20dp"
                     android:src="@drawable/menu_arrow" />
@@ -91,8 +91,8 @@
                 android:padding="5dp" >
 
                 <ImageView
-                    android:layout_width="40dip"
-                    android:layout_height="40dip"
+                    android:layout_width="35dip"
+                    android:layout_height="35dip"
                     android:src="@drawable/menu_haoyou" />
 
                 <RelativeLayout
@@ -127,8 +127,8 @@
                 </RelativeLayout>
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="40dip"
+                    android:layout_height="40dip"
                     android:layout_gravity="center"
                     android:paddingLeft="20dp"
                     android:src="@drawable/menu_arrow" />
@@ -144,10 +144,9 @@
                 android:orientation="horizontal"
                 android:padding="5dp" >
 
-                
                 <ImageView
-                    android:layout_width="40dip"
-                    android:layout_height="40dip"
+                    android:layout_width="35dip"
+                    android:layout_height="35dip"
                     android:src="@drawable/menu_my_publish" />
 
                 <TextView
@@ -160,8 +159,8 @@
                     android:textSize="18dp" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="40dip"
+                    android:layout_height="40dip"
                     android:layout_gravity="center"
                     android:paddingLeft="20dp"
                     android:src="@drawable/menu_arrow" />
@@ -179,10 +178,10 @@
                 android:padding="5dp" >
 
                 <ImageView
-                    android:layout_width="40dip"
+                    android:layout_width="35dip"
                     android:layout_height="30dip"
-                    android:src="@drawable/menu_paiming"
-                    android:layout_gravity="center_vertical" />
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/menu_paiming" />
 
                 <TextView
                     android:layout_width="110dp"
@@ -194,8 +193,8 @@
                     android:textSize="18dp" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="40dip"
+                    android:layout_height="40dip"
                     android:layout_gravity="center"
                     android:paddingLeft="20dp"
                     android:src="@drawable/menu_arrow" />
@@ -211,8 +210,8 @@
                 android:padding="5dp" >
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="35dip"
+                    android:layout_height="35dip"
                     android:src="@drawable/menu_my_comment" />
 
                 <TextView
@@ -225,8 +224,8 @@
                     android:textSize="18dp" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="40dip"
+                    android:layout_height="40dip"
                     android:layout_gravity="center"
                     android:paddingLeft="20dp"
                     android:src="@drawable/menu_arrow" />
@@ -242,8 +241,8 @@
                 android:padding="5dp" >
 
                 <ImageView
-                    android:layout_width="40dip"
-                    android:layout_height="40dip"
+                    android:layout_width="35dip"
+                    android:layout_height="35dip"
                     android:src="@drawable/menu_tushu" />
 
                 <TextView
@@ -256,8 +255,8 @@
                     android:textSize="18dp" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="40dip"
+                    android:layout_height="40dip"
                     android:layout_gravity="center"
                     android:paddingLeft="20dp"
                     android:src="@drawable/menu_arrow" />
@@ -279,8 +278,8 @@
                 android:padding="5dp" >
 
                 <ImageView
-                    android:layout_width="40dip"
-                    android:layout_height="40dip"
+                    android:layout_width="35dip"
+                    android:layout_height="35dip"
                     android:src="@drawable/menu_my_publish" />
 
                 <TextView
@@ -293,8 +292,8 @@
                     android:textSize="18dp" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="40dip"
+                    android:layout_height="40dip"
                     android:layout_gravity="center"
                     android:paddingLeft="20dp"
                     android:src="@drawable/menu_arrow" />
@@ -308,9 +307,10 @@
                 android:clickable="true"
                 android:orientation="horizontal"
                 android:padding="5dp" >
+
                 <ImageView
-                    android:layout_width="40dip"
-                    android:layout_height="40dip"
+                    android:layout_width="35dip"
+                    android:layout_height="35dip"
                     android:src="@drawable/menu_setting" />
 
                 <TextView
@@ -323,8 +323,8 @@
                     android:textSize="18dp" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="40dip"
+                    android:layout_height="40dip"
                     android:paddingLeft="20dp"
                     android:src="@drawable/menu_arrow" />
             </LinearLayout>
@@ -341,8 +341,8 @@
                 android:padding="5dp" >
 
                 <ImageView
-                    android:layout_width="40dip"
-                    android:layout_height="40dip"
+                    android:layout_width="35dip"
+                    android:layout_height="35dip"
                     android:src="@drawable/menu_about" />
 
                 <TextView
@@ -355,8 +355,8 @@
                     android:textSize="18dp" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="40dip"
+                    android:layout_height="40dip"
                     android:paddingLeft="20dp"
                     android:src="@drawable/menu_arrow" />
             </LinearLayout>
@@ -372,8 +372,9 @@
                 android:padding="5dp" >
 
                 <ImageView
-                    android:layout_width="40dip"
-                    android:layout_height="40dip"
+                    android:layout_width="35dip"
+                    android:layout_height="35dip"
+                    android:adjustViewBounds="true"
                     android:src="@drawable/menu_quit" />
 
                 <TextView
@@ -386,8 +387,8 @@
                     android:textSize="18dp" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="40dip"
+                    android:layout_height="40dip"
                     android:layout_gravity="center"
                     android:paddingLeft="20dp"
                     android:src="@drawable/menu_arrow" />

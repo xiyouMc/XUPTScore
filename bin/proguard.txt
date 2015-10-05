@@ -205,8 +205,6 @@
 -keep class com.xy.fy.main.wxapi.WXEntryActivity { <init>(...); }
 
 # view res/layout/activity_message_detail.xml #generated:212
-# view res/layout/activity_my.xml #generated:65
-# view res/layout/content.xml #generated:127
 -keep class com.xy.fy.view.CustomListView { <init>(...); }
 
 # view res/layout/activity_login.xml #generated:156

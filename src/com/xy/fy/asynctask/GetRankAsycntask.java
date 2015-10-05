@@ -3,6 +3,9 @@ package com.xy.fy.asynctask;
 import com.mc.util.HttpUtilMc;
 import com.mc.util.ProgressDialogUtil;
 import com.mc.util.RankUtils;
+import com.xy.fy.main.MainActivity;
+import com.xy.fy.main.R;
+import com.xy.fy.util.ConnectionUtil;
 import com.xy.fy.util.StaticVarUtil;
 import com.xy.fy.util.ViewUtil;
 
@@ -15,7 +18,6 @@ import android.widget.TextView;
 
 public class GetRankAsycntask extends AsyncTask<String, String, String> {
 
-  int requestTimes = 0;
   private TextView nickName;
   private Activity mActivity;
   private String name;
@@ -23,6 +25,7 @@ public class GetRankAsycntask extends AsyncTask<String, String, String> {
   
   public GetRankAsycntask(Activity mActivity,TextView nickName,String name) {
     // TODO Auto-generated constructor stub
+    
     this.mActivity = mActivity;
     this.nickName = nickName;
     this.name = name;
@@ -50,16 +53,22 @@ public class GetRankAsycntask extends AsyncTask<String, String, String> {
            */
           if (!result.equals("")) {
             dialog.dismiss();
-            requestTimes = 0;
+            StaticVarUtil.requestTimes = 0;
             RankUtils.refeshRank(result, RankUtils.isFirstListView,mActivity);
             RankUtils.allRankMap.put(RankUtils.selectXn + RankUtils.selectXq, result);// 将数据保存到内存中，下次就不用重复获取。
           }
         } else {
           ViewUtil.showToast(mActivity, "查询失败");
+          dialog.dismiss();
         }
       } else {
-        if (requestTimes < 4) {
-          requestTimes++;
+        if (!ConnectionUtil.isConn(mActivity)) {
+          ConnectionUtil.setNetworkMethod(mActivity);
+          dialog.dismiss();
+          return;
+        }
+        if (StaticVarUtil.requestTimes < 4) {
+          StaticVarUtil.requestTimes++;
           GetRankAsycntask getRankAsyntask = new GetRankAsycntask(mActivity,nickName,name);
           getRankAsyntask.execute();
         } else {

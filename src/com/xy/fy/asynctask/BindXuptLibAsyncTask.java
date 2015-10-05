@@ -1,10 +1,8 @@
 package com.xy.fy.asynctask;
 
-import java.net.URLDecoder;
 import java.net.URLEncoder;
 
 import com.mc.util.HttpUtilMc;
-import com.mc.util.ProgressDialogUtil;
 import com.mc.util.Util;
 import com.xy.fy.util.StaticVarUtil;
 

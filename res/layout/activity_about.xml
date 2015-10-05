@@ -42,8 +42,8 @@
 
             <Button
                 android:id="@+id/share"
-                android:layout_width="30dp"
-                android:layout_height="35dp"
+                android:layout_width="28dip"
+                android:layout_height="28dip"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="5dp"
@@ -54,6 +54,7 @@
                 android:visibility="visible" />
         </RelativeLayout>
 
+        
         <ImageView
             android:id="@+id/code"
             android:layout_width="120dp"
