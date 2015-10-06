@@ -1,16 +1,24 @@
 package com.xy.fy.main;
 
+import java.io.File;
+
 import com.mc.util.CrashHandler;
 import com.mc.util.H5Log;
 import com.mc.util.HttpUtilMc;
 import com.mc.util.Util;
+import com.xy.fy.asynctask.GetPicAsynctask;
+import com.xy.fy.util.StaticVarUtil;
+import com.xy.fy.util.ViewUtil;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -70,8 +78,45 @@ public class WelcomeActivity extends Activity {
       @Override
       public void onAnimationEnd(Animation arg0) {
 
-        GetImageMsgAsytask getImageMsgAsytask = new GetImageMsgAsytask();
-        getImageMsgAsytask.execute();
+        SharedPreferences preferences = getSharedPreferences(StaticVarUtil.USER_INFO, MODE_PRIVATE);
+        String account = preferences.getString(StaticVarUtil.ACCOUNT, "");
+        String password = preferences.getString(StaticVarUtil.PASSWORD, "");
+        boolean isRemember = preferences.getBoolean(StaticVarUtil.IS_REMEMBER, false);
+        if (isRemember == true) {
+
+          if (Util.isExternalStorageWritable()) {
+            StaticVarUtil.PATH = "/sdcard/xuptscore/";// 设置文件目录
+          } else {
+            StaticVarUtil.PATH = "/data/data/com.xy.fy.main/";// 设置文件目录
+          }
+
+          if (!new File(StaticVarUtil.PATH).exists()) {
+            new File(StaticVarUtil.PATH).mkdirs();
+          }
+//          ProgressDialog progressDialog = ViewUtil.getProgressDialog(WelcomeActivity.this, "正在登录");
+          GetPicAsynctask getPicAsyntask = new GetPicAsynctask(WelcomeActivity.this, account,
+              password, null, new GetPicAsynctask.GetPic() {
+
+            @Override
+            public void onReturn(String result) {
+              // TODO Auto-generated method stub
+
+              if ("error".equals(result)) {
+                GetImageMsgAsytask getImageMsgAsytask = new GetImageMsgAsytask();
+                getImageMsgAsytask.execute();
+              } else if ("no_user".equals(result)) {
+                GetImageMsgAsytask getImageMsgAsytask = new GetImageMsgAsytask();
+                getImageMsgAsytask.execute();
+              }
+            }
+          });
+//          progressDialog.show();
+          getPicAsyntask.execute();
+        } else {
+          GetImageMsgAsytask getImageMsgAsytask = new GetImageMsgAsytask();
+          getImageMsgAsytask.execute();
+        }
+
       }
 
       @Override

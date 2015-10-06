@@ -103,6 +103,8 @@ public class StaticVarUtil {
   
   public static ArrayList<BookList> allBookList = null;
   public static int requestTimes = 0;
+  
+  public static int loginTimes = 0;
   public static ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime()
       .availableProcessors() + 1);// 根据系统资源定义线程池大小
 

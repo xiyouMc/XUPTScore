@@ -10,6 +10,7 @@ public class ProgressDialogUtil {
 
   public static ProgressDialog dialog;
   private static Context mContext;
+  private static String msg = "正在查询";
   private static ProgressDialogUtil instance;
 
   public static ProgressDialogUtil getInstance(Context context) {
@@ -22,10 +23,13 @@ public class ProgressDialogUtil {
 
   private ProgressDialogUtil() {
    
-    dialog = ViewUtil.getProgressDialog(mContext, "正在查询");
+    dialog = ViewUtil.getProgressDialog(mContext, msg);
     dialog.setCancelable(false);
   }
 
+  private void setMsg(String msg){
+    this.msg = msg;
+  }
   public void show() {
       dialog.show();
   }

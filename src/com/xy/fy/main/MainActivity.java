@@ -235,8 +235,9 @@ public class MainActivity extends BaseActivity implements EventListener {
       deleteCatch();
       LogcatHelper.getInstance(MainActivity.this).stop();
       Intent i = new Intent();
-      i.setClass(getApplicationContext(), LoginActivity.class);
+      i.setClass(getApplicationContext(), WelcomeActivity.class);
       startActivity(i);
+      finish();
       return;
     }
     if (!Util.checkPWD(StaticVarUtil.student.getPassword())) {
@@ -1646,6 +1647,7 @@ public class MainActivity extends BaseActivity implements EventListener {
                 return;
               }
               bindLib(bind_layout);
+              ProgressDialogUtil.getInstance(MainActivity.this).dismiss();
             } else {// 绑定 直接请求
               login_lib(result, bind_layout, false);
             }

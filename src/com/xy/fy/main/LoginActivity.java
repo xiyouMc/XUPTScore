@@ -1,14 +1,22 @@
 package com.xy.fy.main;
 
 import java.io.File;
-import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.mc.db.DBConnection;
+import com.mc.db.DBConnection.UserSchema;
+import com.mc.util.CircleImageView;
+import com.mc.util.HttpUtilMc;
+import com.mc.util.SystemBarTintManager;
+import com.mc.util.Util;
+import com.xy.fy.asynctask.GetPicAsynctask;
+import com.xy.fy.util.BitmapUtil;
+import com.xy.fy.util.ConnectionUtil;
+import com.xy.fy.util.StaticVarUtil;
+import com.xy.fy.util.ViewUtil;
+import com.xy.fy.view.PullDoorView;
+import com.xy.fy.view.ToolClass;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -21,14 +29,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -47,22 +53,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.mc.db.DBConnection;
-import com.mc.db.DBConnection.UserSchema;
-import com.mc.util.CircleImageView;
-import com.mc.util.HttpUtilMc;
-import com.mc.util.SystemBarTintManager;
-import com.mc.util.Util;
-import com.xy.fy.util.BitmapUtil;
-import com.xy.fy.util.ConnectionUtil;
-import com.xy.fy.util.StaticVarUtil;
-import com.xy.fy.util.ViewUtil;
-import com.xy.fy.view.PullDoorView;
-import com.xy.fy.view.ToolClass;
-
 public class LoginActivity extends Activity {
 
-  private static int loginTimes = 0;
   private CircleImageView photo;
   private AutoCompleteTextView account;
   private EditText password;
@@ -70,7 +62,6 @@ public class LoginActivity extends Activity {
   private CheckBox rememberPassword;
   private Button login;
   private ProgressDialog progressDialog;
-  private List<HashMap<String, String>> listHerf;
   private DBConnection helper;
   SQLiteDatabase sqLiteDatabase;
   private ImageView savePic;
@@ -312,7 +303,22 @@ public class LoginActivity extends Activity {
       return;
     }
     rememberPassword(strAccount, strPassword);
-    GetPicAsyntask getPicAsyntask = new GetPicAsyntask();
+
+    GetPicAsynctask getPicAsyntask = new GetPicAsynctask(LoginActivity.this, strAccount,
+        strPassword, progressDialog, new GetPicAsynctask.GetPic() {
+
+          @Override
+          public void onReturn(String result) {
+            // TODO Auto-generated method stub
+
+            if ("error".equals(result)) {
+              password.setText("");
+            } else if ("no_user".equals(result)) {
+              account.setText("");
+              password.setText("");
+            }
+          }
+        });
     progressDialog.show();
     getPicAsyntask.execute();
 
@@ -442,132 +448,132 @@ public class LoginActivity extends Activity {
 
   }
 
-  // 异步加载登录
-  class LoginAsyntask extends AsyncTask<Object, String, String> {
-
-    @SuppressWarnings("deprecation")
-    @Override
-    protected String doInBackground(Object... params) {
-      // TODO Auto-generated method stub
-      loginTimes++;
-      return HttpUtilMc.queryStringForPost(
-          HttpUtilMc.BASE_URL + "login.jsp?username=" + account.getText().toString().trim()
-              + "&password=" + URLEncoder.encode(password.getText().toString().trim()) + "&session="
-              + StaticVarUtil.session);
-
-    }
-
-    @Override
-    protected void onPostExecute(String result) {
-      // TODO Auto-generated method stub
-      super.onPostExecute(result);
-      // progress.cancel();
-
-      try {
-        if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
-          if (result.equals("error")) {
-            ViewUtil.showToast(getApplicationContext(), "密码错误");
-            password.setText("");
-            progressDialog.cancel();
-          } else {
-            if (result.equals("no_user")) {
-              ViewUtil.showToast(getApplicationContext(), "账号不存在");
-              account.setText("");
-              password.setText("");
-              progressDialog.cancel();
-            } else {// 登录成功'
-
-              listHerf = new ArrayList<HashMap<String, String>>();
-              JSONObject json = new JSONObject(result);
-              JSONArray jsonArray = (JSONArray) json.get("listHerf");
-              for (int i = 0; i < jsonArray.length(); i++) {
-                JSONObject o = (JSONObject) jsonArray.get(i);
-                HashMap<String, String> map = new HashMap<String, String>();
-                map.put("herf", o.getString("herf"));
-                map.put("tittle", o.getString("tittle"));
-                listHerf.add(map);
-              }
-              StaticVarUtil.listHerf = listHerf;// 设置为静态
-              StaticVarUtil.student.setAccount(account.getText().toString().trim());
-              StaticVarUtil.student.setPassword(password.getText().toString().trim());
-              Intent intent = new Intent();
-              intent.setClass(LoginActivity.this, MainActivity.class);
-              progressDialog.cancel();
-              startActivity(intent);
-              finish();
-            }
-
-          }
-
-        } else {
-
-          // 重新登录
-          if (loginTimes < 3) {
-            LoginAsyntask loginAsyntask = new LoginAsyntask();
-            ViewUtil.showToast(getApplicationContext(), HttpUtilMc.CONNECT_REPEAT_EXCEPTION);
-            loginAsyntask.execute();
-          } else {
-            ViewUtil.showToast(getApplicationContext(), HttpUtilMc.CONNECT_EXCEPTION);
-            progressDialog.cancel();
-          }
-        }
-      } catch (Exception e) {
-        // TODO: handle exception
-        Log.i("LoginActivity", e.toString());
-      }
-
-    }
-
-  }
-
-  // 异步加载登录
-  class GetPicAsyntask extends AsyncTask<Object, String, String> {
-
-    @Override
-    protected String doInBackground(Object... params) {
-      loginTimes++;
-      // TODO Auto-generated method stub
-      return HttpUtilMc.IsReachIP()
-          ? HttpUtilMc.queryStringForPost(HttpUtilMc.BASE_URL + "GetPic.jsp")
-          : HttpUtilMc.CONNECT_EXCEPTION;
-    }
-
-    @Override
-    protected void onPostExecute(String result) {
-      // TODO Auto-generated method stub
-      super.onPostExecute(result);
-      // progress.cancel();
-      try {
-        if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
-          if (!result.equals("error")) {
-            if (!result.equals("ip warning!!!")) {
-              JSONObject json = new JSONObject(result);
-              String session = json.getString("cookieSessionID");// session
-              StaticVarUtil.session = session;
-              loginTimes = 0;// 将登陆次数置零
-              LoginAsyntask loginAsyntask = new LoginAsyntask();
-              loginAsyntask.execute();
-            }
-          } else {
-            ViewUtil.showToast(getApplicationContext(), "服务器维护中。。。");
-            progressDialog.cancel();
-          }
-        } else {
-          if (loginTimes < 3) {
-            GetPicAsyntask getPicAsyntask = new GetPicAsyntask();
-            ViewUtil.showToast(getApplicationContext(), HttpUtilMc.CONNECT_REPEAT_EXCEPTION);
-            getPicAsyntask.execute();
-          } else {
-            ViewUtil.showToast(getApplicationContext(), HttpUtilMc.CONNECT_EXCEPTION);
-            progressDialog.cancel();
-          }
-        }
-      } catch (Exception e) {
-        // TODO: handle exception
-        Log.i("LoginActivity", e.toString());
-      }
-
-    }
-  }
+  // // 异步加载登录
+  // class LoginAsyntask extends AsyncTask<Object, String, String> {
+  //
+  // @SuppressWarnings("deprecation")
+  // @Override
+  // protected String doInBackground(Object... params) {
+  // // TODO Auto-generated method stub
+  // loginTimes++;
+  // return HttpUtilMc.queryStringForPost(
+  // HttpUtilMc.BASE_URL + "login.jsp?username=" + account.getText().toString().trim()
+  // + "&password=" + URLEncoder.encode(password.getText().toString().trim()) + "&session="
+  // + StaticVarUtil.session);
+  //
+  // }
+  //
+  // @Override
+  // protected void onPostExecute(String result) {
+  // // TODO Auto-generated method stub
+  // super.onPostExecute(result);
+  // // progress.cancel();
+  //
+  // try {
+  // if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
+  // if (result.equals("error")) {
+  // ViewUtil.showToast(getApplicationContext(), "密码错误");
+  // password.setText("");
+  // progressDialog.cancel();
+  // } else {
+  // if (result.equals("no_user")) {
+  // ViewUtil.showToast(getApplicationContext(), "账号不存在");
+  // account.setText("");
+  // password.setText("");
+  // progressDialog.cancel();
+  // } else {// 登录成功'
+  //
+  // listHerf = new ArrayList<HashMap<String, String>>();
+  // JSONObject json = new JSONObject(result);
+  // JSONArray jsonArray = (JSONArray) json.get("listHerf");
+  // for (int i = 0; i < jsonArray.length(); i++) {
+  // JSONObject o = (JSONObject) jsonArray.get(i);
+  // HashMap<String, String> map = new HashMap<String, String>();
+  // map.put("herf", o.getString("herf"));
+  // map.put("tittle", o.getString("tittle"));
+  // listHerf.add(map);
+  // }
+  // StaticVarUtil.listHerf = listHerf;// 设置为静态
+  // StaticVarUtil.student.setAccount(account.getText().toString().trim());
+  // StaticVarUtil.student.setPassword(password.getText().toString().trim());
+  // Intent intent = new Intent();
+  // intent.setClass(LoginActivity.this, MainActivity.class);
+  // progressDialog.cancel();
+  // startActivity(intent);
+  // finish();
+  // }
+  //
+  // }
+  //
+  // } else {
+  //
+  // // 重新登录
+  // if (loginTimes < 3) {
+  // LoginAsyntask loginAsyntask = new LoginAsyntask();
+  // ViewUtil.showToast(getApplicationContext(), HttpUtilMc.CONNECT_REPEAT_EXCEPTION);
+  // loginAsyntask.execute();
+  // } else {
+  // ViewUtil.showToast(getApplicationContext(), HttpUtilMc.CONNECT_EXCEPTION);
+  // progressDialog.cancel();
+  // }
+  // }
+  // } catch (Exception e) {
+  // // TODO: handle exception
+  // Log.i("LoginActivity", e.toString());
+  // }
+  //
+  // }
+  //
+  // }
+  //
+  // // 异步加载登录
+  // class GetPicAsyntask extends AsyncTask<Object, String, String> {
+  //
+  // @Override
+  // protected String doInBackground(Object... params) {
+  // loginTimes++;
+  // // TODO Auto-generated method stub
+  // return HttpUtilMc.IsReachIP()
+  // ? HttpUtilMc.queryStringForPost(HttpUtilMc.BASE_URL + "GetPic.jsp")
+  // : HttpUtilMc.CONNECT_EXCEPTION;
+  // }
+  //
+  // @Override
+  // protected void onPostExecute(String result) {
+  // // TODO Auto-generated method stub
+  // super.onPostExecute(result);
+  // // progress.cancel();
+  // try {
+  // if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
+  // if (!result.equals("error")) {
+  // if (!result.equals("ip warning!!!")) {
+  // JSONObject json = new JSONObject(result);
+  // String session = json.getString("cookieSessionID");// session
+  // StaticVarUtil.session = session;
+  // loginTimes = 0;// 将登陆次数置零
+  // LoginAsyntask loginAsyntask = new LoginAsyntask();
+  // loginAsyntask.execute();
+  // }
+  // } else {
+  // ViewUtil.showToast(getApplicationContext(), "服务器维护中。。。");
+  // progressDialog.cancel();
+  // }
+  // } else {
+  // if (loginTimes < 3) {
+  // GetPicAsyntask getPicAsyntask = new GetPicAsyntask();
+  // ViewUtil.showToast(getApplicationContext(), HttpUtilMc.CONNECT_REPEAT_EXCEPTION);
+  // getPicAsyntask.execute();
+  // } else {
+  // ViewUtil.showToast(getApplicationContext(), HttpUtilMc.CONNECT_EXCEPTION);
+  // progressDialog.cancel();
+  // }
+  // }
+  // } catch (Exception e) {
+  // // TODO: handle exception
+  // Log.i("LoginActivity", e.toString());
+  // }
+  //
+  // }
+  // }
 
 }

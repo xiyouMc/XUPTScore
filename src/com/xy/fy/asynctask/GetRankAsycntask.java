@@ -63,7 +63,6 @@ public class GetRankAsycntask extends AsyncTask<String, String, String> {
         }
       } else {
         if (!ConnectionUtil.isConn(mActivity)) {
-          ConnectionUtil.setNetworkMethod(mActivity);
           dialog.dismiss();
           return;
         }
