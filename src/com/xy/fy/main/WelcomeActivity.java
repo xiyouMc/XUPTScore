@@ -107,6 +107,18 @@ public class WelcomeActivity extends Activity {
               } else if ("no_user".equals(result)) {
                 GetImageMsgAsytask getImageMsgAsytask = new GetImageMsgAsytask();
                 getImageMsgAsytask.execute();
+              }else if (HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
+                try {
+                  Intent i = new Intent();
+                  i.setClass(getApplicationContext(), LoginActivity.class);
+                  // 如果网络原因，则直接返回0|0
+                  i.putExtra("image", !HttpUtilMc.CONNECT_EXCEPTION.equals(result) ? result : "0|0|0");//
+                  startActivity(i);
+                  finish();
+                } catch (Exception e) {
+                  // TODO: handle exception
+                  Log.i("WelcomeActivity", e.toString());
+                }
               }
             }
           });

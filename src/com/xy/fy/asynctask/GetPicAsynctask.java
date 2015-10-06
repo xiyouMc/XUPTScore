@@ -128,6 +128,7 @@ public class GetPicAsynctask extends AsyncTask<Object, String, String> {
                           if (progressDialog != null) {
                             progressDialog.dismiss();
                           }
+                          onResult.onReturn(HttpUtilMc.CONNECT_EXCEPTION);
                           // progressDialog.cancel();
                         }
                       }
@@ -161,6 +162,7 @@ public class GetPicAsynctask extends AsyncTask<Object, String, String> {
           if (progressDialog != null) {
             progressDialog.dismiss();
           }
+          onResult.onReturn(HttpUtilMc.CONNECT_EXCEPTION);
           // progressDialog.cancel();
         }
       }
