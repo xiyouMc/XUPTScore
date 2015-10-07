@@ -4,6 +4,7 @@ import com.mc.util.HttpUtilMc;
 import com.mc.util.ProgressDialogUtil;
 import com.mc.util.Util;
 import com.mc.util.VersionUpdate;
+import com.xy.fy.util.StaticVarUtil;
 import com.xy.fy.util.ViewUtil;
 
 import android.app.Activity;
@@ -17,17 +18,23 @@ public class CheckVersionAsynctask extends AsyncTask<String, String, String> {
 
   private boolean isShowDialog;
 
-  public CheckVersionAsynctask(Activity mActivity, boolean isShow) {
+  private OnCheck onCheck;
+  public interface OnCheck{
+    void onCheck();
+  }
+  public CheckVersionAsynctask(Activity mActivity, boolean isShow,OnCheck onCheck) {
     // TODO Auto-generated constructor stub
     this.mActivity = mActivity;
     this.isShowDialog = isShow;
+    this.onCheck = onCheck;
   }
 
   @Override
   protected String doInBackground(String... params) {
     // TODO Auto-generated method stub
-    return HttpUtilMc.queryStringForPost(
-        HttpUtilMc.BASE_URL + "checkversion.jsp?version=" + Util.getVersion(mActivity));
+    return HttpUtilMc
+        .queryStringForPost(HttpUtilMc.BASE_URL + "checkversion.jsp?version="
+            + Util.getVersion(mActivity));
   }
 
   @Override
@@ -44,15 +51,15 @@ public class CheckVersionAsynctask extends AsyncTask<String, String, String> {
           String apk_url = str[0];
           String new_version = str[1];
           String update_content = str[2];
-          VersionUpdate versionUpdate = new VersionUpdate(
-              mActivity);
+          VersionUpdate versionUpdate = new VersionUpdate(mActivity);
           versionUpdate.apkUrl = HttpUtilMc.IP + apk_url;
-          versionUpdate.updateMsg = new_version + "\n\n"
-              + update_content;
+          versionUpdate.updateMsg = new_version + "\n\n" + update_content;
           versionUpdate.checkUpdateInfo();
           return;
         }
-        ViewUtil.showToast(mActivity, "×îÐÂ°æ±¾£¡");
+        UpdateVersion updateVersion = new UpdateVersion(mActivity);
+        updateVersion.execute();
+        onCheck.onCheck();
       }
 
     } catch (Exception e) {

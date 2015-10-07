@@ -102,6 +102,7 @@ public class StaticVarUtil {
   public static Message message = null;// 点击的说说
   
   public static ArrayList<BookList> allBookList = null;
+  public static String LIB_NAME = "";
   public static int requestTimes = 0;
   
   public static int loginTimes = 0;

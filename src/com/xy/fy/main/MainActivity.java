@@ -27,6 +27,7 @@ import com.bmob.im.demo.ui.NewFriendActivity;
 import com.bmob.im.demo.ui.fragment.ContactFragment;
 import com.bmob.im.demo.ui.fragment.RecentFragment;
 import com.bmob.im.demo.ui.fragment.SettingsFragment;
+import com.bmob.im.demo.view.HeaderLayout;
 import com.fima.cardsui.views.CardUI;
 import com.mc.util.BadgeUtil;
 import com.mc.util.CircleImageView;
@@ -173,7 +174,14 @@ public class MainActivity extends BaseActivity implements EventListener {
     mHandler = new MyHandler(this);
 
     BadgeUtil.resetBadgeCount(getApplicationContext());
-    CheckVersionAsynctask checkVersionAsyntask = new CheckVersionAsynctask(this, false);
+    CheckVersionAsynctask checkVersionAsyntask = new CheckVersionAsynctask(this, false,
+        new CheckVersionAsynctask.OnCheck() {
+
+          @Override
+          public void onCheck() {
+            // TODO Auto-generated method stub
+          }
+        });
     checkVersionAsyntask.execute();
     shareUtil = new ShareUtil(getApplicationContext());
     share = shareUtil.showShare();
@@ -663,7 +671,14 @@ public class MainActivity extends BaseActivity implements EventListener {
       public void onClick(View v) {
         // TODO Auto-generated method stub
         CheckVersionAsynctask checkVersionAsyntask = new CheckVersionAsynctask(MainActivity.this,
-            true);
+            true, new CheckVersionAsynctask.OnCheck() {
+
+          @Override
+          public void onCheck() {
+            // TODO Auto-generated method stub
+            ViewUtil.showToast(MainActivity.this, "最新版本！");
+          }
+        });
         ProgressDialogUtil.getInstance(MainActivity.this).show();
         checkVersionAsyntask.execute();
       }
@@ -1614,8 +1629,14 @@ public class MainActivity extends BaseActivity implements EventListener {
           break;
         case StaticVarUtil.CHECK_VERSION:
           CheckVersionAsynctask checkVersionAsyntask = new CheckVersionAsynctask(MainActivity.this,
-              true);
-          checkVersionAsyntask.execute();
+              true, new CheckVersionAsynctask.OnCheck() {
+
+                @Override
+                public void onCheck() {
+                  // TODO Auto-generated method stub
+                }
+              });
+          checkVersionAsyntask.execute(new String[] { "login" });
           break;
         }
       }
@@ -1649,6 +1670,7 @@ public class MainActivity extends BaseActivity implements EventListener {
               bindLib(bind_layout);
               ProgressDialogUtil.getInstance(MainActivity.this).dismiss();
             } else {// 绑定 直接请求
+              StaticVarUtil.LIB_NAME = result;
               login_lib(result, bind_layout, false);
             }
           }
@@ -1745,9 +1767,39 @@ public class MainActivity extends BaseActivity implements EventListener {
     xuptLibLoginAsynctask.execute();
   }
 
-  private void ShowLibMessage(LinearLayout bind_layout, ArrayList<BookList> allBookList) {
-    initTopBarForOnlyTitle("图书馆");
-    LinearLayout show_lib_layout = (LinearLayout) findViewById(R.id.common_show_lib);
+  private void ShowLibMessage(final LinearLayout bind_layout,  final ArrayList<BookList> allBookList) {
+    final LinearLayout show_lib_layout = (LinearLayout) findViewById(R.id.common_show_lib);
+    initTopBarForBoth("图书馆", R.drawable.chongzhi,
+        new HeaderLayout.onRightImageButtonClickListener() {
+
+          @Override
+          public void onClick() {
+            // TODO Auto-generated method stub
+            Builder builder = new AlertDialog.Builder(MainActivity.this);
+
+            builder.setMessage("你确定要重置吗？");
+
+            builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+              @Override
+              public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+                StaticVarUtil.LIB_NAME = "";
+                StaticVarUtil.allBookList = null;
+                bind_layout.setVisibility(View.VISIBLE);
+                show_lib_layout.setVisibility(View.GONE);
+              }
+            });
+            builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+              @Override
+              public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+              }
+            });
+            Dialog dialog = builder.create();
+            dialog.show();
+          }
+        });
+   
     show_lib_layout.setVisibility(View.VISIBLE);
     bind_layout.setVisibility(View.GONE);
     ListView libList = (ListView) findViewById(R.id.book_list);

@@ -9,11 +9,11 @@ import android.content.Context;
 public class ProgressDialogUtil {
 
   public static ProgressDialog dialog;
-  private static Context mContext;
+  private static Activity mContext;
   private static String msg = "ÕýÔÚ²éÑ¯";
   private static ProgressDialogUtil instance;
 
-  public static ProgressDialogUtil getInstance(Context context) {
+  public static ProgressDialogUtil getInstance(Activity context) {
     if (instance == null || context != mContext) {
       mContext = context;
       instance = new ProgressDialogUtil();
