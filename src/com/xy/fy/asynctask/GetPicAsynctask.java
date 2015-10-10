@@ -110,6 +110,7 @@ public class GetPicAsynctask extends AsyncTask<Object, String, String> {
                             // progressDialog.cancel();
                             mActivity.startActivity(intent);
                             mActivity.finish();
+                            StaticVarUtil.quit();
 
                           }
 

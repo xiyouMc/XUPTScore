@@ -1,7 +1,9 @@
 package com.xy.fy.main;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Locale;
 
 import com.mc.db.DBConnection;
 import com.mc.db.DBConnection.UserSchema;
@@ -24,6 +26,8 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
@@ -35,6 +39,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.DisplayMetrics;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -61,6 +66,7 @@ public class LoginActivity extends Activity {
   private Button forgetPassWord;
   private CheckBox rememberPassword;
   private Button login;
+  private TextView selectLanguage;
   private ProgressDialog progressDialog;
   private DBConnection helper;
   SQLiteDatabase sqLiteDatabase;
@@ -76,7 +82,7 @@ public class LoginActivity extends Activity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     requestWindowFeature(Window.FEATURE_NO_TITLE);
-
+    Util.setContext(getApplicationContext());
     Intent i = getIntent();
     String imageMsg = i.getStringExtra("image") != null ? i.getStringExtra("image") : "0|0|0";
     if (imageMsg.equals("0|0|0") || imageMsg.equals("0|0")) {
@@ -86,6 +92,9 @@ public class LoginActivity extends Activity {
       setPullDoorViewImage(imageMsg);
     }
 
+    StaticVarUtil.quit();
+    StaticVarUtil.activities.add(LoginActivity.this);
+    
     setStatusStyle();
     helper = new DBConnection(LoginActivity.this);
     sqLiteDatabase = helper.getWritableDatabase();
@@ -112,7 +121,27 @@ public class LoginActivity extends Activity {
         if (Util.isFastDoubleClick()) {
           return;
         }
-        login();
+//        login();
+        Intent intent = new Intent();
+        intent.setClass(LoginActivity.this, MainActivity.class);
+        if (progressDialog != null) {
+          progressDialog.dismiss();
+        }
+        StaticVarUtil.student.setAccount("aaaa");
+        StaticVarUtil.student.setPassword("aaaa");
+        // progressDialog.cancel();
+        startActivity(intent);
+      }
+    });
+    this.selectLanguage.setOnClickListener(new OnClickListener() {
+      
+      @Override
+      public void onClick(View v) {
+        // TODO Auto-generated method stub
+        Intent intent = new Intent();
+        intent.setClass(LoginActivity.this, LanguageActivity.class);
+        
+        startActivity(intent);
       }
     });
   }
@@ -216,7 +245,7 @@ public class LoginActivity extends Activity {
   }
 
   private boolean initData() {
-    this.progressDialog = ViewUtil.getProgressDialog(LoginActivity.this, "正在登录");
+    this.progressDialog = ViewUtil.getProgressDialog(LoginActivity.this, this.getString(R.string.logining,""));
     // 获取数据库
     boolean isSDcardExist = Environment.getExternalStorageState()
         .equals(android.os.Environment.MEDIA_MOUNTED); // 判断sd卡是否存在
@@ -429,8 +458,8 @@ public class LoginActivity extends Activity {
     this.forgetPassWord = (Button) findViewById(R.id.butForgetPassword);
     this.rememberPassword = (CheckBox) findViewById(R.id.butRememberPassword);
     this.login = (Button) findViewById(R.id.butLogin);
-    this.progressDialog = ViewUtil.getProgressDialog(LoginActivity.this, "正在登录");
-
+    this.selectLanguage = (TextView) findViewById(R.id.setLoginLanguage);
+    
     /*
      * Animation animation = AnimationUtils.loadAnimation(LoginActivity.this, R.anim.translate);
      * LinearLayout layout = (LinearLayout) findViewById(R.id.layout);
@@ -447,133 +476,5 @@ public class LoginActivity extends Activity {
     }
 
   }
-
-  // // 异步加载登录
-  // class LoginAsyntask extends AsyncTask<Object, String, String> {
-  //
-  // @SuppressWarnings("deprecation")
-  // @Override
-  // protected String doInBackground(Object... params) {
-  // // TODO Auto-generated method stub
-  // loginTimes++;
-  // return HttpUtilMc.queryStringForPost(
-  // HttpUtilMc.BASE_URL + "login.jsp?username=" + account.getText().toString().trim()
-  // + "&password=" + URLEncoder.encode(password.getText().toString().trim()) + "&session="
-  // + StaticVarUtil.session);
-  //
-  // }
-  //
-  // @Override
-  // protected void onPostExecute(String result) {
-  // // TODO Auto-generated method stub
-  // super.onPostExecute(result);
-  // // progress.cancel();
-  //
-  // try {
-  // if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
-  // if (result.equals("error")) {
-  // ViewUtil.showToast(getApplicationContext(), "密码错误");
-  // password.setText("");
-  // progressDialog.cancel();
-  // } else {
-  // if (result.equals("no_user")) {
-  // ViewUtil.showToast(getApplicationContext(), "账号不存在");
-  // account.setText("");
-  // password.setText("");
-  // progressDialog.cancel();
-  // } else {// 登录成功'
-  //
-  // listHerf = new ArrayList<HashMap<String, String>>();
-  // JSONObject json = new JSONObject(result);
-  // JSONArray jsonArray = (JSONArray) json.get("listHerf");
-  // for (int i = 0; i < jsonArray.length(); i++) {
-  // JSONObject o = (JSONObject) jsonArray.get(i);
-  // HashMap<String, String> map = new HashMap<String, String>();
-  // map.put("herf", o.getString("herf"));
-  // map.put("tittle", o.getString("tittle"));
-  // listHerf.add(map);
-  // }
-  // StaticVarUtil.listHerf = listHerf;// 设置为静态
-  // StaticVarUtil.student.setAccount(account.getText().toString().trim());
-  // StaticVarUtil.student.setPassword(password.getText().toString().trim());
-  // Intent intent = new Intent();
-  // intent.setClass(LoginActivity.this, MainActivity.class);
-  // progressDialog.cancel();
-  // startActivity(intent);
-  // finish();
-  // }
-  //
-  // }
-  //
-  // } else {
-  //
-  // // 重新登录
-  // if (loginTimes < 3) {
-  // LoginAsyntask loginAsyntask = new LoginAsyntask();
-  // ViewUtil.showToast(getApplicationContext(), HttpUtilMc.CONNECT_REPEAT_EXCEPTION);
-  // loginAsyntask.execute();
-  // } else {
-  // ViewUtil.showToast(getApplicationContext(), HttpUtilMc.CONNECT_EXCEPTION);
-  // progressDialog.cancel();
-  // }
-  // }
-  // } catch (Exception e) {
-  // // TODO: handle exception
-  // Log.i("LoginActivity", e.toString());
-  // }
-  //
-  // }
-  //
-  // }
-  //
-  // // 异步加载登录
-  // class GetPicAsyntask extends AsyncTask<Object, String, String> {
-  //
-  // @Override
-  // protected String doInBackground(Object... params) {
-  // loginTimes++;
-  // // TODO Auto-generated method stub
-  // return HttpUtilMc.IsReachIP()
-  // ? HttpUtilMc.queryStringForPost(HttpUtilMc.BASE_URL + "GetPic.jsp")
-  // : HttpUtilMc.CONNECT_EXCEPTION;
-  // }
-  //
-  // @Override
-  // protected void onPostExecute(String result) {
-  // // TODO Auto-generated method stub
-  // super.onPostExecute(result);
-  // // progress.cancel();
-  // try {
-  // if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
-  // if (!result.equals("error")) {
-  // if (!result.equals("ip warning!!!")) {
-  // JSONObject json = new JSONObject(result);
-  // String session = json.getString("cookieSessionID");// session
-  // StaticVarUtil.session = session;
-  // loginTimes = 0;// 将登陆次数置零
-  // LoginAsyntask loginAsyntask = new LoginAsyntask();
-  // loginAsyntask.execute();
-  // }
-  // } else {
-  // ViewUtil.showToast(getApplicationContext(), "服务器维护中。。。");
-  // progressDialog.cancel();
-  // }
-  // } else {
-  // if (loginTimes < 3) {
-  // GetPicAsyntask getPicAsyntask = new GetPicAsyntask();
-  // ViewUtil.showToast(getApplicationContext(), HttpUtilMc.CONNECT_REPEAT_EXCEPTION);
-  // getPicAsyntask.execute();
-  // } else {
-  // ViewUtil.showToast(getApplicationContext(), HttpUtilMc.CONNECT_EXCEPTION);
-  // progressDialog.cancel();
-  // }
-  // }
-  // } catch (Exception e) {
-  // // TODO: handle exception
-  // Log.i("LoginActivity", e.toString());
-  // }
-  //
-  // }
-  // }
 
 }

@@ -6,6 +6,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.mc.util.ScoreUtil;
+import com.mc.util.Util;
 import com.xy.fy.util.StaticVarUtil;
 import com.xy.fy.util.ViewUtil;
 
@@ -34,6 +35,7 @@ public class FriendRecommondActivity extends Activity {
     // TODO Auto-generated method stub
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_add_friend_recommond);
+    Util.setContext(getApplicationContext());
     init();
     calcul();
     if (list_data.size() != 0) {

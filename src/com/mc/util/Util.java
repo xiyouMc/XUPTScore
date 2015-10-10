@@ -57,6 +57,19 @@ public class Util {
       return false;
     }
   }
+  private static Context context;
+  public static void setContext(Context ctx) {
+    if (context == null && ctx != null) {
+        context = ctx.getApplicationContext();
+    }
+}
+
+public static Context getContext() {
+    if (context == null) {
+        // TODO
+    }
+    return context;
+}
 
   public static void getRequestParmas(Context context, String data) {
     long time = System.currentTimeMillis();

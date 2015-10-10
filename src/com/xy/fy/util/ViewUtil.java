@@ -1,5 +1,7 @@
 package com.xy.fy.util;
 
+import com.xy.fy.main.R;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -55,14 +57,14 @@ public class ViewUtil {
     Builder builder = new AlertDialog.Builder(activity);
     builder.setTitle(title);
     builder.setMessage(string);
-    builder.setPositiveButton("确定", new OnClickListener() {
+    builder.setPositiveButton(activity.getResources().getString(R.string.ok), new OnClickListener() {
       @Override
       public void onClick(DialogInterface dialog, int which) {
         dialog.cancel();
       }
     });
     if (isShowNegative) {
-      builder.setNegativeButton("取消", new OnClickListener() {
+      builder.setNegativeButton(activity.getResources().getString(R.string.cancle), new OnClickListener() {
         @Override
         public void onClick(DialogInterface dialog, int which) {
           dialog.cancel();
@@ -78,7 +80,7 @@ public class ViewUtil {
     Builder builder = new AlertDialog.Builder(activity);
     builder.setTitle(title);
     builder.setMessage(string);
-    builder.setPositiveButton("确定", new OnClickListener() {
+    builder.setPositiveButton(activity.getResources().getString(R.string.ok), new OnClickListener() {
       @Override
       public void onClick(DialogInterface dialog, int which) {
         dialog.cancel();
@@ -86,7 +88,7 @@ public class ViewUtil {
       }
     });
     if (isShowNegative) {
-      builder.setNegativeButton("取消", new OnClickListener() {
+      builder.setNegativeButton(activity.getResources().getString(R.string.cancel), new OnClickListener() {
         @Override
         public void onClick(DialogInterface dialog, int which) {
           dialog.cancel();
@@ -101,7 +103,7 @@ public class ViewUtil {
     ProgressDialog progressDialog = new ProgressDialog(mContext);// 实例化
     progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);// 设置进度条风格，风格为圆形，旋转的
     progressDialog.setTitle(title);// 设置ProgressDialog 标题
-    progressDialog.setMessage("请稍后...");// 设置ProgressDialog 提示信息
+    progressDialog.setMessage(mContext.getResources().getString(R.string.waiting));// 设置ProgressDialog 提示信息
     progressDialog.setIndeterminate(false);// 设置ProgressDialog
     progressDialog.setCancelable(false);// 是否可以按退回按键取消
     return progressDialog;

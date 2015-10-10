@@ -1,6 +1,7 @@
 package com.xy.fy.main;
 
 import java.io.File;
+import java.util.Locale;
 
 import com.mc.util.CrashHandler;
 import com.mc.util.H5Log;
@@ -17,11 +18,14 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -34,6 +38,20 @@ public class WelcomeActivity extends Activity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+
+    Util.setContext(getApplicationContext());
+    SharedPreferences preferences = getSharedPreferences(StaticVarUtil.LANGUAGE_INFO, MODE_PRIVATE);
+    int postion = preferences.getInt(StaticVarUtil.LANGUAGE, 3);
+    Resources res = getResources();
+    Configuration config = res.getConfiguration();
+    if (postion == 1) {// English
+      config.locale = Locale.ENGLISH;
+    } else {
+      config.locale = Locale.CHINESE;
+    }
+    DisplayMetrics dm = res.getDisplayMetrics();
+    res.updateConfiguration(config, dm);
+    
     try {
       if (!Util.isDebug(getApplicationContext())) {
         CrashHandler crashHandler = CrashHandler.getInstance();
@@ -93,7 +111,8 @@ public class WelcomeActivity extends Activity {
           if (!new File(StaticVarUtil.PATH).exists()) {
             new File(StaticVarUtil.PATH).mkdirs();
           }
-//          ProgressDialog progressDialog = ViewUtil.getProgressDialog(WelcomeActivity.this, "正在登录");
+          // ProgressDialog progressDialog = ViewUtil.getProgressDialog(WelcomeActivity.this,
+          // "正在登录");
           GetPicAsynctask getPicAsyntask = new GetPicAsynctask(WelcomeActivity.this, account,
               password, null, new GetPicAsynctask.GetPic() {
 
@@ -107,12 +126,13 @@ public class WelcomeActivity extends Activity {
               } else if ("no_user".equals(result)) {
                 GetImageMsgAsytask getImageMsgAsytask = new GetImageMsgAsytask();
                 getImageMsgAsytask.execute();
-              }else if (HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
+              } else if (HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
                 try {
                   Intent i = new Intent();
                   i.setClass(getApplicationContext(), LoginActivity.class);
                   // 如果网络原因，则直接返回0|0
-                  i.putExtra("image", !HttpUtilMc.CONNECT_EXCEPTION.equals(result) ? result : "0|0|0");//
+                  i.putExtra("image",
+                      !HttpUtilMc.CONNECT_EXCEPTION.equals(result) ? result : "0|0|0");//
                   startActivity(i);
                   finish();
                 } catch (Exception e) {
@@ -122,7 +142,7 @@ public class WelcomeActivity extends Activity {
               }
             }
           });
-//          progressDialog.show();
+          // progressDialog.show();
           getPicAsyntask.execute();
         } else {
           GetImageMsgAsytask getImageMsgAsytask = new GetImageMsgAsytask();

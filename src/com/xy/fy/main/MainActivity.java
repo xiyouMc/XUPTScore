@@ -170,7 +170,7 @@ public class MainActivity extends BaseActivity implements EventListener {
     super.onCreate(savedInstanceState);
     requestWindowFeature(Window.FEATURE_NO_TITLE);
     super.setContentView(R.layout.activity_main);
-
+    Util.setContext(getApplicationContext());
     mHandler = new MyHandler(this);
 
     BadgeUtil.resetBadgeCount(getApplicationContext());
@@ -676,7 +676,7 @@ public class MainActivity extends BaseActivity implements EventListener {
           @Override
           public void onCheck() {
             // TODO Auto-generated method stub
-            ViewUtil.showToast(MainActivity.this, "最新版本！");
+            ViewUtil.showToast(MainActivity.this, Util.getContext().getResources().getString(R.string.check_version));
           }
         });
         ProgressDialogUtil.getInstance(MainActivity.this).show();
@@ -689,7 +689,7 @@ public class MainActivity extends BaseActivity implements EventListener {
    * 保存二维码
    */
   private void showDialogSaveQrcode() {
-    final CharSequence[] items = { "保存二维码" };
+    final CharSequence[] items = { Util.getContext().getResources().getString(R.string.save_Qr_code)};
     AlertDialog.Builder builder = new AlertDialog.Builder(this);
     builder.setItems(items, new DialogInterface.OnClickListener() {
       public void onClick(DialogInterface dialog, int item) {
@@ -1141,8 +1141,9 @@ public class MainActivity extends BaseActivity implements EventListener {
    * @return
    */
   protected void chooseHeadPhoto() {
-    String[] items = new String[] { "选择本地图片", "拍照" };
-    new AlertDialog.Builder(this).setTitle("设置头像")
+    String[] items = new String[] { Util.getContext().getResources().getString(R.string.select_picture), 
+        Util.getContext().getResources().getString(R.string.photo) };
+    new AlertDialog.Builder(this).setTitle(Util.getContext().getResources().getString(R.string.setPhoto))
         .setItems(items, new DialogInterface.OnClickListener() {
           @Override
           public void onClick(DialogInterface dialog, int which) {
@@ -1162,7 +1163,7 @@ public class MainActivity extends BaseActivity implements EventListener {
               break;
             }
           }
-        }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+        }).setNegativeButton(Util.getContext().getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
           @Override
           public void onClick(DialogInterface dialog, int which) {
             dialog.dismiss();
@@ -1348,7 +1349,7 @@ public class MainActivity extends BaseActivity implements EventListener {
     Builder builder = new AlertDialog.Builder(MainActivity.this);
 
     if (logout) {
-      builder.setMessage("你确定要注销吗？");
+      builder.setMessage(Util.getContext().getResources().getString(R.string.isQuit));
     } else {
       if (slidingMenu.isMenuShowing()) {
         slidingMenu.showContent();
@@ -1358,7 +1359,7 @@ public class MainActivity extends BaseActivity implements EventListener {
       return;
     }
 
-    builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+    builder.setPositiveButton(Util.getContext().getResources().getString(R.string.ok), new DialogInterface.OnClickListener() {
       @Override
       public void onClick(DialogInterface dialog, int which) {
         dialog.cancel();
@@ -1376,7 +1377,7 @@ public class MainActivity extends BaseActivity implements EventListener {
         }
       }
     });
-    builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+    builder.setNegativeButton(Util.getContext().getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
       @Override
       public void onClick(DialogInterface dialog, int which) {
         dialog.cancel();
@@ -1517,6 +1518,10 @@ public class MainActivity extends BaseActivity implements EventListener {
     findViewById(R.id.send).setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
+        if (ideaMsgText.getText().toString().equals("")) {
+          H5Toast.showToast(Util.getContext(), Util.getContext().getResources().getString(R.string.edit_feedmsg));
+          return;
+        }
         ProgressDialogUtil.getInstance(MainActivity.this).show();
         SIMCardInfo siminfo = new SIMCardInfo(getApplicationContext());
         final String number = siminfo.getNativePhoneNumber();

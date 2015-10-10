@@ -1,5 +1,6 @@
 package com.mc.util;
 
+import com.xy.fy.main.R;
 import com.xy.fy.util.ViewUtil;
 
 import android.app.Activity;
@@ -10,7 +11,7 @@ public class ProgressDialogUtil {
 
   public static ProgressDialog dialog;
   private static Activity mContext;
-  private static String msg = "ÕýÔÚ²éÑ¯";
+  private static String msg = Util.getContext().getResources().getString(R.string.querying);
   private static ProgressDialogUtil instance;
 
   public static ProgressDialogUtil getInstance(Activity context) {

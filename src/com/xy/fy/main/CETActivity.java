@@ -9,6 +9,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.mc.util.Util;
 import com.xy.fy.util.StaticVarUtil;
 
 public class CETActivity extends Activity {
@@ -27,7 +28,7 @@ public class CETActivity extends Activity {
     super.onCreate(savedInstanceState);
     requestWindowFeature(Window.FEATURE_NO_TITLE);
     setContentView(R.layout.activity_show_cet);
-    
+    Util.setContext(getApplicationContext());
     Intent i = getIntent();
     String[] data = i.getStringExtra("data").split(",");
     if (data.length!=7) {

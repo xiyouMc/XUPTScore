@@ -1,5 +1,6 @@
 package com.xy.fy.main;
 
+import com.mc.util.Util;
 import com.xy.fy.main.R;
 
 import android.app.Activity;
@@ -29,7 +30,7 @@ public class ShowScoreActivity extends Activity {
     super.onCreate(savedInstanceState);
     requestWindowFeature(Window.FEATURE_NO_TITLE);
     setContentView(R.layout.card_score);
-
+    Util.setContext(getApplicationContext());
     init();
     String[][] score = null;
     Intent i = getIntent();

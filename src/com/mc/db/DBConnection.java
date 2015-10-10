@@ -22,6 +22,9 @@ public class DBConnection extends SQLiteOpenHelper {
 		String PHOTONAME = "photoname";
 	}
 
+	public interface LanguageSchema{
+	  String Language = "language";
+	}
 	private static final String DATABASE_NAME = "users";// Êý¾Ý¿â
 	private static final int DATABASE_VERSION = 2;
 

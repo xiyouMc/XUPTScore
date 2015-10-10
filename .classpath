@@ -2,7 +2,6 @@
 <classpath>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="src" path="gen"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry kind="lib" path="libs/mframework.jar"/>
@@ -26,5 +25,6 @@
 	<classpathentry kind="lib" path="libs/sun.misc.BASE64Decoder.jar"/>
 	<classpathentry kind="lib" path="libs/BmobIM_V1.1.9beta_20150820.jar"/>
 	<classpathentry kind="lib" path="libs/BmobSDK_V3.4.3_0820.jar"/>
+	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

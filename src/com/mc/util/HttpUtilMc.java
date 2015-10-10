@@ -11,8 +11,8 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.CoreConnectionPNames;
 import org.apache.http.util.EntityUtils;
 
-import com.xy.fy.main.LoginActivity;
-import com.xy.fy.util.ConnectionUtil;
+import com.xy.fy.main.R;
+
 
 /**
  * @author Administrator
@@ -36,8 +36,8 @@ public class HttpUtilMc {
    * public static String SERVER_ADDRESS="192.168.11.1"; public static int SERVER_PORT = 8080;
    */
 
-  public static String CONNECT_EXCEPTION = "服务器异常，请重新登录";
-  public static String CONNECT_REPEAT_EXCEPTION = "服务器异常，正在重新登录";
+  public static String CONNECT_EXCEPTION = Util.getContext().getResources().getString(R.string.repeat_login);
+  public static String CONNECT_REPEAT_EXCEPTION = Util.getContext().getResources().getString(R.string.repeating_login);
 
   // 获得Get请求对象request
   public static HttpGet getHttpGet(String url) {

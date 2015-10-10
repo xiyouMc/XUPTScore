@@ -135,6 +135,10 @@
         <activity
             android:name="com.xy.fy.main.ForgetCetActivity"
             android:theme="@style/Transparent" />
+        
+        <activity
+            android:name="com.xy.fy.main.LanguageActivity"
+            android:theme="@style/Transparent" />
         <!-- 放置软键盘自动弹出 -->
         <activity
             android:name="com.xy.fy.main.MessageDetailActivity"

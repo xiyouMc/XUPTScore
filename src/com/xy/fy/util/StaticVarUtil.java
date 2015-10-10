@@ -87,6 +87,9 @@ public class StaticVarUtil {
   public static final String PASSWORD = "password";
   public static final String USER_INFO = "userinfo";
   public static final String IS_REMEMBER = "isRemember";
+  
+  public static final String LANGUAGE_INFO = "languageInfo";
+  public static final String LANGUAGE = "language";
   public static ArrayList<Activity> activities = new ArrayList<Activity>();
 
   public static Student student = new Student();

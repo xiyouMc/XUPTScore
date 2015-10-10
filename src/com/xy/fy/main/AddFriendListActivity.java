@@ -1,5 +1,7 @@
 package com.xy.fy.main;
 
+import com.mc.util.Util;
+
 import android.app.ActivityGroup;
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,7 +29,7 @@ public class AddFriendListActivity extends ActivityGroup {
     super.onCreate(savedInstanceState);
     requestWindowFeature(Window.FEATURE_NO_TITLE);
     setContentView(R.layout.activity_add_friend);
-
+    Util.setContext(getApplicationContext());
     init();
     click();
   }
