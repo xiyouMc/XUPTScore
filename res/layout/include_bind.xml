@@ -33,7 +33,7 @@
                     android:layout_width="80dp"
                     android:layout_height="fill_parent"
                     android:gravity="center_vertical"
-                    android:text="图书馆账号"
+                    android:text="@string/lib_account"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
                 <!-- 修改密码 -->
@@ -44,7 +44,7 @@
                     android:layout_height="fill_parent"
                     android:gravity="center_vertical"
                     android:textColor="@color/black"
-                    android:hint="输入账号"
+                    android:hint="@string/input_account"
                     android:textSize="15sp" >
                 </EditText>
             </LinearLayout>
@@ -68,7 +68,7 @@
                     android:layout_width="80dp"
                     android:layout_height="fill_parent"
                     android:gravity="center_vertical"
-                    android:text="图书馆密码"
+                    android:text="@string/lib_pwd"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
                 <!-- 修改密码 -->
@@ -78,7 +78,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:gravity="center_vertical"
-                    android:hint="输入密码"
+                    android:hint="@string/input_pwd"
                     android:textColor="@color/black"
                     android:textColorHint="@color/gray"
                     android:textSize="15sp" >
@@ -97,7 +97,7 @@
                 android:layout_marginTop="60dp"
                 android:background="@drawable/btn_click"
                 android:gravity="center"
-                android:text="绑定"
+                android:text="@string/binding"
                 android:textColor="@color/white"
                 android:textSize="15sp" />
         </LinearLayout>

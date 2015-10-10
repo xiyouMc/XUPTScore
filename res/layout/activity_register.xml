@@ -13,7 +13,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/main_title_bar"
-            android:text="用户注册"
+            android:text="@string/register_txt3"
             android:textColor="@color/white"
             android:textSize="28sp" />
 
@@ -41,7 +41,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="账号(9位以内数字)"
+            android:hint="@string/register_txt4"
             android:inputType="numberDecimal" >
         </EditText>
 
@@ -52,7 +52,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="请输入邮箱"
+            android:hint="@string/register_txt5"
             android:inputType="textEmailAddress" >
         </EditText>
         <!-- 注册昵称 -->
@@ -62,7 +62,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="请输入昵称" >
+            android:hint="@string/register_txt6" >
         </EditText>
         <!-- 注册密码 -->
 
@@ -71,7 +71,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="请输入密码"
+            android:hint="@string/register_txt7"
             android:inputType="textPassword" >
         </EditText>
         <!-- 注册大学 -->
@@ -81,7 +81,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/button_big"
-            android:text="请选择大学"
+            android:text="@string/register_txt8"
             android:textColor="@color/red"
             android:textSize="20sp" />
     </LinearLayout>
@@ -99,7 +99,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/button_big"
-            android:text="注册"
+            android:text="@string/register"
             android:textColor="@color/red"
             android:textSize="20sp" />
     </LinearLayout>

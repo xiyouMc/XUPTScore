@@ -149,6 +149,13 @@ public class BaseActivity extends FragmentActivity {
         new OnLeftButtonClickListener());
     mHeaderLayout.setTitleAndRightImageButton(titleName, rightDrawableId, listener);
   }
+  
+  public void initTopBarForRight(String titleName, int rightDrawableId,
+      onRightImageButtonClickListener listener) {
+    mHeaderLayout = (HeaderLayout) findViewById(R.id.common_actionbar);
+    mHeaderLayout.init(HeaderStyle.TITLE_DOUBLE_IMAGEBUTTON);
+    mHeaderLayout.setTitleAndRightImageButton(titleName, rightDrawableId, listener);
+  }
 
   /**
    * 只有左边按钮和Title initTopBarLayout
@@ -161,6 +168,8 @@ public class BaseActivity extends FragmentActivity {
     mHeaderLayout.setTitleAndLeftImageButton(titleName, R.drawable.base_action_bar_back_bg_selector,
         new OnLeftButtonClickListener());
   }
+  
+  
 
   /**
    * 显示下线的对话框 showOfflineDialog @return void @throws

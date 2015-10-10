@@ -33,7 +33,7 @@
             android:layout_centerHorizontal="true"
             android:background="@drawable/transparent"
             android:gravity="center_vertical"
-            android:text="修改密码"
+            android:text="@string/setting_change_pwd"
             android:textColor="@color/white"
             android:textSize="20dp" />
     </RelativeLayout>
@@ -64,7 +64,7 @@
                     android:layout_width="80dp"
                     android:layout_height="fill_parent"
                     android:gravity="center_vertical"
-                    android:text="账号"
+                    android:text="@string/add_name"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
                 <!-- 修改密码 -->
@@ -101,7 +101,7 @@
                     android:layout_width="80dp"
                     android:layout_height="fill_parent"
                     android:gravity="center_vertical"
-                    android:text="旧密码"
+                    android:text="@string/setting_pre_pwd"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
                 <!-- 修改密码 -->
@@ -112,7 +112,7 @@
                     android:layout_height="fill_parent"
                     android:background="@null"
                     android:gravity="center_vertical"
-                    android:hint="输入旧密码"
+                    android:hint="@string/setting_txt1"
                     android:inputType="textPassword"
                     android:textColor="@color/black"
                     android:textColorHint="@color/gray"
@@ -139,7 +139,7 @@
                     android:layout_width="80dp"
                     android:layout_height="fill_parent"
                     android:gravity="center_vertical"
-                    android:text="新密码"
+                    android:text="@string/setting_new_pwd"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
                 <!-- 修改密码 -->
@@ -150,7 +150,7 @@
                     android:layout_height="fill_parent"
                     android:background="@null"
                     android:gravity="center_vertical"
-                    android:hint="字母、数字、符号至少两个"
+                    android:hint="@string/setting_txt2"
                     android:inputType="textPassword"
                     android:textColor="@color/black"
                     android:textColorHint="@color/gray"
@@ -177,7 +177,7 @@
                     android:layout_width="80dp"
                     android:layout_height="fill_parent"
                     android:gravity="center_vertical"
-                    android:text="重复密码"
+                    android:text="@string/setting_txt3"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
@@ -187,7 +187,7 @@
                     android:layout_height="fill_parent"
                     android:background="@null"
                     android:gravity="center_vertical"
-                    android:hint="重复新密码"
+                    android:hint="@string/setting_txt4"
                     android:inputType="textPassword"
                     android:textColor="@color/black"
                     android:textColorHint="@color/gray"
@@ -207,7 +207,7 @@
                 android:layout_marginTop="29dp"
                 android:background="@drawable/btn_click"
                 android:gravity="center"
-                android:text="修改"
+                android:text="@string/change"
                 android:textColor="@color/white"
                 android:textSize="15sp" />
         </LinearLayout>

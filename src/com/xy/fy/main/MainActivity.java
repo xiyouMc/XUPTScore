@@ -1704,9 +1704,12 @@ public class MainActivity extends BaseActivity implements EventListener {
   }
 
   int times = 0;
+  
+  String loginResult = null;
 
   private void login_lib(final String libName, final LinearLayout bind_layout,
       final boolean isBind) {
+    ProgressDialogUtil.getInstance(MainActivity.this).show();
     XuptLibLoginAsynctask xuptLibLoginAsynctask = new XuptLibLoginAsynctask(MainActivity.this,
         libName, new XuptLibLoginAsynctask.Login() {
 
@@ -1714,6 +1717,7 @@ public class MainActivity extends BaseActivity implements EventListener {
           public void onPostLogin(String result) {
             // TODO Auto-generated method stub
             if (!"fail".equals(result.trim())) {// 获取数据
+              StaticVarUtil.LIB_NAME = libName;
               if (isBind) {
                 bind(libName, bind_layout);
               } else {
@@ -1729,6 +1733,8 @@ public class MainActivity extends BaseActivity implements EventListener {
                   ProgressDialogUtil.getInstance(MainActivity.this).dismiss();
                   return;
                 }
+                
+                loginResult = result;
                 try {
                   ArrayList<BookList> allBookList = new ArrayList<BookList>();
                   JSONArray bookArray = new JSONArray(result);
@@ -1756,7 +1762,8 @@ public class MainActivity extends BaseActivity implements EventListener {
               Log.d(TAG, "login error" + result + " " + libName);
               if (isBind) {
                 H5Toast.showToast(getApplicationContext(), "绑定失败，请确认账号和密码！");
-              } else {
+              } else if(times<3){
+                times++;
                 login_lib(libName, bind_layout, isBind);
               }
             }
@@ -1769,7 +1776,7 @@ public class MainActivity extends BaseActivity implements EventListener {
 
   private void ShowLibMessage(final LinearLayout bind_layout,  final ArrayList<BookList> allBookList) {
     final LinearLayout show_lib_layout = (LinearLayout) findViewById(R.id.common_show_lib);
-    initTopBarForBoth("图书馆", R.drawable.chongzhi,
+    initTopBarForRight("图书馆", R.drawable.chongzhi,
         new HeaderLayout.onRightImageButtonClickListener() {
 
           @Override
@@ -1785,8 +1792,9 @@ public class MainActivity extends BaseActivity implements EventListener {
                 dialog.cancel();
                 StaticVarUtil.LIB_NAME = "";
                 StaticVarUtil.allBookList = null;
-                bind_layout.setVisibility(View.VISIBLE);
+//                bind_layout.setVisibility(View.VISIBLE);
                 show_lib_layout.setVisibility(View.GONE);
+                bindLib(bind_layout);
               }
             });
             builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -1815,6 +1823,30 @@ public class MainActivity extends BaseActivity implements EventListener {
           public void returnResult(String result) {
             if ("success".equals(result)) {
               login_lib(libName, bind_layout, false);
+//              if (loginResult != null) {
+//                try {
+//                  ArrayList<BookList> allBookList = new ArrayList<BookList>();
+//                  JSONArray bookArray = new JSONArray(result);
+//                  for (int i = 0; i < bookArray.length(); i++) {
+//                    JSONObject jo = (JSONObject) bookArray.get(i);
+//                    BookList bookList = new BookList();
+//                    bookList.setLibName(jo.getString("name"));
+//                    bookList.setNumber(jo.getString("id"));
+//                    String[] date = jo.getString("date").split("/");
+//                    bookList.setLibRenewDate(date[0] + "年" + date[1] + "月" + date[2]);
+//                    bookList.setBarcode(jo.getString("barcode"));
+//                    bookList.setRenew(jo.getBoolean("isRenew"));
+//                    allBookList.add(bookList);
+//                  }
+//
+//                  StaticVarUtil.allBookList = allBookList;
+//                  ShowLibMessage(bind_layout, allBookList);
+//
+//                } catch (JSONException e) {
+//                  // TODO Auto-generated catch block
+//                  e.printStackTrace();
+//                }
+//              }
             } else {// 绑定失败
               bind_layout.setVisibility(View.VISIBLE);
               H5Toast.showToast(getApplicationContext(), "请重新绑定");

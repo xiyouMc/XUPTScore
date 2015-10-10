@@ -21,7 +21,7 @@
             style="@style/Smile.TextView._Black"
             android:paddingLeft="5dp"
             android:textSize="20sp"
-            android:text="你好"
+            android:text="@string/hello"
             android:textStyle="bold" />
 
         <TextView
@@ -30,7 +30,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginTop="3dp"
             android:layout_marginLeft="10dp"
-            android:text="你好"
+            android:text="@string/hello"
             android:paddingLeft="5dp"
             android:singleLine="true"
             android:textSize="15sp" />
@@ -39,7 +39,7 @@
             android:id="@+id/tv_logintime"
             style="@style/Smile.TextView._Gray"
             android:layout_below="@id/tv_name"
-            android:text="你好"
+            android:text="@string/hello"
             android:layout_marginTop="10dp"
             android:paddingLeft="5dp"
             android:singleLine="true"

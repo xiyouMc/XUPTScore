@@ -6,6 +6,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.bmob.im.demo.ui.BaseActivity;
 import com.mc.util.H5Toast;
 import com.xy.fy.asynctask.RenewLibAsynctask;
 import com.xy.fy.asynctask.XuptLibLoginAsynctask;
@@ -23,7 +24,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class LibAdapter extends BaseAdapter {
@@ -81,7 +81,7 @@ public class LibAdapter extends BaseAdapter {
         @Override
         public void onClick(View v) {
           // TODO Auto-generated method stub
-          RenewLibAsynctask renewLibAsynctask = new RenewLibAsynctask((Activity)context,new RenewLibAsynctask.OnRenew() {
+          RenewLibAsynctask renewLibAsynctask = new RenewLibAsynctask((BaseActivity)context,new RenewLibAsynctask.OnRenew() {
             
             @Override
             public void onRenew(String result,ProgressDialog progressDialog) {

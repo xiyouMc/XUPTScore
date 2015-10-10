@@ -71,51 +71,117 @@ public class Util {
             .getDeviceId();
         imei = Passport.jiami(imei, String.valueOf(time));
       }
+
+      String checkData = Util.checkRankRequestData(realData, time_s);
+
+      if (!checkData.equals(data)) {
+        getRequestParmas(context, data);// 递归再次计算，直到计算出正确的
+      }
       realData = URLEncoder.encode(realData);
 
       StaticVarUtil.data = realData;
       StaticVarUtil.content = imei;
-      String checkData = Util.checkRankRequestData(realData, time_s);
       time_s = URLEncoder.encode(time_s);
       StaticVarUtil.viewstate = time_s;
-      StaticVarUtil.time = time;
-      if (!checkData.equals(data)) {
-        getRequestParmas(context, data);// 递归再次计算，直到计算出正确的
-      }
     } catch (Exception e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
   }
 
-  public static String getBindLibParmas(Context context, String data) {
+  public static void getBindLibParmas(Context context, String libName) {
 
     long time = System.currentTimeMillis();
-
+    // String s = new char[]{3,2,3,4,3,8,3,8,3,2,3,2}.toString();
     try {
-      String time_s = null;
-      if (StaticVarUtil.viewstate != null && StaticVarUtil.time != 0) {
-        time = StaticVarUtil.time;
-        time_s = StaticVarUtil.viewstate;
-      } else {
-        StaticVarUtil.time = time;
-        time_s = Passport.jiami(String.valueOf(time),
-            String.valueOf(new char[] { 2, 4, 8, 8, 2, 2 }));
-        StaticVarUtil.viewstate = time_s;
-      }
-      String realData = Passport.jiami(data, String.valueOf(time));
-      String checkData = Util.checkRankRequestData(realData, time_s);
+      String time_s = Passport.jiami(String.valueOf(time),
+          String.valueOf(new char[] { 2, 4, 8, 8, 2, 2 }));
+      String realData = Passport.jiami(libName, String.valueOf(time));
 
-      // realData = URLEncoder.encode(realData);
-      if (!checkData.equals(data)) {
-        getBindLibParmas(context, data);// 递归再次计算，直到计算出正确的
+      String checkData = Util.checkRankRequestData(realData, time_s);
+      if (!checkData.equals(libName)) {
+        getBindLibParmas(context, libName);// 递归再次计算，直到计算出正确的
       }
-      return realData;
+      realData = URLEncoder.encode(realData);
+      StaticVarUtil.libData = realData;
+      time_s = URLEncoder.encode(time_s);
+      StaticVarUtil.libViewstate = time_s;
+
     } catch (Exception e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
-    return "";
+  }
+
+  public static void getAccountParmas(Context context, String account) {
+
+    long time = System.currentTimeMillis();
+    // String s = new char[]{3,2,3,4,3,8,3,8,3,2,3,2}.toString();
+    try {
+      String time_s = Passport.jiami(String.valueOf(time),
+          String.valueOf(new char[] { 2, 4, 8, 8, 2, 2 }));
+      String realData = Passport.jiami(account, String.valueOf(time));
+
+      String checkData = Util.checkRankRequestData(realData, time_s);
+
+      if (!checkData.equals(account)) {
+        getAccountParmas(context, account);// 递归再次计算，直到计算出正确的
+      }
+      StaticVarUtil.libNameViewstate = time_s;//为了校验 libname,使用同一个密钥
+      realData = URLEncoder.encode(realData);
+
+      StaticVarUtil.accountData = realData;
+      time_s = URLEncoder.encode(time_s);
+      StaticVarUtil.accountViewstate = time_s;
+      StaticVarUtil.time = time;
+    } catch (Exception e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+  }
+
+  public static void getBindLibNameParmas(Context context, String libName) {
+
+    // String s = new char[]{3,2,3,4,3,8,3,8,3,2,3,2}.toString();
+    try {
+      String realData = Passport.jiami(libName, String.valueOf(StaticVarUtil.time));
+     
+      String checkData = Util.checkRankRequestData(realData, StaticVarUtil.libNameViewstate);
+      if (!checkData.equals(libName)) {
+        getBindLibNameParmas(context, libName);// 递归再次计算，直到计算出正确的
+      }
+      realData = URLEncoder.encode(realData);
+
+      StaticVarUtil.bindLibName = realData;
+    } catch (Exception e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+  }
+
+  public static void getRenewParmas(Context context, String renewData) {
+
+    long time = System.currentTimeMillis();
+    // String s = new char[]{3,2,3,4,3,8,3,8,3,2,3,2}.toString();
+    try {
+      String time_s = Passport.jiami(String.valueOf(time),
+          String.valueOf(new char[] { 2, 4, 8, 8, 2, 2 }));
+      String realData = Passport.jiami(renewData, String.valueOf(time));
+
+      String checkData = Util.checkRankRequestData(realData, time_s);
+
+      if (!checkData.equals(renewData)) {
+        getRenewParmas(context, renewData);// 递归再次计算，直到计算出正确的
+      }
+      realData = URLEncoder.encode(realData);
+
+      StaticVarUtil.renewData = realData;
+      time_s = URLEncoder.encode(time_s);
+      StaticVarUtil.renewViewstate = time_s;
+    } catch (Exception e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
   }
 
   /**

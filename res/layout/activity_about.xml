@@ -36,7 +36,7 @@
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/transparent"
                 android:gravity="center_vertical"
-                android:text="关于"
+                android:text="@string/about" 
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 
@@ -86,7 +86,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingBottom="10dp"
-                    android:text="当前版本:"
+                    android:text="@string/current_version"
                     android:textColor="#595959"
                     android:textSize="15sp" />
 
@@ -117,7 +117,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingBottom="5dp"
-                    android:text="官网"
+                    android:text="@string/official_website"
                     android:textColor="#595959"
                     android:textSize="15sp" />
 
@@ -147,14 +147,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingBottom="5dp"
-                    android:text="Email"
+                    android:text="@string/email_name"
                     android:textColor="#595959"
                     android:textSize="15sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="694449212@qq.com"
+                    android:text="@string/email_address"
                     android:textColor="#595959"
                     android:textSize="13sp" />
             </LinearLayout>
@@ -176,14 +176,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingBottom="5dp"
-                    android:text="开发者/新浪微博/GitHub"
+                    android:text="@string/address1"
                     android:textColor="#595959"
                     android:textSize="15sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Mc/@俺是Mc/xiyouMc"
+                    android:text="@string/address2"
                     android:textColor="#595959"
                     android:textSize="13sp" />
             </LinearLayout>
@@ -205,14 +205,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingBottom="5dp"
-                    android:text="负责单位"
+                    android:text="@string/accountability_unit"
                     android:textColor="#595959"
                     android:textSize="15sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="西安邮电3G手机实验室"
+                    android:text="@string/producer"
                     android:textColor="#595959"
                     android:textSize="13sp" />
             </LinearLayout>
@@ -230,7 +230,7 @@
                     android:layout_centerVertical="true"
                     android:background="#00000000"
                     android:paddingLeft="10dp"
-                    android:text="检测新版本"
+                    android:text="@string/check_for_update"
                     android:textColor="#7EC0EE"
                     android:textSize="15sp" />
 

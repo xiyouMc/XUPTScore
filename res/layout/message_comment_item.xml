@@ -13,7 +13,7 @@
         android:layout_width="40dp"
         android:layout_height="fill_parent"
         android:gravity="center"
-        android:text="1楼"
+        android:text="@string/floor_1st"
         android:textColor="#FF8C00" />
 
     <LinearLayout
@@ -33,7 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="昵称"
+                android:text="@string/add_nick"
                 android:textColor="#FF8C00"
                 android:textSize="18dp" />
 
@@ -45,7 +45,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:paddingRight="5dp"
-                android:text="15:30:30"
+                android:text="@string/md_txt2"
                 android:textColor="@color/dimgray"
                 android:textSize="12dp" />
 
@@ -58,7 +58,7 @@
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@+id/time"
                 android:paddingRight="10dp"
-                android:text="1991-05-29"
+                android:text="@string/md_txt3"
                 android:textColor="@color/dimgray"
                 android:textSize="12dp" />
         </RelativeLayout>
@@ -70,7 +70,7 @@
             android:layout_height="wrap_content"
             android:paddingBottom="5dp"
             android:paddingTop="5dp"
-            android:text="我是帅哥哥王玉超"
+            android:text="@string/md_txt4"
             android:textColor="@color/black" />
     </LinearLayout>
 

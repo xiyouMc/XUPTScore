@@ -17,7 +17,7 @@
                 android:id="@+id/kecheng"
                 android:gravity="left"
                 android:padding="3dip"
-                android:text="高等数学"
+                android:text="@string/subject_math"
                 android:textColor="@color/black"
                 android:textSize="7pt" />
 
@@ -25,7 +25,7 @@
                 android:id="@+id/score"
                 android:gravity="right"
                 android:paddingRight="10dip"
-                android:text="45 "
+                android:text="@string/num_45"
                 android:textColor="@color/gray" >
             </TextView>
 

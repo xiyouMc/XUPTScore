@@ -57,7 +57,7 @@
                     android:background="#00000000"
                     android:ems="8"
                     android:gravity="center_vertical"
-                    android:hint="学号"
+                    android:hint="@string/student_id"
                     android:paddingLeft="17dp"
                     android:textColor="#050505"
                     android:textCursorDrawable="@null"
@@ -79,7 +79,7 @@
                     android:background="#00000000"
                     android:ems="14"
                     android:gravity="center_vertical"
-                    android:hint="密码"
+                    android:hint="@string/login_pwd"
                     android:inputType="textPassword"
                     android:paddingLeft="17dp"
                     android:textColor="#050505"
@@ -104,7 +104,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
                     android:layout_gravity="right"
-                    android:text="记住密码"
+                    android:text="@string/login_remember"
                     android:textColor="#40E0D0"
                     android:textSize="7.5pt" />
 
@@ -127,7 +127,7 @@
                         android:layout_gravity="center_horizontal"
                         android:background="@drawable/login_btn"
                         android:fontFamily="sans-serif-thin"
-                        android:text="登 录"
+                        android:text="@string/login"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
                 </LinearLayout>
@@ -145,7 +145,7 @@
                         android:layout_marginLeft="6dp"
                         android:background="#00000000"
                         android:gravity="left|center_vertical"
-                        android:text="无法登录?"
+                        android:text="@string/login_txt1"
                         android:textColor="#7EC0EE"
                         android:textSize="7.5pt" />
                 </RelativeLayout>

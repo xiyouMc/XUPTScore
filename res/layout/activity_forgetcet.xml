@@ -33,7 +33,7 @@
             android:layout_centerHorizontal="true"
             android:background="@drawable/transparent"
             android:gravity="center_vertical"
-            android:text="万能四六级查询"
+            android:text="@string/forgetcet_txt1"
             android:textColor="@color/white"
             android:textSize="20dp" />
     </RelativeLayout>
@@ -64,7 +64,7 @@
                     android:layout_width="80dp"
                     android:layout_height="fill_parent"
                     android:gravity="center_vertical"
-                    android:text="学校代码"
+                    android:text="@string/forgetcet_school_code"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
                 <!-- 修改密码 -->
@@ -75,7 +75,7 @@
                     android:layout_height="fill_parent"
                     android:background="@null"
                     android:gravity="center_vertical"
-                    android:hint="学校代码"
+                    android:hint="@string/forgetcet_school_code"
                     android:inputType="numberDecimal"
                     android:textColor="@color/black"
                     android:textSize="15sp" >
@@ -101,7 +101,7 @@
                     android:layout_width="80dp"
                     android:layout_height="fill_parent"
                     android:gravity="center_vertical"
-                    android:text="等级代码"
+                    android:text="@string/forgetcet_level_code"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
                 <!-- 修改密码 -->
@@ -112,7 +112,7 @@
                     android:layout_height="fill_parent"
                     android:background="@null"
                     android:gravity="center_vertical"
-                    android:hint="年份＋第几次(1，2)＋四六级(1，2)"
+                    android:hint="@string/forgetcet_txt2"
                     android:inputType="textPassword"
                     android:textColor="@color/black"
                     android:textColorHint="@color/gray"
@@ -139,7 +139,7 @@
                     android:layout_width="80dp"
                     android:layout_height="fill_parent"
                     android:gravity="center_vertical"
-                    android:text="考场号"
+                    android:text="@string/forgetcet_room_num"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
                 <!-- 修改密码 -->
@@ -150,7 +150,7 @@
                     android:layout_height="fill_parent"
                     android:background="@null"
                     android:gravity="center_vertical"
-                    android:hint="考场号"
+                    android:hint="@string/forgetcet_room_num"
                     android:textColor="@color/black"
                     android:textColorHint="@color/gray"
                     android:textSize="15sp" >
@@ -176,7 +176,7 @@
                     android:layout_width="80dp"
                     android:layout_height="fill_parent"
                     android:gravity="center_vertical"
-                    android:text="座位号"
+                    android:text="@string/forgetcet_seat_num"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
@@ -186,7 +186,7 @@
                     android:layout_height="fill_parent"
                     android:background="@null"
                     android:gravity="center_vertical"
-                    android:hint="座位号"
+                    android:hint="@string/forgetcet_seat_num"
                     android:textColor="@color/black"
                     android:textColorHint="@color/gray"
                     android:textSize="15sp" >
@@ -205,7 +205,7 @@
                 android:layout_marginTop="29dp"
                 android:background="@drawable/btn_click"
                 android:gravity="center"
-                android:text="查询"
+                android:text="@string/query"
                 android:textColor="@color/white"
                 android:textSize="15sp" />
 
@@ -221,7 +221,7 @@
                     android:layout_marginLeft="6dp"
                     android:background="#00000000"
                     android:gravity="left|center_vertical"
-                    android:text="忘记准考证号?"
+                    android:text="@string/forgetcet_txt3"
                     android:textColor="#7EC0EE"
                     android:textSize="7.5pt" />
             </RelativeLayout>

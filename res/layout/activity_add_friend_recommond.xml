@@ -15,26 +15,26 @@
             <TextView
                 android:gravity="left"
                 android:padding="3dip"
-                android:text="补考课程"
+                android:text="@string/subject_make_up"
                 android:textColor="@color/black" />
 
             <TextView
                 android:gravity="center_horizontal"
                 android:padding="3dip"
-                android:text="成绩    "
+                android:text="@string/subject_score"
                 android:textColor="@color/black" >
             </TextView>
 
             <TextView
                 android:gravity="center_horizontal"
                 android:padding="3dip"
-                android:text="挂科率    "
+                android:text="@string/subject_failing_rate"
                 android:textColor="@color/black" />
 
             <TextView
                 android:gravity="center_horizontal"
                 android:padding="3dip"
-                android:text="        " />
+                android:text="@string/blank2" />
         </TableRow>
     </TableLayout>
 

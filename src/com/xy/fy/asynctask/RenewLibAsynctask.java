@@ -37,9 +37,10 @@ public class RenewLibAsynctask extends AsyncTask<String, String, String> {
   @Override
   protected String doInBackground(String... params) {
     // TODO Auto-generated method stub
+    Util.getRenewParmas(mActivity, params[0]);
     String url = HttpUtilMc.LIB_URL + "/servlet/RenewServlet?data="
-        + URLEncoder.encode(Util.getBindLibParmas(mActivity, params[0]))
-        + "&viewstate=" + URLEncoder.encode(StaticVarUtil.viewstate);
+        + StaticVarUtil.renewData
+        + "&viewstate=" + StaticVarUtil.renewViewstate;
     return HttpUtilMc.queryStringForPost(url);
   }
 

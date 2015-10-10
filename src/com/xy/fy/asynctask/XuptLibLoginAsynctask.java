@@ -1,7 +1,5 @@
 package com.xy.fy.asynctask;
 
-import java.net.URLEncoder;
-
 import com.mc.util.HttpUtilMc;
 import com.mc.util.Util;
 import com.xy.fy.util.StaticVarUtil;
@@ -29,9 +27,10 @@ public class XuptLibLoginAsynctask extends AsyncTask<String, String, String> {
   @Override
   protected String doInBackground(String... params) {
     // TODO Auto-generated method stub
+    Util.getBindLibParmas(mActivity, libName);
     String url = HttpUtilMc.LIB_URL+ "/servlet/LoginServlet?data="
-        + URLEncoder.encode(Util.getBindLibParmas(mActivity, libName)) + "&viewstate="
-        + URLEncoder.encode(StaticVarUtil.viewstate);
+        + StaticVarUtil.libData + "&viewstate="
+        + StaticVarUtil.libViewstate;
     return HttpUtilMc.queryStringForPost(url);
   }
 

@@ -32,7 +32,7 @@
             android:layout_centerHorizontal="true"
             android:background="@drawable/transparent"
             android:gravity="center_vertical"
-            android:text="帮助与反馈"
+            android:text="@string/help_and_feedback"
             android:textColor="@color/white"
             android:textSize="18sp" />
     </RelativeLayout>
@@ -50,7 +50,7 @@
             android:layout_height="fill_parent"
             android:enabled="true"
             android:gravity="top"
-            android:hint="请输入您要反馈的问题"
+            android:hint="@string/feedback_txt1"
             android:inputType="textMultiLine"
             android:scrollbars="vertical"
             android:textColor="@color/black"
@@ -70,7 +70,7 @@
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:ems="11"
-            android:hint="请输入您的手机号"
+            android:hint="@string/feedback_txt2"
             android:inputType="number"
             android:textColor="@color/black"
             android:textColorHint="@color/gray"
@@ -84,7 +84,7 @@
             android:layout_weight="3"
             android:background="@drawable/btn_click"
             android:gravity="center"
-            android:text="提交"
+            android:text="@string/commit"
             android:textColor="@color/white"
             android:textSize="7pt" />
     </LinearLayout>
@@ -93,7 +93,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="您的联系方式有助于我们沟通和解决问题，仅工作人员可见。QQ客服群：278384923"
+        android:text="@string/feedback_txt3"
         android:textColor="@color/gray"
         android:textSize="9pt" />
 

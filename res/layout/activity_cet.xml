@@ -36,7 +36,7 @@
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/transparent"
                 android:gravity="center_vertical"
-                android:text="四六级查分"
+                android:text="@string/query_cet"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 
@@ -87,7 +87,7 @@
                         android:layout_width="80dp"
                         android:layout_height="fill_parent"
                         android:gravity="center_vertical"
-                        android:text="准考证号"
+                        android:text="@string/candidate_number_title"
                         android:textColor="@color/black"
                         android:textSize="15sp" />
 
@@ -97,7 +97,7 @@
                         android:layout_height="fill_parent"
                         android:background="@null"
                         android:gravity="center_vertical"
-                        android:hint="输入准考证号"
+                        android:hint="@string/candidate_number_tips"
                         android:inputType="numberDecimal"
                         android:textColor="@color/black"
                         android:textSize="15sp" >
@@ -123,7 +123,7 @@
                         android:layout_width="80dp"
                         android:layout_height="fill_parent"
                         android:gravity="center_vertical"
-                        android:text="姓名"
+                        android:text="@string/name_title"
                         android:textColor="@color/black"
                         android:textSize="15sp" />
                     <!-- 修改密码 -->
@@ -135,7 +135,7 @@
                         android:background="@null"
                         android:ems="2"
                         android:gravity="center_vertical"
-                        android:hint="输入姓名"
+                        android:hint="@string/name_tips"
                         android:maxEms="2"
                         android:textColor="@color/black"
                         android:textColorHint="@color/gray"
@@ -155,7 +155,7 @@
                     android:layout_marginTop="29dp"
                     android:background="@drawable/btn_click"
                     android:gravity="center"
-                    android:text="查询"
+                    android:text="@string/query"
                     android:textColor="@color/white"
                     android:textSize="15sp" />
             </LinearLayout>
@@ -172,7 +172,7 @@
                     android:layout_marginLeft="6dp"
                     android:background="#00000000"
                     android:gravity="left|center_vertical"
-                    android:text="无法查询？"
+                    android:text="@string/query_ask"
                     android:textColor="#7EC0EE"
                     android:textSize="7.5pt"
                     android:visibility="gone" />

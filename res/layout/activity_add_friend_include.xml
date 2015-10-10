@@ -54,7 +54,7 @@
             android:background="@drawable/button_friend_recommand"
             android:focusable="true"
             android:gravity="center"
-            android:text="好友推荐"
+            android:text="@string/friend_recommand"
             android:textColor="@drawable/friend_list_textcolor"
             android:textSize="6pt" />
 
@@ -65,7 +65,7 @@
             android:layout_weight="1"
             android:background="@drawable/button_friend_apply"
             android:gravity="center"
-            android:text="好友申请"
+            android:text="@string/friend_apply"
             android:textColor="@drawable/friend_list_textcolor"
             android:textSize="6pt" />
     </LinearLayout>

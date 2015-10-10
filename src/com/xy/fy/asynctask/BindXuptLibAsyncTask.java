@@ -33,11 +33,13 @@ public class BindXuptLibAsyncTask extends AsyncTask<String, String, String> {
   @Override
   protected String doInBackground(String... params) {
     // TODO Auto-generated method stub
-    String url = HttpUtilMc.LIB_URL + "/servlet/BindXuptScoreServlet?data="
-        + URLEncoder.encode(Util.getBindLibParmas(mActivity, StaticVarUtil.student.getAccount()))
-        + "&viewstate=" + URLEncoder.encode(StaticVarUtil.viewstate) + "&type=" + type;
+    Util.getAccountParmas(mActivity, StaticVarUtil.student.getAccount());
+    String accountData = StaticVarUtil.accountData;
+    String url = HttpUtilMc.LIB_URL + "/servlet/BindXuptScoreServlet?data=" + accountData
+        + "&viewstate=" + StaticVarUtil.accountViewstate + "&type=" + type;
     // if (type.equals("1")) {
-    url = url + "&lib=" + URLEncoder.encode(Util.getBindLibParmas(mActivity, libName));
+    Util.getBindLibNameParmas(mActivity, StaticVarUtil.LIB_NAME);
+    url = url + "&lib=" + StaticVarUtil.bindLibName;
     // }
     return HttpUtilMc.queryStringForPost(url);
   }
@@ -48,7 +50,7 @@ public class BindXuptLibAsyncTask extends AsyncTask<String, String, String> {
     super.onPostExecute(result);
     System.out.println("mcmcmc" + result);
     onPostExecute.returnResult(result);
-  
+
   }
 
 }

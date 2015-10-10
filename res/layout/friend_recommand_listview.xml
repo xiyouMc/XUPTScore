@@ -22,21 +22,22 @@
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text= "nick"
+            android:text= "@string/nick"
             android:textSize="9pt"
             android:textColor="@color/black"/>
         <TextView 
             android:id="@+id/message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="xiyou'jisuanji"
+            android:text="@string/xiyou_jisuanji"
             android:textSize="7pt"/>    </LinearLayout>
     <Button 
         android:id="@+id/add_friend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="加好友"
+        android:text="@string/add_a_friend"
         android:layout_alignTop="@id/head_photo"
         android:layout_alignParentRight="true"
         />
 </RelativeLayout>
+

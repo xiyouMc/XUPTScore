@@ -25,7 +25,7 @@
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/transparent"
                 android:gravity="center_vertical"
-                android:text="2013-2014 第一学期"
+                android:text="@string/card_txt1"
                 android:textColor="@drawable/change_button_text_color"
                 android:textSize="20dp" />
             <!-- 菜单 -->
@@ -58,26 +58,26 @@
                 <TextView
                     android:gravity="center_horizontal"
                     android:padding="3dip"
-                    android:text="课程名称 " />
+                    android:text="@string/card_subject" />
                 <!-- android:background="#00aa00" -->
 
                 <TextView
                     android:gravity="center_horizontal"
                     android:padding="3dip"
-                    android:text="最终成绩  " >
+                    android:text="@string/card_final_score" >
                 </TextView>
                 <!-- android:background="#0000aa" -->
 
                 <TextView
                     android:gravity="center_horizontal"
                     android:padding="3dip"
-                    android:text="平时成绩  " />
+                    android:text="@string/card_class_score" />
                 <!-- android:background="#8B1A1A" -->
 
                 <TextView
                     android:gravity="center_horizontal"
                     android:padding="3dip"
-                    android:text="卷面成绩   " />
+                    android:text="@string/card_paper_score" />
             </TableRow>
         </TableLayout>
 

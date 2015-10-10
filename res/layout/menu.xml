@@ -26,7 +26,7 @@
             android:layout_height="fill_parent"
             android:gravity="center_vertical"
             android:paddingLeft="15dp"
-            android:text="游客"
+            android:text="@string/guest"
             android:textColor="@color/white"
             android:textSize="20sp" />
     </LinearLayout>
@@ -67,7 +67,7 @@
                     android:layout_height="fill_parent"
                     android:gravity="center_vertical"
                     android:paddingLeft="15dp"
-                    android:text="成绩查询"
+                    android:text="@string/score_query"
                     android:textColor="@drawable/change_menu_text_color"
                     android:textSize="18dp" />
 
@@ -105,7 +105,7 @@
                         android:layout_height="fill_parent"
                         android:gravity="center_vertical"
                         android:paddingLeft="15dp"
-                        android:text="补考好友"
+                        android:text="@string/friend_make_up"
                         android:textColor="@drawable/change_menu_text_color"
                         android:textSize="18dp" />
 
@@ -154,7 +154,7 @@
                     android:layout_height="fill_parent"
                     android:gravity="center_vertical"
                     android:paddingLeft="15dp"
-                    android:text="成绩统计"
+                    android:text="@string/score_statistic"
                     android:textColor="@drawable/change_menu_text_color"
                     android:textSize="18dp" />
 
@@ -188,7 +188,7 @@
                     android:layout_height="fill_parent"
                     android:gravity="center_vertical"
                     android:paddingLeft="15dp"
-                    android:text="我的排名"
+                    android:text="@string/my_rank"
                     android:textColor="@drawable/change_menu_text_color"
                     android:textSize="18dp" />
 
@@ -219,7 +219,7 @@
                     android:layout_height="fill_parent"
                     android:gravity="center_vertical"
                     android:paddingLeft="15dp"
-                    android:text="四六级查分"
+                    android:text="@string/query_cet"
                     android:textColor="@drawable/change_menu_text_color"
                     android:textSize="18dp" />
 
@@ -250,7 +250,7 @@
                     android:layout_height="fill_parent"
                     android:gravity="center_vertical"
                     android:paddingLeft="15dp"
-                    android:text="我的图书馆"
+                    android:text="@string/my_lib"
                     android:textColor="@drawable/change_menu_text_color"
                     android:textSize="18dp" />
 
@@ -287,7 +287,7 @@
                     android:layout_height="fill_parent"
                     android:gravity="center_vertical"
                     android:paddingLeft="15dp"
-                    android:text="意见反馈"
+                    android:text="@string/opinion_and_feedback"
                     android:textColor="@drawable/change_menu_text_color"
                     android:textSize="18dp" />
 
@@ -318,7 +318,7 @@
                     android:layout_height="fill_parent"
                     android:gravity="center_vertical"
                     android:paddingLeft="15dp"
-                    android:text="选项"
+                    android:text="@string/option"
                     android:textColor="@drawable/change_menu_text_color"
                     android:textSize="18dp" />
 
@@ -350,7 +350,7 @@
                     android:layout_height="fill_parent"
                     android:gravity="center_vertical"
                     android:paddingLeft="15dp"
-                    android:text="关于"
+                    android:text="@string/about"
                     android:textColor="@drawable/change_menu_text_color"
                     android:textSize="18dp" />
 
@@ -382,7 +382,7 @@
                     android:layout_height="fill_parent"
                     android:gravity="center_vertical"
                     android:paddingLeft="15dp"
-                    android:text="注销"
+                    android:text="@string/log_out"
                     android:textColor="@drawable/change_menu_text_color"
                     android:textSize="18dp" />
 

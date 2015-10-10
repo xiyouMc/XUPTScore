@@ -70,10 +70,10 @@ public class StaticVarUtil {
   public static final int MENU_ABOUT = 7;
 
   public static final int FILE_SELECT = 1;
-  
+
   public static final int SHARE = 8;
   public static final int IDEA_BACK_TOAST = 9;
-  
+
   public static final int CHECK_VERSION = 10;
   public static final int BMOB_CHAT = 11;
   // 一组常用的handler数据
@@ -100,20 +100,32 @@ public class StaticVarUtil {
   public static String smallPicPath = null;// 小图片路径
 
   public static Message message = null;// 点击的说说
-  
+
   public static ArrayList<BookList> allBookList = null;
   public static String LIB_NAME = "";
   public static int requestTimes = 0;
-  
+
   public static int loginTimes = 0;
-  public static ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime()
-      .availableProcessors() + 1);// 根据系统资源定义线程池大小
+  public static ExecutorService executorService = Executors
+      .newFixedThreadPool(Runtime.getRuntime().availableProcessors() + 1);// 根据系统资源定义线程池大小
 
   public static String lastMessageTime = null;// 最后一个说说的发表时间
   public static String session = null;// 请求中要使用的到的session
   public static String fileName = null;// 缓存的文件名
   public static String data = null;
   public static String viewstate = null;
+
+  public static String libData = null;
+  public static String libViewstate = null;
+
+  public static String renewData = null;
+  public static String renewViewstate = null;
+
+  public static String accountData = null;
+  public static String accountViewstate = null;
+  public static String libNameViewstate = null;
+  
+  public static String bindLibName = null;
   public static long time;
   public static String content = null;
   public static String cet_account = null;
@@ -238,8 +250,8 @@ public class StaticVarUtil {
    * @return
    */
   public static boolean isPraised(int messageId, Context context) {
-    SharedPreferences share = context
-        .getSharedPreferences("messageIsPraise", Activity.MODE_PRIVATE);
+    SharedPreferences share = context.getSharedPreferences("messageIsPraise",
+        Activity.MODE_PRIVATE);
     // 如果数据库中有这个键值对
     if (share.getBoolean(messageId + "", false) == true) {
       return true;
@@ -253,8 +265,8 @@ public class StaticVarUtil {
    * @param messageId
    */
   public static void praise(int messageId, Context context) {
-    SharedPreferences share = context
-        .getSharedPreferences("messageIsPraise", Activity.MODE_PRIVATE);
+    SharedPreferences share = context.getSharedPreferences("messageIsPraise",
+        Activity.MODE_PRIVATE);
     Editor editor = share.edit();
     editor.putBoolean(messageId + "", true);
     editor.commit();
