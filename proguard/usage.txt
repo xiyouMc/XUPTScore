@@ -35,9 +35,12 @@ android.support.v4.app.BackStackRecord:
     350:353:public java.lang.CharSequence getBreadCrumbTitle()
     357:360:public java.lang.CharSequence getBreadCrumbShortTitle()
     379:380:public android.support.v4.app.FragmentTransaction add(android.support.v4.app.Fragment,java.lang.String)
+    389:390:public android.support.v4.app.FragmentTransaction add(int,android.support.v4.app.Fragment,java.lang.String)
     421:421:public android.support.v4.app.FragmentTransaction replace(int,android.support.v4.app.Fragment)
     425:430:public android.support.v4.app.FragmentTransaction replace(int,android.support.v4.app.Fragment,java.lang.String)
     434:439:public android.support.v4.app.FragmentTransaction remove(android.support.v4.app.Fragment)
+    461:466:public android.support.v4.app.FragmentTransaction detach(android.support.v4.app.Fragment)
+    470:475:public android.support.v4.app.FragmentTransaction attach(android.support.v4.app.Fragment)
     479:479:public android.support.v4.app.FragmentTransaction setCustomAnimations(int,int)
     484:488:public android.support.v4.app.FragmentTransaction setCustomAnimations(int,int,int,int)
     492:493:public android.support.v4.app.FragmentTransaction setTransition(int)
@@ -71,7 +74,9 @@ android.support.v4.app.FragmentActivity$FragmentTag:
 android.support.v4.app.FragmentManager:
     public static final int POP_BACK_STACK_INCLUSIVE
     139:139:public android.support.v4.app.FragmentTransaction openTransaction()
+    public abstract boolean executePendingTransactions()
     public abstract android.support.v4.app.Fragment findFragmentById(int)
+    public abstract android.support.v4.app.Fragment findFragmentByTag(java.lang.String)
     public abstract void popBackStack()
     public abstract boolean popBackStackImmediate()
     public abstract void popBackStack(java.lang.String,int)
@@ -116,18 +121,12 @@ android.support.v4.app.FragmentManagerImpl$3
 android.support.v4.app.FragmentManagerImpl$4
 android.support.v4.app.FragmentPagerAdapter
 android.support.v4.app.FragmentStatePagerAdapter
-android.support.v4.app.FragmentTabHost:
-    private android.widget.FrameLayout mRealTabContent
-    130:132:public FragmentTabHost(android.content.Context)
-    135:137:public FragmentTabHost(android.content.Context,android.util.AttributeSet)
-    140:172:private void initFragmentTabHost(android.content.Context,android.util.AttributeSet)
-    186:190:public void setup(android.content.Context,android.support.v4.app.FragmentManager)
-    193:205:public void setup(android.content.Context,android.support.v4.app.FragmentManager,int)
-    208:215:private void ensureContent()
-    223:242:public void addTab(android.widget.TabHost$TabSpec,java.lang.Class,android.os.Bundle)
+android.support.v4.app.FragmentTabHost
+android.support.v4.app.FragmentTabHost$1
 android.support.v4.app.FragmentTabHost$DummyTabFactory
-android.support.v4.app.FragmentTabHost$TabInfo:
-    67:71:FragmentTabHost$TabInfo(java.lang.String,java.lang.Class,android.os.Bundle)
+android.support.v4.app.FragmentTabHost$SavedState
+android.support.v4.app.FragmentTabHost$SavedState$1
+android.support.v4.app.FragmentTabHost$TabInfo
 android.support.v4.app.FragmentTransaction:
     public static final int TRANSIT_ENTER_MASK
     public static final int TRANSIT_EXIT_MASK
@@ -137,9 +136,12 @@ android.support.v4.app.FragmentTransaction:
     public static final int TRANSIT_FRAGMENT_CLOSE
     public static final int TRANSIT_FRAGMENT_FADE
     public abstract android.support.v4.app.FragmentTransaction add(android.support.v4.app.Fragment,java.lang.String)
+    public abstract android.support.v4.app.FragmentTransaction add(int,android.support.v4.app.Fragment,java.lang.String)
     public abstract android.support.v4.app.FragmentTransaction replace(int,android.support.v4.app.Fragment)
     public abstract android.support.v4.app.FragmentTransaction replace(int,android.support.v4.app.Fragment,java.lang.String)
     public abstract android.support.v4.app.FragmentTransaction remove(android.support.v4.app.Fragment)
+    public abstract android.support.v4.app.FragmentTransaction detach(android.support.v4.app.Fragment)
+    public abstract android.support.v4.app.FragmentTransaction attach(android.support.v4.app.Fragment)
     public abstract boolean isEmpty()
     public abstract android.support.v4.app.FragmentTransaction setCustomAnimations(int,int)
     public abstract android.support.v4.app.FragmentTransaction setCustomAnimations(int,int,int,int)
@@ -1367,6 +1369,8 @@ com.actionbarsherlock.internal.view.menu.ActionMenuPresenter$HasPermanentMenuKey
 com.actionbarsherlock.internal.view.menu.ActionMenuPresenter$PopupPresenterCallback:
     680:680:private ActionMenuPresenter$PopupPresenterCallback(com.actionbarsherlock.internal.view.menu.ActionMenuPresenter)
     680:680:synthetic ActionMenuPresenter$PopupPresenterCallback(com.actionbarsherlock.internal.view.menu.ActionMenuPresenter,com.actionbarsherlock.internal.view.menu.ActionMenuPresenter$PopupPresenterCallback)
+com.actionbarsherlock.internal.view.menu.ActionMenuPresenter$SavedState
+com.actionbarsherlock.internal.view.menu.ActionMenuPresenter$SavedState$1
 com.actionbarsherlock.internal.view.menu.ActionMenuView:
     static final int MIN_CELL_SIZE
     static final int GENERATED_ITEM_PADDING
@@ -2509,8 +2513,6 @@ com.bmob.im.demo.config.BmobConstants:
     14:14:public BmobConstants()
 com.bmob.im.demo.config.Config:
     9:9:public Config()
-com.bmob.im.demo.ui.BaseActivity:
-    124:127:public void initTopBarForOnlyTitle(java.lang.String)
 com.bmob.im.demo.ui.ChatActivity:
     public static final int NEW_MESSAGE
 com.bmob.im.demo.ui.FragmentBase:
@@ -2776,14 +2778,15 @@ com.fima.cardsui.views.CardUI:
     370:373:public void clearCards()
 com.fima.cardsui.views.CardUI$OnRenderedListener:
     public abstract void onRendered()
-com.mc.asyntask.AsyntaskUtil
-com.mc.asyntask.AsyntaskUtil$ShowCardAsyntask
 com.mc.db.DBConnection:
     private static final java.lang.String DATABASE_NAME
     private static final int DATABASE_VERSION
-    105:111:public static void deleteUser(java.lang.String,android.content.Context)
+    108:114:public static void deleteUser(java.lang.String,android.content.Context)
+com.mc.db.DBConnection$LanguageSchema
 com.mc.db.DBConnection$UserSchema
-com.mc.request.asyn.CheckVersionAsyntask
+com.mc.fragment.BindLibFragment
+com.mc.fragment.BindLibFragment$OnLeftButtonClickListener
+com.mc.fragment.ShowLibFragment
 com.mc.util.BASE64:
     9:9:public BASE64()
     34:39:public static void main(java.lang.String[])
@@ -2835,16 +2838,17 @@ com.mc.util.HttpAssist:
 com.mc.util.HttpUtilMc:
     public static final java.lang.String IP
     public static final java.lang.String BASE_URL
+    public static final java.lang.String LIB_URL
     public static final java.lang.String XUPT_IP1
     public static final java.lang.String XUPT_IP2
     public static final java.lang.String xiyouMC_IP
     public static final java.lang.String XIYOUMC_BASE_IP
     22:22:public HttpUtilMc()
-    40:41:public static org.apache.http.client.methods.HttpGet getHttpGet(java.lang.String)
-    53:58:public static org.apache.http.HttpResponse getHttpResponse(org.apache.http.client.methods.HttpGet)
-    115:134:public static java.lang.String queryStringForPost(org.apache.http.client.methods.HttpPost)
-    140:160:public static java.lang.String queryStringForGet(java.lang.String)
-    171:179:private static boolean IsReachIP(java.lang.String)
+    44:45:public static org.apache.http.client.methods.HttpGet getHttpGet(java.lang.String)
+    57:62:public static org.apache.http.HttpResponse getHttpResponse(org.apache.http.client.methods.HttpGet)
+    119:138:public static java.lang.String queryStringForPost(org.apache.http.client.methods.HttpPost)
+    144:164:public static java.lang.String queryStringForGet(java.lang.String)
+    175:183:private static boolean IsReachIP(java.lang.String)
 com.mc.util.LogcatHelper:
     61:71:public void start()
     168:170:public static java.lang.String getFileName()
@@ -2853,14 +2857,19 @@ com.mc.util.LogcatHelper$LogDumper:
     89:112:public LogcatHelper$LogDumper(com.mc.util.LogcatHelper,java.lang.String,java.lang.String)
 com.mc.util.MyScrollView
 com.mc.util.Passport:
-    118:124:java.lang.String passport_encode(java.lang.String[])
-    129:137:public java.lang.String implode(java.lang.String,java.lang.String[])
-    141:155:public static java.lang.String toStringHex(java.lang.String)
+    123:129:java.lang.String passport_encode(java.lang.String[])
+    134:142:public java.lang.String implode(java.lang.String,java.lang.String[])
+    146:160:public static java.lang.String toStringHex(java.lang.String)
+com.mc.util.ProgressDialogUtil:
+    32:33:private void setMsg(java.lang.String)
 com.mc.util.RankUtils:
-    9:9:public RankUtils()
+    private static final int DEFAULTITEMSUM
+    20:20:public RankUtils()
 com.mc.util.SIMCardInfo:
     private java.lang.String IMSI
     52:64:public java.lang.String getProvidersName()
+com.mc.util.ScoreUtil:
+    5:5:public ScoreUtil()
 com.mc.util.ScrollViewLinearLayout
 com.mc.util.SystemBarTintManager:
     public static final int DEFAULT_TINT_COLOR
@@ -2895,8 +2904,9 @@ com.mc.util.Util:
     private static final java.lang.String TAG
     public static final java.lang.String infosFloder
     public static final java.lang.String LOGINFILE
-    42:42:public Util()
-    271:285:public static void uploadLoginMsg(android.content.Context)
+    public static final int CHANGE_PWD_RESULT
+    50:50:public Util()
+    433:446:public static void uploadLoginMsg(android.content.Context)
 com.mc.util.Util$1
 com.mc.util.VersionUpdate:
     private static final int DOWN_UPDATE
@@ -3503,35 +3513,20 @@ com.sun.mail.util.UUEncoderStream:
     98:100:public void setNameMode(java.lang.String,int)
 com.xy.fy.adapter.ChooseHistorySchoolExpandAdapter
 com.xy.fy.adapter.ChooseKindAdapter
+com.xy.fy.adapter.ChooseSchoolExpandAdapter
 com.xy.fy.adapter.Commect
 com.xy.fy.adapter.CommentAdapter
 com.xy.fy.adapter.CommentAdapter$ViewHolder
+com.xy.fy.asynctask.RenewLibAsynctask:
+    51:52:private void ShowLibMessage(com.xy.fy.adapter.LibAdapter)
 com.xy.fy.main.BuildConfig
 com.xy.fy.main.MainActivity:
     private static final java.lang.String TAG
-    private static final int DEFAULTITEMSUM
     private static final int PIC
     private static final int PHO
     private static final int RESULT
-    private android.widget.Button chooseCollege
-    private android.widget.Button chooseMsgKind
-    private android.widget.Button chooseMsgSort
     private static final int GO_HOME
     private static final int GO_LOGIN
-    1055:1097:private void rankListViewListener()
-    1482:1495:private int judgeCollegeId()
-    1503:1544:protected void chooseCollege()
-    1558:1563:private void refresh(int,int,int)
-    1569:1585:private void saveHistory()
-    1591:1602:private java.util.ArrayList readHistory2()
-    146:146:static synthetic int access$54()
-    181:181:static synthetic android.widget.SimpleAdapter access$56(com.xy.fy.main.MainActivity)
-    154:154:static synthetic android.widget.Button access$58(com.xy.fy.main.MainActivity)
-com.xy.fy.main.MainActivity$24
-com.xy.fy.main.MainActivity$25
-com.xy.fy.main.MainActivity$25$1
-com.xy.fy.main.MainActivity$39
-com.xy.fy.main.MainActivity$40
 com.xy.fy.main.Manifest
 com.xy.fy.main.Manifest$permission
 com.xy.fy.main.R:
@@ -3546,11 +3541,12 @@ com.xy.fy.main.R$drawable
 com.xy.fy.main.R$id
 com.xy.fy.main.R$integer
 com.xy.fy.main.R$layout
+com.xy.fy.main.R$menu
 com.xy.fy.main.R$raw
 com.xy.fy.main.R$string
 com.xy.fy.main.R$style
 com.xy.fy.main.R$styleable:
-    3063:3063:public R$styleable()
+    3251:3251:public R$styleable()
 com.xy.fy.singleton.Comment
 com.xy.fy.singleton.Message:
     3:3:public Message()
@@ -3596,7 +3592,7 @@ com.xy.fy.util.ConnectionUtil:
     public static final int NETWORKTYPE_WIFI
     19:19:public ConnectionUtil()
     38:74:private static boolean isFastMobileNetwork(android.content.Context)
-    91:112:public static int getNetWorkType(android.content.Context)
+    91:111:public static int getNetWorkType(android.content.Context)
 com.xy.fy.util.ExpressionUtil
 com.xy.fy.util.FileUtils:
     12:12:public FileUtils()
@@ -3608,8 +3604,7 @@ com.xy.fy.util.OpenFileDialog:
     public static final java.lang.String sEmpty
     private static final java.lang.String sOnErrorMsg
     23:23:public OpenFileDialog()
-com.xy.fy.util.ShortcutUtils:
-    8:8:public ShortcutUtils()
+com.xy.fy.util.ShortcutUtils
 com.xy.fy.util.StaticVarUtil:
     public static final java.lang.String QUERY_SCORE
     public static final java.lang.String CHANGE_PW
@@ -3641,22 +3636,25 @@ com.xy.fy.util.StaticVarUtil:
     public static final int END_SUCCESS
     public static final int END_FAIL
     public static final int MENU_CET
+    public static final int MENU_LIB
     public static final java.lang.String ACCOUNT
     public static final java.lang.String PASSWORD
     public static final java.lang.String USER_INFO
     public static final java.lang.String IS_REMEMBER
-    29:29:public StaticVarUtil()
-    119:129:public static com.xy.fy.singleton.Student parseJsonToStudent(java.lang.String)
-    149:171:public static com.xy.fy.singleton.Message getItemMessage(java.lang.String)
-    181:194:public static java.util.ArrayList getAllMessage(java.lang.String)
-    203:208:public static void collect(int,android.content.Context)
-    218:223:public static boolean isCollect(int,android.content.Context)
-    234:240:public static boolean isPraised(int,android.content.Context)
-    249:254:public static void praise(int,android.content.Context)
-    263:279:public static java.util.ArrayList getAllComments(java.lang.String)
+    public static final java.lang.String LANGUAGE_INFO
+    public static final java.lang.String LANGUAGE
+    30:30:public StaticVarUtil()
+    142:152:public static com.xy.fy.singleton.Student parseJsonToStudent(java.lang.String)
+    172:194:public static com.xy.fy.singleton.Message getItemMessage(java.lang.String)
+    204:217:public static java.util.ArrayList getAllMessage(java.lang.String)
+    226:231:public static void collect(int,android.content.Context)
+    241:246:public static boolean isCollect(int,android.content.Context)
+    257:263:public static boolean isPraised(int,android.content.Context)
+    272:277:public static void praise(int,android.content.Context)
+    286:302:public static java.util.ArrayList getAllComments(java.lang.String)
 com.xy.fy.util.ViewUtil:
-    18:18:public ViewUtil()
-    53:70:public static void showDialog(java.lang.String,java.lang.String,android.app.Activity)
+    19:19:public ViewUtil()
+    57:76:public static void showDialog(java.lang.String,java.lang.String,android.app.Activity,boolean)
 com.xy.fy.util.ViewUtil$1
 com.xy.fy.util.ViewUtil$2
 com.xy.fy.view.CustomListView:
@@ -3672,6 +3670,7 @@ com.xy.fy.view.CustomListView:
 com.xy.fy.view.HistoryCollege
 com.xy.fy.view.ToolClass:
     7:7:public ToolClass()
+    271:289:public static void initData()
     300:302:public static void main(java.lang.String[])
 javax.mail.AuthenticationFailedException:
     private static final long serialVersionUID

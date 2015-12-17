@@ -14,6 +14,7 @@ import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -21,23 +22,29 @@ import java.util.regex.Pattern;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.MultiPartEmail;
 
+import com.mc.db.DBConnection;
+import com.nrs.utils.HttpAssistFile;
+import com.xy.fy.util.StaticVarUtil;
+
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Environment;
 import android.telephony.TelephonyManager;
+import android.util.DisplayMetrics;
 import android.util.Log;
-
-import com.mc.db.DBConnection;
-import com.nrs.utils.HttpAssistFile;
-import com.xy.fy.util.StaticVarUtil;
 
 @SuppressLint("SimpleDateFormat")
 public class Util {
@@ -47,6 +54,7 @@ public class Util {
   private final static String TAG = "util";
   public final static String infosFloder = "/xuptscore/devInfos";
   public final static String LOGINFILE = "login.log";
+  public final static int CHANGE_PWD_RESULT = 100;
 
   public static boolean isDebug(Context context) {
     try {
@@ -57,19 +65,21 @@ public class Util {
       return false;
     }
   }
+
   private static Context context;
+
   public static void setContext(Context ctx) {
     if (context == null && ctx != null) {
-        context = ctx.getApplicationContext();
+      context = ctx.getApplicationContext();
     }
-}
+  }
 
-public static Context getContext() {
+  public static Context getContext() {
     if (context == null) {
-        // TODO
+      // TODO
     }
     return context;
-}
+  }
 
   public static void getRequestParmas(Context context, String data) {
     long time = System.currentTimeMillis();
@@ -140,7 +150,7 @@ public static Context getContext() {
       if (!checkData.equals(account)) {
         getAccountParmas(context, account);// 递归再次计算，直到计算出正确的
       }
-      StaticVarUtil.libNameViewstate = time_s;//为了校验 libname,使用同一个密钥
+      StaticVarUtil.libNameViewstate = time_s;// 为了校验 libname,使用同一个密钥
       realData = URLEncoder.encode(realData);
 
       StaticVarUtil.accountData = realData;
@@ -158,7 +168,7 @@ public static Context getContext() {
     // String s = new char[]{3,2,3,4,3,8,3,8,3,2,3,2}.toString();
     try {
       String realData = Passport.jiami(libName, String.valueOf(StaticVarUtil.time));
-     
+
       String checkData = Util.checkRankRequestData(realData, StaticVarUtil.libNameViewstate);
       if (!checkData.equals(libName)) {
         getBindLibNameParmas(context, libName);// 递归再次计算，直到计算出正确的
@@ -172,7 +182,7 @@ public static Context getContext() {
     }
   }
 
-  public static void getRenewParmas(Context context, String renewData) {
+  public static void getRenewParmas(String renewData) {
 
     long time = System.currentTimeMillis();
     // String s = new char[]{3,2,3,4,3,8,3,8,3,2,3,2}.toString();
@@ -184,7 +194,7 @@ public static Context getContext() {
       String checkData = Util.checkRankRequestData(realData, time_s);
 
       if (!checkData.equals(renewData)) {
-        getRenewParmas(context, renewData);// 递归再次计算，直到计算出正确的
+        getRenewParmas(renewData);// 递归再次计算，直到计算出正确的
       }
       realData = URLEncoder.encode(realData);
 
@@ -195,6 +205,29 @@ public static Context getContext() {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
+  }
+
+  public static void setLanguageShare(Activity mActivity) {
+    SharedPreferences preferences = mActivity.getSharedPreferences(StaticVarUtil.LANGUAGE_INFO,
+        mActivity.MODE_PRIVATE);
+    int postion = preferences.getInt(StaticVarUtil.LANGUAGE, 3);
+    Resources res = mActivity.getResources();
+    Configuration config = res.getConfiguration();
+    if (postion == 1 || (!res.getConfiguration().locale.getCountry().isEmpty()
+        && !res.getConfiguration().locale.getCountry().equals("CN"))) {// English
+      config.locale = Locale.ENGLISH;
+      postion = 1;
+    } else {
+      config.locale = Locale.CHINESE;
+      postion = 0;
+    }
+    Editor editor = preferences.edit();
+    editor.putInt(StaticVarUtil.LANGUAGE, postion);
+
+    editor.commit();
+    
+    DisplayMetrics dm = res.getDisplayMetrics();
+    res.updateConfiguration(config, dm);
   }
 
   /**

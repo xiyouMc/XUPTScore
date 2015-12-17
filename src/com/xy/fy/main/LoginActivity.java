@@ -121,16 +121,16 @@ public class LoginActivity extends Activity {
         if (Util.isFastDoubleClick()) {
           return;
         }
-//        login();
-        Intent intent = new Intent();
-        intent.setClass(LoginActivity.this, MainActivity.class);
-        if (progressDialog != null) {
-          progressDialog.dismiss();
-        }
-        StaticVarUtil.student.setAccount("aaaa");
-        StaticVarUtil.student.setPassword("aaaa");
-        // progressDialog.cancel();
-        startActivity(intent);
+        login();
+//        Intent intent = new Intent();
+//        intent.setClass(LoginActivity.this, MainActivity.class);
+//        if (progressDialog != null) {
+//          progressDialog.dismiss();
+//        }
+//        StaticVarUtil.student.setAccount("aaaa");
+//        StaticVarUtil.student.setPassword("aaaa");
+//         progressDialog.cancel();
+//        startActivity(intent);
       }
     });
     this.selectLanguage.setOnClickListener(new OnClickListener() {
@@ -140,7 +140,7 @@ public class LoginActivity extends Activity {
         // TODO Auto-generated method stub
         Intent intent = new Intent();
         intent.setClass(LoginActivity.this, LanguageActivity.class);
-        
+        intent.putExtra("optionType", "Login");
         startActivity(intent);
       }
     });

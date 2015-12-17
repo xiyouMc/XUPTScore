@@ -5,6 +5,7 @@ import java.util.Locale;
 
 import com.mc.util.CrashHandler;
 import com.mc.util.H5Log;
+import com.mc.util.H5Toast;
 import com.mc.util.HttpUtilMc;
 import com.mc.util.Util;
 import com.xy.fy.asynctask.GetPicAsynctask;
@@ -40,18 +41,8 @@ public class WelcomeActivity extends Activity {
     super.onCreate(savedInstanceState);
 
     Util.setContext(getApplicationContext());
-    SharedPreferences preferences = getSharedPreferences(StaticVarUtil.LANGUAGE_INFO, MODE_PRIVATE);
-    int postion = preferences.getInt(StaticVarUtil.LANGUAGE, 3);
-    Resources res = getResources();
-    Configuration config = res.getConfiguration();
-    if (postion == 1) {// English
-      config.locale = Locale.ENGLISH;
-    } else {
-      config.locale = Locale.CHINESE;
-    }
-    DisplayMetrics dm = res.getDisplayMetrics();
-    res.updateConfiguration(config, dm);
-    
+    Util.setLanguageShare(WelcomeActivity.this);
+
     try {
       if (!Util.isDebug(getApplicationContext())) {
         CrashHandler crashHandler = CrashHandler.getInstance();

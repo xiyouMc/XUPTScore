@@ -2,12 +2,15 @@ package com.bmob.im.demo.ui;
 
 import java.io.File;
 import java.util.List;
+import java.util.Locale;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -36,6 +39,7 @@ import com.bmob.im.demo.view.HeaderLayout.onLeftImageButtonClickListener;
 import com.bmob.im.demo.view.HeaderLayout.onRightImageButtonClickListener;
 import com.bmob.im.demo.view.dialog.DialogTips;
 import com.mc.util.H5Toast;
+import com.mc.util.Util;
 import com.xy.fy.main.R;
 import com.xy.fy.util.FileUtils;
 import com.xy.fy.util.StaticVarUtil;
@@ -65,6 +69,7 @@ public class BaseActivity extends FragmentActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     // TODO Auto-generated method stub
+    Util.setLanguageShare(this);
     super.onCreate(savedInstanceState);
     userManager = BmobUserManager.getInstance(this);
     manager = BmobChatManager.getInstance(this);
@@ -285,6 +290,38 @@ public class BaseActivity extends FragmentActivity {
   public boolean dispatchTouchEvent(MotionEvent ev) {
     // TODO Auto-generated method stub
     return isCanTouch ? super.dispatchTouchEvent(ev) : true;
+  }
+
+  @Override
+  protected void onResume() {
+    // TODO Auto-generated method stub
+    super.onResume();
+//    Resources res = getResources();
+//    Configuration config = res.getConfiguration();
+//    if (!(getResources().getConfiguration().locale.getCountry().equals("CN"))) {// English
+//      config.locale = Locale.ENGLISH;
+//    } else {
+//      config.locale = Locale.CHINESE;
+//    }
+//    DisplayMetrics dm = res.getDisplayMetrics();
+//    res.updateConfiguration(config, dm);
+//    StaticVarUtil.quit();
+  }
+
+  @Override
+  protected void onStart() {
+    // TODO Auto-generated method stub
+    super.onStart();
+//    Resources res = getResources();
+//    Configuration config = res.getConfiguration();
+//    if (!(getResources().getConfiguration().locale.getCountry().equals("CN"))) {// English
+//      config.locale = Locale.ENGLISH;
+//    } else {
+//      config.locale = Locale.CHINESE;
+//    }
+//    DisplayMetrics dm = res.getDisplayMetrics();
+//    res.updateConfiguration(config, dm);
+//    StaticVarUtil.quit();
   }
 
 }

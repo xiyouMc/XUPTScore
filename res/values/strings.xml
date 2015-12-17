@@ -156,6 +156,7 @@
     <string name="md_comment">评论</string>
     <string name="pub_publish">发布消息</string>
     <string name="setting_change_pwd">修改密码</string>
+    <string name="setting">设置</string>
     <string name="language">多语言</string>
     <string name="save">保存</string>
     <string name="chinese">简体中文</string>
@@ -224,4 +225,5 @@
     <string name="photo">拍照</string>
     <string name="setPhoto">设置头像</string>
     <string name="querying">正在查询</string>
+    <string name="bind">绑定账号</string>
 </resources>
