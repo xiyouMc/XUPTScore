@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/headPhoto"
-            android:text="昵称"
+            android:text="@string/add_nick"
             android:textColor="#FF8C00"
             android:textSize="18dp" />
 
@@ -42,7 +42,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:paddingRight="5dp"
-            android:text="15:30:30"
+            android:text="@string/md_txt2"
             android:textColor="@color/dimgray"
             android:textSize="12dp" />
 
@@ -55,7 +55,7 @@
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/time"
             android:paddingRight="10dp"
-            android:text="1991-05-29"
+            android:text="@string/md_txt3"
             android:textColor="@color/dimgray"
             android:textSize="12dp" />
     </RelativeLayout>
@@ -78,7 +78,7 @@
             android:id="@+id/text"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="我是帅哥哥王玉超"
+            android:text="@string/md_txt4"
             android:textColor="@color/black"
             android:textSize="16dp" />
 
@@ -109,7 +109,7 @@
             android:background="@drawable/message_collect_no"
             android:gravity="right|center_vertical"
             android:paddingRight="5dp"
-            android:text="1111"
+            android:text="@string/md_txt5"
             android:textColor="#FF8C00"
             android:textSize="12dp" />
 
@@ -124,7 +124,7 @@
             android:background="@drawable/message_comment"
             android:gravity="right|center_vertical"
             android:paddingRight="5dp"
-            android:text="1111"
+            android:text="@string/md_txt5"
             android:textColor="#FF8C00"
             android:textSize="12dp" />
 
@@ -139,7 +139,7 @@
             android:background="@drawable/message_praise_no"
             android:gravity="right|center_vertical"
             android:paddingRight="5dp"
-            android:text="1111"
+            android:text="@string/md_txt5"
             android:textColor="#FF8C00"
             android:textSize="12dp" />
     </RelativeLayout>

@@ -3,7 +3,9 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#F8F8FF"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"  
+    android:clipToPadding="false" >
 
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -19,20 +21,20 @@
             android:layout_centerHorizontal="true"
             android:background="@drawable/transparent"
             android:gravity="center_vertical"
-            android:text="西安邮电大学"
+            android:text="@string/school"
             android:textColor="@drawable/change_button_text_color"
             android:textSize="19dp" />
 
         <Button
             android:id="@+id/butMenu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:background="@drawable/button_menu"
             android:gravity="left"
-            android:textColor="#FF8C00"
-            android:textSize="14sp" />
+            android:paddingLeft="-5dp"
+             />
     </RelativeLayout>
 
     <LinearLayout
@@ -52,8 +54,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dip"
                 android:fontFamily="sans-serif-thin"
-                android:text="By "
-                android:textColor="#33B6EA"
+                android:text="@string/by"
+                android:textColor="@color/change_up"
                 android:textSize="18sp" />
             <TextView
                 android:id="@+id/mc"
@@ -61,8 +63,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dip"
                 android:fontFamily="sans-serif-thin"
-                android:text="MC"
-                android:textColor="#33B6EA"
+                android:text="@string/mc"
+                android:textColor="@color/change_up"
                 android:layout_toRightOf="@id/by"
                 android:textSize="19sp" />
             <TextView
@@ -73,11 +75,12 @@
                 android:layout_marginLeft="8dip"
                 android:layout_toRightOf="@id/by"
                 android:fontFamily="sans-serif-thin"
-                android:text="For Xiyou"
-                android:textColor="#33B6EA"
+                android:text="@string/for_xu"
+                android:textColor="@color/change_up"
                 android:textSize="22sp" />
         </RelativeLayout>
 
+      
         <com.fima.cardsui.views.CardUI
             android:id="@+id/cardsview"
             android:layout_width="fill_parent"

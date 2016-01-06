@@ -2,8 +2,8 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- 按下去改变状态 -->
-    <item android:drawable="@drawable/menu_about_down" android:state_pressed="true"/>
+    <item android:drawable="@drawable/iconfont_about_down" android:state_pressed="true"/>
     <!-- 默认 -->
-    <item android:drawable="@drawable/menu_about_up" android:state_enabled="true"/>
+    <item android:drawable="@drawable/iconfont_about" android:state_enabled="true"/>
 
 </selector>

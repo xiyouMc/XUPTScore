@@ -6,13 +6,13 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:background="#F8F8FF"
         android:orientation="vertical" >
 
         <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="50dp"
+            android:layout_height="47dp"
             android:background="@drawable/main_title_bar"
             android:orientation="horizontal" >
 
@@ -20,11 +20,10 @@
 
             <Button
                 android:id="@+id/butMenu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="5dp"
                 android:background="@drawable/button_menu"
                 android:gravity="center_vertical"
                 android:textColor="#FF8C00"
@@ -37,101 +36,211 @@
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/transparent"
                 android:gravity="center_vertical"
-                android:text="关于"
+                android:text="@string/about" 
                 android:textColor="@color/white"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/share"
+                android:layout_width="28dip"
+                android:layout_height="28dip"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/share"
+                android:gravity="center_vertical"
+                android:textColor="#FF8C00"
+                android:textSize="14sp"
+                android:visibility="visible" />
         </RelativeLayout>
+
+        
+        <ImageView
+            android:id="@+id/code"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center_horizontal"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/qrcode" />
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:paddingTop="20dp" >
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#EDEDED" />
 
             <LinearLayout
+                android:id="@+id/checkVersion"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
+                android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingTop="70dp" >
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp" >
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingBottom="10dp"
-                    android:text="西邮成绩榜    "
-                    android:textColor="@color/black"
-                    android:textSize="19dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="10dp"
-                    android:text="V"
-                    android:textColor="@color/grey"
-                    android:textSize="18dp" />
+                    android:text="@string/current_version"
+                    android:textColor="#595959"
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/version"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingBottom="10dp"
-                    android:text="1.1"
-                    android:textColor="@color/grey"
-                    android:textSize="16dp" />
+                    android:textColor="#595959"
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
-                android:text="\n开发者：西邮Mc，Abel\n\n负责单位：西安邮电3G手机实验室\n\n反馈方式：18291994584\n\n联系方式：694449212@qq.com"
-                android:textColor="@color/black"
-                android:textSize="18dp" />
+                android:layout_width="match_parent"
+                android:layout_height="0.3dp"
+                android:background="#EDEDED" />
 
-            <Button
-                android:id="@+id/checkversion"
+            <LinearLayout
+                android:id="@+id/guanwang"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="#00000000"
-                android:drawableLeft="@drawable/emotionstore_newtips"
-                android:gravity="left|center_vertical"
-                android:text="检测新版本"
-                android:textColor="#7EC0EE"
-                android:textSize="18dp" />
+                android:layout_height="60dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp" >
 
-            <!--
-                 <TextView
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="5dp"
+                    android:text="@string/official_website"
+                    android:textColor="#595959"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/ip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#595959"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0.3dp"
+                android:background="#EDEDED" />
+
+            <LinearLayout
+                android:id="@+id/email"
+                android:layout_width="fill_parent"
+                android:layout_height="60dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="5dp"
+                    android:text="@string/email_name"
+                    android:textColor="#595959"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/email_address"
+                    android:textColor="#595959"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0.3dp"
+                android:background="#EDEDED" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="60dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="5dp"
+                    android:text="@string/address1"
+                    android:textColor="#595959"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/address2"
+                    android:textColor="#595959"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0.3dp"
+                android:background="#EDEDED" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="60dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="5dp"
+                    android:text="@string/accountability_unit"
+                    android:textColor="#595959"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/producer"
+                    android:textColor="#595959"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
-                android:text="\n意见反馈"
-                android:textColor="@color/black"
-                android:textSize="18dp" />-->
+                android:gravity="center_vertical"
+                android:paddingLeft="20dp" >
+
+                <Button
+                    android:id="@+id/checkversion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:background="#00000000"
+                    android:paddingLeft="10dp"
+                    android:text="@string/check_for_update"
+                    android:textColor="#7EC0EE"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/newTip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/emotionstore_newtips" />
+            </RelativeLayout>
         </LinearLayout>
-
-        <!--
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:background="#FDF5E6"
-            android:orientation="vertical" >
-
-            <EditText
-                android:id="@+id/idea"
-                android:layout_width="fill_parent"
-                android:layout_height="200dp"
-                android:layout_marginLeft="10dip"
-                android:layout_marginRight="10dip"
-                android:layout_marginTop="5dip"
-                android:background="@drawable/chatfrom_bg_new_fmessage_normal"
-                android:gravity="top"
-                android:paddingLeft="15dp"
-                android:paddingTop="6dp"
-                android:singleLine="false"
-                android:textSize="10pt" />
-        </LinearLayout>-->
     </LinearLayout>
 
 </ScrollView>

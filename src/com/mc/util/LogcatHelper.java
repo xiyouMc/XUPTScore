@@ -20,10 +20,9 @@ import android.os.Environment;
 public class LogcatHelper {
 
 	private static LogcatHelper INSTANCE = null;
-	private static String PATH_LOGCAT;
+	private String PATH_LOGCAT = null;
 	private LogDumper mLogDumper = null;
 	private int mPId;
-	private final static String LOG_FILE_DIR = "scorelog";
 
 	/**
 	 * 
@@ -31,6 +30,7 @@ public class LogcatHelper {
 	 * 
 	 * */
 	public void init(Context context) {
+		String LOG_FILE_DIR = "scorelog";
 		if (Environment.getExternalStorageState().equals(
 				Environment.MEDIA_MOUNTED)) {// 优先保存到SD卡中
 			PATH_LOGCAT = Environment.getExternalStorageDirectory()
@@ -60,7 +60,14 @@ public class LogcatHelper {
 	public void start() {
 		if (mLogDumper == null)
 			mLogDumper = new LogDumper(String.valueOf(mPId), PATH_LOGCAT);
-		mLogDumper.start();
+		/**
+		 * 改进 thread的start 防止 java.lang.IllegalThreadStateException: Thread
+		 * already started
+		 */
+		if (!mLogDumper.isAlive()) {
+			mLogDumper.start();
+		}
+
 	}
 
 	public void stop() {

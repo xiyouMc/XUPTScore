@@ -9,6 +9,7 @@
 
     <ImageView
         android:id="@+id/imageLargePic"
+        android:contentDescription="@string/app_name"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_centerHorizontal="true"

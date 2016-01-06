@@ -1,18 +1,26 @@
 package com.xy.fy.util;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.PixelFormat;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
+import android.media.MediaScannerConnection;
+import android.net.Uri;
+import android.util.Log;
 
 /**
  * 图片更改类，更改圆角图片，更改图片大小
@@ -163,6 +171,77 @@ public class BitmapUtil {
 		// make a Drawable from Bitmap to allow to set the Bitmap
 		// to the ImageView, ImageButton or what ever
 		return resizedBitmap;
+	}
+
+	/**
+	 * 保存文件，并加入到 数据库
+	 * 
+	 * @param bm
+	 * @param fileName
+	 * @throws IOException
+	 */
+	public static void saveFileAndDB(Context context, Bitmap bm, String fileName) {
+		try {
+			File dirFile = new File(StaticVarUtil.PATH);
+			if (!dirFile.exists()) {
+				dirFile.mkdir();
+			}
+			File myCaptureFile = new File(StaticVarUtil.PATH + fileName);
+			BufferedOutputStream bos = new BufferedOutputStream(
+					new FileOutputStream(myCaptureFile));
+			bm.compress(Bitmap.CompressFormat.JPEG, 80, bos);
+			updateGallery(context, StaticVarUtil.PATH + fileName);
+			bos.flush();
+			bos.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	public static Bitmap drawableToBitmap(Drawable drawable) {
+
+		Bitmap bitmap = Bitmap.createBitmap(
+
+		drawable.getIntrinsicWidth(),
+
+		drawable.getIntrinsicHeight(),
+
+		drawable.getOpacity() != PixelFormat.OPAQUE ? Bitmap.Config.ARGB_8888
+
+		: Bitmap.Config.RGB_565);
+
+		Canvas canvas = new Canvas(bitmap);
+
+		// canvas.setBitmap(bitmap);
+
+		drawable.setBounds(0, 0, drawable.getIntrinsicWidth(),
+				drawable.getIntrinsicHeight());
+
+		drawable.draw(canvas);
+
+		return bitmap;
+
+	}
+
+	/**
+	 * 将图片加入数据库
+	 * 
+	 * @param filename
+	 */
+	private static void updateGallery(Context context, String filename)// filename是我们的文件全名，包括后缀哦
+	{
+		MediaScannerConnection.scanFile(context, new String[] { filename },
+				null, new MediaScannerConnection.OnScanCompletedListener() {
+					public void onScanCompleted(String path, Uri uri) {
+						Log.i("ExternalStorage", "Scanned " + path + ":");
+						Log.i("ExternalStorage", "-> uri=" + uri);
+					}
+				});
 	}
 
 	/**

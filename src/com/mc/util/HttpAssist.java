@@ -31,7 +31,7 @@ public class HttpAssist {
          
         try {  
         	 String RequestURL = HttpUtilMc.BASE_URL
-     				+ "changeuserphoto.jsp?username="
+     				+ "changeuserphoto.jsp?type=JPEG&username="
      				+ username
      				;
             URL url = new URL(RequestURL);  

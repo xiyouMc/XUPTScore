@@ -10,10 +10,50 @@
 # For more details, see
 #   http://developer.android.com/guide/developing/tools/proguard.html
 
+-renamesourcefileattribute SourceFile
+-keepattributes SourceFile,LineNumberTable
 # Add any project specific keep options here:
--dontwarn com.mc.xml.model.** 
--keep class com.mc.xml.model.** { *; }
+-keep class android.net.http.SslError
+-keep class android.webkit.**{*;}
+-dontwarn cn.sharesdk.sina.weibo.**
+-keep class cn.sharesdk.**{*;}
+-keep class com.sina.**{*;}
+-keep class m.framework.**{*;}
 
+#-ignorewarnings
+# 这里根据具体的SDK版本修改
+-libraryjars libs/BmobIM_V1.1.9beta_20150820.jar
+-libraryjars libs/BmobSDK_V3.4.3_0820.jar
+
+-keepattributes Signature
+-dontwarn cn.bmob.v3.**
+
+-keep class cn.bmob.v3.** {*;}
+-keep class cn.bmob.push.** {*;}
+-keep class cn.bmob.im.**{*;}
+-keep class com.xy.fy.main.MainActivity.**{*;}
+
+
+# 保证继承自BmobObject、BmobUser类的JavaBean不被混淆
+-keep class com.example.bmobexample.bean.Person{*;}
+-keep class com.example.bmobexample.bean.MyUser{*;}
+-keep class com.example.bmobexample.bean.BankCard{*;}
+-keep class com.example.bmobexample.file.Movie{*;}
+-keep class com.example.bmobexample.file.Song{*;}
+-keep class com.example.bmobexample.relationaldata.Weibo{*;}
+-keep class com.example.bmobexample.relationaldata.Comment{*;}
+
+-keep class java.lang.reflect.**{*;}
+-keep class com.baidu.mapapi.**{*;}
+-keep class com.baidu.platform.**{*;}
+-dontwarn org.apache.commons.mail.**
+-keep class org.apache.commons.mail.**{*;}
+-dontwarn org.apache.harmony.awt.**
+-keep class org.apache.harmony.awt.**{*;}
+-dontwarn com.sun.mail.imap.**
+-keep class com.sun.mail.imap.**{*;}
+-dontwarn javax.activation.**
+-keep class javax.activation.**{*;}
 # If your project uses WebView with JS, uncomment the following
 # and specify the fully qualified class name to the JavaScript interface
 # class:

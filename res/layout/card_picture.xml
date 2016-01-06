@@ -45,19 +45,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
-                android:baselineAlignBottom="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/url1" />
+                android:baselineAlignBottom="true" >
 
-            <TextView
-                android:id="@+id/description"
-                style="@style/CardText"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:layout_marginLeft="8dp"
-                android:maxLines="7"
-                android:text="This is My house" />
-            <!-- android:ellipsize="end" -->
+                <TextView
+                    android:id="@+id/description"
+                    style="@style/CardText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="8dp"
+                    android:maxLines="7"
+                    android:text="This is My house" />
+                <!-- android:ellipsize="end" -->
+            </ImageView>
         </LinearLayout>
     </LinearLayout>
 

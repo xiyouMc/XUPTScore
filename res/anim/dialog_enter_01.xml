@@ -3,6 +3,6 @@
       
     <translate  
         android:fromYDelta="100%p"        
-        android:duration="600"  
+        android:duration="900"  
         />  
 </set>  
