@@ -94,7 +94,7 @@ public class LoginActivity extends Activity {
 
     StaticVarUtil.quit();
     StaticVarUtil.activities.add(LoginActivity.this);
-    
+
     setStatusStyle();
     helper = new DBConnection(LoginActivity.this);
     sqLiteDatabase = helper.getWritableDatabase();
@@ -121,7 +121,7 @@ public class LoginActivity extends Activity {
         if (Util.isFastDoubleClick()) {
           return;
         }
-        login();
+         login();
 //        Intent intent = new Intent();
 //        intent.setClass(LoginActivity.this, MainActivity.class);
 //        if (progressDialog != null) {
@@ -129,12 +129,12 @@ public class LoginActivity extends Activity {
 //        }
 //        StaticVarUtil.student.setAccount("aaaa");
 //        StaticVarUtil.student.setPassword("aaaa");
-//         progressDialog.cancel();
+//        progressDialog.cancel();
 //        startActivity(intent);
       }
     });
     this.selectLanguage.setOnClickListener(new OnClickListener() {
-      
+
       @Override
       public void onClick(View v) {
         // TODO Auto-generated method stub
@@ -245,7 +245,8 @@ public class LoginActivity extends Activity {
   }
 
   private boolean initData() {
-    this.progressDialog = ViewUtil.getProgressDialog(LoginActivity.this, this.getString(R.string.logining,""));
+    this.progressDialog = ViewUtil.getProgressDialog(LoginActivity.this,
+        this.getString(R.string.logining, ""));
     // 获取数据库
     boolean isSDcardExist = Environment.getExternalStorageState()
         .equals(android.os.Environment.MEDIA_MOUNTED); // 判断sd卡是否存在
@@ -459,7 +460,7 @@ public class LoginActivity extends Activity {
     this.rememberPassword = (CheckBox) findViewById(R.id.butRememberPassword);
     this.login = (Button) findViewById(R.id.butLogin);
     this.selectLanguage = (TextView) findViewById(R.id.setLoginLanguage);
-    
+
     /*
      * Animation animation = AnimationUtils.loadAnimation(LoginActivity.this, R.anim.translate);
      * LinearLayout layout = (LinearLayout) findViewById(R.id.layout);

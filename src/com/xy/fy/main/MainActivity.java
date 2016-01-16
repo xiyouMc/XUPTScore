@@ -262,7 +262,11 @@ public class MainActivity extends BaseActivity implements EventListener {
       setCurrentMenuItem(StaticVarUtil.MENU_SETTING);
       slidingMenu.toggle();// 页面跳转
       slidingMenu.setContent(R.layout.activity_setting);
-      menuSetting();
+      try {
+        menuSetting();
+      } catch (Exception e) {
+        // TODO: handle exception
+      }
     } else {
       if (StaticVarUtil.listItem != null) {
         nickname.setText(StaticVarUtil.student.getName());
@@ -270,7 +274,7 @@ public class MainActivity extends BaseActivity implements EventListener {
         return;
       }
       GetScoreAsyntask getScoreAsyntask = new GetScoreAsyntask();
-      ProgressDialogUtil.getInstance(MainActivity.this).show();
+      // ProgressDialogUtil.getInstance(MainActivity.this).show();
       getScoreAsyntask.execute();
 
     }
@@ -1411,10 +1415,17 @@ public class MainActivity extends BaseActivity implements EventListener {
       // TODO Auto-generated method stub
       String url = "";
       String canshu = Util.getURL(StaticVarUtil.QUERY_SCORE);
+      System.out.println(TAG + "canshu:" + canshu + " \n + " + StaticVarUtil.listHerf.toString());
       String[] can = canshu.split("&");
       String url_str = can[0];
       String xm = can[1];
-      name = xm.split("=")[1];
+      try {
+        name = xm.split("=")[1];
+      } catch (ArrayIndexOutOfBoundsException e) {
+        // TODO: handle exception
+        return "error";
+      }
+     
       String gnmkdm = can[2];
       try {
         url = HttpUtilMc.BASE_URL + "xscjcx.aspx?session=" + StaticVarUtil.session + "&url="
@@ -1434,6 +1445,7 @@ public class MainActivity extends BaseActivity implements EventListener {
     protected void onPostExecute(String result) {
       // TODO Auto-generated method stub
       super.onPostExecute(result);
+      System.out.println("score:" + result);
       // 显示用户名
       if (!name.isEmpty()) {
         StaticVarUtil.student.setName(name);
@@ -1474,7 +1486,7 @@ public class MainActivity extends BaseActivity implements EventListener {
 
             menu1();
           } else {
-            ViewUtil.showToast(getApplicationContext(), "查询失败");
+            ViewUtil.showToast(getApplicationContext(), "查询失败,请重试。");
           }
 
         } else {
@@ -1813,19 +1825,20 @@ public class MainActivity extends BaseActivity implements EventListener {
     show_lib_layout.setVisibility(View.VISIBLE);
     bind_layout.setVisibility(View.GONE);
     ListView libList = (ListView) findViewById(R.id.book_list);
-    adapter = new LibAdapter(allBookList, MainActivity.this,new LibAdapter.OnAdapter(){
+    adapter = new LibAdapter(allBookList, MainActivity.this, new LibAdapter.OnAdapter() {
 
       @Override
       public void onAdapter() {
         // TODO Auto-generated method stub
         adapter.notifyDataSetChanged();
       }
-      
+
     });
     libList.setAdapter(adapter);
   }
 
   private LibAdapter adapter;
+
   private void bind(final String libName, final LinearLayout bind_layout) {
     BindXuptLibAsyncTask bindXuptLibAsyncTask = new BindXuptLibAsyncTask(MainActivity.this, libName,
         "1", new BindXuptLibAsyncTask.OnPostExecute() {
