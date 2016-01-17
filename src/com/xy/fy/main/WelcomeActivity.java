@@ -53,26 +53,31 @@ public class WelcomeActivity extends Activity {
       e.printStackTrace();
     }
 
-    int alwaysFinish = Settings.Global.getInt(getContentResolver(),
-        Settings.Global.ALWAYS_FINISH_ACTIVITIES, 0);
-    if (alwaysFinish == 1) {
-      Dialog dialog = null;
-      dialog = new AlertDialog.Builder(this)
-          .setMessage("由于您已开启'不保留活动',导致i呼部分功能无法正常使用.我们建议您点击左下方'设置'按钮,在'开发者选项'中关闭'不保留活动'功能.")
-          .setNegativeButton("取消", new OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-              dialog.dismiss();
-            }
-          }).setPositiveButton("设置", new OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-              Intent intent = new Intent(Settings.ACTION_APPLICATION_DEVELOPMENT_SETTINGS);
-              startActivity(intent);
-            }
-          }).create();
-      dialog.show();
+    try {
+      int alwaysFinish = Settings.Global.getInt(getContentResolver(),
+          Settings.Global.ALWAYS_FINISH_ACTIVITIES, 0);
+      if (alwaysFinish == 1) {
+        Dialog dialog = null;
+        dialog = new AlertDialog.Builder(this)
+            .setMessage("由于您已开启'不保留活动',导致i呼部分功能无法正常使用.我们建议您点击左下方'设置'按钮,在'开发者选项'中关闭'不保留活动'功能.")
+            .setNegativeButton("取消", new OnClickListener() {
+              @Override
+              public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+              }
+            }).setPositiveButton("设置", new OnClickListener() {
+              @Override
+              public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(Settings.ACTION_APPLICATION_DEVELOPMENT_SETTINGS);
+                startActivity(intent);
+              }
+            }).create();
+        dialog.show();
+      }
+    } catch (Throwable e) {
+      // TODO: handle exception
     }
+    
 
     H5Log.d(getApplicationContext(), String.valueOf(Util.isDebugable(getApplicationContext())));
     final View view = View.inflate(this, R.layout.activity_welcome, null);
@@ -91,54 +96,54 @@ public class WelcomeActivity extends Activity {
         String account = preferences.getString(StaticVarUtil.ACCOUNT, "");
         String password = preferences.getString(StaticVarUtil.PASSWORD, "");
         boolean isRemember = preferences.getBoolean(StaticVarUtil.IS_REMEMBER, false);
-        if (isRemember == true) {
-
-          if (Util.isExternalStorageWritable()) {
-            StaticVarUtil.PATH = "/sdcard/xuptscore/";// 设置文件目录
-          } else {
-            StaticVarUtil.PATH = "/data/data/com.xy.fy.main/";// 设置文件目录
-          }
-
-          if (!new File(StaticVarUtil.PATH).exists()) {
-            new File(StaticVarUtil.PATH).mkdirs();
-          }
-          // ProgressDialog progressDialog = ViewUtil.getProgressDialog(WelcomeActivity.this,
-          // "正在登录");
-          GetPicAsynctask getPicAsyntask = new GetPicAsynctask(WelcomeActivity.this, account,
-              password, null, new GetPicAsynctask.GetPic() {
-
-            @Override
-            public void onReturn(String result) {
-              // TODO Auto-generated method stub
-
-              if ("error".equals(result)) {
-                GetImageMsgAsytask getImageMsgAsytask = new GetImageMsgAsytask();
-                getImageMsgAsytask.execute();
-              } else if ("no_user".equals(result)) {
-                GetImageMsgAsytask getImageMsgAsytask = new GetImageMsgAsytask();
-                getImageMsgAsytask.execute();
-              } else if (HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
-                try {
-                  Intent i = new Intent();
-                  i.setClass(getApplicationContext(), LoginActivity.class);
-                  // 如果网络原因，则直接返回0|0
-                  i.putExtra("image",
-                      !HttpUtilMc.CONNECT_EXCEPTION.equals(result) ? result : "0|0|0");//
-                  startActivity(i);
-                  finish();
-                } catch (Exception e) {
-                  // TODO: handle exception
-                  Log.i("WelcomeActivity", e.toString());
-                }
-              }
-            }
-          });
-          // progressDialog.show();
-          getPicAsyntask.execute();
-        } else {
+//        if (isRemember == true) {
+//
+//          if (Util.isExternalStorageWritable()) {
+//            StaticVarUtil.PATH = "/sdcard/xuptscore/";// 设置文件目录
+//          } else {
+//            StaticVarUtil.PATH = "/data/data/com.xy.fy.main/";// 设置文件目录
+//          }
+//
+//          if (!new File(StaticVarUtil.PATH).exists()) {
+//            new File(StaticVarUtil.PATH).mkdirs();
+//          }
+//          // ProgressDialog progressDialog = ViewUtil.getProgressDialog(WelcomeActivity.this,
+//          // "正在登录");
+//          GetPicAsynctask getPicAsyntask = new GetPicAsynctask(WelcomeActivity.this, account,
+//              password, null, new GetPicAsynctask.GetPic() {
+//
+//            @Override
+//            public void onReturn(String result) {
+//              // TODO Auto-generated method stub
+//
+//              if ("error".equals(result)) {
+//                GetImageMsgAsytask getImageMsgAsytask = new GetImageMsgAsytask();
+//                getImageMsgAsytask.execute();
+//              } else if ("no_user".equals(result)) {
+//                GetImageMsgAsytask getImageMsgAsytask = new GetImageMsgAsytask();
+//                getImageMsgAsytask.execute();
+//              } else if (HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
+//                try {
+//                  Intent i = new Intent();
+//                  i.setClass(getApplicationContext(), LoginActivity.class);
+//                  // 如果网络原因，则直接返回0|0
+//                  i.putExtra("image",
+//                      !HttpUtilMc.CONNECT_EXCEPTION.equals(result) ? result : "0|0|0");//
+//                  startActivity(i);
+//                  finish();
+//                } catch (Exception e) {
+//                  // TODO: handle exception
+//                  Log.i("WelcomeActivity", e.toString());
+//                }
+//              }
+//            }
+//          });
+//          // progressDialog.show();
+//          getPicAsyntask.execute();
+//        } else {
           GetImageMsgAsytask getImageMsgAsytask = new GetImageMsgAsytask();
           getImageMsgAsytask.execute();
-        }
+//        }
 
       }
 

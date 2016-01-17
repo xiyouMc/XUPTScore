@@ -2811,6 +2811,31 @@ com.mc.util.CustomRankListView:
     private static final float RATIO
     433:435:public void onFootLoadingComplete()
     442:446:public void onRefreshComplete()
+com.mc.util.H5Dialog:
+    private static final int BUTTON_BOTTOM
+    private android.widget.EditText promptEdit
+    69:73:public com.mc.util.H5Dialog setView(android.view.View)
+    77:81:public com.mc.util.H5Dialog setContentView(android.view.View)
+    97:101:public com.mc.util.H5Dialog setBackground(android.graphics.drawable.Drawable)
+    105:109:public com.mc.util.H5Dialog setBackgroundResource(int)
+    126:130:public com.mc.util.H5Dialog setTitle(int)
+    134:138:public com.mc.util.H5Dialog setTitle(java.lang.CharSequence)
+    142:146:public com.mc.util.H5Dialog setMessage(int)
+    179:196:public com.mc.util.H5Dialog setPositiveButton(java.lang.String,android.view.View$OnClickListener)
+    218:230:public com.mc.util.H5Dialog setPrompt(int,android.view.View$OnClickListener)
+    234:248:public com.mc.util.H5Dialog setNegativeButton(java.lang.String,android.view.View$OnClickListener)
+    252:256:public com.mc.util.H5Dialog setCanceledOnTouchOutside(boolean)
+    260:261:public com.mc.util.H5Dialog setOnDismissListener(android.content.DialogInterface$OnDismissListener)
+com.mc.util.H5Dialog$Builder:
+    385:397:public void setPositiveButton(java.lang.String,android.view.View$OnClickListener)
+    406:425:public void setNegativeButton(java.lang.String,android.view.View$OnClickListener)
+    428:472:public void setView(android.view.View)
+    499:502:public void setBackground(android.graphics.drawable.Drawable)
+    505:508:public void setBackgroundResource(int)
+    511:512:public void setCanceledOnTouchOutside(boolean)
+    269:269:static synthetic android.view.Window access$0(com.mc.util.H5Dialog$Builder)
+    264:264:static synthetic com.mc.util.H5Dialog access$2(com.mc.util.H5Dialog$Builder)
+com.mc.util.H5Dialog$Builder$1
 com.mc.util.H5Log:
     public static final java.lang.String TAG
     9:9:public H5Log()
@@ -3546,7 +3571,7 @@ com.xy.fy.main.R$raw
 com.xy.fy.main.R$string
 com.xy.fy.main.R$style
 com.xy.fy.main.R$styleable:
-    3251:3251:public R$styleable()
+    3270:3270:public R$styleable()
 com.xy.fy.singleton.Comment
 com.xy.fy.singleton.Message:
     3:3:public Message()

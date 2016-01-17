@@ -167,6 +167,7 @@ public class MainActivity extends BaseActivity implements EventListener {
   private Bitmap bitmap = null;// 修改头像
   private MyHandler mHandler;
   private Activity mActivity;
+  private static  boolean isCheck = false;
 
   @SuppressLint("ShowToast")
   @Override
@@ -179,7 +180,11 @@ public class MainActivity extends BaseActivity implements EventListener {
 
     mActivity = MainActivity.this;
 
-    BadgeUtil.resetBadgeCount(getApplicationContext());
+    try {
+      BadgeUtil.resetBadgeCount(getApplicationContext());
+    } catch (Exception e) {
+      // TODO: handle exception
+    }
     CheckVersionAsynctask checkVersionAsyntask = new CheckVersionAsynctask(this, false,
         new CheckVersionAsynctask.OnCheck() {
 
@@ -188,7 +193,10 @@ public class MainActivity extends BaseActivity implements EventListener {
             // TODO Auto-generated method stub
           }
         });
-    checkVersionAsyntask.execute();
+    if (!isCheck) {
+      checkVersionAsyntask.execute();
+      isCheck = true;
+    }
     shareUtil = new ShareUtil(getApplicationContext());
     share = shareUtil.showShare();
     softDeclare();// 将部分 变量 定义为弱引用
@@ -274,7 +282,7 @@ public class MainActivity extends BaseActivity implements EventListener {
         return;
       }
       GetScoreAsyntask getScoreAsyntask = new GetScoreAsyntask();
-      // ProgressDialogUtil.getInstance(MainActivity.this).show();
+      ProgressDialogUtil.getInstance(MainActivity.this).show();
       getScoreAsyntask.execute();
 
     }
@@ -1417,7 +1425,7 @@ public class MainActivity extends BaseActivity implements EventListener {
       String canshu = Util.getURL(StaticVarUtil.QUERY_SCORE);
       System.out.println(TAG + "canshu:" + canshu + " \n + " + StaticVarUtil.listHerf.toString());
       String[] can = canshu.split("&");
-      String url_str = can[0];
+      String url_str = "/" + can[0];
       String xm = can[1];
       try {
         name = xm.split("=")[1];
@@ -1425,7 +1433,7 @@ public class MainActivity extends BaseActivity implements EventListener {
         // TODO: handle exception
         return "error";
       }
-     
+
       String gnmkdm = can[2];
       try {
         url = HttpUtilMc.BASE_URL + "xscjcx.aspx?session=" + StaticVarUtil.session + "&url="
@@ -1447,7 +1455,7 @@ public class MainActivity extends BaseActivity implements EventListener {
       super.onPostExecute(result);
       System.out.println("score:" + result);
       // 显示用户名
-      if (!name.isEmpty()) {
+      if (name != null && !name.isEmpty()) {
         StaticVarUtil.student.setName(name);
       }
       nickname.setText(StaticVarUtil.student.getName());
@@ -2397,19 +2405,19 @@ public class MainActivity extends BaseActivity implements EventListener {
     return isCanTouch ? super.dispatchTouchEvent(ev) : true;
   }
 
-  @Override
-  protected void onRestart() {
-    // TODO Auto-generated method stub
-    super.onRestart();
-    Util.setLanguageShare(MainActivity.this);
-
-    if (StaticVarUtil.listItem != null) {
-      // 重新启动应用程序
-      Intent intent = mActivity.getIntent();
-      // intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-      // mActivity.closeApplication();
-      mActivity.overridePendingTransition(0, 0);
-      mActivity.startActivity(intent);
-    }
-  }
+//  @Override
+//  protected void onRestart() {
+//    // TODO Auto-generated method stub
+//    super.onRestart();
+//    Util.setLanguageShare(MainActivity.this);
+//
+//    if (StaticVarUtil.listItem != null) {
+//      // 重新启动应用程序
+//      Intent intent = mActivity.getIntent();
+//      // intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+//      // mActivity.closeApplication();
+//      mActivity.overridePendingTransition(0, 0);
+//      mActivity.startActivity(intent);
+//    }
+//  }
 }

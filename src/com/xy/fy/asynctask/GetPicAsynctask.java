@@ -30,6 +30,8 @@ public class GetPicAsynctask extends AsyncTask<Object, String, String> {
   private ProgressDialog progressDialog;
   private GetPic onResult;
 
+  private boolean isClick = false;
+
   public interface GetPic {
     void onReturn(String result);
   }
@@ -74,23 +76,40 @@ public class GetPicAsynctask extends AsyncTask<Object, String, String> {
               public void sync(Bitmap bitmap) {
                 // TODO Auto-generated method stub
                 // dialog.
+                // password.setText("");
+                if (progressDialog != null) {
+                  progressDialog.dismiss();
+                }
+                if (bitmap == null) {
+                  ViewUtil.showToast(mActivity, "程序员哥哥写了个bug,请重试。");
+                  return;
+                }
                 h5Dialog.setMessage("验证码").setBitmap(bitmap)
                     .setPositiveButton(R.string.h5_default_confirm, new View.OnClickListener() {
                   @Override
                   public void onClick(View v) {
+                    isClick = true;
                     h5Dialog.dismiss();
+                    // password.setText("");
+                    if (progressDialog != null) {
+                      progressDialog.show();
+                    }
                     request(session, h5Dialog.getPic());
                   }
                 }).setNegativeButton(R.string.h5_default_cancel, new View.OnClickListener() {
                   @Override
                   public void onClick(View v) {
                     h5Dialog.dismiss();
+                    // password.setText("");
+                    if (progressDialog != null) {
+                      progressDialog.dismiss();
+                    }
                   }
                 }).show();
+
               }
             });
-            getImageSync.execute();
-
+              getImageSync.execute();
           }
         } else {
           ViewUtil.showToast(mActivity, "服务器维护中。。。");
@@ -123,7 +142,7 @@ public class GetPicAsynctask extends AsyncTask<Object, String, String> {
     }
   }
 
-  private void request(String session, final String pic) {
+  private synchronized void request(String session, final String pic) {
     StaticVarUtil.session = session;
     StaticVarUtil.loginTimes = 0;// 将登陆次数置零
     LoginAsynctask loginAsyntask = new LoginAsynctask(mActivity, account, password, pic,
@@ -144,7 +163,15 @@ public class GetPicAsynctask extends AsyncTask<Object, String, String> {
                     progressDialog.dismiss();
                   }
                   // progressDialog.cancel();
-                } else {
+                } else if (result.equals("errorCode")){
+                  ViewUtil.showToast(mActivity, "请检查密码和验证码是否正确。");
+
+                  onResult.onReturn("error");
+                  // password.setText("");
+                  if (progressDialog != null) {
+                    progressDialog.dismiss();
+                  }
+                }else {
                   if (result.equals("no_user")) {
                     ViewUtil.showToast(mActivity, "账号不存在");
                     onResult.onReturn("no_user");

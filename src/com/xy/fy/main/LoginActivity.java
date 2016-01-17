@@ -8,6 +8,7 @@ import java.util.Locale;
 import com.mc.db.DBConnection;
 import com.mc.db.DBConnection.UserSchema;
 import com.mc.util.CircleImageView;
+import com.mc.util.H5Toast;
 import com.mc.util.HttpUtilMc;
 import com.mc.util.SystemBarTintManager;
 import com.mc.util.Util;
@@ -38,6 +39,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
 import android.view.KeyEvent;
@@ -122,6 +124,7 @@ public class LoginActivity extends Activity {
           return;
         }
          login();
+//         H5Toast.showToast(getApplicationContext(), "Õ¯¬Á≤ªŒ»∂®£¨«Î…‘∫Û°£");
 //        Intent intent = new Intent();
 //        intent.setClass(LoginActivity.this, MainActivity.class);
 //        if (progressDialog != null) {
@@ -342,7 +345,8 @@ public class LoginActivity extends Activity {
             // TODO Auto-generated method stub
 
             if ("error".equals(result)) {
-              password.setText("");
+//              password.setText("");
+              password.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
             } else if ("no_user".equals(result)) {
               account.setText("");
               password.setText("");

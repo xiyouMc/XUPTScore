@@ -122,7 +122,9 @@ public class SettingsFragment extends FragmentBase implements OnClickListener {
   }
 
   private void initData() {
-    tv_set_name.setText(BmobUserManager.getInstance(getActivity()).getCurrentUser().getUsername());
+    if (tv_set_name != null) {
+      tv_set_name.setText(BmobUserManager.getInstance(getActivity()).getCurrentUser().getUsername());
+    }
   }
 
   @Override

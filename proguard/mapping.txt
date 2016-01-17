@@ -16947,9 +16947,9 @@ com.bmob.im.demo.ui.fragment.SettingsFragment -> com.bmob.im.demo.ui.a.q:
     57:57:android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle) -> onCreateView
     63:66:void onActivityCreated(android.os.Bundle) -> onActivityCreated
     69:122:void initView() -> a
-    125:126:void initData() -> b
-    131:132:void onResume() -> onResume
-    137:196:void onClick(android.view.View) -> onClick
+    125:128:void initData() -> b
+    133:134:void onResume() -> onResume
+    139:198:void onClick(android.view.View) -> onClick
 com.bmob.im.demo.util.CharacterParser -> com.bmob.im.demo.d.a:
     int[] pyvalue -> b
     java.lang.String[] pystr -> a
@@ -17745,19 +17745,81 @@ com.mc.util.CustomRankListView$OnFootLoadingListener -> com.mc.util.g:
     void onFootLoading() -> a
 com.mc.util.CustomRankListView$OnRefreshListner -> com.mc.util.h:
     void onRefresh() -> a
-com.mc.util.H5Log -> com.mc.util.i:
+com.mc.util.H5Dialog -> com.mc.util.i:
+    boolean mCancel -> a
+    android.content.Context mContext -> b
+    android.app.AlertDialog mAlertDialog -> c
+    com.mc.util.H5Dialog$Builder mBuilder -> d
+    android.view.View mView -> e
+    int mTitleResId -> f
+    java.lang.CharSequence mTitle -> g
+    int mMessageResId -> h
+    java.lang.CharSequence mMessage -> i
+    android.widget.Button mPositiveButton -> j
+    android.widget.LinearLayout$LayoutParams mLayoutParams -> k
+    android.widget.Button mNegativeButton -> l
+    boolean mHasShow -> m
+    android.graphics.drawable.Drawable mBackgroundDrawable -> n
+    int mBackgroundResId -> o
+    android.view.View mMessageContentView -> p
+    android.content.DialogInterface$OnDismissListener mOnDismissListener -> q
+    android.graphics.Bitmap bitmap -> r
+    61:66:void show() -> a
+    85:89:com.mc.util.H5Dialog setBitmap(android.graphics.Bitmap) -> a
+    93:93:java.lang.String getPic() -> b
+    113:114:void dismiss() -> c
+    117:118:int dip2px(float) -> a
+    122:122:boolean isLollipop() -> d
+    150:154:com.mc.util.H5Dialog setMessage(java.lang.CharSequence) -> a
+    158:175:com.mc.util.H5Dialog setPositiveButton(int,android.view.View$OnClickListener) -> a
+    200:214:com.mc.util.H5Dialog setNegativeButton(int,android.view.View$OnClickListener) -> b
+    519:535:void setListViewHeightBasedOnChildren(android.widget.ListView) -> a
+    37:37:android.content.Context access$0(com.mc.util.H5Dialog) -> a
+    38:38:void access$1(com.mc.util.H5Dialog,android.app.AlertDialog) -> a
+    38:38:android.app.AlertDialog access$2(com.mc.util.H5Dialog) -> b
+    54:54:android.graphics.Bitmap access$3(com.mc.util.H5Dialog) -> c
+    40:40:android.view.View access$4(com.mc.util.H5Dialog) -> d
+    41:41:int access$5(com.mc.util.H5Dialog) -> e
+    42:42:java.lang.CharSequence access$6(com.mc.util.H5Dialog) -> f
+    43:43:int access$7(com.mc.util.H5Dialog) -> g
+    44:44:java.lang.CharSequence access$8(com.mc.util.H5Dialog) -> h
+    45:45:android.widget.Button access$9(com.mc.util.H5Dialog) -> i
+    46:46:android.widget.LinearLayout$LayoutParams access$10(com.mc.util.H5Dialog) -> j
+    47:47:android.widget.Button access$11(com.mc.util.H5Dialog) -> k
+    116:116:int access$12(com.mc.util.H5Dialog,float) -> a
+    51:51:int access$13(com.mc.util.H5Dialog) -> l
+    50:50:android.graphics.drawable.Drawable access$14(com.mc.util.H5Dialog) -> m
+    52:52:android.view.View access$15(com.mc.util.H5Dialog) -> n
+    36:36:boolean access$16(com.mc.util.H5Dialog) -> o
+    53:53:android.content.DialogInterface$OnDismissListener access$17(com.mc.util.H5Dialog) -> p
+com.mc.util.H5Dialog$Builder -> com.mc.util.j:
+    android.widget.TextView mTitleView -> b
+    android.widget.TextView mMessageView -> c
+    android.widget.ImageView image -> d
+    android.view.Window mAlertDialogWindow -> e
+    android.widget.LinearLayout mButtonLayout -> f
+    android.widget.EditText input -> g
+    com.mc.util.H5Dialog this$0 -> a
+    354:356:void setImage(android.graphics.Bitmap) -> a
+    359:360:void setTitle(int) -> a
+    363:364:void setTitle(java.lang.CharSequence) -> a
+    367:367:java.lang.String getPic() -> a
+    371:372:void setMessage(int) -> b
+    375:376:void setMessage(java.lang.CharSequence) -> b
+    475:496:void setContentView(android.view.View) -> a
+com.mc.util.H5Log -> com.mc.util.k:
     java.lang.String CURRENT_DEVICE_SPEC -> a
     com.mc.util.H5Log$LogListener logListener -> b
     27:28:void d(android.content.Context,java.lang.String) -> a
     31:37:void d(android.content.Context,java.lang.String,java.lang.String) -> a
     80:89:void sendLog(android.content.Context,java.lang.String,java.lang.String) -> b
-com.mc.util.H5Log$LogListener -> com.mc.util.j:
+com.mc.util.H5Log$LogListener -> com.mc.util.l:
     void onLog(java.lang.String,java.lang.String) -> a
-com.mc.util.H5Toast -> com.mc.util.k:
+com.mc.util.H5Toast -> com.mc.util.m:
     51:54:void showToast(android.content.Context,java.lang.String) -> a
-com.mc.util.HttpAssist -> com.mc.util.l:
+com.mc.util.HttpAssist -> com.mc.util.n:
     28:96:java.lang.String uploadFile(java.io.File,java.lang.String) -> a
-com.mc.util.HttpUtilMc -> com.mc.util.m:
+com.mc.util.HttpUtilMc -> com.mc.util.o:
     java.lang.String SERVER_ADDRESS -> a
     java.lang.String libURL -> b
     java.lang.String RENEW_URL -> c
@@ -17767,7 +17829,7 @@ com.mc.util.HttpUtilMc -> com.mc.util.m:
     76:81:org.apache.http.HttpResponse getHttpResponse(org.apache.http.client.methods.HttpPost) -> a
     88:111:java.lang.String queryStringForPost(java.lang.String) -> b
     187:187:boolean IsReachIP() -> a
-com.mc.util.LogcatHelper -> com.mc.util.n:
+com.mc.util.LogcatHelper -> com.mc.util.p:
     com.mc.util.LogcatHelper INSTANCE -> a
     java.lang.String PATH_LOGCAT -> b
     com.mc.util.LogcatHelper$LogDumper mLogDumper -> c
@@ -17776,7 +17838,7 @@ com.mc.util.LogcatHelper -> com.mc.util.n:
     49:52:com.mc.util.LogcatHelper getInstance(android.content.Context) -> b
     74:78:void stop() -> a
     174:176:java.lang.String getDateEN() -> b
-com.mc.util.LogcatHelper$LogDumper -> com.mc.util.o:
+com.mc.util.LogcatHelper$LogDumper -> com.mc.util.q:
     java.lang.Process logcatProc -> b
     java.io.BufferedReader mReader -> c
     boolean mRunning -> d
@@ -17785,7 +17847,7 @@ com.mc.util.LogcatHelper$LogDumper -> com.mc.util.o:
     java.io.FileOutputStream out -> f
     115:116:void stopLogs() -> a
     121:163:void run() -> run
-com.mc.util.Passport -> com.mc.util.p:
+com.mc.util.Passport -> com.mc.util.r:
     25:44:java.lang.String md5(java.lang.String) -> a
     49:57:java.lang.String base64_decode(java.lang.String) -> b
     61:62:java.lang.String base64_encode(java.lang.String) -> c
@@ -17794,7 +17856,7 @@ com.mc.util.Passport -> com.mc.util.p:
     105:117:java.lang.String passport_key(java.lang.String,java.lang.String) -> c
     164:170:java.lang.String jiami(java.lang.String,java.lang.String) -> d
     174:181:java.lang.String jiemi(java.lang.String,java.lang.String) -> e
-com.mc.util.ProgressDialogUtil -> com.mc.util.q:
+com.mc.util.ProgressDialogUtil -> com.mc.util.s:
     android.app.ProgressDialog dialog -> a
     android.app.Activity mContext -> b
     java.lang.String msg -> c
@@ -17802,7 +17864,7 @@ com.mc.util.ProgressDialogUtil -> com.mc.util.q:
     18:22:com.mc.util.ProgressDialogUtil getInstance(android.app.Activity) -> a
     35:36:void show() -> a
     39:40:void dismiss() -> b
-com.mc.util.RankUtils -> com.mc.util.r:
+com.mc.util.RankUtils -> com.mc.util.t:
     java.util.ArrayList allRankArrayList -> a
     java.util.ArrayList showRankArrayList -> b
     java.util.List userList -> c
@@ -17817,14 +17879,14 @@ com.mc.util.RankUtils -> com.mc.util.r:
     java.lang.String selectXq -> l
     47:92:void refeshRank(java.lang.String,boolean,android.content.Context) -> a
     98:103:void setListView(android.content.Context) -> a
-com.mc.util.SIMCardInfo -> com.mc.util.s:
+com.mc.util.SIMCardInfo -> com.mc.util.u:
     android.telephony.TelephonyManager telephonyManager -> a
     38:40:java.lang.String getNativePhoneNumber() -> a
-com.mc.util.ScoreUtil -> com.mc.util.t:
+com.mc.util.ScoreUtil -> com.mc.util.v:
     java.lang.String scoreJson -> a
     java.util.HashMap mapScoreOne -> b
     java.util.HashMap mapScoreTwo -> c
-com.mc.util.SystemBarTintManager -> com.mc.util.u:
+com.mc.util.SystemBarTintManager -> com.mc.util.w:
     java.lang.String sNavBarOverride -> a
     com.mc.util.SystemBarTintManager$SystemBarConfig mConfig -> b
     boolean mStatusBarAvailable -> c
@@ -17837,7 +17899,7 @@ com.mc.util.SystemBarTintManager -> com.mc.util.u:
     307:317:void setupStatusBarView(android.content.Context,android.view.ViewGroup) -> a
     320:333:void setupNavBarView(android.content.Context,android.view.ViewGroup) -> b
     53:53:java.lang.String access$0() -> a
-com.mc.util.SystemBarTintManager$SystemBarConfig -> com.mc.util.v:
+com.mc.util.SystemBarTintManager$SystemBarConfig -> com.mc.util.x:
     boolean mTranslucentStatusBar -> a
     boolean mTranslucentNavBar -> b
     int mStatusBarHeight -> c
@@ -17858,7 +17920,7 @@ com.mc.util.SystemBarTintManager$SystemBarConfig -> com.mc.util.v:
     488:488:boolean hasNavigtionBar() -> c
     498:498:int getNavigationBarHeight() -> d
     508:508:int getNavigationBarWidth() -> e
-com.mc.util.Util -> com.mc.util.w:
+com.mc.util.Util -> com.mc.util.y:
     android.content.Context context -> a
     long lastClickTime -> b
     61:65:boolean isDebug(android.content.Context) -> a
@@ -17892,10 +17954,10 @@ com.mc.util.Util -> com.mc.util.w:
     669:672:boolean hasDigitAndNum(java.lang.String) -> e
     683:693:java.lang.String getURL(java.lang.String) -> f
     700:709:java.lang.String getVersion(android.content.Context) -> g
-com.mc.util.Util$2 -> com.mc.util.x:
+com.mc.util.Util$2 -> com.mc.util.z:
     android.content.Context val$paramContext -> a
     459:466:void run() -> run
-com.mc.util.VersionUpdate -> com.mc.util.y:
+com.mc.util.VersionUpdate -> com.mc.util.aa:
     android.content.Context mContext -> d
     java.lang.String updateMsg -> a
     java.lang.String apkUrl -> b
@@ -17923,19 +17985,19 @@ com.mc.util.VersionUpdate -> com.mc.util.y:
     64:64:boolean access$6(com.mc.util.VersionUpdate) -> e
     113:113:void access$7(com.mc.util.VersionUpdate) -> f
     64:64:void access$8(com.mc.util.VersionUpdate,boolean) -> a
-com.mc.util.VersionUpdate$1 -> com.mc.util.z:
+com.mc.util.VersionUpdate$1 -> com.mc.util.ab:
     com.mc.util.VersionUpdate this$0 -> a
     68:79:void handleMessage(android.os.Message) -> handleMessage
-com.mc.util.VersionUpdate$2 -> com.mc.util.aa:
+com.mc.util.VersionUpdate$2 -> com.mc.util.ac:
     com.mc.util.VersionUpdate this$0 -> a
     139:180:void run() -> run
-com.mc.util.VersionUpdate$3 -> com.mc.util.ab:
+com.mc.util.VersionUpdate$3 -> com.mc.util.ad:
     com.mc.util.VersionUpdate this$0 -> a
     98:101:void onClick(android.content.DialogInterface,int) -> onClick
-com.mc.util.VersionUpdate$4 -> com.mc.util.ac:
+com.mc.util.VersionUpdate$4 -> com.mc.util.ae:
     com.mc.util.VersionUpdate this$0 -> a
     106:107:void onClick(android.content.DialogInterface,int) -> onClick
-com.mc.util.VersionUpdate$5 -> com.mc.util.ad:
+com.mc.util.VersionUpdate$5 -> com.mc.util.af:
     com.mc.util.VersionUpdate this$0 -> a
     125:127:void onClick(android.content.DialogInterface,int) -> onClick
 com.nineoldandroids.animation.Animator -> com.e.a.a:
@@ -20736,31 +20798,33 @@ com.xy.fy.adapter.LanguageAdapter$ViewHolder -> com.xy.fy.a.b:
     android.widget.ImageView icon -> b
     com.xy.fy.adapter.LanguageAdapter this$0 -> c
 com.xy.fy.adapter.LibAdapter -> com.xy.fy.a.c:
-    java.util.ArrayList allBookList -> a
-    android.view.LayoutInflater inflater -> b
-    android.app.Activity context -> c
-    com.xy.fy.adapter.LibAdapter libAdapter -> d
-    46:46:int getCount() -> getCount
-    52:52:java.lang.Object getItem(int) -> getItem
-    58:58:long getItemId(int) -> getItemId
-    64:104:android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
-    108:145:void login_lib(android.app.ProgressDialog) -> a
-    34:34:android.app.Activity access$0(com.xy.fy.adapter.LibAdapter) -> a
-    107:107:void access$1(com.xy.fy.adapter.LibAdapter,android.app.ProgressDialog) -> a
-    35:35:com.xy.fy.adapter.LibAdapter access$2(com.xy.fy.adapter.LibAdapter) -> b
+    java.util.ArrayList allBookList -> b
+    android.view.LayoutInflater inflater -> c
+    android.app.Activity context -> d
+    com.xy.fy.adapter.LibAdapter libAdapter -> e
+    com.xy.fy.adapter.LibAdapter$OnAdapter onAdapter -> a
+    52:52:int getCount() -> getCount
+    58:58:java.lang.Object getItem(int) -> getItem
+    64:64:long getItemId(int) -> getItemId
+    70:110:android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
+    114:153:void login_lib(android.app.ProgressDialog) -> a
+    35:35:android.app.Activity access$0(com.xy.fy.adapter.LibAdapter) -> a
+    113:113:void access$1(com.xy.fy.adapter.LibAdapter,android.app.ProgressDialog) -> a
 com.xy.fy.adapter.LibAdapter$1 -> com.xy.fy.a.d:
     com.xy.fy.adapter.LibAdapter this$0 -> a
     java.lang.String val$barcode -> b
-    85:99:void onClick(android.view.View) -> onClick
-    80:80:com.xy.fy.adapter.LibAdapter access$0(com.xy.fy.adapter.LibAdapter$1) -> a
+    91:105:void onClick(android.view.View) -> onClick
+    86:86:com.xy.fy.adapter.LibAdapter access$0(com.xy.fy.adapter.LibAdapter$1) -> a
 com.xy.fy.adapter.LibAdapter$1$1 -> com.xy.fy.a.e:
     com.xy.fy.adapter.LibAdapter$1 this$1 -> a
-    90:96:void onRenew(java.lang.String,android.app.ProgressDialog) -> a
+    96:102:void onRenew(java.lang.String,android.app.ProgressDialog) -> a
 com.xy.fy.adapter.LibAdapter$2 -> com.xy.fy.a.f:
     com.xy.fy.adapter.LibAdapter this$0 -> a
     android.app.ProgressDialog val$progressDialog -> b
-    114:141:void onPostLogin(java.lang.String) -> a
-com.xy.fy.adapter.LibAdapter$ViewHolder -> com.xy.fy.a.g:
+    120:149:void onPostLogin(java.lang.String) -> a
+com.xy.fy.adapter.LibAdapter$OnAdapter -> com.xy.fy.a.g:
+    void onAdapter() -> a
+com.xy.fy.adapter.LibAdapter$ViewHolder -> com.xy.fy.a.h:
     android.widget.TextView book_numbe -> a
     android.widget.TextView book_name -> b
     android.widget.TextView renew_date -> c
@@ -20800,33 +20864,64 @@ com.xy.fy.asynctask.GetHeadPictureAsyncTask -> com.xy.fy.b.f:
     31:41:void onPostExecute(android.graphics.Bitmap) -> a
     1:1:void onPostExecute(java.lang.Object) -> onPostExecute
     1:1:java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
-com.xy.fy.asynctask.GetPhotoIDAsynctask -> com.xy.fy.b.g:
+com.xy.fy.asynctask.GetImageSync -> com.xy.fy.b.g:
+    java.lang.String url -> a
+    com.xy.fy.asynctask.GetImageSync$syncLintener lintener -> b
+    30:35:android.graphics.Bitmap doInBackground(java.lang.String[]) -> a
+    41:43:void onPostExecute(android.graphics.Bitmap) -> a
+    46:53:java.io.InputStream getImageStream(java.lang.String) -> a
+    57:57:android.graphics.Bitmap InputStream2Bitmap(java.io.InputStream) -> a
+    1:1:void onPostExecute(java.lang.Object) -> onPostExecute
+    1:1:java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
+com.xy.fy.asynctask.GetImageSync$syncLintener -> com.xy.fy.b.h:
+    void sync(android.graphics.Bitmap) -> a
+com.xy.fy.asynctask.GetPhotoIDAsynctask -> com.xy.fy.b.i:
     com.mc.util.CircleImageView headPhoto -> a
     android.app.Activity mActivity -> b
     29:28:java.lang.String doInBackground(java.lang.String[]) -> a
     35:60:void onPostExecute(java.lang.String) -> a
     1:1:void onPostExecute(java.lang.Object) -> onPostExecute
     1:1:java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
-com.xy.fy.asynctask.GetPicAsynctask -> com.xy.fy.b.h:
+com.xy.fy.asynctask.GetPicAsynctask -> com.xy.fy.b.j:
     android.app.Activity mActivity -> a
     java.lang.String account -> b
     java.lang.String password -> c
     android.app.ProgressDialog progressDialog -> d
     com.xy.fy.asynctask.GetPicAsynctask$GetPic onResult -> e
-    44:46:java.lang.String doInBackground(java.lang.Object[]) -> a
-    54:178:void onPostExecute(java.lang.String) -> a
+    boolean isClick -> f
+    51:53:java.lang.String doInBackground(java.lang.Object[]) -> a
+    61:143:void onPostExecute(java.lang.String) -> a
+    146:239:void request(java.lang.String,java.lang.String) -> a
     1:1:void onPostExecute(java.lang.Object) -> onPostExecute
     1:1:java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
-    26:26:com.xy.fy.asynctask.GetPicAsynctask$GetPic access$2(com.xy.fy.asynctask.GetPicAsynctask) -> a
-    25:25:android.app.ProgressDialog access$3(com.xy.fy.asynctask.GetPicAsynctask) -> b
-    24:24:java.lang.String access$4(com.xy.fy.asynctask.GetPicAsynctask) -> c
-    24:24:java.lang.String access$5(com.xy.fy.asynctask.GetPicAsynctask) -> d
-com.xy.fy.asynctask.GetPicAsynctask$1 -> com.xy.fy.b.i:
+    30:30:android.app.ProgressDialog access$2(com.xy.fy.asynctask.GetPicAsynctask) -> a
+    33:33:void access$3(com.xy.fy.asynctask.GetPicAsynctask,boolean) -> a
+    145:145:void access$4(com.xy.fy.asynctask.GetPicAsynctask,java.lang.String,java.lang.String) -> a
+    31:31:com.xy.fy.asynctask.GetPicAsynctask$GetPic access$5(com.xy.fy.asynctask.GetPicAsynctask) -> b
+    29:29:java.lang.String access$6(com.xy.fy.asynctask.GetPicAsynctask) -> c
+    29:29:java.lang.String access$7(com.xy.fy.asynctask.GetPicAsynctask) -> d
+com.xy.fy.asynctask.GetPicAsynctask$1 -> com.xy.fy.b.k:
     com.xy.fy.asynctask.GetPicAsynctask this$0 -> a
-    72:144:void onLogin(java.lang.String) -> a
-com.xy.fy.asynctask.GetPicAsynctask$GetPic -> com.xy.fy.b.j:
+    com.mc.util.H5Dialog val$h5Dialog -> b
+    java.lang.String val$session -> c
+    80:110:void sync(android.graphics.Bitmap) -> a
+    73:73:com.xy.fy.asynctask.GetPicAsynctask access$0(com.xy.fy.asynctask.GetPicAsynctask$1) -> a
+com.xy.fy.asynctask.GetPicAsynctask$1$1 -> com.xy.fy.b.l:
+    com.xy.fy.asynctask.GetPicAsynctask$1 this$1 -> a
+    com.mc.util.H5Dialog val$h5Dialog -> b
+    java.lang.String val$session -> c
+    91:98:void onClick(android.view.View) -> onClick
+com.xy.fy.asynctask.GetPicAsynctask$1$2 -> com.xy.fy.b.m:
+    com.xy.fy.asynctask.GetPicAsynctask$1 this$1 -> a
+    com.mc.util.H5Dialog val$h5Dialog -> b
+    102:107:void onClick(android.view.View) -> onClick
+com.xy.fy.asynctask.GetPicAsynctask$2 -> com.xy.fy.b.n:
+    com.xy.fy.asynctask.GetPicAsynctask this$0 -> a
+    java.lang.String val$pic -> b
+    156:236:void onLogin(java.lang.String) -> a
+com.xy.fy.asynctask.GetPicAsynctask$GetPic -> com.xy.fy.b.o:
     void onReturn(java.lang.String) -> a
-com.xy.fy.asynctask.GetRankAsycntask -> com.xy.fy.b.k:
+com.xy.fy.asynctask.GetRankAsycntask -> com.xy.fy.b.p:
     android.widget.TextView nickName -> a
     android.app.Activity mActivity -> b
     java.lang.String name -> c
@@ -20835,19 +20930,20 @@ com.xy.fy.asynctask.GetRankAsycntask -> com.xy.fy.b.k:
     47:84:void onPostExecute(java.lang.String) -> a
     1:1:void onPostExecute(java.lang.Object) -> onPostExecute
     1:1:java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
-com.xy.fy.asynctask.LoginAsynctask -> com.xy.fy.b.l:
+com.xy.fy.asynctask.LoginAsynctask -> com.xy.fy.b.q:
     android.app.Activity mActivity -> a
     com.xy.fy.asynctask.LoginAsynctask$LoginResult loginResult -> b
     java.lang.String account -> c
     java.lang.String password -> d
     android.app.ProgressDialog progressDialog -> e
-    47:48:java.lang.String doInBackground(java.lang.Object[]) -> a
-    58:64:void onPostExecute(java.lang.String) -> a
+    java.lang.String txtSecretCode -> f
+    49:50:java.lang.String doInBackground(java.lang.Object[]) -> a
+    59:64:void onPostExecute(java.lang.String) -> a
     1:1:void onPostExecute(java.lang.Object) -> onPostExecute
     1:1:java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
-com.xy.fy.asynctask.LoginAsynctask$LoginResult -> com.xy.fy.b.m:
+com.xy.fy.asynctask.LoginAsynctask$LoginResult -> com.xy.fy.b.r:
     void onLogin(java.lang.String) -> a
-com.xy.fy.asynctask.RenewLibAsynctask -> com.xy.fy.b.n:
+com.xy.fy.asynctask.RenewLibAsynctask -> com.xy.fy.b.s:
     android.app.ProgressDialog progressDialog -> a
     android.app.Activity mActivity -> b
     com.xy.fy.asynctask.RenewLibAsynctask$OnRenew onRenew -> c
@@ -20855,9 +20951,9 @@ com.xy.fy.asynctask.RenewLibAsynctask -> com.xy.fy.b.n:
     44:47:void onPostExecute(java.lang.String) -> a
     1:1:void onPostExecute(java.lang.Object) -> onPostExecute
     1:1:java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
-com.xy.fy.asynctask.RenewLibAsynctask$OnRenew -> com.xy.fy.b.o:
+com.xy.fy.asynctask.RenewLibAsynctask$OnRenew -> com.xy.fy.b.t:
     void onRenew(java.lang.String,android.app.ProgressDialog) -> a
-com.xy.fy.asynctask.ShowCardAsyncTask -> com.xy.fy.b.p:
+com.xy.fy.asynctask.ShowCardAsyncTask -> com.xy.fy.b.u:
     com.fima.cardsui.views.CardUI mCardView -> b
     android.content.res.Resources resources -> c
     boolean isFirst -> d
@@ -20873,26 +20969,26 @@ com.xy.fy.asynctask.ShowCardAsyncTask -> com.xy.fy.b.p:
     1:1:void onPostExecute(java.lang.Object) -> onPostExecute
     1:1:java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
     33:33:android.app.Activity access$2(com.xy.fy.asynctask.ShowCardAsyncTask) -> a
-com.xy.fy.asynctask.ShowCardAsyncTask$ScoreClass -> com.xy.fy.b.q:
+com.xy.fy.asynctask.ShowCardAsyncTask$ScoreClass -> com.xy.fy.b.v:
     int col -> a
     java.lang.String[][] score -> b
     java.lang.String xn -> c
     com.xy.fy.asynctask.ShowCardAsyncTask this$0 -> d
     153:166:void onClick(android.view.View) -> onClick
-com.xy.fy.asynctask.UpdateVersion -> com.xy.fy.b.r:
+com.xy.fy.asynctask.UpdateVersion -> com.xy.fy.b.w:
     android.app.Activity mActivity -> a
     20:23:java.lang.String doInBackground(java.lang.String[]) -> a
     29:30:void onPostExecute(java.lang.String) -> a
     1:1:void onPostExecute(java.lang.Object) -> onPostExecute
     1:1:java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
-com.xy.fy.asynctask.UploadFileAsytask -> com.xy.fy.b.s:
+com.xy.fy.asynctask.UploadFileAsytask -> com.xy.fy.b.x:
     android.app.Activity mActivity -> a
     android.graphics.Bitmap bitmap -> b
     30:30:java.lang.String doInBackground(java.lang.String[]) -> a
     37:49:void onPostExecute(java.lang.String) -> a
     1:1:void onPostExecute(java.lang.Object) -> onPostExecute
     1:1:java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
-com.xy.fy.asynctask.XuptLibLoginAsynctask -> com.xy.fy.b.t:
+com.xy.fy.asynctask.XuptLibLoginAsynctask -> com.xy.fy.b.y:
     android.app.Activity mActivity -> a
     java.lang.String libName -> b
     com.xy.fy.asynctask.XuptLibLoginAsynctask$Login login -> c
@@ -20900,7 +20996,7 @@ com.xy.fy.asynctask.XuptLibLoginAsynctask -> com.xy.fy.b.t:
     40:43:void onPostExecute(java.lang.String) -> a
     1:1:void onPostExecute(java.lang.Object) -> onPostExecute
     1:1:java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
-com.xy.fy.asynctask.XuptLibLoginAsynctask$Login -> com.xy.fy.b.u:
+com.xy.fy.asynctask.XuptLibLoginAsynctask$Login -> com.xy.fy.b.z:
     void onPostLogin(java.lang.String) -> a
 com.xy.fy.main.AddFriendListActivity -> com.xy.fy.main.AddFriendListActivity:
     java.lang.Class[] sActivityClasses -> d
@@ -21005,61 +21101,61 @@ com.xy.fy.main.LoginActivity -> com.xy.fy.main.LoginActivity:
     android.graphics.Bitmap bitmap -> p
     java.lang.String scaletype -> q
     java.lang.Runnable runnableUi -> b
-    83:147:void onCreate(android.os.Bundle) -> onCreate
-    154:209:void setPullDoorViewImage(java.lang.String) -> a
-    226:235:void setTranslucentStatus(boolean) -> a
-    238:245:void setStatusStyle() -> a
-    248:252:boolean initData() -> b
-    260:261:void onBackPressed() -> onBackPressed
-    267:281:void isRemember() -> c
-    287:310:void rememberPassword(java.lang.String,java.lang.String) -> a
-    317:354:void login() -> d
-    361:468:void findViewById() -> e
-    472:478:void onResume() -> onResume
-    76:76:com.xy.fy.view.PullDoorView access$0(com.xy.fy.main.LoginActivity) -> a
-    79:79:java.lang.String access$1(com.xy.fy.main.LoginActivity) -> b
-    78:78:android.graphics.Bitmap access$2(com.xy.fy.main.LoginActivity) -> c
-    73:73:android.widget.ImageView access$3(com.xy.fy.main.LoginActivity) -> d
-    315:315:void access$4(com.xy.fy.main.LoginActivity) -> e
-    78:78:void access$5(com.xy.fy.main.LoginActivity,android.graphics.Bitmap) -> a
-    77:77:android.os.Handler access$6(com.xy.fy.main.LoginActivity) -> f
-    65:65:android.widget.EditText access$7(com.xy.fy.main.LoginActivity) -> g
-    64:64:android.widget.AutoCompleteTextView access$8(com.xy.fy.main.LoginActivity) -> h
-    63:63:com.mc.util.CircleImageView access$9(com.xy.fy.main.LoginActivity) -> i
+    85:150:void onCreate(android.os.Bundle) -> onCreate
+    157:212:void setPullDoorViewImage(java.lang.String) -> a
+    229:238:void setTranslucentStatus(boolean) -> a
+    241:248:void setStatusStyle() -> a
+    251:256:boolean initData() -> b
+    264:265:void onBackPressed() -> onBackPressed
+    271:285:void isRemember() -> c
+    291:314:void rememberPassword(java.lang.String,java.lang.String) -> a
+    321:359:void login() -> d
+    366:473:void findViewById() -> e
+    477:483:void onResume() -> onResume
+    78:78:com.xy.fy.view.PullDoorView access$0(com.xy.fy.main.LoginActivity) -> a
+    81:81:java.lang.String access$1(com.xy.fy.main.LoginActivity) -> b
+    80:80:android.graphics.Bitmap access$2(com.xy.fy.main.LoginActivity) -> c
+    75:75:android.widget.ImageView access$3(com.xy.fy.main.LoginActivity) -> d
+    319:319:void access$4(com.xy.fy.main.LoginActivity) -> e
+    80:80:void access$5(com.xy.fy.main.LoginActivity,android.graphics.Bitmap) -> a
+    79:79:android.os.Handler access$6(com.xy.fy.main.LoginActivity) -> f
+    67:67:android.widget.EditText access$7(com.xy.fy.main.LoginActivity) -> g
+    66:66:android.widget.AutoCompleteTextView access$8(com.xy.fy.main.LoginActivity) -> h
+    65:65:com.mc.util.CircleImageView access$9(com.xy.fy.main.LoginActivity) -> i
 com.xy.fy.main.LoginActivity$1 -> com.xy.fy.main.j:
     com.xy.fy.main.LoginActivity this$0 -> a
-    214:220:void run() -> run
+    217:223:void run() -> run
 com.xy.fy.main.LoginActivity$10 -> com.xy.fy.main.k:
     com.xy.fy.main.LoginActivity this$0 -> a
-    421:421:void onTextChanged(java.lang.CharSequence,int,int,int) -> onTextChanged
-    427:427:void beforeTextChanged(java.lang.CharSequence,int,int,int) -> beforeTextChanged
-    432:456:void afterTextChanged(android.text.Editable) -> afterTextChanged
+    426:426:void onTextChanged(java.lang.CharSequence,int,int,int) -> onTextChanged
+    432:432:void beforeTextChanged(java.lang.CharSequence,int,int,int) -> beforeTextChanged
+    437:461:void afterTextChanged(android.text.Editable) -> afterTextChanged
 com.xy.fy.main.LoginActivity$2 -> com.xy.fy.main.l:
     com.xy.fy.main.LoginActivity this$0 -> a
-    115:116:void onClick(android.view.View) -> onClick
+    117:118:void onClick(android.view.View) -> onClick
 com.xy.fy.main.LoginActivity$3 -> com.xy.fy.main.m:
     com.xy.fy.main.LoginActivity this$0 -> a
-    121:134:void onClick(android.view.View) -> onClick
+    123:137:void onClick(android.view.View) -> onClick
 com.xy.fy.main.LoginActivity$4 -> com.xy.fy.main.n:
     com.xy.fy.main.LoginActivity this$0 -> a
-    141:145:void onClick(android.view.View) -> onClick
+    144:148:void onClick(android.view.View) -> onClick
 com.xy.fy.main.LoginActivity$5 -> com.xy.fy.main.o:
     com.xy.fy.main.LoginActivity this$0 -> a
     java.lang.String val$imageTime -> b
-    169:179:void onClick(android.view.View) -> onClick
+    172:182:void onClick(android.view.View) -> onClick
 com.xy.fy.main.LoginActivity$6 -> com.xy.fy.main.p:
     com.xy.fy.main.LoginActivity this$0 -> a
     java.lang.String val$imageTime -> b
-    192:199:void run() -> run
+    195:202:void run() -> run
 com.xy.fy.main.LoginActivity$7 -> com.xy.fy.main.q:
     com.xy.fy.main.LoginActivity this$0 -> a
-    343:349:void onReturn(java.lang.String) -> a
+    347:354:void onReturn(java.lang.String) -> a
 com.xy.fy.main.LoginActivity$8 -> com.xy.fy.main.r:
     com.xy.fy.main.LoginActivity this$0 -> a
-    378:382:boolean onKey(android.view.View,int,android.view.KeyEvent) -> onKey
+    383:387:boolean onKey(android.view.View,int,android.view.KeyEvent) -> onKey
 com.xy.fy.main.LoginActivity$9 -> com.xy.fy.main.s:
     com.xy.fy.main.LoginActivity this$0 -> a
-    406:412:boolean onKey(android.view.View,int,android.view.KeyEvent) -> onKey
+    411:417:boolean onKey(android.view.View,int,android.view.KeyEvent) -> onKey
 com.xy.fy.main.MainActivity -> com.xy.fy.main.MainActivity:
     int requestTimes -> M
     cn.sharesdk.onekeyshare.OnekeyShare share -> N
@@ -21087,6 +21183,7 @@ com.xy.fy.main.MainActivity -> com.xy.fy.main.MainActivity:
     android.graphics.Bitmap bitmap -> ah
     com.xy.fy.main.MainActivity$MyHandler mHandler -> ai
     android.app.Activity mActivity -> aj
+    boolean isCheck -> ak
     com.fima.cardsui.views.CardUI mCardView -> p
     android.widget.Spinner xnSpinner -> q
     android.widget.Spinner xqSpinner -> r
@@ -21097,97 +21194,97 @@ com.xy.fy.main.MainActivity -> com.xy.fy.main.MainActivity:
     boolean isReq -> E
     int times -> F
     java.lang.String loginResult -> G
-    com.baidu.location.LocationClient mLocationClient -> ak
-    com.xy.fy.main.MainActivity$BaiduReceiver mReceiver -> al
-    android.widget.Button[] mTabs -> am
-    com.bmob.im.demo.ui.fragment.ContactFragment contactFragment -> an
-    com.bmob.im.demo.ui.fragment.RecentFragment recentFragment -> ao
-    com.bmob.im.demo.ui.fragment.SettingsFragment settingFragment -> ap
-    android.support.v4.app.Fragment[] fragments -> aq
-    int index -> ar
-    int currentTabIndex -> as
+    com.xy.fy.adapter.LibAdapter adapter -> al
+    com.baidu.location.LocationClient mLocationClient -> am
+    com.xy.fy.main.MainActivity$BaiduReceiver mReceiver -> an
+    android.widget.Button[] mTabs -> ao
+    com.bmob.im.demo.ui.fragment.ContactFragment contactFragment -> ap
+    com.bmob.im.demo.ui.fragment.RecentFragment recentFragment -> aq
+    com.bmob.im.demo.ui.fragment.SettingsFragment settingFragment -> ar
+    android.support.v4.app.Fragment[] fragments -> as
+    int index -> at
+    int currentTabIndex -> au
     android.widget.ImageView iv_recent_tips -> H
     android.widget.ImageView iv_contact_tips -> I
     android.widget.ImageView iv_bukao_tips -> J
     com.xy.fy.main.MainActivity$NewBroadcastReceiver newReceiver -> K
     com.xy.fy.main.MainActivity$TagBroadcastReceiver userReceiver -> L
-    android.os.Handler chatHandler -> at
-    174:277:void onCreate(android.os.Bundle) -> onCreate
-    282:282:void softDeclare() -> o
-    291:307:void menu1() -> p
-    318:327:void setMenuItemState(android.widget.LinearLayout,boolean,android.widget.LinearLayout,boolean,android.widget.LinearLayout,boolean,android.widget.LinearLayout,boolean,android.widget.LinearLayout,boolean,android.widget.LinearLayout,boolean,android.widget.LinearLayout,boolean,android.widget.LinearLayout,boolean,android.widget.LinearLayout,boolean) -> a
-    334:620:void setMenuItemListener() -> q
-    625:698:void aboutListener() -> r
-    704:721:void showDialogSaveQrcode() -> s
-    732:869:void rank() -> t
-    873:878:void findviewById() -> u
-    884:889:void closeInputMethod() -> v
-    893:914:void requestRankAsyntask() -> w
-    922:988:void listener(java.lang.String[],int) -> a
-    994:1015:void friend_list() -> f
-    1021:1072:void cet() -> g
-    1080:1116:void menuSetting() -> h
-    1124:1156:void chooseHeadPhoto() -> i
-    1163:1203:void onActivityResult(int,int,android.content.Intent) -> onActivityResult
-    1212:1226:void startPhotoZoom(android.net.Uri) -> a
-    1233:1251:boolean onKeyDown(int,android.view.KeyEvent) -> onKeyDown
-    1258:1292:void deleteCatch() -> x
-    1297:1324:void onResume() -> onResume
-    1329:1332:void onPause() -> onPause
-    1340:1381:void quit(boolean) -> c
-    1389:1393:void setCurrentMenuItem(int) -> b
-    1401:1403:int getCurrentMeunItem() -> y
-    1504:1540:void menuIdeaBack() -> z
-    1651:1680:void lib() -> A
-    1683:1705:void bindLib(android.widget.LinearLayout) -> a
-    1713:1776:void login_lib(java.lang.String,android.widget.LinearLayout,boolean) -> a
-    1780:1818:void ShowLibMessage(android.widget.LinearLayout,java.util.ArrayList) -> a
-    1821:1859:void bind(java.lang.String,android.widget.LinearLayout) -> a
-    1872:1894:void chat() -> B
-    1902:1910:void initLocClient() -> C
-    1922:1951:void initView() -> D
-    1954:1974:void initTab() -> E
-    1982:2008:void onTabSelect(android.view.View) -> onTabSelect
-    2017:2033:void refreshNewMsg(cn.bmob.im.bean.BmobMsg) -> a
-    2039:2044:void initNewMessageBroadCast() -> F
-    2064:2069:void initTagMessageBroadCast() -> G
-    2087:2090:void onNetChange(boolean) -> onNetChange
-    2095:2096:void onAddUser(cn.bmob.im.bean.BmobInvitation) -> onAddUser
-    2104:2122:void refreshInvite(cn.bmob.im.bean.BmobInvitation) -> a
-    2127:2129:void onOffline() -> onOffline
-    2134:2134:void onReaded(java.lang.String,java.lang.String) -> onReaded
-    2142:2144:void onBackPressed() -> onBackPressed
-    2147:2155:void startChatActivity() -> H
-    2267:2290:void uploadAvatar(java.lang.String) -> f
-    2294:2309:void updateUserAvatar(java.lang.String) -> g
-    2328:2349:void onDestroy() -> onDestroy
-    2352:2364:void showShareQrcodeDialog() -> I
-    2369:2370:void onMessage(cn.bmob.im.bean.BmobMsg) -> onMessage
-    2375:2375:boolean dispatchTouchEvent(android.view.MotionEvent) -> dispatchTouchEvent
-    2381:2392:void onRestart() -> onRestart
-    2146:2146:void access$0(com.xy.fy.main.MainActivity) -> a
+    android.os.Handler chatHandler -> av
+    175:289:void onCreate(android.os.Bundle) -> onCreate
+    294:294:void softDeclare() -> o
+    303:319:void menu1() -> p
+    330:339:void setMenuItemState(android.widget.LinearLayout,boolean,android.widget.LinearLayout,boolean,android.widget.LinearLayout,boolean,android.widget.LinearLayout,boolean,android.widget.LinearLayout,boolean,android.widget.LinearLayout,boolean,android.widget.LinearLayout,boolean,android.widget.LinearLayout,boolean,android.widget.LinearLayout,boolean) -> a
+    346:632:void setMenuItemListener() -> q
+    637:710:void aboutListener() -> r
+    716:733:void showDialogSaveQrcode() -> s
+    744:881:void rank() -> t
+    885:890:void findviewById() -> u
+    896:901:void closeInputMethod() -> v
+    905:926:void requestRankAsyntask() -> w
+    934:1000:void listener(java.lang.String[],int) -> a
+    1006:1027:void friend_list() -> f
+    1033:1084:void cet() -> g
+    1092:1128:void menuSetting() -> h
+    1136:1168:void chooseHeadPhoto() -> i
+    1175:1215:void onActivityResult(int,int,android.content.Intent) -> onActivityResult
+    1224:1238:void startPhotoZoom(android.net.Uri) -> a
+    1245:1263:boolean onKeyDown(int,android.view.KeyEvent) -> onKeyDown
+    1270:1304:void deleteCatch() -> x
+    1309:1336:void onResume() -> onResume
+    1341:1344:void onPause() -> onPause
+    1352:1393:void quit(boolean) -> c
+    1401:1405:void setCurrentMenuItem(int) -> b
+    1413:1415:int getCurrentMeunItem() -> y
+    1524:1560:void menuIdeaBack() -> z
+    1671:1700:void lib() -> A
+    1703:1725:void bindLib(android.widget.LinearLayout) -> a
+    1733:1796:void login_lib(java.lang.String,android.widget.LinearLayout,boolean) -> a
+    1800:1846:void ShowLibMessage(android.widget.LinearLayout,java.util.ArrayList) -> a
+    1851:1889:void bind(java.lang.String,android.widget.LinearLayout) -> a
+    1902:1924:void chat() -> B
+    1932:1940:void initLocClient() -> C
+    1952:1981:void initView() -> D
+    1984:2004:void initTab() -> E
+    2012:2038:void onTabSelect(android.view.View) -> onTabSelect
+    2047:2063:void refreshNewMsg(cn.bmob.im.bean.BmobMsg) -> a
+    2069:2074:void initNewMessageBroadCast() -> F
+    2094:2099:void initTagMessageBroadCast() -> G
+    2117:2120:void onNetChange(boolean) -> onNetChange
+    2125:2126:void onAddUser(cn.bmob.im.bean.BmobInvitation) -> onAddUser
+    2134:2152:void refreshInvite(cn.bmob.im.bean.BmobInvitation) -> a
+    2157:2159:void onOffline() -> onOffline
+    2164:2164:void onReaded(java.lang.String,java.lang.String) -> onReaded
+    2172:2174:void onBackPressed() -> onBackPressed
+    2177:2185:void startChatActivity() -> H
+    2297:2320:void uploadAvatar(java.lang.String) -> f
+    2324:2339:void updateUserAvatar(java.lang.String) -> g
+    2358:2379:void onDestroy() -> onDestroy
+    2382:2394:void showShareQrcodeDialog() -> I
+    2399:2400:void onMessage(cn.bmob.im.bean.BmobMsg) -> onMessage
+    2405:2405:boolean dispatchTouchEvent(android.view.MotionEvent) -> dispatchTouchEvent
+    2176:2176:void access$0(com.xy.fy.main.MainActivity) -> a
     131:131:cn.bmob.im.BmobUserManager access$1(com.xy.fy.main.MainActivity) -> b
-    2266:2266:void access$2(com.xy.fy.main.MainActivity,java.lang.String) -> a
+    2296:2296:void access$2(com.xy.fy.main.MainActivity,java.lang.String) -> a
     149:149:android.widget.LinearLayout access$3(com.xy.fy.main.MainActivity) -> c
-    1388:1388:void access$4(com.xy.fy.main.MainActivity,int) -> a
-    289:289:void access$5(com.xy.fy.main.MainActivity) -> d
+    1400:1400:void access$4(com.xy.fy.main.MainActivity,int) -> a
+    301:301:void access$5(com.xy.fy.main.MainActivity) -> d
     147:147:void access$6(com.xy.fy.main.MainActivity,java.lang.String) -> b
     147:147:java.lang.String access$7(com.xy.fy.main.MainActivity) -> e
     146:146:android.widget.TextView access$8(com.xy.fy.main.MainActivity) -> f
     135:135:void access$9(int) -> a
-    1339:1339:void access$10(com.xy.fy.main.MainActivity,boolean) -> a
+    1351:1351:void access$10(com.xy.fy.main.MainActivity,boolean) -> a
     135:135:int access$11() -> l
-    624:624:void access$12(com.xy.fy.main.MainActivity) -> g
+    636:636:void access$12(com.xy.fy.main.MainActivity) -> g
     131:131:void access$13(boolean) -> b
-    729:729:void access$14(com.xy.fy.main.MainActivity) -> h
-    1503:1503:void access$15(com.xy.fy.main.MainActivity) -> i
-    2351:2351:void access$16(com.xy.fy.main.MainActivity) -> j
-    1650:1650:void access$17(com.xy.fy.main.MainActivity) -> k
-    883:883:void access$18(com.xy.fy.main.MainActivity) -> l
-    1869:1869:void access$19(com.xy.fy.main.MainActivity) -> m
-    2015:2015:void access$20(com.xy.fy.main.MainActivity,cn.bmob.im.bean.BmobMsg) -> a
-    2103:2103:void access$21(com.xy.fy.main.MainActivity,cn.bmob.im.bean.BmobInvitation) -> a
-    1400:1400:int access$22(com.xy.fy.main.MainActivity) -> n
+    741:741:void access$14(com.xy.fy.main.MainActivity) -> h
+    1523:1523:void access$15(com.xy.fy.main.MainActivity) -> i
+    2381:2381:void access$16(com.xy.fy.main.MainActivity) -> j
+    1670:1670:void access$17(com.xy.fy.main.MainActivity) -> k
+    895:895:void access$18(com.xy.fy.main.MainActivity) -> l
+    1899:1899:void access$19(com.xy.fy.main.MainActivity) -> m
+    2045:2045:void access$20(com.xy.fy.main.MainActivity,cn.bmob.im.bean.BmobMsg) -> a
+    2133:2133:void access$21(com.xy.fy.main.MainActivity,cn.bmob.im.bean.BmobInvitation) -> a
+    1412:1412:int access$22(com.xy.fy.main.MainActivity) -> n
     150:150:android.widget.LinearLayout access$23(com.xy.fy.main.MainActivity) -> o
     152:152:android.widget.LinearLayout access$24(com.xy.fy.main.MainActivity) -> p
     153:153:android.widget.LinearLayout access$25(com.xy.fy.main.MainActivity) -> q
@@ -21196,296 +21293,300 @@ com.xy.fy.main.MainActivity -> com.xy.fy.main.MainActivity:
     155:155:android.widget.LinearLayout access$28(com.xy.fy.main.MainActivity) -> t
     156:156:android.widget.LinearLayout access$29(com.xy.fy.main.MainActivity) -> u
     157:157:android.widget.LinearLayout access$30(com.xy.fy.main.MainActivity) -> v
-    314:314:void access$31(com.xy.fy.main.MainActivity,android.widget.LinearLayout,boolean,android.widget.LinearLayout,boolean,android.widget.LinearLayout,boolean,android.widget.LinearLayout,boolean,android.widget.LinearLayout,boolean,android.widget.LinearLayout,boolean,android.widget.LinearLayout,boolean,android.widget.LinearLayout,boolean,android.widget.LinearLayout,boolean) -> a
+    326:326:void access$31(com.xy.fy.main.MainActivity,android.widget.LinearLayout,boolean,android.widget.LinearLayout,boolean,android.widget.LinearLayout,boolean,android.widget.LinearLayout,boolean,android.widget.LinearLayout,boolean,android.widget.LinearLayout,boolean,android.widget.LinearLayout,boolean,android.widget.LinearLayout,boolean,android.widget.LinearLayout,boolean) -> a
     168:168:com.xy.fy.main.MainActivity$MyHandler access$32(com.xy.fy.main.MainActivity) -> w
-    703:703:void access$33(com.xy.fy.main.MainActivity) -> x
+    715:715:void access$33(com.xy.fy.main.MainActivity) -> x
     137:137:com.xy.fy.util.ShareUtil access$34() -> m
     136:136:cn.sharesdk.onekeyshare.OnekeyShare access$35() -> n
     165:165:android.widget.AutoCompleteTextView access$36(com.xy.fy.main.MainActivity) -> y
-    891:891:void access$37(com.xy.fy.main.MainActivity) -> z
-    1257:1257:void access$38(com.xy.fy.main.MainActivity) -> A
+    903:903:void access$37(com.xy.fy.main.MainActivity) -> z
+    1269:1269:void access$38(com.xy.fy.main.MainActivity) -> A
     160:160:android.widget.TextView access$39(com.xy.fy.main.MainActivity) -> B
     161:161:android.widget.TextView access$40(com.xy.fy.main.MainActivity) -> C
-    1682:1682:void access$41(com.xy.fy.main.MainActivity,android.widget.LinearLayout) -> a
-    1711:1711:void access$42(com.xy.fy.main.MainActivity,java.lang.String,android.widget.LinearLayout,boolean) -> a
-    1820:1820:void access$43(com.xy.fy.main.MainActivity,java.lang.String,android.widget.LinearLayout) -> a
-    1778:1778:void access$44(com.xy.fy.main.MainActivity,android.widget.LinearLayout,java.util.ArrayList) -> a
-    2293:2293:void access$45(com.xy.fy.main.MainActivity,java.lang.String) -> c
+    1702:1702:void access$41(com.xy.fy.main.MainActivity,android.widget.LinearLayout) -> a
+    1731:1731:void access$42(com.xy.fy.main.MainActivity,java.lang.String,android.widget.LinearLayout,boolean) -> a
+    1850:1850:void access$43(com.xy.fy.main.MainActivity,java.lang.String,android.widget.LinearLayout) -> a
+    1798:1798:void access$44(com.xy.fy.main.MainActivity,android.widget.LinearLayout,java.util.ArrayList) -> a
+    1848:1848:com.xy.fy.adapter.LibAdapter access$45(com.xy.fy.main.MainActivity) -> D
+    2323:2323:void access$46(com.xy.fy.main.MainActivity,java.lang.String) -> c
 com.xy.fy.main.MainActivity$1 -> com.xy.fy.main.t:
     com.xy.fy.main.MainActivity this$0 -> a
-    2161:2262:void handleMessage(android.os.Message) -> handleMessage
-    2158:2158:com.xy.fy.main.MainActivity access$0(com.xy.fy.main.MainActivity$1) -> a
+    2191:2292:void handleMessage(android.os.Message) -> handleMessage
+    2188:2188:com.xy.fy.main.MainActivity access$0(com.xy.fy.main.MainActivity$1) -> a
 com.xy.fy.main.MainActivity$1$1 -> com.xy.fy.main.u:
     com.xy.fy.main.MainActivity$1 this$1 -> a
     com.bmob.im.demo.bean.User val$bu -> b
-    2183:2189:void onSuccess() -> onSuccess
-    2192:2218:void updateInfo(java.lang.String) -> a
-    2223:2258:void onFailure(int,java.lang.String) -> onFailure
-    2176:2176:com.xy.fy.main.MainActivity$1 access$0(com.xy.fy.main.MainActivity$1$1) -> a
+    2213:2219:void onSuccess() -> onSuccess
+    2222:2248:void updateInfo(java.lang.String) -> a
+    2253:2288:void onFailure(int,java.lang.String) -> onFailure
+    2206:2206:com.xy.fy.main.MainActivity$1 access$0(com.xy.fy.main.MainActivity$1$1) -> a
 com.xy.fy.main.MainActivity$1$1$1 -> com.xy.fy.main.v:
     com.xy.fy.main.MainActivity$1$1 this$2 -> a
-    2198:2210:void onSuccess() -> onSuccess
-    2215:2216:void onFailure(int,java.lang.String) -> onFailure
+    2228:2240:void onSuccess() -> onSuccess
+    2245:2246:void onFailure(int,java.lang.String) -> onFailure
 com.xy.fy.main.MainActivity$1$1$2 -> com.xy.fy.main.w:
     com.xy.fy.main.MainActivity$1$1 this$2 -> a
-    2245:2247:void onSuccess() -> onSuccess
-    2252:2254:void onFailure(int,java.lang.String) -> onFailure
+    2275:2277:void onSuccess() -> onSuccess
+    2282:2284:void onFailure(int,java.lang.String) -> onFailure
 com.xy.fy.main.MainActivity$10 -> com.xy.fy.main.x:
     com.xy.fy.main.MainActivity this$0 -> a
-    496:520:void onClick(android.view.View) -> onClick
-    493:493:com.xy.fy.main.MainActivity access$0(com.xy.fy.main.MainActivity$10) -> a
+    508:532:void onClick(android.view.View) -> onClick
+    505:505:com.xy.fy.main.MainActivity access$0(com.xy.fy.main.MainActivity$10) -> a
 com.xy.fy.main.MainActivity$10$1 -> com.xy.fy.main.y:
     com.xy.fy.main.MainActivity$10 this$1 -> a
-    509:517:void run() -> run
+    521:529:void run() -> run
 com.xy.fy.main.MainActivity$11 -> com.xy.fy.main.z:
     com.xy.fy.main.MainActivity this$0 -> a
-    526:550:void onClick(android.view.View) -> onClick
-    523:523:com.xy.fy.main.MainActivity access$0(com.xy.fy.main.MainActivity$11) -> a
+    538:562:void onClick(android.view.View) -> onClick
+    535:535:com.xy.fy.main.MainActivity access$0(com.xy.fy.main.MainActivity$11) -> a
 com.xy.fy.main.MainActivity$11$1 -> com.xy.fy.main.aa:
     com.xy.fy.main.MainActivity$11 this$1 -> a
-    539:547:void run() -> run
+    551:559:void run() -> run
 com.xy.fy.main.MainActivity$12 -> com.xy.fy.main.ab:
     com.xy.fy.main.MainActivity this$0 -> a
-    558:583:void onClick(android.view.View) -> onClick
-    553:553:com.xy.fy.main.MainActivity access$0(com.xy.fy.main.MainActivity$12) -> a
+    570:595:void onClick(android.view.View) -> onClick
+    565:565:com.xy.fy.main.MainActivity access$0(com.xy.fy.main.MainActivity$12) -> a
 com.xy.fy.main.MainActivity$12$1 -> com.xy.fy.main.ac:
     com.xy.fy.main.MainActivity$12 this$1 -> a
-    573:581:void run() -> run
+    585:593:void run() -> run
 com.xy.fy.main.MainActivity$13 -> com.xy.fy.main.ad:
     com.xy.fy.main.MainActivity this$0 -> a
-    588:610:void onClick(android.view.View) -> onClick
-    585:585:com.xy.fy.main.MainActivity access$0(com.xy.fy.main.MainActivity$13) -> a
+    600:622:void onClick(android.view.View) -> onClick
+    597:597:com.xy.fy.main.MainActivity access$0(com.xy.fy.main.MainActivity$13) -> a
 com.xy.fy.main.MainActivity$13$1 -> com.xy.fy.main.ae:
     com.xy.fy.main.MainActivity$13 this$1 -> a
-    600:608:void run() -> run
+    612:620:void run() -> run
 com.xy.fy.main.MainActivity$14 -> com.xy.fy.main.af:
     com.xy.fy.main.MainActivity this$0 -> a
-    616:617:void onClick(android.view.View) -> onClick
+    628:629:void onClick(android.view.View) -> onClick
 com.xy.fy.main.MainActivity$15 -> com.xy.fy.main.ag:
     com.xy.fy.main.MainActivity this$0 -> a
-    633:634:void onClick(android.view.View) -> onClick
+    645:646:void onClick(android.view.View) -> onClick
 com.xy.fy.main.MainActivity$16 -> com.xy.fy.main.ah:
     com.xy.fy.main.MainActivity this$0 -> a
-    643:644:void onClick(android.view.View) -> onClick
+    655:656:void onClick(android.view.View) -> onClick
 com.xy.fy.main.MainActivity$17 -> com.xy.fy.main.ai:
     com.xy.fy.main.MainActivity this$0 -> a
-    656:665:void onClick(android.view.View) -> onClick
+    668:677:void onClick(android.view.View) -> onClick
 com.xy.fy.main.MainActivity$18 -> com.xy.fy.main.aj:
     com.xy.fy.main.MainActivity this$0 -> a
-    674:675:void onClick(android.view.View) -> onClick
+    686:687:void onClick(android.view.View) -> onClick
 com.xy.fy.main.MainActivity$19 -> com.xy.fy.main.ak:
     com.xy.fy.main.MainActivity this$0 -> a
-    684:696:void onClick(android.view.View) -> onClick
-    680:680:com.xy.fy.main.MainActivity access$0(com.xy.fy.main.MainActivity$19) -> a
+    696:708:void onClick(android.view.View) -> onClick
+    692:692:com.xy.fy.main.MainActivity access$0(com.xy.fy.main.MainActivity$19) -> a
 com.xy.fy.main.MainActivity$19$1 -> com.xy.fy.main.al:
     com.xy.fy.main.MainActivity$19 this$1 -> a
-    690:692:void onCheck() -> a
+    702:704:void onCheck() -> a
 com.xy.fy.main.MainActivity$2 -> com.xy.fy.main.am:
     com.xy.fy.main.MainActivity this$0 -> a
-    189:189:void onCheck() -> a
+    194:194:void onCheck() -> a
 com.xy.fy.main.MainActivity$20 -> com.xy.fy.main.an:
     com.xy.fy.main.MainActivity this$0 -> a
-    709:717:void onClick(android.content.DialogInterface,int) -> onClick
+    721:729:void onClick(android.content.DialogInterface,int) -> onClick
 com.xy.fy.main.MainActivity$21 -> com.xy.fy.main.ao:
     com.xy.fy.main.MainActivity this$0 -> a
-    742:746:void onClick(android.view.View) -> onClick
+    754:758:void onClick(android.view.View) -> onClick
 com.xy.fy.main.MainActivity$22 -> com.xy.fy.main.ap:
     com.xy.fy.main.MainActivity this$0 -> a
-    755:755:void onTextChanged(java.lang.CharSequence,int,int,int) -> onTextChanged
-    761:761:void beforeTextChanged(java.lang.CharSequence,int,int,int) -> beforeTextChanged
-    766:778:void afterTextChanged(android.text.Editable) -> afterTextChanged
+    767:767:void onTextChanged(java.lang.CharSequence,int,int,int) -> onTextChanged
+    773:773:void beforeTextChanged(java.lang.CharSequence,int,int,int) -> beforeTextChanged
+    778:790:void afterTextChanged(android.text.Editable) -> afterTextChanged
 com.xy.fy.main.MainActivity$23 -> com.xy.fy.main.aq:
     com.xy.fy.main.MainActivity this$0 -> a
-    783:799:boolean onKey(android.view.View,int,android.view.KeyEvent) -> onKey
+    795:811:boolean onKey(android.view.View,int,android.view.KeyEvent) -> onKey
 com.xy.fy.main.MainActivity$24 -> com.xy.fy.main.ar:
     com.xy.fy.main.MainActivity this$0 -> a
-    808:809:void onClick(android.view.View) -> onClick
+    820:821:void onClick(android.view.View) -> onClick
 com.xy.fy.main.MainActivity$25 -> com.xy.fy.main.as:
     com.xy.fy.main.MainActivity this$0 -> a
-    816:817:void onClick(android.view.View) -> onClick
+    828:829:void onClick(android.view.View) -> onClick
 com.xy.fy.main.MainActivity$26 -> com.xy.fy.main.at:
     com.xy.fy.main.MainActivity this$0 -> a
     java.lang.String[] val$xns -> b
     int val$width -> c
-    926:942:void onItemSelected(android.widget.AdapterView,android.view.View,int,long) -> onItemSelected
-    946:946:void onNothingSelected(android.widget.AdapterView) -> onNothingSelected
+    938:954:void onItemSelected(android.widget.AdapterView,android.view.View,int,long) -> onItemSelected
+    958:958:void onNothingSelected(android.widget.AdapterView) -> onNothingSelected
 com.xy.fy.main.MainActivity$27 -> com.xy.fy.main.au:
     com.xy.fy.main.MainActivity this$0 -> a
-    951:952:boolean onTouch(android.view.View,android.view.MotionEvent) -> onTouch
+    963:964:boolean onTouch(android.view.View,android.view.MotionEvent) -> onTouch
 com.xy.fy.main.MainActivity$28 -> com.xy.fy.main.av:
     com.xy.fy.main.MainActivity this$0 -> a
-    959:970:void onItemSelected(android.widget.AdapterView,android.view.View,int,long) -> onItemSelected
-    974:974:void onNothingSelected(android.widget.AdapterView) -> onNothingSelected
+    971:982:void onItemSelected(android.widget.AdapterView,android.view.View,int,long) -> onItemSelected
+    986:986:void onNothingSelected(android.widget.AdapterView) -> onNothingSelected
 com.xy.fy.main.MainActivity$29 -> com.xy.fy.main.aw:
     com.xy.fy.main.MainActivity this$0 -> a
-    983:985:boolean onTouch(android.view.View,android.view.MotionEvent) -> onTouch
+    995:997:boolean onTouch(android.view.View,android.view.MotionEvent) -> onTouch
 com.xy.fy.main.MainActivity$3 -> com.xy.fy.main.ax:
     com.xy.fy.main.MainActivity this$0 -> a
-    207:245:void onOpen() -> a
+    215:253:void onOpen() -> a
 com.xy.fy.main.MainActivity$30 -> com.xy.fy.main.ay:
     com.xy.fy.main.MainActivity this$0 -> a
-    998:999:void onClick(android.view.View) -> onClick
+    1010:1011:void onClick(android.view.View) -> onClick
 com.xy.fy.main.MainActivity$31 -> com.xy.fy.main.az:
     com.xy.fy.main.MainActivity this$0 -> a
-    1009:1012:void onClick(android.view.View) -> onClick
+    1021:1024:void onClick(android.view.View) -> onClick
 com.xy.fy.main.MainActivity$32 -> com.xy.fy.main.ba:
     com.xy.fy.main.MainActivity this$0 -> a
-    1025:1026:void onClick(android.view.View) -> onClick
+    1037:1038:void onClick(android.view.View) -> onClick
 com.xy.fy.main.MainActivity$33 -> com.xy.fy.main.bb:
     com.xy.fy.main.MainActivity this$0 -> a
     android.widget.EditText val$accout -> b
     android.widget.EditText val$name -> c
-    1039:1060:void onClick(android.view.View) -> onClick
+    1051:1072:void onClick(android.view.View) -> onClick
 com.xy.fy.main.MainActivity$34 -> com.xy.fy.main.bc:
     com.xy.fy.main.MainActivity this$0 -> a
-    1068:1070:void onClick(android.view.View) -> onClick
+    1080:1082:void onClick(android.view.View) -> onClick
 com.xy.fy.main.MainActivity$35 -> com.xy.fy.main.bd:
     com.xy.fy.main.MainActivity this$0 -> a
-    1084:1085:void onClick(android.view.View) -> onClick
+    1096:1097:void onClick(android.view.View) -> onClick
 com.xy.fy.main.MainActivity$36 -> com.xy.fy.main.be:
     com.xy.fy.main.MainActivity this$0 -> a
-    1099:1101:void onClick(android.view.View) -> onClick
+    1111:1113:void onClick(android.view.View) -> onClick
 com.xy.fy.main.MainActivity$37 -> com.xy.fy.main.bf:
     com.xy.fy.main.MainActivity this$0 -> a
-    1109:1113:void onClick(android.view.View) -> onClick
+    1121:1125:void onClick(android.view.View) -> onClick
 com.xy.fy.main.MainActivity$38 -> com.xy.fy.main.bg:
     com.xy.fy.main.MainActivity this$0 -> a
-    1132:1147:void onClick(android.content.DialogInterface,int) -> onClick
+    1144:1159:void onClick(android.content.DialogInterface,int) -> onClick
 com.xy.fy.main.MainActivity$39 -> com.xy.fy.main.bh:
     com.xy.fy.main.MainActivity this$0 -> a
-    1152:1153:void onClick(android.content.DialogInterface,int) -> onClick
+    1164:1165:void onClick(android.content.DialogInterface,int) -> onClick
 com.xy.fy.main.MainActivity$4 -> com.xy.fy.main.bi:
     com.xy.fy.main.MainActivity this$0 -> a
-    295:296:void onClick(android.view.View) -> onClick
+    307:308:void onClick(android.view.View) -> onClick
 com.xy.fy.main.MainActivity$40 -> com.xy.fy.main.bj:
     com.xy.fy.main.MainActivity this$0 -> a
     boolean val$logout -> b
-    1357:1370:void onClick(android.content.DialogInterface,int) -> onClick
+    1369:1382:void onClick(android.content.DialogInterface,int) -> onClick
 com.xy.fy.main.MainActivity$41 -> com.xy.fy.main.bk:
     com.xy.fy.main.MainActivity this$0 -> a
-    1376:1377:void onClick(android.content.DialogInterface,int) -> onClick
+    1388:1389:void onClick(android.content.DialogInterface,int) -> onClick
 com.xy.fy.main.MainActivity$42 -> com.xy.fy.main.bl:
     com.xy.fy.main.MainActivity this$0 -> a
-    1508:1509:void onClick(android.view.View) -> onClick
+    1528:1529:void onClick(android.view.View) -> onClick
 com.xy.fy.main.MainActivity$43 -> com.xy.fy.main.bm:
     com.xy.fy.main.MainActivity this$0 -> a
-    1516:1538:void onClick(android.view.View) -> onClick
-    1513:1513:com.xy.fy.main.MainActivity access$0(com.xy.fy.main.MainActivity$43) -> a
+    1536:1558:void onClick(android.view.View) -> onClick
+    1533:1533:com.xy.fy.main.MainActivity access$0(com.xy.fy.main.MainActivity$43) -> a
 com.xy.fy.main.MainActivity$43$1 -> com.xy.fy.main.bn:
     com.xy.fy.main.MainActivity$43 this$1 -> a
     java.lang.String val$data -> b
-    1532:1536:void run() -> run
+    1552:1556:void run() -> run
 com.xy.fy.main.MainActivity$44 -> com.xy.fy.main.bo:
     com.xy.fy.main.MainActivity this$0 -> a
     android.widget.LinearLayout val$bind_layout -> b
-    1665:1677:void returnResult(java.lang.String) -> a
+    1685:1697:void returnResult(java.lang.String) -> a
 com.xy.fy.main.MainActivity$45 -> com.xy.fy.main.bp:
     com.xy.fy.main.MainActivity this$0 -> a
     android.widget.EditText val$libAccount -> b
     android.widget.EditText val$libPW -> c
     android.widget.LinearLayout val$bind_layout -> d
-    1695:1703:void onClick(android.view.View) -> onClick
+    1715:1723:void onClick(android.view.View) -> onClick
 com.xy.fy.main.MainActivity$46 -> com.xy.fy.main.bq:
     com.xy.fy.main.MainActivity this$0 -> a
     java.lang.String val$libName -> b
     boolean val$isBind -> c
     android.widget.LinearLayout val$bind_layout -> d
-    1720:1772:void onPostLogin(java.lang.String) -> a
+    1740:1792:void onPostLogin(java.lang.String) -> a
 com.xy.fy.main.MainActivity$47 -> com.xy.fy.main.br:
     com.xy.fy.main.MainActivity this$0 -> a
     android.widget.LinearLayout val$show_lib_layout -> b
     android.widget.LinearLayout val$bind_layout -> c
-    1787:1810:void onClick() -> a
-    1782:1782:com.xy.fy.main.MainActivity access$0(com.xy.fy.main.MainActivity$47) -> a
+    1807:1830:void onClick() -> a
+    1802:1802:com.xy.fy.main.MainActivity access$0(com.xy.fy.main.MainActivity$47) -> a
 com.xy.fy.main.MainActivity$47$1 -> com.xy.fy.main.bs:
     com.xy.fy.main.MainActivity$47 this$1 -> a
     android.widget.LinearLayout val$show_lib_layout -> b
     android.widget.LinearLayout val$bind_layout -> c
-    1794:1800:void onClick(android.content.DialogInterface,int) -> onClick
+    1814:1820:void onClick(android.content.DialogInterface,int) -> onClick
 com.xy.fy.main.MainActivity$47$2 -> com.xy.fy.main.bt:
     com.xy.fy.main.MainActivity$47 this$1 -> a
-    1805:1806:void onClick(android.content.DialogInterface,int) -> onClick
+    1825:1826:void onClick(android.content.DialogInterface,int) -> onClick
 com.xy.fy.main.MainActivity$48 -> com.xy.fy.main.bu:
+    com.xy.fy.main.MainActivity this$0 -> a
+    1841:1842:void onAdapter() -> a
+com.xy.fy.main.MainActivity$49 -> com.xy.fy.main.bv:
     com.xy.fy.main.MainActivity this$0 -> a
     java.lang.String val$libName -> b
     android.widget.LinearLayout val$bind_layout -> c
-    1826:1856:void returnResult(java.lang.String) -> a
-com.xy.fy.main.MainActivity$49 -> com.xy.fy.main.bv:
-    com.xy.fy.main.MainActivity this$0 -> a
-    cn.bmob.v3.datatype.BmobFile val$bmobFile -> b
-    2273:2276:void onSuccess() -> onSuccess
-    2282:2282:void onProgress(java.lang.Integer) -> onProgress
-    2287:2288:void onFailure(int,java.lang.String) -> onFailure
+    1856:1886:void returnResult(java.lang.String) -> a
 com.xy.fy.main.MainActivity$5 -> com.xy.fy.main.bw:
     com.xy.fy.main.MainActivity this$0 -> a
-    364:369:void onClick(android.view.View) -> onClick
+    376:381:void onClick(android.view.View) -> onClick
 com.xy.fy.main.MainActivity$50 -> com.xy.fy.main.bx:
     com.xy.fy.main.MainActivity this$0 -> a
-    2299:2301:void onSuccess() -> onSuccess
-    2306:2307:void onFailure(int,java.lang.String) -> onFailure
+    cn.bmob.v3.datatype.BmobFile val$bmobFile -> b
+    2303:2306:void onSuccess() -> onSuccess
+    2312:2312:void onProgress(java.lang.Integer) -> onProgress
+    2317:2318:void onFailure(int,java.lang.String) -> onFailure
 com.xy.fy.main.MainActivity$51 -> com.xy.fy.main.by:
     com.xy.fy.main.MainActivity this$0 -> a
-    2360:2361:void onClick(android.content.DialogInterface,int) -> onClick
-com.xy.fy.main.MainActivity$6 -> com.xy.fy.main.bz:
+    2329:2331:void onSuccess() -> onSuccess
+    2336:2337:void onFailure(int,java.lang.String) -> onFailure
+com.xy.fy.main.MainActivity$52 -> com.xy.fy.main.bz:
     com.xy.fy.main.MainActivity this$0 -> a
-    375:398:void onClick(android.view.View) -> onClick
-    372:372:com.xy.fy.main.MainActivity access$0(com.xy.fy.main.MainActivity$6) -> a
-com.xy.fy.main.MainActivity$6$1 -> com.xy.fy.main.ca:
+    2390:2391:void onClick(android.content.DialogInterface,int) -> onClick
+com.xy.fy.main.MainActivity$6 -> com.xy.fy.main.ca:
+    com.xy.fy.main.MainActivity this$0 -> a
+    387:410:void onClick(android.view.View) -> onClick
+    384:384:com.xy.fy.main.MainActivity access$0(com.xy.fy.main.MainActivity$6) -> a
+com.xy.fy.main.MainActivity$6$1 -> com.xy.fy.main.cb:
     com.xy.fy.main.MainActivity$6 this$1 -> a
-    388:396:void run() -> run
-com.xy.fy.main.MainActivity$7 -> com.xy.fy.main.cb:
+    400:408:void run() -> run
+com.xy.fy.main.MainActivity$7 -> com.xy.fy.main.cc:
     com.xy.fy.main.MainActivity this$0 -> a
-    406:433:void onClick(android.view.View) -> onClick
-    402:402:com.xy.fy.main.MainActivity access$0(com.xy.fy.main.MainActivity$7) -> a
-com.xy.fy.main.MainActivity$7$1 -> com.xy.fy.main.cc:
+    418:445:void onClick(android.view.View) -> onClick
+    414:414:com.xy.fy.main.MainActivity access$0(com.xy.fy.main.MainActivity$7) -> a
+com.xy.fy.main.MainActivity$7$1 -> com.xy.fy.main.cd:
     com.xy.fy.main.MainActivity$7 this$1 -> a
-    422:431:void run() -> run
-com.xy.fy.main.MainActivity$8 -> com.xy.fy.main.cd:
+    434:443:void run() -> run
+com.xy.fy.main.MainActivity$8 -> com.xy.fy.main.ce:
     com.xy.fy.main.MainActivity this$0 -> a
-    439:467:void onClick(android.view.View) -> onClick
-    436:436:com.xy.fy.main.MainActivity access$0(com.xy.fy.main.MainActivity$8) -> a
-com.xy.fy.main.MainActivity$8$1 -> com.xy.fy.main.ce:
+    451:479:void onClick(android.view.View) -> onClick
+    448:448:com.xy.fy.main.MainActivity access$0(com.xy.fy.main.MainActivity$8) -> a
+com.xy.fy.main.MainActivity$8$1 -> com.xy.fy.main.cf:
     com.xy.fy.main.MainActivity$8 this$1 -> a
-    454:462:void run() -> run
-com.xy.fy.main.MainActivity$9 -> com.xy.fy.main.cf:
+    466:474:void run() -> run
+com.xy.fy.main.MainActivity$9 -> com.xy.fy.main.cg:
     com.xy.fy.main.MainActivity this$0 -> a
-    473:490:void onClick(android.view.View) -> onClick
-    470:470:com.xy.fy.main.MainActivity access$0(com.xy.fy.main.MainActivity$9) -> a
-com.xy.fy.main.MainActivity$9$1 -> com.xy.fy.main.cg:
+    485:502:void onClick(android.view.View) -> onClick
+    482:482:com.xy.fy.main.MainActivity access$0(com.xy.fy.main.MainActivity$9) -> a
+com.xy.fy.main.MainActivity$9$1 -> com.xy.fy.main.ch:
     com.xy.fy.main.MainActivity$9 this$1 -> a
-    480:488:void run() -> run
-com.xy.fy.main.MainActivity$BaiduReceiver -> com.xy.fy.main.ch:
+    492:500:void run() -> run
+com.xy.fy.main.MainActivity$BaiduReceiver -> com.xy.fy.main.ci:
     com.xy.fy.main.MainActivity this$0 -> a
-    2316:2322:void onReceive(android.content.Context,android.content.Intent) -> onReceive
-com.xy.fy.main.MainActivity$GetScoreAsyntask -> com.xy.fy.main.ci:
+    2346:2352:void onReceive(android.content.Context,android.content.Intent) -> onReceive
+com.xy.fy.main.MainActivity$GetScoreAsyntask -> com.xy.fy.main.cj:
     com.xy.fy.main.MainActivity this$0 -> a
-    1412:1429:java.lang.String doInBackground(java.lang.Object[]) -> a
-    1436:1499:void onPostExecute(java.lang.String) -> a
+    1424:1448:java.lang.String doInBackground(java.lang.Object[]) -> a
+    1455:1519:void onPostExecute(java.lang.String) -> a
     1:1:void onPostExecute(java.lang.Object) -> onPostExecute
     1:1:java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
-    1407:1407:com.xy.fy.main.MainActivity access$2(com.xy.fy.main.MainActivity$GetScoreAsyntask) -> a
-com.xy.fy.main.MainActivity$GetScoreAsyntask$1 -> com.xy.fy.main.cj:
+    1419:1419:com.xy.fy.main.MainActivity access$2(com.xy.fy.main.MainActivity$GetScoreAsyntask) -> a
+com.xy.fy.main.MainActivity$GetScoreAsyntask$1 -> com.xy.fy.main.ck:
     com.xy.fy.main.MainActivity$GetScoreAsyntask this$1 -> a
-    1469:1470:void onClick(android.content.DialogInterface,int) -> onClick
-com.xy.fy.main.MainActivity$MyHandler -> com.xy.fy.main.ck:
+    1489:1490:void onClick(android.content.DialogInterface,int) -> onClick
+com.xy.fy.main.MainActivity$MyHandler -> com.xy.fy.main.cl:
     java.lang.ref.WeakReference mActivityReference -> a
     com.xy.fy.main.MainActivity this$0 -> b
-    1553:1644:void handleMessage(android.os.Message) -> handleMessage
-    1542:1542:com.xy.fy.main.MainActivity access$0(com.xy.fy.main.MainActivity$MyHandler) -> a
-com.xy.fy.main.MainActivity$MyHandler$1 -> com.xy.fy.main.cl:
+    1573:1664:void handleMessage(android.os.Message) -> handleMessage
+    1562:1562:com.xy.fy.main.MainActivity access$0(com.xy.fy.main.MainActivity$MyHandler) -> a
+com.xy.fy.main.MainActivity$MyHandler$1 -> com.xy.fy.main.cm:
     com.xy.fy.main.MainActivity$MyHandler this$1 -> a
-    1612:1617:void onPost() -> a
-com.xy.fy.main.MainActivity$MyHandler$2 -> com.xy.fy.main.cm:
+    1632:1637:void onPost() -> a
+com.xy.fy.main.MainActivity$MyHandler$2 -> com.xy.fy.main.cn:
     com.xy.fy.main.MainActivity$MyHandler this$1 -> a
-    1638:1638:void onCheck() -> a
-com.xy.fy.main.MainActivity$NewBroadcastReceiver -> com.xy.fy.main.cn:
+    1658:1658:void onCheck() -> a
+com.xy.fy.main.MainActivity$NewBroadcastReceiver -> com.xy.fy.main.co:
     com.xy.fy.main.MainActivity this$0 -> a
-    2054:2057:void onReceive(android.content.Context,android.content.Intent) -> onReceive
-com.xy.fy.main.MainActivity$TagBroadcastReceiver -> com.xy.fy.main.co:
+    2084:2087:void onReceive(android.content.Context,android.content.Intent) -> onReceive
+com.xy.fy.main.MainActivity$TagBroadcastReceiver -> com.xy.fy.main.cp:
     com.xy.fy.main.MainActivity this$0 -> a
-    2077:2081:void onReceive(android.content.Context,android.content.Intent) -> onReceive
-com.xy.fy.main.R -> com.xy.fy.main.cp:
-com.xy.fy.main.R$styleable -> com.xy.fy.main.cq:
+    2107:2111:void onReceive(android.content.Context,android.content.Intent) -> onReceive
+com.xy.fy.main.R -> com.xy.fy.main.cq:
+com.xy.fy.main.R$styleable -> com.xy.fy.main.cr:
     int[] CircleImageView -> CircleImageView
     int CircleImageView_border_color -> CircleImageView_border_color
     int CircleImageView_border_width -> CircleImageView_border_width
@@ -21662,30 +21763,26 @@ com.xy.fy.main.ShowScoreActivity -> com.xy.fy.main.ShowScoreActivity:
     android.widget.LinearLayout layout -> d
     30:66:void onCreate(android.os.Bundle) -> onCreate
     71:86:void init() -> a
-com.xy.fy.main.ShowScoreActivity$1 -> com.xy.fy.main.cr:
+com.xy.fy.main.ShowScoreActivity$1 -> com.xy.fy.main.cs:
     com.xy.fy.main.ShowScoreActivity this$0 -> a
     77:78:void onClick(android.view.View) -> onClick
 com.xy.fy.main.WelcomeActivity -> com.xy.fy.main.WelcomeActivity:
-    41:153:void onCreate(android.os.Bundle) -> onCreate
-com.xy.fy.main.WelcomeActivity$1 -> com.xy.fy.main.cs:
+    41:158:void onCreate(android.os.Bundle) -> onCreate
+com.xy.fy.main.WelcomeActivity$1 -> com.xy.fy.main.ct:
     com.xy.fy.main.WelcomeActivity this$0 -> a
-    65:66:void onClick(android.content.DialogInterface,int) -> onClick
-com.xy.fy.main.WelcomeActivity$2 -> com.xy.fy.main.ct:
+    66:67:void onClick(android.content.DialogInterface,int) -> onClick
+com.xy.fy.main.WelcomeActivity$2 -> com.xy.fy.main.cu:
     com.xy.fy.main.WelcomeActivity this$0 -> a
-    70:72:void onClick(android.content.DialogInterface,int) -> onClick
-com.xy.fy.main.WelcomeActivity$3 -> com.xy.fy.main.cu:
+    71:73:void onClick(android.content.DialogInterface,int) -> onClick
+com.xy.fy.main.WelcomeActivity$3 -> com.xy.fy.main.cv:
     com.xy.fy.main.WelcomeActivity this$0 -> a
-    90:143:void onAnimationEnd(android.view.animation.Animation) -> onAnimationEnd
-    147:147:void onAnimationRepeat(android.view.animation.Animation) -> onAnimationRepeat
-    151:151:void onAnimationStart(android.view.animation.Animation) -> onAnimationStart
-    86:86:com.xy.fy.main.WelcomeActivity access$0(com.xy.fy.main.WelcomeActivity$3) -> a
-com.xy.fy.main.WelcomeActivity$3$1 -> com.xy.fy.main.cv:
-    com.xy.fy.main.WelcomeActivity$3 this$1 -> a
-    114:134:void onReturn(java.lang.String) -> a
+    95:148:void onAnimationEnd(android.view.animation.Animation) -> onAnimationEnd
+    152:152:void onAnimationRepeat(android.view.animation.Animation) -> onAnimationRepeat
+    156:156:void onAnimationStart(android.view.animation.Animation) -> onAnimationStart
 com.xy.fy.main.WelcomeActivity$GetImageMsgAsytask -> com.xy.fy.main.cw:
     com.xy.fy.main.WelcomeActivity this$0 -> a
-    159:159:java.lang.String doInBackground(java.lang.String[]) -> a
-    167:179:void onPostExecute(java.lang.String) -> a
+    164:164:java.lang.String doInBackground(java.lang.String[]) -> a
+    172:184:void onPostExecute(java.lang.String) -> a
     1:1:void onPostExecute(java.lang.Object) -> onPostExecute
     1:1:java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
 com.xy.fy.main.wxapi.WXEntryActivity -> com.xy.fy.main.wxapi.WXEntryActivity:

@@ -12933,6 +12933,9 @@ com.xy.fy.main.R$color: int green
 com.xy.fy.main.R$color: int greenyellow
 com.xy.fy.main.R$color: int grey
 com.xy.fy.main.R$color: int guide_color
+com.xy.fy.main.R$color: int h5_card_background
+com.xy.fy.main.R$color: int h5_card_shadow
+com.xy.fy.main.R$color: int h5_transparent
 com.xy.fy.main.R$color: int home_item_color_bg
 com.xy.fy.main.R$color: int honeydew
 com.xy.fy.main.R$color: int hotpink
@@ -13509,6 +13512,12 @@ com.xy.fy.main.R$drawable: int friend_list
 com.xy.fy.main.R$drawable: int friend_list_textcolor
 com.xy.fy.main.R$drawable: int friend_recommand_up
 com.xy.fy.main.R$drawable: int gxa
+com.xy.fy.main.R$drawable: int h5_dialog_button
+com.xy.fy.main.R$drawable: int h5_dialog_card
+com.xy.fy.main.R$drawable: int h5_dialog_card_nos
+com.xy.fy.main.R$drawable: int h5_dialog_card_nos_pressed
+com.xy.fy.main.R$drawable: int h5_dialog_prompt_edit
+com.xy.fy.main.R$drawable: int h5_dialog_window
 com.xy.fy.main.R$drawable: int ic_action_search
 com.xy.fy.main.R$drawable: int ic_launcher
 com.xy.fy.main.R$drawable: int ic_menu_moreoverflow_normal_holo_light
@@ -13935,6 +13944,7 @@ com.xy.fy.main.R$id: int edit_nick
 com.xy.fy.main.R$id: int edit_query
 com.xy.fy.main.R$id: int edit_user_comment
 com.xy.fy.main.R$id: int email
+com.xy.fy.main.R$id: int empty_view
 com.xy.fy.main.R$id: int etAccount
 com.xy.fy.main.R$id: int etComment
 com.xy.fy.main.R$id: int etEmail
@@ -13964,6 +13974,11 @@ com.xy.fy.main.R$id: int gridView
 com.xy.fy.main.R$id: int gridview
 com.xy.fy.main.R$id: int guakelv
 com.xy.fy.main.R$id: int guanwang
+com.xy.fy.main.R$id: int h5_buttonLayout
+com.xy.fy.main.R$id: int h5_contentView
+com.xy.fy.main.R$id: int h5_material_background
+com.xy.fy.main.R$id: int h5_message
+com.xy.fy.main.R$id: int h5_message_content_view
 com.xy.fy.main.R$id: int hScrollView
 com.xy.fy.main.R$id: int headPhoto
 com.xy.fy.main.R$id: int head_arrow
@@ -13989,6 +14004,7 @@ com.xy.fy.main.R$id: int imageView
 com.xy.fy.main.R$id: int imageView1
 com.xy.fy.main.R$id: int imagesLinearLayout
 com.xy.fy.main.R$id: int img_friend_avatar
+com.xy.fy.main.R$id: int input
 com.xy.fy.main.R$id: int ip
 com.xy.fy.main.R$id: int item_image
 com.xy.fy.main.R$id: int iv_arraw
@@ -14278,6 +14294,7 @@ com.xy.fy.main.R$layout: int fragment_recent
 com.xy.fy.main.R$layout: int fragment_set
 com.xy.fy.main.R$layout: int friend_recommand_listview
 com.xy.fy.main.R$layout: int friend_recommond_list
+com.xy.fy.main.R$layout: int h5_dialog
 com.xy.fy.main.R$layout: int h5_toast
 com.xy.fy.main.R$layout: int header
 com.xy.fy.main.R$layout: int include_action_bar
@@ -14453,6 +14470,8 @@ com.xy.fy.main.R$string: int friend_recommand
 com.xy.fy.main.R$string: int google_plus_client_inavailable
 com.xy.fy.main.R$string: int googleplus
 com.xy.fy.main.R$string: int guest
+com.xy.fy.main.R$string: int h5_default_cancel
+com.xy.fy.main.R$string: int h5_default_confirm
 com.xy.fy.main.R$string: int hello
 com.xy.fy.main.R$string: int help_and_feedback
 com.xy.fy.main.R$string: int hi
