@@ -55,9 +55,9 @@ public class HttpUtilMc {
   public static HttpResponse getHttpResponse(HttpGet request)
       throws ClientProtocolException, IOException {
     HttpClient client = new DefaultHttpClient();
-    client.getParams().setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 6000);
+    client.getParams().setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 60000);
     // 读取超时
-    client.getParams().setParameter(CoreConnectionPNames.SO_TIMEOUT, 6000);
+    client.getParams().setParameter(CoreConnectionPNames.SO_TIMEOUT, 60000);
     HttpResponse response = client.execute(request);
     return response;
   }
@@ -74,9 +74,9 @@ public class HttpUtilMc {
   public static HttpResponse getHttpResponse(HttpPost request)
       throws ClientProtocolException, IOException {
     HttpClient client = new DefaultHttpClient();
-    client.getParams().setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 6000);
+    client.getParams().setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 60000);
     // 读取超时
-    client.getParams().setParameter(CoreConnectionPNames.SO_TIMEOUT, 6000);
+    client.getParams().setParameter(CoreConnectionPNames.SO_TIMEOUT, 60000);
     HttpResponse response = client.execute(request);
     return response;
   }

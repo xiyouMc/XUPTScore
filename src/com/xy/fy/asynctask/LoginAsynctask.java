@@ -21,34 +21,35 @@ import android.util.Log;
 import android.widget.TextView;
 
 public class LoginAsynctask extends AsyncTask<Object, String, String> {
-  
+
   private Activity mActivity;
   private LoginResult loginResult;
-  private String account,password;
+  private String account, password;
   private ProgressDialog progressDialog;
+  private String txtSecretCode;
 
-  public LoginAsynctask(Activity mActivity,String account,String password,LoginResult loginResult,ProgressDialog progressDialog) {
+  public LoginAsynctask(Activity mActivity, String account, String password, String txtSecretCode,
+      LoginResult loginResult, ProgressDialog progressDialog) {
     // TODO Auto-generated constructor stub
     this.mActivity = mActivity;
     this.account = account;
     this.password = password;
     this.loginResult = loginResult;
     this.progressDialog = progressDialog;
-        
+    this.txtSecretCode = txtSecretCode;
   }
-  
-  interface LoginResult{
+
+  interface LoginResult {
     void onLogin(String result);
   }
-  
+
   @Override
   protected String doInBackground(Object... params) {
     // TODO Auto-generated method stub
     StaticVarUtil.loginTimes++;
     return HttpUtilMc.queryStringForPost(
-        HttpUtilMc.BASE_URL + "login.jsp?username=" + account.trim()
-            + "&password=" + URLEncoder.encode(password.trim()) + "&session="
-            + StaticVarUtil.session);
+        HttpUtilMc.BASE_URL + "login.jsp?username=" + account.trim() + "&password="
+            + URLEncoder.encode(password.trim()) + "&session=" + StaticVarUtil.session + "&txtSecretCode=" + txtSecretCode);
 
   }
 
@@ -59,7 +60,6 @@ public class LoginAsynctask extends AsyncTask<Object, String, String> {
     // progress.cancel();
 
     loginResult.onLogin(result);
-    
 
   }
 

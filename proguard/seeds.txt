@@ -1,4 +1,3 @@
-android.support.v4.app.BackStackState
 android.support.v4.app.BackStackState: android.os.Parcelable$Creator CREATOR
 android.support.v4.app.Fragment: java.util.HashMap sClassMap
 android.support.v4.app.Fragment: int INITIALIZING
@@ -143,15 +142,11 @@ android.support.v4.app.Fragment: void performReallyStop()
 android.support.v4.app.Fragment: void performDestroyView()
 android.support.v4.app.Fragment: void performDestroy()
 android.support.v4.app.Fragment: void <clinit>()
-android.support.v4.app.Fragment$SavedState
 android.support.v4.app.Fragment$SavedState: android.os.Parcelable$Creator CREATOR
 android.support.v4.app.FragmentActivity: FragmentActivity()
-android.support.v4.app.FragmentManagerState
 android.support.v4.app.FragmentManagerState: android.os.Parcelable$Creator CREATOR
-android.support.v4.app.FragmentState
 android.support.v4.app.FragmentState: android.os.Parcelable$Creator CREATOR
 android.support.v4.app.FragmentTabHost: void setOnTabChangedListener(android.widget.TabHost$OnTabChangeListener)
-android.support.v4.app.FragmentTabHost$SavedState
 android.support.v4.app.FragmentTabHost$SavedState: android.os.Parcelable$Creator CREATOR
 android.support.v4.content.ModernAsyncTask$Status: android.support.v4.content.ModernAsyncTask$Status[] values()
 android.support.v4.content.ModernAsyncTask$Status: android.support.v4.content.ModernAsyncTask$Status valueOf(java.lang.String)
@@ -190,7 +185,6 @@ android.support.v4.view.ViewPager: int getPageMargin()
 android.support.v4.view.ViewPager: void setPageMarginDrawable(android.graphics.drawable.Drawable)
 android.support.v4.view.ViewPager: void setPageMarginDrawable(int)
 android.support.v4.view.ViewPager: void setScrollingCacheEnabled(boolean)
-android.support.v4.view.ViewPager$SavedState
 android.support.v4.view.ViewPager$SavedState: android.os.Parcelable$Creator CREATOR
 cn.bmob.im.BmobChat
 cn.bmob.im.BmobChat: boolean DEBUG_MODE
@@ -7378,7 +7372,6 @@ com.actionbarsherlock.internal.view.menu.ActionMenuItemView: void setChecked(boo
 com.actionbarsherlock.internal.view.menu.ActionMenuItemView: void setExpandedFormat(boolean)
 com.actionbarsherlock.internal.view.menu.ActionMenuItemView: void setIcon(android.graphics.drawable.Drawable)
 com.actionbarsherlock.internal.view.menu.ActionMenuItemView: void setTitle(java.lang.CharSequence)
-com.actionbarsherlock.internal.view.menu.ActionMenuPresenter$SavedState
 com.actionbarsherlock.internal.view.menu.ActionMenuPresenter$SavedState: android.os.Parcelable$Creator CREATOR
 com.actionbarsherlock.internal.view.menu.ActionMenuView
 com.actionbarsherlock.internal.view.menu.ActionMenuView: ActionMenuView(android.content.Context)
@@ -7461,7 +7454,6 @@ com.actionbarsherlock.internal.widget.ActionBarView$HomeView: ActionBarView$Home
 com.actionbarsherlock.internal.widget.ActionBarView$HomeView: void setUp(boolean)
 com.actionbarsherlock.internal.widget.ActionBarView$HomeView: void setIcon(android.graphics.drawable.Drawable)
 com.actionbarsherlock.internal.widget.ActionBarView$HomeView: int getLeftOffset()
-com.actionbarsherlock.internal.widget.ActionBarView$SavedState
 com.actionbarsherlock.internal.widget.ActionBarView$SavedState: android.os.Parcelable$Creator CREATOR
 com.actionbarsherlock.internal.widget.CapitalizingButton
 com.actionbarsherlock.internal.widget.CapitalizingButton: CapitalizingButton(android.content.Context,android.util.AttributeSet)
@@ -7474,7 +7466,6 @@ com.actionbarsherlock.internal.widget.IcsAbsSpinner: android.widget.SpinnerAdapt
 com.actionbarsherlock.internal.widget.IcsAbsSpinner: int getCount()
 com.actionbarsherlock.internal.widget.IcsAbsSpinner: void setAdapter(android.widget.Adapter)
 com.actionbarsherlock.internal.widget.IcsAbsSpinner: android.widget.Adapter getAdapter()
-com.actionbarsherlock.internal.widget.IcsAbsSpinner$SavedState
 com.actionbarsherlock.internal.widget.IcsAbsSpinner$SavedState: android.os.Parcelable$Creator CREATOR
 com.actionbarsherlock.internal.widget.IcsAdapterView: void setOnItemClickListener(android.widget.AdapterView$OnItemClickListener)
 com.actionbarsherlock.internal.widget.IcsAdapterView: android.widget.AdapterView$OnItemClickListener getOnItemClickListener()
@@ -7523,7 +7514,6 @@ com.actionbarsherlock.internal.widget.IcsProgressBar: void setMax(int)
 com.actionbarsherlock.internal.widget.IcsProgressBar: void setInterpolator(android.view.animation.Interpolator)
 com.actionbarsherlock.internal.widget.IcsProgressBar: android.view.animation.Interpolator getInterpolator()
 com.actionbarsherlock.internal.widget.IcsProgressBar: void setVisibility(int)
-com.actionbarsherlock.internal.widget.IcsProgressBar$SavedState
 com.actionbarsherlock.internal.widget.IcsProgressBar$SavedState: android.os.Parcelable$Creator CREATOR
 com.actionbarsherlock.internal.widget.IcsSpinner: void setEnabled(boolean)
 com.actionbarsherlock.internal.widget.IcsSpinner: void setGravity(int)
@@ -7581,7 +7571,6 @@ com.b.a.method: com.b.a.method[] values()
 com.b.a.method: com.b.a.method valueOf(java.lang.String)
 com.b.a.of: com.b.a.of[] values()
 com.b.a.of: com.b.a.of valueOf(java.lang.String)
-com.baidu.location.BDLocation
 com.baidu.location.BDLocation: android.os.Parcelable$Creator CREATOR
 com.baidu.location.CommonEncrypt
 com.baidu.location.CommonEncrypt: byte[] encrypt(byte[])
@@ -11633,7 +11622,6 @@ com.slidingmenu.lib.SlidingMenu: void setOnOpenListener(com.slidingmenu.lib.Slid
 com.slidingmenu.lib.SlidingMenu: void setOnCloseListener(com.slidingmenu.lib.SlidingMenu$OnCloseListener)
 com.slidingmenu.lib.SlidingMenu: void setOnOpenedListener(com.slidingmenu.lib.SlidingMenu$OnOpenedListener)
 com.slidingmenu.lib.SlidingMenu: void setOnClosedListener(com.slidingmenu.lib.SlidingMenu$OnClosedListener)
-com.slidingmenu.lib.SlidingMenu$SavedState
 com.slidingmenu.lib.SlidingMenu$SavedState: android.os.Parcelable$Creator CREATOR
 com.slidingmenu.lib.app.SlidingActivity: void setContentView(android.view.View)
 com.slidingmenu.lib.app.SlidingActivity: void setBehindContentView(android.view.View)
@@ -12700,12 +12688,16 @@ com.xy.fy.main.AddFriendListActivity
 com.xy.fy.main.AddFriendListActivity: AddFriendListActivity()
 com.xy.fy.main.CETActivity
 com.xy.fy.main.CETActivity: CETActivity()
+com.xy.fy.main.ChangePwdActivity
+com.xy.fy.main.ChangePwdActivity: ChangePwdActivity()
 com.xy.fy.main.ForgetCetActivity
 com.xy.fy.main.ForgetCetActivity: ForgetCetActivity()
 com.xy.fy.main.FriendApplyActivity
 com.xy.fy.main.FriendApplyActivity: FriendApplyActivity()
 com.xy.fy.main.FriendRecommondActivity
 com.xy.fy.main.FriendRecommondActivity: FriendRecommondActivity()
+com.xy.fy.main.LanguageActivity
+com.xy.fy.main.LanguageActivity: LanguageActivity()
 com.xy.fy.main.LoginActivity
 com.xy.fy.main.LoginActivity: LoginActivity()
 com.xy.fy.main.MainActivity
@@ -12941,6 +12933,9 @@ com.xy.fy.main.R$color: int green
 com.xy.fy.main.R$color: int greenyellow
 com.xy.fy.main.R$color: int grey
 com.xy.fy.main.R$color: int guide_color
+com.xy.fy.main.R$color: int h5_card_background
+com.xy.fy.main.R$color: int h5_card_shadow
+com.xy.fy.main.R$color: int h5_transparent
 com.xy.fy.main.R$color: int home_item_color_bg
 com.xy.fy.main.R$color: int honeydew
 com.xy.fy.main.R$color: int hotpink
@@ -12968,6 +12963,7 @@ com.xy.fy.main.R$color: int lightyellow
 com.xy.fy.main.R$color: int lime
 com.xy.fy.main.R$color: int limegreen
 com.xy.fy.main.R$color: int linen
+com.xy.fy.main.R$color: int list_item_pressed
 com.xy.fy.main.R$color: int login_down
 com.xy.fy.main.R$color: int login_up
 com.xy.fy.main.R$color: int logincolor
@@ -13372,6 +13368,7 @@ com.xy.fy.main.R$drawable: int abs__textfield_searchview_holo_light
 com.xy.fy.main.R$drawable: int abs__textfield_searchview_right_holo_dark
 com.xy.fy.main.R$drawable: int abs__textfield_searchview_right_holo_light
 com.xy.fy.main.R$drawable: int abs__toast_frame
+com.xy.fy.main.R$drawable: int activity_main_single_background
 com.xy.fy.main.R$drawable: int activity_welcome_background
 com.xy.fy.main.R$drawable: int add_friend
 com.xy.fy.main.R$drawable: int arrow
@@ -13380,8 +13377,6 @@ com.xy.fy.main.R$drawable: int auth_follow_cb_unc
 com.xy.fy.main.R$drawable: int auth_title_back
 com.xy.fy.main.R$drawable: int back_down
 com.xy.fy.main.R$drawable: int back_up
-com.xy.fy.main.R$drawable: int base_action_bar_add_bg_n
-com.xy.fy.main.R$drawable: int base_action_bar_add_bg_p
 com.xy.fy.main.R$drawable: int base_action_bar_add_bg_selector
 com.xy.fy.main.R$drawable: int base_action_bar_back_bg_n
 com.xy.fy.main.R$drawable: int base_action_bar_back_bg_p
@@ -13422,12 +13417,16 @@ com.xy.fy.main.R$drawable: int btn_login_selector
 com.xy.fy.main.R$drawable: int btn_logout_n
 com.xy.fy.main.R$drawable: int btn_logout_p
 com.xy.fy.main.R$drawable: int btn_logout_selector
+com.xy.fy.main.R$drawable: int btn_renew
 com.xy.fy.main.R$drawable: int btn_selector
 com.xy.fy.main.R$drawable: int btn_send_n
 com.xy.fy.main.R$drawable: int btn_send_press
 com.xy.fy.main.R$drawable: int btn_send_selector
 com.xy.fy.main.R$drawable: int btn_style_alert_dialog_background
 com.xy.fy.main.R$drawable: int btn_style_one_disabled
+com.xy.fy.main.R$drawable: int but_renew_down
+com.xy.fy.main.R$drawable: int but_renew_up
+com.xy.fy.main.R$drawable: int but_renw_number
 com.xy.fy.main.R$drawable: int button_back
 com.xy.fy.main.R$drawable: int button_back_up
 com.xy.fy.main.R$drawable: int button_bg
@@ -13442,9 +13441,6 @@ com.xy.fy.main.R$drawable: int button_friend_recommand
 com.xy.fy.main.R$drawable: int button_menu
 com.xy.fy.main.R$drawable: int button_menu_up
 com.xy.fy.main.R$drawable: int button_normal_shape
-com.xy.fy.main.R$drawable: int button_refresh
-com.xy.fy.main.R$drawable: int button_refresh_down
-com.xy.fy.main.R$drawable: int button_refresh_up
 com.xy.fy.main.R$drawable: int button_selector_shape
 com.xy.fy.main.R$drawable: int card
 com.xy.fy.main.R$drawable: int card_background
@@ -13488,9 +13484,7 @@ com.xy.fy.main.R$drawable: int chatfrom_bg_new_fmessage_normal
 com.xy.fy.main.R$drawable: int checkbox
 com.xy.fy.main.R$drawable: int checkbox_normal
 com.xy.fy.main.R$drawable: int checkbox_press
-com.xy.fy.main.R$drawable: int choose_school
-com.xy.fy.main.R$drawable: int choose_school_down
-com.xy.fy.main.R$drawable: int choose_school_up
+com.xy.fy.main.R$drawable: int chongzhi
 com.xy.fy.main.R$drawable: int classic_platform_corners_bg
 com.xy.fy.main.R$drawable: int confirm_dialog_failweb
 com.xy.fy.main.R$drawable: int contact_list_buddy_item_bg
@@ -13518,9 +13512,13 @@ com.xy.fy.main.R$drawable: int friend_list
 com.xy.fy.main.R$drawable: int friend_list_textcolor
 com.xy.fy.main.R$drawable: int friend_recommand_up
 com.xy.fy.main.R$drawable: int gxa
+com.xy.fy.main.R$drawable: int h5_dialog_button
+com.xy.fy.main.R$drawable: int h5_dialog_card
+com.xy.fy.main.R$drawable: int h5_dialog_card_nos
+com.xy.fy.main.R$drawable: int h5_dialog_card_nos_pressed
+com.xy.fy.main.R$drawable: int h5_dialog_prompt_edit
+com.xy.fy.main.R$drawable: int h5_dialog_window
 com.xy.fy.main.R$drawable: int ic_action_search
-com.xy.fy.main.R$drawable: int ic_drawer_home_normal
-com.xy.fy.main.R$drawable: int ic_drawer_home_pressed
 com.xy.fy.main.R$drawable: int ic_launcher
 com.xy.fy.main.R$drawable: int ic_menu_moreoverflow_normal_holo_light
 com.xy.fy.main.R$drawable: int icon_contact_normal
@@ -13533,12 +13531,42 @@ com.xy.fy.main.R$drawable: int icon_msg_search
 com.xy.fy.main.R$drawable: int icon_near
 com.xy.fy.main.R$drawable: int icon_set_normal
 com.xy.fy.main.R$drawable: int icon_set_press
+com.xy.fy.main.R$drawable: int iconfont_about
+com.xy.fy.main.R$drawable: int iconfont_about_down
+com.xy.fy.main.R$drawable: int iconfont_add
+com.xy.fy.main.R$drawable: int iconfont_add_down
+com.xy.fy.main.R$drawable: int iconfont_bang
+com.xy.fy.main.R$drawable: int iconfont_bang_down
+com.xy.fy.main.R$drawable: int iconfont_duihao
+com.xy.fy.main.R$drawable: int iconfont_haoyou2
+com.xy.fy.main.R$drawable: int iconfont_haoyou2_down
+com.xy.fy.main.R$drawable: int iconfont_huadongjiantouyou
 com.xy.fy.main.R$drawable: int iconfont_iconfontcolor51
+com.xy.fy.main.R$drawable: int iconfont_jiantou
+com.xy.fy.main.R$drawable: int iconfont_jiantou_down
+com.xy.fy.main.R$drawable: int iconfont_mengsi
+com.xy.fy.main.R$drawable: int iconfont_mengsi_down
+com.xy.fy.main.R$drawable: int iconfont_menu
+com.xy.fy.main.R$drawable: int iconfont_menu_down
+com.xy.fy.main.R$drawable: int iconfont_paiming
+com.xy.fy.main.R$drawable: int iconfont_paiming_down
 com.xy.fy.main.R$drawable: int iconfont_pdf
+com.xy.fy.main.R$drawable: int iconfont_share
+com.xy.fy.main.R$drawable: int iconfont_share_down
+com.xy.fy.main.R$drawable: int iconfont_tushu
+com.xy.fy.main.R$drawable: int iconfont_tushu_down
 com.xy.fy.main.R$drawable: int iconfont_txt
 com.xy.fy.main.R$drawable: int iconfont_uploading
 com.xy.fy.main.R$drawable: int iconfont_wenjian
 com.xy.fy.main.R$drawable: int iconfont_word
+com.xy.fy.main.R$drawable: int iconfont_xiugaimima
+com.xy.fy.main.R$drawable: int iconfont_xiugaimima_down
+com.xy.fy.main.R$drawable: int iconfont_yijianfankui
+com.xy.fy.main.R$drawable: int iconfont_yijianfankui_down
+com.xy.fy.main.R$drawable: int iconfont_zhongzhi
+com.xy.fy.main.R$drawable: int iconfont_zhongzhi_down
+com.xy.fy.main.R$drawable: int iconfont_zhuxiao
+com.xy.fy.main.R$drawable: int iconfont_zhuxiao_down
 com.xy.fy.main.R$drawable: int img_cancel
 com.xy.fy.main.R$drawable: int input_bg
 com.xy.fy.main.R$drawable: int ios7_btn
@@ -13547,7 +13575,9 @@ com.xy.fy.main.R$drawable: int item_user_new
 com.xy.fy.main.R$drawable: int left1
 com.xy.fy.main.R$drawable: int light_blue_point
 com.xy.fy.main.R$drawable: int list_conversation_press
+com.xy.fy.main.R$drawable: int list_item_selector
 com.xy.fy.main.R$drawable: int list_newmessage2
+com.xy.fy.main.R$drawable: int listview_tail
 com.xy.fy.main.R$drawable: int location_default
 com.xy.fy.main.R$drawable: int login_bg
 com.xy.fy.main.R$drawable: int login_btn
@@ -13567,14 +13597,11 @@ com.xy.fy.main.R$drawable: int logo_wechatfavorite
 com.xy.fy.main.R$drawable: int logo_wechatmoments
 com.xy.fy.main.R$drawable: int main_title_bar
 com.xy.fy.main.R$drawable: int menu_about
-com.xy.fy.main.R$drawable: int menu_about_down
-com.xy.fy.main.R$drawable: int menu_about_up
 com.xy.fy.main.R$drawable: int menu_arrow
 com.xy.fy.main.R$drawable: int menu_arrow_down
 com.xy.fy.main.R$drawable: int menu_arrow_up
 com.xy.fy.main.R$drawable: int menu_bang
-com.xy.fy.main.R$drawable: int menu_bang_down
-com.xy.fy.main.R$drawable: int menu_bang_up
+com.xy.fy.main.R$drawable: int menu_haoyou
 com.xy.fy.main.R$drawable: int menu_head_bg2
 com.xy.fy.main.R$drawable: int menu_list
 com.xy.fy.main.R$drawable: int menu_my_collect
@@ -13584,35 +13611,18 @@ com.xy.fy.main.R$drawable: int menu_my_comment
 com.xy.fy.main.R$drawable: int menu_my_comment_down
 com.xy.fy.main.R$drawable: int menu_my_comment_up
 com.xy.fy.main.R$drawable: int menu_my_publish
-com.xy.fy.main.R$drawable: int menu_my_publish_down
-com.xy.fy.main.R$drawable: int menu_my_publish_up
+com.xy.fy.main.R$drawable: int menu_paiming
 com.xy.fy.main.R$drawable: int menu_quit
-com.xy.fy.main.R$drawable: int menu_quit_down
-com.xy.fy.main.R$drawable: int menu_quit_up
 com.xy.fy.main.R$drawable: int menu_setting
-com.xy.fy.main.R$drawable: int menu_setting_down
-com.xy.fy.main.R$drawable: int menu_setting_up
+com.xy.fy.main.R$drawable: int menu_tushu
 com.xy.fy.main.R$drawable: int message_collect_no
 com.xy.fy.main.R$drawable: int message_collect_yes
 com.xy.fy.main.R$drawable: int message_comment
 com.xy.fy.main.R$drawable: int message_comment_down
 com.xy.fy.main.R$drawable: int message_comment_up
 com.xy.fy.main.R$drawable: int message_default
-com.xy.fy.main.R$drawable: int message_kind_all
-com.xy.fy.main.R$drawable: int message_kind_awkward
-com.xy.fy.main.R$drawable: int message_kind_eat
-com.xy.fy.main.R$drawable: int message_kind_entertainment
-com.xy.fy.main.R$drawable: int message_kind_flower
-com.xy.fy.main.R$drawable: int message_kind_grass
-com.xy.fy.main.R$drawable: int message_kind_learn
-com.xy.fy.main.R$drawable: int message_kind_notice
-com.xy.fy.main.R$drawable: int message_kind_shopping
-com.xy.fy.main.R$drawable: int message_kind_travel
 com.xy.fy.main.R$drawable: int message_praise_no
 com.xy.fy.main.R$drawable: int message_praise_yes
-com.xy.fy.main.R$drawable: int message_sort_7
-com.xy.fy.main.R$drawable: int message_sort_bang
-com.xy.fy.main.R$drawable: int message_sort_time
 com.xy.fy.main.R$drawable: int mini_widget_toast_bg
 com.xy.fy.main.R$drawable: int msg_tips
 com.xy.fy.main.R$drawable: int new_friends_icon
@@ -13651,8 +13661,6 @@ com.xy.fy.main.R$drawable: int search_item
 com.xy.fy.main.R$drawable: int selectable_background_cardbank
 com.xy.fy.main.R$drawable: int shadow
 com.xy.fy.main.R$drawable: int share
-com.xy.fy.main.R$drawable: int share_bluegray
-com.xy.fy.main.R$drawable: int share_bluewhite
 com.xy.fy.main.R$drawable: int skyblue_actionbar_back_btn
 com.xy.fy.main.R$drawable: int skyblue_actionbar_ok_btn
 com.xy.fy.main.R$drawable: int skyblue_editpage_bg
@@ -13839,7 +13847,12 @@ com.xy.fy.main.R$id: int atTextView
 com.xy.fy.main.R$id: int avatar
 com.xy.fy.main.R$id: int back
 com.xy.fy.main.R$id: int backImageView
+com.xy.fy.main.R$id: int bind
+com.xy.fy.main.R$id: int bindId
 com.xy.fy.main.R$id: int bmapView
+com.xy.fy.main.R$id: int book_list
+com.xy.fy.main.R$id: int book_name
+com.xy.fy.main.R$id: int book_numbe
 com.xy.fy.main.R$id: int btn_above
 com.xy.fy.main.R$id: int btn_add
 com.xy.fy.main.R$id: int btn_add_friend
@@ -13851,12 +13864,16 @@ com.xy.fy.main.R$id: int btn_chat_keyboard
 com.xy.fy.main.R$id: int btn_chat_send
 com.xy.fy.main.R$id: int btn_chat_voice
 com.xy.fy.main.R$id: int btn_contract
+com.xy.fy.main.R$id: int btn_listview
 com.xy.fy.main.R$id: int btn_login
 com.xy.fy.main.R$id: int btn_logout
 com.xy.fy.main.R$id: int btn_message
 com.xy.fy.main.R$id: int btn_register
 com.xy.fy.main.R$id: int btn_search
 com.xy.fy.main.R$id: int btn_set
+com.xy.fy.main.R$id: int btn_sgv
+com.xy.fy.main.R$id: int btn_sgv_empty_view
+com.xy.fy.main.R$id: int btn_sgv_fragment
 com.xy.fy.main.R$id: int btn_speak
 com.xy.fy.main.R$id: int bukao_tip
 com.xy.fy.main.R$id: int butAlter
@@ -13873,12 +13890,9 @@ com.xy.fy.main.R$id: int butLocalpic
 com.xy.fy.main.R$id: int butLogin
 com.xy.fy.main.R$id: int butMenu
 com.xy.fy.main.R$id: int butMore
-com.xy.fy.main.R$id: int butMsgKind
-com.xy.fy.main.R$id: int butMsgSort
 com.xy.fy.main.R$id: int butMy
 com.xy.fy.main.R$id: int butPublishMsg
 com.xy.fy.main.R$id: int butQuery
-com.xy.fy.main.R$id: int butRefresh
 com.xy.fy.main.R$id: int butRegister
 com.xy.fy.main.R$id: int butRememberPassword
 com.xy.fy.main.R$id: int butSamllface
@@ -13888,6 +13902,7 @@ com.xy.fy.main.R$id: int cardContent
 com.xy.fy.main.R$id: int cardsview
 com.xy.fy.main.R$id: int cet_account
 com.xy.fy.main.R$id: int cet_name
+com.xy.fy.main.R$id: int change_pwd
 com.xy.fy.main.R$id: int checkVersion
 com.xy.fy.main.R$id: int checkedImageView
 com.xy.fy.main.R$id: int checkversion
@@ -13895,10 +13910,15 @@ com.xy.fy.main.R$id: int choose
 com.xy.fy.main.R$id: int cj
 com.xy.fy.main.R$id: int closeImageView
 com.xy.fy.main.R$id: int code
+com.xy.fy.main.R$id: int col1
+com.xy.fy.main.R$id: int col2
+com.xy.fy.main.R$id: int col3
 com.xy.fy.main.R$id: int collect
 com.xy.fy.main.R$id: int comment
 com.xy.fy.main.R$id: int commentListView
 com.xy.fy.main.R$id: int common_actionbar
+com.xy.fy.main.R$id: int common_bind
+com.xy.fy.main.R$id: int common_show_lib
 com.xy.fy.main.R$id: int content
 com.xy.fy.main.R$id: int contentLayout
 com.xy.fy.main.R$id: int content_frame
@@ -13924,6 +13944,7 @@ com.xy.fy.main.R$id: int edit_nick
 com.xy.fy.main.R$id: int edit_query
 com.xy.fy.main.R$id: int edit_user_comment
 com.xy.fy.main.R$id: int email
+com.xy.fy.main.R$id: int empty_view
 com.xy.fy.main.R$id: int etAccount
 com.xy.fy.main.R$id: int etComment
 com.xy.fy.main.R$id: int etEmail
@@ -13937,8 +13958,6 @@ com.xy.fy.main.R$id: int et_find_name
 com.xy.fy.main.R$id: int et_msg_search
 com.xy.fy.main.R$id: int et_password
 com.xy.fy.main.R$id: int et_username
-com.xy.fy.main.R$id: int expandHistory
-com.xy.fy.main.R$id: int expandListView
 com.xy.fy.main.R$id: int filedialogitem_img
 com.xy.fy.main.R$id: int filedialogitem_name
 com.xy.fy.main.R$id: int filedialogitem_path
@@ -13955,6 +13974,11 @@ com.xy.fy.main.R$id: int gridView
 com.xy.fy.main.R$id: int gridview
 com.xy.fy.main.R$id: int guakelv
 com.xy.fy.main.R$id: int guanwang
+com.xy.fy.main.R$id: int h5_buttonLayout
+com.xy.fy.main.R$id: int h5_contentView
+com.xy.fy.main.R$id: int h5_material_background
+com.xy.fy.main.R$id: int h5_message
+com.xy.fy.main.R$id: int h5_message_content_view
 com.xy.fy.main.R$id: int hScrollView
 com.xy.fy.main.R$id: int headPhoto
 com.xy.fy.main.R$id: int head_arrow
@@ -13969,6 +13993,7 @@ com.xy.fy.main.R$id: int header_layout_middleview_container
 com.xy.fy.main.R$id: int header_layout_rightview_container
 com.xy.fy.main.R$id: int headphoto
 com.xy.fy.main.R$id: int homeAsUp
+com.xy.fy.main.R$id: int icon
 com.xy.fy.main.R$id: int idea_back
 com.xy.fy.main.R$id: int image
 com.xy.fy.main.R$id: int imageHeadArrow
@@ -13979,6 +14004,7 @@ com.xy.fy.main.R$id: int imageView
 com.xy.fy.main.R$id: int imageView1
 com.xy.fy.main.R$id: int imagesLinearLayout
 com.xy.fy.main.R$id: int img_friend_avatar
+com.xy.fy.main.R$id: int input
 com.xy.fy.main.R$id: int ip
 com.xy.fy.main.R$id: int item_image
 com.xy.fy.main.R$id: int iv_arraw
@@ -14004,6 +14030,7 @@ com.xy.fy.main.R$id: int iv_short
 com.xy.fy.main.R$id: int iv_voice
 com.xy.fy.main.R$id: int kChang
 com.xy.fy.main.R$id: int kecheng
+com.xy.fy.main.R$id: int language
 com.xy.fy.main.R$id: int layout
 com.xy.fy.main.R$id: int layout_add
 com.xy.fy.main.R$id: int layout_all
@@ -14027,9 +14054,10 @@ com.xy.fy.main.R$id: int layout_record
 com.xy.fy.main.R$id: int layout_record_short
 com.xy.fy.main.R$id: int layout_voice
 com.xy.fy.main.R$id: int left
+com.xy.fy.main.R$id: int libAccount
+com.xy.fy.main.R$id: int libPW
 com.xy.fy.main.R$id: int line
 com.xy.fy.main.R$id: int line2
-com.xy.fy.main.R$id: int linearLayoutBang
 com.xy.fy.main.R$id: int linearlayout
 com.xy.fy.main.R$id: int list
 com.xy.fy.main.R$id: int listMode
@@ -14040,6 +14068,7 @@ com.xy.fy.main.R$id: int list_friends
 com.xy.fy.main.R$id: int list_near
 com.xy.fy.main.R$id: int list_new_friend
 com.xy.fy.main.R$id: int list_search
+com.xy.fy.main.R$id: int list_view
 com.xy.fy.main.R$id: int logoImageView
 com.xy.fy.main.R$id: int mListView
 com.xy.fy.main.R$id: int mainLayout
@@ -14052,6 +14081,7 @@ com.xy.fy.main.R$id: int menu_bang
 com.xy.fy.main.R$id: int menu_my_bukao
 com.xy.fy.main.R$id: int menu_my_cet
 com.xy.fy.main.R$id: int menu_my_cj_tongji
+com.xy.fy.main.R$id: int menu_my_lib
 com.xy.fy.main.R$id: int menu_my_paiming
 com.xy.fy.main.R$id: int menu_quit
 com.xy.fy.main.R$id: int menu_setting
@@ -14069,12 +14099,12 @@ com.xy.fy.main.R$id: int overflow1
 com.xy.fy.main.R$id: int overflow2
 com.xy.fy.main.R$id: int pager_emo
 com.xy.fy.main.R$id: int pagerview
+com.xy.fy.main.R$id: int panel_content
 com.xy.fy.main.R$id: int phone
 com.xy.fy.main.R$id: int photoview
 com.xy.fy.main.R$id: int pic
 com.xy.fy.main.R$id: int placeholder
 com.xy.fy.main.R$id: int praise
-com.xy.fy.main.R$id: int proRefresh
 com.xy.fy.main.R$id: int profile_image
 com.xy.fy.main.R$id: int progress
 com.xy.fy.main.R$id: int progressBarFoot
@@ -14088,18 +14118,24 @@ com.xy.fy.main.R$id: int rankText
 com.xy.fy.main.R$id: int rank_layout
 com.xy.fy.main.R$id: int recommondAndApply
 com.xy.fy.main.R$id: int recommond_list
+com.xy.fy.main.R$id: int reload
+com.xy.fy.main.R$id: int renewBtn
+com.xy.fy.main.R$id: int renew_date
 com.xy.fy.main.R$id: int right
 com.xy.fy.main.R$id: int right_letter
 com.xy.fy.main.R$id: int rl_switch_notification
 com.xy.fy.main.R$id: int rl_switch_vibrate
 com.xy.fy.main.R$id: int rl_switch_voice
+com.xy.fy.main.R$id: int save
 com.xy.fy.main.R$id: int school
 com.xy.fy.main.R$id: int schoolCode
 com.xy.fy.main.R$id: int score
 com.xy.fy.main.R$id: int search
+com.xy.fy.main.R$id: int select_language
 com.xy.fy.main.R$id: int selected_view
 com.xy.fy.main.R$id: int send
 com.xy.fy.main.R$id: int send_recommon
+com.xy.fy.main.R$id: int setLoginLanguage
 com.xy.fy.main.R$id: int share
 com.xy.fy.main.R$id: int showCustom
 com.xy.fy.main.R$id: int showHome
@@ -14146,6 +14182,7 @@ com.xy.fy.main.R$id: int tv_set_nick
 com.xy.fy.main.R$id: int tv_time
 com.xy.fy.main.R$id: int tv_voice_length
 com.xy.fy.main.R$id: int tv_voice_tips
+com.xy.fy.main.R$id: int txt_title
 com.xy.fy.main.R$id: int useLogo
 com.xy.fy.main.R$id: int v_face_text
 com.xy.fy.main.R$id: int version
@@ -14171,6 +14208,7 @@ com.xy.fy.main.R$id: int xqSpinner
 com.xy.fy.main.R$id: int yuedu
 com.xy.fy.main.R$id: int zWei
 com.xy.fy.main.R$integer: int abs__max_action_buttons
+com.xy.fy.main.R$integer: int grid_column_count
 com.xy.fy.main.R$layout: int abs__action_bar_home
 com.xy.fy.main.R$layout: int abs__action_bar_tab
 com.xy.fy.main.R$layout: int abs__action_bar_tab_bar_view
@@ -14210,14 +14248,19 @@ com.xy.fy.main.R$layout: int activity_forget_password
 com.xy.fy.main.R$layout: int activity_forgetcet
 com.xy.fy.main.R$layout: int activity_friend_list
 com.xy.fy.main.R$layout: int activity_friend_recommand
+com.xy.fy.main.R$layout: int activity_grid_main
 com.xy.fy.main.R$layout: int activity_ideaback
+com.xy.fy.main.R$layout: int activity_language
+com.xy.fy.main.R$layout: int activity_lib
+com.xy.fy.main.R$layout: int activity_list_view
 com.xy.fy.main.R$layout: int activity_location
 com.xy.fy.main.R$layout: int activity_login
+com.xy.fy.main.R$layout: int activity_login_normal
 com.xy.fy.main.R$layout: int activity_main
 com.xy.fy.main.R$layout: int activity_message_detail
-com.xy.fy.main.R$layout: int activity_my
 com.xy.fy.main.R$layout: int activity_near_people
 com.xy.fy.main.R$layout: int activity_new_friend
+com.xy.fy.main.R$layout: int activity_option
 com.xy.fy.main.R$layout: int activity_picture
 com.xy.fy.main.R$layout: int activity_publish
 com.xy.fy.main.R$layout: int activity_rank
@@ -14239,22 +14282,23 @@ com.xy.fy.main.R$layout: int cards_view
 com.xy.fy.main.R$layout: int cards_view_multicolumn
 com.xy.fy.main.R$layout: int choose_kind
 com.xy.fy.main.R$layout: int choose_kind_row
-com.xy.fy.main.R$layout: int choose_school
 com.xy.fy.main.R$layout: int common_header
 com.xy.fy.main.R$layout: int common_header_button
 com.xy.fy.main.R$layout: int common_header_rightbutton
-com.xy.fy.main.R$layout: int content
 com.xy.fy.main.R$layout: int custom_list_item
 com.xy.fy.main.R$layout: int filedialogitem
 com.xy.fy.main.R$layout: int footer_fragment
+com.xy.fy.main.R$layout: int fragment_bind_lib
 com.xy.fy.main.R$layout: int fragment_contacts
 com.xy.fy.main.R$layout: int fragment_recent
 com.xy.fy.main.R$layout: int fragment_set
 com.xy.fy.main.R$layout: int friend_recommand_listview
 com.xy.fy.main.R$layout: int friend_recommond_list
+com.xy.fy.main.R$layout: int h5_dialog
 com.xy.fy.main.R$layout: int h5_toast
 com.xy.fy.main.R$layout: int header
 com.xy.fy.main.R$layout: int include_action_bar
+com.xy.fy.main.R$layout: int include_bind
 com.xy.fy.main.R$layout: int include_chat_add
 com.xy.fy.main.R$layout: int include_chat_bottom_bar
 com.xy.fy.main.R$layout: int include_chat_voice_short
@@ -14280,7 +14324,10 @@ com.xy.fy.main.R$layout: int item_play_card_empty_first
 com.xy.fy.main.R$layout: int item_show_picture
 com.xy.fy.main.R$layout: int item_stack
 com.xy.fy.main.R$layout: int item_user_friend
+com.xy.fy.main.R$layout: int language_item
 com.xy.fy.main.R$layout: int list_item
+com.xy.fy.main.R$layout: int list_item_header_footer
+com.xy.fy.main.R$layout: int list_item_sample
 com.xy.fy.main.R$layout: int menu
 com.xy.fy.main.R$layout: int message_comment_item
 com.xy.fy.main.R$layout: int pop_showavator
@@ -14306,7 +14353,11 @@ com.xy.fy.main.R$layout: int view_paper4
 com.xy.fy.main.R$layout: int view_paper_item
 com.xy.fy.main.R$layout: int xlistview_footer
 com.xy.fy.main.R$layout: int xlistview_header
+com.xy.fy.main.R$menu: int activity_sgv_empty_view
+com.xy.fy.main.R$menu: int menu_sgv_dynamic
 com.xy.fy.main.R$raw: int notify
+com.xy.fy.main.R$string: int English
+com.xy.fy.main.R$string: int about
 com.xy.fy.main.R$string: int abs__action_bar_home_description
 com.xy.fy.main.R$string: int abs__action_bar_up_description
 com.xy.fy.main.R$string: int abs__action_menu_overflow_description
@@ -14320,45 +14371,113 @@ com.xy.fy.main.R$string: int abs__searchview_description_submit
 com.xy.fy.main.R$string: int abs__searchview_description_voice
 com.xy.fy.main.R$string: int abs__shareactionprovider_share_with
 com.xy.fy.main.R$string: int abs__shareactionprovider_share_with_application
+com.xy.fy.main.R$string: int accountability_unit
 com.xy.fy.main.R$string: int action_settings
+com.xy.fy.main.R$string: int add_a_friend
 com.xy.fy.main.R$string: int add_avator
 com.xy.fy.main.R$string: int add_friend
 com.xy.fy.main.R$string: int add_gender
 com.xy.fy.main.R$string: int add_name
 com.xy.fy.main.R$string: int add_name_hint
 com.xy.fy.main.R$string: int add_nick
+com.xy.fy.main.R$string: int address1
+com.xy.fy.main.R$string: int address2
+com.xy.fy.main.R$string: int agree
 com.xy.fy.main.R$string: int app_name
 com.xy.fy.main.R$string: int baidutieba
 com.xy.fy.main.R$string: int baidutieba_client_inavailable
 com.xy.fy.main.R$string: int behind_scroll_scale
+com.xy.fy.main.R$string: int bind
+com.xy.fy.main.R$string: int binding
 com.xy.fy.main.R$string: int black_tips
 com.xy.fy.main.R$string: int blacklist
 com.xy.fy.main.R$string: int blank
+com.xy.fy.main.R$string: int blank2
 com.xy.fy.main.R$string: int bluetooth
+com.xy.fy.main.R$string: int book_name
+com.xy.fy.main.R$string: int by
 com.xy.fy.main.R$string: int camera
 com.xy.fy.main.R$string: int cancel
+com.xy.fy.main.R$string: int cancle
+com.xy.fy.main.R$string: int candidate_number_tips
+com.xy.fy.main.R$string: int candidate_number_title
+com.xy.fy.main.R$string: int card_class_score
+com.xy.fy.main.R$string: int card_final_score
+com.xy.fy.main.R$string: int card_paper_score
+com.xy.fy.main.R$string: int card_subject
+com.xy.fy.main.R$string: int card_txt1
+com.xy.fy.main.R$string: int cet_100
+com.xy.fy.main.R$string: int cet_425
+com.xy.fy.main.R$string: int cet_title
+com.xy.fy.main.R$string: int cet_txt1
+com.xy.fy.main.R$string: int cet_txt2
+com.xy.fy.main.R$string: int cet_txt3
+com.xy.fy.main.R$string: int cet_txt5
+com.xy.fy.main.R$string: int cet_txt6
+com.xy.fy.main.R$string: int cet_txt7
+com.xy.fy.main.R$string: int cet_txt8
+com.xy.fy.main.R$string: int cet_txt9
+com.xy.fy.main.R$string: int change
 com.xy.fy.main.R$string: int chat
+com.xy.fy.main.R$string: int check_for_update
+com.xy.fy.main.R$string: int check_version
+com.xy.fy.main.R$string: int chinese
 com.xy.fy.main.R$string: int color_stripe
+com.xy.fy.main.R$string: int commit
+com.xy.fy.main.R$string: int current_version
 com.xy.fy.main.R$string: int desc
 com.xy.fy.main.R$string: int douban
 com.xy.fy.main.R$string: int dropbox
+com.xy.fy.main.R$string: int edit_feedmsg
 com.xy.fy.main.R$string: int email
+com.xy.fy.main.R$string: int email_address
+com.xy.fy.main.R$string: int email_name
+com.xy.fy.main.R$string: int english
 com.xy.fy.main.R$string: int evernote
+com.xy.fy.main.R$string: int expired
 com.xy.fy.main.R$string: int facebook
 com.xy.fy.main.R$string: int facebookmessenger
 com.xy.fy.main.R$string: int fade_degree
+com.xy.fy.main.R$string: int feedback_txt1
+com.xy.fy.main.R$string: int feedback_txt2
+com.xy.fy.main.R$string: int feedback_txt3
 com.xy.fy.main.R$string: int file_resource
 com.xy.fy.main.R$string: int finish
 com.xy.fy.main.R$string: int first_team
 com.xy.fy.main.R$string: int flickr
+com.xy.fy.main.R$string: int floor_1st
+com.xy.fy.main.R$string: int for_xu
+com.xy.fy.main.R$string: int forget_password_email_hint
+com.xy.fy.main.R$string: int forget_password_mode1
+com.xy.fy.main.R$string: int forget_password_mode1_fast
+com.xy.fy.main.R$string: int forget_password_mode2
+com.xy.fy.main.R$string: int forget_password_mode2_recommended
+com.xy.fy.main.R$string: int forget_password_txt1
+com.xy.fy.main.R$string: int forget_password_txt2
+com.xy.fy.main.R$string: int forget_password_username_hint
+com.xy.fy.main.R$string: int forgetcet_level_code
+com.xy.fy.main.R$string: int forgetcet_room_num
+com.xy.fy.main.R$string: int forgetcet_school_code
+com.xy.fy.main.R$string: int forgetcet_seat_num
+com.xy.fy.main.R$string: int forgetcet_txt1
+com.xy.fy.main.R$string: int forgetcet_txt2
+com.xy.fy.main.R$string: int forgetcet_txt3
 com.xy.fy.main.R$string: int foursquare
 com.xy.fy.main.R$string: int friend_apply
 com.xy.fy.main.R$string: int friend_list
+com.xy.fy.main.R$string: int friend_make_up
 com.xy.fy.main.R$string: int friend_recommand
 com.xy.fy.main.R$string: int google_plus_client_inavailable
 com.xy.fy.main.R$string: int googleplus
+com.xy.fy.main.R$string: int guest
+com.xy.fy.main.R$string: int h5_default_cancel
+com.xy.fy.main.R$string: int h5_default_confirm
+com.xy.fy.main.R$string: int hello
+com.xy.fy.main.R$string: int help_and_feedback
 com.xy.fy.main.R$string: int hi
 com.xy.fy.main.R$string: int history
+com.xy.fy.main.R$string: int input_account
+com.xy.fy.main.R$string: int input_pwd
 com.xy.fy.main.R$string: int instagram
 com.xy.fy.main.R$string: int instagram_client_inavailable
 com.xy.fy.main.R$string: int instapager_email_or_password_incorrect
@@ -14368,66 +14487,126 @@ com.xy.fy.main.R$string: int instapaper_email
 com.xy.fy.main.R$string: int instapaper_login
 com.xy.fy.main.R$string: int instapaper_logining
 com.xy.fy.main.R$string: int instapaper_pwd
+com.xy.fy.main.R$string: int isQuit
 com.xy.fy.main.R$string: int kaixin
 com.xy.fy.main.R$string: int kakaostory
 com.xy.fy.main.R$string: int kakaostory_client_inavailable
 com.xy.fy.main.R$string: int kakaotalk
 com.xy.fy.main.R$string: int kakaotalk_client_inavailable
+com.xy.fy.main.R$string: int language
+com.xy.fy.main.R$string: int lib_account
+com.xy.fy.main.R$string: int lib_pwd
 com.xy.fy.main.R$string: int line
 com.xy.fy.main.R$string: int line_client_inavailable
 com.xy.fy.main.R$string: int linkedin
 com.xy.fy.main.R$string: int list_friends
+com.xy.fy.main.R$string: int loading
 com.xy.fy.main.R$string: int location
+com.xy.fy.main.R$string: int log_out
 com.xy.fy.main.R$string: int login
 com.xy.fy.main.R$string: int login_account
 com.xy.fy.main.R$string: int login_email
 com.xy.fy.main.R$string: int login_email_hint
 com.xy.fy.main.R$string: int login_password_hint
 com.xy.fy.main.R$string: int login_pwd
+com.xy.fy.main.R$string: int login_remember
+com.xy.fy.main.R$string: int login_txt2
 com.xy.fy.main.R$string: int login_username_hint
+com.xy.fy.main.R$string: int logining
 com.xy.fy.main.R$string: int logout
 com.xy.fy.main.R$string: int longclick_speak
 com.xy.fy.main.R$string: int main_tab_contact
 com.xy.fy.main.R$string: int main_tab_recent
+com.xy.fy.main.R$string: int mc
+com.xy.fy.main.R$string: int md_comment
+com.xy.fy.main.R$string: int md_txt1
+com.xy.fy.main.R$string: int md_txt2
+com.xy.fy.main.R$string: int md_txt3
+com.xy.fy.main.R$string: int md_txt4
+com.xy.fy.main.R$string: int md_txt5
+com.xy.fy.main.R$string: int md_txt6
 com.xy.fy.main.R$string: int message_search_hint
 com.xy.fy.main.R$string: int mian_tab_set
 com.xy.fy.main.R$string: int mingdao
 com.xy.fy.main.R$string: int mingdao_share_content
 com.xy.fy.main.R$string: int multi_share
+com.xy.fy.main.R$string: int my_lib
 com.xy.fy.main.R$string: int my_rank
+com.xy.fy.main.R$string: int name_tips
+com.xy.fy.main.R$string: int name_title
 com.xy.fy.main.R$string: int near_people
 com.xy.fy.main.R$string: int neteasemicroblog
 com.xy.fy.main.R$string: int network_tips
 com.xy.fy.main.R$string: int new_friends
+com.xy.fy.main.R$string: int nick
+com.xy.fy.main.R$string: int not_login
+com.xy.fy.main.R$string: int num_45
+com.xy.fy.main.R$string: int official_website
+com.xy.fy.main.R$string: int ok
+com.xy.fy.main.R$string: int opinion_and_feedback
+com.xy.fy.main.R$string: int option
 com.xy.fy.main.R$string: int overflow
+com.xy.fy.main.R$string: int photo
 com.xy.fy.main.R$string: int picture
 com.xy.fy.main.R$string: int pinterest
 com.xy.fy.main.R$string: int pinterest_client_inavailable
 com.xy.fy.main.R$string: int pocket
 com.xy.fy.main.R$string: int pop_choose
 com.xy.fy.main.R$string: int pop_photo
+com.xy.fy.main.R$string: int producer
+com.xy.fy.main.R$string: int pub_publish
 com.xy.fy.main.R$string: int pull_to_refresh
 com.xy.fy.main.R$string: int qq
 com.xy.fy.main.R$string: int qq_client_inavailable
+com.xy.fy.main.R$string: int query
+com.xy.fy.main.R$string: int query_ask
+com.xy.fy.main.R$string: int query_cet
+com.xy.fy.main.R$string: int querying
 com.xy.fy.main.R$string: int qzone
 com.xy.fy.main.R$string: int rank_message
 com.xy.fy.main.R$string: int refreshing
 com.xy.fy.main.R$string: int register
 com.xy.fy.main.R$string: int register_txt1
 com.xy.fy.main.R$string: int register_txt2
+com.xy.fy.main.R$string: int register_txt3
+com.xy.fy.main.R$string: int register_txt4
+com.xy.fy.main.R$string: int register_txt5
+com.xy.fy.main.R$string: int register_txt6
+com.xy.fy.main.R$string: int register_txt7
+com.xy.fy.main.R$string: int register_txt8
 com.xy.fy.main.R$string: int release_to_refresh
 com.xy.fy.main.R$string: int renren
+com.xy.fy.main.R$string: int repeat_login
+com.xy.fy.main.R$string: int repeating_login
+com.xy.fy.main.R$string: int sample
+com.xy.fy.main.R$string: int save
+com.xy.fy.main.R$string: int save_Qr_code
+com.xy.fy.main.R$string: int school
+com.xy.fy.main.R$string: int score_query
+com.xy.fy.main.R$string: int score_statistic
 com.xy.fy.main.R$string: int score_title
 com.xy.fy.main.R$string: int search
+com.xy.fy.main.R$string: int search_friend
 com.xy.fy.main.R$string: int second_team
 com.xy.fy.main.R$string: int select_a_friend
 com.xy.fy.main.R$string: int select_one_plat_at_least
+com.xy.fy.main.R$string: int select_picture
 com.xy.fy.main.R$string: int send_state
+com.xy.fy.main.R$string: int setPhoto
 com.xy.fy.main.R$string: int set_blacklist
+com.xy.fy.main.R$string: int set_language
 com.xy.fy.main.R$string: int set_myinfo
 com.xy.fy.main.R$string: int set_notify
 com.xy.fy.main.R$string: int set_vibrate
 com.xy.fy.main.R$string: int set_voice
+com.xy.fy.main.R$string: int setting
+com.xy.fy.main.R$string: int setting_change_pwd
+com.xy.fy.main.R$string: int setting_new_pwd
+com.xy.fy.main.R$string: int setting_pre_pwd
+com.xy.fy.main.R$string: int setting_txt1
+com.xy.fy.main.R$string: int setting_txt2
+com.xy.fy.main.R$string: int setting_txt3
+com.xy.fy.main.R$string: int setting_txt4
 com.xy.fy.main.R$string: int shake2share
 com.xy.fy.main.R$string: int share
 com.xy.fy.main.R$string: int share_canceled
@@ -14444,6 +14623,11 @@ com.xy.fy.main.R$string: int shortmessage
 com.xy.fy.main.R$string: int sinaweibo
 com.xy.fy.main.R$string: int sohumicroblog
 com.xy.fy.main.R$string: int sohusuishenkan
+com.xy.fy.main.R$string: int student_id
+com.xy.fy.main.R$string: int subject_failing_rate
+com.xy.fy.main.R$string: int subject_make_up
+com.xy.fy.main.R$string: int subject_math
+com.xy.fy.main.R$string: int subject_score
 com.xy.fy.main.R$string: int team
 com.xy.fy.main.R$string: int tencentweibo
 com.xy.fy.main.R$string: int times
@@ -14455,13 +14639,16 @@ com.xy.fy.main.R$string: int toast_error_password_null
 com.xy.fy.main.R$string: int toast_error_username_null
 com.xy.fy.main.R$string: int tumblr
 com.xy.fy.main.R$string: int twitter
+com.xy.fy.main.R$string: int undetermined
 com.xy.fy.main.R$string: int use_login_button
 com.xy.fy.main.R$string: int username
+com.xy.fy.main.R$string: int view_more
 com.xy.fy.main.R$string: int vkontakte
 com.xy.fy.main.R$string: int voice_cancel_tips
 com.xy.fy.main.R$string: int voice_seconds_tips
 com.xy.fy.main.R$string: int voice_short_tips
 com.xy.fy.main.R$string: int voice_up_tips
+com.xy.fy.main.R$string: int waiting
 com.xy.fy.main.R$string: int website
 com.xy.fy.main.R$string: int wechat
 com.xy.fy.main.R$string: int wechat_client_inavailable
@@ -14471,8 +14658,11 @@ com.xy.fy.main.R$string: int weibo_oauth_regiseter
 com.xy.fy.main.R$string: int weibo_upload_content
 com.xy.fy.main.R$string: int whatsapp
 com.xy.fy.main.R$string: int whatsapp_client_inavailable
+com.xy.fy.main.R$string: int xiyou_jisuanji
 com.xy.fy.main.R$string: int xlistview_footer_hint_normal
 com.xy.fy.main.R$string: int xlistview_footer_hint_ready
+com.xy.fy.main.R$string: int xlistview_header_hint_able
+com.xy.fy.main.R$string: int xlistview_header_hint_lasttime
 com.xy.fy.main.R$string: int xlistview_header_hint_loading
 com.xy.fy.main.R$string: int xlistview_header_hint_normal
 com.xy.fy.main.R$string: int xlistview_header_hint_ready

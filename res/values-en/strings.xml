@@ -27,10 +27,10 @@
 
     <string name="add_friend">add friends</string>
     <string name="friend_list">friends\' list</string>
-    <string name="friend_make_up">Friends flunked</string>
+    <string name="friend_make_up">Friends</string>
     <string name="friend_recommand">Friends Recommand</string>
     <string name="friend_apply">Friends Application </string>
-    <string name="my_rank">My ranking</string>
+    <string name="my_rank">My Ranking</string>
     <string name="login_username_hint">Please enter your username&#8230;</string>
     <string name="login_password_hint">Please enter your password&#8230;</string>
     <string name="login_email_hint">Enter your password here&#8230;</string>
@@ -50,7 +50,8 @@
     <string name="login_account">Account </string>
     <string name="login_pwd">Password</string>
     <string name="login_email">Check Password </string>
- <!-- 这里 -->
+    <!-- 这里 -->
+    <string name="setting">Setting</string>
     <string name="login_remember">Remember Passsword</string>
     <string name="message_search_hint">Search&#8230;</string>
     <string name="main_tab_recent">Conversation</string>
@@ -116,7 +117,7 @@
     <string name="subject_score">Score</string>
     <string name="subject_failing_rate">Fail rate</string>
     <string name="blank2"></string>
-    <string name="query_cet">Query CET</string>
+    <string name="query_cet">CET</string>
     <string name="candidate_number_title">Exam Registration Number</string>
     <string name="candidate_number_tips">Enter the exam number</string>
     <string name="name_title">Name</string>
@@ -138,7 +139,7 @@
     <string name="forgetcet_seat_num">Seat Number</string>
     <string name="forgetcet_txt3">Forget exam number?</string>
     <string name="help_and_feedback">Help and Feedback</string>
-    <string name="opinion_and_feedback">Opinion and Feedback</string>
+    <string name="opinion_and_feedback">Feedback</string>
     <string name="feedback_txt1">Please enter your question to feed back</string>
     <string name="feedback_txt2">Please enter your phone number</string>
     <string name="commit">Commit</string>
@@ -152,7 +153,7 @@
     <string name="md_txt6">Please enter your comment </string>
     <string name="md_comment">Comment</string>
     <string name="pub_publish">Publish</string>
-    <string name="setting_change_pwd">Change the password</string>
+    <string name="setting_change_pwd">Change Password</string>
     <string name="setting_pre_pwd">Old Password</string>
     <string name="setting_new_pwd">New Password</string>
     <string name="language">Language</string>
@@ -181,9 +182,9 @@
     <string name="for_xu">For Xiyou</string>
     <string name="card_txt1">2013-2014 First Semester</string>
     <string name="card_subject">Course </string>
-    <string name="card_final_score">Final Score</string>
-    <string name="card_class_score">Regular Score</string>
-    <string name="card_paper_score">Exam Score</string>
+    <string name="card_final_score">Final</string>
+    <string name="card_class_score">Regular</string>
+    <string name="card_paper_score">Exam</string>
     <string name="lib_account">Library Account</string>
     <string name="lib_pwd">Library Password</string>
     <string name="binding">Binding</string>
@@ -199,9 +200,9 @@
     <string name="expired">Expired：</string>
     <string name="sample">fasfsafsadfsdfdsfsdfsdfsdfsdfsdfdsf</string>
     <string name="guest">Guests</string>
-    <string name="score_query">Score Query</string>
+    <string name="score_query">Score</string>
     <string name="score_statistic">Score Statistics</string>
-    <string name="my_lib">My Library</string>
+    <string name="my_lib">Library</string>
     <string name="option">Option</string>
     <string name="log_out">Log Out</string>
     <string name="floor_1st">1st Floor</string>
@@ -220,5 +221,7 @@
     <string name="select_picture">Select picture</string>
     <string name="photo">Photo</string>
     <string name="setPhoto">Set HeadPhoto</string>
-     <string name="querying">Querying</string>
+    <string name="querying">Querying</string>
+    <string name="bind">Bind</string>
+
 </resources>

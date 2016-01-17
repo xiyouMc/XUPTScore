@@ -150,16 +150,19 @@
 
                     
                     <TextView
-                        android:id="@+id/setLoginLanguage"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignParentRight="true"
-                        android:background="#00000000"
-                        android:gravity="right|center_vertical"
-                        android:text="@string/set_language"
-                        android:textColor="#7EC0EE"
-                        android:textSize="7.5pt" />
+                         android:id="@+id/setLoginLanguage"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_alignParentRight="true"
+                         android:layout_alignBottom="@+id/butForgetPassword"
+                         android:layout_alignTop="@+id/butForgetPassword"
+                         android:layout_alignParentBottom="true"
+                         android:background="#00000000"
+                         android:gravity="right|center_vertical"
+                         android:layout_marginRight="6dp"
+                         android:text="@string/set_language"
+                         android:textColor="#7EC0EE"
+                         android:textSize="7.5pt" />
                 </RelativeLayout>
             </LinearLayout>
         </LinearLayout>

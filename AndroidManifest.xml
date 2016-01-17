@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.xy.fy.main"
     android:versionCode="1"
-    android:versionName="3.0.1" >
+    android:versionName="3.0.2" >
 
     <uses-sdk android:minSdkVersion="11" />
 
@@ -138,6 +138,9 @@
         
         <activity
             android:name="com.xy.fy.main.LanguageActivity"
+            android:theme="@style/Transparent" />
+         <activity
+            android:name="com.xy.fy.main.ChangePwdActivity"
             android:theme="@style/Transparent" />
         <!-- 放置软键盘自动弹出 -->
         <activity

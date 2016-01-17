@@ -8,6 +8,7 @@ import com.mc.db.DBConnection;
 import com.mc.db.DBConnection.UserSchema;
 import com.mc.util.Util;
 import com.xy.fy.adapter.LanguageAdapter;
+import com.xy.fy.main.R.color;
 import com.xy.fy.singleton.Language;
 import com.xy.fy.util.StaticVarUtil;
 
@@ -36,6 +37,8 @@ public class LanguageActivity extends BaseActivity {
 
   int postion = 3;
 
+  String optionType = "Login";
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     // TODO Auto-generated method stub
@@ -45,6 +48,9 @@ public class LanguageActivity extends BaseActivity {
     Util.setContext(getApplicationContext());
     save = (Button) findViewById(R.id.save);
     languageListView = (ListView) findViewById(R.id.select_language);
+
+    Intent intent = getIntent();
+    optionType = intent.getStringExtra("optionType");
 
     Resources resources = getResources();
     list = new ArrayList<Language>();
@@ -56,7 +62,7 @@ public class LanguageActivity extends BaseActivity {
     english.setLanguage("English");
     english.setSelect(false);
     list.add(english);
-    
+
     SharedPreferences preferences = getSharedPreferences(StaticVarUtil.LANGUAGE_INFO, MODE_PRIVATE);
     postion = preferences.getInt(StaticVarUtil.LANGUAGE, 3);
     if (postion != 3) {
@@ -107,7 +113,9 @@ public class LanguageActivity extends BaseActivity {
         res.updateConfiguration(config, dm);
 
         Intent intent = new Intent();
-        intent.setClass(LanguageActivity.this, LoginActivity.class);
+        intent.setClass(LanguageActivity.this,
+            optionType.equals("Login") ? LoginActivity.class : MainActivity.class);
+        StaticVarUtil.quit();
         startActivity(intent);
         finish();
       }

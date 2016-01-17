@@ -1,21 +1,15 @@
 package com.xy.fy.asynctask;
 
-import java.net.URLEncoder;
-import java.util.ArrayList;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import com.mc.util.HttpUtilMc;
 import com.mc.util.Util;
 import com.xy.fy.adapter.LibAdapter;
-import com.xy.fy.singleton.BookList;
 import com.xy.fy.util.StaticVarUtil;
 import com.xy.fy.util.ViewUtil;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.LinearLayout;
 
@@ -37,7 +31,7 @@ public class RenewLibAsynctask extends AsyncTask<String, String, String> {
   @Override
   protected String doInBackground(String... params) {
     // TODO Auto-generated method stub
-    Util.getRenewParmas(mActivity, params[0]);
+    Util.getRenewParmas(params[0]);
     String url = HttpUtilMc.LIB_URL + "/servlet/RenewServlet?data="
         + StaticVarUtil.renewData
         + "&viewstate=" + StaticVarUtil.renewViewstate;

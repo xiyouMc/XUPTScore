@@ -8,6 +8,7 @@ import java.util.Locale;
 import com.mc.db.DBConnection;
 import com.mc.db.DBConnection.UserSchema;
 import com.mc.util.CircleImageView;
+import com.mc.util.H5Toast;
 import com.mc.util.HttpUtilMc;
 import com.mc.util.SystemBarTintManager;
 import com.mc.util.Util;
@@ -38,6 +39,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
 import android.view.KeyEvent;
@@ -94,7 +96,7 @@ public class LoginActivity extends Activity {
 
     StaticVarUtil.quit();
     StaticVarUtil.activities.add(LoginActivity.this);
-    
+
     setStatusStyle();
     helper = new DBConnection(LoginActivity.this);
     sqLiteDatabase = helper.getWritableDatabase();
@@ -121,26 +123,27 @@ public class LoginActivity extends Activity {
         if (Util.isFastDoubleClick()) {
           return;
         }
-//        login();
-        Intent intent = new Intent();
-        intent.setClass(LoginActivity.this, MainActivity.class);
-        if (progressDialog != null) {
-          progressDialog.dismiss();
-        }
-        StaticVarUtil.student.setAccount("aaaa");
-        StaticVarUtil.student.setPassword("aaaa");
-        // progressDialog.cancel();
-        startActivity(intent);
+         login();
+//         H5Toast.showToast(getApplicationContext(), "网络不稳定，请稍后。");
+//        Intent intent = new Intent();
+//        intent.setClass(LoginActivity.this, MainActivity.class);
+//        if (progressDialog != null) {
+//          progressDialog.dismiss();
+//        }
+//        StaticVarUtil.student.setAccount("aaaa");
+//        StaticVarUtil.student.setPassword("aaaa");
+//        progressDialog.cancel();
+//        startActivity(intent);
       }
     });
     this.selectLanguage.setOnClickListener(new OnClickListener() {
-      
+
       @Override
       public void onClick(View v) {
         // TODO Auto-generated method stub
         Intent intent = new Intent();
         intent.setClass(LoginActivity.this, LanguageActivity.class);
-        
+        intent.putExtra("optionType", "Login");
         startActivity(intent);
       }
     });
@@ -245,7 +248,8 @@ public class LoginActivity extends Activity {
   }
 
   private boolean initData() {
-    this.progressDialog = ViewUtil.getProgressDialog(LoginActivity.this, this.getString(R.string.logining,""));
+    this.progressDialog = ViewUtil.getProgressDialog(LoginActivity.this,
+        this.getString(R.string.logining, ""));
     // 获取数据库
     boolean isSDcardExist = Environment.getExternalStorageState()
         .equals(android.os.Environment.MEDIA_MOUNTED); // 判断sd卡是否存在
@@ -341,7 +345,8 @@ public class LoginActivity extends Activity {
             // TODO Auto-generated method stub
 
             if ("error".equals(result)) {
-              password.setText("");
+//              password.setText("");
+              password.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
             } else if ("no_user".equals(result)) {
               account.setText("");
               password.setText("");
@@ -459,7 +464,7 @@ public class LoginActivity extends Activity {
     this.rememberPassword = (CheckBox) findViewById(R.id.butRememberPassword);
     this.login = (Button) findViewById(R.id.butLogin);
     this.selectLanguage = (TextView) findViewById(R.id.setLoginLanguage);
-    
+
     /*
      * Animation animation = AnimationUtils.loadAnimation(LoginActivity.this, R.anim.translate);
      * LinearLayout layout = (LinearLayout) findViewById(R.id.layout);

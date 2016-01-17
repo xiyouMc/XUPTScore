@@ -128,6 +128,7 @@ public class StaticVarUtil {
   public static String accountViewstate = null;
   public static String libNameViewstate = null;
   
+  public static ArrayList<HashMap<String, Object>> listItem;
   public static String bindLibName = null;
   public static long time;
   public static String content = null;

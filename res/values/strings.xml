@@ -19,10 +19,10 @@
     <string name="blank"></string>
     <!-- 学年 -->
     <string-array name="xn">
-        <item>2011-2012</item>
         <item>2012-2013</item>
         <item>2013-2014</item>
         <item>2014-2015</item>
+        <item>2015-2016</item>
     </string-array>
 
     <string name="add_friend">添加好友</string>
@@ -91,7 +91,7 @@
     <string name="camera">拍摄</string>
     <string name="location">位置</string>
     <string name="black_tips">已添加至黑名单，你将不再收到对方的消息!</string>
-    <string name="username">用户名</string>
+    <string name="username">用户名(例如：马超)</string>
     <string name="new_friends">新朋友</string>
     <string name="near_people">附近的人</string>
     <string name="file_resource">文件资料</string>
@@ -156,6 +156,7 @@
     <string name="md_comment">评论</string>
     <string name="pub_publish">发布消息</string>
     <string name="setting_change_pwd">修改密码</string>
+    <string name="setting">设置</string>
     <string name="language">多语言</string>
     <string name="save">保存</string>
     <string name="chinese">简体中文</string>
@@ -224,4 +225,7 @@
     <string name="photo">拍照</string>
     <string name="setPhoto">设置头像</string>
     <string name="querying">正在查询</string>
+    <string name="bind">绑定账号</string>
+    <string name="h5_default_confirm">确定</string>
+    <string name="h5_default_cancel">取消</string>
 </resources>

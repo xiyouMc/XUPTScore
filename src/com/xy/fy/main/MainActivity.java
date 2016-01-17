@@ -7,6 +7,7 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Locale;
 import java.util.Map.Entry;
 
 import org.json.JSONArray;
@@ -73,6 +74,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
@@ -87,6 +90,7 @@ import android.text.Editable;
 import android.text.Html;
 import android.text.TextWatcher;
 import android.text.method.LinkMovementMethod;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -105,6 +109,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import cn.bmob.im.BmobChat;
@@ -161,8 +166,8 @@ public class MainActivity extends BaseActivity implements EventListener {
 
   private Bitmap bitmap = null;// 修改头像
   private MyHandler mHandler;
-
-  private ArrayList<HashMap<String, Object>> listItem;
+  private Activity mActivity;
+  private static  boolean isCheck = false;
 
   @SuppressLint("ShowToast")
   @Override
@@ -173,7 +178,13 @@ public class MainActivity extends BaseActivity implements EventListener {
     Util.setContext(getApplicationContext());
     mHandler = new MyHandler(this);
 
-    BadgeUtil.resetBadgeCount(getApplicationContext());
+    mActivity = MainActivity.this;
+
+    try {
+      BadgeUtil.resetBadgeCount(getApplicationContext());
+    } catch (Exception e) {
+      // TODO: handle exception
+    }
     CheckVersionAsynctask checkVersionAsyntask = new CheckVersionAsynctask(this, false,
         new CheckVersionAsynctask.OnCheck() {
 
@@ -182,7 +193,10 @@ public class MainActivity extends BaseActivity implements EventListener {
             // TODO Auto-generated method stub
           }
         });
-    checkVersionAsyntask.execute();
+    if (!isCheck) {
+      checkVersionAsyntask.execute();
+      isCheck = true;
+    }
     shareUtil = new ShareUtil(getApplicationContext());
     share = shareUtil.showShare();
     softDeclare();// 将部分 变量 定义为弱引用
@@ -256,8 +270,17 @@ public class MainActivity extends BaseActivity implements EventListener {
       setCurrentMenuItem(StaticVarUtil.MENU_SETTING);
       slidingMenu.toggle();// 页面跳转
       slidingMenu.setContent(R.layout.activity_setting);
-      menuSetting();
+      try {
+        menuSetting();
+      } catch (Exception e) {
+        // TODO: handle exception
+      }
     } else {
+      if (StaticVarUtil.listItem != null) {
+        nickname.setText(StaticVarUtil.student.getName());
+        menu1();
+        return;
+      }
       GetScoreAsyntask getScoreAsyntask = new GetScoreAsyntask();
       ProgressDialogUtil.getInstance(MainActivity.this).show();
       getScoreAsyntask.execute();
@@ -291,7 +314,7 @@ public class MainActivity extends BaseActivity implements EventListener {
     mCardView = (CardUI) findViewById(R.id.cardsview);
     mCardView.setSwipeable(true);
     ShowCardAsyncTask showCardAsyntask = new ShowCardAsyncTask(this, getResources(), isFirst,
-        mCardView, listItem, ScoreUtil.scoreJson);
+        mCardView, StaticVarUtil.listItem, ScoreUtil.scoreJson);
     showCardAsyntask.execute();
   }
 
@@ -489,7 +512,7 @@ public class MainActivity extends BaseActivity implements EventListener {
         if (getCurrentMeunItem() == StaticVarUtil.MENU_SETTING) {
           return;
         }
-        slidingMenu.setContent(R.layout.activity_setting);
+        slidingMenu.setContent(R.layout.activity_option);
         new Thread(new Runnable() {
           @Override
           public void run() {
@@ -676,7 +699,8 @@ public class MainActivity extends BaseActivity implements EventListener {
           @Override
           public void onCheck() {
             // TODO Auto-generated method stub
-            ViewUtil.showToast(MainActivity.this, Util.getContext().getResources().getString(R.string.check_version));
+            ViewUtil.showToast(MainActivity.this,
+                Util.getContext().getResources().getString(R.string.check_version));
           }
         });
         ProgressDialogUtil.getInstance(MainActivity.this).show();
@@ -689,7 +713,8 @@ public class MainActivity extends BaseActivity implements EventListener {
    * 保存二维码
    */
   private void showDialogSaveQrcode() {
-    final CharSequence[] items = { Util.getContext().getResources().getString(R.string.save_Qr_code)};
+    final CharSequence[] items = {
+        Util.getContext().getResources().getString(R.string.save_Qr_code) };
     AlertDialog.Builder builder = new AlertDialog.Builder(this);
     builder.setItems(items, new DialogInterface.OnClickListener() {
       public void onClick(DialogInterface dialog, int item) {
@@ -1076,60 +1101,27 @@ public class MainActivity extends BaseActivity implements EventListener {
       ViewUtil.showToast(getApplicationContext(), "对不起，查看选项请先登录");
       return;
     }
-    EditText etAccount = (EditText) findViewById(R.id.etAccount);
-    etAccount.setText(StaticVarUtil.student.getAccount() + "");// 修改多显示一个0的问题
-    etAccount.setEnabled(false);// 不可用
-    final EditText etPassword1 = (EditText) findViewById(R.id.etPassword1);
-    final EditText etPassword2 = (EditText) findViewById(R.id.etPassword2);
-    final EditText cofPassword2 = (EditText) findViewById(R.id.corfimPassword2);// 确认密码
-    // 修改
-    Button butAlter = (Button) findViewById(R.id.butAlter);
-    butAlter.setOnClickListener(new OnClickListener() {
+
+    RelativeLayout changePwdLayout = (RelativeLayout) findViewById(R.id.change_pwd);
+    changePwdLayout.setOnClickListener(new OnClickListener() {
+
       @Override
       public void onClick(View v) {
-        // 控件值
-        String password1 = etPassword1.getText().toString();
-        String password2 = etPassword2.getText().toString().trim();
-        String password3 = cofPassword2.getText().toString().trim();
-        if (password1.equals("") && password2.equals("") && bitmap == null
-            && password3.equals("")) {
-          ViewUtil.showToast(getApplicationContext(), "您没有信息需要修改");
-          return;
-        }
+        // TODO Auto-generated method stub
+        Intent i = new Intent(MainActivity.this, ChangePwdActivity.class);
+        startActivityForResult(i, Util.CHANGE_PWD_RESULT);
+      }
+    });
+    RelativeLayout languageLayout = (RelativeLayout) findViewById(R.id.language);
+    languageLayout.setOnClickListener(new OnClickListener() {
 
-        // 密码
-        if (password1.equals("") && password2.equals("")) {
-          // 如果不修改
-
-        } else {
-          if (password1.equals(StaticVarUtil.student.getPassword())
-              && password2.equals("") == false) {
-            ;
-          } else {
-            ViewUtil.showToast(getApplicationContext(), "旧密码不正确或者新密码不能为空,请您检查");
-            return;
-          }
-        }
-        if (password2.equals(password3)) {
-          if (!Util.hasDigitAndNum(password2)) {
-            ViewUtil.showToast(getApplicationContext(), "密码中必须包含数字和字母");
-          } else {
-            if (password2.length() < 6) {
-              // 增加修改密码必须超过6位
-              ViewUtil.showToast(getApplicationContext(), "密码必须超过6位");
-            } else {
-              ChangePwAsyntask changePwAsyntask = new ChangePwAsyntask();
-              changePwAsyntask.execute(new String[] { password1, password2 });
-            }
-
-          }
-
-        } else {
-          ViewUtil.showToast(getApplicationContext(), "新密码不正确");
-
-          return;
-        }
-
+      @Override
+      public void onClick(View v) {
+        // TODO Auto-generated method stub
+        Intent intent = new Intent();
+        intent.setClass(MainActivity.this, LanguageActivity.class);
+        intent.putExtra("optionType", "Language");
+        startActivity(intent);
       }
     });
 
@@ -1141,9 +1133,11 @@ public class MainActivity extends BaseActivity implements EventListener {
    * @return
    */
   protected void chooseHeadPhoto() {
-    String[] items = new String[] { Util.getContext().getResources().getString(R.string.select_picture), 
+    String[] items = new String[] {
+        Util.getContext().getResources().getString(R.string.select_picture),
         Util.getContext().getResources().getString(R.string.photo) };
-    new AlertDialog.Builder(this).setTitle(Util.getContext().getResources().getString(R.string.setPhoto))
+    new AlertDialog.Builder(this)
+        .setTitle(Util.getContext().getResources().getString(R.string.setPhoto))
         .setItems(items, new DialogInterface.OnClickListener() {
           @Override
           public void onClick(DialogInterface dialog, int which) {
@@ -1163,12 +1157,14 @@ public class MainActivity extends BaseActivity implements EventListener {
               break;
             }
           }
-        }).setNegativeButton(Util.getContext().getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
-          @Override
-          public void onClick(DialogInterface dialog, int which) {
-            dialog.dismiss();
-          }
-        }).show();
+        }).setNegativeButton(Util.getContext().getResources().getString(R.string.cancel),
+            new DialogInterface.OnClickListener() {
+              @Override
+              public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+              }
+            })
+        .show();
   }
 
   /*
@@ -1201,6 +1197,12 @@ public class MainActivity extends BaseActivity implements EventListener {
           UploadFileAsytask uploadFileAsytask = new UploadFileAsytask(MainActivity.this, bitmap);
           uploadFileAsytask.execute(new String[] {
               StaticVarUtil.PATH + "/" + StaticVarUtil.student.getAccount() + ".JPEG" });
+        }
+        break;
+      case Util.CHANGE_PWD_RESULT:
+        Bundle extras = data.getExtras();
+        if (extras.getBoolean("isQuit")) {
+          quit(true);
         }
         break;
       default:
@@ -1271,7 +1273,8 @@ public class MainActivity extends BaseActivity implements EventListener {
     ScoreUtil.mapScoreOne.clear();
     ;
     ScoreUtil.mapScoreTwo.clear();
-    ;
+
+    StaticVarUtil.listItem = null;
     CustomApplcation.getInstance().logout();
     StaticVarUtil.quit();
     RankUtils.isFirstListView = true;
@@ -1359,30 +1362,32 @@ public class MainActivity extends BaseActivity implements EventListener {
       return;
     }
 
-    builder.setPositiveButton(Util.getContext().getResources().getString(R.string.ok), new DialogInterface.OnClickListener() {
-      @Override
-      public void onClick(DialogInterface dialog, int which) {
-        dialog.cancel();
-        BmobDB.create(getApplicationContext()).queryBmobInviteList().clear();
-        deleteCatch();
-        LogcatHelper.getInstance(MainActivity.this).stop();
-        // 取消定时检测服务
-        BmobChat.getInstance(getApplicationContext()).stopPollService();
+    builder.setPositiveButton(Util.getContext().getResources().getString(R.string.ok),
+        new DialogInterface.OnClickListener() {
+          @Override
+          public void onClick(DialogInterface dialog, int which) {
+            dialog.cancel();
+            BmobDB.create(getApplicationContext()).queryBmobInviteList().clear();
+            deleteCatch();
+            LogcatHelper.getInstance(MainActivity.this).stop();
+            // 取消定时检测服务
+            BmobChat.getInstance(getApplicationContext()).stopPollService();
 
-        userManager.logout();
-        if (logout) {
-          Intent i = new Intent();
-          i.setClass(getApplicationContext(), LoginActivity.class);
-          startActivity(i);
-        }
-      }
-    });
-    builder.setNegativeButton(Util.getContext().getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
-      @Override
-      public void onClick(DialogInterface dialog, int which) {
-        dialog.cancel();
-      }
-    });
+            userManager.logout();
+            if (logout) {
+              Intent i = new Intent();
+              i.setClass(getApplicationContext(), LoginActivity.class);
+              startActivity(i);
+            }
+          }
+        });
+    builder.setNegativeButton(Util.getContext().getResources().getString(R.string.cancel),
+        new DialogInterface.OnClickListener() {
+          @Override
+          public void onClick(DialogInterface dialog, int which) {
+            dialog.cancel();
+          }
+        });
     Dialog dialog = builder.create();
     dialog.show();
   }
@@ -1418,10 +1423,17 @@ public class MainActivity extends BaseActivity implements EventListener {
       // TODO Auto-generated method stub
       String url = "";
       String canshu = Util.getURL(StaticVarUtil.QUERY_SCORE);
+      System.out.println(TAG + "canshu:" + canshu + " \n + " + StaticVarUtil.listHerf.toString());
       String[] can = canshu.split("&");
-      String url_str = can[0];
+      String url_str = "/" + can[0];
       String xm = can[1];
-      name = xm.split("=")[1];
+      try {
+        name = xm.split("=")[1];
+      } catch (ArrayIndexOutOfBoundsException e) {
+        // TODO: handle exception
+        return "error";
+      }
+
       String gnmkdm = can[2];
       try {
         url = HttpUtilMc.BASE_URL + "xscjcx.aspx?session=" + StaticVarUtil.session + "&url="
@@ -1441,9 +1453,12 @@ public class MainActivity extends BaseActivity implements EventListener {
     protected void onPostExecute(String result) {
       // TODO Auto-generated method stub
       super.onPostExecute(result);
+      System.out.println("score:" + result);
       // 显示用户名
-      nickname.setText(name);
-      StaticVarUtil.student.setName(name);
+      if (name != null && !name.isEmpty()) {
+        StaticVarUtil.student.setName(name);
+      }
+      nickname.setText(StaticVarUtil.student.getName());
       try {
         if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result) || result.isEmpty()) {
           if (!result.equals("error")) {
@@ -1453,7 +1468,7 @@ public class MainActivity extends BaseActivity implements EventListener {
             if (!result.equals("no_evaluation")) {
               requestTimes = 0;
               ScoreUtil.scoreJson = result;
-              listItem = new ArrayList<HashMap<String, Object>>();
+              StaticVarUtil.listItem = new ArrayList<HashMap<String, Object>>();
               JSONObject jsonObject = new JSONObject(result);
               JSONArray jsonArray = (JSONArray) jsonObject.get("liScoreModels");// 最外层的array
               for (int i = 0; i < jsonArray.length(); i++) {
@@ -1461,7 +1476,7 @@ public class MainActivity extends BaseActivity implements EventListener {
                 HashMap<String, Object> map = new HashMap<String, Object>();
                 map.put("xn", o.get("xn"));
                 map.put("list_xueKeScore", o.get("list_xueKeScore"));
-                listItem.add(map);
+                StaticVarUtil.listItem.add(map);
               }
             } else {
               Builder builder = new AlertDialog.Builder(MainActivity.this);
@@ -1479,7 +1494,7 @@ public class MainActivity extends BaseActivity implements EventListener {
 
             menu1();
           } else {
-            ViewUtil.showToast(getApplicationContext(), "查询失败");
+            ViewUtil.showToast(getApplicationContext(), "查询失败,请重试。");
           }
 
         } else {
@@ -1519,7 +1534,8 @@ public class MainActivity extends BaseActivity implements EventListener {
       @Override
       public void onClick(View v) {
         if (ideaMsgText.getText().toString().equals("")) {
-          H5Toast.showToast(Util.getContext(), Util.getContext().getResources().getString(R.string.edit_feedmsg));
+          H5Toast.showToast(Util.getContext(),
+              Util.getContext().getResources().getString(R.string.edit_feedmsg));
           return;
         }
         ProgressDialogUtil.getInstance(MainActivity.this).show();
@@ -1652,7 +1668,7 @@ public class MainActivity extends BaseActivity implements EventListener {
   boolean isReq = true;
 
   private void lib() {
-    initTopBarForOnlyTitle("绑定");
+    initTopBarForOnlyTitle(Util.getContext().getResources().getString(R.string.bind));
     String lib = "password=123456&account=S04131071";
     final LinearLayout bind_layout = (LinearLayout) findViewById(R.id.common_bind);
     if (StaticVarUtil.allBookList != null) {
@@ -1684,7 +1700,7 @@ public class MainActivity extends BaseActivity implements EventListener {
   }
 
   private void bindLib(final LinearLayout bind_layout) {
-    initTopBarForOnlyTitle("绑定");
+    initTopBarForOnlyTitle(Util.getContext().getResources().getString(R.string.bind));
 
     bind_layout.setVisibility(View.VISIBLE);
     final EditText libAccount = (EditText) findViewById(R.id.libAccount);
@@ -1709,7 +1725,7 @@ public class MainActivity extends BaseActivity implements EventListener {
   }
 
   int times = 0;
-  
+
   String loginResult = null;
 
   private void login_lib(final String libName, final LinearLayout bind_layout,
@@ -1721,7 +1737,7 @@ public class MainActivity extends BaseActivity implements EventListener {
           @Override
           public void onPostLogin(String result) {
             // TODO Auto-generated method stub
-            if (!"fail".equals(result.trim())) {// 获取数据
+            if (result != null && !"fail".equals(result.trim())) {// 获取数据
               StaticVarUtil.LIB_NAME = libName;
               if (isBind) {
                 bind(libName, bind_layout);
@@ -1738,7 +1754,7 @@ public class MainActivity extends BaseActivity implements EventListener {
                   ProgressDialogUtil.getInstance(MainActivity.this).dismiss();
                   return;
                 }
-                
+
                 loginResult = result;
                 try {
                   ArrayList<BookList> allBookList = new ArrayList<BookList>();
@@ -1767,7 +1783,7 @@ public class MainActivity extends BaseActivity implements EventListener {
               Log.d(TAG, "login error" + result + " " + libName);
               if (isBind) {
                 H5Toast.showToast(getApplicationContext(), "绑定失败，请确认账号和密码！");
-              } else if(times<3){
+              } else if (times < 3) {
                 times++;
                 login_lib(libName, bind_layout, isBind);
               }
@@ -1779,10 +1795,11 @@ public class MainActivity extends BaseActivity implements EventListener {
     xuptLibLoginAsynctask.execute();
   }
 
-  private void ShowLibMessage(final LinearLayout bind_layout,  final ArrayList<BookList> allBookList) {
+  private void ShowLibMessage(final LinearLayout bind_layout,
+      final ArrayList<BookList> allBookList) {
     final LinearLayout show_lib_layout = (LinearLayout) findViewById(R.id.common_show_lib);
-    initTopBarForRight("图书馆", R.drawable.chongzhi,
-        new HeaderLayout.onRightImageButtonClickListener() {
+    initTopBarForRight(Util.getContext().getResources().getString(R.string.my_lib),
+        R.drawable.chongzhi, new HeaderLayout.onRightImageButtonClickListener() {
 
           @Override
           public void onClick() {
@@ -1797,7 +1814,7 @@ public class MainActivity extends BaseActivity implements EventListener {
                 dialog.cancel();
                 StaticVarUtil.LIB_NAME = "";
                 StaticVarUtil.allBookList = null;
-//                bind_layout.setVisibility(View.VISIBLE);
+                // bind_layout.setVisibility(View.VISIBLE);
                 show_lib_layout.setVisibility(View.GONE);
                 bindLib(bind_layout);
               }
@@ -1812,13 +1829,23 @@ public class MainActivity extends BaseActivity implements EventListener {
             dialog.show();
           }
         });
-   
+
     show_lib_layout.setVisibility(View.VISIBLE);
     bind_layout.setVisibility(View.GONE);
     ListView libList = (ListView) findViewById(R.id.book_list);
-    LibAdapter adapter = new LibAdapter(allBookList, getApplicationContext());
+    adapter = new LibAdapter(allBookList, MainActivity.this, new LibAdapter.OnAdapter() {
+
+      @Override
+      public void onAdapter() {
+        // TODO Auto-generated method stub
+        adapter.notifyDataSetChanged();
+      }
+
+    });
     libList.setAdapter(adapter);
   }
+
+  private LibAdapter adapter;
 
   private void bind(final String libName, final LinearLayout bind_layout) {
     BindXuptLibAsyncTask bindXuptLibAsyncTask = new BindXuptLibAsyncTask(MainActivity.this, libName,
@@ -1828,30 +1855,30 @@ public class MainActivity extends BaseActivity implements EventListener {
           public void returnResult(String result) {
             if ("success".equals(result)) {
               login_lib(libName, bind_layout, false);
-//              if (loginResult != null) {
-//                try {
-//                  ArrayList<BookList> allBookList = new ArrayList<BookList>();
-//                  JSONArray bookArray = new JSONArray(result);
-//                  for (int i = 0; i < bookArray.length(); i++) {
-//                    JSONObject jo = (JSONObject) bookArray.get(i);
-//                    BookList bookList = new BookList();
-//                    bookList.setLibName(jo.getString("name"));
-//                    bookList.setNumber(jo.getString("id"));
-//                    String[] date = jo.getString("date").split("/");
-//                    bookList.setLibRenewDate(date[0] + "年" + date[1] + "月" + date[2]);
-//                    bookList.setBarcode(jo.getString("barcode"));
-//                    bookList.setRenew(jo.getBoolean("isRenew"));
-//                    allBookList.add(bookList);
-//                  }
-//
-//                  StaticVarUtil.allBookList = allBookList;
-//                  ShowLibMessage(bind_layout, allBookList);
-//
-//                } catch (JSONException e) {
-//                  // TODO Auto-generated catch block
-//                  e.printStackTrace();
-//                }
-//              }
+              // if (loginResult != null) {
+              // try {
+              // ArrayList<BookList> allBookList = new ArrayList<BookList>();
+              // JSONArray bookArray = new JSONArray(result);
+              // for (int i = 0; i < bookArray.length(); i++) {
+              // JSONObject jo = (JSONObject) bookArray.get(i);
+              // BookList bookList = new BookList();
+              // bookList.setLibName(jo.getString("name"));
+              // bookList.setNumber(jo.getString("id"));
+              // String[] date = jo.getString("date").split("/");
+              // bookList.setLibRenewDate(date[0] + "年" + date[1] + "月" + date[2]);
+              // bookList.setBarcode(jo.getString("barcode"));
+              // bookList.setRenew(jo.getBoolean("isRenew"));
+              // allBookList.add(bookList);
+              // }
+              //
+              // StaticVarUtil.allBookList = allBookList;
+              // ShowLibMessage(bind_layout, allBookList);
+              //
+              // } catch (JSONException e) {
+              // // TODO Auto-generated catch block
+              // e.printStackTrace();
+              // }
+              // }
             } else {// 绑定失败
               bind_layout.setVisibility(View.VISIBLE);
               H5Toast.showToast(getApplicationContext(), "请重新绑定");
@@ -2366,46 +2393,6 @@ public class MainActivity extends BaseActivity implements EventListener {
     builder.create().show();
   }
 
-  // 异步改变密码
-  class ChangePwAsyntask extends AsyncTask<String, String, String> {
-
-    @Override
-    protected String doInBackground(String... params) {
-      // TODO Auto-generated method stub
-      String canshu = Util.getURL(StaticVarUtil.CHANGE_PW);
-      return HttpUtilMc
-          .queryStringForPost(HttpUtilMc.BASE_URL + "changepw.jsp?session=" + StaticVarUtil.session
-              + "&url=" + canshu + "&old_password=" + params[0] + "&new_password=" + params[1]);
-
-    }
-
-    @Override
-    protected void onPostExecute(String result) {
-      // TODO Auto-generated method stub
-      super.onPostExecute(result);
-      // progress.cancel();
-      // 显示用户名
-      nickname.setText(name);
-      try {
-        if (HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
-          ViewUtil.showToast(getApplicationContext(), HttpUtilMc.CONNECT_EXCEPTION);
-          return;
-        }
-        ViewUtil.showToast(getApplicationContext(),
-            !result.equals("error") ? "修改成功,请重新登录" : "修改不成功");
-        if (!result.equals("error")) {
-          quit(true);// 注销重新登录
-        }
-      } catch (Exception e) {
-        // TODO: handle exception
-        e.printStackTrace();
-        Log.i("LoginActivity", e.toString());
-      }
-
-    }
-
-  }
-
   @Override
   public void onMessage(BmobMsg message) {
     // TODO Auto-generated method stub
@@ -2418,4 +2405,19 @@ public class MainActivity extends BaseActivity implements EventListener {
     return isCanTouch ? super.dispatchTouchEvent(ev) : true;
   }
 
+//  @Override
+//  protected void onRestart() {
+//    // TODO Auto-generated method stub
+//    super.onRestart();
+//    Util.setLanguageShare(MainActivity.this);
+//
+//    if (StaticVarUtil.listItem != null) {
+//      // 重新启动应用程序
+//      Intent intent = mActivity.getIntent();
+//      // intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+//      // mActivity.closeApplication();
+//      mActivity.overridePendingTransition(0, 0);
+//      mActivity.startActivity(intent);
+//    }
+//  }
 }

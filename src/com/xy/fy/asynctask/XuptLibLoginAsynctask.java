@@ -38,6 +38,7 @@ public class XuptLibLoginAsynctask extends AsyncTask<String, String, String> {
   protected void onPostExecute(String result) {
     // TODO Auto-generated method stub
     super.onPostExecute(result);
+    System.out.println("lib"+result);
     login.onPostLogin(result);
   }
 

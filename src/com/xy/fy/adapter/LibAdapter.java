@@ -6,8 +6,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.baidu.platform.comapi.map.o;
 import com.bmob.im.demo.ui.BaseActivity;
 import com.mc.util.H5Toast;
+import com.mc.util.Util;
 import com.xy.fy.asynctask.RenewLibAsynctask;
 import com.xy.fy.asynctask.XuptLibLoginAsynctask;
 import com.xy.fy.main.R;
@@ -30,14 +32,19 @@ public class LibAdapter extends BaseAdapter {
   
   private ArrayList<BookList> allBookList = null;
   private LayoutInflater inflater = null;
-  private Context context;
+  private Activity context;
   private LibAdapter libAdapter;
-  public LibAdapter(ArrayList<BookList> allBookList,Context context) {
+  OnAdapter onAdapter;
+  public interface OnAdapter{
+    void onAdapter();
+  }
+  public LibAdapter(ArrayList<BookList> allBookList,Activity context,OnAdapter onAdapter) {
     // TODO Auto-generated constructor stub
     this.allBookList = allBookList;
     this.inflater = LayoutInflater.from(context);
     this.context = context;
     this.libAdapter = this;
+    this.onAdapter = onAdapter;
   }
   @Override
   public int getCount() {
@@ -81,13 +88,16 @@ public class LibAdapter extends BaseAdapter {
         @Override
         public void onClick(View v) {
           // TODO Auto-generated method stub
-          RenewLibAsynctask renewLibAsynctask = new RenewLibAsynctask((BaseActivity)context,new RenewLibAsynctask.OnRenew() {
+          RenewLibAsynctask renewLibAsynctask = new RenewLibAsynctask(context,new RenewLibAsynctask.OnRenew() {
             
             @Override
             public void onRenew(String result,ProgressDialog progressDialog) {
               // TODO Auto-generated method stub
-              if ("success".equals(result)) {
+              if (!"fail".equals(result)) {
                 login_lib(progressDialog);
+              }else {
+                progressDialog.dismiss();
+                H5Toast.showToast(context, "续借失败"+result);
               }
             }
           });
@@ -126,7 +136,9 @@ public class LibAdapter extends BaseAdapter {
                   StaticVarUtil.allBookList = allBookList;
 //                  ShowLibMessage(bind_layout, allBookList);
                   H5Toast.showToast(context, "续借成功");
-                  libAdapter.notifyDataSetChanged();
+                  
+                 onAdapter.onAdapter();
+//                  libAdapter.notifyDataSetChanged();
 
                 } catch (JSONException e) {
                   // TODO Auto-generated catch block
