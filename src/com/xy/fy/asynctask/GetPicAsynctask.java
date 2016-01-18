@@ -7,6 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.mc.util.H5Dialog;
+import com.mc.util.H5Toast;
 import com.mc.util.HttpUtilMc;
 import com.xy.fy.asynctask.LoginAsynctask.LoginResult;
 import com.xy.fy.main.MainActivity;
@@ -71,7 +72,6 @@ public class GetPicAsynctask extends AsyncTask<Object, String, String> {
             final H5Dialog h5Dialog = new H5Dialog(this.mActivity);
             // sync image.
             GetImageSync getImageSync = new GetImageSync(picUrl, new GetImageSync.syncLintener() {
-
               @Override
               public void sync(Bitmap bitmap) {
                 // TODO Auto-generated method stub
@@ -92,9 +92,25 @@ public class GetPicAsynctask extends AsyncTask<Object, String, String> {
                     h5Dialog.dismiss();
                     // password.setText("");
                     if (progressDialog != null) {
-                      progressDialog.show();
+                      try {
+                        progressDialog.show();
+                      } catch (Exception e) {
+                        // TODO: handle exception
+                      }
                     }
-                    request(session, h5Dialog.getPic());
+                    if (h5Dialog.getPic().length() != 4) {
+                        H5Toast.showToast(mActivity, "验证码错误");
+                        if (progressDialog != null) {
+                          try {
+                            progressDialog.dismiss();
+                          } catch (Exception e) {
+                            // TODO: handle exception
+                          }
+                        }
+                    } else {
+                      request(session, h5Dialog.getPic());
+                    }
+
                   }
                 }).setNegativeButton(R.string.h5_default_cancel, new View.OnClickListener() {
                   @Override
@@ -109,7 +125,7 @@ public class GetPicAsynctask extends AsyncTask<Object, String, String> {
 
               }
             });
-              getImageSync.execute();
+            getImageSync.execute();
           }
         } else {
           ViewUtil.showToast(mActivity, "服务器维护中。。。");
@@ -163,7 +179,7 @@ public class GetPicAsynctask extends AsyncTask<Object, String, String> {
                     progressDialog.dismiss();
                   }
                   // progressDialog.cancel();
-                } else if (result.equals("errorCode")){
+                } else if (result.equals("errorCode")) {
                   ViewUtil.showToast(mActivity, "请检查密码和验证码是否正确。");
 
                   onResult.onReturn("error");
@@ -171,7 +187,7 @@ public class GetPicAsynctask extends AsyncTask<Object, String, String> {
                   if (progressDialog != null) {
                     progressDialog.dismiss();
                   }
-                }else {
+                } else {
                   if (result.equals("no_user")) {
                     ViewUtil.showToast(mActivity, "账号不存在");
                     onResult.onReturn("no_user");
