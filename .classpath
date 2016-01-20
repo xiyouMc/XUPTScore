@@ -15,16 +15,16 @@
 	<classpathentry kind="lib" path="libs/ShareSDK-Wechat-Core-2.5.9.jar"/>
 	<classpathentry kind="lib" path="libs/ShareSDK-Wechat-Favorite-2.5.9.jar"/>
 	<classpathentry kind="lib" path="libs/ShareSDK-Wechat-Moments-2.5.9.jar"/>
-	<classpathentry kind="lib" path="libs/commons-email-1.2.jar"/>
 	<classpathentry kind="lib" path="libs/mail.jar"/>
 	<classpathentry kind="lib" path="libs/baidumapapi_v3_0_0.jar"/>
 	<classpathentry kind="lib" path="libs/locSDK_4.2.jar"/>
 	<classpathentry kind="lib" path="libs/photoview-library-1.2.2.jar"/>
-	<classpathentry kind="lib" path="libs/ShareSDK-Email-2.5.9.jar"/>
-	<classpathentry kind="lib" path="libs/universal-image-loader-1.9.2_sources.jar"/>
 	<classpathentry kind="lib" path="libs/sun.misc.BASE64Decoder.jar"/>
 	<classpathentry kind="lib" path="libs/BmobIM_V1.1.9beta_20150820.jar"/>
 	<classpathentry kind="lib" path="libs/BmobSDK_V3.4.3_0820.jar"/>
 	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="lib" path="libs/activation.jar"/>
+	<classpathentry kind="lib" path="libs/additionnal.jar"/>
+	<classpathentry kind="lib" path="libs/universal-image-loader-1.9.2_sources.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

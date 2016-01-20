@@ -67,7 +67,7 @@ public class ShareUtil {
      */
 
     // title标题，印象笔记、邮箱、信息、微信、人人网和QQ空间使用
-    oks.setTitle(context.getString(R.string.app_name));
+//    oks.setTitle(context.getString(R.string.app_name));
     // imagePath是图片的本地路径，Linked-In以外的平台都支持此参数
     oks.setImagePath(filePath);// 确保SDcard下面存在此张图片
     return oks;

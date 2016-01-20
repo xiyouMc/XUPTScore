@@ -7,7 +7,6 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Locale;
 import java.util.Map.Entry;
 
 import org.json.JSONArray;
@@ -74,8 +73,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
@@ -90,7 +87,6 @@ import android.text.Editable;
 import android.text.Html;
 import android.text.TextWatcher;
 import android.text.method.LinkMovementMethod;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -145,7 +141,7 @@ public class MainActivity extends BaseActivity implements EventListener {
 
   private TextView nickname;
   private String name;//
-  private CircleImageView headPhoto;
+  private static CircleImageView headPhoto;
   private LinearLayout menuBang = null;
   private LinearLayout menuMyBukao = null;
   private LinearLayout menuMyPaiming = null;
@@ -166,8 +162,7 @@ public class MainActivity extends BaseActivity implements EventListener {
 
   private Bitmap bitmap = null;// 修改头像
   private MyHandler mHandler;
-  private Activity mActivity;
-  private static  boolean isCheck = false;
+  private static boolean isCheck = false;
 
   @SuppressLint("ShowToast")
   @Override
@@ -177,8 +172,6 @@ public class MainActivity extends BaseActivity implements EventListener {
     super.setContentView(R.layout.activity_main);
     Util.setContext(getApplicationContext());
     mHandler = new MyHandler(this);
-
-    mActivity = MainActivity.this;
 
     try {
       BadgeUtil.resetBadgeCount(getApplicationContext());
@@ -199,6 +192,7 @@ public class MainActivity extends BaseActivity implements EventListener {
     }
     shareUtil = new ShareUtil(getApplicationContext());
     share = shareUtil.showShare();
+
     softDeclare();// 将部分 变量 定义为弱引用
 
     setMenuItemListener();
@@ -308,6 +302,17 @@ public class MainActivity extends BaseActivity implements EventListener {
       }
     });
 
+    // 分享按钮
+    Button share = (Button) findViewById(R.id.share);
+    share.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        // TODO Auto-generated method stub
+        // ViewUtil.showShare(getApplicationContext());
+        shareUtil.showShareUI(MainActivity.share);
+      }
+    });
+    
     if (mCardView != null) {
       isFirst = false;
     }
@@ -1549,7 +1554,7 @@ public class MainActivity extends BaseActivity implements EventListener {
         new Thread(new Runnable() {
           @Override
           public void run() {
-            Util.sendMail(data);
+            Util.sendMail(data, MainActivity.this);
             Message msg = new Message();
             msg.what = StaticVarUtil.IDEA_BACK_TOAST;
             mHandler.sendMessage(msg);
@@ -2001,6 +2006,7 @@ public class MainActivity extends BaseActivity implements EventListener {
     // break;
     // }
     ProgressDialogUtil.getInstance(MainActivity.this).dismiss();
+    isCanTouch =true;
   }
 
   /**
@@ -2405,19 +2411,23 @@ public class MainActivity extends BaseActivity implements EventListener {
     return isCanTouch ? super.dispatchTouchEvent(ev) : true;
   }
 
-//  @Override
-//  protected void onRestart() {
-//    // TODO Auto-generated method stub
-//    super.onRestart();
-//    Util.setLanguageShare(MainActivity.this);
-//
-//    if (StaticVarUtil.listItem != null) {
-//      // 重新启动应用程序
-//      Intent intent = mActivity.getIntent();
-//      // intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-//      // mActivity.closeApplication();
-//      mActivity.overridePendingTransition(0, 0);
-//      mActivity.startActivity(intent);
-//    }
-//  }
+  // @Override
+  // protected void onRestart() {
+  // // TODO Auto-generated method stub
+  // super.onRestart();
+  // Util.setLanguageShare(MainActivity.this);
+  //
+  // if (StaticVarUtil.listItem != null) {
+  // // 重新启动应用程序
+  // Intent intent = mActivity.getIntent();
+  // // intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+  // // mActivity.closeApplication();
+  // mActivity.overridePendingTransition(0, 0);
+  // mActivity.startActivity(intent);
+  // }
+  // }
+
+  public static void updataPhoto(Bitmap tBitmap) {
+    headPhoto.setImageBitmap(tBitmap);
+  }
 }

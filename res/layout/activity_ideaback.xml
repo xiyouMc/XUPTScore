@@ -55,6 +55,7 @@
             android:scrollbars="vertical"
             android:textColor="@color/black"
             android:textColorHint="@color/gray"
+            android:textCursorDrawable="@color/black"
             android:textSize="9pt" />
     </LinearLayout>
 

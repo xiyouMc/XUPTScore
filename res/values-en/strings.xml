@@ -19,10 +19,10 @@
     <string name="blank"></string>
     <!-- 学年 -->
     <string-array name="xn">
-        <item>2011-2012</item>
         <item>2012-2013</item>
         <item>2013-2014</item>
         <item>2014-2015</item>
+        <item>2015-2016</item>
     </string-array>
 
     <string name="add_friend">add friends</string>
