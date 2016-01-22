@@ -21,13 +21,13 @@ import com.xy.fy.main.R;
 
 public class HttpUtilMc {
   // »ù´¡URL
-  public static final String IP = "http://222.24.63.101";
+  public static final String IP = "http://192.168.1.100:8080";
   public static final String BASE_URL = IP + "/xuptqueryscore/";
   public static final String LIB_URL = IP + "/xuptlibrary/";
-  public static String SERVER_ADDRESS = "222.24.63.101";
-  public static final String XUPT_IP1 = "222.24.63.101";
-  public static final String XUPT_IP2 = "222.24.63.101";
-  public static final String xiyouMC_IP = "http://222.24.63.101";
+  public static String SERVER_ADDRESS = "192.168.1.100";
+  public static final String XUPT_IP1 = "192.168.1.100";
+  public static final String XUPT_IP2 = "192.168.1.100";
+  public static final String xiyouMC_IP = "http://192.168.1.100";
   public static final String XIYOUMC_BASE_IP = xiyouMC_IP + "/xuptqueryscore/";
   
   public static String libURL = "http://222.24.63.101/XiYouLibrary/login";

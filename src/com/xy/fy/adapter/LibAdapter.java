@@ -6,7 +6,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.baidu.platform.comapi.map.o;
 import com.bmob.im.demo.ui.BaseActivity;
 import com.mc.util.H5Toast;
 import com.mc.util.Util;

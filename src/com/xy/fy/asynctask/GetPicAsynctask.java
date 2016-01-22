@@ -229,7 +229,7 @@ public class GetPicAsynctask extends AsyncTask<Object, String, String> {
                 // ÖØÐÂµÇÂ¼
                 if (StaticVarUtil.loginTimes < 3) {
                   LoginAsynctask loginAsyntask = new LoginAsynctask(mActivity, account, password,
-                      pic, this, progressDialog);
+                      pic, this, progressDialog,false);
                   ViewUtil.showToast(mActivity, HttpUtilMc.CONNECT_REPEAT_EXCEPTION);
                   loginAsyntask.execute();
                 } else {
@@ -250,7 +250,7 @@ public class GetPicAsynctask extends AsyncTask<Object, String, String> {
             }
 
           }
-        }, progressDialog);
+        }, progressDialog,false);
     loginAsyntask.execute();
   }
 }

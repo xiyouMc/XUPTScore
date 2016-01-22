@@ -2,17 +2,20 @@ package com.xy.fy.main;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Locale;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import com.mc.db.DBConnection;
 import com.mc.db.DBConnection.UserSchema;
 import com.mc.util.CircleImageView;
-import com.mc.util.H5Toast;
 import com.mc.util.HttpUtilMc;
 import com.mc.util.SystemBarTintManager;
 import com.mc.util.Util;
 import com.xy.fy.asynctask.GetPicAsynctask;
+import com.xy.fy.asynctask.LoginAsynctask;
 import com.xy.fy.util.BitmapUtil;
 import com.xy.fy.util.ConnectionUtil;
 import com.xy.fy.util.StaticVarUtil;
@@ -27,8 +30,6 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
@@ -41,7 +42,7 @@ import android.os.Handler;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
-import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -66,12 +67,11 @@ public class LoginActivity extends Activity {
   private AutoCompleteTextView account;
   private EditText password;
   private Button forgetPassWord;
-  private CheckBox rememberPassword;
   private Button login;
   private TextView selectLanguage;
   private ProgressDialog progressDialog;
   private DBConnection helper;
-  SQLiteDatabase sqLiteDatabase;
+  private SQLiteDatabase sqLiteDatabase;
   private ImageView savePic;
   private TextView tvHint;
 
@@ -123,17 +123,24 @@ public class LoginActivity extends Activity {
         if (Util.isFastDoubleClick()) {
           return;
         }
-         login();
-//         H5Toast.showToast(getApplicationContext(), "网络不稳定，请稍后。");
-//        Intent intent = new Intent();
-//        intent.setClass(LoginActivity.this, MainActivity.class);
-//        if (progressDialog != null) {
-//          progressDialog.dismiss();
-//        }
-//        StaticVarUtil.student.setAccount("aaaa");
-//        StaticVarUtil.student.setPassword("aaaa");
-//        progressDialog.cancel();
-//        startActivity(intent);
+
+        SharedPreferences preferences = getSharedPreferences(StaticVarUtil.USER_INFO, MODE_PRIVATE);
+        String session = preferences.getString(StaticVarUtil.SESSION, "");
+        if (session != null && !session.isEmpty()) {
+          autoLogin();
+        } else {
+          login();
+        }
+        // H5Toast.showToast(getApplicationContext(), "网络不稳定，请稍后。");
+        // Intent intent = new Intent();
+        // intent.setClass(LoginActivity.this, MainActivity.class);
+        // if (progressDialog != null) {
+        // progressDialog.dismiss();
+        // }
+        // StaticVarUtil.student.setAccount("aaaa");
+        // StaticVarUtil.student.setPassword("aaaa");
+        // progressDialog.cancel();
+        // startActivity(intent);
       }
     });
     this.selectLanguage.setOnClickListener(new OnClickListener() {
@@ -147,6 +154,75 @@ public class LoginActivity extends Activity {
         startActivity(intent);
       }
     });
+  }
+
+  private void autoLogin() {
+    LoginAsynctask loginAsyntask = new LoginAsynctask(LoginActivity.this, "", "", "",
+        new LoginAsynctask.LoginResult() {
+
+          @Override
+          public void onLogin(String result) {
+            // TODO Auto-generated method stub
+
+            try {
+              if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
+                if (result.equals("error") || result.equals("errorReq")) {
+                  ViewUtil.showToast(LoginActivity.this, "证书过期，请重新登录。");
+
+                  // password.setText("");
+                  if (progressDialog != null) {
+                    progressDialog.dismiss();
+                  }
+                  // progressDialog.cancel();
+                } else {
+                  StaticVarUtil.listHerf = new ArrayList<HashMap<String, String>>();
+                  JSONObject json = new JSONObject(result);
+                  JSONArray jsonArray = (JSONArray) json.get("listHerf");
+                  for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject o = (JSONObject) jsonArray.get(i);
+                    HashMap<String, String> map = new HashMap<String, String>();
+                    map.put("herf", o.getString("herf"));
+                    map.put("tittle", o.getString("tittle"));
+                    StaticVarUtil.listHerf.add(map);
+                  }
+                  SharedPreferences preferences = getSharedPreferences(StaticVarUtil.USER_INFO,
+                      MODE_PRIVATE);
+                  String accountStr = preferences.getString(StaticVarUtil.ACCOUNT, "");
+                  String sessionStr = preferences.getString(StaticVarUtil.SESSION, "");
+                  String passwordStr = preferences.getString(StaticVarUtil.PASSWORD, "");
+
+                  StaticVarUtil.student.setAccount(accountStr);
+                  StaticVarUtil.student.setPassword(passwordStr);
+                  StaticVarUtil.session = sessionStr;
+                  Intent intent = new Intent();
+                  intent.setClass(LoginActivity.this, MainActivity.class);
+                  if (progressDialog != null) {
+                    progressDialog.dismiss();
+                  }
+                  // progressDialog.cancel();
+                  startActivity(intent);
+                  finish();
+                  StaticVarUtil.quit();
+                }
+
+              } else {
+                ViewUtil.showToast(LoginActivity.this, HttpUtilMc.CONNECT_EXCEPTION);
+                if (progressDialog != null) {
+                  progressDialog.dismiss();
+                }
+              }
+            } catch (Exception e) {
+              // TODO: handle exception
+              Log.i("LoginActivity", e.toString());
+              if (progressDialog != null) {
+                progressDialog.dismiss();
+              }
+            }
+
+          }
+        }, progressDialog, true);
+    progressDialog.show();
+    loginAsyntask.execute();
   }
 
   private void setPullDoorViewImage(String imageMsg) {
@@ -271,17 +347,8 @@ public class LoginActivity extends Activity {
     SharedPreferences preferences = getSharedPreferences(StaticVarUtil.USER_INFO, MODE_PRIVATE);
     String account = preferences.getString(StaticVarUtil.ACCOUNT, "");
     String password = preferences.getString(StaticVarUtil.PASSWORD, "");
-    boolean isRemember = preferences.getBoolean(StaticVarUtil.IS_REMEMBER, false);
-    if (isRemember == true) {
-      this.rememberPassword.setChecked(true);
-      this.account.setText(account);
-      this.password.setText(password);
-    } else {
-      this.rememberPassword.setChecked(false);
-      this.account.setText(account);
-      this.password.setText("");
-    }
-
+    this.account.setText(account);
+    this.password.setText(password);
   }
 
   /**
@@ -291,25 +358,18 @@ public class LoginActivity extends Activity {
     SharedPreferences preferences = getSharedPreferences(StaticVarUtil.USER_INFO, MODE_PRIVATE);
     Editor editor = preferences.edit();
     editor.putString(StaticVarUtil.ACCOUNT, account);
-    if (rememberPassword.isChecked() == true) {
-      // 插入数据库
-      ContentValues values = new ContentValues();
-      values.put(com.mc.db.DBConnection.UserSchema.USERNAME, account);
-      values.put(com.mc.db.DBConnection.UserSchema.PASSWORD, password);
-      int i = sqLiteDatabase.update(UserSchema.TABLE_NAME, values, "username='" + account + "'",
-          null);
-      if (i == 0) {// 说明没有这个用户，所以得插入
-        sqLiteDatabase.insert(UserSchema.TABLE_NAME, null, values);// 插入
-      }
-
-      editor.putString(StaticVarUtil.PASSWORD, password);
-      editor.putBoolean(StaticVarUtil.IS_REMEMBER, true);// 记住密码
-    } else {
-      editor.putString(StaticVarUtil.PASSWORD, "");
-      editor.putBoolean(StaticVarUtil.IS_REMEMBER, false);// 不记住密码
-      // 删除数据库中的该用户
-      DBConnection.updateUser(account, LoginActivity.this);
+    // 插入数据库
+    ContentValues values = new ContentValues();
+    values.put(com.mc.db.DBConnection.UserSchema.USERNAME, account);
+    values.put(com.mc.db.DBConnection.UserSchema.PASSWORD, password);
+    int i = sqLiteDatabase.update(UserSchema.TABLE_NAME, values, "username='" + account + "'",
+        null);
+    if (i == 0) {// 说明没有这个用户，所以得插入
+      sqLiteDatabase.insert(UserSchema.TABLE_NAME, null, values);// 插入
     }
+
+    editor.putString(StaticVarUtil.PASSWORD, password);
+    editor.putBoolean(StaticVarUtil.IS_REMEMBER, true);// 记住密码
     editor.commit();
   }
 
@@ -345,7 +405,7 @@ public class LoginActivity extends Activity {
             // TODO Auto-generated method stub
 
             if ("error".equals(result)) {
-//              password.setText("");
+              // password.setText("");
               password.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
             } else if ("no_user".equals(result)) {
               account.setText("");
@@ -461,7 +521,6 @@ public class LoginActivity extends Activity {
       }
     });
     this.forgetPassWord = (Button) findViewById(R.id.butForgetPassword);
-    this.rememberPassword = (CheckBox) findViewById(R.id.butRememberPassword);
     this.login = (Button) findViewById(R.id.butLogin);
     this.selectLanguage = (TextView) findViewById(R.id.setLoginLanguage);
 

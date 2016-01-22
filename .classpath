@@ -16,8 +16,6 @@
 	<classpathentry kind="lib" path="libs/ShareSDK-Wechat-Favorite-2.5.9.jar"/>
 	<classpathentry kind="lib" path="libs/ShareSDK-Wechat-Moments-2.5.9.jar"/>
 	<classpathentry kind="lib" path="libs/mail.jar"/>
-	<classpathentry kind="lib" path="libs/baidumapapi_v3_0_0.jar"/>
-	<classpathentry kind="lib" path="libs/locSDK_4.2.jar"/>
 	<classpathentry kind="lib" path="libs/photoview-library-1.2.2.jar"/>
 	<classpathentry kind="lib" path="libs/sun.misc.BASE64Decoder.jar"/>
 	<classpathentry kind="lib" path="libs/BmobIM_V1.1.9beta_20150820.jar"/>
