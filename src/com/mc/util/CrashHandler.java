@@ -175,7 +175,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
 	 *	2013-3-24下午12:30:02	Modified By Norris 
 	 *	──────────────────────────────────────────────────────────────────────────────────────────────────────
 	 */
-	public void getDeviceInfo(Context paramContext) {
+	public Map<String , String> getDeviceInfo(Context paramContext) {
 		try {
 			// 获得包管理器
 			PackageManager mPackageManager = paramContext.getPackageManager() ;
@@ -209,6 +209,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
 				e.printStackTrace() ;
 			}
 		}
+		return mLogInfo;
 	}
 	/**
 	 * 	saveCrashLogToFile:{将崩溃的Log保存到本地}
@@ -222,7 +223,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
 	 *	2013-3-24下午12:31:01	Modified By Norris 
 	 *	──────────────────────────────────────────────────────────────────────────────────────────────────────
 	 */
-	private String saveCrashLogToFile(Throwable paramThrowable) {
+	public String saveCrashLogToFile(Throwable paramThrowable) {
 		StringBuffer mStringBuffer = new StringBuffer() ;
 		for(Map.Entry<String , String> entry : mLogInfo.entrySet()) {
 			String key = entry.getKey() ;
@@ -231,16 +232,18 @@ public class CrashHandler implements UncaughtExceptionHandler {
 		}
 		Writer mWriter = new StringWriter() ;
 		PrintWriter mPrintWriter = new PrintWriter(mWriter) ;
-		paramThrowable.printStackTrace(mPrintWriter) ;
-		paramThrowable.printStackTrace();
-		Throwable mThrowable = paramThrowable.getCause() ;
-		// 迭代栈队列把所有的异常信息写入writer中
-		while(mThrowable != null) {
-			mThrowable.printStackTrace(mPrintWriter) ;
-			// 换行  每个个异常栈之间换行
-			mPrintWriter.append("\r\n") ;
-			mThrowable = mThrowable.getCause() ;
-		}
+		if (paramThrowable != null) {
+		  paramThrowable.printStackTrace(mPrintWriter) ;
+	    paramThrowable.printStackTrace();
+	    Throwable mThrowable = paramThrowable.getCause() ;
+	    // 迭代栈队列把所有的异常信息写入writer中
+	    while(mThrowable != null) {
+	      mThrowable.printStackTrace(mPrintWriter) ;
+	      // 换行  每个个异常栈之间换行
+	      mPrintWriter.append("\r\n") ;
+	      mThrowable = mThrowable.getCause() ;
+	    }
+    }
 		//记得关闭
 		mPrintWriter.close() ;
 		String mResult = mWriter.toString() ;

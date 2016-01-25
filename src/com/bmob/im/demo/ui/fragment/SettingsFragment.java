@@ -122,8 +122,12 @@ public class SettingsFragment extends FragmentBase implements OnClickListener {
   }
 
   private void initData() {
-    if (tv_set_name != null) {
-      tv_set_name.setText(BmobUserManager.getInstance(getActivity()).getCurrentUser().getUsername());
+    if (tv_set_name != null && getActivity() != null
+        && BmobUserManager.getInstance(getActivity()) != null
+        && BmobUserManager.getInstance(getActivity()).getCurrentUser() != null
+        && BmobUserManager.getInstance(getActivity()).getCurrentUser().getUsername() != null) {
+      tv_set_name
+          .setText(BmobUserManager.getInstance(getActivity()).getCurrentUser().getUsername());
     }
   }
 

@@ -7,17 +7,12 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Locale;
 import java.util.Map.Entry;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.baidu.location.LocationClient;
-import com.baidu.location.LocationClientOption;
-import com.baidu.location.LocationClientOption.LocationMode;
-import com.baidu.mapapi.SDKInitializer;
 import com.bmob.im.demo.CustomApplcation;
 import com.bmob.im.demo.MyMessageReceiver;
 import com.bmob.im.demo.bean.User;
@@ -30,6 +25,8 @@ import com.bmob.im.demo.ui.fragment.RecentFragment;
 import com.bmob.im.demo.ui.fragment.SettingsFragment;
 import com.bmob.im.demo.view.HeaderLayout;
 import com.fima.cardsui.views.CardUI;
+import com.mc.db.DBConnection;
+import com.mc.db.DBConnection.UserSchema;
 import com.mc.util.BadgeUtil;
 import com.mc.util.CircleImageView;
 import com.mc.util.CustomRankListView;
@@ -68,14 +65,14 @@ import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.content.res.Configuration;
-import android.content.res.Resources;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
@@ -90,7 +87,6 @@ import android.text.Editable;
 import android.text.Html;
 import android.text.TextWatcher;
 import android.text.method.LinkMovementMethod;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -145,7 +141,7 @@ public class MainActivity extends BaseActivity implements EventListener {
 
   private TextView nickname;
   private String name;//
-  private CircleImageView headPhoto;
+  private static CircleImageView headPhoto;
   private LinearLayout menuBang = null;
   private LinearLayout menuMyBukao = null;
   private LinearLayout menuMyPaiming = null;
@@ -166,8 +162,7 @@ public class MainActivity extends BaseActivity implements EventListener {
 
   private Bitmap bitmap = null;// 修改头像
   private MyHandler mHandler;
-  private Activity mActivity;
-  private static  boolean isCheck = false;
+  private static boolean isCheck = false;
 
   @SuppressLint("ShowToast")
   @Override
@@ -177,8 +172,12 @@ public class MainActivity extends BaseActivity implements EventListener {
     super.setContentView(R.layout.activity_main);
     Util.setContext(getApplicationContext());
     mHandler = new MyHandler(this);
-
-    mActivity = MainActivity.this;
+    // save session
+    SharedPreferences preferences = getSharedPreferences(StaticVarUtil.USER_INFO, MODE_PRIVATE);
+    Editor editor = preferences.edit();
+    editor.putString(StaticVarUtil.ACCOUNT, StaticVarUtil.student.getAccount());
+    editor.putString(StaticVarUtil.SESSION, StaticVarUtil.session);
+    editor.commit();
 
     try {
       BadgeUtil.resetBadgeCount(getApplicationContext());
@@ -199,6 +198,7 @@ public class MainActivity extends BaseActivity implements EventListener {
     }
     shareUtil = new ShareUtil(getApplicationContext());
     share = shareUtil.showShare();
+
     softDeclare();// 将部分 变量 定义为弱引用
 
     setMenuItemListener();
@@ -305,6 +305,17 @@ public class MainActivity extends BaseActivity implements EventListener {
       @Override
       public void onClick(View v) {
         slidingMenu.toggle();
+      }
+    });
+
+    // 分享按钮
+    Button share = (Button) findViewById(R.id.share);
+    share.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        // TODO Auto-generated method stub
+        // ViewUtil.showShare(getApplicationContext());
+        shareUtil.showShareUI(MainActivity.share);
       }
     });
 
@@ -1267,25 +1278,23 @@ public class MainActivity extends BaseActivity implements EventListener {
    * 清除内存块中的共享数据
    */
   private void deleteCatch() {
+    // 清除密码
+    removePassword();
     StaticVarUtil.list_Rank_xnAndXq.clear();
     StaticVarUtil.allBookList = null;
     RankUtils.allRankArrayList = null;
     ScoreUtil.mapScoreOne.clear();
-    ;
     ScoreUtil.mapScoreTwo.clear();
 
     StaticVarUtil.listItem = null;
     CustomApplcation.getInstance().logout();
     StaticVarUtil.quit();
+   
+
     RankUtils.isFirstListView = true;
     // 清空成绩缓存
     isFirst = true;
     fragments = null;
-    try {
-      unregisterReceiver(mReceiver);
-    } catch (Exception e) {
-      // TODO: handle exception
-    }
 
     try {
       unregisterReceiver(newReceiver);
@@ -1301,6 +1310,17 @@ public class MainActivity extends BaseActivity implements EventListener {
     recentFragment = null;
     settingFragment = null;
 
+  }
+
+  private void removePassword() {
+    SharedPreferences preferences = getSharedPreferences(StaticVarUtil.USER_INFO, MODE_PRIVATE);
+    Editor editor = preferences.edit();
+    editor.putString(StaticVarUtil.ACCOUNT, StaticVarUtil.student.getAccount());
+    // 删除数据库
+    DBConnection.updateUser(StaticVarUtil.student.getAccount(), MainActivity.this);
+    editor.putString(StaticVarUtil.PASSWORD, "");
+    editor.putBoolean(StaticVarUtil.IS_REMEMBER, true);// 记住密码
+    editor.commit();
   }
 
   @Override
@@ -1549,7 +1569,7 @@ public class MainActivity extends BaseActivity implements EventListener {
         new Thread(new Runnable() {
           @Override
           public void run() {
-            Util.sendMail(data);
+            Util.sendMail(data, MainActivity.this);
             Message msg = new Message();
             msg.what = StaticVarUtil.IDEA_BACK_TOAST;
             mHandler.sendMessage(msg);
@@ -1891,24 +1911,11 @@ public class MainActivity extends BaseActivity implements EventListener {
   private static final int GO_HOME = 100;
   private static final int GO_LOGIN = 200;
 
-  // 定位获取当前用户的地理位置
-  private LocationClient mLocationClient;
-
-  private BaiduReceiver mReceiver;// 注册广播接收器，用于监听网络以及验证key
-
   private void chat() {
     // BmobIM SDK初始化--只需要这一段代码即可完成初始化
     // 请到Bmob官网(http://www.bmob.cn/)申请ApplicationId,具体地址:http://docs.bmob.cn/android/faststart/index.html?menukey=fast_start&key=start_android
     BmobChat.getInstance(this).init(Config.applicationId);
     ProgressDialogUtil.getInstance(MainActivity.this).show();
-    // 开启定位
-    initLocClient();
-    // 注册地图 SDK 广播监听者
-    IntentFilter iFilter = new IntentFilter();
-    iFilter.addAction(SDKInitializer.SDK_BROADTCAST_ACTION_STRING_PERMISSION_CHECK_ERROR);
-    iFilter.addAction(SDKInitializer.SDK_BROADCAST_ACTION_STRING_NETWORK_ERROR);
-    mReceiver = new BaiduReceiver();
-    registerReceiver(mReceiver, iFilter);
     if (userManager.getCurrentUser() != null) {
       // 每次自动登陆的时候就需要更新下当前位置和好友的资料，因为好友的头像，昵称啥的是经常变动的
       File file = new File(StaticVarUtil.PATH, StaticVarUtil.student.getAccount() + ".JPEG");
@@ -1921,22 +1928,6 @@ public class MainActivity extends BaseActivity implements EventListener {
     } else {
       chatHandler.sendEmptyMessageDelayed(GO_LOGIN, 0);
     }
-  }
-
-  /**
-   * 开启定位，更新当前用户的经纬度坐标
-   * 
-   * @Title: initLocClient @Description: TODO @param @return void @throws
-   */
-  private void initLocClient() {
-    mLocationClient = CustomApplcation.getInstance().mLocationClient;
-    LocationClientOption option = new LocationClientOption();
-    option.setLocationMode(LocationMode.Hight_Accuracy);// 设置定位模式:高精度模式
-    option.setCoorType("bd09ll"); // 设置坐标类型:百度经纬度
-    option.setScanSpan(1000);// 设置发起定位请求的间隔时间为1000ms:低于1000为手动定位一次，大于或等于1000则为定时定位
-    option.setIsNeedAddress(false);// 不需要包含地址信息
-    mLocationClient.setLocOption(option);
-    mLocationClient.start();
   }
 
   private Button[] mTabs;
@@ -2001,6 +1992,7 @@ public class MainActivity extends BaseActivity implements EventListener {
     // break;
     // }
     ProgressDialogUtil.getInstance(MainActivity.this).dismiss();
+    isCanTouch = true;
   }
 
   /**
@@ -2338,29 +2330,10 @@ public class MainActivity extends BaseActivity implements EventListener {
     });
   }
 
-  /**
-   * 构造广播监听类，监听 SDK key 验证以及网络异常广播
-   */
-  public class BaiduReceiver extends BroadcastReceiver {
-    public void onReceive(Context context, Intent intent) {
-      String s = intent.getAction();
-      if (s.equals(SDKInitializer.SDK_BROADTCAST_ACTION_STRING_PERMISSION_CHECK_ERROR)) {
-        ShowToast("key 验证出错! 请在 AndroidManifest.xml 文件中检查 key 设置");
-      } else if (s.equals(SDKInitializer.SDK_BROADCAST_ACTION_STRING_NETWORK_ERROR)) {
-        ShowToast("当前网络连接不稳定，请检查您的网络设置!");
-      }
-    }
-  }
-
   @Override
   protected void onDestroy() {
-    // 退出时销毁定位
-    if (mLocationClient != null && mLocationClient.isStarted()) {
-      mLocationClient.stop();
-    }
     try {
       CustomApplcation.getInstance().logout();
-      unregisterReceiver(mReceiver);
     } catch (Exception e) {
       // TODO: handle exception
     }
@@ -2405,19 +2378,23 @@ public class MainActivity extends BaseActivity implements EventListener {
     return isCanTouch ? super.dispatchTouchEvent(ev) : true;
   }
 
-//  @Override
-//  protected void onRestart() {
-//    // TODO Auto-generated method stub
-//    super.onRestart();
-//    Util.setLanguageShare(MainActivity.this);
-//
-//    if (StaticVarUtil.listItem != null) {
-//      // 重新启动应用程序
-//      Intent intent = mActivity.getIntent();
-//      // intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-//      // mActivity.closeApplication();
-//      mActivity.overridePendingTransition(0, 0);
-//      mActivity.startActivity(intent);
-//    }
-//  }
+  // @Override
+  // protected void onRestart() {
+  // // TODO Auto-generated method stub
+  // super.onRestart();
+  // Util.setLanguageShare(MainActivity.this);
+  //
+  // if (StaticVarUtil.listItem != null) {
+  // // 重新启动应用程序
+  // Intent intent = mActivity.getIntent();
+  // // intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+  // // mActivity.closeApplication();
+  // mActivity.overridePendingTransition(0, 0);
+  // mActivity.startActivity(intent);
+  // }
+  // }
+
+  public static void updataPhoto(Bitmap tBitmap) {
+    headPhoto.setImageBitmap(tBitmap);
+  }
 }

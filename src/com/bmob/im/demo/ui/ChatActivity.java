@@ -105,7 +105,7 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 
 	private ViewPager pager_emo;
 
-	private TextView tv_picture, tv_camera, tv_location;
+	private TextView tv_picture, tv_camera;
 
 	// 语音有关
 	RelativeLayout layout_record;
@@ -374,9 +374,7 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 	private void initAddView() {
 		tv_picture = (TextView) findViewById(R.id.tv_picture);
 		tv_camera = (TextView) findViewById(R.id.tv_camera);
-		tv_location = (TextView) findViewById(R.id.tv_location);
 		tv_picture.setOnClickListener(this);
-		tv_location.setOnClickListener(this);
 		tv_camera.setOnClickListener(this);
 	}
 
@@ -747,27 +745,9 @@ public class ChatActivity extends ActivityBase implements OnClickListener,
 		case R.id.tv_picture:// 图片
 			selectImageFromLocal();
 			break;
-		case R.id.tv_location:// 位置
-			selectLocationFromMap();
-			break;
 		default:
 			break;
 		}
-	}
-
-	/**
-	 * 启动地图
-	 * 
-	 * @Title: selectLocationFromMap
-	 * @Description: TODO
-	 * @param
-	 * @return void
-	 * @throws
-	 */
-	private void selectLocationFromMap() {
-		Intent intent = new Intent(this, LocationActivity.class);
-		intent.putExtra("type", "select");
-		startActivityForResult(intent, BmobConstants.REQUESTCODE_TAKE_LOCATION);
 	}
 
 	private String localCameraPath = "";// 拍照后得到的图片地址

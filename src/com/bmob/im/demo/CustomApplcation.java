@@ -16,10 +16,6 @@ import cn.bmob.im.bean.BmobChatUser;
 import cn.bmob.im.db.BmobDB;
 import cn.bmob.v3.datatype.BmobGeoPoint;
 
-import com.baidu.location.BDLocation;
-import com.baidu.location.BDLocationListener;
-import com.baidu.location.LocationClient;
-import com.baidu.mapapi.SDKInitializer;
 import com.bmob.im.demo.util.CollectionUtils;
 import com.bmob.im.demo.util.SharePreferenceUtil;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
@@ -41,8 +37,6 @@ import com.xy.fy.main.R;
 public class CustomApplcation extends Application {
 
 	public static CustomApplcation mInstance;
-	public LocationClient mLocationClient;
-	public MyLocationListener mMyLocationListener;
 
 	public static BmobGeoPoint lastPoint = null;// 上一次定位到的经纬度
 
@@ -65,58 +59,6 @@ public class CustomApplcation extends Application {
 				.getCurrentUser() != null) {
 			// 获取本地好友user list到内存,方便以后获取好友list
 			contactList = CollectionUtils.list2map(BmobDB.create(getApplicationContext()).getContactList());
-		}
-		initBaidu();
-	}
-
-	/**
-	 * 初始化百度相关sdk initBaidumap
-	 * @Title: initBaidumap
-	 * @Description: TODO
-	 * @param
-	 * @return void
-	 * @throws
-	 */
-	private void initBaidu() {
-		// 初始化地图Sdk
-		SDKInitializer.initialize(this);
-		// 初始化定位sdk
-		initBaiduLocClient();
-	}
-
-	/**
-	 * 初始化百度定位sdk
-	 * @Title: initBaiduLocClient
-	 * @Description: TODO
-	 * @param
-	 * @return void
-	 * @throws
-	 */
-	private void initBaiduLocClient() {
-		mLocationClient = new LocationClient(this.getApplicationContext());
-		mMyLocationListener = new MyLocationListener();
-		mLocationClient.registerLocationListener(mMyLocationListener);
-	}
-
-	/**
-	 * 实现实位回调监听
-	 */
-	public class MyLocationListener implements BDLocationListener {
-
-		@Override
-		public void onReceiveLocation(BDLocation location) {
-			// Receive Location
-			double latitude = location.getLatitude();
-			double longtitude = location.getLongitude();
-			if (lastPoint != null) {
-				if (lastPoint.getLatitude() == location.getLatitude()
-						&& lastPoint.getLongitude() == location.getLongitude()) {
-//					BmobLog.i("两次获取坐标相同");// 若两次请求获取到的地理位置坐标是相同的，则不再定位
-					mLocationClient.stop();
-					return;
-				}
-			}
-			lastPoint = new BmobGeoPoint(longtitude, latitude);
 		}
 	}
 

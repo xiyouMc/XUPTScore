@@ -2531,7 +2531,14 @@ com.bmob.im.demo.ui.LocationActivity:
 com.bmob.im.demo.ui.MainActivity:
     private static long firstTime
 com.bmob.im.demo.ui.SetMyInfoActivity:
+    private static final int PIC
+    private static final int PHO
+    private static final int RESULT
+    android.widget.RelativeLayout layout_choose
+    android.widget.RelativeLayout layout_photo
+    android.widget.PopupWindow avatorPop
     android.graphics.Bitmap newBitmap
+    java.lang.String path
 com.bmob.im.demo.ui.fragment.ContactFragment:
     android.widget.TextView tv_new_name
 com.bmob.im.demo.util.CharacterParser:
@@ -2551,13 +2558,7 @@ com.bmob.im.demo.util.FaceTextUtils:
     99:117:public static android.text.SpannableString toSpannableString(android.content.Context,java.lang.String,android.text.SpannableString)
 com.bmob.im.demo.util.ImageLoadOptions:
     9:9:public ImageLoadOptions()
-com.bmob.im.demo.util.PhotoUtil:
-    21:21:public PhotoUtil()
-    30:36:public static void recycle(android.graphics.Bitmap)
-    46:72:public static android.graphics.Bitmap getImageThumbnail(java.lang.String,int,int)
-    129:141:public static java.io.File getFilePath(java.lang.String,java.lang.String)
-    145:154:public static void makeRootDirectory(java.lang.String)
-    241:297:public static android.graphics.Bitmap toRoundBitmap(android.graphics.Bitmap)
+com.bmob.im.demo.util.PhotoUtil
 com.bmob.im.demo.util.PixelUtil:
     11:11:public PixelUtil()
     37:38:public static int dp2px(float,android.content.Context)
@@ -2930,8 +2931,8 @@ com.mc.util.Util:
     public static final java.lang.String infosFloder
     public static final java.lang.String LOGINFILE
     public static final int CHANGE_PWD_RESULT
-    50:50:public Util()
-    433:446:public static void uploadLoginMsg(android.content.Context)
+    49:49:public Util()
+    493:506:public static void uploadLoginMsg(android.content.Context)
 com.mc.util.Util$1
 com.mc.util.VersionUpdate:
     private static final int DOWN_UPDATE
@@ -3466,17 +3467,6 @@ com.sun.activation.registries.MailcapTokenizer:
     94:94:public int getCurrentToken()
 com.sun.activation.registries.MimeTypeEntry:
     59:59:public java.lang.String getFileExtension()
-com.sun.mail.dsn.DeliveryStatus
-com.sun.mail.dsn.MessageHeaders
-com.sun.mail.dsn.MultipartReport
-com.sun.mail.dsn.message_deliverystatus
-com.sun.mail.dsn.multipart_report
-com.sun.mail.dsn.text_rfc822headers
-com.sun.mail.handlers.message_rfc822
-com.sun.mail.handlers.multipart_mixed
-com.sun.mail.handlers.text_html
-com.sun.mail.handlers.text_plain
-com.sun.mail.handlers.text_xml
 com.sun.mail.iap.Argument:
     103:104:public void writeBytes(byte[])
     111:112:public void writeBytes(java.io.ByteArrayOutputStream)
@@ -3508,34 +3498,14 @@ com.sun.mail.pop3.Protocol
 com.sun.mail.pop3.Response
 com.sun.mail.pop3.SharedByteArrayOutputStream
 com.sun.mail.pop3.Status
-com.sun.mail.smtp.DigestMD5
-com.sun.mail.smtp.SMTPAddressFailedException
-com.sun.mail.smtp.SMTPAddressSucceededException
-com.sun.mail.smtp.SMTPMessage
-com.sun.mail.smtp.SMTPOutputStream
-com.sun.mail.smtp.SMTPSSLTransport
-com.sun.mail.smtp.SMTPSendFailedException
-com.sun.mail.smtp.SMTPTransport
-com.sun.mail.util.ASCIIUtility:
-    50:50:private ASCIIUtility()
-    222:230:public static java.lang.String toString(java.io.ByteArrayInputStream)
-com.sun.mail.util.BASE64DecoderStream:
-    95:97:public BASE64DecoderStream(java.io.InputStream,boolean)
-com.sun.mail.util.FolderClosedIOException:
-    private static final long serialVersionUID
-    64:65:public FolderClosedIOException(javax.mail.Folder)
-com.sun.mail.util.MessageRemovedIOException:
-    private static final long serialVersionUID
-com.sun.mail.util.SocketFetcher:
-    63:64:private SocketFetcher()
-    207:207:public static java.net.Socket getSocket(java.lang.String,int,java.util.Properties,java.lang.String)
-    274:274:public static java.net.Socket startTLS(java.net.Socket)
-com.sun.mail.util.UUDecoderStream:
-    131:132:public java.lang.String getName()
-    143:144:public int getMode()
-com.sun.mail.util.UUEncoderStream:
-    76:77:public UUEncoderStream(java.io.OutputStream,java.lang.String)
-    98:100:public void setNameMode(java.lang.String,int)
+com.util.mail.MailSenderInfo:
+    private java.lang.String[] attachFileNames
+    36:36:public java.lang.String getMailServerHost()
+    42:42:public java.lang.String getMailServerPort()
+    54:54:public java.lang.String[] getAttachFileNames()
+    57:58:public void setAttachFileNames(java.lang.String[])
+com.util.mail.SimpleMailSender:
+    71:109:public static boolean sendHtmlMail(com.util.mail.MailSenderInfo)
 com.xy.fy.adapter.ChooseHistorySchoolExpandAdapter
 com.xy.fy.adapter.ChooseKindAdapter
 com.xy.fy.adapter.ChooseSchoolExpandAdapter
@@ -3620,8 +3590,36 @@ com.xy.fy.util.ConnectionUtil:
     91:111:public static int getNetWorkType(android.content.Context)
 com.xy.fy.util.ExpressionUtil
 com.xy.fy.util.FileUtils:
-    12:12:public FileUtils()
-    15:34:public static java.lang.String getPath(android.content.Context,android.net.Uri)
+    private static final java.lang.String TAG
+    private static final int IO_BUFFER_SIZE
+    24:24:public FileUtils()
+    29:48:public static java.lang.String getPath(android.content.Context,android.net.Uri)
+    113:113:public static boolean mkdirs(java.lang.String)
+    134:134:public static boolean move(java.lang.String,java.lang.String)
+    138:161:public static boolean move(java.lang.String,java.lang.String,boolean)
+    165:170:public static boolean delete(java.lang.String)
+    222:227:public static boolean childOf(java.lang.String,java.lang.String)
+    231:239:public static int childCount(java.lang.String)
+    256:260:public static long size(java.lang.String)
+    264:284:public static long size(java.io.File)
+    288:288:public static boolean copy(java.lang.String,java.lang.String)
+    292:349:public static boolean copy(java.lang.String,java.lang.String,boolean)
+    353:359:public static java.lang.String fileName(java.lang.String)
+    363:366:public static java.lang.String getExtension(java.io.File)
+    370:378:public static java.lang.String getExtension(java.lang.String)
+    382:386:public static java.lang.String getMimeType(java.io.File)
+    390:400:public static java.lang.String getMimeType(java.lang.String)
+    404:410:public static boolean isFile(java.lang.String)
+    414:414:public static boolean isFile(java.io.File)
+    429:436:public static java.lang.String getFileName(java.lang.String)
+    440:448:public static java.lang.String getFileStem(java.lang.String)
+    453:493:public static java.lang.String getFileSHA1(java.lang.String)
+    497:537:public static java.lang.String getFileMD5(java.lang.String)
+    541:567:public static java.lang.String getText(java.lang.String)
+    571:587:public static final java.lang.String read(java.lang.String)
+    591:609:public static final java.lang.String read(java.io.InputStream)
+    613:621:public static java.lang.String getLastModified(java.lang.String)
+com.xy.fy.util.H5SecurityUtil
 com.xy.fy.util.OpenFileDialog:
     public static final java.lang.String sRoot
     public static final java.lang.String sParent
@@ -3697,331 +3695,6 @@ com.xy.fy.view.ToolClass:
     7:7:public ToolClass()
     271:289:public static void initData()
     300:302:public static void main(java.lang.String[])
-javax.mail.AuthenticationFailedException:
-    private static final long serialVersionUID
-javax.mail.EventQueue:
-    152:156:void stop()
-javax.mail.FetchProfile:
-    175:178:public void add(java.lang.String)
-    191:191:public boolean contains(java.lang.String)
-    200:205:public javax.mail.FetchProfile$Item[] getItems()
-javax.mail.Folder$TerminatorEvent:
-    private static final long serialVersionUID
-javax.mail.FolderClosedException:
-    private static final long serialVersionUID
-javax.mail.FolderNotFoundException:
-    private static final long serialVersionUID
-    70:72:public FolderNotFoundException(javax.mail.Folder)
-    103:103:public javax.mail.Folder getFolder()
-javax.mail.IllegalWriteException:
-    private static final long serialVersionUID
-javax.mail.Message$RecipientType:
-    private static final long serialVersionUID
-    255:262:protected java.lang.Object readResolve()
-javax.mail.MessageAware
-javax.mail.MessageContext:
-    73:73:public javax.mail.Part getPart()
-    85:87:public javax.mail.Message getMessage()
-    101:110:private static javax.mail.Message getMessage(javax.mail.Part)
-    119:120:public javax.mail.Session getSession()
-javax.mail.MessageRemovedException:
-    private static final long serialVersionUID
-javax.mail.MessagingException:
-    private static final long serialVersionUID
-    106:106:public synchronized java.lang.Exception getNextException()
-javax.mail.MethodNotSupportedException:
-    private static final long serialVersionUID
-javax.mail.Multipart:
-    110:115:protected synchronized void setMultipartDataSource(javax.mail.MultipartDataSource)
-    173:178:public synchronized boolean removeBodyPart(javax.mail.BodyPart)
-    195:201:public synchronized void removeBodyPart(int)
-    public abstract void writeTo(java.io.OutputStream)
-    263:263:public synchronized javax.mail.Part getParent()
-javax.mail.MultipartDataSource:
-    public abstract int getCount()
-    public abstract javax.mail.BodyPart getBodyPart(int)
-javax.mail.NoSuchProviderException:
-    private static final long serialVersionUID
-javax.mail.Part:
-    public static final java.lang.String ATTACHMENT
-    public static final java.lang.String INLINE
-    public abstract int getLineCount()
-    public abstract java.lang.String getDisposition()
-    public abstract java.lang.String getDescription()
-    public abstract java.lang.String getFileName()
-    public abstract java.io.InputStream getInputStream()
-    public abstract void addHeader(java.lang.String,java.lang.String)
-    public abstract java.util.Enumeration getAllHeaders()
-    public abstract java.util.Enumeration getMatchingHeaders(java.lang.String[])
-    public abstract java.util.Enumeration getNonMatchingHeaders(java.lang.String[])
-javax.mail.Provider:
-    118:118:public java.lang.String getVendor()
-    123:123:public java.lang.String getVersion()
-javax.mail.Quota:
-    114:129:public void setResourceLimit(java.lang.String,long)
-javax.mail.QuotaAwareStore
-javax.mail.ReadOnlyFolderException:
-    private static final long serialVersionUID
-    64:65:public ReadOnlyFolderException(javax.mail.Folder)
-    84:84:public javax.mail.Folder getFolder()
-javax.mail.SendFailedException:
-    private static final long serialVersionUID
-    90:91:public SendFailedException(java.lang.String,java.lang.Exception)
-javax.mail.Service$TerminatorEvent:
-    private static final long serialVersionUID
-javax.mail.Session:
-    259:259:public static javax.mail.Session getInstance(java.util.Properties)
-    349:349:public static javax.mail.Session getDefaultInstance(java.util.Properties)
-    368:371:public synchronized void setDebug(boolean)
-    393:394:public synchronized void setDebugOut(java.io.PrintStream)
-    418:420:public synchronized javax.mail.Provider[] getProviders()
-    486:492:public synchronized void setProvider(javax.mail.Provider)
-    506:506:public javax.mail.Store getStore()
-    554:554:public javax.mail.Store getStore(javax.mail.Provider)
-    612:614:public javax.mail.Folder getFolder(javax.mail.URLName)
-    627:627:public javax.mail.Transport getTransport()
-    675:675:public javax.mail.Transport getTransport(javax.mail.Provider)
-    1053:1057:public synchronized void setProtocolForAddress(java.lang.String,java.lang.String)
-javax.mail.StoreClosedException:
-    private static final long serialVersionUID
-    68:69:public StoreClosedException(javax.mail.Store)
-    85:85:public javax.mail.Store getStore()
-javax.mail.Transport:
-    private java.util.Vector transportListeners
-    77:78:public Transport(javax.mail.Session,javax.mail.URLName)
-    139:141:public static void send(javax.mail.Message,javax.mail.Address[])
-    315:318:public synchronized void addTransportListener(javax.mail.event.TransportListener)
-    330:332:public synchronized void removeTransportListener(javax.mail.event.TransportListener)
-    347:353:protected void notifyTransportListeners(int,javax.mail.Address[],javax.mail.Address[],javax.mail.Address[],javax.mail.Message)
-javax.mail.UIDFolder:
-    public static final long LASTUID
-    public abstract long getUIDValidity()
-    public abstract javax.mail.Message getMessageByUID(long)
-    public abstract javax.mail.Message[] getMessagesByUID(long,long)
-    public abstract javax.mail.Message[] getMessagesByUID(long[])
-    public abstract long getUID(javax.mail.Message)
-javax.mail.URLName:
-    static final int caseDiff
-    168:169:public URLName(java.net.URL)
-    175:177:public URLName(java.lang.String)
-    246:321:protected void parseString(java.lang.String)
-    352:352:public java.lang.String getRef()
-    383:383:public java.net.URL getURL()
-javax.mail.Version
-javax.mail.event.ConnectionAdapter
-javax.mail.event.ConnectionEvent:
-    public static final int OPENED
-    public static final int DISCONNECTED
-    public static final int CLOSED
-    private static final long serialVersionUID
-    84:84:public int getType()
-javax.mail.event.FolderAdapter
-javax.mail.event.FolderEvent:
-    public static final int CREATED
-    public static final int DELETED
-    public static final int RENAMED
-    private static final long serialVersionUID
-    128:128:public int getType()
-    138:138:public javax.mail.Folder getFolder()
-    153:153:public javax.mail.Folder getNewFolder()
-javax.mail.event.MailEvent:
-    private static final long serialVersionUID
-javax.mail.event.MessageChangedEvent:
-    public static final int FLAGS_CHANGED
-    public static final int ENVELOPE_CHANGED
-    private static final long serialVersionUID
-    90:90:public int getMessageChangeType()
-    98:98:public javax.mail.Message getMessage()
-javax.mail.event.MessageCountAdapter
-javax.mail.event.MessageCountEvent:
-    public static final int ADDED
-    public static final int REMOVED
-    private static final long serialVersionUID
-    119:119:public int getType()
-    134:134:public boolean isRemoved()
-    142:142:public javax.mail.Message[] getMessages()
-javax.mail.event.StoreEvent:
-    public static final int ALERT
-    public static final int NOTICE
-    private static final long serialVersionUID
-    101:101:public int getMessageType()
-    110:110:public java.lang.String getMessage()
-javax.mail.event.TransportAdapter
-javax.mail.event.TransportEvent
-javax.mail.event.TransportListener
-javax.mail.internet.AddressException:
-    private static final long serialVersionUID
-    79:80:public AddressException(java.lang.String)
-    110:110:public java.lang.String getRef()
-    118:118:public int getPos()
-javax.mail.internet.ContentDisposition:
-    73:76:public ContentDisposition(java.lang.String,javax.mail.internet.ParameterList)
-    133:133:public javax.mail.internet.ParameterList getParameterList()
-    166:167:public void setParameterList(javax.mail.internet.ParameterList)
-javax.mail.internet.ContentType:
-    140:140:public java.lang.String getBaseType()
-    162:162:public javax.mail.internet.ParameterList getParameterList()
-    170:171:public void setPrimaryType(java.lang.String)
-    200:201:public void setParameterList(javax.mail.internet.ParameterList)
-javax.mail.internet.HeaderTokenizer:
-    public static final java.lang.String RFC822
-    public static final java.lang.String MIME
-    191:192:public HeaderTokenizer(java.lang.String)
-    224:227:public javax.mail.internet.HeaderTokenizer$Token peek()
-javax.mail.internet.HeaderTokenizer$Token:
-    public static final int ATOM
-    public static final int QUOTEDSTRING
-    public static final int COMMENT
-    public static final int EOF
-javax.mail.internet.MailDateFormat:
-    private static final long serialVersionUID
-javax.mail.internet.MailDateParser:
-    523:526:public int peekChar()
-javax.mail.internet.MimeMessage$RecipientType:
-    private static final long serialVersionUID
-    485:488:protected java.lang.Object readResolve()
-javax.mail.internet.MimeMultipart:
-    202:220:public MimeMultipart(javax.activation.DataSource)
-    268:277:public synchronized javax.mail.BodyPart getBodyPart(java.lang.String)
-    292:293:public boolean removeBodyPart(javax.mail.BodyPart)
-    309:311:public void removeBodyPart(int)
-    364:365:public synchronized boolean isComplete()
-    377:378:public synchronized java.lang.String getPreamble()
-    394:395:public synchronized void setPreamble(java.lang.String)
-    425:450:public synchronized void writeTo(java.io.OutputStream)
-javax.mail.internet.MimePart:
-    public abstract void addHeaderLine(java.lang.String)
-    public abstract java.util.Enumeration getAllHeaderLines()
-    public abstract java.util.Enumeration getMatchingHeaderLines(java.lang.String[])
-    public abstract java.lang.String getContentID()
-    public abstract java.lang.String getContentMD5()
-    public abstract void setContentMD5(java.lang.String)
-    public abstract java.lang.String[] getContentLanguage()
-    public abstract void setContentLanguage(java.lang.String[])
-    public abstract void setText(java.lang.String)
-    public abstract void setText(java.lang.String,java.lang.String,java.lang.String)
-javax.mail.internet.MimeUtility:
-    public static final int ALL
-    static final int ALL_ASCII
-    static final int MOSTLY_ASCII
-    static final int MOSTLY_NONASCII
-    372:387:public static java.io.OutputStream encode(java.io.OutputStream,java.lang.String,java.lang.String)
-    1374:1391:static int checkAscii(byte[])
-javax.mail.internet.NewsAddress:
-    private static final long serialVersionUID
-    101:102:public void setNewsgroup(java.lang.String)
-    110:110:public java.lang.String getNewsgroup()
-    119:120:public void setHost(java.lang.String)
-    128:128:public java.lang.String getHost()
-javax.mail.internet.ParameterList:
-    449:449:public int size()
-    524:533:public void set(java.lang.String,java.lang.String,java.lang.String)
-    542:543:public void remove(java.lang.String)
-    552:552:public java.util.Enumeration getNames()
-    665:689:private static javax.mail.internet.ParameterList$Value encodeValue(java.lang.String,java.lang.String)
-javax.mail.internet.ParameterList$ParamEnum
-javax.mail.internet.ParseException:
-    private static final long serialVersionUID
-javax.mail.internet.PreencodedMimeBodyPart
-javax.mail.internet.UniqueValue:
-    58:58:UniqueValue()
-javax.mail.search.AddressStringTerm:
-    private static final long serialVersionUID
-    68:69:protected AddressStringTerm(java.lang.String)
-javax.mail.search.AddressTerm:
-    private static final long serialVersionUID
-    62:64:protected AddressTerm(javax.mail.Address)
-javax.mail.search.AndTerm:
-    private static final long serialVersionUID
-    70:74:public AndTerm(javax.mail.search.SearchTerm,javax.mail.search.SearchTerm)
-    81:85:public AndTerm(javax.mail.search.SearchTerm[])
-javax.mail.search.BodyTerm:
-    private static final long serialVersionUID
-    62:63:public BodyTerm(java.lang.String)
-javax.mail.search.ComparisonTerm:
-    public static final int LE
-    public static final int LT
-    public static final int EQ
-    public static final int NE
-    public static final int GT
-    public static final int GE
-    private static final long serialVersionUID
-javax.mail.search.DateTerm:
-    private static final long serialVersionUID
-    66:69:protected DateTerm(int,java.util.Date)
-javax.mail.search.FlagTerm:
-    private static final long serialVersionUID
-javax.mail.search.FromStringTerm:
-    private static final long serialVersionUID
-    67:68:public FromStringTerm(java.lang.String)
-javax.mail.search.FromTerm:
-    private static final long serialVersionUID
-    61:62:public FromTerm(javax.mail.Address)
-javax.mail.search.HeaderTerm:
-    private static final long serialVersionUID
-    70:72:public HeaderTerm(java.lang.String,java.lang.String)
-javax.mail.search.IntegerComparisonTerm:
-    private static final long serialVersionUID
-    59:62:protected IntegerComparisonTerm(int,int)
-javax.mail.search.MessageIDTerm:
-    private static final long serialVersionUID
-    67:68:public MessageIDTerm(java.lang.String)
-javax.mail.search.MessageNumberTerm
-javax.mail.search.NotTerm:
-    private static final long serialVersionUID
-    61:63:public NotTerm(javax.mail.search.SearchTerm)
-javax.mail.search.OrTerm:
-    private static final long serialVersionUID
-    80:84:public OrTerm(javax.mail.search.SearchTerm[])
-javax.mail.search.ReceivedDateTerm:
-    private static final long serialVersionUID
-    63:64:public ReceivedDateTerm(int,java.util.Date)
-javax.mail.search.RecipientStringTerm:
-    private static final long serialVersionUID
-    75:77:public RecipientStringTerm(javax.mail.Message$RecipientType,java.lang.String)
-javax.mail.search.RecipientTerm:
-    private static final long serialVersionUID
-    70:72:public RecipientTerm(javax.mail.Message$RecipientType,javax.mail.Address)
-javax.mail.search.SearchException:
-    private static final long serialVersionUID
-javax.mail.search.SearchTerm:
-    private static final long serialVersionUID
-javax.mail.search.SentDateTerm:
-    private static final long serialVersionUID
-    63:64:public SentDateTerm(int,java.util.Date)
-javax.mail.search.SizeTerm:
-    private static final long serialVersionUID
-    62:63:public SizeTerm(int,int)
-javax.mail.search.StringTerm:
-    private static final long serialVersionUID
-    68:71:protected StringTerm(java.lang.String)
-    73:76:protected StringTerm(java.lang.String,boolean)
-    89:89:public boolean getIgnoreCase()
-javax.mail.search.SubjectTerm:
-    private static final long serialVersionUID
-    63:64:public SubjectTerm(java.lang.String)
-javax.mail.util.ByteArrayDataSource
-javax.mail.util.ByteArrayDataSource$DSByteArrayOutputStream
-javax.mail.util.SharedFileInputStream
-javax.mail.util.SharedFileInputStream$SharedFile
-myjava.awt.datatransfer.MimeTypeProcessor$MimeType:
-    private static final long serialVersionUID
-    241:242:void removeParameter(java.lang.String)
-    245:245:java.lang.Object getSystemParameter(java.lang.String)
-    249:250:void addSystemParameter(java.lang.String,java.lang.Object)
-myjava.awt.datatransfer.Transferable:
-    public abstract boolean isDataFlavorSupported(myjava.awt.datatransfer.DataFlavor)
-    public abstract myjava.awt.datatransfer.DataFlavor[] getTransferDataFlavors()
-myjava.awt.datatransfer.UnsupportedFlavorException:
-    private static final long serialVersionUID
-org.apache.harmony.misc.SystemUtils:
-    public static final int OS_WINDOWS
-    public static final int OS_LINUX
-    public static final int OS_UNKNOWN
-    public static final int ARC_IA32
-    public static final int ARC_IA64
-    public static final int ARC_UNKNOWN
-    23:23:public SystemUtils()
 uk.co.senab.photoview.Compat:
     private static final int SIXTY_FPS_INTERVAL
     25:25:public Compat()

@@ -6,7 +6,6 @@
     android:orientation="vertical" >
 
     <LinearLayout
-        android:id="@+id/layout"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical" >
@@ -30,62 +29,66 @@
                 android:textSize="20dp" />
             <!-- 菜单 -->
 
-
-            <!--
-             <Button
-            android:id="@+id/butBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="5dp"
-            android:background="@drawable/button_back"
-            android:gravity="center_vertical"
-            android:textColor="#FF8C00"
-            android:textSize="14sp" />
-            -->
+            <Button
+                android:id="@+id/share"
+                android:layout_width="28dip"
+                android:layout_height="28dip"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/share"
+                android:gravity="center_vertical"
+                android:textColor="#FF8C00"
+                android:textSize="14sp"
+                android:visibility="visible" />
         </RelativeLayout>
 
-        <TableLayout
+        <LinearLayout
+            android:id="@+id/layout"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:stretchColumns="0" >
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+            <TableLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:stretchColumns="0" >
 
-            <TableRow>
+                <TableRow>
 
-                <!-- android:background="#aa0000" -->
+                    <!-- android:background="#aa0000" -->
 
-                <TextView
-                    android:gravity="center_horizontal"
-                    android:padding="3dip"
-                    android:text="@string/card_subject" />
-                <!-- android:background="#00aa00" -->
+                    <TextView
+                        android:gravity="center_horizontal"
+                        android:padding="3dip"
+                        android:text="@string/card_subject" />
+                    <!-- android:background="#00aa00" -->
 
-                <TextView
-                    android:gravity="center_horizontal"
-                    android:padding="3dip"
-                    android:text="@string/card_final_score" >
-                </TextView>
-                <!-- android:background="#0000aa" -->
+                    <TextView
+                        android:gravity="center_horizontal"
+                        android:padding="3dip"
+                        android:text="@string/card_final_score" >
+                    </TextView>
+                    <!-- android:background="#0000aa" -->
 
-                <TextView
-                    android:gravity="center_horizontal"
-                    android:padding="3dip"
-                    android:text="@string/card_class_score" />
-                <!-- android:background="#8B1A1A" -->
+                    <TextView
+                        android:gravity="center_horizontal"
+                        android:padding="3dip"
+                        android:text="@string/card_class_score" />
+                    <!-- android:background="#8B1A1A" -->
 
-                <TextView
-                    android:gravity="center_horizontal"
-                    android:padding="3dip"
-                    android:text="@string/card_paper_score" />
-            </TableRow>
-        </TableLayout>
+                    <TextView
+                        android:gravity="center_horizontal"
+                        android:padding="3dip"
+                        android:text="@string/card_paper_score" />
+                </TableRow>
+            </TableLayout>
 
-        <TableLayout
-            android:id="@+id/score"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" >
-        </TableLayout>
+            <TableLayout
+                android:id="@+id/score"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+            </TableLayout>
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

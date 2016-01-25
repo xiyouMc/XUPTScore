@@ -33,7 +33,6 @@
 -keep class cn.bmob.im.**{*;}
 -keep class com.xy.fy.main.MainActivity.**{*;}
 
-
 # 保证继承自BmobObject、BmobUser类的JavaBean不被混淆
 -keep class com.example.bmobexample.bean.Person{*;}
 -keep class com.example.bmobexample.bean.MyUser{*;}
@@ -46,12 +45,30 @@
 -keep class java.lang.reflect.**{*;}
 -keep class com.baidu.mapapi.**{*;}
 -keep class com.baidu.platform.**{*;}
--dontwarn org.apache.commons.mail.**
 -keep class org.apache.commons.mail.**{*;}
+-dontwarn org.apache.commons.mail.**
 -dontwarn org.apache.harmony.awt.**
 -keep class org.apache.harmony.awt.**{*;}
 -dontwarn com.sun.mail.imap.**
 -keep class com.sun.mail.imap.**{*;}
+-dontwarn java.awt.**
+-dontwarn java.beans.Beans
+-dontwarn javax.security.**
+
+-keep class javamail.** {*;}
+-keep class javax.mail.** {*;}
+-keep class javax.activation.** {*;}
+
+-keep class com.sun.mail.dsn.** {*;}
+-keep class com.sun.mail.handlers.** {*;}
+-keep class com.sun.mail.smtp.** {*;}
+-keep class com.sun.mail.util.** {*;}
+-keep class mailcap.** {*;}
+-keep class mimetypes.** {*;}
+-keep class myjava.awt.datatransfer.** {*;}
+-keep class org.apache.harmony.awt.** {*;}
+-keep class org.apache.harmony.misc.** {*;}
+
 -dontwarn javax.activation.**
 -keep class javax.activation.**{*;}
 # If your project uses WebView with JS, uncomment the following

@@ -24,7 +24,6 @@ import cn.bmob.im.inteface.DownloadListener;
 import com.bmob.im.demo.adapter.base.BaseListAdapter;
 import com.bmob.im.demo.adapter.base.ViewHolder;
 import com.bmob.im.demo.ui.ImageBrowserActivity;
-import com.bmob.im.demo.ui.LocationActivity;
 import com.bmob.im.demo.ui.SetMyInfoActivity;
 import com.bmob.im.demo.util.FaceTextUtils;
 import com.bmob.im.demo.util.ImageLoadOptions;
@@ -89,8 +88,6 @@ public class MessageChatAdapter extends BaseListAdapter<BmobMsg> {
 		BmobMsg msg = list.get(position);
 		if(msg.getMsgType()==BmobConfig.TYPE_IMAGE){
 			return msg.getBelongId().equals(currentObjectId) ? TYPE_SEND_IMAGE: TYPE_RECEIVER_IMAGE;
-		}else if(msg.getMsgType()==BmobConfig.TYPE_LOCATION){
-			return msg.getBelongId().equals(currentObjectId) ? TYPE_SEND_LOCATION: TYPE_RECEIVER_LOCATION;
 		}else if(msg.getMsgType()==BmobConfig.TYPE_VOICE){
 			return msg.getBelongId().equals(currentObjectId) ? TYPE_SEND_VOICE: TYPE_RECEIVER_VOICE;
 		}else{
@@ -110,11 +107,6 @@ public class MessageChatAdapter extends BaseListAdapter<BmobMsg> {
 					mInflater.inflate(R.layout.item_chat_received_image, null) 
 					:
 					mInflater.inflate(R.layout.item_chat_sent_image, null);
-		}else if(type==BmobConfig.TYPE_LOCATION){//位置类型
-			return getItemViewType(position) == TYPE_RECEIVER_LOCATION ? 
-					mInflater.inflate(R.layout.item_chat_received_location, null) 
-					:
-					mInflater.inflate(R.layout.item_chat_sent_location, null);
 		}else if(type==BmobConfig.TYPE_VOICE){//语音类型
 			return getItemViewType(position) == TYPE_RECEIVER_VOICE ? 
 					mInflater.inflate(R.layout.item_chat_received_voice, null) 
@@ -253,31 +245,6 @@ public class MessageChatAdapter extends BaseListAdapter<BmobMsg> {
 				});
 				
 			} catch (Exception e) {
-			}
-			break;
-			
-		case BmobConfig.TYPE_LOCATION://位置信息
-			try {
-				if (text != null && !text.equals("")) {
-					String address  = text.split("&")[0];
-					final String latitude = text.split("&")[1];//维度
-					final String longtitude = text.split("&")[2];//经度
-					tv_location.setText(address);
-					tv_location.setOnClickListener(new OnClickListener() {
-						
-						@Override
-						public void onClick(View arg0) {
-							// TODO Auto-generated method stub
-							Intent intent = new Intent(mContext, LocationActivity.class);
-							intent.putExtra("type", "scan");
-							intent.putExtra("latitude", Double.parseDouble(latitude));//维度
-							intent.putExtra("longtitude", Double.parseDouble(longtitude));//经度
-							mContext.startActivity(intent);
-						}
-					});
-				}
-			} catch (Exception e) {
-				
 			}
 			break;
 		case BmobConfig.TYPE_VOICE://语音消息

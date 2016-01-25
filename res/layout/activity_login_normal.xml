@@ -97,17 +97,6 @@
                 android:orientation="vertical"
                 android:paddingRight="17dp" >
 
-                <!-- 记住密码 -->
-
-                <CheckBox
-                    android:id="@+id/butRememberPassword"
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:layout_gravity="right"
-                    android:text="@string/login_remember"
-                    android:textColor="#40E0D0"
-                    android:textSize="7.5pt" />
-
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="10dp" />
