@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:background="@color/white"
+              android:orientation="vertical"
+              android:paddingBottom="5dp">
+
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <!-- 头像 -->
+
+        <ImageView
+                android:id="@+id/headPhoto"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@color/white"
+                android:padding="5dp"
+                android:src="@drawable/default_head_photo"/>
+
+        <!-- 昵称 -->
+
+        <TextView
+                android:id="@+id/nickname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/headPhoto"
+                android:text="@string/add_nick"
+                android:textColor="#FF8C00"
+                android:textSize="18dp"/>
+
+        <!-- 时间 -->
+
+        <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:paddingRight="5dp"
+                android:text="@string/md_txt2"
+                android:textColor="@color/dimgray"
+                android:textSize="12dp"/>
+
+        <!-- 日期 -->
+
+        <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/time"
+                android:paddingRight="10dp"
+                android:text="@string/md_txt3"
+                android:textColor="@color/dimgray"
+                android:textSize="12dp"/>
+    </RelativeLayout>
+
+    <!-- 说说详细信息 -->
+
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="50dp"
+            android:paddingRight="5dp">
+
+        <!-- android:visibility="gone" -->
+
+
+        <!-- 说说详情 -->
+
+        <TextView
+                android:id="@+id/text"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/md_txt4"
+                android:textColor="@color/black"
+                android:textSize="16dp"/>
+
+        <!-- 说说图片 -->
+
+        <ImageView
+                android:id="@+id/pic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:src="@drawable/message_default"/>
+    </LinearLayout>
+
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:paddingTop="10dp">
+
+        <!-- 收藏按钮 -->
+
+        <Button
+                android:id="@+id/collect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/message_collect_no"
+                android:gravity="right|center_vertical"
+                android:paddingRight="5dp"
+                android:text="@string/md_txt5"
+                android:textColor="#FF8C00"
+                android:textSize="12dp"/>
+
+        <!-- 评论按钮 -->
+
+        <Button
+                android:id="@+id/comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@+id/collect"
+                android:background="@drawable/message_comment"
+                android:gravity="right|center_vertical"
+                android:paddingRight="5dp"
+                android:text="@string/md_txt5"
+                android:textColor="#FF8C00"
+                android:textSize="12dp"/>
+
+        <!-- 赞按钮 -->
+
+        <Button
+                android:id="@+id/praise"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@+id/comment"
+                android:background="@drawable/message_praise_no"
+                android:gravity="right|center_vertical"
+                android:paddingRight="5dp"
+                android:text="@string/md_txt5"
+                android:textColor="#FF8C00"
+                android:textSize="12dp"/>
+    </RelativeLayout>
+
+</LinearLayout>

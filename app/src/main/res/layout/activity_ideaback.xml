@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#F8F8FF"
+              android:orientation="vertical">
+
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/main_title_bar"
+            android:orientation="horizontal">
+
+        <!-- 菜单 -->
+
+        <Button
+                android:id="@+id/butMenu"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/button_menu"
+                android:gravity="center_vertical"
+                android:textColor="#FF8C00"
+                android:textSize="14sp"/>
+
+        <Button
+                android:id="@+id/butMy"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/transparent"
+                android:gravity="center_vertical"
+                android:text="@string/help_and_feedback"
+                android:textColor="@color/white"
+                android:textSize="18sp"/>
+    </RelativeLayout>
+
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/bg_popview"
+            android:orientation="vertical"
+            android:padding="17dp">
+
+        <EditText
+                android:id="@+id/text"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:enabled="true"
+                android:gravity="top"
+                android:hint="@string/feedback_txt1"
+                android:inputType="textMultiLine"
+                android:scrollbars="vertical"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"
+                android:textCursorDrawable="@color/black"
+                android:textSize="9pt"/>
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp">
+
+        <EditText
+                android:id="@+id/phone"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:ems="11"
+                android:hint="@string/feedback_txt2"
+                android:inputType="number"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"
+                android:textSize="8pt">
+        </EditText>
+
+        <Button
+                android:id="@+id/send"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_weight="3"
+                android:background="@drawable/btn_click"
+                android:gravity="center"
+                android:text="@string/commit"
+                android:textColor="@color/white"
+                android:textSize="7pt"/>
+    </LinearLayout>
+
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="@string/feedback_txt3"
+            android:textColor="@color/gray"
+            android:textSize="9pt"/>
+
+</LinearLayout>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/white"
+              android:orientation="vertical">
+
+    <!--
+android:cacheColorHint="#00000000"即可
+滚动时，重绘View的时候就不会有背景颜色。
+android:listSelector="#00000000"
+进行上面的设置之后，ListView点击item时就没有任何现象了
+    -->
+
+    <ListView
+            android:id="@+id/listView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:cacheColorHint="#00000000"/>
+
+</LinearLayout>
