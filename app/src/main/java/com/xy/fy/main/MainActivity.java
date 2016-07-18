@@ -1,5 +1,18 @@
 package com.xy.fy.main;
 
+import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.lang.ref.WeakReference;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.bmob.im.demo.CustomApplcation;
 import com.bmob.im.demo.MyMessageReceiver;
 import com.bmob.im.demo.bean.User;
@@ -44,10 +57,6 @@ import com.xy.fy.util.ShareUtil;
 import com.xy.fy.util.StaticVarUtil;
 import com.xy.fy.util.TestArrayAdapter;
 import com.xy.fy.util.ViewUtil;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -96,16 +105,6 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-
-import java.io.File;
-import java.io.UnsupportedEncodingException;
-import java.lang.ref.WeakReference;
-import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-
 import cn.bmob.im.BmobChat;
 import cn.bmob.im.BmobChatManager;
 import cn.bmob.im.BmobNotifyManager;
@@ -125,38 +124,21 @@ import cn.sharesdk.onekeyshare.OnekeyShare;
 public class MainActivity extends BaseActivity implements EventListener {
 
     private final static String TAG = "MainActivity";
-    private static final int PIC = 11;// ͼƬ
-    private static final int PHO = 22;// ����
-    private static final int RESULT = 33;// ���ؽ��
-    private static final int GO_HOME = 100;
-    private static final int GO_LOGIN = 200;
-    public static TextView bukao_tip = null;
-    public static SlidingMenu slidingMenu;
+
     private static int requestTimes = 0;
     private static OnekeyShare share;
     private static ShareUtil shareUtil;
     private static boolean isFirst = true;
-    private static CircleImageView headPhoto;
-    private static boolean isCheck = false;
-    /*
-     * ��һ���˵���
-     */
-    CardUI mCardView;
-    // TODO Auto-generated method stub
-    Spinner xnSpinner;
-    Spinner xqSpinner;
-    ArrayAdapter<String> xnAdapter;
-    ArrayAdapter<String> xqAdapter;
-    boolean isTouchXNSpinner = false;
-    boolean isTouchXQSpinner = false;
-    boolean isReq = true;
-    int times = 0;
-    String loginResult = null;
-    ImageView iv_recent_tips, iv_contact_tips, iv_bukao_tips;// ��Ϣ��ʾ
-    NewBroadcastReceiver newReceiver;
-    TagBroadcastReceiver userReceiver;
+    private static final int PIC = 11;// 图片
+    private static final int PHO = 22;// 照相
+    private static final int RESULT = 33;// 返回结果
+    public static TextView bukao_tip = null;
+
+    public static SlidingMenu slidingMenu;
+
     private TextView nickname;
     private String name;//
+    private static CircleImageView headPhoto;
     private LinearLayout menuBang = null;
     private LinearLayout menuMyBukao = null;
     private LinearLayout menuMyPaiming = null;
@@ -164,136 +146,20 @@ public class MainActivity extends BaseActivity implements EventListener {
     private LinearLayout menuMyCET = null;
     private LinearLayout menuLib = null;
     private LinearLayout menuIdea_back = null;
-
-    // ��������
-    private LinearLayout menuSetting = null;// ����
-    private LinearLayout menuAbout = null;// ����
+    private LinearLayout menuSetting = null;// 设置
+    private LinearLayout menuAbout = null;// 关于
     private Button check_version = null;
+
     private TextView ideaMsgText = null;
     private TextView phoneText = null;
+
     private TextView nameText;
+
     private AutoCompleteTextView search_edittext;
-    private Bitmap bitmap = null;// �޸�ͷ��
+
+    private Bitmap bitmap = null;// 修改头像
     private MyHandler mHandler;
-    private LibAdapter adapter;
-    private Button[] mTabs;
-    private ContactFragment contactFragment;
-    private RecentFragment recentFragment;
-    private SettingsFragment settingFragment;
-    private Fragment[] fragments;
-    private int index;
-    private int currentTabIndex;
-    @SuppressLint("HandlerLeak")
-    private Handler chatHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case GO_HOME:
-                    H5Log.d(getApplicationContext(), "go home");
-                    startChatActivity();
-                    break;
-                case GO_LOGIN:
-                    H5Log.d(getApplicationContext(), "go login");
-                    // ����ÿ��Ӧ�õ�ע����������϶���һ���IM sdkδ�ṩע�᷽�����û��ɰ���bmod SDK��ע�᷽ʽ����ע�ᡣ
-                    // ע���ʱ����Ҫע�����㣺1��User���а��豸id��type��2���豸���а�username�ֶ�
-                    final User bu = new User();
-                    bu.setUsername(StaticVarUtil.student.getName() + "-" + StaticVarUtil.student.getAccount());
-                    bu.setPassword(StaticVarUtil.student.getPassword());
-                    // ��user���豸id���а�
-                    bu.setDeviceType("android");
-                    bu.setInstallId(BmobInstallation.getInstallationId(getApplicationContext()));
-                    bu.signUp(getApplicationContext(), new SaveListener() {
-
-                        @Override
-                        public void onSuccess() {
-                            // TODO Auto-generated method stub
-                            // ShowToast("ע��ɹ�");
-                            // ���豸��username���а�
-                            userManager.bindInstallationForRegister(bu.getUsername());
-                            // ���µ���λ����Ϣ
-                            updateUserLocation();
-                            // ���㲥֪ͨ��½ҳ���˳�
-                            sendBroadcast(new Intent(BmobConstants.ACTION_REGISTER_SUCCESS_FINISH));
-                            updateInfo(StaticVarUtil.student.getName());
-                        }
-
-                        private void updateInfo(String nick) {
-                            final User user = userManager.getCurrentUser(User.class);
-                            user.setNick(nick);
-                            user.update(getApplicationContext(), new UpdateListener() {
-                                @Override
-                                public void onSuccess() {
-                                    // TODO Auto-generated method stub
-                                    File file = new File(StaticVarUtil.PATH, StaticVarUtil.student.getAccount()
-                                            + ".JPEG");
-                                    if (file.exists()) {
-                                        uploadAvatar(StaticVarUtil.PATH + "/" + StaticVarUtil.student.getAccount()
-                                                + ".JPEG");
-                                    } else {
-                                        // ������ҳ
-                                        // Intent intent = new Intent(getApplicationContext(),
-                                        // com.bmob.im.demo.ui.MainActivity.class);
-                                        // startActivity(intent);
-                                        startChatActivity();
-                                    }
-                                }
-
-                                @Override
-                                public void onFailure(int arg0, String arg1) {
-                                    // TODO Auto-generated method stub
-                                    ShowToast("onFailure:" + arg1);
-                                }
-                            });
-                        }
-
-                        @Override
-                        public void onFailure(int arg0, String arg1) {
-                            // TODO Auto-generated method stub
-                            ProgressDialogUtil.getInstance(MainActivity.this).dismiss();
-                            if (arg1 == null) {
-                                return;
-                            }
-                            BmobLog.i(arg1);
-
-                            if (arg1.split("'").length < 3) {
-                                H5Toast.showToast(getApplicationContext(), "ҵ��æ�����Ժ����ԣ�");
-                                menuBang.setPressed(true);// ��ʼ��Ĭ���Ƿ��ư񱻰���
-                                setCurrentMenuItem(StaticVarUtil.MENU_BANG);// ��¼��ǰѡ��λ��
-                                slidingMenu.setContent(R.layout.card_main);
-                                menu1();
-                                return;
-                            }
-                            if ("already taken.".equals(arg1.split("'")[2].trim())) {// �Ѿ�ע���
-                                userManager.login(
-                                        StaticVarUtil.student.getName() + "-" + StaticVarUtil.student.getAccount(),
-                                        StaticVarUtil.student.getPassword(), new SaveListener() {
-
-                                            @Override
-                                            public void onSuccess() {
-                                                // �����û��ĵ���λ���Լ����ѵ�����
-                                                updateUserInfos();
-                                                startChatActivity();
-                                            }
-
-                                            @Override
-                                            public void onFailure(int errorcode, String arg0) {
-                                                // TODO Auto-generated method stub
-                                                BmobLog.i(arg0);
-                                                ShowToast(arg0);
-                                            }
-                                        });
-
-                            }
-                        }
-                    });
-                    break;
-            }
-        }
-    };
-
-    public static void updataPhoto(Bitmap tBitmap) {
-        headPhoto.setImageBitmap(tBitmap);
-    }
+    private static boolean isCheck = false;
 
     @SuppressLint("ShowToast")
     @Override
@@ -330,19 +196,19 @@ public class MainActivity extends BaseActivity implements EventListener {
         shareUtil = new ShareUtil(getApplicationContext());
         share = shareUtil.showShare();
 
-        softDeclare();// ������ ���� ����Ϊ������
+        softDeclare();// 将部分 变量 定义为弱引用
 
         setMenuItemListener();
 
-        // ��ǰActivity��ջ
+        // 当前Activity进栈
         StaticVarUtil.activities.add(MainActivity.this);
-        // �ҵ�ID
+        // 找到ID
         slidingMenu = (SlidingMenu) findViewById(R.id.slidingMenuXyScore);
-        // ��sliding�������
+        // 打开sliding组件监听
         slidingMenu.setOnOpenListener(new OnOpenListener() {
             @Override
             public void onOpen() {
-                // ��ȡ��ǰ�˵���ѡ��
+                // 读取当前菜单的选项
                 int item = getCurrentMeunItem();
                 if (item == StaticVarUtil.MENU_BANG) {
                     setMenuItemState(menuBang, true, menuMyBukao, false, menuMyCjTongji, false, menuMyCET,
@@ -394,12 +260,12 @@ public class MainActivity extends BaseActivity implements EventListener {
             return;
         }
         if (!Util.checkPWD(StaticVarUtil.student.getPassword())) {
-            ViewUtil.showToast(getApplicationContext(), "���벻��ȫ����������������");
+            ViewUtil.showToast(getApplicationContext(), "密码不安全，请重新设置密码");
             setMenuItemState(menuBang, false, menuMyBukao, false, menuMyCjTongji, false, menuMyCET,
                     false, menuLib, false, menuMyPaiming, false, menuIdea_back, false, menuSetting, true,
                     menuAbout, false);
             setCurrentMenuItem(StaticVarUtil.MENU_SETTING);
-            slidingMenu.toggle();// ҳ����ת
+            slidingMenu.toggle();// 页面跳转
             slidingMenu.setContent(R.layout.activity_setting);
             try {
                 menuSetting();
@@ -424,8 +290,13 @@ public class MainActivity extends BaseActivity implements EventListener {
 
     }
 
+    /*
+     * 第一个菜单项
+     */
+    CardUI mCardView;
+
     private void menu1() {
-        // �˵���ť
+        // 菜单按钮
         Button menu = (Button) findViewById(R.id.butMenu);
         menu.setOnClickListener(new OnClickListener() {
             @Override
@@ -434,7 +305,7 @@ public class MainActivity extends BaseActivity implements EventListener {
             }
         });
 
-        // ���?ť
+        // 分享按钮
         Button share = (Button) findViewById(R.id.share);
         share.setOnClickListener(new OnClickListener() {
             @Override
@@ -456,9 +327,9 @@ public class MainActivity extends BaseActivity implements EventListener {
     }
 
     /*
-     * ���õ�ǰMenuItem��״̬
+     * 设置当前MenuItem的状态
      *
-     * @param item MenuItem�����flag������״̬
+     * @param item MenuItem组件，flag代表组件状态
      */
     private void setMenuItemState(LinearLayout item1, boolean flag1, LinearLayout item2,
                                   boolean flag2, LinearLayout item3, boolean flag3, LinearLayout item4, boolean flag4,
@@ -476,31 +347,31 @@ public class MainActivity extends BaseActivity implements EventListener {
     }
 
     /*
-     * ����һЩmenuItem����
+     * 设置一些menuItem监听
      */
     private void setMenuItemListener() {
 
-        nickname = (TextView) findViewById(R.id.nickname);// �û���
-        headPhoto = (CircleImageView) findViewById(R.id.headphoto);// ͷ��
-        menuBang = (LinearLayout) findViewById(R.id.menu_bang);// 1.�ɼ���ѯ
-        menuMyBukao = (LinearLayout) findViewById(R.id.menu_my_bukao);// 2.������ѯ
+        nickname = (TextView) findViewById(R.id.nickname);// 用户名
+        headPhoto = (CircleImageView) findViewById(R.id.headphoto);// 头像
+        menuBang = (LinearLayout) findViewById(R.id.menu_bang);// 1.成绩查询
+        menuMyBukao = (LinearLayout) findViewById(R.id.menu_my_bukao);// 2.补考查询
         iv_bukao_tips = (ImageView) findViewById(R.id.iv_bukao_tips);
 
-        menuMyCjTongji = (LinearLayout) findViewById(R.id.menu_my_cj_tongji);// �ɼ�ͳ��
+        menuMyCjTongji = (LinearLayout) findViewById(R.id.menu_my_cj_tongji);// 成绩统计
         menuMyCjTongji.setVisibility(View.GONE);
-        menuMyPaiming = (LinearLayout) findViewById(R.id.menu_my_paiming);// 3.�ҵ�����
-        menuMyCET = (LinearLayout) findViewById(R.id.menu_my_cet);// CET���
+        menuMyPaiming = (LinearLayout) findViewById(R.id.menu_my_paiming);// 3.我的排名
+        menuMyCET = (LinearLayout) findViewById(R.id.menu_my_cet);// CET查分
         menuLib = (LinearLayout) findViewById(R.id.menu_my_lib);
-        menuIdea_back = (LinearLayout) findViewById(R.id.idea_back);// 4.���ղص�
-        menuSetting = (LinearLayout) findViewById(R.id.menu_setting);// 5.����
+        menuIdea_back = (LinearLayout) findViewById(R.id.idea_back);// 4.我收藏的
+        menuSetting = (LinearLayout) findViewById(R.id.menu_setting);// 5.设置
         menuAbout = (LinearLayout) findViewById(R.id.menu_about);
         bukao_tip = (TextView) findViewById(R.id.bukao_tip);
 
         LinearLayout menuQuit = (LinearLayout) findViewById(R.id.menu_quit);
-        menuBang.setPressed(true);// ��ʼ��Ĭ���Ƿ��ư񱻰���
-        setCurrentMenuItem(StaticVarUtil.MENU_BANG);// ��¼��ǰѡ��λ��
+        menuBang.setPressed(true);// 初始化默认是风云榜被按下
+        setCurrentMenuItem(StaticVarUtil.MENU_BANG);// 记录当前选项位置
 
-        // �����������ȡͷ��id �����жϱ����Ƿ�������ļ�
+        // 请求服务器获取头像id 并且判断本地是否有这个文件
         GetPhotoIDAsynctask getPhotoID = new GetPhotoIDAsynctask(MainActivity.this, headPhoto);
         getPhotoID.execute();
 
@@ -512,9 +383,9 @@ public class MainActivity extends BaseActivity implements EventListener {
 
                 File file = new File(StaticVarUtil.PATH);
                 if (!file.exists()) {
-                    file.mkdirs();// �����ļ�
+                    file.mkdirs();// 创建文件
                 }
-                chooseHeadPhoto();// �ı�ͷ��
+                chooseHeadPhoto();// 改变头像
             }
         });
 
@@ -524,7 +395,7 @@ public class MainActivity extends BaseActivity implements EventListener {
                 setMenuItemState(menuBang, true, menuMyBukao, false, menuMyCjTongji, false, menuMyCET,
                         false, menuLib, false, menuMyPaiming, false, menuIdea_back, false, menuSetting, false,
                         menuAbout, false);
-                slidingMenu.toggle();// ҳ����ת
+                slidingMenu.toggle();// 页面跳转
                 if (getCurrentMeunItem() == StaticVarUtil.MENU_BANG) {
                     return;
                 }
@@ -547,7 +418,7 @@ public class MainActivity extends BaseActivity implements EventListener {
             }
         });
 
-        // ��������
+        // 补考助手
         menuMyBukao.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -555,13 +426,13 @@ public class MainActivity extends BaseActivity implements EventListener {
                 setMenuItemState(menuBang, false, menuMyBukao, true, menuMyCjTongji, false, menuMyCET,
                         false, menuLib, false, menuMyPaiming, false, menuIdea_back, false, menuSetting, false,
                         menuAbout, false);
-                slidingMenu.toggle();// ҳ����ת
+                slidingMenu.toggle();// 页面跳转
                 if (getCurrentMeunItem() == StaticVarUtil.MENU_BUKAO) {
                     return;
                 }
-                // �ж����û��ͷ��Ļ�������ѡ��ͷ�񣬲���д�ǳ�
-                // ������ת�������б�
-                // showToast("����Գ������Ŭ�������У�������ע...");
+                // 判断如果没有头像的话，先让选择头像，并填写昵称
+                // 暂且跳转到好友列表
+                // showToast("程序猿们正在努力开发中，请持续关注...");
                 slidingMenu.setContent(R.layout.activity_chat_main);
                 new Thread(new Runnable() {
                     @Override
@@ -590,7 +461,7 @@ public class MainActivity extends BaseActivity implements EventListener {
                     setMenuItemState(menuBang, false, menuMyBukao, false, menuMyCjTongji, false, menuMyCET,
                             false, menuLib, false, menuMyPaiming, true, menuIdea_back, false, menuSetting, false,
                             menuAbout, false);
-                    slidingMenu.toggle();// ҳ����ת
+                    slidingMenu.toggle();// 页面跳转
                     if (getCurrentMeunItem() == StaticVarUtil.MENU_PAIMING) {
                         return;
                     }
@@ -611,7 +482,7 @@ public class MainActivity extends BaseActivity implements EventListener {
                         }
                     }).start();
                 } else {
-                    ViewUtil.showToast(getApplicationContext(), "���粻�ȶ������Ժ��ѯ");
+                    ViewUtil.showToast(getApplicationContext(), "网络不稳定，请稍后查询");
                 }
             }
         });
@@ -619,7 +490,7 @@ public class MainActivity extends BaseActivity implements EventListener {
         menuIdea_back.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                slidingMenu.toggle();// ҳ����ת
+                slidingMenu.toggle();// 页面跳转
                 slidingMenu.setContent(R.layout.activity_ideaback);
                 new Thread(new Runnable() {
                     @Override
@@ -645,7 +516,7 @@ public class MainActivity extends BaseActivity implements EventListener {
                 setMenuItemState(menuBang, false, menuMyBukao, false, menuMyCjTongji, false, menuMyCET,
                         false, menuLib, false, menuMyPaiming, false, menuIdea_back, false, menuSetting, true,
                         menuAbout, false);
-                slidingMenu.toggle();// ҳ����ת
+                slidingMenu.toggle();// 页面跳转
                 if (getCurrentMeunItem() == StaticVarUtil.MENU_SETTING) {
                     return;
                 }
@@ -675,7 +546,7 @@ public class MainActivity extends BaseActivity implements EventListener {
                 setMenuItemState(menuBang, false, menuMyBukao, false, menuMyCjTongji, false, menuMyCET,
                         true, menuLib, false, menuMyPaiming, false, menuIdea_back, false, menuSetting, false,
                         menuAbout, false);
-                slidingMenu.toggle();// ҳ����ת
+                slidingMenu.toggle();// 页面跳转
                 if (getCurrentMeunItem() == StaticVarUtil.MENU_CET) {
                     return;
                 }
@@ -708,7 +579,7 @@ public class MainActivity extends BaseActivity implements EventListener {
                         true, menuLib, true, menuMyPaiming, false, menuIdea_back, false, menuSetting, false,
                         menuAbout, true);
 
-                slidingMenu.toggle();// ҳ����ת
+                slidingMenu.toggle();// 页面跳转
                 if (getCurrentMeunItem() == StaticVarUtil.MENU_LIB) {
                     return;
                 }
@@ -738,7 +609,7 @@ public class MainActivity extends BaseActivity implements EventListener {
                         false, menuLib, false, menuMyPaiming, false, menuIdea_back, false, menuSetting, false,
                         menuAbout, true);
 
-                slidingMenu.toggle();// ҳ����ת
+                slidingMenu.toggle();// 页面跳转
                 slidingMenu.setContent(R.layout.activity_about);
 
                 new Thread(new Runnable() {
@@ -768,11 +639,13 @@ public class MainActivity extends BaseActivity implements EventListener {
 
     }
 
+    // 补考好友
+
     private void aboutListener() {
         if (Util.getAndroidSDKVersion() > 10) {
             findViewById(R.id.newTip).setAlpha(100);
         }
-        // �˵���ť
+        // 菜单按钮
         Button menu = (Button) findViewById(R.id.butMenu);
         menu.setOnClickListener(new OnClickListener() {
             @Override
@@ -805,13 +678,13 @@ public class MainActivity extends BaseActivity implements EventListener {
                 emailIntent.putExtra(Intent.EXTRA_EMAIL, "ideaback_mc@126.com");
                 emailIntent.putExtra(Intent.EXTRA_CC, "ideaback_mc@126.com");
                 emailIntent.putExtra(Intent.EXTRA_TEXT, "");
-                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "���ʳɼ�");
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "西邮成绩");
                 emailIntent.setType("message/rfc822");
                 startActivity(Intent.createChooser(emailIntent, "xiyouMc"));
 
             }
         });
-        // ���?ť
+        // 分享按钮
         Button share = (Button) findViewById(R.id.share);
         share.setOnClickListener(new OnClickListener() {
             @Override
@@ -821,7 +694,7 @@ public class MainActivity extends BaseActivity implements EventListener {
                 shareUtil.showShareUI(MainActivity.share);
             }
         });
-        check_version = (Button) findViewById(R.id.checkversion);// ����°汾��ť
+        check_version = (Button) findViewById(R.id.checkversion);// 检测新版本按钮
         TextView version = (TextView) findViewById(R.id.version);
         version.setText(Util.getVersion(getApplicationContext()));
         check_version.setOnClickListener(new OnClickListener() {
@@ -845,12 +718,12 @@ public class MainActivity extends BaseActivity implements EventListener {
     }
 
     /*
-     * �����ά��
+     * 保存二维码
      */
     private void showDialogSaveQrcode() {
-        final CharSequence[] items = {Util.getContext().getResources()
-                .getString(R.string.save_Qr_code)};
-        Builder builder = new Builder(this);
+        final CharSequence[] items = { Util.getContext().getResources()
+                .getString(R.string.save_Qr_code) };
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setItems(items, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int item) {
                 if (!new File(StaticVarUtil.PATH + Util.QRCODE_FILENAME).exists()) {
@@ -859,7 +732,7 @@ public class MainActivity extends BaseActivity implements EventListener {
                     BitmapUtil.saveFileAndDB(getApplicationContext(), bt, Util.QRCODE_FILENAME);
                     bt.recycle();
                 }
-                ViewUtil.showToast(getApplicationContext(), "��ά���ѱ��棬�뽫������ͬѧ��");
+                ViewUtil.showToast(getApplicationContext(), "二维码已保存，请将其分享给同学！");
 
             }
         });
@@ -867,9 +740,15 @@ public class MainActivity extends BaseActivity implements EventListener {
         alert.show();
     }
 
+    // TODO Auto-generated method stub
+    Spinner xnSpinner;
+    Spinner xqSpinner;
+    ArrayAdapter<String> xnAdapter;
+    ArrayAdapter<String> xqAdapter;
+
     private void rank() {
 
-        // menu���� �ж�Ϊ��һ�� Ϊ�˳�ʼ�� listview
+        // menu出发 判断为第一次 为了初始化 listview
         RankUtils.isFirstListView = true;
         findviewById();
         if (RankUtils.rankScoreText == null) {
@@ -905,7 +784,7 @@ public class MainActivity extends BaseActivity implements EventListener {
             public void afterTextChanged(Editable s) {
                 // TODO Auto-generated method stub
                 if (search_edittext.getText().toString().length() > 0) {
-                    // ��λ
+                    // 定位
                     for (HashMap<String, Object> map : RankUtils.showRankArrayList) {
                         if ((map.get("name").toString()).equals(search_edittext.getText().toString())) {
                             search_edittext.clearFocus();
@@ -929,7 +808,7 @@ public class MainActivity extends BaseActivity implements EventListener {
                         }
                     }
                     if (!isSearch) {
-                        ViewUtil.showToast(getApplicationContext(), "û�и�ѧ����Ϣ");
+                        ViewUtil.showToast(getApplicationContext(), "没有该学生信息");
                     }
                     search_edittext.clearFocus();
                     closeInputMethod();
@@ -939,7 +818,7 @@ public class MainActivity extends BaseActivity implements EventListener {
             }
         });
 
-        // �˵���ť
+        // 菜单按钮
         Button menu = (Button) findViewById(R.id.butMenu);
         menu.setOnClickListener(new OnClickListener() {
             @Override
@@ -947,7 +826,7 @@ public class MainActivity extends BaseActivity implements EventListener {
                 slidingMenu.toggle();
             }
         });
-        // ���?ť
+        // 分享按钮
         Button share = (Button) findViewById(R.id.share);
         share.setOnClickListener(new OnClickListener() {
             @Override
@@ -974,29 +853,29 @@ public class MainActivity extends BaseActivity implements EventListener {
         Iterator<?> it = StaticVarUtil.list_Rank_xnAndXq.entrySet().iterator();
         while (it.hasNext()) {
             Entry<?, ?> entry = (Entry<?, ?>) it.next();
-            xns[i] = String.valueOf(entry.getKey());// ����������Ӧ�ļ�
+            xns[i] = String.valueOf(entry.getKey());// 返回与此项对应的键
             i++;
-            // entry.getValue() ����������Ӧ��ֵ
+            // entry.getValue() 返回与此项对应的值
         }
-        // ����dropDownItem ���
-        xnAdapter = new TestArrayAdapter(R.layout.list_item, getApplicationContext(), xns, width);// ����Adapter
-        String xq = StaticVarUtil.list_Rank_xnAndXq.get(xns[0]);// Ĭ�ϵ�һѧ����׸�ѧ������
+        // 设置dropDownItem 宽度
+        xnAdapter = new TestArrayAdapter(R.layout.list_item, getApplicationContext(), xns, width);// 配置Adapter
+        String xq = StaticVarUtil.list_Rank_xnAndXq.get(xns[0]);// 默认第一学年的首个学期数组
         String[] xqs = xq.split("\\,");
-        xqAdapter = new TestArrayAdapter(R.layout.list_item, getApplicationContext(), xqs, width);// ����Adapter
-        xnAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // ѡ�������˵���ʽ
-        xqAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // ѡ�������˵���ʽ
+        xqAdapter = new TestArrayAdapter(R.layout.list_item, getApplicationContext(), xqs, width);// 配置Adapter
+        xnAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // 选择下拉菜单样式
+        xqAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // 选择下拉菜单样式
         xnSpinner.setAdapter(xnAdapter);
-        xnSpinner.setSelection(0, false);// �������������̬
+        xnSpinner.setSelection(0, false);// 这两个方法真变态
         xqSpinner.setAdapter(xqAdapter);
         xqSpinner.setSelection(0, false);
         listener(xns, width);
-        String result = "";// �ɼ������
+        String result = "";// 成绩的数据
 
         if (RankUtils.allRankMap.size() != 0) {
             for (String xnAndXq : RankUtils.allRankMap.keySet()) {
-                // ������ menu���������Ա����ж�
+                // 由于是 menu触发的所以必须判断
                 if (xnAndXq.equals(RankUtils.selectXn + RankUtils.selectXq)) {
-                    // ��������ֱ�� ����value
+                    // 如果存在则直接 或者value
                     result = RankUtils.allRankMap.get(xnAndXq);
                     RankUtils.refeshRank(result, RankUtils.isFirstListView, getApplicationContext());
                     break;
@@ -1017,40 +896,43 @@ public class MainActivity extends BaseActivity implements EventListener {
     }
 
     /*
-     * ȡ�������
+     * 取消软键盘
      */
     private void closeInputMethod() {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         boolean isOpen = imm.isActive();
         if (isOpen) {
-            imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);// û����ʾ����ʾ
+            imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);// 没有显示则显示
         }
     }
 
     private void requestRankAsyntask() {
-        // Ĭ��
+        // 默认
         RankUtils.selectXn = xnSpinner.getSelectedItem().toString();
         RankUtils.selectXq = xqSpinner.getSelectedItem().toString();
         Util.getRequestParmas(getApplicationContext(), StaticVarUtil.student.getAccount() + "|"
                 + RankUtils.selectXn.split("\\-")[0] + "|"
-                + (RankUtils.selectXq.equals("��һѧ��") ? "1" : "2"));
+                + (RankUtils.selectXq.equals("第一学期") ? "1" : "2"));
         String result = "";
-        // ���Ȳ�ѯ�ڴ����Ƿ��и�ѧ�ڳɼ�
+        // 首先查询内存中是否有该学期成绩
         for (String xnAndXq : RankUtils.allRankMap.keySet()) {
             if (xnAndXq.equals(RankUtils.selectXn + RankUtils.selectXq)) {
-                // ��������ֱ�� ����value
+                // 如果存在则直接 或者value
                 result = RankUtils.allRankMap.get(xnAndXq);
                 RankUtils.refeshRank(result, RankUtils.isFirstListView, getApplicationContext());
                 break;
             }
         }
         if (result.equals("")) {
-            // �����ڣ�������
+            // 不存在，则请求
             GetRankAsycntask getRankAsyntask = new GetRankAsycntask(this, nickname, name);
             getRankAsyntask.execute();
         }
 
     }
+
+    boolean isTouchXNSpinner = false;
+    boolean isTouchXQSpinner = false;
 
     private void listener(final String[] xns, final int width) {
         // TODO Auto-generated method stub
@@ -1061,16 +943,16 @@ public class MainActivity extends BaseActivity implements EventListener {
                 // TODO Auto-generated method stub
                 if (!ConnectionUtil.isConn(getApplicationContext())) {
                     ConnectionUtil.setNetworkMethod(MainActivity.this);
-                    xnSpinner.setSelection(0, false);// �������������̬
+                    xnSpinner.setSelection(0, false);// 这两个方法真变态
                     return;
                 }
                 if (isTouchXNSpinner) {
-                    // ��spinner�ϵ�ѡ�����ʾ��TextView����
+                    // 将spinner上的选择答案显示在TextView上面
                     RankUtils.selectXn = xnAdapter.getItem(arg2);
-                    // �Զ����� ѧ��
-                    String xq = StaticVarUtil.list_Rank_xnAndXq.get(xns[arg2]);// Ĭ�ϵ�һѧ����׸�ѧ������
+                    // 自动适配 学期
+                    String xq = StaticVarUtil.list_Rank_xnAndXq.get(xns[arg2]);// 默认第一学年的首个学期数组
                     String[] xqs = xq.split("\\,");
-                    xqAdapter = new TestArrayAdapter(R.layout.list_item, getApplicationContext(), xqs, width);// ����Adapter
+                    xqAdapter = new TestArrayAdapter(R.layout.list_item, getApplicationContext(), xqs, width);// 配置Adapter
                     xqSpinner.setAdapter(xqAdapter);
                     requestRankAsyntask();
                     isTouchXNSpinner = false;
@@ -1098,7 +980,7 @@ public class MainActivity extends BaseActivity implements EventListener {
                     return;
                 }
                 if (isTouchXQSpinner) {
-                    // ��spinner�ϵ�ѡ�����ʾ��TextView����
+                    // 将spinner上的选择答案显示在TextView上面
                     RankUtils.selectXq = xqAdapter.getItem(arg2);
                     requestRankAsyntask();
                     isTouchXQSpinner = false;
@@ -1123,10 +1005,10 @@ public class MainActivity extends BaseActivity implements EventListener {
         });
     }
 
-    // �����б�
+    // 好友列表
     protected void friend_list() {
         // TODO Auto-generated method stub
-        // �˵���ť
+        // 菜单按钮
         Button menu = (Button) findViewById(R.id.butMenu);
         menu.setOnClickListener(new OnClickListener() {
             @Override
@@ -1135,7 +1017,7 @@ public class MainActivity extends BaseActivity implements EventListener {
             }
         });
 
-        // ��Ӻ��Ѱ�ť
+        // 添加好友按钮
         Button add_friend = (Button) findViewById(R.id.add_friend);
         add_friend.setOnClickListener(new OnClickListener() {
 
@@ -1150,10 +1032,10 @@ public class MainActivity extends BaseActivity implements EventListener {
 
     }
 
-    // ����
+    // 四六级
     protected void cet() {
         // TODO Auto-generated method stub
-        // �˵���ť
+        // 菜单按钮
         Button menu = (Button) findViewById(R.id.butMenu);
         menu.setOnClickListener(new OnClickListener() {
             @Override
@@ -1180,15 +1062,15 @@ public class MainActivity extends BaseActivity implements EventListener {
                 StaticVarUtil.cet_account = accoutStr;
                 long time = System.currentTimeMillis();
                 String time_s = Passport.jiami(String.valueOf(time),
-                        String.valueOf(new char[]{2, 4, 8, 8, 2, 2}));
+                        String.valueOf(new char[] { 2, 4, 8, 8, 2, 2 }));
                 StaticVarUtil.cet_data = Passport.jiami(accoutStr, String.valueOf(time));
                 StaticVarUtil.cet_viewstate = time_s;
                 GetCETAsyntask getCETAsyntask = new GetCETAsyntask(MainActivity.this);
                 ProgressDialogUtil.getInstance(MainActivity.this).show();
                 try {
-                    getCETAsyntask.execute(new String[]{URLEncoder.encode(
+                    getCETAsyntask.execute(new String[] { URLEncoder.encode(
                             URLEncoder.encode(nameStr.length() < 3 ? nameStr : nameStr.substring(0, 2), "utf-8"),
-                            "utf-8")});
+                            "utf-8") });
                 } catch (UnsupportedEncodingException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -1208,11 +1090,11 @@ public class MainActivity extends BaseActivity implements EventListener {
     }
 
     /*
-     * �޸ĸ�����Ϣ��ֻ���޸��ǳƣ����룬ͷ��
+     * 修改个人信息，只能修改昵称，密码，头像
      */
     protected void menuSetting() {
 
-        // �˵���ť
+        // 菜单按钮
         Button menu = (Button) findViewById(R.id.butMenu);
         menu.setOnClickListener(new OnClickListener() {
             @Override
@@ -1222,7 +1104,7 @@ public class MainActivity extends BaseActivity implements EventListener {
         });
 
         if (StaticVarUtil.student == null) {
-            ViewUtil.showToast(getApplicationContext(), "�Բ��𣬲鿴ѡ�����ȵ�¼");
+            ViewUtil.showToast(getApplicationContext(), "对不起，查看选项请先登录");
             return;
         }
 
@@ -1252,30 +1134,30 @@ public class MainActivity extends BaseActivity implements EventListener {
     }
 
     /*
-     * ѡ��ͷ��
+     * 选择头像
      *
      * @return
      */
     protected void chooseHeadPhoto() {
-        String[] items = new String[]{
+        String[] items = new String[] {
                 Util.getContext().getResources().getString(R.string.select_picture),
-                Util.getContext().getResources().getString(R.string.photo)};
-        new Builder(this)
+                Util.getContext().getResources().getString(R.string.photo) };
+        new AlertDialog.Builder(this)
                 .setTitle(Util.getContext().getResources().getString(R.string.setPhoto))
                 .setItems(items, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         switch (which) {
-                            case 0:// ѡ�񱾵�ͼƬ
+                            case 0:// 选择本地图片
                                 Intent intent = new Intent();
                                 intent.setType("image/*");
                                 intent.setAction(Intent.ACTION_GET_CONTENT);
                                 startActivityForResult(intent, PIC);
                                 break;
-                            case 1:// ����
+                            case 1:// 拍照
                                 Intent intent2 = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                                 Uri imageUri = Uri.fromFile(new File(StaticVarUtil.PATH, "temp.JPEG"));
-                                // ָ����Ƭ����·����SD������image.jpgΪһ����ʱ�ļ���ÿ�����պ����ͼƬ���ᱻ�滻
+                                // 指定照片保存路径（SD卡），image.jpg为一个临时文件，每次拍照后这个图片都会被替换
                                 intent2.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
                                 startActivityForResult(intent2, PHO);
                                 break;
@@ -1292,10 +1174,10 @@ public class MainActivity extends BaseActivity implements EventListener {
     }
 
     /*
-     * ȡ�ûش������
+     * 取得回传的数据
      */
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // ������벻��ȡ���ʱ��
+        // 如果结果码不是取消的时候
         if (resultCode != RESULT_CANCELED) {
             switch (requestCode) {
                 case PHO:
@@ -1303,7 +1185,7 @@ public class MainActivity extends BaseActivity implements EventListener {
                     startPhotoZoom(Uri.fromFile(tempFile));
                     break;
                 case PIC:
-                    // ��Ƭ��ԭʼ��Դ��ַ
+                    // 照片的原始资源地址
                     Uri originalUri = data.getData();
                     startPhotoZoom(originalUri);
                     break;
@@ -1313,14 +1195,14 @@ public class MainActivity extends BaseActivity implements EventListener {
                         if (extras != null) {
                             bitmap = extras.getParcelable("data");
                         }
-                        bitmap = BitmapUtil.resizeBitmapWidth(bitmap, 240);// �����Ϊ240���ص�ͼƬ
+                        bitmap = BitmapUtil.resizeBitmapWidth(bitmap, 240);// 把它变为240像素的图片
                         BitmapUtil.saveBitmapToFile(bitmap, StaticVarUtil.PATH,
                                 StaticVarUtil.student.getAccount() + ".JPEG");
                         headPhoto.setImageBitmap(bitmap);
-                        // �ϴ�ͷ��
+                        // 上传头像
                         UploadFileAsytask uploadFileAsytask = new UploadFileAsytask(MainActivity.this, bitmap);
-                        uploadFileAsytask.execute(new String[]{StaticVarUtil.PATH + "/"
-                                + StaticVarUtil.student.getAccount() + ".JPEG"});
+                        uploadFileAsytask.execute(new String[] { StaticVarUtil.PATH + "/"
+                                + StaticVarUtil.student.getAccount() + ".JPEG" });
                     }
                     break;
                 case Util.CHANGE_PWD_RESULT:
@@ -1339,46 +1221,46 @@ public class MainActivity extends BaseActivity implements EventListener {
     }
 
     /*
-     * �ü�ͼƬ����ʵ��
+     * 裁剪图片方法实现
      *
      * @param uri
      */
     public void startPhotoZoom(Uri uri) {
 
-        Intent intent = new Intent("com.android.camera.action.CROP");// ����ϵͳ�Ľ�ͼ���ܡ�
+        Intent intent = new Intent("com.android.camera.action.CROP");// 调用系统的截图功能。
         intent.setDataAndType(uri, "image/*");
-        // ���òü�
+        // 设置裁剪
         intent.putExtra("crop", "true");
-        // aspectX aspectY �ǿ�ߵı���
+        // aspectX aspectY 是宽高的比例
         intent.putExtra("aspectX", 1);
         intent.putExtra("aspectY", 1);
-        // outputX outputY �ǲü�ͼƬ���
+        // outputX outputY 是裁剪图片宽高
         intent.putExtra("outputX", 320);
         intent.putExtra("outputY", 320);
-        intent.putExtra("scale", true);// �ڱ�
-        intent.putExtra("scaleUpIfNeeded", true);// �ڱ�
+        intent.putExtra("scale", true);// 黑边
+        intent.putExtra("scaleUpIfNeeded", true);// 黑边
         intent.putExtra("return-data", true);
         startActivityForResult(intent, RESULT);
     }
 
     /*
-     * ���ֻ�ť�ļ���
+     * 对手机按钮的监听
      */
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         switch (keyCode) {
             case KeyEvent.KEYCODE_BACK:
-                // ����Ƿ��ذ�ť,�˳�
-                if (getCurrentMeunItem() != 1) {// ���ڵ�һ��ҳ��,���ص�һ��ҳ��
-                    menuBang.setPressed(true);// ��ʼ��Ĭ���Ƿ��ư񱻰���
-                    setCurrentMenuItem(StaticVarUtil.MENU_BANG);// ��¼��ǰѡ��λ��
+                // 如果是返回按钮,退出
+                if (getCurrentMeunItem() != 1) {// 不在第一个页面,返回第一个页面
+                    menuBang.setPressed(true);// 初始化默认是风云榜被按下
+                    setCurrentMenuItem(StaticVarUtil.MENU_BANG);// 记录当前选项位置
                     slidingMenu.setContent(R.layout.card_main);
                     menu1();
                 } else
                     quit(false);
 
                 break;
-            case KeyEvent.KEYCODE_MENU:// ����ǲ˵���ť
+            case KeyEvent.KEYCODE_MENU:// 如果是菜单按钮
                 slidingMenu.toggle();
                 break;
             default:
@@ -1388,10 +1270,10 @@ public class MainActivity extends BaseActivity implements EventListener {
     }
 
     /*
-     * ����ڴ���еĹ������
+     * 清除内存块中的共享数据
      */
     private void deleteCatch() {
-        // �������
+        // 清除密码
         removePassword();
         StaticVarUtil.list_Rank_xnAndXq.clear();
         StaticVarUtil.allBookList = null;
@@ -1404,7 +1286,7 @@ public class MainActivity extends BaseActivity implements EventListener {
         StaticVarUtil.quit();
 
         RankUtils.isFirstListView = true;
-        // ��ճɼ�����
+        // 清空成绩缓存
         isFirst = true;
         fragments = null;
 
@@ -1428,10 +1310,10 @@ public class MainActivity extends BaseActivity implements EventListener {
         SharedPreferences preferences = getSharedPreferences(StaticVarUtil.USER_INFO, MODE_PRIVATE);
         Editor editor = preferences.edit();
         editor.putString(StaticVarUtil.ACCOUNT, StaticVarUtil.student.getAccount());
-        // ɾ����ݿ�
+        // 删除数据库
         DBConnection.updateUser(StaticVarUtil.student.getAccount(), MainActivity.this);
         editor.putString(StaticVarUtil.PASSWORD, "");
-        editor.putBoolean(StaticVarUtil.IS_REMEMBER, true);// ��ס����
+        editor.putBoolean(StaticVarUtil.IS_REMEMBER, true);// 记住密码
         editor.commit();
     }
 
@@ -1444,7 +1326,7 @@ public class MainActivity extends BaseActivity implements EventListener {
             ConnectionUtil.setNetworkMethod(MainActivity.this);
             return;
         }
-        // СԲ����ʾ
+        // 小圆点提示
         if (iv_recent_tips == null || iv_bukao_tips == null) {
             return;
         }
@@ -1462,8 +1344,8 @@ public class MainActivity extends BaseActivity implements EventListener {
             iv_contact_tips.setVisibility(View.GONE);
             iv_bukao_tips.setVisibility(View.GONE);
         }
-        MyMessageReceiver.ehList.add(this);// �������͵���Ϣ
-        // ���
+        MyMessageReceiver.ehList.add(this);// 监听推送的消息
+        // 清空
         MyMessageReceiver.mNewNum = 0;
     }
 
@@ -1471,17 +1353,17 @@ public class MainActivity extends BaseActivity implements EventListener {
     protected void onPause() {
         // TODO Auto-generated method stub
         super.onPause();
-        MyMessageReceiver.ehList.remove(this);// ȡ��������͵���Ϣ
+        MyMessageReceiver.ehList.remove(this);// 取消监听推送的消息
         RankUtils.allRankMap.clear();
     }
 
     /*
-     * �˳�ģ��
+     * 退出模块
      *
-     * @param logout �Ƿ�ע��
+     * @param logout 是否注销
      */
     private void quit(final boolean logout) {
-        Builder builder = new Builder(MainActivity.this);
+        Builder builder = new AlertDialog.Builder(MainActivity.this);
 
         if (logout) {
             builder.setMessage(Util.getContext().getResources().getString(R.string.isQuit));
@@ -1502,7 +1384,7 @@ public class MainActivity extends BaseActivity implements EventListener {
                         BmobDB.create(getApplicationContext()).queryBmobInviteList().clear();
                         deleteCatch();
                         LogcatHelper.getInstance(MainActivity.this).stop();
-                        // ȡ��ʱ������
+                        // 取消定时检测服务
                         BmobChat.getInstance(getApplicationContext()).stopPollService();
 
                         userManager.logout();
@@ -1525,9 +1407,9 @@ public class MainActivity extends BaseActivity implements EventListener {
     }
 
     /*
-     * ��¼���õ�ǰMenuItem��λ�ã�1��2��3��4��5�ֱ���ɼ���ѯ��������ѯ���ҵ��������ղصģ�ѡ��
+     * 记录设置当前MenuItem的位置，1，2，3，4，5分别代表成绩查询，补考查询，我的排名，我收藏的，选项
      *
-     * @param menuItem �˵���ѡ��
+     * @param menuItem 菜单的选项
      */
     private void setCurrentMenuItem(int menuItem) {
         SharedPreferences preferences = getSharedPreferences("currentMenuItem", MODE_PRIVATE);
@@ -1537,14 +1419,119 @@ public class MainActivity extends BaseActivity implements EventListener {
     }
 
     /*
-     * ȡ�õ�ǰMenuItem��λ��
+     * 取得当前MenuItem的位置
      *
-     * @return ��ǰ��menu�Ĳ˵��� 1��2��3��4��5�ֱ���ɼ���ѯ��������ѯ���ҵ��������ղصģ�ѡ��,0���û�����
+     * @return 当前的menu的菜单项 1，2，3，4，5分别代表成绩查询，补考查询，我的排名，我收藏的，选项,0代表没有这个
      */
     private int getCurrentMeunItem() {
         SharedPreferences preferences = getSharedPreferences("currentMenuItem", MODE_PRIVATE);
         int flag = preferences.getInt("item", 0);
         return flag;
+    }
+
+    // 异步加载获取成绩
+    class GetScoreAsyntask extends AsyncTask<Object, String, String> {
+
+        @Override
+        protected String doInBackground(Object... params) {
+            // TODO Auto-generated method stub
+            String url = "";
+            String canshu = Util.getURL(StaticVarUtil.QUERY_SCORE);
+            System.out.println(TAG + "canshu:" + canshu + " \n + " + StaticVarUtil.listHerf.toString());
+            String[] can = canshu.split("&");
+            String url_str = "/" + can[0];
+            String xm = can[1];
+            try {
+                name = xm.split("=")[1];
+            } catch (ArrayIndexOutOfBoundsException e) {
+                // TODO: handle exception
+                return "error";
+            }
+
+            String gnmkdm = can[2];
+            try {
+                url = HttpUtilMc.BASE_URL + "xscjcx.aspx?session=" + StaticVarUtil.session + "&url="
+                        + url_str + "&xm="
+                        + URLEncoder.encode(URLEncoder.encode(xm.split("=")[1], "utf8"), "utf8") + "&" + gnmkdm;
+            } catch (UnsupportedEncodingException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            // 查询返回结果
+            String result = HttpUtilMc.queryStringForPost(url);
+            return result;
+
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            // TODO Auto-generated method stub
+            super.onPostExecute(result);
+            System.out.println("score:" + result);
+            // 显示用户名
+            if (name != null && !name.isEmpty()) {
+                StaticVarUtil.student.setName(name);
+            }
+            nickname.setText(StaticVarUtil.student.getName());
+            try {
+                if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result) || result.isEmpty()) {
+                    if (!result.equals("error")) {
+            /*
+             * 将字符串 写入xml文件中
+             */
+                        if (!result.equals("no_evaluation")) {
+                            requestTimes = 0;
+                            ScoreUtil.scoreJson = result;
+                            StaticVarUtil.listItem = new ArrayList<HashMap<String, Object>>();
+                            JSONObject jsonObject = new JSONObject(result);
+                            JSONArray jsonArray = (JSONArray) jsonObject.get("liScoreModels");// 最外层的array
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject o = (JSONObject) jsonArray.get(i);
+                                HashMap<String, Object> map = new HashMap<String, Object>();
+                                map.put("xn", o.get("xn"));
+                                map.put("list_xueKeScore", o.get("list_xueKeScore"));
+                                StaticVarUtil.listItem.add(map);
+                            }
+                        } else {
+                            Builder builder = new AlertDialog.Builder(MainActivity.this);
+
+                            builder.setMessage("请到官网进行教师评价后查询成绩！");
+
+                            builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    quit(true);
+                                }
+                            });
+                            builder.create().show();
+                        }
+
+                        menu1();
+                    } else {
+                        ViewUtil.showToast(getApplicationContext(), "查询失败,请重试。");
+                    }
+
+                } else {
+                    if (!ConnectionUtil.isConn(getApplicationContext())) {
+                        ConnectionUtil.setNetworkMethod(MainActivity.this);
+                        return;
+                    }
+                    if (requestTimes < 5) {
+                        requestTimes++;
+                        GetScoreAsyntask getScoreAsyntask = new GetScoreAsyntask();
+                        getScoreAsyntask.execute();
+                    } else {
+                        ViewUtil.showToast(getApplicationContext(), HttpUtilMc.CONNECT_EXCEPTION);
+                    }
+                }
+            } catch (Exception e) {
+                // TODO: handle exception
+                e.printStackTrace();
+                Log.i("LoginActivity", e.toString());
+            }
+
+        }
+
     }
 
     private void menuIdeaBack() {
@@ -1586,6 +1573,114 @@ public class MainActivity extends BaseActivity implements EventListener {
         });
     }
 
+    class MyHandler extends Handler {
+
+        WeakReference<Activity> mActivityReference;
+
+        MyHandler(Activity activity) {
+            mActivityReference = new WeakReference<Activity>(activity);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            // TODO Auto-generated method stub
+            final Activity activity = mActivityReference.get();
+            if (activity != null) {
+                switch (msg.what) {
+                    case StaticVarUtil.MENU_BANG:
+                        menu1();
+                        setCurrentMenuItem(StaticVarUtil.MENU_BANG);// 记录当前选项位置
+                        return;
+                    case StaticVarUtil.MENU_ABOUT:
+                        aboutListener();
+                        setCurrentMenuItem(StaticVarUtil.MENU_ABOUT);// 记录当前选项位置
+                        return;
+                }
+                if (!ConnectionUtil.isConn(getApplicationContext())) {
+                    ConnectionUtil.setNetworkMethod(MainActivity.this);
+                    menuBang.setPressed(true);// 初始化默认是风云榜被按下
+                    setCurrentMenuItem(StaticVarUtil.MENU_BANG);// 记录当前选项位置
+                    slidingMenu.setContent(R.layout.card_main);
+                    isCanTouch = true;
+                    menu1();
+                    return;
+                }
+                switch (msg.what) {
+                    case StaticVarUtil.MENU_BUKAO:
+                        friend_list();
+                        setCurrentMenuItem(StaticVarUtil.MENU_BUKAO);// 记录当前选项位置
+                        break;
+                    case StaticVarUtil.MENU_PAIMING:
+                        rank();
+                        setCurrentMenuItem(StaticVarUtil.MENU_PAIMING);// 记录当前选项位置
+                        break;
+                    case StaticVarUtil.MENU_IDEA_BACK:
+                        menuIdeaBack();
+                        setCurrentMenuItem(StaticVarUtil.MENU_IDEA_BACK);// 记录当前选项位置
+                        break;
+                    case StaticVarUtil.MENU_SETTING:
+                        menuSetting();
+                        setCurrentMenuItem(StaticVarUtil.MENU_SETTING);// 记录当前选项位置
+                        break;
+
+                    case StaticVarUtil.SHARE:
+                        showShareQrcodeDialog();
+                        break;
+                    case StaticVarUtil.MENU_CET:
+                        cet();
+                        setCurrentMenuItem(StaticVarUtil.MENU_CET);// 记录当前选项位置
+                        break;
+                    case StaticVarUtil.MENU_LIB:
+                        lib();
+                        setCurrentMenuItem(StaticVarUtil.MENU_LIB);// 记录当前选项位置
+                        break;
+                    case StaticVarUtil.IDEA_BACK_TOAST:
+                        ProgressDialogUtil.getInstance(MainActivity.this).dismiss();
+                        // ViewUtil.showToast(getApplicationContext(), "感谢反馈");
+                        ViewUtil.showDialog("感谢反馈，我们会做个更优秀", "反馈", activity, false,
+                                new ViewUtil.DialogCallback() {
+
+                                    @Override
+                                    public void onPost() {
+                                        // TODO Auto-generated method stub
+                                        closeInputMethod();
+                                        menuBang.setPressed(true);// 初始化默认是风云榜被按下
+                                        setCurrentMenuItem(StaticVarUtil.MENU_BANG);// 记录当前选项位置
+                                        slidingMenu.setContent(R.layout.card_main);
+                                        menu1();
+                                    }
+                                });
+                        break;
+
+                    case StaticVarUtil.BMOB_CHAT:
+                        try {
+                            chat();
+                        } catch (ClassCastException e) {
+                            // TODO: handle exception
+                            e.printStackTrace();
+                        }
+
+                        setCurrentMenuItem(StaticVarUtil.MENU_BUKAO);// 记录当前选项位置
+                        break;
+                    case StaticVarUtil.CHECK_VERSION:
+                        CheckVersionAsynctask checkVersionAsyntask = new CheckVersionAsynctask(MainActivity.this,
+                                true, new CheckVersionAsynctask.OnCheck() {
+
+                            @Override
+                            public void onCheck() {
+                                // TODO Auto-generated method stub
+                            }
+                        });
+                        checkVersionAsyntask.execute(new String[] { "login" });
+                        break;
+                }
+            }
+        }
+
+    }
+
+    boolean isReq = true;
+
     private void lib() {
         initTopBarForOnlyTitle(Util.getContext().getResources().getString(R.string.bind));
         String lib = "password=123456&account=S04131071";
@@ -1601,7 +1696,7 @@ public class MainActivity extends BaseActivity implements EventListener {
             @Override
             public void returnResult(String result) {
                 // TODO Auto-generated method stub
-                if ("none".equals(result) || result == null) {// δ��
+                if ("none".equals(result) || result == null) {// 未绑定
                     if (isReq) {
                         lib();
                         isReq = false;
@@ -1609,7 +1704,7 @@ public class MainActivity extends BaseActivity implements EventListener {
                     }
                     bindLib(bind_layout);
                     ProgressDialogUtil.getInstance(MainActivity.this).dismiss();
-                } else {// �� ֱ������
+                } else {// 绑定 直接请求
                     StaticVarUtil.LIB_NAME = result;
                     login_lib(result, bind_layout, false);
                 }
@@ -1632,7 +1727,7 @@ public class MainActivity extends BaseActivity implements EventListener {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 if (libAccount.getText().toString().isEmpty() || libPW.getText().toString().isEmpty()) {
-                    H5Toast.showToast(getApplicationContext(), "�������˺ź�����");
+                    H5Toast.showToast(getApplicationContext(), "请输入账号和密码");
                     ProgressDialogUtil.getInstance(MainActivity.this).dismiss();
                     return;
                 }
@@ -1643,6 +1738,10 @@ public class MainActivity extends BaseActivity implements EventListener {
         });
     }
 
+    int times = 0;
+
+    String loginResult = null;
+
     private void login_lib(final String libName, final LinearLayout bind_layout, final boolean isBind) {
         ProgressDialogUtil.getInstance(MainActivity.this).show();
         XuptLibLoginAsynctask xuptLibLoginAsynctask = new XuptLibLoginAsynctask(MainActivity.this,
@@ -1651,7 +1750,7 @@ public class MainActivity extends BaseActivity implements EventListener {
             @Override
             public void onPostLogin(String result) {
                 // TODO Auto-generated method stub
-                if (result != null && !"fail".equals(result.trim())) {// ��ȡ���
+                if (result != null && !"fail".equals(result.trim())) {// 获取数据
                     StaticVarUtil.LIB_NAME = libName;
                     if (isBind) {
                         bind(libName, bind_layout);
@@ -1679,7 +1778,7 @@ public class MainActivity extends BaseActivity implements EventListener {
                                 bookList.setLibName(jo.getString("name"));
                                 bookList.setNumber(jo.getString("id"));
                                 String[] date = jo.getString("date").split("/");
-                                bookList.setLibRenewDate(date[0] + "��" + date[1] + "��" + date[2]);
+                                bookList.setLibRenewDate(date[0] + "年" + date[1] + "月" + date[2]);
                                 bookList.setBarcode(jo.getString("barcode"));
                                 bookList.setRenew(jo.getBoolean("isRenew"));
                                 allBookList.add(bookList);
@@ -1696,7 +1795,7 @@ public class MainActivity extends BaseActivity implements EventListener {
                 } else {
                     Log.d(TAG, "login error" + result + " " + libName);
                     if (isBind) {
-                        H5Toast.showToast(getApplicationContext(), "��ʧ�ܣ���ȷ���˺ź����룡");
+                        H5Toast.showToast(getApplicationContext(), "绑定失败，请确认账号和密码！");
                     } else if (times < 3) {
                         times++;
                         login_lib(libName, bind_layout, isBind);
@@ -1717,11 +1816,11 @@ public class MainActivity extends BaseActivity implements EventListener {
                     @Override
                     public void onClick() {
                         // TODO Auto-generated method stub
-                        Builder builder = new Builder(MainActivity.this);
+                        Builder builder = new AlertDialog.Builder(MainActivity.this);
 
-                        builder.setMessage("��ȷ��Ҫ������");
+                        builder.setMessage("你确定要重置吗？");
 
-                        builder.setPositiveButton("ȷ��", new DialogInterface.OnClickListener() {
+                        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.cancel();
@@ -1732,7 +1831,7 @@ public class MainActivity extends BaseActivity implements EventListener {
                                 bindLib(bind_layout);
                             }
                         });
-                        builder.setNegativeButton("ȡ��", new DialogInterface.OnClickListener() {
+                        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.cancel();
@@ -1758,6 +1857,8 @@ public class MainActivity extends BaseActivity implements EventListener {
         libList.setAdapter(adapter);
     }
 
+    private LibAdapter adapter;
+
     private void bind(final String libName, final LinearLayout bind_layout) {
         BindXuptLibAsyncTask bindXuptLibAsyncTask = new BindXuptLibAsyncTask(MainActivity.this,
                 libName, "1", new BindXuptLibAsyncTask.OnPostExecute() {
@@ -1776,7 +1877,7 @@ public class MainActivity extends BaseActivity implements EventListener {
                     // bookList.setLibName(jo.getString("name"));
                     // bookList.setNumber(jo.getString("id"));
                     // String[] date = jo.getString("date").split("/");
-                    // bookList.setLibRenewDate(date[0] + "��" + date[1] + "��" + date[2]);
+                    // bookList.setLibRenewDate(date[0] + "年" + date[1] + "月" + date[2]);
                     // bookList.setBarcode(jo.getString("barcode"));
                     // bookList.setRenew(jo.getBoolean("isRenew"));
                     // allBookList.add(bookList);
@@ -1790,22 +1891,25 @@ public class MainActivity extends BaseActivity implements EventListener {
                     // e.printStackTrace();
                     // }
                     // }
-                } else {// ��ʧ��
+                } else {// 绑定失败
                     bind_layout.setVisibility(View.VISIBLE);
-                    H5Toast.showToast(getApplicationContext(), "�����°�");
+                    H5Toast.showToast(getApplicationContext(), "请重新绑定");
                 }
             }
         });
         bindXuptLibAsyncTask.execute();
     }
 
+    private static final int GO_HOME = 100;
+    private static final int GO_LOGIN = 200;
+
     private void chat() {
-        // BmobIM SDK��ʼ��--ֻ��Ҫ��һ�δ��뼴����ɳ�ʼ��
-        // �뵽Bmob����(http://www.bmob.cn/)����ApplicationId,�����ַ:http://docs.bmob.cn/android/faststart/index.html?menukey=fast_start&key=start_android
+        // BmobIM SDK初始化--只需要这一段代码即可完成初始化
+        // 请到Bmob官网(http://www.bmob.cn/)申请ApplicationId,具体地址:http://docs.bmob.cn/android/faststart/index.html?menukey=fast_start&key=start_android
         BmobChat.getInstance(this).init(Config.applicationId);
         ProgressDialogUtil.getInstance(MainActivity.this).show();
         if (userManager.getCurrentUser() != null) {
-            // ÿ���Զ���½��ʱ�����Ҫ�����µ�ǰλ�úͺ��ѵ����ϣ���Ϊ���ѵ�ͷ���ǳ�ɶ���Ǿ����䶯��
+            // 每次自动登陆的时候就需要更新下当前位置和好友的资料，因为好友的头像，昵称啥的是经常变动的
             File file = new File(StaticVarUtil.PATH, StaticVarUtil.student.getAccount() + ".JPEG");
             if (file.exists()) {
                 uploadAvatar(StaticVarUtil.PATH + "/" + StaticVarUtil.student.getAccount() + ".JPEG");
@@ -1817,6 +1921,15 @@ public class MainActivity extends BaseActivity implements EventListener {
             chatHandler.sendEmptyMessageDelayed(GO_LOGIN, 0);
         }
     }
+
+    private Button[] mTabs;
+    private ContactFragment contactFragment;
+    private RecentFragment recentFragment;
+    private SettingsFragment settingFragment;
+    private Fragment[] fragments;
+    private int index;
+    private int currentTabIndex;
+    ImageView iv_recent_tips, iv_contact_tips, iv_bukao_tips;// 消息提示
 
     private void initView() {
         mTabs = new Button[3];
@@ -1843,10 +1956,10 @@ public class MainActivity extends BaseActivity implements EventListener {
             iv_contact_tips.setVisibility(View.GONE);
             iv_bukao_tips.setVisibility(View.GONE);
         }
-        MyMessageReceiver.ehList.add(this);// �������͵���Ϣ
-        // ���
+        MyMessageReceiver.ehList.add(this);// 监听推送的消息
+        // 清空
         MyMessageReceiver.mNewNum = 0;
-        // �ѵ�һ��tab��Ϊѡ��״̬
+        // 把第一个tab设为选中状态
         mTabs[0].setSelected(true);
     }
 
@@ -1854,8 +1967,8 @@ public class MainActivity extends BaseActivity implements EventListener {
         contactFragment = new ContactFragment();
         recentFragment = new RecentFragment();
         settingFragment = new SettingsFragment();
-        fragments = new Fragment[]{recentFragment, contactFragment, settingFragment};
-        // �����ʾ��һ��fragment
+        fragments = new Fragment[] { recentFragment, contactFragment, settingFragment };
+        // 添加显示第一个fragment
         if (contactFragment.isAdded()) {
             return;
         }
@@ -1875,7 +1988,9 @@ public class MainActivity extends BaseActivity implements EventListener {
     }
 
     /**
-     * button����¼�
+     * button点击事件
+     *
+     * @param view
      */
     public void onTabSelect(View view) {
         if (mTabs == null) {
@@ -1901,52 +2016,83 @@ public class MainActivity extends BaseActivity implements EventListener {
             trx.show(fragments[index]).commit();
         }
         mTabs[currentTabIndex].setSelected(false);
-        // �ѵ�ǰtab��Ϊѡ��״̬
+        // 把当前tab设为选中状态
         mTabs[index].setSelected(true);
         currentTabIndex = index;
     }
 
     /**
-     * ˢ�½���
+     * 刷新界面
      *
      * @Title: refreshNewMsg @Description: TODO @param @param message @return void @throws
      */
     private void refreshNewMsg(BmobMsg message) {
-        // ������ʾ
+        // 声音提示
         boolean isAllow = CustomApplcation.getInstance().getSpUtil().isAllowVoice();
         if (isAllow) {
             CustomApplcation.getInstance().getMediaPlayer().start();
         }
         iv_recent_tips.setVisibility(View.VISIBLE);
         iv_bukao_tips.setVisibility(View.VISIBLE);
-        // ҲҪ�洢����
+        // 也要存储起来
         if (message != null) {
             BmobChatManager.getInstance(MainActivity.this).saveReceiveMessage(true, message);
         }
         if (currentTabIndex == 0) {
-            // ��ǰҳ�����Ϊ�Ựҳ�棬ˢ�´�ҳ��
+            // 当前页面如果为会话页面，刷新此页面
             if (recentFragment != null) {
                 recentFragment.refresh();
             }
         }
     }
 
+    NewBroadcastReceiver newReceiver;
+
     private void initNewMessageBroadCast() {
-        // ע�������Ϣ�㲥
+        // 注册接收消息广播
         newReceiver = new NewBroadcastReceiver();
         IntentFilter intentFilter = new IntentFilter(BmobConfig.BROADCAST_NEW_MESSAGE);
-        // ���ȼ�Ҫ����ChatActivity
+        // 优先级要低于ChatActivity
         intentFilter.setPriority(3);
         registerReceiver(newReceiver, intentFilter);
     }
 
+    /**
+     * 新消息广播接收者
+     *
+     */
+    private class NewBroadcastReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            // 刷新界面
+            refreshNewMsg(null);
+            // 记得把广播给终结掉
+            abortBroadcast();
+        }
+    }
+
+    TagBroadcastReceiver userReceiver;
+
     private void initTagMessageBroadCast() {
-        // ע�������Ϣ�㲥
+        // 注册接收消息广播
         userReceiver = new TagBroadcastReceiver();
         IntentFilter intentFilter = new IntentFilter(BmobConfig.BROADCAST_ADD_USER_MESSAGE);
-        // ���ȼ�Ҫ����ChatActivity
+        // 优先级要低于ChatActivity
         intentFilter.setPriority(3);
         registerReceiver(userReceiver, intentFilter);
+    }
+
+    /**
+     * 标签消息广播接收者
+     */
+    private class TagBroadcastReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            BmobInvitation message = (BmobInvitation) intent.getSerializableExtra("invite");
+            refreshInvite(message);
+            // 记得把广播给终结掉
+            abortBroadcast();
+        }
     }
 
     @Override
@@ -1964,7 +2110,7 @@ public class MainActivity extends BaseActivity implements EventListener {
     }
 
     /**
-     * ˢ�º�������
+     * 刷新好友请求
      *
      * @Title: notifyAddUser @Description: TODO @param @param message @return void @throws
      */
@@ -1980,8 +2126,8 @@ public class MainActivity extends BaseActivity implements EventListener {
                 contactFragment.refresh();
             }
         } else {
-            // ͬʱ����֪ͨ
-            String tickerText = message.getFromname() + "������Ӻ���";
+            // 同时提醒通知
+            String tickerText = message.getFromname() + "请求添加好友";
             boolean isAllowVibrate = CustomApplcation.getInstance().getSpUtil().isAllowVibrate();
             BmobNotifyManager.getInstance(this).showNotify(isAllow, isAllowVibrate,
                     R.drawable.ic_launcher, tickerText, message.getFromname(), tickerText.toString(),
@@ -2002,7 +2148,7 @@ public class MainActivity extends BaseActivity implements EventListener {
     }
 
     /**
-     * �������η��ؼ���˳�
+     * 连续按两次返回键就退出
      */
     @Override
     public void onBackPressed() {
@@ -2013,16 +2159,124 @@ public class MainActivity extends BaseActivity implements EventListener {
 
     private void startChatActivity() {
         BmobConstants.IS_STARTED = 1;
-        // ������ʱ�����񣨵�λΪ�룩-���������̨�Ƿ���δ������Ϣ���еĻ���ȡ����
+        // 开启定时检测服务（单位为秒）-在这里检测后台是否还有未读的消息，有的话就取出来
         BmobChat.getInstance(getApplicationContext()).startPollService(30);
-        // �����㲥������
+        // 开启广播接收器
         initNewMessageBroadCast();
         initTagMessageBroadCast();
         initView();
         initTab();
     }
 
-    // �����û�ͷ��
+    @SuppressLint("HandlerLeak")
+    private Handler chatHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case GO_HOME:
+                    H5Log.d(getApplicationContext(), "go home");
+                    startChatActivity();
+                    break;
+                case GO_LOGIN:
+                    H5Log.d(getApplicationContext(), "go login");
+                    // 由于每个应用的注册所需的资料都不一样，故IM sdk未提供注册方法，用户可按照bmod SDK的注册方式进行注册。
+                    // 注册的时候需要注意两点：1、User表中绑定设备id和type，2、设备表中绑定username字段
+                    final User bu = new User();
+                    bu.setUsername(StaticVarUtil.student.getName() + "-" + StaticVarUtil.student.getAccount());
+                    bu.setPassword(StaticVarUtil.student.getPassword());
+                    // 将user和设备id进行绑定
+                    bu.setDeviceType("android");
+                    bu.setInstallId(BmobInstallation.getInstallationId(getApplicationContext()));
+                    bu.signUp(getApplicationContext(), new SaveListener() {
+
+                        @Override
+                        public void onSuccess() {
+                            // TODO Auto-generated method stub
+                            // ShowToast("注册成功");
+                            // 将设备与username进行绑定
+                            userManager.bindInstallationForRegister(bu.getUsername());
+                            // 更新地理位置信息
+                            updateUserLocation();
+                            // 发广播通知登陆页面退出
+                            sendBroadcast(new Intent(BmobConstants.ACTION_REGISTER_SUCCESS_FINISH));
+                            updateInfo(StaticVarUtil.student.getName());
+                        }
+
+                        private void updateInfo(String nick) {
+                            final User user = userManager.getCurrentUser(User.class);
+                            user.setNick(nick);
+                            user.update(getApplicationContext(), new UpdateListener() {
+                                @Override
+                                public void onSuccess() {
+                                    // TODO Auto-generated method stub
+                                    File file = new File(StaticVarUtil.PATH, StaticVarUtil.student.getAccount()
+                                            + ".JPEG");
+                                    if (file.exists()) {
+                                        uploadAvatar(StaticVarUtil.PATH + "/" + StaticVarUtil.student.getAccount()
+                                                + ".JPEG");
+                                    } else {
+                                        // 启动主页
+                                        // Intent intent = new Intent(getApplicationContext(),
+                                        // com.bmob.im.demo.ui.MainActivity.class);
+                                        // startActivity(intent);
+                                        startChatActivity();
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(int arg0, String arg1) {
+                                    // TODO Auto-generated method stub
+                                    ShowToast("onFailure:" + arg1);
+                                }
+                            });
+                        }
+
+                        @Override
+                        public void onFailure(int arg0, String arg1) {
+                            // TODO Auto-generated method stub
+                            ProgressDialogUtil.getInstance(MainActivity.this).dismiss();
+                            if (arg1 == null) {
+                                return;
+                            }
+                            BmobLog.i(arg1);
+
+                            if (arg1.split("'").length < 3) {
+                                H5Toast.showToast(getApplicationContext(), "业务繁忙，请稍后再试！");
+                                menuBang.setPressed(true);// 初始化默认是风云榜被按下
+                                setCurrentMenuItem(StaticVarUtil.MENU_BANG);// 记录当前选项位置
+                                slidingMenu.setContent(R.layout.card_main);
+                                menu1();
+                                return;
+                            }
+                            if ("already taken.".equals(arg1.split("'")[2].trim())) {// 已经注册过
+                                userManager.login(
+                                        StaticVarUtil.student.getName() + "-" + StaticVarUtil.student.getAccount(),
+                                        StaticVarUtil.student.getPassword(), new SaveListener() {
+
+                                            @Override
+                                            public void onSuccess() {
+                                                // 更新用户的地理位置以及好友的资料
+                                                updateUserInfos();
+                                                startChatActivity();
+                                            }
+
+                                            @Override
+                                            public void onFailure(int errorcode, String arg0) {
+                                                // TODO Auto-generated method stub
+                                                BmobLog.i(arg0);
+                                                ShowToast(arg0);
+                                            }
+                                        });
+
+                            }
+                        }
+                    });
+                    break;
+            }
+        }
+    };
+
+    // 更新用户头像
     private void uploadAvatar(String path) {
         final BmobFile bmobFile = new BmobFile(new File(path));
         bmobFile.upload(this, new UploadFileListener() {
@@ -2031,7 +2285,7 @@ public class MainActivity extends BaseActivity implements EventListener {
             public void onSuccess() {
                 // TODO Auto-generated method stub
                 String url = bmobFile.getFileUrl(getApplicationContext());
-                // ����BmobUser����
+                // 更新BmobUser对象
                 updateUserAvatar(url);
             }
 
@@ -2044,12 +2298,12 @@ public class MainActivity extends BaseActivity implements EventListener {
             @Override
             public void onFailure(int arg0, String msg) {
                 // TODO Auto-generated method stub
-                ShowToast("ͷ���ϴ�ʧ�ܣ�" + msg);
+                ShowToast("头像上传失败：" + msg);
             }
         });
     }
 
-    // �����û���Ϣ
+    // 更新用户信息
     private void updateUserAvatar(final String url) {
         User user = (User) userManager.getCurrentUser(User.class);
         user.setAvatar(url);
@@ -2057,13 +2311,13 @@ public class MainActivity extends BaseActivity implements EventListener {
             @Override
             public void onSuccess() {
                 startChatActivity();
-                // ����ͷ��
+                // 更新头像
             }
 
             @Override
             public void onFailure(int code, String msg) {
                 // TODO Auto-generated method stub
-                ShowToast("ͷ�����ʧ�ܣ�" + msg);
+                ShowToast("头像更新失败：" + msg);
             }
         });
     }
@@ -2084,17 +2338,17 @@ public class MainActivity extends BaseActivity implements EventListener {
             unregisterReceiver(userReceiver);
         } catch (Exception e) {
         }
-        // ȡ��ʱ������
+        // 取消定时检测服务
         BmobChat.getInstance(this).stopPollService();
         super.onDestroy();
     }
 
     private void showShareQrcodeDialog() {
-        Builder builder = new Builder(MainActivity.this);
+        Builder builder = new AlertDialog.Builder(MainActivity.this);
 
-        builder.setMessage("���ڱ�רҵʹ���������,������������\n�����ѯ׼ȷ����������ͬѧ���ظ������");
+        builder.setMessage("由于本专业使用人数较少,因此排名会有误差。\n若需查询准确排名，请分享给同学下载该软件！");
 
-        builder.setPositiveButton("ȷ��", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // ViewUtil.showShare(getApplicationContext());
@@ -2116,230 +2370,6 @@ public class MainActivity extends BaseActivity implements EventListener {
         return isCanTouch ? super.dispatchTouchEvent(ev) : true;
     }
 
-    // �첽���ػ�ȡ�ɼ�
-    class GetScoreAsyntask extends AsyncTask<Object, String, String> {
-
-        @Override
-        protected String doInBackground(Object... params) {
-            // TODO Auto-generated method stub
-            String url = "";
-            String canshu = Util.getURL(StaticVarUtil.QUERY_SCORE);
-            System.out.println(TAG + "canshu:" + canshu + " \n + " + StaticVarUtil.listHerf.toString());
-            String[] can = canshu.split("&");
-            String url_str = "/" + can[0];
-            String xm = can[1];
-            try {
-                name = xm.split("=")[1];
-            } catch (ArrayIndexOutOfBoundsException e) {
-                // TODO: handle exception
-                return "error";
-            }
-
-            String gnmkdm = can[2];
-            try {
-                url = HttpUtilMc.BASE_URL + "xscjcx.aspx?session=" + StaticVarUtil.session + "&url="
-                        + url_str + "&xm="
-                        + URLEncoder.encode(URLEncoder.encode(xm.split("=")[1], "utf8"), "utf8") + "&" + gnmkdm;
-            } catch (UnsupportedEncodingException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-            // ��ѯ���ؽ��
-            String result = HttpUtilMc.queryStringForPost(url);
-            return result;
-
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            // TODO Auto-generated method stub
-            super.onPostExecute(result);
-            System.out.println("score:" + result);
-            // ��ʾ�û���
-            if (name != null && !name.isEmpty()) {
-                StaticVarUtil.student.setName(name);
-            }
-            nickname.setText(StaticVarUtil.student.getName());
-            try {
-                if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result) || result.isEmpty()) {
-                    if (!result.equals("error")) {
-            /*
-             * ���ַ� д��xml�ļ���
-             */
-                        if (!result.equals("no_evaluation")) {
-                            requestTimes = 0;
-                            ScoreUtil.scoreJson = result;
-                            StaticVarUtil.listItem = new ArrayList<HashMap<String, Object>>();
-                            JSONObject jsonObject = new JSONObject(result);
-                            JSONArray jsonArray = (JSONArray) jsonObject.get("liScoreModels");// ������array
-                            for (int i = 0; i < jsonArray.length(); i++) {
-                                JSONObject o = (JSONObject) jsonArray.get(i);
-                                HashMap<String, Object> map = new HashMap<String, Object>();
-                                map.put("xn", o.get("xn"));
-                                map.put("list_xueKeScore", o.get("list_xueKeScore"));
-                                StaticVarUtil.listItem.add(map);
-                            }
-                        } else {
-                            Builder builder = new Builder(MainActivity.this);
-
-                            builder.setMessage("�뵽������н�ʦ���ۺ��ѯ�ɼ���");
-
-                            builder.setPositiveButton("ȷ��", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    quit(true);
-                                }
-                            });
-                            builder.create().show();
-                        }
-
-                        menu1();
-                    } else {
-                        ViewUtil.showToast(getApplicationContext(), "��ѯʧ��,�����ԡ�");
-                    }
-
-                } else {
-                    if (!ConnectionUtil.isConn(getApplicationContext())) {
-                        ConnectionUtil.setNetworkMethod(MainActivity.this);
-                        return;
-                    }
-                    if (requestTimes < 5) {
-                        requestTimes++;
-                        GetScoreAsyntask getScoreAsyntask = new GetScoreAsyntask();
-                        getScoreAsyntask.execute();
-                    } else {
-                        ViewUtil.showToast(getApplicationContext(), HttpUtilMc.CONNECT_EXCEPTION);
-                    }
-                }
-            } catch (Exception e) {
-                // TODO: handle exception
-                e.printStackTrace();
-                Log.i("LoginActivity", e.toString());
-            }
-
-        }
-
-    }
-
-    class MyHandler extends Handler {
-
-        WeakReference<Activity> mActivityReference;
-
-        MyHandler(Activity activity) {
-            mActivityReference = new WeakReference<Activity>(activity);
-        }
-
-        @Override
-        public void handleMessage(Message msg) {
-            // TODO Auto-generated method stub
-            final Activity activity = mActivityReference.get();
-            if (activity != null) {
-                switch (msg.what) {
-                    case StaticVarUtil.MENU_BANG:
-                        menu1();
-                        setCurrentMenuItem(StaticVarUtil.MENU_BANG);// ��¼��ǰѡ��λ��
-                        return;
-                    case StaticVarUtil.MENU_ABOUT:
-                        aboutListener();
-                        setCurrentMenuItem(StaticVarUtil.MENU_ABOUT);// ��¼��ǰѡ��λ��
-                        return;
-                }
-                if (!ConnectionUtil.isConn(getApplicationContext())) {
-                    ConnectionUtil.setNetworkMethod(MainActivity.this);
-                    menuBang.setPressed(true);// ��ʼ��Ĭ���Ƿ��ư񱻰���
-                    setCurrentMenuItem(StaticVarUtil.MENU_BANG);// ��¼��ǰѡ��λ��
-                    slidingMenu.setContent(R.layout.card_main);
-                    isCanTouch = true;
-                    menu1();
-                    return;
-                }
-                switch (msg.what) {
-                    case StaticVarUtil.MENU_BUKAO:
-                        friend_list();
-                        setCurrentMenuItem(StaticVarUtil.MENU_BUKAO);// ��¼��ǰѡ��λ��
-                        break;
-                    case StaticVarUtil.MENU_PAIMING:
-                        rank();
-                        setCurrentMenuItem(StaticVarUtil.MENU_PAIMING);// ��¼��ǰѡ��λ��
-                        break;
-                    case StaticVarUtil.MENU_IDEA_BACK:
-                        menuIdeaBack();
-                        setCurrentMenuItem(StaticVarUtil.MENU_IDEA_BACK);// ��¼��ǰѡ��λ��
-                        break;
-                    case StaticVarUtil.MENU_SETTING:
-                        menuSetting();
-                        setCurrentMenuItem(StaticVarUtil.MENU_SETTING);// ��¼��ǰѡ��λ��
-                        break;
-
-                    case StaticVarUtil.SHARE:
-                        showShareQrcodeDialog();
-                        break;
-                    case StaticVarUtil.MENU_CET:
-                        cet();
-                        setCurrentMenuItem(StaticVarUtil.MENU_CET);// ��¼��ǰѡ��λ��
-                        break;
-                    case StaticVarUtil.MENU_LIB:
-                        lib();
-                        setCurrentMenuItem(StaticVarUtil.MENU_LIB);// ��¼��ǰѡ��λ��
-                        break;
-                    case StaticVarUtil.IDEA_BACK_TOAST:
-                        ProgressDialogUtil.getInstance(MainActivity.this).dismiss();
-                        // ViewUtil.showToast(getApplicationContext(), "��л����");
-                        ViewUtil.showDialog("��л���������ǻ�����������", "����", activity, false,
-                                new ViewUtil.DialogCallback() {
-
-                                    @Override
-                                    public void onPost() {
-                                        // TODO Auto-generated method stub
-                                        closeInputMethod();
-                                        menuBang.setPressed(true);// ��ʼ��Ĭ���Ƿ��ư񱻰���
-                                        setCurrentMenuItem(StaticVarUtil.MENU_BANG);// ��¼��ǰѡ��λ��
-                                        slidingMenu.setContent(R.layout.card_main);
-                                        menu1();
-                                    }
-                                });
-                        break;
-
-                    case StaticVarUtil.BMOB_CHAT:
-                        try {
-                            chat();
-                        } catch (ClassCastException e) {
-                            // TODO: handle exception
-                            e.printStackTrace();
-                        }
-
-                        setCurrentMenuItem(StaticVarUtil.MENU_BUKAO);// ��¼��ǰѡ��λ��
-                        break;
-                    case StaticVarUtil.CHECK_VERSION:
-                        CheckVersionAsynctask checkVersionAsyntask = new CheckVersionAsynctask(MainActivity.this,
-                                true, new CheckVersionAsynctask.OnCheck() {
-
-                            @Override
-                            public void onCheck() {
-                                // TODO Auto-generated method stub
-                            }
-                        });
-                        checkVersionAsyntask.execute(new String[]{"login"});
-                        break;
-                }
-            }
-        }
-
-    }
-
-    /**
-     * ����Ϣ�㲥������
-     */
-    private class NewBroadcastReceiver extends BroadcastReceiver {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            // ˢ�½���
-            refreshNewMsg(null);
-            // �ǵðѹ㲥���ս��
-            abortBroadcast();
-        }
-    }
-
     // @Override
     // protected void onRestart() {
     // // TODO Auto-generated method stub
@@ -2347,7 +2377,7 @@ public class MainActivity extends BaseActivity implements EventListener {
     // Util.setLanguageShare(MainActivity.this);
     //
     // if (StaticVarUtil.listItem != null) {
-    // // ��������Ӧ�ó���
+    // // 重新启动应用程序
     // Intent intent = mActivity.getIntent();
     // // intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
     // // mActivity.closeApplication();
@@ -2356,16 +2386,7 @@ public class MainActivity extends BaseActivity implements EventListener {
     // }
     // }
 
-    /**
-     * ��ǩ��Ϣ�㲥������
-     */
-    private class TagBroadcastReceiver extends BroadcastReceiver {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            BmobInvitation message = (BmobInvitation) intent.getSerializableExtra("invite");
-            refreshInvite(message);
-            // �ǵðѹ㲥���ս��
-            abortBroadcast();
-        }
+    public static void updataPhoto(Bitmap tBitmap) {
+        headPhoto.setImageBitmap(tBitmap);
     }
 }
