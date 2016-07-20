@@ -30,7 +30,7 @@ public class ShortcutUtils {
         shortcut.putExtra(Intent.EXTRA_SHORTCUT_NAME, context.getString(R.string.app_name));
         // ����ͼ��
         shortcut.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE,
-                Intent.ShortcutIconResource.fromContext(context, R.drawable.ic_launcher));
+                Intent.ShortcutIconResource.fromContext(context, R.drawable.default_head_photo));
         // ������ͼ�Ϳ�ݷ�ʽ��������
         shortcut.putExtra(Intent.EXTRA_SHORTCUT_INTENT, intent);
 

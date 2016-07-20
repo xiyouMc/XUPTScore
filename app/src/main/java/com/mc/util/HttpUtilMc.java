@@ -21,16 +21,16 @@ import java.io.IOException;
 
 public class HttpUtilMc {
     // ��URL
-    public static final String IP = "http://119.29.187.147";
+    public static final String IP = "http://139.129.210.109";
     public static final String BASE_URL = IP + "/xuptqueryscore/";
     public static final String LIB_URL = IP + "/xuptlibrary/";
-    public static final String XUPT_IP1 = "119.29.187.147";
-    public static final String XUPT_IP2 = "119.29.187.147";
-    public static final String xiyouMC_IP = "http://119.29.187.147";
+    public static final String XUPT_IP1 = "139.129.210.109";
+    public static final String XUPT_IP2 = "139.129.210.109";
+    public static final String xiyouMC_IP = "http://139.129.210.109";
     public static final String XIYOUMC_BASE_IP = xiyouMC_IP + "/xuptqueryscore/";
-    public static String SERVER_ADDRESS = "119.29.187.147";
-    public static String libURL = "http://119.29.187.147/XiYouLibrary/login";
-    public static String RENEW_URL = "http://119.29.187.147/XiYouLibrary/renew";
+    public static String SERVER_ADDRESS = "139.129.210.109";
+    public static String libURL = "http://www.codemc.top/XiYouLibrary/login";
+    public static String RENEW_URL = "http://www.codemc.top/XiYouLibrary/renew";
   /*
    * public static String SERVER_ADDRESS="192.168.11.1"; public static int SERVER_PORT = 8080;
    */

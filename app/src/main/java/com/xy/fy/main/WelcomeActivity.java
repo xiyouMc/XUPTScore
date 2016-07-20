@@ -42,15 +42,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class WelcomeActivity extends Activity {
-
-    Runnable runnableUi = new Runnable() {
-        @SuppressLint("NewApi")
-        @Override
-        public void run() {
-
-        }
-
-    };
     private LinearLayout welcome;
     private Handler mHandler = new Handler();
     private Bitmap bitmap;
