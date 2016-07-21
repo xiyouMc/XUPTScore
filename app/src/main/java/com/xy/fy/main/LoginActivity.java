@@ -1,5 +1,13 @@
 package com.xy.fy.main;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import com.mc.db.DBConnection;
 import com.mc.db.DBConnection.UserSchema;
 import com.mc.util.CircleImageView;
@@ -15,9 +23,6 @@ import com.xy.fy.util.StaticVarUtil;
 import com.xy.fy.util.ViewUtil;
 import com.xy.fy.view.PullDoorView;
 import com.xy.fy.view.ToolClass;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -52,14 +57,10 @@ import android.view.animation.LinearInterpolator;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
 
 public class LoginActivity extends Activity {
 
@@ -79,18 +80,6 @@ public class LoginActivity extends Activity {
     private Handler mHandler;
     private Bitmap bitmap;
     private String scaletype;
-    Runnable runnableUi = new Runnable() {
-        @Override
-        public void run() {
-            pullDoorView.setScaletype(
-                    scaletype.equals("0") ? ImageView.ScaleType.FIT_XY : ImageView.ScaleType.CENTER_CROP);
-            pullDoorView.setBgBitmap(bitmap);
-            savePic.clearAnimation();
-            savePic.setBackgroundResource(R.drawable.picture_down_up);
-
-        }
-
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,11 +103,11 @@ public class LoginActivity extends Activity {
         sqLiteDatabase = helper.getWritableDatabase();
         this.findViewById();
         if (!this.initData()) {
-            ViewUtil.toastLength("�ڴ濨������", LoginActivity.this);
+            ViewUtil.toastLength("内存卡有问题", LoginActivity.this);
         }
-        this.isRemember();// �Ƿ��Ǽ�ס�����
-        ToolClass.map();// ��ʼ��ӳ���ϵ����ֹ�Ժ��õ�
-        // ������밴ť
+        this.isRemember();// 是否是记住密码的
+        ToolClass.map();// 初始化映射关系，防止以后用到
+        // 忘记密码按钮
         this.forgetPassWord.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -126,14 +115,14 @@ public class LoginActivity extends Activity {
          * Intent intent = new Intent(); intent.setClass(getApplicationContext(),
          * ForgetPasswordActivity.class); startActivity(intent);
          */
-                ViewUtil.showToast(getApplicationContext(), "�ݲ����ã�������ע������");
+                ViewUtil.showToast(getApplicationContext(), "暂不可用，请持续关注。。。");
             }
         });
         this.login.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (account.getText().toString().isEmpty() || password.getText().toString().isEmpty()) {
-                    H5Toast.showToast(getApplicationContext(), "�������˺Ż�����");
+                if(account.getText().toString().isEmpty() || password.getText().toString().isEmpty()){
+                    H5Toast.showToast(getApplicationContext(), "请输入账号或密码");
                     return;
                 }
                 if (Util.isFastDoubleClick()) {
@@ -148,7 +137,7 @@ public class LoginActivity extends Activity {
                 } else {
                     login();
                 }
-                // H5Toast.showToast(getApplicationContext(), "���粻�ȶ������Ժ�");
+                // H5Toast.showToast(getApplicationContext(), "网络不稳定，请稍后。");
                 // Intent intent = new Intent();
                 // intent.setClass(LoginActivity.this, MainActivity.class);
                 // if (progressDialog != null) {
@@ -184,7 +173,7 @@ public class LoginActivity extends Activity {
                         try {
                             if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
                                 if (result.equals("error") || result.equals("errorReq")) {
-                                    ViewUtil.showToast(LoginActivity.this, "֤����ڣ������µ�¼��");
+                                    ViewUtil.showToast(LoginActivity.this, "证书过期，请重新登录。");
 
                                     // password.setText("");
                                     if (progressDialog != null) {
@@ -267,16 +256,16 @@ public class LoginActivity extends Activity {
                             bitmap != null ? bitmap
                                     : BitmapFactory.decodeResource(getResources(), R.drawable.left1),
                             imageTime + ".jpg");
-                    ViewUtil.showToast(getApplicationContext(), "�����ļ��ɹ�");
+                    ViewUtil.showToast(getApplicationContext(), "保存文件成功");
                 } else {
-                    ViewUtil.showToast(getApplicationContext(), "sdcard������");
+                    ViewUtil.showToast(getApplicationContext(), "sdcard不存在");
                 }
 
             }
         });
         mHandler = new Handler();
         pullDoorView = (PullDoorView) findViewById(R.id.myImage);
-        if (isPoll.equals("1")) {// ��������
+        if (isPoll.equals("1")) {// 下拉下载
             final Animation anim = AnimationUtils.loadAnimation(getApplicationContext(),
                     R.anim.animated_remote);
             LinearInterpolator lir = new LinearInterpolator();
@@ -304,6 +293,19 @@ public class LoginActivity extends Activity {
         }
     }
 
+    Runnable runnableUi = new Runnable() {
+        @Override
+        public void run() {
+            pullDoorView.setScaletype(
+                    scaletype.equals("0") ? ImageView.ScaleType.FIT_XY : ImageView.ScaleType.CENTER_CROP);
+            pullDoorView.setBgBitmap(bitmap);
+            savePic.clearAnimation();
+            savePic.setBackgroundResource(R.drawable.picture_down_up);
+
+        }
+
+    };
+
     @SuppressLint("InlinedApi")
     private void setTranslucentStatus(boolean on) {
         Window win = getWindow();
@@ -330,9 +332,9 @@ public class LoginActivity extends Activity {
     private boolean initData() {
         this.progressDialog = ViewUtil.getProgressDialog(LoginActivity.this,
                 this.getString(R.string.logining, ""));
-        // ��ȡ��ݿ�
+        // 获取数据库
         boolean isSDcardExist = Environment.getExternalStorageState()
-                .equals(Environment.MEDIA_MOUNTED); // �ж�sd���Ƿ����
+                .equals(android.os.Environment.MEDIA_MOUNTED); // 判断sd卡是否存在
         return isSDcardExist;
     }
 
@@ -345,7 +347,7 @@ public class LoginActivity extends Activity {
     }
 
     /**
-     * �Ƿ��Ǽ�ס����
+     * 是否是记住密码
      */
     private void isRemember() {
         SharedPreferences preferences = getSharedPreferences(StaticVarUtil.USER_INFO, MODE_PRIVATE);
@@ -356,29 +358,29 @@ public class LoginActivity extends Activity {
     }
 
     /**
-     * ��ס����
+     * 记住密码
      */
     private void rememberPassword(String account, String password) {
         SharedPreferences preferences = getSharedPreferences(StaticVarUtil.USER_INFO, MODE_PRIVATE);
         Editor editor = preferences.edit();
         editor.putString(StaticVarUtil.ACCOUNT, account);
-        // ������ݿ�
+        // 插入数据库
         ContentValues values = new ContentValues();
-        values.put(UserSchema.USERNAME, account);
-        values.put(UserSchema.PASSWORD, password);
+        values.put(com.mc.db.DBConnection.UserSchema.USERNAME, account);
+        values.put(com.mc.db.DBConnection.UserSchema.PASSWORD, password);
         int i = sqLiteDatabase.update(UserSchema.TABLE_NAME, values, "username='" + account + "'",
                 null);
-        if (i == 0) {// ˵��û������û������Եò���
-            sqLiteDatabase.insert(UserSchema.TABLE_NAME, null, values);// ����
+        if (i == 0) {// 说明没有这个用户，所以得插入
+            sqLiteDatabase.insert(UserSchema.TABLE_NAME, null, values);// 插入
         }
 
         editor.putString(StaticVarUtil.PASSWORD, password);
-        editor.putBoolean(StaticVarUtil.IS_REMEMBER, true);// ��ס����
+        editor.putBoolean(StaticVarUtil.IS_REMEMBER, true);// 记住密码
         editor.commit();
     }
 
     /**
-     * �������̵߳�½
+     * 开启新线程登陆
      */
     private void login() {
 
@@ -387,12 +389,12 @@ public class LoginActivity extends Activity {
         try {
             Integer.parseInt(strAccount);
         } catch (Exception e) {
-            ViewUtil.showToast(getApplicationContext(), "�˺ű���Ϊʮλ���ڵ����֣�");
+            ViewUtil.showToast(getApplicationContext(), "账号必须为十位以内的数字！");
             return;
         }
         if (strAccount == null || strAccount.equals("") || strPassword.equals("")
                 || strPassword == null) {
-            ViewUtil.showToast(getApplicationContext(), "�˺����벻��Ϊ��");
+            ViewUtil.showToast(getApplicationContext(), "账号密码不能为空");
             return;
         }
         if (!ConnectionUtil.isConn(getApplicationContext())) {
@@ -423,14 +425,14 @@ public class LoginActivity extends Activity {
     }
 
     /**
-     * �ҵ��ؼ�ID
+     * 找到控件ID
      */
     @SuppressLint("SdCardPath")
     private void findViewById() {
         if (Util.isExternalStorageWritable()) {
-            StaticVarUtil.PATH = "/sdcard/xuptscore/";// �����ļ�Ŀ¼
+            StaticVarUtil.PATH = "/sdcard/xuptscore/";// 设置文件目录
         } else {
-            StaticVarUtil.PATH = "/data/data/com.xy.fy.main/";// �����ļ�Ŀ¼
+            StaticVarUtil.PATH = "/data/data/com.xy.fy.main/";// 设置文件目录
         }
 
         if (!new File(StaticVarUtil.PATH).exists()) {
@@ -451,20 +453,20 @@ public class LoginActivity extends Activity {
                 return false;
             }
         });
-        String[] USERSFROM = {UserSchema.ID, UserSchema.USERNAME, UserSchema.PASSWORD,};
+        String[] USERSFROM = { UserSchema.ID, UserSchema.USERNAME, UserSchema.PASSWORD, };
         Cursor c = sqLiteDatabase.query(UserSchema.TABLE_NAME, USERSFROM, null, null, null, null, null);
         HashSet<String> set = new HashSet<String>();
         while (c.moveToNext()) {
-            set.add(c.getString(1));// ��ȡ�û���
+            set.add(c.getString(1));// 获取用户名
         }
-        // ��ȡ�����û�
+        // 读取所有用户
         String[] users = new String[set.size()];
         set.toArray(users);
         c.close();
-        // ����һ��ArrayAdapter��װ����
+        // 创建一个ArrayAdapter封装数组
         ArrayAdapter<String> av = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, users);
-        // �˺� �Զ���ʾ
+        // 账号 自动提示
         account = (AutoCompleteTextView) findViewById(R.id.etAccount);
         account.setAdapter(av);
         account.setOnKeyListener(new OnKeyListener() {
@@ -499,17 +501,17 @@ public class LoginActivity extends Activity {
             public void afterTextChanged(Editable s) {
                 // TODO Auto-generated method stub
                 if (account.getText().toString().length() < 8) {
-                    password.setText("");// �����ÿ�
-                    // ���� Ĭ��ͷ��
+                    password.setText("");// 密码置空
+                    // 设置 默认头像
                     Drawable drawable = LoginActivity.this.getResources().getDrawable(R.drawable.person);
                     photo.setImageDrawable(drawable);
                 }
                 if (account.getText().toString().length() == 8) {
                     password
                             .setText(DBConnection.getPassword(account.getText().toString(), LoginActivity.this));
-                    // �ж� ͷ���ļ������Ƿ�� ���û���ͷ��
+                    // 判断 头像文件夹中是否包含 该用户的头像
                     File file = new File(StaticVarUtil.PATH + "/" + account.getText().toString() + ".JPEG");
-                    if (file.exists()) {// ������
+                    if (file.exists()) {// 如果存在
                         Bitmap bitmap = Util.convertToBitmap(
                                 StaticVarUtil.PATH + "/" + account.getText().toString() + ".JPEG", 240, 240);
                         if (bitmap != null) {
@@ -518,7 +520,7 @@ public class LoginActivity extends Activity {
                             file.delete();
                         }
 
-                    } else {// ����ļ����в��������ͷ��
+                    } else {// 如果文件夹中不存在这个头像。
                         ;
                     }
                 }
