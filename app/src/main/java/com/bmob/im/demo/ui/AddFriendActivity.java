@@ -4,7 +4,7 @@ import com.bmob.im.demo.adapter.AddFriendAdapter;
 import com.bmob.im.demo.util.CollectionUtils;
 import com.bmob.im.demo.view.xlist.XListView;
 import com.bmob.im.demo.view.xlist.XListView.IXListViewListener;
-import com.mc.util.RankUtils;
+import com.util.RankUtils;
 import com.xy.fy.main.R;
 
 import android.app.ProgressDialog;

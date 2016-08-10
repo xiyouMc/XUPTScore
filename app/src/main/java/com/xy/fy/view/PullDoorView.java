@@ -1,7 +1,6 @@
 package com.xy.fy.view;
 
 import com.xy.fy.main.R;
-import com.xy.fy.util.ViewUtil;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -19,6 +18,8 @@ import android.view.animation.Interpolator;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Scroller;
+
+import top.codemc.common.util.ViewUtil;
 
 public class PullDoorView extends RelativeLayout {
 

@@ -1,13 +1,13 @@
 package com.xy.fy.asynctask;
 
-import com.mc.util.HttpUtilMc;
-import com.mc.util.ProgressDialogUtil;
-import com.mc.util.Util;
-import com.mc.util.VersionUpdate;
-
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.util.Log;
+
+import top.codemc.common.util.ProgressDialogUtil;
+import top.codemc.common.util.Util;
+import top.codemc.common.util.VersionUpdate;
+import top.codemc.rpcapi.HttpUtilMc;
 
 public class CheckVersionAsynctask extends AsyncTask<String, String, String> {
 

@@ -3,12 +3,12 @@ package com.xy.fy.asynctask;
 import com.cardsui.example.MyPlayCard;
 import com.fima.cardsui.objects.CardStack;
 import com.fima.cardsui.views.CardUI;
-import com.mc.util.ProgressDialogUtil;
-import com.mc.util.ScoreUtil;
-import com.mc.util.Util;
+import top.codemc.common.util.ProgressDialogUtil;
+import top.codemc.common.util.ScoreUtil;
+import top.codemc.common.util.StaticVarUtil;
+import top.codemc.common.util.Util;
 import com.xy.fy.main.R;
 import com.xy.fy.main.ShowScoreActivity;
-import com.xy.fy.util.StaticVarUtil;
 
 import org.json.JSONArray;
 import org.json.JSONException;

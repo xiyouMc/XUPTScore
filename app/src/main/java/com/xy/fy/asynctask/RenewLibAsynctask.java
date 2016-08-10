@@ -1,11 +1,12 @@
 package com.xy.fy.asynctask;
 
 
-import com.mc.util.HttpUtilMc;
-import com.mc.util.Util;
+import top.codemc.common.util.StaticVarUtil;
+import top.codemc.common.util.Util;
+import top.codemc.common.util.ViewUtil;
+import top.codemc.rpcapi.HttpUtilMc;
+
 import com.xy.fy.adapter.LibAdapter;
-import com.xy.fy.util.StaticVarUtil;
-import com.xy.fy.util.ViewUtil;
 
 import android.app.Activity;
 import android.app.ProgressDialog;

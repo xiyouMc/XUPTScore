@@ -5,10 +5,10 @@ import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.mc.util.ScoreUtil;
-import com.mc.util.Util;
-import com.xy.fy.util.StaticVarUtil;
-import com.xy.fy.util.ViewUtil;
+import top.codemc.common.util.ScoreUtil;
+import top.codemc.common.util.StaticVarUtil;
+import top.codemc.common.util.Util;
+import top.codemc.common.util.ViewUtil;
 
 import android.app.Activity;
 import android.content.res.Resources;

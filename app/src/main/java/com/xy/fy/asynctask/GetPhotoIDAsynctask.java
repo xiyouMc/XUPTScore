@@ -1,10 +1,10 @@
 package com.xy.fy.asynctask;
 
-import com.mc.db.DBConnection;
-import com.mc.util.CircleImageView;
-import com.mc.util.HttpUtilMc;
-import com.mc.util.Util;
-import com.xy.fy.util.StaticVarUtil;
+import top.codemc.common.util.StaticVarUtil;
+import top.codemc.common.util.db.DBConnection;
+import com.xy.fy.view.CircleImageView;
+import top.codemc.common.util.Util;
+import top.codemc.rpcapi.HttpUtilMc;
 
 import android.app.Activity;
 import android.graphics.Bitmap;

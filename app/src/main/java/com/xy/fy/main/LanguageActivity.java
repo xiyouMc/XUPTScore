@@ -4,15 +4,12 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 import com.bmob.im.demo.ui.BaseActivity;
-import com.mc.db.DBConnection;
-import com.mc.db.DBConnection.UserSchema;
-import com.mc.util.Util;
-import com.xy.fy.adapter.LanguageAdapter;
-import com.xy.fy.main.R.color;
-import com.xy.fy.singleton.Language;
-import com.xy.fy.util.StaticVarUtil;
 
-import android.content.ContentValues;
+import top.codemc.common.util.StaticVarUtil;
+import top.codemc.common.util.Util;
+import com.xy.fy.adapter.LanguageAdapter;
+import top.codemc.common.util.singleton.Language;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;

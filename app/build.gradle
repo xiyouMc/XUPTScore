@@ -31,4 +31,6 @@ dependencies {
     compile project(":cardsuilib")
     compile project(":slidemenu")
     compile project(":actionbarsherlock")
+    compile project(":rpcapi")
+    compile project(":common")
 }

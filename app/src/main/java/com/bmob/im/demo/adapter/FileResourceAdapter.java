@@ -5,8 +5,6 @@ import com.bmob.btp.callback.DownloadListener;
 import com.bmob.im.demo.adapter.base.BaseListAdapter;
 import com.bmob.im.demo.adapter.base.ViewHolder;
 import com.xy.fy.main.R;
-import com.xy.fy.util.FileUtils;
-import com.xy.fy.util.StaticVarUtil;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
@@ -20,6 +18,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
+
+import top.codemc.common.util.FileUtils;
+import top.codemc.common.util.StaticVarUtil;
 
 /**
  * 云文件

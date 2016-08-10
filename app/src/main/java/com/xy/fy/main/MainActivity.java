@@ -25,20 +25,27 @@ import com.bmob.im.demo.ui.fragment.RecentFragment;
 import com.bmob.im.demo.ui.fragment.SettingsFragment;
 import com.bmob.im.demo.view.HeaderLayout;
 import com.fima.cardsui.views.CardUI;
-import com.mc.db.DBConnection;
-import com.mc.util.BadgeUtil;
-import com.mc.util.CircleImageView;
-import com.mc.util.CustomRankListView;
-import com.mc.util.H5Log;
-import com.mc.util.H5Toast;
-import com.mc.util.HttpUtilMc;
-import com.mc.util.LogcatHelper;
-import com.mc.util.Passport;
-import com.mc.util.ProgressDialogUtil;
-import com.mc.util.RankUtils;
-import com.mc.util.SIMCardInfo;
-import com.mc.util.ScoreUtil;
-import com.mc.util.Util;
+
+import top.codemc.common.util.BitmapUtil;
+import top.codemc.common.util.ConnectionUtil;
+import top.codemc.common.util.StaticVarUtil;
+import top.codemc.common.util.TestArrayAdapter;
+import top.codemc.common.util.ViewUtil;
+import top.codemc.common.util.db.DBConnection;
+import top.codemc.common.util.BadgeUtil;
+
+import com.util.ShareUtil;
+import com.xy.fy.view.CircleImageView;
+import com.xy.fy.view.CustomRankListView;
+import top.codemc.common.util.H5Log;
+import com.xy.fy.view.H5Toast;
+import top.codemc.common.util.LogcatHelper;
+import top.codemc.common.util.Passport;
+import top.codemc.common.util.ProgressDialogUtil;
+import com.util.RankUtils;
+import top.codemc.common.util.SIMCardInfo;
+import top.codemc.common.util.ScoreUtil;
+import top.codemc.common.util.Util;
 import com.slidingmenu.lib.SlidingMenu;
 import com.slidingmenu.lib.SlidingMenu.OnOpenListener;
 import com.xy.fy.adapter.LibAdapter;
@@ -50,13 +57,7 @@ import com.xy.fy.asynctask.GetRankAsycntask;
 import com.xy.fy.asynctask.ShowCardAsyncTask;
 import com.xy.fy.asynctask.UploadFileAsytask;
 import com.xy.fy.asynctask.XuptLibLoginAsynctask;
-import com.xy.fy.singleton.BookList;
-import com.xy.fy.util.BitmapUtil;
-import com.xy.fy.util.ConnectionUtil;
-import com.xy.fy.util.ShareUtil;
-import com.xy.fy.util.StaticVarUtil;
-import com.xy.fy.util.TestArrayAdapter;
-import com.xy.fy.util.ViewUtil;
+import top.codemc.common.util.singleton.BookList;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -120,6 +121,7 @@ import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UpdateListener;
 import cn.bmob.v3.listener.UploadFileListener;
 import cn.sharesdk.onekeyshare.OnekeyShare;
+import top.codemc.rpcapi.HttpUtilMc;
 
 public class MainActivity extends BaseActivity implements EventListener {
 

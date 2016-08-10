@@ -1,6 +1,6 @@
 package com.xy.fy.main;
 
-import com.mc.util.Util;
+import top.codemc.common.util.Util;
 
 import android.app.ActivityGroup;
 import android.content.Intent;

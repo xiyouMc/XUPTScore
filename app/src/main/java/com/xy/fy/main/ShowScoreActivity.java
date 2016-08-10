@@ -1,13 +1,13 @@
 package com.xy.fy.main;
 
+import com.util.ShareUtil;
+
 import java.io.FileOutputStream;
 
-import com.mc.util.H5Log;
-import com.mc.util.H5Toast;
-import com.mc.util.Util;
-import com.xy.fy.util.FileUtils;
-import com.xy.fy.util.ShareUtil;
-import com.xy.fy.util.StaticVarUtil;
+import top.codemc.common.util.FileUtils;
+import top.codemc.common.util.H5Log;
+import top.codemc.common.util.StaticVarUtil;
+import top.codemc.common.util.Util;
 
 import android.app.Activity;
 import android.content.Intent;

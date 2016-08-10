@@ -17,9 +17,8 @@ import com.bmob.im.demo.view.HeaderLayout.onRightImageButtonClickListener;
 import com.bmob.im.demo.view.MyLetterView;
 import com.bmob.im.demo.view.MyLetterView.OnTouchingLetterChangedListener;
 import com.bmob.im.demo.view.dialog.DialogTips;
-import com.mc.util.H5Toast;
+import com.xy.fy.view.H5Toast;
 import com.xy.fy.main.R;
-import com.xy.fy.util.StaticVarUtil;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
@@ -55,6 +54,7 @@ import java.util.Map;
 import cn.bmob.im.bean.BmobChatUser;
 import cn.bmob.im.db.BmobDB;
 import cn.bmob.v3.listener.UpdateListener;
+import top.codemc.common.util.StaticVarUtil;
 
 /**
  * ��ϵ��

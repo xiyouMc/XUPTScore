@@ -1,8 +1,9 @@
 package com.xy.fy.asynctask;
 
-import com.mc.util.CircleImageView;
-import com.mc.util.Util;
-import com.xy.fy.util.StaticVarUtil;
+import com.xy.fy.view.CircleImageView;
+
+import top.codemc.common.util.StaticVarUtil;
+import top.codemc.common.util.Util;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
