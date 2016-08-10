@@ -1,11 +1,12 @@
 package com.xy.fy.adapter;
 
-import com.mc.util.H5Toast;
+import com.xy.fy.view.H5Toast;
 import com.xy.fy.asynctask.RenewLibAsynctask;
 import com.xy.fy.asynctask.XuptLibLoginAsynctask;
 import com.xy.fy.main.R;
-import com.xy.fy.singleton.BookList;
-import com.xy.fy.util.StaticVarUtil;
+
+import top.codemc.common.util.StaticVarUtil;
+import top.codemc.common.util.singleton.BookList;
 
 import org.json.JSONArray;
 import org.json.JSONException;

@@ -8,19 +8,20 @@ import java.util.HashSet;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.mc.db.DBConnection;
-import com.mc.db.DBConnection.UserSchema;
-import com.mc.util.CircleImageView;
-import com.mc.util.H5Toast;
-import com.mc.util.HttpUtilMc;
-import com.mc.util.SystemBarTintManager;
-import com.mc.util.Util;
+import top.codemc.common.util.BitmapUtil;
+import top.codemc.common.util.ConnectionUtil;
+import top.codemc.common.util.StaticVarUtil;
+import top.codemc.common.util.ViewUtil;
+import top.codemc.common.util.db.DBConnection;
+import top.codemc.common.util.db.DBConnection.UserSchema;
+import com.xy.fy.view.CircleImageView;
+import com.xy.fy.view.H5Toast;
+import top.codemc.common.util.SystemBarTintManager;
+import top.codemc.common.util.Util;
+import top.codemc.rpcapi.HttpUtilMc;
+
 import com.xy.fy.asynctask.GetPicAsynctask;
 import com.xy.fy.asynctask.LoginAsynctask;
-import com.xy.fy.util.BitmapUtil;
-import com.xy.fy.util.ConnectionUtil;
-import com.xy.fy.util.StaticVarUtil;
-import com.xy.fy.util.ViewUtil;
 import com.xy.fy.view.PullDoorView;
 import com.xy.fy.view.ToolClass;
 
@@ -57,7 +58,6 @@ import android.view.animation.LinearInterpolator;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -331,7 +331,7 @@ public class LoginActivity extends Activity {
 
     private boolean initData() {
         this.progressDialog = ViewUtil.getProgressDialog(LoginActivity.this,
-                this.getString(R.string.logining, ""));
+                getResources().getString(R.string.logining));
         // 获取数据库
         boolean isSDcardExist = Environment.getExternalStorageState()
                 .equals(android.os.Environment.MEDIA_MOUNTED); // 判断sd卡是否存在
@@ -366,8 +366,8 @@ public class LoginActivity extends Activity {
         editor.putString(StaticVarUtil.ACCOUNT, account);
         // 插入数据库
         ContentValues values = new ContentValues();
-        values.put(com.mc.db.DBConnection.UserSchema.USERNAME, account);
-        values.put(com.mc.db.DBConnection.UserSchema.PASSWORD, password);
+        values.put(top.codemc.common.util.db.DBConnection.UserSchema.USERNAME, account);
+        values.put(top.codemc.common.util.db.DBConnection.UserSchema.PASSWORD, password);
         int i = sqLiteDatabase.update(UserSchema.TABLE_NAME, values, "username='" + account + "'",
                 null);
         if (i == 0) {// 说明没有这个用户，所以得插入

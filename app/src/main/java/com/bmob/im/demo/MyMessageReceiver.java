@@ -4,7 +4,7 @@ import com.bmob.im.demo.ui.MainActivity;
 import com.bmob.im.demo.ui.NewFriendActivity;
 import com.bmob.im.demo.util.CollectionUtils;
 import com.bmob.im.demo.util.CommonUtils;
-import com.mc.util.BadgeUtil;
+import top.codemc.common.util.BadgeUtil;
 import com.xy.fy.main.R;
 
 import org.json.JSONObject;

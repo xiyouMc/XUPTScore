@@ -1,8 +1,9 @@
 package com.xy.fy.adapter;
 
 import com.xy.fy.main.R;
-import com.xy.fy.singleton.Comment;
-import com.xy.fy.util.StaticVarUtil;
+
+import top.codemc.common.util.StaticVarUtil;
+import top.codemc.common.util.singleton.Comment;
 
 import android.content.Context;
 import android.view.LayoutInflater;

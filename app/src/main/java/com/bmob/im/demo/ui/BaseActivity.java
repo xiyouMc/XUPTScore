@@ -8,10 +8,10 @@ import com.bmob.im.demo.view.HeaderLayout.HeaderStyle;
 import com.bmob.im.demo.view.HeaderLayout.onLeftImageButtonClickListener;
 import com.bmob.im.demo.view.HeaderLayout.onRightImageButtonClickListener;
 import com.bmob.im.demo.view.dialog.DialogTips;
-import com.mc.util.Util;
+
+import top.codemc.common.util.MyPreferences;
+import top.codemc.common.util.Util;
 import com.xy.fy.main.R;
-import com.xy.fy.util.MyPreferences;
-import com.xy.fy.util.ViewUtil;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -39,6 +39,7 @@ import cn.bmob.im.config.BmobConfig;
 import cn.bmob.im.util.BmobLog;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.UpdateListener;
+import top.codemc.common.util.ViewUtil;
 
 /**
  * ����

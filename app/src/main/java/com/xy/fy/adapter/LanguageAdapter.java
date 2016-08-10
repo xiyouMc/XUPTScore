@@ -1,7 +1,7 @@
 package com.xy.fy.adapter;
 
 import com.xy.fy.main.R;
-import com.xy.fy.singleton.Language;
+import top.codemc.common.util.singleton.Language;
 
 import android.content.Context;
 import android.view.LayoutInflater;

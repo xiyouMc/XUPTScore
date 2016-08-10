@@ -5,13 +5,14 @@ import com.bmob.im.demo.bean.User;
 import com.bmob.im.demo.util.CollectionUtils;
 import com.bmob.im.demo.util.ImageLoadOptions;
 import com.bmob.im.demo.view.dialog.DialogTips;
-import com.mc.util.Util;
+
+import top.codemc.common.util.BitmapUtil;
+import top.codemc.common.util.StaticVarUtil;
+import top.codemc.common.util.Util;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.xy.fy.asynctask.UploadFileAsytask;
 import com.xy.fy.main.MainActivity;
 import com.xy.fy.main.R;
-import com.xy.fy.util.BitmapUtil;
-import com.xy.fy.util.StaticVarUtil;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;

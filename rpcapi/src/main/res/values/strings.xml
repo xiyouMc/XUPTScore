@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">RpcApi</string>
+    <string name="repeat_login">服务器异常，请重新登录</string>
+    <string name="repeating_login">服务器异常，正在重新登录</string>
+</resources>

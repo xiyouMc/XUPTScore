@@ -6,10 +6,9 @@ import com.bmob.im.demo.adapter.FileResourceAdapter;
 import com.bmob.im.demo.view.HeaderLayout;
 import com.bmob.im.demo.view.HeaderLayout.HeaderStyle;
 import com.bmob.im.demo.view.HeaderLayout.onRightImageButtonClickListener;
-import com.mc.util.H5Toast;
+import com.xy.fy.view.H5Toast;
 import com.xy.fy.main.R;
-import com.xy.fy.util.OpenFileDialog;
-import com.xy.fy.util.OpenFileDialog.CallbackBundle;
+import com.xy.fy.view.OpenFileDialog;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -108,7 +107,7 @@ public class FileSourceActivity extends Activity implements OnItemLongClickListe
             images.put(OpenFileDialog.sFolder, R.drawable.filedialog_folder); // �ļ���ͼ��
             images.put("wav", R.drawable.filedialog_wavfile); // wav�ļ�ͼ��
             images.put(OpenFileDialog.sEmpty, R.drawable.filedialog_root);
-            Dialog dialog = OpenFileDialog.createDialog(id, this, "���ļ�", new CallbackBundle() {
+            Dialog dialog = OpenFileDialog.createDialog(id, this, "���ļ�", new OpenFileDialog.CallbackBundle() {
                 @Override
                 public void callback(Bundle bundle) {
                     String filepath = bundle.getString("path");
