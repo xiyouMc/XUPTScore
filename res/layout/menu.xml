@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/dimgray"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="180dp"
+        android:background="@drawable/menu_head_bg2"
+        android:orientation="horizontal"
+        android:paddingLeft="25dp" >
+
+        <com.mc.util.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/headphoto"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/person" />
+
+        <TextView
+            android:id="@+id/nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dp"
+            android:text="@string/guest"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/expand_divider" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#4F5F6F"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/menu_bang"
+                android:layout_width="318dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/menu_list"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="horizontal"
+                android:padding="5dp" >
+
+                <ImageView
+                    android:layout_width="35dip"
+                    android:layout_height="35dip"
+                    android:src="@drawable/menu_bang" />
+
+                <TextView
+                    android:layout_width="110dp"
+                    android:layout_height="fill_parent"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="15dp"
+                    android:text="@string/score_query"
+                    android:textColor="@drawable/change_menu_text_color"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:layout_width="40dip"
+                    android:layout_height="40dip"
+                    android:layout_gravity="center"
+                    android:paddingLeft="20dp"
+                    android:src="@drawable/menu_arrow" />
+            </LinearLayout>
+
+            <!-- 我发表的说说 -->
+
+            <LinearLayout
+                android:id="@+id/menu_my_bukao"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/menu_list"
+                android:clickable="true"
+                android:orientation="horizontal"
+                android:padding="5dp" >
+
+                <ImageView
+                    android:layout_width="35dip"
+                    android:layout_height="35dip"
+                    android:src="@drawable/menu_haoyou" />
+
+                <RelativeLayout
+                    android:layout_width="110dip"
+                    android:layout_height="match_parent" >
+
+                    <TextView
+                        android:id="@+id/bukao_tip"
+                        android:layout_width="90dp"
+                        android:layout_height="fill_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="15dp"
+                        android:text="@string/friend_make_up"
+                        android:textColor="@drawable/change_menu_text_color"
+                        android:textSize="18dp" />
+
+                    <ImageView
+                        android:id="@+id/iv_bukao_tips"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="7dp"
+                        android:background="@drawable/msg_tips"
+                        android:contentDescription="@string/action_settings"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"
+                        android:textSize="12sp"
+                        android:visibility="gone" >
+                    </ImageView>
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="40dip"
+                    android:layout_height="40dip"
+                    android:layout_gravity="center"
+                    android:paddingLeft="20dp"
+                    android:src="@drawable/menu_arrow" />
+            </LinearLayout>
+            <!-- 成绩统计 -->
+
+            <LinearLayout
+                android:id="@+id/menu_my_cj_tongji"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/menu_list"
+                android:clickable="true"
+                android:orientation="horizontal"
+                android:padding="5dp" >
+
+                <ImageView
+                    android:layout_width="35dip"
+                    android:layout_height="35dip"
+                    android:src="@drawable/menu_my_publish" />
+
+                <TextView
+                    android:layout_width="110dp"
+                    android:layout_height="fill_parent"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="15dp"
+                    android:text="@string/score_statistic"
+                    android:textColor="@drawable/change_menu_text_color"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:layout_width="40dip"
+                    android:layout_height="40dip"
+                    android:layout_gravity="center"
+                    android:paddingLeft="20dp"
+                    android:src="@drawable/menu_arrow" />
+            </LinearLayout>
+
+            <!-- 我评论过的说说 -->
+
+            <LinearLayout
+                android:id="@+id/menu_my_paiming"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/menu_list"
+                android:clickable="true"
+                android:orientation="horizontal"
+                android:padding="5dp" >
+
+                <ImageView
+                    android:layout_width="35dip"
+                    android:layout_height="30dip"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/menu_paiming" />
+
+                <TextView
+                    android:layout_width="110dp"
+                    android:layout_height="fill_parent"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="15dp"
+                    android:text="@string/my_rank"
+                    android:textColor="@drawable/change_menu_text_color"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:layout_width="40dip"
+                    android:layout_height="40dip"
+                    android:layout_gravity="center"
+                    android:paddingLeft="20dp"
+                    android:src="@drawable/menu_arrow" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/menu_my_cet"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/menu_list"
+                android:clickable="true"
+                android:orientation="horizontal"
+                android:padding="5dp" >
+
+                <ImageView
+                    android:layout_width="35dip"
+                    android:layout_height="35dip"
+                    android:src="@drawable/menu_my_comment" />
+
+                <TextView
+                    android:layout_width="110dp"
+                    android:layout_height="fill_parent"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="15dp"
+                    android:text="@string/query_cet"
+                    android:textColor="@drawable/change_menu_text_color"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:layout_width="40dip"
+                    android:layout_height="40dip"
+                    android:layout_gravity="center"
+                    android:paddingLeft="20dp"
+                    android:src="@drawable/menu_arrow" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/menu_my_lib"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/menu_list"
+                android:clickable="true"
+                android:orientation="horizontal"
+                android:padding="5dp" >
+
+                <ImageView
+                    android:layout_width="35dip"
+                    android:layout_height="35dip"
+                    android:src="@drawable/menu_tushu" />
+
+                <TextView
+                    android:layout_width="110dp"
+                    android:layout_height="fill_parent"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="15dp"
+                    android:text="@string/my_lib"
+                    android:textColor="@drawable/change_menu_text_color"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:layout_width="40dip"
+                    android:layout_height="40dip"
+                    android:layout_gravity="center"
+                    android:paddingLeft="20dp"
+                    android:src="@drawable/menu_arrow" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/expand_divider" />
+            <!-- 选项设置 -->
+
+            <LinearLayout
+                android:id="@+id/idea_back"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/menu_list"
+                android:clickable="true"
+                android:orientation="horizontal"
+                android:padding="5dp" >
+
+                <ImageView
+                    android:layout_width="35dip"
+                    android:layout_height="35dip"
+                    android:src="@drawable/menu_my_publish" />
+
+                <TextView
+                    android:layout_width="110dp"
+                    android:layout_height="fill_parent"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="15dp"
+                    android:text="@string/opinion_and_feedback"
+                    android:textColor="@drawable/change_menu_text_color"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:layout_width="40dip"
+                    android:layout_height="40dip"
+                    android:layout_gravity="center"
+                    android:paddingLeft="20dp"
+                    android:src="@drawable/menu_arrow" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/menu_setting"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/menu_list"
+                android:clickable="true"
+                android:orientation="horizontal"
+                android:padding="5dp" >
+
+                <ImageView
+                    android:layout_width="35dip"
+                    android:layout_height="35dip"
+                    android:src="@drawable/menu_setting" />
+
+                <TextView
+                    android:layout_width="110dp"
+                    android:layout_height="fill_parent"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="15dp"
+                    android:text="@string/option"
+                    android:textColor="@drawable/change_menu_text_color"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:layout_width="40dip"
+                    android:layout_height="40dip"
+                    android:paddingLeft="20dp"
+                    android:src="@drawable/menu_arrow" />
+            </LinearLayout>
+
+            <!-- 选项设置 -->
+
+            <LinearLayout
+                android:id="@+id/menu_about"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/menu_list"
+                android:clickable="true"
+                android:orientation="horizontal"
+                android:padding="5dp" >
+
+                <ImageView
+                    android:layout_width="35dip"
+                    android:layout_height="35dip"
+                    android:src="@drawable/menu_about" />
+
+                <TextView
+                    android:layout_width="110dp"
+                    android:layout_height="fill_parent"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="15dp"
+                    android:text="@string/about"
+                    android:textColor="@drawable/change_menu_text_color"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:layout_width="40dip"
+                    android:layout_height="40dip"
+                    android:paddingLeft="20dp"
+                    android:src="@drawable/menu_arrow" />
+            </LinearLayout>
+            <!-- 退出 -->
+
+            <LinearLayout
+                android:id="@+id/menu_quit"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/menu_list"
+                android:clickable="true"
+                android:orientation="horizontal"
+                android:padding="5dp" >
+
+                <ImageView
+                    android:layout_width="35dip"
+                    android:layout_height="35dip"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/menu_quit" />
+
+                <TextView
+                    android:layout_width="110dp"
+                    android:layout_height="fill_parent"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="15dp"
+                    android:text="@string/log_out"
+                    android:textColor="@drawable/change_menu_text_color"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:layout_width="40dip"
+                    android:layout_height="40dip"
+                    android:layout_gravity="center"
+                    android:paddingLeft="20dp"
+                    android:src="@drawable/menu_arrow" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

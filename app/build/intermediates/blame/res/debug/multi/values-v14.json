@@ -1,0 +1,1183 @@
+[
+    {
+        "outputFile": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/values-v14/values-v14.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endLine": 3,
+                    "endColumn": 12,
+                    "endOffset": 127
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endLine": 3,
+                        "endColumn": 12,
+                        "endOffset": 127
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 132,
+                    "endLine": 15,
+                    "endColumn": 12,
+                    "endOffset": 978
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 132,
+                        "endLine": 15,
+                        "endColumn": 12,
+                        "endOffset": 978
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 983,
+                    "endLine": 17,
+                    "endColumn": 12,
+                    "endOffset": 1067
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 983,
+                        "endLine": 17,
+                        "endColumn": 12,
+                        "endOffset": 1067
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 18,
+                    "startColumn": 4,
+                    "startOffset": 1072,
+                    "endLine": 19,
+                    "endColumn": 12,
+                    "endOffset": 1212
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 1072,
+                        "endLine": 19,
+                        "endColumn": 12,
+                        "endOffset": 1212
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 20,
+                    "startColumn": 4,
+                    "startOffset": 1217,
+                    "endLine": 21,
+                    "endColumn": 12,
+                    "endOffset": 1357
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 1217,
+                        "endLine": 21,
+                        "endColumn": 12,
+                        "endOffset": 1357
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 22,
+                    "startColumn": 4,
+                    "startOffset": 1362,
+                    "endLine": 23,
+                    "endColumn": 12,
+                    "endOffset": 1494
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 22,
+                        "startColumn": 4,
+                        "startOffset": 1362,
+                        "endLine": 23,
+                        "endColumn": 12,
+                        "endOffset": 1494
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 24,
+                    "startColumn": 4,
+                    "startOffset": 1499,
+                    "endLine": 25,
+                    "endColumn": 12,
+                    "endOffset": 1639
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 24,
+                        "startColumn": 4,
+                        "startOffset": 1499,
+                        "endLine": 25,
+                        "endColumn": 12,
+                        "endOffset": 1639
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 26,
+                    "startColumn": 4,
+                    "startOffset": 1644,
+                    "endLine": 27,
+                    "endColumn": 12,
+                    "endOffset": 1800
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 26,
+                        "startColumn": 4,
+                        "startOffset": 1644,
+                        "endLine": 27,
+                        "endColumn": 12,
+                        "endOffset": 1800
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 28,
+                    "startColumn": 4,
+                    "startOffset": 1805,
+                    "endLine": 29,
+                    "endColumn": 12,
+                    "endOffset": 1939
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 28,
+                        "startColumn": 4,
+                        "startOffset": 1805,
+                        "endLine": 29,
+                        "endColumn": 12,
+                        "endOffset": 1939
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 30,
+                    "startColumn": 4,
+                    "startOffset": 1944,
+                    "endLine": 31,
+                    "endColumn": 12,
+                    "endOffset": 2094
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 30,
+                        "startColumn": 4,
+                        "startOffset": 1944,
+                        "endLine": 31,
+                        "endColumn": 12,
+                        "endOffset": 2094
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 32,
+                    "startColumn": 4,
+                    "startOffset": 2099,
+                    "endLine": 33,
+                    "endColumn": 12,
+                    "endOffset": 2241
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 32,
+                        "startColumn": 4,
+                        "startOffset": 2099,
+                        "endLine": 33,
+                        "endColumn": 12,
+                        "endOffset": 2241
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 34,
+                    "startColumn": 4,
+                    "startOffset": 2246,
+                    "endLine": 35,
+                    "endColumn": 12,
+                    "endOffset": 2404
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 34,
+                        "startColumn": 4,
+                        "startOffset": 2246,
+                        "endLine": 35,
+                        "endColumn": 12,
+                        "endOffset": 2404
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 36,
+                    "startColumn": 4,
+                    "startOffset": 2409,
+                    "endLine": 37,
+                    "endColumn": 12,
+                    "endOffset": 2545
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 36,
+                        "startColumn": 4,
+                        "startOffset": 2409,
+                        "endLine": 37,
+                        "endColumn": 12,
+                        "endOffset": 2545
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 38,
+                    "startColumn": 4,
+                    "startOffset": 2550,
+                    "endLine": 39,
+                    "endColumn": 12,
+                    "endOffset": 2702
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 38,
+                        "startColumn": 4,
+                        "startOffset": 2550,
+                        "endLine": 39,
+                        "endColumn": 12,
+                        "endOffset": 2702
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 40,
+                    "startColumn": 4,
+                    "startOffset": 2707,
+                    "endLine": 41,
+                    "endColumn": 12,
+                    "endOffset": 2829
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 40,
+                        "startColumn": 4,
+                        "startOffset": 2707,
+                        "endLine": 41,
+                        "endColumn": 12,
+                        "endOffset": 2829
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 42,
+                    "startColumn": 4,
+                    "startOffset": 2834,
+                    "endLine": 43,
+                    "endColumn": 12,
+                    "endOffset": 2968
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 42,
+                        "startColumn": 4,
+                        "startOffset": 2834,
+                        "endLine": 43,
+                        "endColumn": 12,
+                        "endOffset": 2968
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 44,
+                    "startColumn": 4,
+                    "startOffset": 2973,
+                    "endLine": 45,
+                    "endColumn": 12,
+                    "endOffset": 3107
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 44,
+                        "startColumn": 4,
+                        "startOffset": 2973,
+                        "endLine": 45,
+                        "endColumn": 12,
+                        "endOffset": 3107
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 46,
+                    "startColumn": 4,
+                    "startOffset": 3112,
+                    "endLine": 49,
+                    "endColumn": 12,
+                    "endOffset": 3285
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 46,
+                        "startColumn": 4,
+                        "startOffset": 3112,
+                        "endLine": 49,
+                        "endColumn": 12,
+                        "endOffset": 3285
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 50,
+                    "startColumn": 4,
+                    "startOffset": 3290,
+                    "endLine": 53,
+                    "endColumn": 12,
+                    "endOffset": 3457
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 50,
+                        "startColumn": 4,
+                        "startOffset": 3290,
+                        "endLine": 53,
+                        "endColumn": 12,
+                        "endOffset": 3457
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 54,
+                    "startColumn": 4,
+                    "startOffset": 3462,
+                    "endLine": 55,
+                    "endColumn": 12,
+                    "endOffset": 3554
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 54,
+                        "startColumn": 4,
+                        "startOffset": 3462,
+                        "endLine": 55,
+                        "endColumn": 12,
+                        "endOffset": 3554
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 56,
+                    "startColumn": 4,
+                    "startOffset": 3559,
+                    "endLine": 57,
+                    "endColumn": 12,
+                    "endOffset": 3663
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 56,
+                        "startColumn": 4,
+                        "startOffset": 3559,
+                        "endLine": 57,
+                        "endColumn": 12,
+                        "endOffset": 3663
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 58,
+                    "startColumn": 4,
+                    "startOffset": 3668,
+                    "endLine": 59,
+                    "endColumn": 12,
+                    "endOffset": 3774
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 58,
+                        "startColumn": 4,
+                        "startOffset": 3668,
+                        "endLine": 59,
+                        "endColumn": 12,
+                        "endOffset": 3774
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 60,
+                    "startColumn": 4,
+                    "startOffset": 3779,
+                    "endLine": 61,
+                    "endColumn": 12,
+                    "endOffset": 3887
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 60,
+                        "startColumn": 4,
+                        "startOffset": 3779,
+                        "endLine": 61,
+                        "endColumn": 12,
+                        "endOffset": 3887
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 62,
+                    "startColumn": 4,
+                    "startOffset": 3892,
+                    "endLine": 63,
+                    "endColumn": 12,
+                    "endOffset": 4000
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 62,
+                        "startColumn": 4,
+                        "startOffset": 3892,
+                        "endLine": 63,
+                        "endColumn": 12,
+                        "endOffset": 4000
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 64,
+                    "startColumn": 4,
+                    "startOffset": 4005,
+                    "endLine": 65,
+                    "endColumn": 12,
+                    "endOffset": 4103
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 64,
+                        "startColumn": 4,
+                        "startOffset": 4005,
+                        "endLine": 65,
+                        "endColumn": 12,
+                        "endOffset": 4103
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 66,
+                    "startColumn": 4,
+                    "startOffset": 4108,
+                    "endLine": 67,
+                    "endColumn": 12,
+                    "endOffset": 4226
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 66,
+                        "startColumn": 4,
+                        "startOffset": 4108,
+                        "endLine": 67,
+                        "endColumn": 12,
+                        "endOffset": 4226
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 68,
+                    "startColumn": 4,
+                    "startOffset": 4231,
+                    "endLine": 69,
+                    "endColumn": 12,
+                    "endOffset": 4347
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 68,
+                        "startColumn": 4,
+                        "startOffset": 4231,
+                        "endLine": 69,
+                        "endColumn": 12,
+                        "endOffset": 4347
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 70,
+                    "startColumn": 4,
+                    "startOffset": 4352,
+                    "endLine": 71,
+                    "endColumn": 12,
+                    "endOffset": 4446
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 70,
+                        "startColumn": 4,
+                        "startOffset": 4352,
+                        "endLine": 71,
+                        "endColumn": 12,
+                        "endOffset": 4446
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 72,
+                    "startColumn": 4,
+                    "startOffset": 4451,
+                    "endLine": 73,
+                    "endColumn": 12,
+                    "endOffset": 4555
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 72,
+                        "startColumn": 4,
+                        "startOffset": 4451,
+                        "endLine": 73,
+                        "endColumn": 12,
+                        "endOffset": 4555
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 74,
+                    "startColumn": 4,
+                    "startOffset": 4560,
+                    "endLine": 75,
+                    "endColumn": 12,
+                    "endOffset": 4676
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 74,
+                        "startColumn": 4,
+                        "startOffset": 4560,
+                        "endLine": 75,
+                        "endColumn": 12,
+                        "endOffset": 4676
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 76,
+                    "startColumn": 4,
+                    "startOffset": 4681,
+                    "endLine": 77,
+                    "endColumn": 12,
+                    "endOffset": 4813
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 76,
+                        "startColumn": 4,
+                        "startOffset": 4681,
+                        "endLine": 77,
+                        "endColumn": 12,
+                        "endOffset": 4813
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 78,
+                    "startColumn": 4,
+                    "startOffset": 4818,
+                    "endLine": 79,
+                    "endColumn": 12,
+                    "endOffset": 4936
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 78,
+                        "startColumn": 4,
+                        "startOffset": 4818,
+                        "endLine": 79,
+                        "endColumn": 12,
+                        "endOffset": 4936
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 80,
+                    "startColumn": 4,
+                    "startOffset": 4941,
+                    "endLine": 81,
+                    "endColumn": 12,
+                    "endOffset": 5075
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 80,
+                        "startColumn": 4,
+                        "startOffset": 4941,
+                        "endLine": 81,
+                        "endColumn": 12,
+                        "endOffset": 5075
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 82,
+                    "startColumn": 4,
+                    "startOffset": 5080,
+                    "endLine": 83,
+                    "endColumn": 12,
+                    "endOffset": 5200
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 82,
+                        "startColumn": 4,
+                        "startOffset": 5080,
+                        "endLine": 83,
+                        "endColumn": 12,
+                        "endOffset": 5200
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 84,
+                    "startColumn": 4,
+                    "startOffset": 5205,
+                    "endLine": 85,
+                    "endColumn": 12,
+                    "endOffset": 5341
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 84,
+                        "startColumn": 4,
+                        "startOffset": 5205,
+                        "endLine": 85,
+                        "endColumn": 12,
+                        "endOffset": 5341
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 86,
+                    "startColumn": 4,
+                    "startOffset": 5346,
+                    "endLine": 87,
+                    "endColumn": 12,
+                    "endOffset": 5466
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 86,
+                        "startColumn": 4,
+                        "startOffset": 5346,
+                        "endLine": 87,
+                        "endColumn": 12,
+                        "endOffset": 5466
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 88,
+                    "startColumn": 4,
+                    "startOffset": 5471,
+                    "endLine": 89,
+                    "endColumn": 12,
+                    "endOffset": 5607
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 88,
+                        "startColumn": 4,
+                        "startOffset": 5471,
+                        "endLine": 89,
+                        "endColumn": 12,
+                        "endOffset": 5607
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 90,
+                    "startColumn": 4,
+                    "startOffset": 5612,
+                    "endLine": 91,
+                    "endColumn": 12,
+                    "endOffset": 5722
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 90,
+                        "startColumn": 4,
+                        "startOffset": 5612,
+                        "endLine": 91,
+                        "endColumn": 12,
+                        "endOffset": 5722
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 92,
+                    "startColumn": 4,
+                    "startOffset": 5727,
+                    "endLine": 93,
+                    "endColumn": 12,
+                    "endOffset": 5857
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 92,
+                        "startColumn": 4,
+                        "startOffset": 5727,
+                        "endLine": 93,
+                        "endColumn": 12,
+                        "endOffset": 5857
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 94,
+                    "startColumn": 4,
+                    "startOffset": 5862,
+                    "endLine": 95,
+                    "endColumn": 12,
+                    "endOffset": 5990
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 94,
+                        "startColumn": 4,
+                        "startOffset": 5862,
+                        "endLine": 95,
+                        "endColumn": 12,
+                        "endOffset": 5990
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 96,
+                    "startColumn": 4,
+                    "startOffset": 5995,
+                    "endLine": 97,
+                    "endColumn": 12,
+                    "endOffset": 6101
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 96,
+                        "startColumn": 4,
+                        "startOffset": 5995,
+                        "endLine": 97,
+                        "endColumn": 12,
+                        "endOffset": 6101
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 98,
+                    "startColumn": 4,
+                    "startOffset": 6106,
+                    "endLine": 99,
+                    "endColumn": 12,
+                    "endOffset": 6228
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 98,
+                        "startColumn": 4,
+                        "startOffset": 6106,
+                        "endLine": 99,
+                        "endColumn": 12,
+                        "endOffset": 6228
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 100,
+                    "startColumn": 4,
+                    "startOffset": 6233,
+                    "endLine": 101,
+                    "endColumn": 12,
+                    "endOffset": 6353
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 100,
+                        "startColumn": 4,
+                        "startOffset": 6233,
+                        "endLine": 101,
+                        "endColumn": 12,
+                        "endOffset": 6353
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 102,
+                    "startColumn": 4,
+                    "startOffset": 6358,
+                    "endLine": 103,
+                    "endColumn": 12,
+                    "endOffset": 6462
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 102,
+                        "startColumn": 4,
+                        "startOffset": 6358,
+                        "endLine": 103,
+                        "endColumn": 12,
+                        "endOffset": 6462
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 104,
+                    "startColumn": 4,
+                    "startOffset": 6467,
+                    "endLine": 105,
+                    "endColumn": 12,
+                    "endOffset": 6586
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 104,
+                        "startColumn": 4,
+                        "startOffset": 6467,
+                        "endLine": 105,
+                        "endColumn": 12,
+                        "endOffset": 6586
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 106,
+                    "startColumn": 4,
+                    "startOffset": 6591,
+                    "endLine": 107,
+                    "endColumn": 12,
+                    "endOffset": 6699
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 106,
+                        "startColumn": 4,
+                        "startOffset": 6591,
+                        "endLine": 107,
+                        "endColumn": 12,
+                        "endOffset": 6699
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 108,
+                    "startColumn": 4,
+                    "startOffset": 6704,
+                    "endLine": 109,
+                    "endColumn": 12,
+                    "endOffset": 6834
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 108,
+                        "startColumn": 4,
+                        "startOffset": 6704,
+                        "endLine": 109,
+                        "endColumn": 12,
+                        "endOffset": 6834
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 110,
+                    "startColumn": 4,
+                    "startOffset": 6839,
+                    "endLine": 111,
+                    "endColumn": 12,
+                    "endOffset": 6971
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 110,
+                        "startColumn": 4,
+                        "startOffset": 6839,
+                        "endLine": 111,
+                        "endColumn": 12,
+                        "endOffset": 6971
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 112,
+                    "startColumn": 4,
+                    "startOffset": 6976,
+                    "endLine": 113,
+                    "endColumn": 12,
+                    "endOffset": 7095
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 112,
+                        "startColumn": 4,
+                        "startOffset": 6976,
+                        "endLine": 113,
+                        "endColumn": 12,
+                        "endOffset": 7095
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 114,
+                    "startColumn": 4,
+                    "startOffset": 7100,
+                    "endLine": 115,
+                    "endColumn": 12,
+                    "endOffset": 7208
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 114,
+                        "startColumn": 4,
+                        "startOffset": 7100,
+                        "endLine": 115,
+                        "endColumn": 12,
+                        "endOffset": 7208
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 116,
+                    "startColumn": 4,
+                    "startOffset": 7213,
+                    "endLine": 117,
+                    "endColumn": 12,
+                    "endOffset": 7305
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 116,
+                        "startColumn": 4,
+                        "startOffset": 7213,
+                        "endLine": 117,
+                        "endColumn": 12,
+                        "endOffset": 7305
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 118,
+                    "startColumn": 4,
+                    "startOffset": 7310,
+                    "endLine": 119,
+                    "endColumn": 12,
+                    "endOffset": 7417
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 118,
+                        "startColumn": 4,
+                        "startOffset": 7310,
+                        "endLine": 119,
+                        "endColumn": 12,
+                        "endOffset": 7417
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 120,
+                    "startColumn": 4,
+                    "startOffset": 7422,
+                    "endLine": 121,
+                    "endColumn": 12,
+                    "endOffset": 7518
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 120,
+                        "startColumn": 4,
+                        "startOffset": 7422,
+                        "endLine": 121,
+                        "endColumn": 12,
+                        "endOffset": 7518
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 122,
+                    "startColumn": 4,
+                    "startOffset": 7523,
+                    "endLine": 123,
+                    "endColumn": 12,
+                    "endOffset": 7641
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 122,
+                        "startColumn": 4,
+                        "startOffset": 7523,
+                        "endLine": 123,
+                        "endColumn": 12,
+                        "endOffset": 7641
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 124,
+                    "startColumn": 4,
+                    "startOffset": 7646,
+                    "endLine": 125,
+                    "endColumn": 12,
+                    "endOffset": 7766
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 124,
+                        "startColumn": 4,
+                        "startOffset": 7646,
+                        "endLine": 125,
+                        "endColumn": 12,
+                        "endOffset": 7766
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 126,
+                    "startColumn": 4,
+                    "startOffset": 7771,
+                    "endLine": 127,
+                    "endColumn": 12,
+                    "endOffset": 7878
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/values-v14/values-v14.xml",
+                    "position": {
+                        "startLine": 126,
+                        "startColumn": 4,
+                        "startOffset": 7771,
+                        "endLine": 127,
+                        "endColumn": 12,
+                        "endOffset": 7878
+                    }
+                }
+            }
+        ]
+    }
+]

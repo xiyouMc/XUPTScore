@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RpcApi</string>
+    <string name="cancel">取消</string>
+    <string name="ok">确定</string>
+    <string name="querying">正在查询</string>
+    <string name="repeat_login">服务器异常，请重新登录</string>
+    <string name="repeating_login">服务器异常，正在重新登录</string>
+    <string name="waiting">请稍等...</string>
+</resources>

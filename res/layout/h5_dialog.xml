@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:minWidth="330dip"
+    android:orientation="vertical"
+    android:padding="30dp" >
+
+    <LinearLayout
+        android:id="@+id/h5_material_background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/h5_dialog_card"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/h5_contentView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="23dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="20dp"
+                android:textColor="#DE000000"
+                android:textSize="23sp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/h5_message_content_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingLeft="24dp"
+                android:paddingRight="23dp" >
+
+                <TextView
+                    android:id="@+id/h5_message"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dip"
+                    android:lineSpacingMultiplier="1.3"
+                    android:maxLines="20"
+                    android:singleLine="false"
+                    android:textColor="#8a000000"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="80dip"
+                    android:layout_height="48dip" />
+
+                <EditText
+                    android:id="@+id/input"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="输入验证码"
+                    android:textColor="@color/black"
+                    android:textCursorDrawable="@null" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/h5_buttonLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/empty_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

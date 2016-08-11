@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="/Users/xiyoumc/dev/github/西邮成绩/slidemenu/src/main/assets"/><source path="/Users/xiyoumc/dev/github/西邮成绩/slidemenu/build/generated/assets/shaders/release"/></dataSet><dataSet config="release"><source path="/Users/xiyoumc/dev/github/西邮成绩/slidemenu/src/release/assets"/></dataSet></merger>

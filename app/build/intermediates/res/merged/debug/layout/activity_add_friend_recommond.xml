@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:background="#FFFFFF"
+              android:orientation="vertical">
+
+    <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="0">
+
+        <TableRow>
+
+            <TextView
+                    android:gravity="left"
+                    android:padding="3dip"
+                    android:text="@string/subject_make_up"
+                    android:textColor="@color/black"/>
+
+            <TextView
+                    android:gravity="center_horizontal"
+                    android:padding="3dip"
+                    android:text="@string/subject_score"
+                    android:textColor="@color/black">
+            </TextView>
+
+            <TextView
+                    android:gravity="center_horizontal"
+                    android:padding="3dip"
+                    android:text="@string/subject_failing_rate"
+                    android:textColor="@color/black"/>
+
+            <TextView
+                    android:gravity="center_horizontal"
+                    android:padding="3dip"
+                    android:text="@string/blank2"/>
+        </TableRow>
+    </TableLayout>
+
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="#FFFFFF">
+
+        <ListView
+                android:id="@+id/recommond_list"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:divider="#CCCCCC"
+                android:dividerHeight="1dp">
+        </ListView>
+    </LinearLayout>
+
+</LinearLayout>

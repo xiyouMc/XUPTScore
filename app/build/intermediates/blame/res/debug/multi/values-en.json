@@ -1,0 +1,4100 @@
+[
+    {
+        "outputFile": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/values-en/values-en.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endLine": 7,
+                    "endColumn": 19,
+                    "endOffset": 223
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 846,
+                        "endLine": 25,
+                        "endColumn": 19,
+                        "endOffset": 1014
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 228,
+                    "endColumn": 43,
+                    "endOffset": 267
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 165,
+                        "startColumn": 4,
+                        "startOffset": 8992,
+                        "endColumn": 43,
+                        "endOffset": 9031
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 272,
+                    "endColumn": 39,
+                    "endOffset": 307
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 104,
+                        "startColumn": 4,
+                        "startOffset": 5520,
+                        "endColumn": 39,
+                        "endOffset": 5555
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 312,
+                    "endColumn": 67,
+                    "endOffset": 375
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 111,
+                        "startColumn": 4,
+                        "startOffset": 5885,
+                        "endColumn": 67,
+                        "endOffset": 5948
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 380,
+                    "endColumn": 52,
+                    "endOffset": 428
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 88,
+                        "startColumn": 4,
+                        "startOffset": 4642,
+                        "endColumn": 52,
+                        "endOffset": 4690
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 433,
+                    "endColumn": 52,
+                    "endOffset": 481
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 196,
+                        "startColumn": 4,
+                        "startOffset": 10548,
+                        "endColumn": 52,
+                        "endOffset": 10596
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 486,
+                    "endColumn": 44,
+                    "endOffset": 526
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 67,
+                        "startColumn": 4,
+                        "startOffset": 3465,
+                        "endColumn": 44,
+                        "endOffset": 3505
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 531,
+                    "endColumn": 50,
+                    "endOffset": 577
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 27,
+                        "startColumn": 4,
+                        "startOffset": 1020,
+                        "endColumn": 50,
+                        "endOffset": 1066
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 582,
+                    "endColumn": 42,
+                    "endOffset": 620
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 71,
+                        "startColumn": 4,
+                        "startOffset": 3677,
+                        "endColumn": 42,
+                        "endOffset": 3715
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 625,
+                    "endColumn": 44,
+                    "endOffset": 665
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 69,
+                        "startColumn": 4,
+                        "startOffset": 3556,
+                        "endColumn": 44,
+                        "endOffset": 3596
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 17,
+                    "startColumn": 4,
+                    "startOffset": 670,
+                    "endColumn": 69,
+                    "endOffset": 735
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 70,
+                        "startColumn": 4,
+                        "startOffset": 3601,
+                        "endColumn": 75,
+                        "endOffset": 3672
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 18,
+                    "startColumn": 4,
+                    "startOffset": 740,
+                    "endColumn": 45,
+                    "endOffset": 781
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 68,
+                        "startColumn": 4,
+                        "startOffset": 3510,
+                        "endColumn": 45,
+                        "endOffset": 3551
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 19,
+                    "startColumn": 4,
+                    "startOffset": 786,
+                    "endColumn": 52,
+                    "endOffset": 834
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 109,
+                        "startColumn": 4,
+                        "startOffset": 5778,
+                        "endColumn": 52,
+                        "endOffset": 5826
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 20,
+                    "startColumn": 4,
+                    "startOffset": 839,
+                    "endColumn": 53,
+                    "endOffset": 888
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 110,
+                        "startColumn": 4,
+                        "startOffset": 5831,
+                        "endColumn": 53,
+                        "endOffset": 5880
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 21,
+                    "startColumn": 4,
+                    "startOffset": 893,
+                    "endColumn": 39,
+                    "endOffset": 928
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 200,
+                        "startColumn": 4,
+                        "startOffset": 10765,
+                        "endColumn": 39,
+                        "endOffset": 10800
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 22,
+                    "startColumn": 4,
+                    "startOffset": 933,
+                    "endColumn": 48,
+                    "endOffset": 977
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 17,
+                        "endColumn": 48,
+                        "endOffset": 61
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 23,
+                    "startColumn": 4,
+                    "startOffset": 982,
+                    "endColumn": 37,
+                    "endOffset": 1015
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 228,
+                        "startColumn": 4,
+                        "startOffset": 12174,
+                        "endColumn": 37,
+                        "endOffset": 12207
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 24,
+                    "startColumn": 4,
+                    "startOffset": 1020,
+                    "endColumn": 43,
+                    "endOffset": 1059
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 193,
+                        "startColumn": 4,
+                        "startOffset": 10407,
+                        "endColumn": 43,
+                        "endOffset": 10446
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 25,
+                    "startColumn": 4,
+                    "startOffset": 1064,
+                    "endLine": 26,
+                    "endColumn": 13,
+                    "endOffset": 1187
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 93,
+                        "startColumn": 4,
+                        "startOffset": 4889,
+                        "endLine": 94,
+                        "endColumn": 13,
+                        "endOffset": 5012
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 27,
+                    "startColumn": 4,
+                    "startOffset": 1192,
+                    "endColumn": 47,
+                    "endOffset": 1235
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 85,
+                        "startColumn": 4,
+                        "startOffset": 4499,
+                        "endColumn": 47,
+                        "endOffset": 4542
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 28,
+                    "startColumn": 4,
+                    "startOffset": 1240,
+                    "endColumn": 26,
+                    "endOffset": 1262
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 795,
+                        "endColumn": 34,
+                        "endOffset": 825
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 29,
+                    "startColumn": 4,
+                    "startOffset": 1267,
+                    "endColumn": 27,
+                    "endOffset": 1290
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 119,
+                        "startColumn": 4,
+                        "startOffset": 6324,
+                        "endColumn": 35,
+                        "endOffset": 6355
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 30,
+                    "startColumn": 4,
+                    "startOffset": 1295,
+                    "endColumn": 47,
+                    "endOffset": 1338
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 202,
+                        "startColumn": 4,
+                        "startOffset": 10845,
+                        "endColumn": 47,
+                        "endOffset": 10888
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 31,
+                    "startColumn": 4,
+                    "startOffset": 1343,
+                    "endColumn": 33,
+                    "endOffset": 1372
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 183,
+                        "startColumn": 4,
+                        "startOffset": 9920,
+                        "endColumn": 33,
+                        "endOffset": 9949
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 32,
+                    "startColumn": 4,
+                    "startOffset": 1377,
+                    "endColumn": 41,
+                    "endOffset": 1414
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 91,
+                        "startColumn": 4,
+                        "startOffset": 4801,
+                        "endColumn": 41,
+                        "endOffset": 4838
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 33,
+                    "startColumn": 4,
+                    "startOffset": 1419,
+                    "endColumn": 41,
+                    "endOffset": 1456
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 217,
+                        "startColumn": 4,
+                        "startOffset": 11560,
+                        "endColumn": 41,
+                        "endOffset": 11597
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 34,
+                    "startColumn": 4,
+                    "startOffset": 1461,
+                    "endColumn": 71,
+                    "endOffset": 1528
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 122,
+                        "startColumn": 4,
+                        "startOffset": 6478,
+                        "endColumn": 71,
+                        "endOffset": 6545
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 35,
+                    "startColumn": 4,
+                    "startOffset": 1533,
+                    "endColumn": 75,
+                    "endOffset": 1604
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 121,
+                        "startColumn": 4,
+                        "startOffset": 6402,
+                        "endColumn": 75,
+                        "endOffset": 6473
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 36,
+                    "startColumn": 4,
+                    "startOffset": 1609,
+                    "endColumn": 52,
+                    "endOffset": 1657
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 189,
+                        "startColumn": 4,
+                        "startOffset": 10195,
+                        "endColumn": 52,
+                        "endOffset": 10243
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 37,
+                    "startColumn": 4,
+                    "startOffset": 1662,
+                    "endColumn": 50,
+                    "endOffset": 1708
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 188,
+                        "startColumn": 4,
+                        "startOffset": 10144,
+                        "endColumn": 50,
+                        "endOffset": 10190
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 38,
+                    "startColumn": 4,
+                    "startOffset": 1713,
+                    "endColumn": 49,
+                    "endOffset": 1758
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 190,
+                        "startColumn": 4,
+                        "startOffset": 10248,
+                        "endColumn": 49,
+                        "endOffset": 10293
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 39,
+                    "startColumn": 4,
+                    "startOffset": 1763,
+                    "endColumn": 47,
+                    "endOffset": 1806
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 187,
+                        "startColumn": 4,
+                        "startOffset": 10096,
+                        "endColumn": 47,
+                        "endOffset": 10139
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 40,
+                    "startColumn": 4,
+                    "startOffset": 1811,
+                    "endColumn": 62,
+                    "endOffset": 1869
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 186,
+                        "startColumn": 4,
+                        "startOffset": 10033,
+                        "endColumn": 62,
+                        "endOffset": 10091
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 41,
+                    "startColumn": 4,
+                    "startOffset": 1874,
+                    "endColumn": 39,
+                    "endOffset": 1909
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 182,
+                        "startColumn": 4,
+                        "startOffset": 9880,
+                        "endColumn": 39,
+                        "endOffset": 9915
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 42,
+                    "startColumn": 4,
+                    "startOffset": 1914,
+                    "endColumn": 39,
+                    "endOffset": 1949
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 181,
+                        "startColumn": 4,
+                        "startOffset": 9840,
+                        "endColumn": 39,
+                        "endOffset": 9875
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 43,
+                    "startColumn": 4,
+                    "startOffset": 1954,
+                    "endColumn": 47,
+                    "endOffset": 1997
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 171,
+                        "startColumn": 4,
+                        "startOffset": 9344,
+                        "endColumn": 47,
+                        "endOffset": 9387
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 44,
+                    "startColumn": 4,
+                    "startOffset": 2002,
+                    "endColumn": 51,
+                    "endOffset": 2049
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 172,
+                        "startColumn": 4,
+                        "startOffset": 9392,
+                        "endColumn": 51,
+                        "endOffset": 9439
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 45,
+                    "startColumn": 4,
+                    "startOffset": 2054,
+                    "endColumn": 44,
+                    "endOffset": 2094
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 173,
+                        "startColumn": 4,
+                        "startOffset": 9444,
+                        "endColumn": 44,
+                        "endOffset": 9484
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 46,
+                    "startColumn": 4,
+                    "startOffset": 2099,
+                    "endColumn": 49,
+                    "endOffset": 2144
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 174,
+                        "startColumn": 4,
+                        "startOffset": 9489,
+                        "endColumn": 49,
+                        "endOffset": 9534
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 47,
+                    "startColumn": 4,
+                    "startOffset": 2149,
+                    "endColumn": 49,
+                    "endOffset": 2194
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 176,
+                        "startColumn": 4,
+                        "startOffset": 9579,
+                        "endColumn": 49,
+                        "endOffset": 9624
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 48,
+                    "startColumn": 4,
+                    "startOffset": 2199,
+                    "endColumn": 54,
+                    "endOffset": 2249
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 177,
+                        "startColumn": 4,
+                        "startOffset": 9629,
+                        "endColumn": 54,
+                        "endOffset": 9679
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 49,
+                    "startColumn": 4,
+                    "startOffset": 2254,
+                    "endColumn": 47,
+                    "endOffset": 2297
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 178,
+                        "startColumn": 4,
+                        "startOffset": 9684,
+                        "endColumn": 47,
+                        "endOffset": 9727
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 50,
+                    "startColumn": 4,
+                    "startOffset": 2302,
+                    "endColumn": 45,
+                    "endOffset": 2343
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 179,
+                        "startColumn": 4,
+                        "startOffset": 9732,
+                        "endColumn": 45,
+                        "endOffset": 9773
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 51,
+                    "startColumn": 4,
+                    "startOffset": 2348,
+                    "endColumn": 61,
+                    "endOffset": 2405
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 180,
+                        "startColumn": 4,
+                        "startOffset": 9778,
+                        "endColumn": 61,
+                        "endOffset": 9835
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 52,
+                    "startColumn": 4,
+                    "startOffset": 2410,
+                    "endColumn": 41,
+                    "endOffset": 2447
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 170,
+                        "startColumn": 4,
+                        "startOffset": 9302,
+                        "endColumn": 41,
+                        "endOffset": 9339
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 53,
+                    "startColumn": 4,
+                    "startOffset": 2452,
+                    "endColumn": 50,
+                    "endOffset": 2498
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 86,
+                        "startColumn": 4,
+                        "startOffset": 4547,
+                        "endColumn": 50,
+                        "endOffset": 4593
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 54,
+                    "startColumn": 4,
+                    "startOffset": 2503,
+                    "endColumn": 61,
+                    "endOffset": 2560
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 113,
+                        "startColumn": 4,
+                        "startOffset": 6005,
+                        "endColumn": 61,
+                        "endOffset": 6062
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 55,
+                    "startColumn": 4,
+                    "startOffset": 2565,
+                    "endColumn": 60,
+                    "endOffset": 2621
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 220,
+                        "startColumn": 4,
+                        "startOffset": 11768,
+                        "endColumn": 60,
+                        "endOffset": 11824
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 56,
+                    "startColumn": 4,
+                    "startOffset": 2626,
+                    "endColumn": 40,
+                    "endOffset": 2662
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 164,
+                        "startColumn": 4,
+                        "startOffset": 8951,
+                        "endColumn": 40,
+                        "endOffset": 8987
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 57,
+                    "startColumn": 4,
+                    "startOffset": 2667,
+                    "endColumn": 53,
+                    "endOffset": 2716
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 385,
+                        "endColumn": 53,
+                        "endOffset": 434
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 58,
+                    "startColumn": 4,
+                    "startOffset": 2721,
+                    "endColumn": 41,
+                    "endOffset": 2758
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 146,
+                        "startColumn": 4,
+                        "startOffset": 8037,
+                        "endColumn": 41,
+                        "endOffset": 8074
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 59,
+                    "startColumn": 4,
+                    "startOffset": 2763,
+                    "endColumn": 51,
+                    "endOffset": 2810
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 105,
+                        "startColumn": 4,
+                        "startOffset": 5560,
+                        "endColumn": 51,
+                        "endOffset": 5607
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 60,
+                    "startColumn": 4,
+                    "startOffset": 2815,
+                    "endColumn": 44,
+                    "endOffset": 2855
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 289,
+                        "endColumn": 44,
+                        "endOffset": 329
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 61,
+                    "startColumn": 4,
+                    "startOffset": 2860,
+                    "endColumn": 59,
+                    "endOffset": 2915
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 222,
+                        "startColumn": 4,
+                        "startOffset": 11878,
+                        "endColumn": 59,
+                        "endOffset": 11933
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 62,
+                    "startColumn": 4,
+                    "startOffset": 2920,
+                    "endColumn": 58,
+                    "endOffset": 2974
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 108,
+                        "startColumn": 4,
+                        "startOffset": 5719,
+                        "endColumn": 58,
+                        "endOffset": 5773
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 63,
+                    "startColumn": 4,
+                    "startOffset": 2979,
+                    "endColumn": 44,
+                    "endOffset": 3019
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 107,
+                        "startColumn": 4,
+                        "startOffset": 5674,
+                        "endColumn": 44,
+                        "endOffset": 5714
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 64,
+                    "startColumn": 4,
+                    "startOffset": 3024,
+                    "endColumn": 44,
+                    "endOffset": 3064
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 203,
+                        "startColumn": 4,
+                        "startOffset": 10893,
+                        "endColumn": 44,
+                        "endOffset": 10933
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 65,
+                    "startColumn": 4,
+                    "startOffset": 3069,
+                    "endColumn": 81,
+                    "endOffset": 3146
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 144,
+                        "startColumn": 4,
+                        "startOffset": 7882,
+                        "endColumn": 81,
+                        "endOffset": 7959
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 66,
+                    "startColumn": 4,
+                    "startOffset": 3151,
+                    "endColumn": 72,
+                    "endOffset": 3219
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 145,
+                        "startColumn": 4,
+                        "startOffset": 7964,
+                        "endColumn": 72,
+                        "endOffset": 8032
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 67,
+                    "startColumn": 4,
+                    "startOffset": 3224,
+                    "endLine": 69,
+                    "endColumn": 13,
+                    "endOffset": 3395
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 147,
+                        "startColumn": 4,
+                        "startOffset": 8079,
+                        "endLine": 149,
+                        "endColumn": 13,
+                        "endOffset": 8250
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 70,
+                    "startColumn": 4,
+                    "startOffset": 3400,
+                    "endColumn": 50,
+                    "endOffset": 3446
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 98,
+                        "startColumn": 4,
+                        "startOffset": 5169,
+                        "endColumn": 50,
+                        "endOffset": 5215
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 71,
+                    "startColumn": 4,
+                    "startOffset": 3451,
+                    "endColumn": 49,
+                    "endOffset": 3496
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 559,
+                        "endColumn": 49,
+                        "endOffset": 604
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 72,
+                    "startColumn": 4,
+                    "startOffset": 3501,
+                    "endColumn": 47,
+                    "endOffset": 3544
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 211,
+                        "startColumn": 4,
+                        "startOffset": 11286,
+                        "endColumn": 47,
+                        "endOffset": 11329
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 73,
+                    "startColumn": 4,
+                    "startOffset": 3549,
+                    "endColumn": 44,
+                    "endOffset": 3589
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 185,
+                        "startColumn": 4,
+                        "startOffset": 9988,
+                        "endColumn": 44,
+                        "endOffset": 10028
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 74,
+                    "startColumn": 4,
+                    "startOffset": 3594,
+                    "endColumn": 96,
+                    "endOffset": 3686
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 128,
+                        "startColumn": 4,
+                        "startOffset": 6837,
+                        "endColumn": 96,
+                        "endOffset": 6929
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 75,
+                    "startColumn": 4,
+                    "startOffset": 3691,
+                    "endColumn": 55,
+                    "endOffset": 3742
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 129,
+                        "startColumn": 4,
+                        "startOffset": 6934,
+                        "endColumn": 55,
+                        "endOffset": 6985
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 76,
+                    "startColumn": 4,
+                    "startOffset": 3747,
+                    "endColumn": 67,
+                    "endOffset": 3810
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 131,
+                        "startColumn": 4,
+                        "startOffset": 7046,
+                        "endColumn": 67,
+                        "endOffset": 7109
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 77,
+                    "startColumn": 4,
+                    "startOffset": 3815,
+                    "endColumn": 55,
+                    "endOffset": 3866
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 130,
+                        "startColumn": 4,
+                        "startOffset": 6990,
+                        "endColumn": 55,
+                        "endOffset": 7041
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 78,
+                    "startColumn": 4,
+                    "startOffset": 3871,
+                    "endColumn": 80,
+                    "endOffset": 3947
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 134,
+                        "startColumn": 4,
+                        "startOffset": 7244,
+                        "endColumn": 80,
+                        "endOffset": 7320
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 79,
+                    "startColumn": 4,
+                    "startOffset": 3952,
+                    "endLine": 80,
+                    "endColumn": 13,
+                    "endOffset": 4077
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 132,
+                        "startColumn": 4,
+                        "startOffset": 7114,
+                        "endLine": 133,
+                        "endColumn": 13,
+                        "endOffset": 7239
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 81,
+                    "startColumn": 4,
+                    "startOffset": 4082,
+                    "endColumn": 93,
+                    "endOffset": 4171
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 127,
+                        "startColumn": 4,
+                        "startOffset": 6743,
+                        "endColumn": 93,
+                        "endOffset": 6832
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 82,
+                    "startColumn": 4,
+                    "startOffset": 4176,
+                    "endColumn": 59,
+                    "endOffset": 4231
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 137,
+                        "startColumn": 4,
+                        "startOffset": 7450,
+                        "endColumn": 59,
+                        "endOffset": 7505
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 83,
+                    "startColumn": 4,
+                    "startOffset": 4236,
+                    "endColumn": 58,
+                    "endOffset": 4290
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 139,
+                        "startColumn": 4,
+                        "startOffset": 7579,
+                        "endColumn": 58,
+                        "endOffset": 7633
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 84,
+                    "startColumn": 4,
+                    "startOffset": 4295,
+                    "endColumn": 61,
+                    "endOffset": 4352
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 136,
+                        "startColumn": 4,
+                        "startOffset": 7388,
+                        "endColumn": 61,
+                        "endOffset": 7445
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 85,
+                    "startColumn": 4,
+                    "startOffset": 4357,
+                    "endColumn": 58,
+                    "endOffset": 4411
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 140,
+                        "startColumn": 4,
+                        "startOffset": 7638,
+                        "endColumn": 58,
+                        "endOffset": 7692
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 86,
+                    "startColumn": 4,
+                    "startOffset": 4416,
+                    "endColumn": 62,
+                    "endOffset": 4474
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 135,
+                        "startColumn": 4,
+                        "startOffset": 7325,
+                        "endColumn": 62,
+                        "endOffset": 7383
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 87,
+                    "startColumn": 4,
+                    "startOffset": 4479,
+                    "endColumn": 68,
+                    "endOffset": 4543
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 138,
+                        "startColumn": 4,
+                        "startOffset": 7510,
+                        "endColumn": 68,
+                        "endOffset": 7574
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 88,
+                    "startColumn": 4,
+                    "startOffset": 4548,
+                    "endColumn": 62,
+                    "endOffset": 4606
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 141,
+                        "startColumn": 4,
+                        "startOffset": 7697,
+                        "endColumn": 62,
+                        "endOffset": 7755
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 89,
+                    "startColumn": 4,
+                    "startOffset": 4611,
+                    "endColumn": 60,
+                    "endOffset": 4667
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 31,
+                        "startColumn": 4,
+                        "startOffset": 1240,
+                        "endColumn": 60,
+                        "endOffset": 1296
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 90,
+                    "startColumn": 4,
+                    "startOffset": 4672,
+                    "endColumn": 54,
+                    "endOffset": 4722
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 28,
+                        "startColumn": 4,
+                        "startOffset": 1071,
+                        "endColumn": 54,
+                        "endOffset": 1121
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 91,
+                    "startColumn": 4,
+                    "startOffset": 4727,
+                    "endColumn": 50,
+                    "endOffset": 4773
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 29,
+                        "startColumn": 4,
+                        "startOffset": 1126,
+                        "endColumn": 50,
+                        "endOffset": 1172
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 92,
+                    "startColumn": 4,
+                    "startOffset": 4778,
+                    "endColumn": 62,
+                    "endOffset": 4836
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 30,
+                        "startColumn": 4,
+                        "startOffset": 1177,
+                        "endColumn": 62,
+                        "endOffset": 1235
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 93,
+                    "startColumn": 4,
+                    "startOffset": 4841,
+                    "endColumn": 40,
+                    "endOffset": 4877
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 205,
+                        "startColumn": 4,
+                        "startOffset": 11009,
+                        "endColumn": 40,
+                        "endOffset": 11045
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 94,
+                    "startColumn": 4,
+                    "startOffset": 4882,
+                    "endColumn": 39,
+                    "endOffset": 4917
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 201,
+                        "startColumn": 4,
+                        "startOffset": 10805,
+                        "endColumn": 39,
+                        "endOffset": 10840
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 95,
+                    "startColumn": 4,
+                    "startOffset": 4922,
+                    "endColumn": 63,
+                    "endOffset": 4981
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 142,
+                        "startColumn": 4,
+                        "startOffset": 7760,
+                        "endColumn": 63,
+                        "endOffset": 7819
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 96,
+                    "startColumn": 4,
+                    "startOffset": 4986,
+                    "endColumn": 34,
+                    "endOffset": 5016
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 661,
+                        "endColumn": 34,
+                        "endOffset": 691
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 97,
+                    "startColumn": 4,
+                    "startOffset": 5021,
+                    "endColumn": 43,
+                    "endOffset": 5060
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 66,
+                        "endColumn": 43,
+                        "endOffset": 105
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 98,
+                    "startColumn": 4,
+                    "startOffset": 5065,
+                    "endColumn": 55,
+                    "endOffset": 5116
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 198,
+                        "startColumn": 4,
+                        "startOffset": 10656,
+                        "endColumn": 55,
+                        "endOffset": 10707
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 99,
+                    "startColumn": 4,
+                    "startOffset": 5121,
+                    "endColumn": 52,
+                    "endOffset": 5169
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 199,
+                        "startColumn": 4,
+                        "startOffset": 10712,
+                        "endColumn": 52,
+                        "endOffset": 10760
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 100,
+                    "startColumn": 4,
+                    "startOffset": 5174,
+                    "endColumn": 40,
+                    "endOffset": 5210
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 223,
+                        "startColumn": 4,
+                        "startOffset": 11938,
+                        "endColumn": 40,
+                        "endOffset": 11974
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 101,
+                    "startColumn": 4,
+                    "startOffset": 5215,
+                    "endColumn": 45,
+                    "endOffset": 5256
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 162,
+                        "startColumn": 4,
+                        "startOffset": 8867,
+                        "endColumn": 45,
+                        "endOffset": 8908
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 102,
+                    "startColumn": 4,
+                    "startOffset": 5261,
+                    "endColumn": 55,
+                    "endOffset": 5312
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 191,
+                        "startColumn": 4,
+                        "startOffset": 10298,
+                        "endColumn": 55,
+                        "endOffset": 10349
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 103,
+                    "startColumn": 4,
+                    "startOffset": 5317,
+                    "endColumn": 52,
+                    "endOffset": 5365
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 192,
+                        "startColumn": 4,
+                        "startOffset": 10354,
+                        "endColumn": 52,
+                        "endOffset": 10402
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 104,
+                    "startColumn": 4,
+                    "startOffset": 5370,
+                    "endColumn": 46,
+                    "endOffset": 5412
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 213,
+                        "startColumn": 4,
+                        "startOffset": 11389,
+                        "endColumn": 46,
+                        "endOffset": 11431
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 105,
+                    "startColumn": 4,
+                    "startOffset": 5417,
+                    "endColumn": 45,
+                    "endOffset": 5458
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 92,
+                        "startColumn": 4,
+                        "startOffset": 4843,
+                        "endColumn": 45,
+                        "endOffset": 4884
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 106,
+                    "startColumn": 4,
+                    "startOffset": 5463,
+                    "endColumn": 43,
+                    "endOffset": 5502
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 210,
+                        "startColumn": 4,
+                        "startOffset": 11242,
+                        "endColumn": 43,
+                        "endOffset": 11281
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 107,
+                    "startColumn": 4,
+                    "startOffset": 5507,
+                    "endColumn": 40,
+                    "endOffset": 5543
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 36,
+                        "startColumn": 4,
+                        "startOffset": 1589,
+                        "endColumn": 40,
+                        "endOffset": 1625
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 108,
+                    "startColumn": 4,
+                    "startOffset": 5548,
+                    "endColumn": 49,
+                    "endOffset": 5593
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 49,
+                        "startColumn": 4,
+                        "startOffset": 2367,
+                        "endColumn": 49,
+                        "endOffset": 2412
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 109,
+                    "startColumn": 4,
+                    "startOffset": 5598,
+                    "endColumn": 54,
+                    "endOffset": 5648
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 51,
+                        "startColumn": 4,
+                        "startOffset": 2464,
+                        "endColumn": 54,
+                        "endOffset": 2514
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 110,
+                    "startColumn": 4,
+                    "startOffset": 5653,
+                    "endColumn": 70,
+                    "endOffset": 5719
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 35,
+                        "startColumn": 4,
+                        "startOffset": 1512,
+                        "endColumn": 76,
+                        "endOffset": 1584
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 111,
+                    "startColumn": 4,
+                    "startOffset": 5724,
+                    "endColumn": 75,
+                    "endOffset": 5795
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 34,
+                        "startColumn": 4,
+                        "startOffset": 1430,
+                        "endColumn": 81,
+                        "endOffset": 1507
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 112,
+                    "startColumn": 4,
+                    "startOffset": 5800,
+                    "endColumn": 46,
+                    "endOffset": 5842
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 50,
+                        "startColumn": 4,
+                        "startOffset": 2417,
+                        "endColumn": 46,
+                        "endOffset": 2459
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 113,
+                    "startColumn": 4,
+                    "startOffset": 5847,
+                    "endColumn": 61,
+                    "endOffset": 5904
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 54,
+                        "startColumn": 4,
+                        "startOffset": 2579,
+                        "endColumn": 61,
+                        "endOffset": 2636
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 114,
+                    "startColumn": 4,
+                    "startOffset": 5909,
+                    "endColumn": 65,
+                    "endOffset": 5970
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 48,
+                        "startColumn": 4,
+                        "startOffset": 2301,
+                        "endColumn": 65,
+                        "endOffset": 2362
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 115,
+                    "startColumn": 4,
+                    "startOffset": 5975,
+                    "endColumn": 75,
+                    "endOffset": 6046
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 33,
+                        "startColumn": 4,
+                        "startOffset": 1348,
+                        "endColumn": 81,
+                        "endOffset": 1425
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 116,
+                    "startColumn": 4,
+                    "startOffset": 6051,
+                    "endColumn": 45,
+                    "endOffset": 6092
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 215,
+                        "startColumn": 4,
+                        "startOffset": 11480,
+                        "endColumn": 45,
+                        "endOffset": 11521
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 117,
+                    "startColumn": 4,
+                    "startOffset": 6097,
+                    "endColumn": 42,
+                    "endOffset": 6135
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 78,
+                        "startColumn": 4,
+                        "startOffset": 4013,
+                        "endColumn": 42,
+                        "endOffset": 4051
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 118,
+                    "startColumn": 4,
+                    "startOffset": 6140,
+                    "endColumn": 63,
+                    "endOffset": 6199
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 89,
+                        "startColumn": 4,
+                        "startOffset": 4695,
+                        "endColumn": 63,
+                        "endOffset": 4754
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 119,
+                    "startColumn": 4,
+                    "startOffset": 6204,
+                    "endColumn": 53,
+                    "endOffset": 6253
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 57,
+                        "startColumn": 4,
+                        "startOffset": 2760,
+                        "endColumn": 53,
+                        "endOffset": 2809
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 120,
+                    "startColumn": 4,
+                    "startOffset": 6258,
+                    "endColumn": 56,
+                    "endOffset": 6310
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 56,
+                        "startColumn": 4,
+                        "startOffset": 2703,
+                        "endColumn": 56,
+                        "endOffset": 2755
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 121,
+                    "startColumn": 4,
+                    "startOffset": 6315,
+                    "endColumn": 33,
+                    "endOffset": 6344
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 184,
+                        "startColumn": 4,
+                        "startOffset": 9954,
+                        "endColumn": 33,
+                        "endOffset": 9983
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 122,
+                    "startColumn": 4,
+                    "startOffset": 6349,
+                    "endColumn": 46,
+                    "endOffset": 6391
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 157,
+                        "startColumn": 4,
+                        "startOffset": 8595,
+                        "endColumn": 46,
+                        "endOffset": 8637
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 123,
+                    "startColumn": 4,
+                    "startOffset": 6396,
+                    "endColumn": 49,
+                    "endOffset": 6441
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 151,
+                        "startColumn": 4,
+                        "startOffset": 8305,
+                        "endColumn": 49,
+                        "endOffset": 8350
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 124,
+                    "startColumn": 4,
+                    "startOffset": 6446,
+                    "endColumn": 44,
+                    "endOffset": 6486
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 152,
+                        "startColumn": 4,
+                        "startOffset": 8355,
+                        "endColumn": 44,
+                        "endOffset": 8395
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 125,
+                    "startColumn": 4,
+                    "startOffset": 6491,
+                    "endColumn": 46,
+                    "endOffset": 6533
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 153,
+                        "startColumn": 4,
+                        "startOffset": 8400,
+                        "endColumn": 46,
+                        "endOffset": 8442
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 126,
+                    "startColumn": 4,
+                    "startOffset": 6538,
+                    "endColumn": 44,
+                    "endOffset": 6578
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 154,
+                        "startColumn": 4,
+                        "startOffset": 8447,
+                        "endColumn": 44,
+                        "endOffset": 8487
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 127,
+                    "startColumn": 4,
+                    "startOffset": 6583,
+                    "endColumn": 40,
+                    "endOffset": 6619
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 155,
+                        "startColumn": 4,
+                        "startOffset": 8492,
+                        "endColumn": 40,
+                        "endOffset": 8528
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 128,
+                    "startColumn": 4,
+                    "startOffset": 6624,
+                    "endColumn": 61,
+                    "endOffset": 6681
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 156,
+                        "startColumn": 4,
+                        "startOffset": 8533,
+                        "endColumn": 61,
+                        "endOffset": 8590
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 129,
+                    "startColumn": 4,
+                    "startOffset": 6686,
+                    "endColumn": 55,
+                    "endOffset": 6737
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 55,
+                        "startColumn": 4,
+                        "startOffset": 2641,
+                        "endColumn": 61,
+                        "endOffset": 2698
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 130,
+                    "startColumn": 4,
+                    "startOffset": 6742,
+                    "endColumn": 48,
+                    "endOffset": 6786
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 58,
+                        "startColumn": 4,
+                        "startOffset": 2814,
+                        "endColumn": 48,
+                        "endOffset": 2858
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 131,
+                    "startColumn": 4,
+                    "startOffset": 6791,
+                    "endColumn": 42,
+                    "endOffset": 6829
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 208,
+                        "startColumn": 4,
+                        "startOffset": 11157,
+                        "endColumn": 42,
+                        "endOffset": 11195
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 132,
+                    "startColumn": 4,
+                    "startOffset": 6834,
+                    "endColumn": 46,
+                    "endOffset": 6876
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 32,
+                        "startColumn": 4,
+                        "startOffset": 1301,
+                        "endColumn": 46,
+                        "endOffset": 1343
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 133,
+                    "startColumn": 4,
+                    "startOffset": 6881,
+                    "endColumn": 53,
+                    "endOffset": 6930
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 124,
+                        "startColumn": 4,
+                        "startOffset": 6594,
+                        "endColumn": 53,
+                        "endOffset": 6643
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 134,
+                    "startColumn": 4,
+                    "startOffset": 6935,
+                    "endColumn": 43,
+                    "endOffset": 6974
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 123,
+                        "startColumn": 4,
+                        "startOffset": 6550,
+                        "endColumn": 43,
+                        "endOffset": 6589
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 135,
+                    "startColumn": 4,
+                    "startOffset": 6979,
+                    "endColumn": 53,
+                    "endOffset": 7028
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 97,
+                        "startColumn": 4,
+                        "startOffset": 5115,
+                        "endColumn": 53,
+                        "endOffset": 5164
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 136,
+                    "startColumn": 4,
+                    "startOffset": 7033,
+                    "endColumn": 97,
+                    "endOffset": 7126
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 81,
+                        "startColumn": 4,
+                        "startOffset": 4152,
+                        "endColumn": 97,
+                        "endOffset": 4245
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 137,
+                    "startColumn": 4,
+                    "startOffset": 7131,
+                    "endColumn": 51,
+                    "endOffset": 7178
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 96,
+                        "startColumn": 4,
+                        "startOffset": 5063,
+                        "endColumn": 51,
+                        "endOffset": 5110
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 138,
+                    "startColumn": 4,
+                    "startOffset": 7183,
+                    "endColumn": 37,
+                    "endOffset": 7216
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 194,
+                        "startColumn": 4,
+                        "startOffset": 10451,
+                        "endColumn": 37,
+                        "endOffset": 10484
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 139,
+                    "startColumn": 4,
+                    "startOffset": 7221,
+                    "endColumn": 51,
+                    "endOffset": 7268
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 46,
+                        "startColumn": 4,
+                        "startOffset": 2199,
+                        "endColumn": 51,
+                        "endOffset": 2246
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 140,
+                    "startColumn": 4,
+                    "startOffset": 7273,
+                    "endColumn": 37,
+                    "endOffset": 7306
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 115,
+                        "startColumn": 4,
+                        "startOffset": 6120,
+                        "endColumn": 37,
+                        "endOffset": 6153
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 141,
+                    "startColumn": 4,
+                    "startOffset": 7311,
+                    "endColumn": 61,
+                    "endOffset": 7368
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 106,
+                        "startColumn": 4,
+                        "startOffset": 5612,
+                        "endColumn": 61,
+                        "endOffset": 5669
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 142,
+                    "startColumn": 4,
+                    "startOffset": 7373,
+                    "endColumn": 33,
+                    "endOffset": 7402
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 216,
+                        "startColumn": 4,
+                        "startOffset": 11526,
+                        "endColumn": 33,
+                        "endOffset": 11555
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 143,
+                    "startColumn": 4,
+                    "startOffset": 7407,
+                    "endColumn": 57,
+                    "endOffset": 7460
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 143,
+                        "startColumn": 4,
+                        "startOffset": 7824,
+                        "endColumn": 57,
+                        "endOffset": 7877
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 144,
+                    "startColumn": 4,
+                    "startOffset": 7465,
+                    "endColumn": 41,
+                    "endOffset": 7502
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 209,
+                        "startColumn": 4,
+                        "startOffset": 11200,
+                        "endColumn": 41,
+                        "endOffset": 11237
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 145,
+                    "startColumn": 4,
+                    "startOffset": 7507,
+                    "endColumn": 50,
+                    "endOffset": 7553
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 334,
+                        "endColumn": 50,
+                        "endOffset": 380
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 146,
+                    "startColumn": 4,
+                    "startOffset": 7558,
+                    "endColumn": 39,
+                    "endOffset": 7593
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 225,
+                        "startColumn": 4,
+                        "startOffset": 12037,
+                        "endColumn": 39,
+                        "endOffset": 12072
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 147,
+                    "startColumn": 4,
+                    "startOffset": 7598,
+                    "endColumn": 41,
+                    "endOffset": 7635
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 90,
+                        "startColumn": 4,
+                        "startOffset": 4759,
+                        "endColumn": 41,
+                        "endOffset": 4796
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 148,
+                    "startColumn": 4,
+                    "startOffset": 7640,
+                    "endColumn": 50,
+                    "endOffset": 7686
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 80,
+                        "startColumn": 4,
+                        "startOffset": 4101,
+                        "endColumn": 50,
+                        "endOffset": 4147
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 149,
+                    "startColumn": 4,
+                    "startOffset": 7691,
+                    "endColumn": 44,
+                    "endOffset": 7731
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 79,
+                        "startColumn": 4,
+                        "startOffset": 4056,
+                        "endColumn": 44,
+                        "endOffset": 4096
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 150,
+                    "startColumn": 4,
+                    "startOffset": 7736,
+                    "endColumn": 51,
+                    "endOffset": 7783
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 112,
+                        "startColumn": 4,
+                        "startOffset": 5953,
+                        "endColumn": 51,
+                        "endOffset": 6000
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 151,
+                    "startColumn": 4,
+                    "startOffset": 7788,
+                    "endColumn": 47,
+                    "endOffset": 7831
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 158,
+                        "startColumn": 4,
+                        "startOffset": 8642,
+                        "endColumn": 47,
+                        "endOffset": 8685
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 152,
+                    "startColumn": 4,
+                    "startOffset": 7836,
+                    "endColumn": 39,
+                    "endOffset": 7871
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 125,
+                        "startColumn": 4,
+                        "startOffset": 6648,
+                        "endColumn": 39,
+                        "endOffset": 6683
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 153,
+                    "startColumn": 4,
+                    "startOffset": 7876,
+                    "endColumn": 54,
+                    "endOffset": 7926
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 126,
+                        "startColumn": 4,
+                        "startOffset": 6688,
+                        "endColumn": 54,
+                        "endOffset": 6738
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 154,
+                    "startColumn": 4,
+                    "startOffset": 7931,
+                    "endColumn": 41,
+                    "endOffset": 7968
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 120,
+                        "startColumn": 4,
+                        "startOffset": 6360,
+                        "endColumn": 41,
+                        "endOffset": 6397
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 155,
+                    "startColumn": 4,
+                    "startOffset": 7973,
+                    "endColumn": 45,
+                    "endOffset": 8014
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 227,
+                        "startColumn": 4,
+                        "startOffset": 12128,
+                        "endColumn": 45,
+                        "endOffset": 12169
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 156,
+                    "startColumn": 4,
+                    "startOffset": 8019,
+                    "endColumn": 59,
+                    "endOffset": 8074
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 696,
+                        "endColumn": 59,
+                        "endOffset": 751
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 157,
+                    "startColumn": 4,
+                    "startOffset": 8079,
+                    "endColumn": 45,
+                    "endOffset": 8120
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 37,
+                        "startColumn": 4,
+                        "startOffset": 1630,
+                        "endColumn": 45,
+                        "endOffset": 1671
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 158,
+                    "startColumn": 4,
+                    "startOffset": 8125,
+                    "endColumn": 57,
+                    "endOffset": 8178
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 38,
+                        "startColumn": 4,
+                        "startOffset": 1676,
+                        "endColumn": 57,
+                        "endOffset": 1729
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 159,
+                    "startColumn": 4,
+                    "startOffset": 8183,
+                    "endColumn": 55,
+                    "endOffset": 8234
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 39,
+                        "startColumn": 4,
+                        "startOffset": 1734,
+                        "endColumn": 55,
+                        "endOffset": 1785
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 160,
+                    "startColumn": 4,
+                    "startOffset": 8239,
+                    "endColumn": 55,
+                    "endOffset": 8290
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 40,
+                        "startColumn": 4,
+                        "startOffset": 1790,
+                        "endColumn": 55,
+                        "endOffset": 1841
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 161,
+                    "startColumn": 4,
+                    "startOffset": 8295,
+                    "endColumn": 68,
+                    "endOffset": 8359
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 41,
+                        "startColumn": 4,
+                        "startOffset": 1846,
+                        "endColumn": 68,
+                        "endOffset": 1910
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 162,
+                    "startColumn": 4,
+                    "startOffset": 8364,
+                    "endColumn": 73,
+                    "endOffset": 8433
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 42,
+                        "startColumn": 4,
+                        "startOffset": 1915,
+                        "endColumn": 73,
+                        "endOffset": 1984
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 163,
+                    "startColumn": 4,
+                    "startOffset": 8438,
+                    "endColumn": 68,
+                    "endOffset": 8502
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 43,
+                        "startColumn": 4,
+                        "startOffset": 1989,
+                        "endColumn": 68,
+                        "endOffset": 2053
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 164,
+                    "startColumn": 4,
+                    "startOffset": 8507,
+                    "endColumn": 68,
+                    "endOffset": 8571
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 44,
+                        "startColumn": 4,
+                        "startOffset": 2058,
+                        "endColumn": 68,
+                        "endOffset": 2122
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 165,
+                    "startColumn": 4,
+                    "startOffset": 8576,
+                    "endColumn": 71,
+                    "endOffset": 8643
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 45,
+                        "startColumn": 4,
+                        "startOffset": 2127,
+                        "endColumn": 71,
+                        "endOffset": 2194
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 166,
+                    "startColumn": 4,
+                    "startOffset": 8648,
+                    "endColumn": 83,
+                    "endOffset": 8727
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 218,
+                        "startColumn": 4,
+                        "startOffset": 11602,
+                        "endColumn": 83,
+                        "endOffset": 11681
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 167,
+                    "startColumn": 4,
+                    "startOffset": 8732,
+                    "endColumn": 81,
+                    "endOffset": 8809
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 219,
+                        "startColumn": 4,
+                        "startOffset": 11686,
+                        "endColumn": 81,
+                        "endOffset": 11763
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 168,
+                    "startColumn": 4,
+                    "startOffset": 8814,
+                    "endColumn": 70,
+                    "endOffset": 8880
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 204,
+                        "startColumn": 4,
+                        "startOffset": 10938,
+                        "endColumn": 70,
+                        "endOffset": 11004
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 169,
+                    "startColumn": 4,
+                    "startOffset": 8885,
+                    "endColumn": 37,
+                    "endOffset": 8918
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 163,
+                        "startColumn": 4,
+                        "startOffset": 8913,
+                        "endColumn": 37,
+                        "endOffset": 8946
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 170,
+                    "startColumn": 4,
+                    "startOffset": 8923,
+                    "endColumn": 48,
+                    "endOffset": 8967
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 221,
+                        "startColumn": 4,
+                        "startOffset": 11829,
+                        "endColumn": 48,
+                        "endOffset": 11873
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 171,
+                    "startColumn": 4,
+                    "startOffset": 8972,
+                    "endColumn": 39,
+                    "endOffset": 9007
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 175,
+                        "startColumn": 4,
+                        "startOffset": 9539,
+                        "endColumn": 39,
+                        "endOffset": 9574
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 172,
+                    "startColumn": 4,
+                    "startOffset": 9012,
+                    "endColumn": 45,
+                    "endOffset": 9053
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 206,
+                        "startColumn": 4,
+                        "startOffset": 11050,
+                        "endColumn": 45,
+                        "endOffset": 11091
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 173,
+                    "startColumn": 4,
+                    "startOffset": 9058,
+                    "endColumn": 60,
+                    "endOffset": 9114
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 207,
+                        "startColumn": 4,
+                        "startOffset": 11096,
+                        "endColumn": 60,
+                        "endOffset": 11152
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 174,
+                    "startColumn": 4,
+                    "startOffset": 9119,
+                    "endColumn": 82,
+                    "endOffset": 9197
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 206,
+                        "endColumn": 82,
+                        "endOffset": 284
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 175,
+                    "startColumn": 4,
+                    "startOffset": 9202,
+                    "endColumn": 41,
+                    "endOffset": 9239
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 439,
+                        "endColumn": 41,
+                        "endOffset": 476
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 176,
+                    "startColumn": 4,
+                    "startOffset": 9244,
+                    "endColumn": 54,
+                    "endOffset": 9294
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 197,
+                        "startColumn": 4,
+                        "startOffset": 10601,
+                        "endColumn": 54,
+                        "endOffset": 10651
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 177,
+                    "startColumn": 4,
+                    "startOffset": 9299,
+                    "endColumn": 51,
+                    "endOffset": 9346
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 609,
+                        "endColumn": 51,
+                        "endOffset": 656
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 178,
+                    "startColumn": 4,
+                    "startOffset": 9351,
+                    "endColumn": 57,
+                    "endOffset": 9404
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 224,
+                        "startColumn": 4,
+                        "startOffset": 11979,
+                        "endColumn": 57,
+                        "endOffset": 12032
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 179,
+                    "startColumn": 4,
+                    "startOffset": 9409,
+                    "endColumn": 43,
+                    "endOffset": 9448
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 87,
+                        "startColumn": 4,
+                        "startOffset": 4598,
+                        "endColumn": 43,
+                        "endOffset": 4637
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 180,
+                    "startColumn": 4,
+                    "startOffset": 9453,
+                    "endColumn": 50,
+                    "endOffset": 9499
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 226,
+                        "startColumn": 4,
+                        "startOffset": 12077,
+                        "endColumn": 50,
+                        "endOffset": 12123
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 181,
+                    "startColumn": 4,
+                    "startOffset": 9504,
+                    "endColumn": 51,
+                    "endOffset": 9551
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 74,
+                        "startColumn": 4,
+                        "startOffset": 3833,
+                        "endColumn": 51,
+                        "endOffset": 3880
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 182,
+                    "startColumn": 4,
+                    "startOffset": 9556,
+                    "endColumn": 49,
+                    "endOffset": 9601
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 47,
+                        "startColumn": 4,
+                        "startOffset": 2251,
+                        "endColumn": 49,
+                        "endOffset": 2296
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 183,
+                    "startColumn": 4,
+                    "startOffset": 9606,
+                    "endColumn": 52,
+                    "endOffset": 9654
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 73,
+                        "startColumn": 4,
+                        "startOffset": 3780,
+                        "endColumn": 52,
+                        "endOffset": 3828
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 184,
+                    "startColumn": 4,
+                    "startOffset": 9659,
+                    "endColumn": 59,
+                    "endOffset": 9714
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 72,
+                        "startColumn": 4,
+                        "startOffset": 3720,
+                        "endColumn": 59,
+                        "endOffset": 3775
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 185,
+                    "startColumn": 4,
+                    "startOffset": 9719,
+                    "endColumn": 45,
+                    "endOffset": 9760
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 76,
+                        "startColumn": 4,
+                        "startOffset": 3929,
+                        "endColumn": 45,
+                        "endOffset": 3970
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 186,
+                    "startColumn": 4,
+                    "startOffset": 9765,
+                    "endColumn": 43,
+                    "endOffset": 9804
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 75,
+                        "startColumn": 4,
+                        "startOffset": 3885,
+                        "endColumn": 43,
+                        "endOffset": 3924
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 187,
+                    "startColumn": 4,
+                    "startOffset": 9809,
+                    "endColumn": 43,
+                    "endOffset": 9848
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 53,
+                        "startColumn": 4,
+                        "startOffset": 2535,
+                        "endColumn": 43,
+                        "endOffset": 2574
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 188,
+                    "startColumn": 4,
+                    "startOffset": 9853,
+                    "endColumn": 62,
+                    "endOffset": 9911
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 159,
+                        "startColumn": 4,
+                        "startOffset": 8690,
+                        "endColumn": 62,
+                        "endOffset": 8748
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 189,
+                    "startColumn": 4,
+                    "startOffset": 9916,
+                    "endColumn": 56,
+                    "endOffset": 9968
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 161,
+                        "startColumn": 4,
+                        "startOffset": 8810,
+                        "endColumn": 56,
+                        "endOffset": 8862
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 190,
+                    "startColumn": 4,
+                    "startOffset": 9973,
+                    "endColumn": 56,
+                    "endOffset": 10025
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 160,
+                        "startColumn": 4,
+                        "startOffset": 8753,
+                        "endColumn": 56,
+                        "endOffset": 8805
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 191,
+                    "startColumn": 4,
+                    "startOffset": 10030,
+                    "endColumn": 64,
+                    "endOffset": 10090
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 166,
+                        "startColumn": 4,
+                        "startOffset": 9036,
+                        "endColumn": 64,
+                        "endOffset": 9096
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 192,
+                    "startColumn": 4,
+                    "startOffset": 10095,
+                    "endColumn": 80,
+                    "endOffset": 10171
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 167,
+                        "startColumn": 4,
+                        "startOffset": 9101,
+                        "endColumn": 80,
+                        "endOffset": 9177
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 193,
+                    "startColumn": 4,
+                    "startOffset": 10176,
+                    "endColumn": 57,
+                    "endOffset": 10229
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 168,
+                        "startColumn": 4,
+                        "startOffset": 9182,
+                        "endColumn": 57,
+                        "endOffset": 9235
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 194,
+                    "startColumn": 4,
+                    "startOffset": 10234,
+                    "endColumn": 61,
+                    "endOffset": 10291
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 169,
+                        "startColumn": 4,
+                        "startOffset": 9240,
+                        "endColumn": 61,
+                        "endOffset": 9297
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 195,
+                    "startColumn": 4,
+                    "startOffset": 10296,
+                    "endColumn": 49,
+                    "endOffset": 10341
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 150,
+                        "startColumn": 4,
+                        "startOffset": 8255,
+                        "endColumn": 49,
+                        "endOffset": 8300
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 196,
+                    "startColumn": 4,
+                    "startOffset": 10346,
+                    "endColumn": 58,
+                    "endOffset": 10400
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 118,
+                        "startColumn": 4,
+                        "startOffset": 6265,
+                        "endColumn": 58,
+                        "endOffset": 6319
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 197,
+                    "startColumn": 4,
+                    "startOffset": 10405,
+                    "endColumn": 58,
+                    "endOffset": 10459
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 116,
+                        "startColumn": 4,
+                        "startOffset": 6158,
+                        "endColumn": 58,
+                        "endOffset": 6212
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 198,
+                    "startColumn": 4,
+                    "startOffset": 10464,
+                    "endColumn": 52,
+                    "endOffset": 10512
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 114,
+                        "startColumn": 4,
+                        "startOffset": 6067,
+                        "endColumn": 52,
+                        "endOffset": 6115
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 199,
+                    "startColumn": 4,
+                    "startOffset": 10517,
+                    "endColumn": 47,
+                    "endOffset": 10560
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 117,
+                        "startColumn": 4,
+                        "startOffset": 6217,
+                        "endColumn": 47,
+                        "endOffset": 6260
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 200,
+                    "startColumn": 4,
+                    "startOffset": 10565,
+                    "endColumn": 41,
+                    "endOffset": 10602
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 517,
+                        "endColumn": 41,
+                        "endOffset": 554
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 201,
+                    "startColumn": 4,
+                    "startOffset": 10607,
+                    "endColumn": 38,
+                    "endOffset": 10641
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 756,
+                        "endColumn": 38,
+                        "endOffset": 790
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 202,
+                    "startColumn": 4,
+                    "startOffset": 10646,
+                    "endColumn": 37,
+                    "endOffset": 10679
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 77,
+                        "startColumn": 4,
+                        "startOffset": 3975,
+                        "endColumn": 37,
+                        "endOffset": 4008
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 203,
+                    "startColumn": 4,
+                    "startOffset": 10684,
+                    "endColumn": 39,
+                    "endOffset": 10719
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 166,
+                        "endColumn": 39,
+                        "endOffset": 201
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 204,
+                    "startColumn": 4,
+                    "startOffset": 10724,
+                    "endColumn": 55,
+                    "endOffset": 10775
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 110,
+                        "endColumn": 55,
+                        "endOffset": 161
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 205,
+                    "startColumn": 4,
+                    "startOffset": 10780,
+                    "endColumn": 78,
+                    "endOffset": 10854
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 84,
+                        "startColumn": 4,
+                        "startOffset": 4420,
+                        "endColumn": 78,
+                        "endOffset": 4494
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 206,
+                    "startColumn": 4,
+                    "startOffset": 10859,
+                    "endColumn": 84,
+                    "endOffset": 10939
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 82,
+                        "startColumn": 4,
+                        "startOffset": 4250,
+                        "endColumn": 84,
+                        "endOffset": 4330
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 207,
+                    "startColumn": 4,
+                    "startOffset": 10944,
+                    "endColumn": 84,
+                    "endOffset": 11024
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 83,
+                        "startColumn": 4,
+                        "startOffset": 4335,
+                        "endColumn": 84,
+                        "endOffset": 4415
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 208,
+                    "startColumn": 4,
+                    "startOffset": 11029,
+                    "endColumn": 53,
+                    "endOffset": 11078
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 103,
+                        "startColumn": 4,
+                        "startOffset": 5466,
+                        "endColumn": 53,
+                        "endOffset": 5515
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 209,
+                    "startColumn": 4,
+                    "startOffset": 11083,
+                    "endColumn": 45,
+                    "endOffset": 11124
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 95,
+                        "startColumn": 4,
+                        "startOffset": 5017,
+                        "endColumn": 45,
+                        "endOffset": 5058
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 210,
+                    "startColumn": 4,
+                    "startOffset": 11129,
+                    "endColumn": 54,
+                    "endOffset": 11179
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 212,
+                        "startColumn": 4,
+                        "startOffset": 11334,
+                        "endColumn": 54,
+                        "endOffset": 11384
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 211,
+                    "startColumn": 4,
+                    "startOffset": 11184,
+                    "endColumn": 62,
+                    "endOffset": 11242
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 100,
+                        "startColumn": 4,
+                        "startOffset": 5281,
+                        "endColumn": 62,
+                        "endOffset": 5339
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 212,
+                    "startColumn": 4,
+                    "startOffset": 11247,
+                    "endColumn": 62,
+                    "endOffset": 11305
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 101,
+                        "startColumn": 4,
+                        "startOffset": 5344,
+                        "endColumn": 62,
+                        "endOffset": 5402
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 213,
+                    "startColumn": 4,
+                    "startOffset": 11310,
+                    "endColumn": 58,
+                    "endOffset": 11364
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 102,
+                        "startColumn": 4,
+                        "startOffset": 5407,
+                        "endColumn": 58,
+                        "endOffset": 5461
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 214,
+                    "startColumn": 4,
+                    "startOffset": 11369,
+                    "endColumn": 60,
+                    "endOffset": 11425
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 99,
+                        "startColumn": 4,
+                        "startOffset": 5220,
+                        "endColumn": 60,
+                        "endOffset": 5276
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 215,
+                    "startColumn": 4,
+                    "startOffset": 11430,
+                    "endColumn": 43,
+                    "endOffset": 11469
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 214,
+                        "startColumn": 4,
+                        "startOffset": 11436,
+                        "endColumn": 43,
+                        "endOffset": 11475
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 216,
+                    "startColumn": 4,
+                    "startOffset": 11474,
+                    "endColumn": 58,
+                    "endOffset": 11528
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 195,
+                        "startColumn": 4,
+                        "startOffset": 10489,
+                        "endColumn": 58,
+                        "endOffset": 10543
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 217,
+                    "startColumn": 4,
+                    "startOffset": 11533,
+                    "endColumn": 66,
+                    "endOffset": 11595
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 65,
+                        "startColumn": 4,
+                        "startOffset": 3321,
+                        "endColumn": 66,
+                        "endOffset": 3383
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 218,
+                    "startColumn": 4,
+                    "startOffset": 11600,
+                    "endColumn": 76,
+                    "endOffset": 11672
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 66,
+                        "startColumn": 4,
+                        "startOffset": 3388,
+                        "endColumn": 76,
+                        "endOffset": 3460
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 219,
+                    "startColumn": 4,
+                    "startOffset": 11677,
+                    "endColumn": 76,
+                    "endOffset": 11749
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 60,
+                        "startColumn": 4,
+                        "startOffset": 2942,
+                        "endColumn": 76,
+                        "endOffset": 3014
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 220,
+                    "startColumn": 4,
+                    "startOffset": 11754,
+                    "endColumn": 80,
+                    "endOffset": 11830
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 64,
+                        "startColumn": 4,
+                        "startOffset": 3240,
+                        "endColumn": 80,
+                        "endOffset": 3316
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 221,
+                    "startColumn": 4,
+                    "startOffset": 11835,
+                    "endColumn": 66,
+                    "endOffset": 11897
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 62,
+                        "startColumn": 4,
+                        "startOffset": 3094,
+                        "endColumn": 72,
+                        "endOffset": 3162
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 222,
+                    "startColumn": 4,
+                    "startOffset": 11902,
+                    "endColumn": 78,
+                    "endOffset": 11976
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 59,
+                        "startColumn": 4,
+                        "startOffset": 2863,
+                        "endColumn": 78,
+                        "endOffset": 2937
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 223,
+                    "startColumn": 4,
+                    "startOffset": 11981,
+                    "endColumn": 74,
+                    "endOffset": 12051
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 61,
+                        "startColumn": 4,
+                        "startOffset": 3019,
+                        "endColumn": 74,
+                        "endOffset": 3089
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 224,
+                    "startColumn": 4,
+                    "startOffset": 12056,
+                    "endColumn": 72,
+                    "endOffset": 12124
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 63,
+                        "startColumn": 4,
+                        "startOffset": 3167,
+                        "endColumn": 72,
+                        "endOffset": 3235
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 225,
+                    "startColumn": 4,
+                    "startOffset": 12129,
+                    "endColumn": 35,
+                    "endOffset": 12160
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/values-en/strings.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 481,
+                        "endColumn": 35,
+                        "endOffset": 512
+                    }
+                }
+            }
+        ]
+    }
+]

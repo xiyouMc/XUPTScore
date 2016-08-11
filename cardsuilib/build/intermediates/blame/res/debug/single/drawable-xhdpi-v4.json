@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/build/intermediates/res/merged/debug/drawable-xhdpi-v4/card_background_shadow.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/src/main/res/drawable-xhdpi/card_background_shadow.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/build/intermediates/res/merged/debug/drawable-xhdpi-v4/top_shadow.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/src/main/res/drawable-xhdpi/top_shadow.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/build/intermediates/res/merged/debug/drawable-xhdpi-v4/card_background.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/src/main/res/drawable-xhdpi/card_background.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/build/intermediates/res/merged/debug/drawable-xhdpi-v4/card_shadow.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/src/main/res/drawable-xhdpi/card_shadow.9.png"
+    }
+]

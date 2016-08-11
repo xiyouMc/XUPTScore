@@ -1,0 +1,26 @@
+[
+    {
+        "outputFile": "/Users/xiyoumc/dev/github/西邮成绩/rpccore/build/intermediates/res/merged/debug/values/values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 44,
+                    "endOffset": 95
+                },
+                "from": {
+                    "file": "/Users/xiyoumc/dev/github/西邮成绩/rpccore/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 1,
+                        "startColumn": 4,
+                        "startOffset": 16,
+                        "endColumn": 44,
+                        "endOffset": 56
+                    }
+                }
+            }
+        ]
+    }
+]

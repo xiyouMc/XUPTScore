@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 按下去改变状态 -->
+    <item android:drawable="@drawable/iconfont_share_down" android:state_pressed="true"/>
+    <!-- 抬起来默认状态 -->
+    <item android:drawable="@drawable/iconfont_share" android:state_enabled="true"/>
+
+</selector>

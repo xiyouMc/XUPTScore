@@ -1,0 +1,103 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:background="#F8F8FF"
+              android:orientation="vertical"
+              android:fitsSystemWindows="true"
+              android:clipToPadding="false">
+
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/main_title_bar"
+            android:orientation="horizontal">
+
+        <Button
+                android:id="@+id/butCollege"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/transparent"
+                android:gravity="center_vertical"
+                android:text="@string/school"
+                android:textColor="@drawable/change_button_text_color"
+                android:textSize="19dp"/>
+
+        <Button
+                android:id="@+id/butMenu"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/button_menu"
+                android:gravity="left"
+                android:paddingLeft="-5dp"
+        />
+        <Button
+                android:id="@+id/share"
+                android:layout_width="28dip"
+                android:layout_height="28dip"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/share"
+                android:gravity="center_vertical"
+                android:textColor="#FF8C00"
+                android:textSize="14sp"
+                android:visibility="visible"/>
+    </RelativeLayout>
+
+    <LinearLayout
+            android:id="@+id/layout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+
+        <RelativeLayout
+                android:id="@+id/tittle_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            <TextView
+                    android:id="@+id/by"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dip"
+                    android:fontFamily="sans-serif-thin"
+                    android:text="@string/by"
+                    android:textColor="@color/change_up"
+                    android:textSize="18sp"/>
+            <TextView
+                    android:id="@+id/mc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dip"
+                    android:fontFamily="sans-serif-thin"
+                    android:text="@string/mc"
+                    android:textColor="@color/change_up"
+                    android:layout_toRightOf="@id/by"
+                    android:textSize="19sp"/>
+            <TextView
+                    android:id="@+id/forxiyou"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/by"
+                    android:layout_marginLeft="8dip"
+                    android:layout_toRightOf="@id/by"
+                    android:fontFamily="sans-serif-thin"
+                    android:text="@string/for_xu"
+                    android:textColor="@color/change_up"
+                    android:textSize="22sp"/>
+        </RelativeLayout>
+
+
+        <com.fima.cardsui.views.CardUI
+                android:id="@+id/cardsview"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="#F8F8FF"
+                android:fastScrollEnabled="false"/>
+    </LinearLayout>
+
+</LinearLayout>

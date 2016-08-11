@@ -1,0 +1,38 @@
+[
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/build/intermediates/res/merged/androidTest/debug/layout/cards_view.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/build/intermediates/bundles/debug/res/layout/cards_view.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/build/intermediates/res/merged/androidTest/debug/layout/item_stack.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/build/intermediates/bundles/debug/res/layout/item_stack.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/build/intermediates/res/merged/androidTest/debug/layout/footer_fragment.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/build/intermediates/bundles/debug/res/layout/footer_fragment.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/build/intermediates/res/merged/androidTest/debug/layout/item_card_empty_first.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/build/intermediates/bundles/debug/res/layout/item_card_empty_first.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/build/intermediates/res/merged/androidTest/debug/layout/header.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/build/intermediates/bundles/debug/res/layout/header.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/build/intermediates/res/merged/androidTest/debug/layout/item_card.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/build/intermediates/bundles/debug/res/layout/item_card.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/build/intermediates/res/merged/androidTest/debug/layout/item_play_card_empty_first.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/build/intermediates/bundles/debug/res/layout/item_play_card_empty_first.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/build/intermediates/res/merged/androidTest/debug/layout/item_card_empty_last.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/build/intermediates/bundles/debug/res/layout/item_card_empty_last.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/build/intermediates/res/merged/androidTest/debug/layout/cards_view_multicolumn.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/build/intermediates/bundles/debug/res/layout/cards_view_multicolumn.xml"
+    }
+]

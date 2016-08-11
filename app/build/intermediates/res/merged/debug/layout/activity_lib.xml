@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#F5F5F5"
+              android:orientation="vertical">
+
+    <include
+            android:id="@+id/common_actionbar"
+            layout="@layout/include_action_bar"/>
+
+    <include
+            android:id="@+id/common_bind"
+            layout="@layout/include_bind"
+            android:visibility="gone"/>
+
+    <LinearLayout
+            android:id="@+id/common_show_lib"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/activity_main_single_background"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+        <ListView
+                android:id="@+id/book_list"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginTop="25dip"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:divider="@drawable/listview_tail"
+                android:fastScrollEnabled="true">
+        </ListView>
+    </LinearLayout>
+
+</LinearLayout>

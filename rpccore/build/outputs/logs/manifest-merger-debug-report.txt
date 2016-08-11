@@ -1,0 +1,29 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/xiyoumc/dev/github/西邮成绩/rpccore/src/main/AndroidManifest.xml:1:1-11:12
+	xmlns:android
+		ADDED from /Users/xiyoumc/dev/github/西邮成绩/rpccore/src/main/AndroidManifest.xml:1:11-69
+	package
+		ADDED from /Users/xiyoumc/dev/github/西邮成绩/rpccore/src/main/AndroidManifest.xml:2:5-33
+	android:versionName
+		INJECTED from /Users/xiyoumc/dev/github/西邮成绩/rpccore/src/main/AndroidManifest.xml
+		INJECTED from /Users/xiyoumc/dev/github/西邮成绩/rpccore/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/xiyoumc/dev/github/西邮成绩/rpccore/src/main/AndroidManifest.xml
+		INJECTED from /Users/xiyoumc/dev/github/西邮成绩/rpccore/src/main/AndroidManifest.xml
+application
+ADDED from /Users/xiyoumc/dev/github/西邮成绩/rpccore/src/main/AndroidManifest.xml:4:5-9:19
+	android:supportsRtl
+		ADDED from /Users/xiyoumc/dev/github/西邮成绩/rpccore/src/main/AndroidManifest.xml:6:9-35
+	android:label
+		ADDED from /Users/xiyoumc/dev/github/西邮成绩/rpccore/src/main/AndroidManifest.xml:5:9-41
+	android:allowBackup
+		ADDED from /Users/xiyoumc/dev/github/西邮成绩/rpccore/src/main/AndroidManifest.xml:4:18-44
+uses-sdk
+INJECTED from /Users/xiyoumc/dev/github/西邮成绩/rpccore/src/main/AndroidManifest.xml reason: use-sdk injection requested
+	android:targetSdkVersion
+		INJECTED from /Users/xiyoumc/dev/github/西邮成绩/rpccore/src/main/AndroidManifest.xml
+		INJECTED from /Users/xiyoumc/dev/github/西邮成绩/rpccore/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/xiyoumc/dev/github/西邮成绩/rpccore/src/main/AndroidManifest.xml
+		INJECTED from /Users/xiyoumc/dev/github/西邮成绩/rpccore/src/main/AndroidManifest.xml

@@ -1,0 +1,566 @@
+[
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/activity_welcome.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/activity_welcome.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/abs__simple_dropdown_hint.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/layout/abs__simple_dropdown_hint.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/abs__search_dropdown_item_icons_2line.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/layout/abs__search_dropdown_item_icons_2line.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/card_picture.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/card_picture.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/card_ex.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/card_ex.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/activity_picture.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/activity_picture.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/activity_splash.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/activity_splash.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/view_paper3.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/view_paper3.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/activity_set_info.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/activity_set_info.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/include_bind.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/include_bind.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/card_score.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/card_score.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/abs__action_bar_tab_bar_view.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/layout/abs__action_bar_tab_bar_view.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/abs__action_mode_close_item.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/layout/abs__action_mode_close_item.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/include_new_friend.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/include_new_friend.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/abs__action_mode_bar.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/layout/abs__action_mode_bar.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/include_emo_gridview.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/include_emo_gridview.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/fragment_contacts.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/fragment_contacts.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/message_comment_item.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/message_comment_item.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/list_item.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/list_item.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/activity_main.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/activity_chat_main.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/activity_chat_main.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/header.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/cardsuilib/unspecified/res/layout/header.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/activity_about.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/activity_about.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/activity_file_resource.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/activity_file_resource.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/choose_kind.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/choose_kind.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/activity_add_contact.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/activity_add_contact.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/rank_header.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/rank_header.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/activity_forget_password.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/activity_forget_password.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/cards_view.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/cardsuilib/unspecified/res/layout/cards_view.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/item_face_text.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/item_face_text.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/item_chat_sent_image.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/item_chat_sent_image.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/view_paper1.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/view_paper1.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/item_blacklist.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/item_blacklist.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/item_user_friend.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/item_user_friend.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/allrank_listitem.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/allrank_listitem.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/friend_recommond_list.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/friend_recommond_list.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/abs__activity_chooser_view.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/layout/abs__activity_chooser_view.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/activity_chat_login.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/activity_chat_login.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/activity_language.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/activity_language.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/footer_fragment.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/cardsuilib/unspecified/res/layout/footer_fragment.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/skyblue_share_platform_list.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/skyblue_share_platform_list.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/activity_rank.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/activity_rank.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/list_item_header_footer.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/list_item_header_footer.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/pop_showavator.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/pop_showavator.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/item_card_empty_last.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/cardsuilib/unspecified/res/layout/item_card_empty_last.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/skyblue_editpage_inc_image_layout.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/skyblue_editpage_inc_image_layout.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/item_chat_sent_message.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/item_chat_sent_message.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/activity_publish.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/activity_publish.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/activity_login_normal.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/activity_login_normal.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/activity_grid_main.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/activity_grid_main.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/activity_near_people.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/activity_near_people.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/common_header_rightbutton.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/common_header_rightbutton.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/item_chat_received_voice.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/item_chat_received_voice.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/item_conversation.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/item_conversation.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/activity_add_friend_recommond.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/activity_add_friend_recommond.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/abs__action_bar_tab.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/layout/abs__action_bar_tab.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/view_paper_item.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/view_paper_item.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/common_header_button.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/common_header_button.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/fragment_bind_lib.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/fragment_bind_lib.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/activity_showpicture.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/activity_showpicture.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/custom_list_item.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/custom_list_item.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/item_play_card_empty_first.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/cardsuilib/unspecified/res/layout/item_play_card_empty_first.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/item_card.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/cardsuilib/unspecified/res/layout/item_card.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/activity_lib.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/activity_lib.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/activity_friend_recommand.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/activity_friend_recommand.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/abs__screen_action_bar_overlay.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/layout/abs__screen_action_bar_overlay.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/fragment_recent.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/fragment_recent.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/activity_blacklist.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/activity_blacklist.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/include_action_bar.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/include_action_bar.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/activity_chat.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/activity_chat.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/view_paper4.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/view_paper4.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/h5_toast.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/h5_toast.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/filedialogitem.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/filedialogitem.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/item_chat_sent_voice.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/item_chat_sent_voice.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/activity_ideaback.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/activity_ideaback.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/activity_option.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/activity_option.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/abs__list_menu_item_checkbox.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/layout/abs__list_menu_item_checkbox.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/skyblue_editpage.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/skyblue_editpage.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/abs__screen_action_bar.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/layout/abs__screen_action_bar.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/activity_cet.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/activity_cet.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/fragment_set.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/fragment_set.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/activity_add_friend_include.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/activity_add_friend_include.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/abs__popup_menu_item_layout.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/layout/abs__popup_menu_item_layout.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/xlistview_header.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/xlistview_header.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/abs__activity_chooser_view_list_item.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/layout/abs__activity_chooser_view_list_item.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/item_chat_received_location.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/item_chat_received_location.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/pull_down_head_refresh.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/pull_down_head_refresh.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/slidingmenumain.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/slidemenu/unspecified/res/layout/slidingmenumain.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/card_play.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/card_play.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/abs__action_bar_title_item.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/layout/abs__action_bar_title_item.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/abs__list_menu_item_icon.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/layout/abs__list_menu_item_icon.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/abs__action_menu_layout.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/layout/abs__action_menu_layout.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/include_chat_bottom_bar.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/include_chat_bottom_bar.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/activity_login.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/activity_login.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/item_show_picture.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/item_show_picture.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/activity_register.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/activity_register.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/skyblue_share_actionbar.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/skyblue_share_actionbar.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/rank_footer.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/rank_footer.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/item_add_friend.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/item_add_friend.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/item_near_people.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/item_near_people.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/activity_location.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/activity_location.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/card_main.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/card_main.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/view_paper2.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/view_paper2.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/abs__list_menu_item_radio.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/layout/abs__list_menu_item_radio.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/list_item_sample.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/list_item_sample.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/menu.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/menu.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/include_chat_voice_short.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/include_chat_voice_short.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/item_stack.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/cardsuilib/unspecified/res/layout/item_stack.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/abs__screen_simple.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/layout/abs__screen_simple.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/activity_chat_register.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/activity_chat_register.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/common_header.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/common_header.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/abs__search_view.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/layout/abs__search_view.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/cards_view_multicolumn.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/cardsuilib/unspecified/res/layout/cards_view_multicolumn.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/choose_kind_row.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/choose_kind_row.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/activity_message_detail.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/activity_message_detail.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/activity_friend_list.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/activity_friend_list.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/activity_show_cet.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/activity_show_cet.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/abs__action_menu_item_layout.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/layout/abs__action_menu_item_layout.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/abs__action_bar_home.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/layout/abs__action_bar_home.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/language_item.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/language_item.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/acitivity_add_friend_apply.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/acitivity_add_friend_apply.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/skyblue_editpage_at_layout.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/skyblue_editpage_at_layout.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/abs__screen_simple_overlay_action_mode.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/layout/abs__screen_simple_overlay_action_mode.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/progress.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/progress.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/activity_setting.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/activity_setting.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/h5_dialog.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/h5_dialog.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/v2_dialog_base.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/v2_dialog_base.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/item_card_empty_first.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/cardsuilib/unspecified/res/layout/item_card_empty_first.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/skyblue_share_platform_list_item.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/skyblue_share_platform_list_item.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/item_chat_received_image.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/item_chat_received_image.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/activity_set_updateinfo.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/activity_set_updateinfo.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/item_chat_received_message.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/item_chat_received_message.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/activity_list_view.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/activity_list_view.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/activity_forgetcet.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/activity_forgetcet.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/pull_up_foot_more.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/pull_up_foot_more.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/activity_add_friend_recommand_listview_item.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/activity_add_friend_recommand_listview_item.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/activity_add_friend.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/activity_add_friend.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/xlistview_footer.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/xlistview_footer.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/friend_recommand_listview.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/friend_recommand_listview.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/activity_new_friend.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/activity_new_friend.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout/include_chat_add.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/layout/include_chat_add.xml"
+    }
+]
