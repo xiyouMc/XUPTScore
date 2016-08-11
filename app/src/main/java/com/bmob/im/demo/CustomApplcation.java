@@ -34,7 +34,7 @@ import cn.bmob.v3.datatype.BmobGeoPoint;
  * @author smile
  * @ClassName: CustomApplcation
  * @Description: TODO
- * @date 2014-5-19 ����3:25:00
+ * @date 2014-5-19 3:25:00
  */
 public class CustomApplcation extends Application {
 
@@ -43,7 +43,6 @@ public class CustomApplcation extends Application {
     public static BmobGeoPoint lastPoint = null;// ��һ�ζ�λ���ľ�γ��
     public final String PREF_LONGTITUDE = "longtitude";// ����
     public final String PREF_LATITUDE = "latitude";// ����
-    // ����ģʽ�����ܼ�ʱ�������
     SharePreferenceUtil mSpUtil;
     NotificationManager mNotificationManager;
     MediaPlayer mMediaPlayer;
@@ -54,8 +53,7 @@ public class CustomApplcation extends Application {
     /** ��ʼ��ImageLoader */
     public static void initImageLoader(Context context) {
         File cacheDir = StorageUtils.getOwnCacheDirectory(context,
-                "bmobim/Cache");// ��ȡ�������Ŀ¼��ַ
-        // ��������ImageLoader(���е�ѡ��ǿ�ѡ��,ֻʹ����Щ������붨��)����������趨��APPLACATION���棬����Ϊȫ�ֵ����ò���
+                "bmobim/Cache");
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(
                 context)
                 // �̳߳��ڼ��ص�����

@@ -1,6 +1,6 @@
 package com.xy.fy.asynctask;
 
-import com.cardsui.example.MyPlayCard;
+import com.cardsui.ScoreCard.MyPlayCard;
 import com.fima.cardsui.objects.CardStack;
 import com.fima.cardsui.views.CardUI;
 import top.codemc.common.util.ProgressDialogUtil;

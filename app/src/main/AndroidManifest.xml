@@ -29,7 +29,6 @@
     </permission>
 
     <uses-permission android:name="cn.bmob.permission.push"/> <!-- 添加自定义的权限 -->
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 
     <!-- UIL框架所需的权限 -->
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
@@ -57,8 +56,6 @@
     <uses-permission android:name="android.permission.CAMERA">
     </uses-permission>
     <uses-permission android:name="android.permission.RECORD_AUDIO">
-    </uses-permission>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE">
     </uses-permission>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.BROADCAST_STICKY"/>

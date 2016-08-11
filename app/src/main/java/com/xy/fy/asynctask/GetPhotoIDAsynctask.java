@@ -39,19 +39,16 @@ public class GetPhotoIDAsynctask extends AsyncTask<String, String, String> {
             return;
         }
         StaticVarUtil.PHOTOFILENAME = result.split("/")[1];
-        // �ж� ͷ���ļ������Ƿ�� ���û���ͷ��
         if (DBConnection.getPhotoName(StaticVarUtil.student.getAccount(), mActivity)
                 .equals(StaticVarUtil.PHOTOFILENAME)
                 && new File(StaticVarUtil.PATH + "/" + StaticVarUtil.student.getAccount() + ".JPEG")
                 .exists()) {
-            // ������
             Bitmap bitmap = Util.convertToBitmap(
                     StaticVarUtil.PATH + "/" + StaticVarUtil.student.getAccount() + ".JPEG", 240, 240);
             if (bitmap != null) {
                 headPhoto.setImageBitmap(bitmap);
             }
         } else {
-            // ����ļ����в��������ͷ��
             GetHeadPictureAsyncTask getHeadPictureAsyncTask = new GetHeadPictureAsyncTask(mActivity,
                     headPhoto);
             getHeadPictureAsyncTask.execute(

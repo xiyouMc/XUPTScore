@@ -1,4 +1,4 @@
-package com.cardsui.example;
+package com.cardsui.ScoreCard;
 
 import com.fima.cardsui.objects.RecyclableCard;
 import com.xy.fy.main.R;

@@ -33,7 +33,6 @@ import cn.bmob.im.util.BmobLog;
 import cn.bmob.v3.listener.FindListener;
 
 /**
- * ������Ϣ������
  *
  * @author smile
  * @ClassName: MyMessageReceiver
@@ -43,13 +42,10 @@ import cn.bmob.v3.listener.FindListener;
 public class MyMessageReceiver extends BroadcastReceiver {
 
     public static final int NOTIFY_ID = 0x000;
-    // �¼�����
     public static ArrayList<EventListener> ehList = new ArrayList<EventListener>();
     public static int mNewNum = 0;//
     BmobUserManager userManager;
     BmobChatUser currentUser;
-
-    //������뷢���Զ����ʽ����Ϣ����ʹ��sendJsonMessage����������Json��ʽ���ַ�Ȼ���㰴�ո�ʽ�Լ�����������
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -68,7 +64,6 @@ public class MyMessageReceiver extends BroadcastReceiver {
     }
 
     /**
-     * ����Json�ַ�
      *
      * @param @param context
      * @param @param json
@@ -93,17 +88,16 @@ public class MyMessageReceiver extends BroadcastReceiver {
                 }
             } else {
                 String fromId = BmobJsonUtil.getString(jo, BmobConstant.PUSH_KEY_TARGETID);
-                //������Ϣ���շ���ObjectId--Ŀ���ǽ�����˻���½ͬһ�豸ʱ���޷����յ��ǵ�ǰ��½�û�����Ϣ��
                 final String toId = BmobJsonUtil.getString(jo, BmobConstant.PUSH_KEY_TOID);
                 String msgTime = BmobJsonUtil.getString(jo, BmobConstant.PUSH_READED_MSGTIME);
-                if (fromId != null && !BmobDB.create(context, toId).isBlackUser(fromId)) {//����Ϣ���ͷ���Ϊ�����û�
-                    if (TextUtils.isEmpty(tag)) {//��Я��tag��ǩ--�˿ɽ���İ���˵���Ϣ
+                if (fromId != null && !BmobDB.create(context, toId).isBlackUser(fromId)) {
+                    if (TextUtils.isEmpty(tag)) {
                         BmobChatManager.getInstance(context).createReceiveMsg(json, new OnReceiveListener() {
 
                             @Override
                             public void onSuccess(BmobMsg msg) {
                                 // TODO Auto-generated method stub
-                                if (ehList.size() > 0) {// �м����ʱ�򣬴�����ȥ
+                                if (ehList.size() > 0) {
                                     for (int i = 0; i < ehList.size(); i++) {
                                         ((EventListener) ehList.get(i)).onMessage(msg);
                                     }
@@ -123,13 +117,12 @@ public class MyMessageReceiver extends BroadcastReceiver {
                             }
                         });
 
-                    } else {//��tag��ǩ
+                    } else {
                         if (tag.equals(BmobConfig.TAG_ADD_CONTACT)) {
-                            //���������������أ������º�̨��δ���ֶ�
                             BmobInvitation message = BmobChatManager.getInstance(context).saveReceiveInvite(json, toId);
-                            if (currentUser != null) {//�е�½�û�
+                            if (currentUser != null) {
                                 if (toId.equals(currentUser.getObjectId())) {
-                                    if (ehList.size() > 0) {// �м����ʱ�򣬴�����ȥ
+                                    if (ehList.size() > 0) {
                                         for (EventListener handler : ehList)
                                             handler.onAddUser(message);
                                     } else {
@@ -139,7 +132,7 @@ public class MyMessageReceiver extends BroadcastReceiver {
                             }
                         } else if (tag.equals(BmobConfig.TAG_ADD_AGREE)) {
                             String username = BmobJsonUtil.getString(jo, BmobConstant.PUSH_KEY_TARGETUSERNAME);
-                            //�յ��Է���ͬ������֮�󣬾͵���ӶԷ�Ϊ����--��Ĭ�����ͬ�ⷽΪ���ѣ������浽���غ�����ݿ�
+
                             BmobUserManager.getInstance(context).addContactAfterAgree(username, new FindListener<BmobChatUser>() {
 
                                 @Override
@@ -151,22 +144,19 @@ public class MyMessageReceiver extends BroadcastReceiver {
                                 @Override
                                 public void onSuccess(List<BmobChatUser> arg0) {
                                     // TODO Auto-generated method stub
-                                    //���浽�ڴ���
+
                                     CustomApplcation.getInstance().setContactList(CollectionUtils.list2map(BmobDB.create(context).getContactList()));
                                 }
                             });
-                            //��ʾ֪ͨ
                             showOtherNotify(context, username, toId, username + "ͬ�������Ϊ����", MainActivity.class);
-                            //����һ����ʱ��֤�Ự--�����ڻỰ�����γɳ�ʼ�Ự
                             BmobMsg.createAndSaveRecentAfterAgree(context, json);
 
-                        } else if (tag.equals(BmobConfig.TAG_READED)) {//�Ѷ���ִ
+                        } else if (tag.equals(BmobConfig.TAG_READED)) {
                             String conversionId = BmobJsonUtil.getString(jo, BmobConstant.PUSH_READED_CONVERSIONID);
                             if (currentUser != null) {
-                                //���ĳ����Ϣ��״̬
                                 BmobChatManager.getInstance(context).updateMsgStatus(conversionId, msgTime);
                                 if (toId.equals(currentUser.getObjectId())) {
-                                    if (ehList.size() > 0) {// �м����ʱ�򣬴�����ȥ--�����޸Ľ���
+                                    if (ehList.size() > 0) {
                                         for (EventListener handler : ehList)
                                             handler.onReaded(conversionId, msgTime);
                                     }
@@ -174,7 +164,7 @@ public class MyMessageReceiver extends BroadcastReceiver {
                             }
                         }
                     }
-                } else {//�ں����ڼ����е���Ϣ��Ӧ����Ϊ�Ѷ�����Ȼ��ȡ�����֮���ֿ��Բ�ѯ�ĵ�
+                } else {
                     BmobChatManager.getInstance(context).updateMsgReaded(true, fromId, msgTime);
                     BmobLog.i("����Ϣ���ͷ�Ϊ�����û�");
                 }
@@ -182,7 +172,7 @@ public class MyMessageReceiver extends BroadcastReceiver {
 
         } catch (Exception e) {
             e.printStackTrace();
-            //�����ȡ�����п�����web��̨���͸�ͻ��˵���Ϣ��Ҳ�п����ǿ������Զ��巢�͵���Ϣ����Ҫ���������н����ʹ���
+
             BmobLog.i("parseMessage����" + e.getMessage());
         }
     }
