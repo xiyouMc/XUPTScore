@@ -1,10 +1,13 @@
 package com.xy.fy.main;
 
-import com.mc.util.H5Log;
-import com.mc.util.Util;
-import com.xy.fy.util.FileUtils;
-import com.xy.fy.util.ShareUtil;
-import com.xy.fy.util.StaticVarUtil;
+import com.util.ShareUtil;
+
+import java.io.FileOutputStream;
+
+import top.codemc.common.util.FileUtils;
+import top.codemc.common.util.H5Log;
+import top.codemc.common.util.StaticVarUtil;
+import top.codemc.common.util.Util;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -26,8 +29,6 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import java.io.FileOutputStream;
-
 public class ShowScoreActivity extends Activity {
 
     private static String TAG = "ShowScoreActivity";
@@ -36,7 +37,7 @@ public class ShowScoreActivity extends Activity {
     private final int FP = ViewGroup.LayoutParams.MATCH_PARENT;
     // private Button back;
     private TextView XNandXQ;
-    private LinearLayout layout;// Ϊ��ʵ�ֵ����ȡ��
+    private LinearLayout layout;// 为了实现点击就取消
     private String xn_xq;
 
     @Override
@@ -50,31 +51,31 @@ public class ShowScoreActivity extends Activity {
         Intent i = getIntent();
         xn_xq = i.getStringExtra("xn_and_xq");
         XNandXQ.setText(xn_xq);
-        String _row = i.getStringExtra("col");// ����
+        String _row = i.getStringExtra("col");// 列数
         int row_int = Integer.valueOf(_row);
         score = new String[row_int][];
         for (int j = 0; j < row_int; j++) {
             score[j] = i.getStringArrayExtra("score" + j);
         }
-        // �½�TableLayout01��ʵ��
+        // 新建TableLayout01的实例
         TableLayout tableLayout = (TableLayout) findViewById(R.id.score);
-        // ȫ�����Զ����հ״�
+        // 全部列自动填充空白处
         tableLayout.setStretchAllColumns(true);
-        // ���4�У� _col �еı��
+        // 生成4行， _col 列的表格
         for (int row = 0; row < row_int; row++) {
             TableRow tableRow = new TableRow(this);
             for (int col = 0; col < 4; col++) {
 
                 TextView tv = new TextView(this);
-                // tv������ʾ
+                // tv用于显示
                 tv.setText(score[row][col]);
                 tv.setTextSize(20);
-                if (col == 0) {// �γ�
+                if (col == 0) {// 课程
                     tv.setTextColor(Color.CYAN);
                 }
                 tableRow.addView(tv);
             }
-            // �½���TableRow��ӵ�TableLayout
+            // 新建的TableRow添加到TableLayout
             tableLayout.addView(tableRow, new TableLayout.LayoutParams(FP, WC));
         }
     }
@@ -82,7 +83,7 @@ public class ShowScoreActivity extends Activity {
     private void init() {
         // TODO Auto-generated method stub
         // back = (Button)findViewById(R.id.butBack);
-        // ���?ť
+        // 分享按钮
         Button share = (Button) findViewById(R.id.share);
         share.setOnClickListener(new OnClickListener() {
             @Override
@@ -108,13 +109,13 @@ public class ShowScoreActivity extends Activity {
         XNandXQ = (TextView) findViewById(R.id.XNandXQ);
     /*
      * back.setOnClickListener(new OnClickListener() {
-     * 
+     *
      * @Override public void onClick(View v) { // TODO Auto-generated method stub finish(); } });
      */
     }
 
     /**
-     * ��ȡ�ͻ������ҳ�� ��ȥ��������
+     * 截取客户端整个页面 ，去掉工具栏
      */
     public Bitmap captureScreen() {
 
@@ -133,7 +134,7 @@ public class ShowScoreActivity extends Activity {
         }
         Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache(), 0, statusBarHeights, widths,
                 heights - statusBarHeights);
-        // ��ٻ�����Ϣ
+        // 销毁缓存信息
         view.destroyDrawingCache();
         return bitmap;
     }
@@ -144,7 +145,7 @@ public class ShowScoreActivity extends Activity {
         }
         FileOutputStream fos;
         final String imagePath = Environment.getExternalStorageDirectory() + "/xuptscore/"
-                + StaticVarUtil.student.getAccount() + " _" + xn_xq + "." + format;
+                + StaticVarUtil.student.getAccount() + " _"+ xn_xq + "." + format;
         try {
             // file or folder may not exist, cause file not found exception
             if (FileUtils.exists(imagePath)) {
@@ -161,8 +162,8 @@ public class ShowScoreActivity extends Activity {
             if (!success) {
                 return "";
             } else {
-                MediaScannerConnection.scanFile(this, new String[]{imagePath},
-                        new String[]{"image/*"}, null);
+                MediaScannerConnection.scanFile(this, new String[] { imagePath },
+                        new String[] { "image/*" }, null);
             }
         } catch (Exception e) {
             H5Log.e(TAG, "saveImage exception.", e);

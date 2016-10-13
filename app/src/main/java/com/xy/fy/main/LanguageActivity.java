@@ -1,10 +1,14 @@
 package com.xy.fy.main;
 
+import java.util.ArrayList;
+import java.util.Locale;
+
 import com.bmob.im.demo.ui.BaseActivity;
-import com.mc.util.Util;
+
+import top.codemc.common.util.StaticVarUtil;
+import top.codemc.common.util.Util;
 import com.xy.fy.adapter.LanguageAdapter;
-import com.xy.fy.singleton.Language;
-import com.xy.fy.util.StaticVarUtil;
+import top.codemc.common.util.singleton.Language;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -20,9 +24,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
-
-import java.util.ArrayList;
-import java.util.Locale;
 
 public class LanguageActivity extends BaseActivity {
 
@@ -51,7 +52,7 @@ public class LanguageActivity extends BaseActivity {
         Resources resources = getResources();
         list = new ArrayList<Language>();
         Language chinese = new Language();
-        chinese.setLanguage("��������");
+        chinese.setLanguage("简体中文");
         chinese.setSelect(true);
         list.add(chinese);
         Language english = new Language();
@@ -119,7 +120,7 @@ public class LanguageActivity extends BaseActivity {
     }
 
     /**
-     * ��ס����
+     * 记住密码
      */
     private void rememberPassword(int position) {
         SharedPreferences preferences = getSharedPreferences(StaticVarUtil.LANGUAGE_INFO, MODE_PRIVATE);

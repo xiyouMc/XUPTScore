@@ -1,11 +1,11 @@
 package com.xy.fy.asynctask;
 
-import com.mc.util.HttpUtilMc;
-import com.mc.util.Util;
-import com.xy.fy.util.StaticVarUtil;
-
 import android.app.Activity;
 import android.os.AsyncTask;
+
+import top.codemc.common.util.StaticVarUtil;
+import top.codemc.common.util.Util;
+import top.codemc.rpcapi.HttpUtilMc;
 
 public class XuptLibLoginAsynctask extends AsyncTask<String, String, String> {
 

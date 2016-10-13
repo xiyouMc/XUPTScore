@@ -1,35 +1,35 @@
 [
     {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/build/intermediates/res/merged/release/layout/item_card.xml",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/src/main/res/layout/item_card.xml"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/build/intermediates/res/merged/release/layout/item_card_empty_first.xml",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/src/main/res/layout/item_card_empty_first.xml"
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/build/intermediates/res/merged/release/layout/footer_fragment.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/src/main/res/layout/footer_fragment.xml"
     },
     {
         "merged": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/build/intermediates/res/merged/release/layout/header.xml",
         "source": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/src/main/res/layout/header.xml"
     },
     {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/build/intermediates/res/merged/release/layout/item_card_empty_last.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/src/main/res/layout/item_card_empty_last.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/build/intermediates/res/merged/release/layout/item_card.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/src/main/res/layout/item_card.xml"
+    },
+    {
         "merged": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/build/intermediates/res/merged/release/layout/cards_view.xml",
         "source": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/src/main/res/layout/cards_view.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/build/intermediates/res/merged/release/layout/cards_view_multicolumn.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/src/main/res/layout/cards_view_multicolumn.xml"
     },
     {
         "merged": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/build/intermediates/res/merged/release/layout/item_stack.xml",
         "source": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/src/main/res/layout/item_stack.xml"
     },
     {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/build/intermediates/res/merged/release/layout/footer_fragment.xml",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/src/main/res/layout/footer_fragment.xml"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/build/intermediates/res/merged/release/layout/item_card_empty_last.xml",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/src/main/res/layout/item_card_empty_last.xml"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/build/intermediates/res/merged/release/layout/cards_view_multicolumn.xml",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/src/main/res/layout/cards_view_multicolumn.xml"
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/build/intermediates/res/merged/release/layout/item_card_empty_first.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/src/main/res/layout/item_card_empty_first.xml"
     },
     {
         "merged": "/Users/xiyoumc/dev/github/西邮成绩/cardsuilib/build/intermediates/res/merged/release/layout/item_play_card_empty_first.xml",

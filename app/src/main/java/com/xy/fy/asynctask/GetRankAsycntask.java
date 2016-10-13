@@ -1,16 +1,17 @@
 package com.xy.fy.asynctask;
 
-import com.mc.util.HttpUtilMc;
-import com.mc.util.RankUtils;
-import com.xy.fy.util.ConnectionUtil;
-import com.xy.fy.util.StaticVarUtil;
-import com.xy.fy.util.ViewUtil;
+import com.util.RankUtils;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.TextView;
+
+import top.codemc.common.util.ConnectionUtil;
+import top.codemc.common.util.StaticVarUtil;
+import top.codemc.common.util.ViewUtil;
+import top.codemc.rpcapi.HttpUtilMc;
 
 public class GetRankAsycntask extends AsyncTask<String, String, String> {
 

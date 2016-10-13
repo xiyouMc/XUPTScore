@@ -1,191 +1,903 @@
 [
     {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/message_comment_up.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/message_comment_up.png"
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/activity_welcome_background.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/activity_welcome_background.png"
     },
     {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__progress_secondary_holo_dark.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__progress_secondary_holo_dark.9.png"
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/friend_recommand_up.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/friend_recommand_up.png"
     },
     {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/publish_message.xml",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/publish_message.xml"
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/confirm_dialog_failweb.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/confirm_dialog_failweb.png"
     },
     {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/voice_left.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/voice_left.png"
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/erk.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/erk.png"
     },
     {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ic_voice_search_api_holo_light.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ic_voice_search_api_holo_light.png"
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/vertical.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/vertical.png"
     },
     {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/publish_message_down.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/publish_message_down.png"
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/menu_my_comment_down.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/menu_my_comment_down.png"
     },
     {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/arrow.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/arrow.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/publish_message_smallface_down.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/publish_message_smallface_down.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ic_clear_search_api_holo_light.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ic_clear_search_api_holo_light.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/checkbox_normal.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/checkbox_normal.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/view_paper4.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/view_paper4.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/filedialog_root.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/filedialog_root.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/view_paper3.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/view_paper3.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/message_default.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/message_default.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ab_bottom_transparent_dark_holo.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ab_bottom_transparent_dark_holo.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/msg_tips.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/msg_tips.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/person.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/person.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__spinner_48_inner_holo.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__spinner_48_inner_holo.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__btn_cab_done_default_holo_light.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__btn_cab_done_default_holo_light.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/chat_voice_press.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/chat_voice_press.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/chat_keyboard_press.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/chat_keyboard_press.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ic_clear_normal.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ic_clear_normal.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/new_friends_icon.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/new_friends_icon.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/picture_download_down.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/picture_download_down.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/chat_icon_voice6.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/chat_icon_voice6.png"
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__list_activated_holo.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__list_activated_holo.9.png"
     },
     {
         "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/voice_left2.png",
         "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/voice_left2.png"
     },
     {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/menu_arrow_up.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/menu_arrow_up.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/menu_my_collect_up.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/menu_my_collect_up.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__textfield_search_right_default_holo_dark.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__textfield_search_right_default_holo_dark.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/voice_right.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/voice_right.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__cab_background_bottom_holo_light.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__cab_background_bottom_holo_light.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/filedialog_file.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/filedialog_file.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/message_praise_no.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/message_praise_no.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ab_stacked_solid_light_holo.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ab_stacked_solid_light_holo.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__textfield_search_right_default_holo_light.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__textfield_search_right_default_holo_light.9.png"
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__textfield_search_default_holo_light.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__textfield_search_default_holo_light.9.png"
     },
     {
         "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/chat_keyboard_normal.png",
         "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/chat_keyboard_normal.png"
     },
     {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/chat_icon_voice1.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/chat_icon_voice1.png"
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/checkbox_normal.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/checkbox_normal.png"
     },
     {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__spinner_ab_disabled_holo_light.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__spinner_ab_disabled_holo_light.9.png"
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/top_bar.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/top_bar.9.png"
     },
     {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__textfield_search_right_selected_holo_light.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__textfield_search_right_selected_holo_light.9.png"
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/item_user_new.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/item_user_new.png"
     },
     {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__list_focused_holo.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__list_focused_holo.9.png"
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/menu_arrow_down.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/menu_arrow_down.png"
     },
     {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/icon_near.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/icon_near.png"
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/arrow.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/arrow.png"
     },
     {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/menu_tushu.xml",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/menu_tushu.xml"
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__menu_dropdown_panel_holo_dark.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__menu_dropdown_panel_holo_dark.9.png"
     },
     {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/pull_down_refresh_arrow.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/pull_down_refresh_arrow.png"
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__textfield_search_right_default_holo_light.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__textfield_search_right_default_holo_light.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/item_help_new.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/item_help_new.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/publish_message_smallface_up.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/publish_message_smallface_up.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__tab_selected_focused_holo.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__tab_selected_focused_holo.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/button_choose_down.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/button_choose_down.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/back_down.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/back_down.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__btn_cab_done_pressed_holo_light.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__btn_cab_done_pressed_holo_light.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ab_bottom_solid_dark_holo.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ab_bottom_solid_dark_holo.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/button_big_down.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/button_big_down.png"
     },
     {
         "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ab_share_pack_holo_dark.9.png",
         "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ab_share_pack_holo_dark.9.png"
     },
     {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__cab_background_bottom_holo_light.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__cab_background_bottom_holo_light.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/message_collect_yes.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/message_collect_yes.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ic_menu_moreoverflow_normal_holo_light.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ic_menu_moreoverflow_normal_holo_light.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/cet.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/cet.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/erm.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/erm.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/button_menu_up.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/button_menu_up.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ab_transparent_dark_holo.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ab_transparent_dark_holo.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/menu_setting.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/menu_setting.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/register_bottom_arrow.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/register_bottom_arrow.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/view_paper1.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/view_paper1.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/menu_my_comment_up.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/menu_my_comment_up.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ic_menu_share_holo_dark.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ic_menu_share_holo_dark.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ic_clear_normal.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ic_clear_normal.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__menu_dropdown_panel_holo_light.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__menu_dropdown_panel_holo_light.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/menu_arrow_up.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/menu_arrow_up.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ic_search_api_holo_light.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ic_search_api_holo_light.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/chat_icon_voice5.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/chat_icon_voice5.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__btn_cab_done_default_holo_light.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__btn_cab_done_default_holo_light.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/chat_icon_voice_short.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/chat_icon_voice_short.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/contact_list_buddy_item_bg.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/contact_list_buddy_item_bg.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ab_share_pack_holo_light.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ab_share_pack_holo_light.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/picture_down_up.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/picture_down_up.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__list_divider_holo_light.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__list_divider_holo_light.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ab_bottom_solid_inverse_holo.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ab_bottom_solid_inverse_holo.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/iconfont_wenjian.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/iconfont_wenjian.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__cab_background_top_holo_light.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__cab_background_top_holo_light.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/list_conversation_press.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/list_conversation_press.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/menu_about.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/menu_about.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/button_friend_apply.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/button_friend_apply.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/filedialog_folder.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/filedialog_folder.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/pop_bg_press.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/pop_bg_press.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/chat_icon_voice1.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/chat_icon_voice1.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/menu_my_collect_down.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/menu_my_collect_down.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/menu_tushu.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/menu_tushu.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__spinner_ab_disabled_holo_dark.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__spinner_ab_disabled_holo_dark.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__spinner_48_outer_holo.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__spinner_48_outer_holo.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ic_go_search_api_holo_light.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ic_go_search_api_holo_light.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/expand_divider.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/expand_divider.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__progress_bg_holo_light.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__progress_bg_holo_light.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/chat_voice_normal.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/chat_voice_normal.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ab_solid_dark_holo.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ab_solid_dark_holo.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/voice_left.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/voice_left.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/pop_bg.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/pop_bg.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ab_bottom_transparent_light_holo.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ab_bottom_transparent_light_holo.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__btn_cab_done_default_holo_dark.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__btn_cab_done_default_holo_dark.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__spinner_ab_pressed_holo_light.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__spinner_ab_pressed_holo_light.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_action_search.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/ic_action_search.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/bg_popview.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/bg_popview.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/publish_message_localpic.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/publish_message_localpic.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ab_solid_shadow_holo.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ab_solid_shadow_holo.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__spinner_ab_pressed_holo_dark.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__spinner_ab_pressed_holo_dark.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/publish_message.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/publish_message.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/message_comment_down.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/message_comment_down.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/expand_background.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/expand_background.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__cab_background_bottom_holo_dark.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__cab_background_bottom_holo_dark.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__btn_cab_done_focused_holo_dark.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__btn_cab_done_focused_holo_dark.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__list_selector_disabled_holo_dark.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__list_selector_disabled_holo_dark.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/emotionstore_newtips.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/emotionstore_newtips.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ic_menu_moreoverflow_normal_holo_dark.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ic_menu_moreoverflow_normal_holo_dark.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/base_dialog_bg.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/base_dialog_bg.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/change_menu_text_color.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/change_menu_text_color.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/iconfont_iconfontcolor51.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/iconfont_iconfontcolor51.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/iconfont_txt.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/iconfont_txt.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__progress_primary_holo_dark.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__progress_primary_holo_dark.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__tab_selected_pressed_holo.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__tab_selected_pressed_holo.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/message_praise_no.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/message_praise_no.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/publish_message_up.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/publish_message_up.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__list_pressed_holo_dark.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__list_pressed_holo_dark.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/publish_message_down.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/publish_message_down.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__list_selector_disabled_holo_light.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__list_selector_disabled_holo_light.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ic_ab_back_holo_light.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ic_ab_back_holo_light.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__textfield_search_right_default_holo_dark.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__textfield_search_right_default_holo_dark.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ic_voice_search_api_holo_light.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ic_voice_search_api_holo_light.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/chat_fail_resend_press.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/chat_fail_resend_press.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/about_bottom_bg.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/about_bottom_bg.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/left1.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/left1.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__list_longpressed_holo.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__list_longpressed_holo.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ab_bottom_transparent_dark_holo.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ab_bottom_transparent_dark_holo.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/voice_left3.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/voice_left3.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__textfield_search_selected_holo_dark.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__textfield_search_selected_holo_dark.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/menu_my_collect_up.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/menu_my_collect_up.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/gxa.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/gxa.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__spinner_48_inner_holo.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__spinner_48_inner_holo.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/message_comment.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/message_comment.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/publish_message_smallface_down.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/publish_message_smallface_down.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__textfield_search_default_holo_dark.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__textfield_search_default_holo_dark.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__list_pressed_holo_light.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__list_pressed_holo_light.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__spinner_ab_default_holo_light.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__spinner_ab_default_holo_light.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/message_comment_up.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/message_comment_up.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/menu_head_bg2.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/menu_head_bg2.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__btn_cab_done_pressed_holo_dark.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__btn_cab_done_pressed_holo_dark.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/filedialog_folder_up.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/filedialog_folder_up.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/publish_message_smallface.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/publish_message_smallface.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/location_default.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/location_default.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__spinner_ab_focused_holo_dark.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__spinner_ab_focused_holo_dark.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ab_transparent_light_holo.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ab_transparent_light_holo.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/icon_geo.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/icon_geo.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/chat_top_voice_bg.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/chat_top_voice_bg.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/default_ptr_rotate.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/default_ptr_rotate.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__progress_secondary_holo_light.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__progress_secondary_holo_light.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/chat_icon_voice6.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/chat_icon_voice6.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__btn_cab_done_focused_holo_light.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__btn_cab_done_focused_holo_light.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/about_mid_bg.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/about_mid_bg.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ab_stacked_solid_light_holo.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ab_stacked_solid_light_holo.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/person.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/person.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__textfield_search_right_selected_holo_dark.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__textfield_search_right_selected_holo_dark.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/back_up.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/back_up.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/voice_right.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/voice_right.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__tab_unselected_pressed_holo.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__tab_unselected_pressed_holo.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/checkbox_press.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/checkbox_press.png"
+    },
+    {
         "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/voice_left1.png",
         "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/voice_left1.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__textfield_search_selected_holo_light.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__textfield_search_selected_holo_light.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/chat_voice_press.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/chat_voice_press.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/pull_down_refresh_arrow.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/pull_down_refresh_arrow.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__progress_bg_holo_dark.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__progress_bg_holo_dark.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/base_horizontal_line.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/base_horizontal_line.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/picture_download.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/picture_download.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/ssdk_oks_ptr_ptr.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/ssdk_oks_ptr_ptr.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ic_menu_share_holo_light.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ic_menu_share_holo_light.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ic_clear_disabled.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ic_clear_disabled.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__textfield_search_right_selected_holo_light.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__textfield_search_right_selected_holo_light.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ic_search.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ic_search.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ic_go.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ic_go.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/menu_my_comment.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/menu_my_comment.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/filedialog_file.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/filedialog_file.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ic_commit_search_api_holo_dark.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ic_commit_search_api_holo_dark.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ab_stacked_transparent_dark_holo.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ab_stacked_transparent_dark_holo.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/qrcode.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/qrcode.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/message_collect_no.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/message_collect_no.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/button_friend_recommand.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/button_friend_recommand.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__list_divider_holo_dark.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__list_divider_holo_dark.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/button_choose_up.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/button_choose_up.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/filedialog_root.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/filedialog_root.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/menu_my_collect.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/menu_my_collect.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ic_cab_done_holo_dark.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ic_cab_done_holo_dark.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/message_default.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/message_default.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/publish_message_localpic_down.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/publish_message_localpic_down.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/msg_tips.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/msg_tips.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/publish_message_localpic_up.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/publish_message_localpic_up.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/iconfont_uploading.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/iconfont_uploading.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/button_big.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/button_big.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/menu_arrow.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/menu_arrow.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/expand_child_indicator.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/expand_child_indicator.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/message_praise_yes.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/message_praise_yes.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/list_newmessage2.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/list_newmessage2.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_ic_menu_moreoverflow_normal_holo_dark.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/abc_ic_menu_moreoverflow_normal_holo_dark.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/chat_icon_voice2.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/chat_icon_voice2.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/voice_right1.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/voice_right1.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/menu_my_publish.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/menu_my_publish.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/view_paper4.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/view_paper4.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/chat_fail_resend_normal.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/chat_fail_resend_normal.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__toast_frame.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__toast_frame.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/base_horizontal_line_red.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/base_horizontal_line_red.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/icon_market12.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/icon_market12.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/icon_near.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/icon_near.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/publish_message_takephoto_up.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/publish_message_takephoto_up.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/change_button_text_color.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/change_button_text_color.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/btn_style_one_disabled.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/btn_style_one_disabled.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/refresh_black.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/refresh_black.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ic_cab_done_holo_light.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ic_cab_done_holo_light.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/about_top_bg.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/about_top_bg.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/new_friends_icon.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/new_friends_icon.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/chat_icon_voice3.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/chat_icon_voice3.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/voice_right2.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/voice_right2.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ab_stacked_transparent_light_holo.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ab_stacked_transparent_light_holo.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/iconfont_word.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/iconfont_word.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/menu_bang.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/menu_bang.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/menu_quit.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/menu_quit.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/transparent.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/transparent.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ic_clear_search_api_disabled_holo_light.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ic_clear_search_api_disabled_holo_light.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/button_big_up.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/button_big_up.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/picture_download_down.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/picture_download_down.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/iconfont_pdf.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/iconfont_pdf.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__cab_background_top_holo_dark.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__cab_background_top_holo_dark.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/voice_right3.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/voice_right3.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/button_choose.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/button_choose.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/view_paper3.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/view_paper3.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/chat_keyboard_press.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/chat_keyboard_press.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/button_menu.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/button_menu.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/default_head.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/default_head.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__list_focused_holo.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__list_focused_holo.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ic_ab_back_holo_dark.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ic_ab_back_holo_dark.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__progress_primary_holo_light.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__progress_primary_holo_light.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ab_bottom_solid_light_holo.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ab_bottom_solid_light_holo.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/chat_icon_voice4.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/chat_icon_voice4.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__spinner_ab_disabled_holo_light.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__spinner_ab_disabled_holo_light.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/default_head_photo.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/default_head_photo.png"
     },
     {
         "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/button_back_up.png",
         "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/button_back_up.png"
     },
     {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__toast_frame.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__toast_frame.9.png"
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ab_stacked_solid_dark_holo.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ab_stacked_solid_dark_holo.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/view_paper2.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/view_paper2.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ic_commit_search_api_holo_light.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ic_commit_search_api_holo_light.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ab_solid_light_holo.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ab_solid_light_holo.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/publish_message_takephoto.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/publish_message_takephoto.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__spinner_ab_focused_holo_light.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__spinner_ab_focused_holo_light.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/menu_list.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/menu_list.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/filedialog_wavfile.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/filedialog_wavfile.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__tab_selected_holo.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__tab_selected_holo.9.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ic_voice_search.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ic_voice_search.png"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__progress_secondary_holo_dark.9.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__progress_secondary_holo_dark.9.png"
     },
     {
         "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/button_back.xml",
@@ -196,723 +908,11 @@
         "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/publish_message_takephoto_down.png"
     },
     {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/chat_icon_voice3.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/chat_icon_voice3.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/ssdk_oks_ptr_ptr.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/ssdk_oks_ptr_ptr.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__spinner_ab_default_holo_light.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__spinner_ab_default_holo_light.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ic_commit_search_api_holo_dark.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ic_commit_search_api_holo_dark.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__tab_selected_focused_holo.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__tab_selected_focused_holo.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/menu_my_comment_up.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/menu_my_comment_up.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__list_activated_holo.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__list_activated_holo.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/gxa.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/gxa.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ab_solid_shadow_holo.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ab_solid_shadow_holo.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__spinner_ab_focused_holo_light.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__spinner_ab_focused_holo_light.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/icon_market12.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/icon_market12.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__list_pressed_holo_dark.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__list_pressed_holo_dark.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/picture_download.xml",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/picture_download.xml"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/menu_list.xml",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/menu_list.xml"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ab_bottom_solid_dark_holo.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ab_bottom_solid_dark_holo.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/base_horizontal_line_red.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/base_horizontal_line_red.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__list_pressed_holo_light.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__list_pressed_holo_light.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/publish_message_takephoto.xml",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/publish_message_takephoto.xml"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/chat_icon_voice4.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/chat_icon_voice4.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/menu_bang.xml",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/menu_bang.xml"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ic_search.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ic_search.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/top_bar.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/top_bar.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ab_share_pack_holo_light.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ab_share_pack_holo_light.9.png"
-    },
-    {
         "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__spinner_ab_default_holo_dark.9.png",
         "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__spinner_ab_default_holo_dark.9.png"
     },
     {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/button_big_up.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/button_big_up.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__textfield_search_default_holo_light.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__textfield_search_default_holo_light.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__spinner_ab_disabled_holo_dark.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__spinner_ab_disabled_holo_dark.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/voice_right2.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/voice_right2.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/button_menu_up.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/button_menu_up.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ab_stacked_solid_dark_holo.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ab_stacked_solid_dark_holo.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/menu_about.xml",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/menu_about.xml"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/voice_left3.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/voice_left3.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ab_transparent_light_holo.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ab_transparent_light_holo.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/view_paper1.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/view_paper1.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/publish_message_localpic.xml",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/publish_message_localpic.xml"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/default_head.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/default_head.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/button_choose.xml",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/button_choose.xml"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/publish_message_localpic_down.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/publish_message_localpic_down.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/menu_setting.xml",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/menu_setting.xml"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/back_down.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/back_down.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/item_help_new.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/item_help_new.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/chat_fail_resend_normal.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/chat_fail_resend_normal.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ic_search_api_holo_light.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ic_search_api_holo_light.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__tab_unselected_pressed_holo.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__tab_unselected_pressed_holo.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/iconfont_txt.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/iconfont_txt.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/iconfont_iconfontcolor51.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/iconfont_iconfontcolor51.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/publish_message_up.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/publish_message_up.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ab_bottom_solid_inverse_holo.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ab_bottom_solid_inverse_holo.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/button_friend_recommand.xml",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/button_friend_recommand.xml"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/register_bottom_arrow.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/register_bottom_arrow.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/filedialog_wavfile.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/filedialog_wavfile.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__list_longpressed_holo.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__list_longpressed_holo.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ic_clear_search_api_disabled_holo_light.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ic_clear_search_api_disabled_holo_light.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/friend_recommand_up.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/friend_recommand_up.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/button_friend_apply.xml",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/button_friend_apply.xml"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/base_horizontal_line.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/base_horizontal_line.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/contact_list_buddy_item_bg.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/contact_list_buddy_item_bg.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ic_menu_share_holo_light.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ic_menu_share_holo_light.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/btn_style_one_disabled.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/btn_style_one_disabled.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__btn_cab_done_default_holo_dark.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__btn_cab_done_default_holo_dark.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ab_transparent_dark_holo.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ab_transparent_dark_holo.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/message_collect_yes.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/message_collect_yes.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__progress_bg_holo_light.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__progress_bg_holo_light.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/menu_my_collect_down.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/menu_my_collect_down.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__menu_dropdown_panel_holo_dark.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__menu_dropdown_panel_holo_dark.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/button_choose_down.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/button_choose_down.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__textfield_search_right_selected_holo_dark.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__textfield_search_right_selected_holo_dark.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/menu_arrow_down.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/menu_arrow_down.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/filedialog_folder.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/filedialog_folder.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ic_cab_done_holo_light.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ic_cab_done_holo_light.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__btn_cab_done_focused_holo_dark.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__btn_cab_done_focused_holo_dark.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ab_bottom_solid_light_holo.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ab_bottom_solid_light_holo.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__progress_secondary_holo_light.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__progress_secondary_holo_light.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__cab_background_top_holo_light.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__cab_background_top_holo_light.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/publish_message_smallface_up.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/publish_message_smallface_up.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/emotionstore_newtips.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/emotionstore_newtips.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/filedialog_folder_up.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/filedialog_folder_up.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ab_stacked_transparent_dark_holo.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ab_stacked_transparent_dark_holo.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__tab_selected_pressed_holo.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__tab_selected_pressed_holo.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/list_newmessage2.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/list_newmessage2.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/voice_right3.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/voice_right3.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/back_up.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/back_up.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ic_ab_back_holo_dark.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ic_ab_back_holo_dark.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/expand_divider.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/expand_divider.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__btn_cab_done_pressed_holo_light.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__btn_cab_done_pressed_holo_light.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__cab_background_top_holo_dark.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__cab_background_top_holo_dark.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__textfield_search_default_holo_dark.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__textfield_search_default_holo_dark.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_ic_menu_moreoverflow_normal_holo_dark.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/abc_ic_menu_moreoverflow_normal_holo_dark.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/button_menu.xml",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/button_menu.xml"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/about_mid_bg.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/about_mid_bg.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/about_top_bg.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/about_top_bg.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/publish_message_smallface.xml",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/publish_message_smallface.xml"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/menu_my_publish.xml",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/menu_my_publish.xml"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__textfield_search_selected_holo_light.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__textfield_search_selected_holo_light.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ic_go.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ic_go.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/voice_right1.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/voice_right1.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/chat_voice_normal.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/chat_voice_normal.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/refresh_black.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/refresh_black.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/message_comment.xml",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/message_comment.xml"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/chat_icon_voice2.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/chat_icon_voice2.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/cet.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/cet.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ic_commit_search_api_holo_light.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ic_commit_search_api_holo_light.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/message_praise_yes.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/message_praise_yes.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/button_big_down.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/button_big_down.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/vertical.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/vertical.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/default_head_photo.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/default_head_photo.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__btn_cab_done_pressed_holo_dark.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__btn_cab_done_pressed_holo_dark.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/icon_geo.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/icon_geo.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__progress_bg_holo_dark.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__progress_bg_holo_dark.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/publish_message_takephoto_up.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/publish_message_takephoto_up.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/iconfont_uploading.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/iconfont_uploading.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/menu_head_bg2.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/menu_head_bg2.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/menu_my_comment.xml",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/menu_my_comment.xml"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/message_collect_no.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/message_collect_no.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__spinner_ab_focused_holo_dark.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__spinner_ab_focused_holo_dark.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__btn_cab_done_focused_holo_light.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__btn_cab_done_focused_holo_light.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/iconfont_wenjian.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/iconfont_wenjian.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/confirm_dialog_failweb.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/confirm_dialog_failweb.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/menu_my_comment_down.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/menu_my_comment_down.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/menu_arrow.xml",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/menu_arrow.xml"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/checkbox_press.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/checkbox_press.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ic_menu_moreoverflow_normal_holo_dark.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ic_menu_moreoverflow_normal_holo_dark.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/expand_child_indicator.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/expand_child_indicator.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/menu_quit.xml",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/menu_quit.xml"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/left1.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/left1.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/chat_icon_voice_short.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/chat_icon_voice_short.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/menu_my_collect.xml",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/menu_my_collect.xml"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__cab_background_bottom_holo_dark.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__cab_background_bottom_holo_dark.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/list_conversation_press.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/list_conversation_press.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/base_dialog_bg.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/base_dialog_bg.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/erk.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/erk.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/message_comment_down.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/message_comment_down.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ic_menu_moreoverflow_normal_holo_light.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ic_menu_moreoverflow_normal_holo_light.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/button_choose_up.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/button_choose_up.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ic_ab_back_holo_light.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ic_ab_back_holo_light.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__list_selector_disabled_holo_dark.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__list_selector_disabled_holo_dark.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/button_big.xml",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/button_big.xml"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ic_menu_share_holo_dark.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ic_menu_share_holo_dark.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/expand_background.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/expand_background.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__spinner_ab_pressed_holo_dark.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__spinner_ab_pressed_holo_dark.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__spinner_48_outer_holo.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__spinner_48_outer_holo.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__progress_primary_holo_dark.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__progress_primary_holo_dark.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/chat_fail_resend_press.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/chat_fail_resend_press.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ab_solid_dark_holo.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ab_solid_dark_holo.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/change_button_text_color.xml",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/change_button_text_color.xml"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ab_stacked_transparent_light_holo.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ab_stacked_transparent_light_holo.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/item_user_new.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/item_user_new.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__spinner_ab_pressed_holo_light.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__spinner_ab_pressed_holo_light.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/chat_top_voice_bg.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/chat_top_voice_bg.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/publish_message_localpic_up.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/publish_message_localpic_up.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ic_voice_search.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ic_voice_search.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__list_selector_disabled_holo_light.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__list_selector_disabled_holo_light.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/iconfont_word.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/iconfont_word.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/view_paper2.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/view_paper2.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/activity_welcome_background.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/activity_welcome_background.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/chat_icon_voice5.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/chat_icon_voice5.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/picture_down_up.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/picture_down_up.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/default_ptr_rotate.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/default_ptr_rotate.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__progress_primary_holo_light.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__progress_primary_holo_light.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_action_search.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/ic_action_search.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__menu_dropdown_panel_holo_light.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__menu_dropdown_panel_holo_light.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/bg_popview.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/bg_popview.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/iconfont_pdf.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/iconfont_pdf.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/erm.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/erm.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__list_divider_holo_dark.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__list_divider_holo_dark.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ic_go_search_api_holo_light.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ic_go_search_api_holo_light.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__textfield_search_selected_holo_dark.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__textfield_search_selected_holo_dark.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__list_divider_holo_light.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__list_divider_holo_light.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ic_clear_disabled.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ic_clear_disabled.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__tab_selected_holo.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__tab_selected_holo.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ic_cab_done_holo_dark.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ic_cab_done_holo_dark.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ab_bottom_transparent_light_holo.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ab_bottom_transparent_light_holo.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/qrcode.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/qrcode.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/pop_bg_press.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/pop_bg_press.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ab_solid_light_holo.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ab_solid_light_holo.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/transparent.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/transparent.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/about_bottom_bg.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/about_bottom_bg.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/pop_bg.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/pop_bg.9.png"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/change_menu_text_color.xml",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/change_menu_text_color.xml"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/location_default.9.png",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/drawable-hdpi/location_default.9.png"
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/abs__ic_clear_search_api_holo_light.png",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/drawable-hdpi-v4/abs__ic_clear_search_api_holo_light.png"
     }
 ]

@@ -12,7 +12,7 @@
             android:orientation="horizontal"
             android:paddingLeft="25dp">
 
-        <com.mc.util.CircleImageView
+        <com.xy.fy.view.CircleImageView
                 android:id="@+id/headphoto"
                 android:layout_width="70dp"
                 android:layout_height="70dp"

@@ -1,18 +1,18 @@
 [
     {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/color/abs__primary_text_holo_dark.xml",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/color/abs__primary_text_holo_dark.xml"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/color/abs__primary_text_disable_only_holo_light.xml",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/color/abs__primary_text_disable_only_holo_light.xml"
-    },
-    {
         "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/color/abs__primary_text_holo_light.xml",
         "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/color/abs__primary_text_holo_light.xml"
     },
     {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/color/abs__primary_text_holo_dark.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/color/abs__primary_text_holo_dark.xml"
+    },
+    {
         "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/color/abs__primary_text_disable_only_holo_dark.xml",
         "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/color/abs__primary_text_disable_only_holo_dark.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/color/abs__primary_text_disable_only_holo_light.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/color/abs__primary_text_disable_only_holo_light.xml"
     }
 ]

@@ -10,9 +10,19 @@ package top.codemc.rpcapi;
 public final class R {
     public static final class attr {
     }
+    public static final class id {
+        public static int progress=0x7f040000;
+    }
+    public static final class layout {
+        public static int progress=0x7f020000;
+    }
     public static final class string {
-        public static int app_name=0x7f020000;
-        public static int repeat_login=0x7f020001;
-        public static int repeating_login=0x7f020002;
+        public static int app_name=0x7f030000;
+        public static int cancel=0x7f030001;
+        public static int ok=0x7f030002;
+        public static int querying=0x7f030003;
+        public static int repeat_login=0x7f030004;
+        public static int repeating_login=0x7f030005;
+        public static int waiting=0x7f030006;
     }
 }

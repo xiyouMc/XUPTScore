@@ -1,6 +1,6 @@
 package com.xy.fy.main;
 
-import com.mc.util.Util;
+import top.codemc.common.util.Util;
 
 import android.app.ActivityGroup;
 import android.content.Intent;
@@ -14,13 +14,13 @@ import android.widget.LinearLayout;
 @SuppressWarnings("deprecation")
 public class AddFriendListActivity extends ActivityGroup {
 
-    private static final Class<?>[] sActivityClasses = {FriendRecommondActivity.class,
-            FriendApplyActivity.class};
+    private static final Class<?>[] sActivityClasses = { FriendRecommondActivity.class,
+            FriendApplyActivity.class };
 
-    private static final String[] sActivityIds = {"FriendRecommondActivity", "FriendApplyActivity"};
+    private static final String[] sActivityIds = { "FriendRecommondActivity", "FriendApplyActivity" };
     Button back;
-    Button friend_recommand;// �����Ƽ�
-    Button friend_apply;// ��������
+    Button friend_recommand;// 好友推荐
+    Button friend_apply;// 好友申请
     private LinearLayout add_friend_layout;
 
     @Override
@@ -34,7 +34,7 @@ public class AddFriendListActivity extends ActivityGroup {
         click();
     }
 
-    // �л�activity
+    // 切换activity
     private void processViews(int rid) {
         add_friend_layout.removeAllViews();
         final int index = rid;
@@ -47,7 +47,7 @@ public class AddFriendListActivity extends ActivityGroup {
     private void click() {
         // TODO Auto-generated method stub
         /**
-         * ����
+         * 返回
          */
         back.setOnClickListener(new OnClickListener() {
             @Override
@@ -88,12 +88,12 @@ public class AddFriendListActivity extends ActivityGroup {
         back = (Button) findViewById(R.id.back);
         friend_recommand = (Button) findViewById(R.id.friend_recommand);
         friend_apply = (Button) findViewById(R.id.friend_apply);
-        // Ĭ�� �����Ƽ� ��ȡ����
+        // 默认 好友推荐 获取焦点
         recommand_focus();
     }
 
     /**
-     * �����Ƽ� ��ȡ����
+     * 好友推荐 获取焦点
      */
     private void recommand_focus() {
         friend_recommand.setFocusable(true);
@@ -109,7 +109,7 @@ public class AddFriendListActivity extends ActivityGroup {
     }
 
     /**
-     * �������� ��ȡ����
+     * 好友申请 获取焦点
      */
     private void apply_focus() {
         friend_apply.setFocusable(true);

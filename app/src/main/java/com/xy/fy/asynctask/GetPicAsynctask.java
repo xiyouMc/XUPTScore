@@ -1,13 +1,10 @@
 package com.xy.fy.asynctask;
 
-import com.mc.util.H5Dialog;
-import com.mc.util.H5Toast;
-import com.mc.util.HttpUtilMc;
+import com.xy.fy.view.H5Dialog;
+import com.xy.fy.view.H5Toast;
 import com.xy.fy.asynctask.LoginAsynctask.LoginResult;
 import com.xy.fy.main.MainActivity;
 import com.xy.fy.main.R;
-import com.xy.fy.util.StaticVarUtil;
-import com.xy.fy.util.ViewUtil;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -22,6 +19,10 @@ import android.view.View;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import top.codemc.common.util.StaticVarUtil;
+import top.codemc.common.util.ViewUtil;
+import top.codemc.rpcapi.HttpUtilMc;
 
 public class GetPicAsynctask extends AsyncTask<Object, String, String> {
 

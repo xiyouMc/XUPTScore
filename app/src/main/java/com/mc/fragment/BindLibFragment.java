@@ -14,9 +14,6 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class BindLibFragment extends Fragment {
-    /**
-     * ���õ�Header����
-     */
     public HeaderLayout mHeaderLayout;
     private Button bind;
     private EditText libAccount;
@@ -48,7 +45,7 @@ public class BindLibFragment extends Fragment {
     }
 
     /**
-     * ֻ��title initTopBarLayoutByTitle
+     * ֻtitle initTopBarLayoutByTitle
      *
      * @Title: initTopBarLayoutByTitle
      */
@@ -59,7 +56,7 @@ public class BindLibFragment extends Fragment {
     }
 
     /**
-     * ֻ����߰�ť��Title initTopBarLayout
+     * ֻTitle initTopBarLayout
      */
     public void initTopBarForLeft(String titleName) {
         mHeaderLayout = (HeaderLayout) findViewById(R.id.common_actionbar);
@@ -69,7 +66,6 @@ public class BindLibFragment extends Fragment {
                 new OnLeftButtonClickListener());
     }
 
-    //��߰�ť�ĵ���¼�
     public class OnLeftButtonClickListener implements
             onLeftImageButtonClickListener {
 

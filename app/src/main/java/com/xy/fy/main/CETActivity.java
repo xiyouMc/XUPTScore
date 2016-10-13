@@ -1,7 +1,7 @@
 package com.xy.fy.main;
 
-import com.mc.util.Util;
-import com.xy.fy.util.StaticVarUtil;
+import top.codemc.common.util.StaticVarUtil;
+import top.codemc.common.util.Util;
 
 import android.app.Activity;
 import android.content.Intent;

@@ -3,7 +3,7 @@
     package="com.actionbarsherlock.test" >
 
     <uses-sdk
-        android:minSdkVersion="14"
+        android:minSdkVersion="19"
         android:targetSdkVersion="22" />
 
     <instrumentation

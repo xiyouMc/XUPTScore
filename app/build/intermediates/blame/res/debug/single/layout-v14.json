@@ -1,10 +1,10 @@
 [
     {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout-v14/sherlock_spinner_dropdown_item.xml",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/layout-v14/sherlock_spinner_dropdown_item.xml"
-    },
-    {
         "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout-v14/sherlock_spinner_item.xml",
         "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/layout-v14/sherlock_spinner_item.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/layout-v14/sherlock_spinner_dropdown_item.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/exploded-aar/西邮成绩/actionbarsherlock/unspecified/res/layout-v14/sherlock_spinner_dropdown_item.xml"
     }
 ]

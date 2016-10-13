@@ -245,7 +245,7 @@ public class MainActivity extends ActivityBase implements EventListener {
             String tickerText = message.getFromname() + "������Ӻ���";
             boolean isAllowVibrate = CustomApplcation.getInstance().getSpUtil().isAllowVibrate();
             BmobNotifyManager.getInstance(this).showNotify(isAllow, isAllowVibrate,
-                    R.drawable.ic_launcher, tickerText, message.getFromname(), tickerText.toString(),
+                    R.drawable.default_head_photo, tickerText, message.getFromname(), tickerText.toString(),
                     NewFriendActivity.class);
         }
     }

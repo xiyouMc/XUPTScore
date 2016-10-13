@@ -1,66 +1,66 @@
 [
     {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/anim/out_to_left.xml",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/anim/out_to_left.xml"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/anim/scale.xml",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/anim/scale.xml"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/anim/animated_remote.xml",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/anim/animated_remote.xml"
-    },
-    {
         "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/anim/grow_from_bottom.xml",
         "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/anim/grow_from_bottom.xml"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/anim/in_from_right.xml",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/anim/in_from_right.xml"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/anim/translate.xml",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/anim/translate.xml"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/anim/shrink_from_top.xml",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/anim/shrink_from_top.xml"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/anim/anim_chat_voice_right.xml",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/anim/anim_chat_voice_right.xml"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/anim/out_to_right.xml",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/anim/out_to_right.xml"
-    },
-    {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/anim/dialog_enter_01.xml",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/anim/dialog_enter_01.xml"
     },
     {
         "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/anim/out_from_left.xml",
         "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/anim/out_from_left.xml"
     },
     {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/anim/out_from_right.xml",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/anim/out_from_right.xml"
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/anim/in_from_right.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/anim/in_from_right.xml"
     },
     {
         "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/anim/in_from_left.xml",
         "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/anim/in_from_left.xml"
     },
     {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/anim/textscore_translate.xml",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/anim/textscore_translate.xml"
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/anim/anim_chat_voice_right.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/anim/anim_chat_voice_right.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/anim/scale.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/anim/scale.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/anim/shrink_from_top.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/anim/shrink_from_top.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/anim/out_to_right.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/anim/out_to_right.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/anim/anim_chat_voice_left.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/anim/anim_chat_voice_left.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/anim/out_from_right.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/anim/out_from_right.xml"
     },
     {
         "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/anim/dialog_exit_01.xml",
         "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/anim/dialog_exit_01.xml"
     },
     {
-        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/anim/anim_chat_voice_left.xml",
-        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/anim/anim_chat_voice_left.xml"
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/anim/out_to_left.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/anim/out_to_left.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/anim/dialog_enter_01.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/anim/dialog_enter_01.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/anim/translate.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/anim/translate.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/anim/animated_remote.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/anim/animated_remote.xml"
+    },
+    {
+        "merged": "/Users/xiyoumc/dev/github/西邮成绩/app/build/intermediates/res/merged/debug/anim/textscore_translate.xml",
+        "source": "/Users/xiyoumc/dev/github/西邮成绩/app/src/main/res/anim/textscore_translate.xml"
     }
 ]

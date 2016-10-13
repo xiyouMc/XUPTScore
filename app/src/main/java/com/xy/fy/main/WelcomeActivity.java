@@ -1,13 +1,14 @@
 package com.xy.fy.main;
 
-import com.mc.util.CrashHandler;
-import com.mc.util.H5Log;
-import com.mc.util.HttpUtilMc;
-import com.mc.util.Util;
+import top.codemc.common.util.ConnectionUtil;
+import top.codemc.common.util.StaticVarUtil;
+import top.codemc.common.util.ViewUtil;
+import top.codemc.rpcapi.CrashHandler;
+import top.codemc.common.util.H5Log;
+import top.codemc.common.util.Util;
+import top.codemc.rpcapi.HttpUtilMc;
+
 import com.xy.fy.asynctask.LoginAsynctask;
-import com.xy.fy.util.ConnectionUtil;
-import com.xy.fy.util.StaticVarUtil;
-import com.xy.fy.util.ViewUtil;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -42,15 +43,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class WelcomeActivity extends Activity {
-
-    Runnable runnableUi = new Runnable() {
-        @SuppressLint("NewApi")
-        @Override
-        public void run() {
-
-        }
-
-    };
     private LinearLayout welcome;
     private Handler mHandler = new Handler();
     private Bitmap bitmap;

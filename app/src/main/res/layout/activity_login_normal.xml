@@ -21,7 +21,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="60dp"/>
 
-            <com.mc.util.CircleImageView
+            <com.xy.fy.view.CircleImageView
                     xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/profile_image"
                     android:layout_width="85dp"
