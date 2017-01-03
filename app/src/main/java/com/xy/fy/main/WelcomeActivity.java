@@ -1,17 +1,12 @@
 package com.xy.fy.main;
 
-import top.codemc.common.util.ConnectionUtil;
-import top.codemc.common.util.StaticVarUtil;
-import top.codemc.common.util.ViewUtil;
-import top.codemc.rpcapi.CrashHandler;
-import top.codemc.common.util.H5Log;
-import top.codemc.common.util.Util;
-import top.codemc.rpcapi.HttpUtilMc;
-
-import com.xy.fy.asynctask.LoginAsynctask;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import com.xy.fy.asynctask.LoginAsynctask;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
@@ -20,10 +15,10 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -34,18 +29,23 @@ import android.view.View;
 import android.view.Window;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import top.codemc.common.util.ConnectionUtil;
+import top.codemc.common.util.H5Log;
+import top.codemc.common.util.StaticVarUtil;
+import top.codemc.common.util.Util;
+import top.codemc.common.util.ViewUtil;
+import top.codemc.rpcapi.CrashHandler;
+import top.codemc.rpcapi.HttpUtilMc;
 
 public class WelcomeActivity extends Activity {
+
     private LinearLayout welcome;
-    private Handler mHandler = new Handler();
-    private Bitmap bitmap;
 
     @SuppressLint("NewApi")
     @Override
@@ -79,13 +79,13 @@ public class WelcomeActivity extends Activity {
             if (alwaysFinish == 1) {
                 Dialog dialog = null;
                 dialog = new AlertDialog.Builder(this)
-                        .setMessage("�������ѿ���'�������',����i�����ֹ����޷���ʹ��.���ǽ����������·�'����'��ť,��'������ѡ��'�йر�'�������'����.")
-                        .setNegativeButton("ȡ��", new OnClickListener() {
+                        .setMessage("由于您已开启'不保留活动',导致i呼部分功能无法正常使用.我们建议您点击左下方'设置'按钮,在'开发者选项'中关闭'不保留活动'功能.")
+                        .setNegativeButton("取消", new OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
                             }
-                        }).setPositiveButton("����", new OnClickListener() {
+                        }).setPositiveButton("设置", new OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent intent = new Intent(Settings.ACTION_APPLICATION_DEVELOPMENT_SETTINGS);
@@ -133,6 +133,85 @@ public class WelcomeActivity extends Activity {
         });
     }
 
+    private Handler mHandler = new Handler();
+    private Bitmap bitmap;
+    Runnable runnableUi = new Runnable() {
+        @SuppressLint("NewApi")
+        @Override
+        public void run() {
+
+        }
+
+    };
+
+    class GetImageMsgAsytask extends AsyncTask<String, String, String> {
+        private boolean isWelcome;
+
+        private GetImageMsgAsytask(boolean isWelcome) {
+            // TODO Auto-generated constructor stub
+            this.isWelcome = isWelcome;
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            // TODO Auto-generated method stub
+            return HttpUtilMc.IsReachIP() ? HttpUtilMc.queryStringForPost(HttpUtilMc.BASE_URL
+                    + "GetPollImageTimeIspoll") : HttpUtilMc.CONNECT_EXCEPTION;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            // TODO Auto-generated method stub
+            super.onPostExecute(result);
+            try {
+                if (isWelcome) {
+                    result = !HttpUtilMc.CONNECT_EXCEPTION.equals(result) ? result : "0|0|0";
+                    String[] imageAndTime = result.split("\\|");
+                    final String imageTime = imageAndTime[0];
+                    String isPoll = imageAndTime[1];
+                    if (isPoll.equals("1")) {// 下拉下载
+                        final Animation anim = AnimationUtils.loadAnimation(getApplicationContext(),
+                                R.anim.animated_remote);
+                        LinearInterpolator lir = new LinearInterpolator();
+                        anim.setInterpolator(lir);
+                        new Thread() {
+                            public void run() {
+                                try {
+                                    sleep(1500);
+                                } catch (InterruptedException e) {
+                                    // TODO Auto-generated catch block
+                                    e.printStackTrace();
+                                }
+                                bitmap = Util.getBitmap(HttpUtilMc.BASE_URL + "image/" + imageTime + ".jpg");
+                                mHandler.post(new Runnable() {
+
+                                    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+                                    @Override
+                                    public void run() {
+                                        // TODO Auto-generated method stub
+                                        welcome.setBackground(new BitmapDrawable(bitmap));
+                                    }
+                                });
+                            }
+                        }.start();
+                    } else {
+                    }
+
+                } else {
+                    Intent i = new Intent();
+                    i.setClass(getApplicationContext(), LoginActivity.class);
+                    // 如果网络原因，则直接返回0|0
+                    i.putExtra("image", !HttpUtilMc.CONNECT_EXCEPTION.equals(result) ? result : "0|0|0");//
+                    startActivity(i);
+                    finish();
+                }
+            } catch (Exception e) {
+                // TODO: handle exception
+                Log.i("WelcomeActivity", e.toString());
+            }
+        }
+    }
+
     private void autoLogin() {
         LoginAsynctask loginAsyntask = new LoginAsynctask(WelcomeActivity.this, "", "", "",
                 new LoginAsynctask.LoginResult() {
@@ -144,7 +223,7 @@ public class WelcomeActivity extends Activity {
                         try {
                             if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
                                 if (result.equals("error") || result.equals("errorReq")) {
-                                    ViewUtil.showToast(WelcomeActivity.this, "֤����ڣ������µ�¼��");
+                                    ViewUtil.showToast(WelcomeActivity.this, "证书过期，请重新登录。");
                                     GetImageMsgAsytask getImageMsgAsytask = new GetImageMsgAsytask(false);
                                     getImageMsgAsytask.execute();
                                     // progressDialog.cancel();
@@ -188,73 +267,5 @@ public class WelcomeActivity extends Activity {
                     }
                 }, null, true);
         loginAsyntask.execute();
-    }
-
-    class GetImageMsgAsytask extends AsyncTask<String, String, String> {
-        private boolean isWelcome;
-
-        private GetImageMsgAsytask(boolean isWelcome) {
-            // TODO Auto-generated constructor stub
-            this.isWelcome = isWelcome;
-        }
-
-        @Override
-        protected String doInBackground(String... params) {
-            // TODO Auto-generated method stub
-            return HttpUtilMc.IsReachIP() ? HttpUtilMc.queryStringForPost(HttpUtilMc.BASE_URL
-                    + "GetPollImageTimeIspoll") : HttpUtilMc.CONNECT_EXCEPTION;
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            // TODO Auto-generated method stub
-            super.onPostExecute(result);
-            try {
-                if (isWelcome) {
-                    result = !HttpUtilMc.CONNECT_EXCEPTION.equals(result) ? result : "0|0|0";
-                    String[] imageAndTime = result.split("\\|");
-                    final String imageTime = imageAndTime[0];
-                    String isPoll = imageAndTime[1];
-                    if (isPoll.equals("1")) {// ��������
-                        final Animation anim = AnimationUtils.loadAnimation(getApplicationContext(),
-                                R.anim.animated_remote);
-                        LinearInterpolator lir = new LinearInterpolator();
-                        anim.setInterpolator(lir);
-                        new Thread() {
-                            public void run() {
-                                try {
-                                    sleep(1500);
-                                } catch (InterruptedException e) {
-                                    // TODO Auto-generated catch block
-                                    e.printStackTrace();
-                                }
-                                bitmap = Util.getBitmap(HttpUtilMc.BASE_URL + "image/" + imageTime + ".jpg");
-                                mHandler.post(new Runnable() {
-
-                                    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-                                    @Override
-                                    public void run() {
-                                        // TODO Auto-generated method stub
-                                        welcome.setBackground(new BitmapDrawable(bitmap));
-                                    }
-                                });
-                            }
-                        }.start();
-                    } else {
-                    }
-
-                } else {
-                    Intent i = new Intent();
-                    i.setClass(getApplicationContext(), LoginActivity.class);
-                    // �������ԭ����ֱ�ӷ���0|0
-                    i.putExtra("image", !HttpUtilMc.CONNECT_EXCEPTION.equals(result) ? result : "0|0|0");//
-                    startActivity(i);
-                    finish();
-                }
-            } catch (Exception e) {
-                // TODO: handle exception
-                Log.i("WelcomeActivity", e.toString());
-            }
-        }
     }
 }
