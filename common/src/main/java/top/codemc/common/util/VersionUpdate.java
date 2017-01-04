@@ -25,7 +25,7 @@ import java.net.URL;
 import top.codemc.common.R;
 
 /**
- * @author machao ??????
+ * @author machao ???ï¿½ï¿½ï¿½
  */
 public class VersionUpdate {
 
@@ -115,23 +115,22 @@ public class VersionUpdate {
         this.mContext = context;
     }
 
-    // ?????????Activity????
     public void checkUpdateInfo() {
         showNoticeDialog();
     }
 
     private void showNoticeDialog() {
         Builder builder = new Builder(mContext);
-        builder.setTitle("ÓÐÐÂ°æ±¾...");
+        builder.setTitle(mContext.getString(R.string.xupt_have_newer_version));
         builder.setMessage(updateMsg);
-        builder.setPositiveButton("¸üÐÂ", new OnClickListener() {
+        builder.setPositiveButton(mContext.getString(R.string.xupt_common_undate), new OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
                 showDownloadDialog();
             }
         });
-        builder.setNegativeButton("È¡Ïû", new OnClickListener() {
+        builder.setNegativeButton(mContext.getString(R.string.xupt_common_cancle), new OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
@@ -143,14 +142,14 @@ public class VersionUpdate {
 
     private void showDownloadDialog() {
         Builder builder = new Builder(mContext);
-        builder.setTitle("¿ªÊ¼ÏÂÔØ");
+        builder.setTitle(mContext.getString(R.string.xupt_common_start_download));
 
         final LayoutInflater inflater = LayoutInflater.from(mContext);
         View v = inflater.inflate(R.layout.progress, null);
         mProgress = (ProgressBar) v.findViewById(R.id.progress);
 
         builder.setView(v);
-        builder.setNegativeButton("È¡Ïû", new OnClickListener() {
+        builder.setNegativeButton(R.string.xupt_common_cancle, new OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();

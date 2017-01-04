@@ -2,7 +2,7 @@
 <project version="4">
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/xy/fy/asynctask/GetPicAsynctask.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/common/src/main/java/top/codemc/common/util/VersionUpdate.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/common/src/main/java/top/codemc/common/util/VersionUpdate.java" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

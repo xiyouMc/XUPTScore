@@ -1,18 +1,5 @@
 package com.xy.fy.main;
 
-import java.io.File;
-import java.io.UnsupportedEncodingException;
-import java.lang.ref.WeakReference;
-import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import com.bmob.im.demo.CustomApplcation;
 import com.bmob.im.demo.MyMessageReceiver;
 import com.bmob.im.demo.bean.User;
@@ -24,30 +11,17 @@ import com.bmob.im.demo.ui.fragment.ContactFragment;
 import com.bmob.im.demo.ui.fragment.RecentFragment;
 import com.bmob.im.demo.ui.fragment.SettingsFragment;
 import com.bmob.im.demo.view.HeaderLayout;
+import com.dynamicload.framework.framework.VivaApplication;
+import com.dynamicload.framework.util.FrameworkUtil;
 import com.fima.cardsui.views.CardUI;
-
-import top.codemc.common.util.BitmapUtil;
-import top.codemc.common.util.ConnectionUtil;
-import top.codemc.common.util.StaticVarUtil;
-import top.codemc.common.util.TestArrayAdapter;
-import top.codemc.common.util.ViewUtil;
-import top.codemc.common.util.db.DBConnection;
-import top.codemc.common.util.BadgeUtil;
-
-import com.util.ShareUtil;
-import com.xy.fy.view.CircleImageView;
-import com.xy.fy.view.CustomRankListView;
-import top.codemc.common.util.H5Log;
-import com.xy.fy.view.H5Toast;
-import top.codemc.common.util.LogcatHelper;
-import top.codemc.common.util.Passport;
-import top.codemc.common.util.ProgressDialogUtil;
-import com.util.RankUtils;
-import top.codemc.common.util.SIMCardInfo;
-import top.codemc.common.util.ScoreUtil;
-import top.codemc.common.util.Util;
 import com.slidingmenu.lib.SlidingMenu;
 import com.slidingmenu.lib.SlidingMenu.OnOpenListener;
+import com.util.RankUtils;
+import com.util.ShareUtil;
+import com.vivavideo.mobile.h5api.api.H5Bundle;
+import com.vivavideo.mobile.h5api.api.H5Context;
+import com.vivavideo.mobile.h5api.api.H5Param;
+import com.vivavideo.mobile.h5api.api.H5Service;
 import com.xy.fy.adapter.LibAdapter;
 import com.xy.fy.asynctask.BindXuptLibAsyncTask;
 import com.xy.fy.asynctask.CheckVersionAsynctask;
@@ -57,7 +31,13 @@ import com.xy.fy.asynctask.GetRankAsycntask;
 import com.xy.fy.asynctask.ShowCardAsyncTask;
 import com.xy.fy.asynctask.UploadFileAsytask;
 import com.xy.fy.asynctask.XuptLibLoginAsynctask;
-import top.codemc.common.util.singleton.BookList;
+import com.xy.fy.view.CircleImageView;
+import com.xy.fy.view.CustomRankListView;
+import com.xy.fy.view.H5Toast;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -106,6 +86,16 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.lang.ref.WeakReference;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+
 import cn.bmob.im.BmobChat;
 import cn.bmob.im.BmobChatManager;
 import cn.bmob.im.BmobNotifyManager;
@@ -121,6 +111,21 @@ import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UpdateListener;
 import cn.bmob.v3.listener.UploadFileListener;
 import cn.sharesdk.onekeyshare.OnekeyShare;
+import top.codemc.common.util.BadgeUtil;
+import top.codemc.common.util.BitmapUtil;
+import top.codemc.common.util.ConnectionUtil;
+import top.codemc.common.util.H5Log;
+import top.codemc.common.util.LogcatHelper;
+import top.codemc.common.util.Passport;
+import top.codemc.common.util.ProgressDialogUtil;
+import top.codemc.common.util.SIMCardInfo;
+import top.codemc.common.util.ScoreUtil;
+import top.codemc.common.util.StaticVarUtil;
+import top.codemc.common.util.TestArrayAdapter;
+import top.codemc.common.util.Util;
+import top.codemc.common.util.ViewUtil;
+import top.codemc.common.util.db.DBConnection;
+import top.codemc.common.util.singleton.BookList;
 import top.codemc.rpcapi.HttpUtilMc;
 
 public class MainActivity extends BaseActivity implements EventListener {
@@ -170,6 +175,8 @@ public class MainActivity extends BaseActivity implements EventListener {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.setContentView(R.layout.activity_main);
         Util.setContext(getApplicationContext());
+        FrameworkUtil.setConfig(getApplicationContext(), "xuptscore");
+        FrameworkUtil.prepare();
         mHandler = new MyHandler(this);
         // save session
         SharedPreferences preferences = getSharedPreferences(StaticVarUtil.USER_INFO, MODE_PRIVATE);
@@ -667,6 +674,18 @@ public class MainActivity extends BaseActivity implements EventListener {
         });
         TextView guanwang = (TextView) findViewById(R.id.ip);
         String ip = "http://www.xiyoumobile.com";
+        guanwang.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                H5Service h5Service = VivaApplication.getInstance().getMicroApplicationContext().findServiceByInterface(H5Service.class.getName());
+                H5Context h5Context = new H5Context(getApplicationContext());
+                H5Bundle h5Bundle = new H5Bundle();
+                Bundle bundle = new Bundle();
+                bundle.putString(H5Param.URL, "http://www.xiyoumobile.com");
+                h5Bundle.setParams(bundle);
+                h5Service.startPage(h5Context, h5Bundle);
+            }
+        });
         CharSequence cs = Html.fromHtml(ip);
         guanwang.setText(cs);
         guanwang.setMovementMethod(LinkMovementMethod.getInstance());
@@ -723,8 +742,8 @@ public class MainActivity extends BaseActivity implements EventListener {
      * 保存二维码
      */
     private void showDialogSaveQrcode() {
-        final CharSequence[] items = { Util.getContext().getResources()
-                .getString(R.string.save_Qr_code) };
+        final CharSequence[] items = {Util.getContext().getResources()
+                .getString(R.string.save_Qr_code)};
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setItems(items, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int item) {
@@ -1064,15 +1083,15 @@ public class MainActivity extends BaseActivity implements EventListener {
                 StaticVarUtil.cet_account = accoutStr;
                 long time = System.currentTimeMillis();
                 String time_s = Passport.jiami(String.valueOf(time),
-                        String.valueOf(new char[] { 2, 4, 8, 8, 2, 2 }));
+                        String.valueOf(new char[]{2, 4, 8, 8, 2, 2}));
                 StaticVarUtil.cet_data = Passport.jiami(accoutStr, String.valueOf(time));
                 StaticVarUtil.cet_viewstate = time_s;
                 GetCETAsyntask getCETAsyntask = new GetCETAsyntask(MainActivity.this);
                 ProgressDialogUtil.getInstance(MainActivity.this).show();
                 try {
-                    getCETAsyntask.execute(new String[] { URLEncoder.encode(
+                    getCETAsyntask.execute(new String[]{URLEncoder.encode(
                             URLEncoder.encode(nameStr.length() < 3 ? nameStr : nameStr.substring(0, 2), "utf-8"),
-                            "utf-8") });
+                            "utf-8")});
                 } catch (UnsupportedEncodingException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -1141,9 +1160,9 @@ public class MainActivity extends BaseActivity implements EventListener {
      * @return
      */
     protected void chooseHeadPhoto() {
-        String[] items = new String[] {
+        String[] items = new String[]{
                 Util.getContext().getResources().getString(R.string.select_picture),
-                Util.getContext().getResources().getString(R.string.photo) };
+                Util.getContext().getResources().getString(R.string.photo)};
         new AlertDialog.Builder(this)
                 .setTitle(Util.getContext().getResources().getString(R.string.setPhoto))
                 .setItems(items, new DialogInterface.OnClickListener() {
@@ -1203,8 +1222,8 @@ public class MainActivity extends BaseActivity implements EventListener {
                         headPhoto.setImageBitmap(bitmap);
                         // 上传头像
                         UploadFileAsytask uploadFileAsytask = new UploadFileAsytask(MainActivity.this, bitmap);
-                        uploadFileAsytask.execute(new String[] { StaticVarUtil.PATH + "/"
-                                + StaticVarUtil.student.getAccount() + ".JPEG" });
+                        uploadFileAsytask.execute(new String[]{StaticVarUtil.PATH + "/"
+                                + StaticVarUtil.student.getAccount() + ".JPEG"});
                     }
                     break;
                 case Util.CHANGE_PWD_RESULT:
@@ -1673,7 +1692,7 @@ public class MainActivity extends BaseActivity implements EventListener {
                                 // TODO Auto-generated method stub
                             }
                         });
-                        checkVersionAsyntask.execute(new String[] { "login" });
+                        checkVersionAsyntask.execute(new String[]{"login"});
                         break;
                 }
             }
@@ -1969,7 +1988,7 @@ public class MainActivity extends BaseActivity implements EventListener {
         contactFragment = new ContactFragment();
         recentFragment = new RecentFragment();
         settingFragment = new SettingsFragment();
-        fragments = new Fragment[] { recentFragment, contactFragment, settingFragment };
+        fragments = new Fragment[]{recentFragment, contactFragment, settingFragment};
         // 添加显示第一个fragment
         if (contactFragment.isAdded()) {
             return;
@@ -1991,8 +2010,6 @@ public class MainActivity extends BaseActivity implements EventListener {
 
     /**
      * button点击事件
-     *
-     * @param view
      */
     public void onTabSelect(View view) {
         if (mTabs == null) {
@@ -2061,7 +2078,6 @@ public class MainActivity extends BaseActivity implements EventListener {
 
     /**
      * 新消息广播接收者
-     *
      */
     private class NewBroadcastReceiver extends BroadcastReceiver {
         @Override

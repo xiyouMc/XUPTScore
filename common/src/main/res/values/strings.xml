@@ -4,4 +4,8 @@
     <string name="ok">确定</string>
     <string name="cancel">取消</string>
     <string name="waiting">请稍等...</string>
+    <string name="xupt_have_newer_version">有新版本</string>
+    <string name="xupt_common_undate">更新</string>
+    <string name="xupt_common_cancle">取消</string>
+    <string name="xupt_common_start_download">开始下载</string>
 </resources>

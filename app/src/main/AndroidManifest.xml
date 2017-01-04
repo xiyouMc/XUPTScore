@@ -276,6 +276,19 @@
 
             <category android:name="android.intent.category.DEFAULT"/>
         </intent-filter>
+
+        <!--Hybrid-->
+        <activity
+                android:name="com.dynamicload.framework.dynamicload.DLProxyActivity"
+                android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="com.vivovideo.framework.activity.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.vivavideo.mobile.h5core.ui.H5Activity" />
+
     </application>
 
 </manifest>
