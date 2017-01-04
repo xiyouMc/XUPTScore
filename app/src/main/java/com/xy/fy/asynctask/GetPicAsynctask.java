@@ -1,10 +1,9 @@
 package com.xy.fy.asynctask;
 
-import com.xy.fy.view.H5Dialog;
-import com.xy.fy.view.H5Toast;
 import com.xy.fy.asynctask.LoginAsynctask.LoginResult;
 import com.xy.fy.main.MainActivity;
 import com.xy.fy.main.R;
+import com.xy.fy.view.H5Dialog;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -77,10 +76,10 @@ public class GetPicAsynctask extends AsyncTask<Object, String, String> {
                                     progressDialog.dismiss();
                                 }
                                 if (bitmap == null) {
-                                    ViewUtil.showToast(mActivity, "����Ա���д�˸�bug,�����ԡ�");
+                                    ViewUtil.showToast(mActivity, "Server Error.");
                                     return;
                                 }
-                                h5Dialog.setMessage("��֤��").setBitmap(bitmap)
+                                h5Dialog.setMessage(mActivity.getString(R.string.xupt_pls_input_ecode)).setBitmap(bitmap)
                                         .setPositiveButton(R.string.h5_default_confirm, new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
@@ -95,7 +94,6 @@ public class GetPicAsynctask extends AsyncTask<Object, String, String> {
                                                     }
                                                 }
                                                 if (h5Dialog.getPic().length() != 4) {
-                                                    H5Toast.showToast(mActivity, "��֤�����");
                                                     if (progressDialog != null) {
                                                         try {
                                                             progressDialog.dismiss();
@@ -124,7 +122,6 @@ public class GetPicAsynctask extends AsyncTask<Object, String, String> {
                         getImageSync.execute();
                     }
                 } else {
-                    ViewUtil.showToast(mActivity, "������ά���С�����");
                     if (progressDialog != null) {
                         progressDialog.dismiss();
                     }
@@ -156,7 +153,7 @@ public class GetPicAsynctask extends AsyncTask<Object, String, String> {
 
     private synchronized void request(String session, final String pic) {
         StaticVarUtil.session = session;
-        StaticVarUtil.loginTimes = 0;// ����½��������
+        StaticVarUtil.loginTimes = 0;// ?????????????
         LoginAsynctask loginAsyntask = new LoginAsynctask(mActivity, account, password, pic,
                 new LoginResult() {
 
@@ -167,8 +164,7 @@ public class GetPicAsynctask extends AsyncTask<Object, String, String> {
                         try {
                             if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
                                 if (result.equals("error")) {
-                                    ViewUtil.showToast(mActivity, "�������");
-
+                                    ViewUtil.showToast(mActivity, "Error");
                                     onResult.onReturn("error");
                                     // password.setText("");
                                     if (progressDialog != null) {
@@ -176,7 +172,7 @@ public class GetPicAsynctask extends AsyncTask<Object, String, String> {
                                     }
                                     // progressDialog.cancel();
                                 } else if (result.equals("errorCode")) {
-                                    ViewUtil.showToast(mActivity, "�����������֤���Ƿ���ȷ��");
+                                    ViewUtil.showToast(mActivity, "errorCode");
 
                                     onResult.onReturn("error");
                                     // password.setText("");
@@ -185,13 +181,13 @@ public class GetPicAsynctask extends AsyncTask<Object, String, String> {
                                     }
                                 } else {
                                     if (result.equals("no_user")) {
-                                        ViewUtil.showToast(mActivity, "�˺Ų�����");
+                                        ViewUtil.showToast(mActivity, "no_user");
                                         onResult.onReturn("no_user");
                                         if (progressDialog != null) {
                                             progressDialog.dismiss();
                                         }
                                         // progressDialog.cancel();
-                                    } else {// ��¼�ɹ�'
+                                    } else {// ??????'
 
                                         StaticVarUtil.listHerf = new ArrayList<HashMap<String, String>>();
                                         JSONObject json = new JSONObject(result);
@@ -222,7 +218,7 @@ public class GetPicAsynctask extends AsyncTask<Object, String, String> {
 
                             } else {
 
-                                // ���µ�¼
+                                // ??????
                                 if (StaticVarUtil.loginTimes < 3) {
                                     LoginAsynctask loginAsyntask = new LoginAsynctask(mActivity, account, password,
                                             pic, this, progressDialog, false);

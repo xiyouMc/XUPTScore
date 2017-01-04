@@ -3,12 +3,19 @@
 buildscript {
     repositories {
         jcenter()
+        maven {
+            url "http://192.168.1.3:8081/nexus/content/repositories/VivaVideo/"
+        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.1.2'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+        classpath 'com.antfortune.freeline:gradle:0.8.4'
+        classpath group: 'com.quvideo.nativePlugin',
+                name: 'android-native-dependencies',
+                version: '3.5'
     }
 }
 

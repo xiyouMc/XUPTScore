@@ -224,4 +224,5 @@
     <string name="bind">绑定账号</string>
     <string name="h5_default_confirm">确定</string>
     <string name="h5_default_cancel">取消</string>
+    <string name="xupt_pls_input_ecode">请输入验证码</string>
 </resources>

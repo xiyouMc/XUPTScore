@@ -1,0 +1,261 @@
+{
+    "android_gradle_plugin_version": "2.1.2",
+    "apk_path": "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/app/build/outputs/apk/app-debug.apk",
+    "apt": {
+        
+    },
+    "apt_libraries": {
+        "dagger": false,
+        "butterknife": false
+    },
+    "auto_dependency": true,
+    "build_cache_dir": "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/app/build/freeline",
+    "build_directory": "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/app/build",
+    "build_script": "./gradlew :app:assembleDebug",
+    "build_script_work_directory": "",
+    "build_tools_directory": "/Users/xiyoumc/Library/Android/sdk/build-tools/22.0.0",
+    "build_tools_version": "22.0.0",
+    "compile_sdk_directory": "/Users/xiyoumc/Library/Android/sdk/platforms/android-21",
+    "compile_sdk_version": "android-21",
+    "databinding": [
+        
+    ],
+    "databinding_compiler_jar": "",
+    "databinding_modules": [
+        
+    ],
+    "debug_package": "com.xy.fy",
+    "exclude_dep_res_paths": [
+        
+    ],
+    "extra_dep_res_paths": [
+        
+    ],
+    "freeline_cache_dir": "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9",
+    "freeline_gradle_plugin_version": "0.8.4",
+    "java_home": "/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home",
+    "launcher": "com.xy.fy.main.WelcomeActivity",
+    "main_assets_directory": [
+        "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/app/src/debug/assets",
+        "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/app/src/main/assets"
+    ],
+    "main_jniLibs_directory": [
+        "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/app/src/debug/jniLibs",
+        "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/app/src/main/jniLibs"
+    ],
+    "main_jni_directory": [
+        "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/app/src/debug/jni",
+        "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/app/src/main/jni"
+    ],
+    "main_manifest_path": "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/app/src/main/AndroidManifest.xml",
+    "main_project_dir": "app",
+    "main_project_name": "app",
+    "main_r_path": "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/app/build/generated/source/r/debug/R.java",
+    "main_res_directory": [
+        "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/app/src/debug/res",
+        "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/app/src/main/res"
+    ],
+    "main_src_directory": [
+        "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/app/src/debug/java",
+        "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/app/src/main/java"
+    ],
+    "module_dependencies": {
+        "actionbarsherlock": [
+            
+        ],
+        "app": [
+            "cardsuilib",
+            "slidemenu",
+            "actionbarsherlock",
+            "rpcapi",
+            "common"
+        ],
+        "cardsuilib": [
+            
+        ],
+        "common": [
+            
+        ],
+        "rpcapi": [
+            
+        ],
+        "slidemenu": [
+            
+        ]
+    },
+    "modules": [
+        {
+            "name": "app",
+            "path": "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/app"
+        },
+        {
+            "name": "cardsuilib",
+            "path": "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/cardsuilib"
+        },
+        {
+            "name": "slidemenu",
+            "path": "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/slidemenu"
+        },
+        {
+            "name": "actionbarsherlock",
+            "path": "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/actionbarsherlock"
+        },
+        {
+            "name": "rpcapi",
+            "path": "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/rpcapi"
+        },
+        {
+            "name": "common",
+            "path": "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/common"
+        }
+    ],
+    "package": "com.xy.fy.main",
+    "product_flavor": "",
+    "project_source_sets": {
+        "actionbarsherlock": {
+            "main_assets_directory": [
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/actionbarsherlock/src/release/assets",
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/actionbarsherlock/src/main/assets"
+            ],
+            "main_jniLibs_directory": [
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/actionbarsherlock/src/release/jniLibs",
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/actionbarsherlock/src/main/jniLibs"
+            ],
+            "main_jni_directory": [
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/actionbarsherlock/src/release/jni",
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/actionbarsherlock/src/main/jni"
+            ],
+            "main_manifest_path": "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/actionbarsherlock/src/main/AndroidManifest.xml",
+            "main_res_directory": [
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/actionbarsherlock/src/release/res",
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/actionbarsherlock/src/main/res"
+            ],
+            "main_src_directory": [
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/actionbarsherlock/src/release/java",
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/actionbarsherlock/src/main/java"
+            ]
+        },
+        "app": {
+            "main_assets_directory": [
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/app/src/debug/assets",
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/app/src/main/assets"
+            ],
+            "main_jniLibs_directory": [
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/app/src/debug/jniLibs",
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/app/src/main/jniLibs"
+            ],
+            "main_jni_directory": [
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/app/src/debug/jni",
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/app/src/main/jni"
+            ],
+            "main_manifest_path": "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/app/src/main/AndroidManifest.xml",
+            "main_res_directory": [
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/app/src/debug/res",
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/app/src/main/res"
+            ],
+            "main_src_directory": [
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/app/src/debug/java",
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/app/src/main/java"
+            ]
+        },
+        "cardsuilib": {
+            "main_assets_directory": [
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/cardsuilib/src/release/assets",
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/cardsuilib/src/main/assets"
+            ],
+            "main_jniLibs_directory": [
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/cardsuilib/src/release/jniLibs",
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/cardsuilib/src/main/jniLibs"
+            ],
+            "main_jni_directory": [
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/cardsuilib/src/release/jni",
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/cardsuilib/src/main/jni"
+            ],
+            "main_manifest_path": "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/cardsuilib/src/main/AndroidManifest.xml",
+            "main_res_directory": [
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/cardsuilib/src/release/res",
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/cardsuilib/src/main/res"
+            ],
+            "main_src_directory": [
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/cardsuilib/src/release/java",
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/cardsuilib/src/main/java"
+            ]
+        },
+        "common": {
+            "main_assets_directory": [
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/common/src/release/assets",
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/common/src/main/assets"
+            ],
+            "main_jniLibs_directory": [
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/common/src/release/jniLibs",
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/common/src/main/jniLibs"
+            ],
+            "main_jni_directory": [
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/common/src/release/jni",
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/common/src/main/jni"
+            ],
+            "main_manifest_path": "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/common/src/main/AndroidManifest.xml",
+            "main_res_directory": [
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/common/src/release/res",
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/common/src/main/res"
+            ],
+            "main_src_directory": [
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/common/src/release/java",
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/common/src/main/java"
+            ]
+        },
+        "rpcapi": {
+            "main_assets_directory": [
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/rpcapi/src/release/assets",
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/rpcapi/src/main/assets"
+            ],
+            "main_jniLibs_directory": [
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/rpcapi/src/release/jniLibs",
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/rpcapi/src/main/jniLibs"
+            ],
+            "main_jni_directory": [
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/rpcapi/src/release/jni",
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/rpcapi/src/main/jni"
+            ],
+            "main_manifest_path": "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/rpcapi/src/main/AndroidManifest.xml",
+            "main_res_directory": [
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/rpcapi/src/release/res",
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/rpcapi/src/main/res"
+            ],
+            "main_src_directory": [
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/rpcapi/src/release/java",
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/rpcapi/src/main/java"
+            ]
+        },
+        "slidemenu": {
+            "main_assets_directory": [
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/slidemenu/src/release/assets",
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/slidemenu/src/main/assets"
+            ],
+            "main_jniLibs_directory": [
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/slidemenu/src/release/jniLibs",
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/slidemenu/src/main/jniLibs"
+            ],
+            "main_jni_directory": [
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/slidemenu/src/release/jni",
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/slidemenu/src/main/jni"
+            ],
+            "main_manifest_path": "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/slidemenu/src/main/AndroidManifest.xml",
+            "main_res_directory": [
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/slidemenu/src/release/res",
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/slidemenu/src/main/res"
+            ],
+            "main_src_directory": [
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/slidemenu/src/release/java",
+                "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9/slidemenu/src/main/java"
+            ]
+        }
+    },
+    "project_type": "gradle",
+    "retrolambda": {
+        
+    },
+    "root_dir": "/Users/xiyoumc/dev/github/\u897f\u90ae\u6210\u7ee9",
+    "sdk_directory": "/Users/xiyoumc/Library/Android/sdk",
+    "use_jdk8": false
+}

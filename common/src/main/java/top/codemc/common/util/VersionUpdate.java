@@ -25,24 +25,20 @@ import java.net.URL;
 import top.codemc.common.R;
 
 /**
- * @author machao ���°汾
+ * @author machao ??????
  */
 public class VersionUpdate {
 
-    /* ���ذ�װ·�� */
     private static final String savePath = Environment
             .getExternalStorageDirectory().getPath() + "/xuptscore/";
     public static final String saveFileName = savePath + "xuptscore.apk";//
     private static final int DOWN_UPDATE = 1;
     private static final int DOWN_OVER = 2;
-    // ��ʾ��
-    public String updateMsg = "�����µ������Ŷ���׿����ذ�~";
-    // ���صİ�װ��url
+    public String updateMsg = "";
     public String apkUrl;
     private Context mContext;
     private Dialog noticeDialog;
     private Dialog downloadDialog;
-    /* �������֪ͨuiˢ�µ�handler��msg���� */
     private ProgressBar mProgress;
     private int progress;
 
@@ -94,15 +90,15 @@ public class VersionUpdate {
                     int numread = is.read(buf);
                     count += numread;
                     progress = (int) (((float) count / length) * 100);
-                    // ���½��
+                    // ??????
                     mHandler.sendEmptyMessage(DOWN_UPDATE);
                     if (numread <= 0) {
-                        // �������֪ͨ��װ
+                        // ????????????
                         mHandler.sendEmptyMessage(DOWN_OVER);
                         break;
                     }
                     fos.write(buf, 0, numread);
-                } while (!interceptFlag);// ���ȡ���ֹͣ����.
+                } while (!interceptFlag);// ?????????????.
 
                 fos.close();
                 is.close();
@@ -119,24 +115,23 @@ public class VersionUpdate {
         this.mContext = context;
     }
 
-    // �ⲿ�ӿ�����Activity����
+    // ?????????Activity????
     public void checkUpdateInfo() {
         showNoticeDialog();
     }
 
     private void showNoticeDialog() {
         Builder builder = new Builder(mContext);
-        builder.setTitle("����汾����");
+        builder.setTitle("���°汾...");
         builder.setMessage(updateMsg);
-        builder.setPositiveButton("����", new OnClickListener() {
+        builder.setPositiveButton("����", new OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
                 showDownloadDialog();
-                // �������������
             }
         });
-        builder.setNegativeButton("�Ժ���˵", new OnClickListener() {
+        builder.setNegativeButton("ȡ��", new OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
@@ -148,14 +143,14 @@ public class VersionUpdate {
 
     private void showDownloadDialog() {
         Builder builder = new Builder(mContext);
-        builder.setTitle("����汾����");
+        builder.setTitle("��ʼ����");
 
         final LayoutInflater inflater = LayoutInflater.from(mContext);
         View v = inflater.inflate(R.layout.progress, null);
         mProgress = (ProgressBar) v.findViewById(R.id.progress);
 
         builder.setView(v);
-        builder.setNegativeButton("ȡ��", new OnClickListener() {
+        builder.setNegativeButton("ȡ��", new OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
@@ -169,7 +164,7 @@ public class VersionUpdate {
     }
 
     /**
-     * ����apk
+     * ????apk
      */
 
     private void downloadApk() {
@@ -177,9 +172,6 @@ public class VersionUpdate {
         downLoadThread.start();
     }
 
-    /**
-     * ��װapk
-     */
     private void installApk() {
         File apkfile = new File(saveFileName);
         if (!apkfile.exists()) {
@@ -189,7 +181,6 @@ public class VersionUpdate {
         i.setDataAndType(Uri.parse("file://" + apkfile.toString()),
                 "application/vnd.android.package-archive");
         mContext.startActivity(i);
-        // MainActivity.uninstall();//ж��
 
     }
 }

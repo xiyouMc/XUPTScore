@@ -21,14 +21,14 @@ import top.codemc.common.util.Util;
 
 public class HttpUtilMc {
     // ��URL
-    private static final String HOST = "http://www.codemc.top:8080";
+    private static final String HOST = "http://www.codemc.top:8080/";
     public static final String IP = HOST;
-    public static final String BASE_URL = IP + "/xuptqueryscore/";
+    public static final String BASE_URL = IP + "/xuptscore/";
     public static final String LIB_URL = IP + "/xuptlibrary/";
     public static final String XUPT_IP1 = HOST;
     public static final String XUPT_IP2 = HOST;
     public static final String xiyouMC_IP = HOST;
-    public static final String XIYOUMC_BASE_IP = xiyouMC_IP + "/xuptqueryscore/";
+    public static final String XIYOUMC_BASE_IP = xiyouMC_IP + "/xuptscore/";
     public static String SERVER_ADDRESS = HOST;
     public static String libURL = "http://www.codemc.top:8080/XiYouLibrary/login";
     public static String RENEW_URL = "http://www.codemc.top:8080/XiYouLibrary/renew";

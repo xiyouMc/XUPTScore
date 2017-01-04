@@ -174,7 +174,8 @@ public class LoginActivity extends Activity {
                             if (!HttpUtilMc.CONNECT_EXCEPTION.equals(result)) {
                                 if (result.equals("error") || result.equals("errorReq")) {
                                     ViewUtil.showToast(LoginActivity.this, "证书过期，请重新登录。");
-
+                                    SharedPreferences preferences = getSharedPreferences(StaticVarUtil.USER_INFO, MODE_PRIVATE);
+                                    preferences.edit().putString(StaticVarUtil.SESSION, "").apply();
                                     // password.setText("");
                                     if (progressDialog != null) {
                                         progressDialog.dismiss();
